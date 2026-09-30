@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "s4_closure_execution_result.schema.json",
+  "title": "S4 Closure / Execution Result",
+  "type": "object",
+  "required": ["schema_version", "fixture_id", "fixture_generation", "layer_id", "artifact_id", "content_hash", "source_refs", "closure"],
+  "properties": {
+    "schema_version": {"const": "S4_CLOSURE_EXECUTION_RESULT_V1"},
+    "fixture_id": {"type": "string", "minLength": 1},
+    "fixture_generation": {"type": "string", "minLength": 1},
+    "layer_id": {"const": "S4"},
+    "artifact_id": {"type": "string", "minLength": 1},
+    "content_hash": {"type": "string"},
+    "source_refs": {"type": "array", "items": {"type": "string"}},
+    "selected_state_hash": {"type": "string"},
+    "execution": {
+      "type": ["object", "null"],
+      "properties": {
+        "actions": {"type": "array", "items": {"type": "object"}},
+        "evidence_refs": {"type": "array", "items": {"type": "string"}},
+        "result_state": {"type": "object"}
+      },
+      "additionalProperties": true
+    },
+    "closure": {
+      "type": "object",
+      "required": ["class", "residuals", "decision_reasons"],
+      "properties": {
+        "class": {"enum": ["CLOSE", "REFRAME", "CONTINUE", "BLOCKED"]},
+        "residuals": {"type": "array", "items": {"type": "object"}},
+        "decision_reasons": {"type": "array", "items": {"type": "object"}},
+        "evidence_sufficient": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    },
+    "oracle_constraints": {
+      "type": "object",
+      "properties": {
+        "acceptable_closure_classes": {"type": "array", "items": {"enum": ["CLOSE", "REFRAME", "CONTINUE", "BLOCKED"]}},
+        "required_residuals": {"type": "array"},
+        "forbidden_closure_classes": {"type": "array"},
+        "required_execution_effects": {"type": "array"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
