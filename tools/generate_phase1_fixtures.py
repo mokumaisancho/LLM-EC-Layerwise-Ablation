@@ -75,11 +75,16 @@ def build_fixture(fid, tag, prompt, good, bad, reframe, closure, valid_count):
         "closure": {"class": closure, "residuals": residuals, "decision_reasons": [], "evidence_sufficient": closure == "CLOSE"},
         "oracle_constraints": {"acceptable_closure_classes": [closure], "required_residuals": [x["type"] for x in residuals], "forbidden_closure_classes": ["CLOSE"] if closure == "CONTINUE" else [], "required_execution_effects": ["selected_valid"]}
     }
-    for obj in (s1, s2, s3, s4):
-        obj["content_hash"] = canonical_hash(obj, omit_content_hash=True)
+
+    # Hash chain: populate upstream identity before hashing the downstream artifact.
+    s1["content_hash"] = canonical_hash(s1, omit_content_hash=True)
     s2["semantic_ir_hash"] = s1["content_hash"]
+    s2["content_hash"] = canonical_hash(s2, omit_content_hash=True)
     s3["candidate_set_hash"] = s2["content_hash"]
+    s3["content_hash"] = canonical_hash(s3, omit_content_hash=True)
     s4["selected_state_hash"] = s3["content_hash"]
+    s4["content_hash"] = canonical_hash(s4, omit_content_hash=True)
+
     manifest = {
         "protocol_version": PROTOCOL, "fixture_id": fid, "fixture_generation": GENERATION, "status": "REVIEWED", "domain": "generic-domain-reasoning", "tags": [tag],
         "artifact_refs": {"task": "input/task.json", "s1_oracle": "oracle/s1_domain_semantic_ir.json", "s2_oracle": "oracle/s2_candidate_set.json", "s3_oracle": "oracle/s3_selected_reframed_state.json", "s4_oracle": "oracle/s4_closure_execution_result.json"},
