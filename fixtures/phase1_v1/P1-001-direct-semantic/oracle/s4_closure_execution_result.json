@@ -1,0 +1,34 @@
+{
+  "schema_version": "S4_CLOSURE_EXECUTION_RESULT_V1",
+  "fixture_id": "P1-001-direct-semantic",
+  "fixture_generation": "phase1_v1",
+  "layer_id": "S4",
+  "artifact_id": "P1-001-S4-ORACLE",
+  "content_hash": "TO_BE_COMPUTED_AT_FREEZE",
+  "source_refs": ["fixtures/phase1_v1/P1-001-direct-semantic/oracle/s3_selected_reframed_state.json"],
+  "selected_state_hash": "TO_BE_COMPUTED_AT_FREEZE",
+  "execution": {
+    "actions": [
+      {"type": "APPLY_EVIDENCE_SUPPORTED_RULE", "target": "goal"}
+    ],
+    "evidence_refs": ["rule-1"],
+    "result_state": {
+      "transition_valid": true,
+      "distractor_excluded": true
+    }
+  },
+  "closure": {
+    "class": "CLOSE",
+    "residuals": [],
+    "decision_reasons": [
+      {"reason": "Required semantic rule applied; distractor rejected; no unresolved required residual remains."}
+    ],
+    "evidence_sufficient": true
+  },
+  "oracle_constraints": {
+    "acceptable_closure_classes": ["CLOSE"],
+    "required_residuals": [],
+    "forbidden_closure_classes": ["REFRAME", "CONTINUE"],
+    "required_execution_effects": ["transition_valid", "distractor_excluded"]
+  }
+}
