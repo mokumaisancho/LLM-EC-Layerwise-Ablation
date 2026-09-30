@@ -29,6 +29,19 @@
         "additionalProperties": true
       }
     },
+    "relation_groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["group_id", "relation_type", "candidate_ids"],
+        "properties": {
+          "group_id": {"type": "string", "minLength": 1},
+          "relation_type": {"enum": ["EQUIVALENT", "COMPETING"]},
+          "candidate_ids": {"type": "array", "minItems": 2, "items": {"type": "string"}}
+        },
+        "additionalProperties": false
+      }
+    },
     "oracle_constraints": {
       "type": "object",
       "properties": {
