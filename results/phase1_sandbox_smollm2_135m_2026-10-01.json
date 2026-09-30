@@ -1,0 +1,34 @@
+{
+  "experiment": "PHASE1_FIXED_CANDIDATE_S3_S4",
+  "date": "2026-10-01",
+  "model": "SmolLM2-135M-Instruct-Q4_K_M.gguf",
+  "model_bytes": 105454432,
+  "model_sha256": "2e8040ceae7815abe0dcb3540b9995eaa1fa0d2ca9e797d0a635ae4433c68c2d",
+  "runtime": "llama.cpp b10936-790cf51aa",
+  "fixtures": 10,
+  "arms": {
+    "raw_output_contract": {
+      "parse_ok": 0,
+      "note": "Unconstrained output repeatedly failed to terminate as the required JSON object within the generation cap. Do not interpret this arm as semantic selection accuracy."
+    },
+    "schema_constrained_output_contract": {
+      "constraint_scope": "JSON shape and candidate IDs already present in the supplied candidate set only; semantic selection/reframe/closure values were not oracle-constrained.",
+      "parse_ok": 10,
+      "selection_ok": 0,
+      "reframe_ok": 1,
+      "closure_ok": 8,
+      "all_ok": 0
+    },
+    "ec_qualification_reference": {
+      "all_ok": 10,
+      "fixtures": 10,
+      "note": "Existing EC S3/S4 qualification result on the same controlled fixture generation. This is a qualification reference, not yet a complete multi-model statistical claim."
+    }
+  },
+  "interpretation": {
+    "format_following_separable": true,
+    "selection_control_bottleneck_observed_for_this_model": true,
+    "large_llm_required_claimed": false,
+    "generalization_claimed": false
+  }
+}
