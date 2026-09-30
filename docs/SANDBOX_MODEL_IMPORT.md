@@ -77,6 +77,33 @@ A model import is accepted only when all checks pass:
 8. final SHA-256 matches the registry;
 9. one non-empty llama.cpp generation exits successfully.
 
+## RCA / failed paths
+
+These paths were tested and are not the preferred ingress path for the active sandbox:
+
+- Hugging Face direct GGUF: the model URL is reachable at the web layer, but the binary redirects through Xet / signed CDN URLs and fails at the sandbox safe-open boundary.
+- PyPI model-containing wheel: a suitable wheel exists, but shell-side DNS is unavailable and the binary URL still depends on safe-open approval.
+- GitHub raw / Release direct download: valid URLs do not solve the current sandbox boundary because shell DNS is unavailable and the web layer cannot reliably render/approve large binary raw URLs.
+- old partial Drive shard `TMP_MODEL_PART_000`: contained only the first several MiB of the model and was not a complete source; removed as unused.
+
+Therefore, a connector-materialized binary container (currently XLSX) is the verified workaround. The critical property is that bytes enter the sandbox through a connector/file-reference path rather than through sandbox shell networking.
+
+## Reproducibility record
+
+For every future imported model, record:
+
+- source model name and upstream revision/tag;
+- quantization;
+- total byte size;
+- final SHA-256;
+- transfer workbook/file identity;
+- number and size of parts;
+- reconstruction tool commit;
+- runtime binary/version;
+- smoke-test command and exit code.
+
+A reconstructed model is not accepted merely because llama.cpp can open it: both per-part hashes and final file hash are mandatory.
+
 ## Storage rule
 
 The repository stores only transfer/reconstruction logic and model metadata. Do not commit model binaries to the Git tree.
@@ -91,4 +118,4 @@ After successful reconstruction and smoke verification:
 
 GitHub Release remains a useful normal distribution mechanism, but in this sandbox it does not by itself solve the transport boundary: shell DNS and safe-open validation can still block direct binary retrieval. A connector-materialized file path is therefore the currently verified ingress method.
 
-See `tools/reconstruct_gguf_from_xlsx.py` and `MODEL_REGISTRY.json`.
+See `tools/reconstruct_gguf_from_xlsx.py`, `MODEL_REGISTRY.json`, and Issue #10 for the transport RCA.
