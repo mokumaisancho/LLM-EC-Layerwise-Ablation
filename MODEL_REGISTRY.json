@@ -1,0 +1,22 @@
+{
+  "schema_version": "MODEL_REGISTRY_V1",
+  "models": [
+    {
+      "model_id": "smollm2-135m-instruct-q4-k-m",
+      "filename": "SmolLM2-135M-Instruct-Q4_K_M.gguf",
+      "format": "GGUF",
+      "size_bytes": 105454432,
+      "sha256": "2e8040ceae7815abe0dcb3540b9995eaa1fa0d2ca9e797d0a635ae4433c68c2d",
+      "runtime": "llama.cpp",
+      "verified_runtime_build": "b10936",
+      "verified_import_method": "GOOGLE_DRIVE_CONNECTOR_XLSX_CHUNK_BRIDGE_V1",
+      "transfer": {
+        "part_count": 22,
+        "standard_part_size_bytes": 5000000,
+        "final_part_size_bytes": 454432,
+        "base64_cell_chars": 40000
+      },
+      "status": "VERIFIED"
+    }
+  ]
+}
