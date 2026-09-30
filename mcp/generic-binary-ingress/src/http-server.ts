@@ -5,6 +5,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 import { createIngressMcpServer } from "./serverFactory.js";
+import { fetchArtifact } from "./artifactStore.js";
 
 const PORT = Number(process.env.MCP_PORT ?? process.env.PORT ?? 3000);
 const REQUIRE_KEY = (process.env.MCP_REQUIRE_KEY ?? "true").toLowerCase() === "true";
@@ -120,7 +121,19 @@ app.delete("/mcp", authMiddleware, boundaryMiddleware, async (req, res) => {
   }
 });
 
-const httpServer = app.listen(PORT, () => console.log(`generic-binary-ingress listening on ${PORT}`));
+const httpServer = app.listen(PORT, () => {
+  console.log(`generic-binary-ingress listening on ${PORT}`);
+  const smokeUrl = process.env.ARTIFACT_SMOKE_URL;
+  if (smokeUrl) {
+    void fetchArtifact({
+      url: smokeUrl,
+      expected_sha256: process.env.ARTIFACT_SMOKE_SHA256 || undefined,
+      ttl_seconds: Number(process.env.ARTIFACT_SMOKE_TTL_SECONDS ?? 3600)
+    })
+      .then((manifest) => console.log(`ARTIFACT_SMOKE_PASS ${JSON.stringify(manifest)}`))
+      .catch((error) => console.error(`ARTIFACT_SMOKE_FAIL ${error instanceof Error ? error.message : String(error)}`));
+  }
+});
 
 const shutdown = async () => {
   httpServer.close();
