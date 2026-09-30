@@ -1,0 +1,41 @@
+{
+  "schema_version": "PHASE1_CONTROL_MIRROR_RESULT_V1",
+  "date": "2026-10-01",
+  "assay": "PHASE1_EC_CONTROL_RULE_MIRROR_V1",
+  "model": "SmolLM2-135M-Instruct-Q4_K_M.gguf",
+  "model_sha256": "2e8040ceae7815abe0dcb3540b9995eaa1fa0d2ca9e797d0a635ae4433c68c2d",
+  "runtime": "llama.cpp b10936 sandbox",
+  "method": {
+    "candidate_decision": "grammar-constrained YES|NO",
+    "reframe_decision": "grammar-constrained YES|NO",
+    "closure_decision": "grammar-constrained CLOSE|CONTINUE",
+    "input_control": "Same explicit control information used by the existing EC S3/S4 runner: evidence_refs, dependencies, unexplained-observation rule, candidate relation, unresolved-state rule, and residual-resolution rule.",
+    "oracle_label_words_removed": true
+  },
+  "llm": {
+    "candidate_decision_count": 22,
+    "candidate_accuracy": 0.5454545454545454,
+    "fixture_selection_accuracy": 0.0,
+    "reframe_accuracy": 0.1,
+    "closure_accuracy": 0.8,
+    "joint_accuracy": 0.0,
+    "prediction_distribution": {
+      "candidate": {"YES": 22, "NO": 0},
+      "reframe": {"YES": 10, "NO": 0},
+      "closure": {"CLOSE": 10, "CONTINUE": 0}
+    }
+  },
+  "ec_control_rule_reference": {
+    "candidate_accuracy": 1.0,
+    "fixture_selection_accuracy": 1.0,
+    "reframe_accuracy": 1.0,
+    "closure_accuracy": 1.0,
+    "joint_accuracy": 1.0,
+    "basis": "Existing deterministic run_ec_s3_s4.py decision rules; these rules define the mirror assay and are deterministic for these fixtures."
+  },
+  "interpretation": {
+    "primary": "The 135M model did not discriminate branches even when the relevant control rules and structured evidence/dependency information were explicit. It collapsed to one label per decision family.",
+    "candidate_baseline": "Candidate accuracy exactly equals the always-YES baseline (12/22 = 0.54545), so observed candidate discrimination above that baseline is zero.",
+    "scope_limit": "This is evidence about this 135M model, not about all lightweight LLMs. The next model-size step is required before attributing the gap to the LLM architecture rather than insufficient capacity."
+  }
+}
