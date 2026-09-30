@@ -1,0 +1,32 @@
+{
+  "schema_version": "S1_DOMAIN_SEMANTIC_IR_V1",
+  "fixture_id": "P1-001-direct-semantic",
+  "fixture_generation": "phase1_v1",
+  "layer_id": "S1",
+  "artifact_id": "P1-001-S1-ORACLE",
+  "content_hash": "TO_BE_COMPUTED_AT_FREEZE",
+  "source_refs": ["fixtures/phase1_v1/P1-001-direct-semantic/input/task.json"],
+  "domain": "generic-domain-reasoning",
+  "entities": [
+    {"id": "goal", "type": "GOAL", "attributes": {"description": "Determine the valid next semantic transition."}},
+    {"id": "rule-1", "type": "DOMAIN_RULE", "attributes": {"description": "Only evidence-supported constraints may affect the transition."}}
+  ],
+  "relations": [
+    {"type": "CONSTRAINS", "source": "rule-1", "target": "goal", "attributes": {}}
+  ],
+  "constraints": [
+    {"id": "c1", "type": "EVIDENCE_REQUIRED", "target": "transition"},
+    {"id": "c2", "type": "DISTRACTOR_EXCLUDED", "target": "semantic_model"}
+  ],
+  "goals": [
+    {"id": "g1", "description": "Preserve explicit task goal and select only evidence-supported semantic content."}
+  ],
+  "assumptions": [],
+  "ambiguities": [],
+  "oracle_constraints": {
+    "required_elements": ["goal", "rule-1", "EVIDENCE_REQUIRED", "DISTRACTOR_EXCLUDED"],
+    "allowed_elements": [],
+    "forbidden_elements": ["distractor-as-domain-rule"],
+    "equivalence_constraints": []
+  }
+}
