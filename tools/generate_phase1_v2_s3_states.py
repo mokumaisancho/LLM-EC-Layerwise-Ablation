@@ -19,7 +19,7 @@ STATES = {
     "M006": {"variables": {"known_failure": {"semantic_key": "known_failure", "evidence_refs": ["task:failure"], "explains": ["obs-known"], "actionable": True}}, "observations": [{"observation_id": "obs-known", "semantic_key": "known_failure", "evidence_ref": "task:failure"}]},
     "M007": {"variables": {"answer": {"semantic_key": "coherent_answer", "evidence_refs": ["task:answer"], "actionable": True}, "required_condition": {"semantic_key": "required_condition_unresolved", "evidence_refs": ["task:required_condition"], "actionable": False}}, "observations": []},
     "M008": {"variables": {"constraints": {"semantic_key": "constraints_satisfied", "evidence_refs": ["task:constraints"], "actionable": True}, "evidence": {"semantic_key": "evidence_accounted", "evidence_refs": ["task:evidence"], "actionable": True}}, "observations": []},
-    "M009": {"variables": {"action_a": {"semantic_key": "equivalent_valid_action", "evidence_refs": ["task:action_a"], "actionable": True}, "action_b": {"semantic_key": "equivalent_valid_action", "evidence_refs": ["task:action_b"], "actionable": True}}, "observations": []},
+    "M009": {"variables": {"equivalent_action_space": {"semantic_key": "equivalent_valid_action_space", "evidence_refs": ["task:action_a", "task:action_b"], "actionable": True}}, "observations": []},
     "M010": {"variables": {"exposure": {"semantic_key": "claim_exposure", "evidence_refs": ["task:workflow"], "actionable": True}}, "observations": []}
 }
 
@@ -38,6 +38,11 @@ def main():
     success = "choose_semantically_valid_next_state"
     for fid, spec in sorted(STATES.items()):
         variables = spec["variables"]
+        coverage_refs = sorted(
+            variable_id
+            for variable_id, variable in variables.items()
+            if variable.get("actionable") and variable.get("evidence_refs")
+        )
         state = {
             "schema_version": "S3_SEMANTIC_STATE_V1",
             "fixture_id": fid,
@@ -55,7 +60,7 @@ def main():
                 "framing_revision_id": 0,
                 "variables": variables,
                 "edges": [],
-                "goal_coverage": {success: sorted(variables)},
+                "goal_coverage": {success: coverage_refs},
                 "violated_invariants": [],
                 "substitutions": []
             },
