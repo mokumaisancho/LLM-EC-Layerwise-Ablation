@@ -13,7 +13,7 @@ export type ArtifactManifest = {
   sha256: string;
   created_at: string;
   expires_at: string;
-  integrity: "verified" | "computed_only";
+  integrity: "sha256_verified" | "size_verified" | "computed_only";
 };
 
 export type FetchArtifactInput = {
@@ -32,7 +32,6 @@ const FETCH_TIMEOUT_MS = Number(process.env.ARTIFACT_FETCH_TIMEOUT_MS ?? 15 * 60
 const MAX_REDIRECTS = 8;
 
 const manifests = new Map<string, ArtifactManifest>();
-
 const artifactPath = (id: string) => path.join(ROOT, `${id}.bin`);
 const manifestPath = (id: string) => path.join(ROOT, `${id}.json`);
 const assertId = (id: string) => {
@@ -71,6 +70,15 @@ const isPrivateAddress = (address: string): boolean => {
   const mapped = a.match(/^::ffff:(\d+\.\d+\.\d+\.\d+)$/);
   if (mapped) return isPrivateAddress(mapped[1]);
   return false;
+};
+
+const redactUrl = (url: URL) => {
+  const copy = new URL(url.href);
+  copy.username = "";
+  copy.password = "";
+  copy.search = "";
+  copy.hash = "";
+  return copy.href;
 };
 
 export const validatePublicUrl = async (raw: string): Promise<URL> => {
@@ -193,15 +201,15 @@ export const fetchArtifact = async (input: FetchArtifactInput): Promise<Artifact
     const now = new Date();
     const manifest: ArtifactManifest = {
       id,
-      source_url: input.url,
-      final_url: current.href,
+      source_url: redactUrl(new URL(input.url)),
+      final_url: redactUrl(current),
       filename: safeFilename(current, res.headers.get("content-disposition")),
       mime_type: res.headers.get("content-type") ?? "application/octet-stream",
       size,
       sha256,
       created_at: now.toISOString(),
       expires_at: new Date(now.getTime() + ttl * 1000).toISOString(),
-      integrity: expectedHash || input.expected_size !== undefined ? "verified" : "computed_only"
+      integrity: expectedHash ? "sha256_verified" : input.expected_size !== undefined ? "size_verified" : "computed_only"
     };
     await saveManifest(manifest);
     return manifest;
