@@ -1,0 +1,35 @@
+{
+  "protocol": "PHASE1_FREEZE_MANIFEST_V1",
+  "fixture_generation": "phase1_v1",
+  "status": "FROZEN",
+  "frozen_source_commit": "07c5a2a86ee3b7d21ff1e130f9142396de9ce133",
+  "canonical_generator": "tools/generate_phase1_fixtures.py",
+  "canonical_output_path": "fixtures/phase1_v1/generated/",
+  "validator": "tools/validate_phase1_tcc.py",
+  "artifact_contract": "docs/PHASE1_FIXTURE_ORACLE_CONTRACT.md",
+  "fixture_count": 10,
+  "expected_artifact_count": 60,
+  "qualification": {
+    "method": "ECv4.4-aligned TCC qualification",
+    "result": "PASS",
+    "blocking_residual_count": 0,
+    "validated_artifact_count": 60,
+    "hash_chain_validation": true,
+    "scenario_semantic_validation": true,
+    "github_actions": false
+  },
+  "resolved_findings": [
+    {
+      "issue": 3,
+      "type": "P1-003_VALID_BRANCH_UNDERREPRESENTATION",
+      "resolution": "P1-003 generator now emits two acceptable valid branches."
+    },
+    {
+      "issue": 4,
+      "type": "STALE_DOWNSTREAM_CONTENT_HASH",
+      "resolution": "Upstream identity is populated before each downstream artifact is hashed; TCC validator recomputes and verifies the full S1->S4 chain."
+    }
+  ],
+  "freeze_rule": "Any semantic change to generator, schemas, oracle construction, scoring semantics, or layer contract requires a new fixture_generation. Documentation-only changes do not alter this frozen source authority.",
+  "runtime_note": "The sandbox could not clone GitHub directly. TCC qualification was executed on a local deterministic materialization of the same fixture contract and corrected generator semantics, while the frozen GitHub source was inspected through the GitHub connector."
+}
