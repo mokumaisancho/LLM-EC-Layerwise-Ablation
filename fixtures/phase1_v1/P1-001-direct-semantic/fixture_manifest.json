@@ -1,0 +1,28 @@
+{
+  "protocol_version": "PHASE1_ARTIFACT_CONTRACT_V1",
+  "fixture_id": "P1-001-direct-semantic",
+  "fixture_generation": "phase1_v1",
+  "status": "DRAFT",
+  "domain": "generic-domain-reasoning",
+  "tags": ["direct-semantic", "distractor", "selection-control"],
+  "artifact_refs": {
+    "task": "input/task.json",
+    "s1_oracle": "oracle/s1_domain_semantic_ir.json",
+    "s2_oracle": "oracle/s2_candidate_set.json",
+    "s3_oracle": "oracle/s3_selected_reframed_state.json",
+    "s4_oracle": "oracle/s4_closure_execution_result.json"
+  },
+  "oracle_independence": {
+    "method": "Fixture and oracle authored from explicit task/domain rules before any implementation comparison.",
+    "reviewed_against_test_implementations": false,
+    "review_notes": []
+  },
+  "hashes": {
+    "task": "TO_BE_COMPUTED_AT_FREEZE",
+    "s1_oracle": "TO_BE_COMPUTED_AT_FREEZE",
+    "s2_oracle": "TO_BE_COMPUTED_AT_FREEZE",
+    "s3_oracle": "TO_BE_COMPUTED_AT_FREEZE",
+    "s4_oracle": "TO_BE_COMPUTED_AT_FREEZE"
+  },
+  "freeze": null
+}
