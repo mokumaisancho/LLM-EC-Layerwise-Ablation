@@ -1,0 +1,22 @@
+{
+  "schema_version": "TASK_INPUT_V1",
+  "fixture_id": "P1-001-direct-semantic",
+  "fixture_generation": "phase1_v1",
+  "domain": "generic-domain-reasoning",
+  "prompt": "A task contains an explicit goal, one relevant domain rule, and one irrelevant linguistic distractor. Extract the domain-semantic structure needed for downstream reasoning without promoting the distractor into the semantic model.",
+  "context": {
+    "goal": "Determine the valid next semantic transition.",
+    "domain_rules": [
+      "Only evidence-supported constraints may affect the transition."
+    ],
+    "distractor": "A fluent but semantically irrelevant sentence is present."
+  },
+  "source_refs": ["fixture-author-defined"],
+  "protected_intent": {
+    "goal": "Preserve the explicit task goal while excluding irrelevant surface-language content."
+  },
+  "notes_for_fixture_author": [
+    "This is the simplest S1 control fixture.",
+    "Do not derive the oracle from an implementation output."
+  ]
+}
