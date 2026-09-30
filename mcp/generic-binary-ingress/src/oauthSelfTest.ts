@@ -2,6 +2,25 @@ import { createHash, randomBytes } from "node:crypto";
 
 const b64url = (buf: Buffer) => buf.toString("base64url");
 
+const parseMcpPayload = async (res: Response) => {
+  const text = await res.text();
+  const contentType = res.headers.get("content-type") ?? "";
+  if (contentType.includes("application/json")) return JSON.parse(text);
+  const dataLine = text.split(/\r?\n/).find((line) => line.startsWith("data:"));
+  if (!dataLine) throw new Error("MCP_RESPONSE_UNPARSEABLE");
+  return JSON.parse(dataLine.slice(5).trim());
+};
+
+const mcpPost = async (root: string, token: string, sessionId: string | undefined, body: unknown) => {
+  const headers: Record<string, string> = {
+    authorization: `Bearer ${token}`,
+    "content-type": "application/json",
+    accept: "application/json, text/event-stream"
+  };
+  if (sessionId) headers["mcp-session-id"] = sessionId;
+  return fetch(`${root}/mcp`, { method: "POST", headers, body: JSON.stringify(body) });
+};
+
 export const runOAuthSelfTest = async () => {
   const root = (process.env.MCP_PUBLIC_BASE_URL ?? "").replace(/\/$/, "");
   const password = process.env.MCP_OAUTH_PASSWORD ?? "";
@@ -26,6 +45,7 @@ export const runOAuthSelfTest = async () => {
   if (!Array.isArray(asm.scopes_supported) || !asm.scopes_supported.includes("offline_access")) {
     throw new Error("ASM_OFFLINE_ACCESS_MISSING");
   }
+  if (asm.authorization_response_iss_parameter_supported !== true) throw new Error("ASM_ISS_SUPPORT_MISSING");
 
   const redirectUri = "https://example.invalid/oauth/callback";
   const regRes = await fetch(asm.registration_endpoint, {
@@ -101,35 +121,84 @@ export const runOAuthSelfTest = async () => {
     throw new Error("TOKEN_RESPONSE_INVALID");
   }
 
-  const initRes = await fetch(`${root}/mcp`, {
-    method: "POST",
-    headers: {
-      authorization: `Bearer ${token.access_token}`,
-      "content-type": "application/json",
-      accept: "application/json, text/event-stream"
-    },
-    body: JSON.stringify({
-      jsonrpc: "2.0",
-      id: 1,
-      method: "initialize",
-      params: {
-        protocolVersion: "2025-06-18",
-        capabilities: {},
-        clientInfo: { name: "gbi-selftest", version: "1.0.0" }
-      }
-    })
+  const initRes = await mcpPost(root, token.access_token, undefined, {
+    jsonrpc: "2.0",
+    id: 1,
+    method: "initialize",
+    params: {
+      protocolVersion: "2025-06-18",
+      capabilities: {},
+      clientInfo: { name: "gbi-selftest", version: "1.0.0" }
+    }
   });
   if (!initRes.ok) throw new Error(`MCP_INIT_HTTP_${initRes.status}`);
   const sessionId = initRes.headers.get("mcp-session-id");
   if (!sessionId) throw new Error("MCP_SESSION_ID_MISSING");
+  const initPayload = await parseMcpPayload(initRes);
+  if (!initPayload?.result?.serverInfo) throw new Error("MCP_INIT_PAYLOAD_INVALID");
+
+  const initializedRes = await mcpPost(root, token.access_token, sessionId, {
+    jsonrpc: "2.0",
+    method: "notifications/initialized",
+    params: {}
+  });
+  if (!initializedRes.ok && initializedRes.status !== 202) throw new Error(`MCP_INITIALIZED_HTTP_${initializedRes.status}`);
+
+  const listRes = await mcpPost(root, token.access_token, sessionId, {
+    jsonrpc: "2.0", id: 2, method: "tools/list", params: {}
+  });
+  if (!listRes.ok) throw new Error(`TOOLS_LIST_HTTP_${listRes.status}`);
+  const listPayload = await parseMcpPayload(listRes);
+  const names = (listPayload?.result?.tools ?? []).map((tool: any) => tool.name);
+  for (const required of ["artifact_fetch", "artifact_info", "artifact_chunk_link", "artifact_delete"]) {
+    if (!names.includes(required)) throw new Error(`TOOL_MISSING:${required}`);
+  }
+
+  const smallUrl = "https://raw.githubusercontent.com/calibress/curl-mcp/main/LICENSE";
+  const fetchRes = await mcpPost(root, token.access_token, sessionId, {
+    jsonrpc: "2.0",
+    id: 3,
+    method: "tools/call",
+    params: {
+      name: "artifact_fetch",
+      arguments: { url: smallUrl, ttl_seconds: 60, max_bytes: 65536 }
+    }
+  });
+  if (!fetchRes.ok) throw new Error(`ARTIFACT_FETCH_TOOL_HTTP_${fetchRes.status}`);
+  const fetchPayload = await parseMcpPayload(fetchRes);
+  if (fetchPayload?.result?.isError) throw new Error(`ARTIFACT_FETCH_TOOL_ERROR:${JSON.stringify(fetchPayload.result)}`);
+  const artifactId = String(fetchPayload?.result?.structuredContent?.id ?? "");
+  const artifactSha = String(fetchPayload?.result?.structuredContent?.sha256 ?? "");
+  const artifactSize = Number(fetchPayload?.result?.structuredContent?.size ?? 0);
+  if (!artifactId || !/^[0-9a-f]{64}$/.test(artifactSha) || artifactSize <= 0) {
+    throw new Error("ARTIFACT_FETCH_TOOL_PAYLOAD_INVALID");
+  }
+
+  const deleteRes = await mcpPost(root, token.access_token, sessionId, {
+    jsonrpc: "2.0",
+    id: 4,
+    method: "tools/call",
+    params: { name: "artifact_delete", arguments: { id: artifactId } }
+  });
+  if (!deleteRes.ok) throw new Error(`ARTIFACT_DELETE_TOOL_HTTP_${deleteRes.status}`);
+  const deletePayload = await parseMcpPayload(deleteRes);
+  if (deletePayload?.result?.isError || deletePayload?.result?.structuredContent?.deleted !== true) {
+    throw new Error("ARTIFACT_DELETE_TOOL_INVALID");
+  }
 
   return {
     protected_resource_metadata: "PASS",
     authorization_server_metadata: "PASS",
     dynamic_client_registration: "PASS",
     pkce_authorization_code: "PASS",
+    issuer_identification: "PASS",
     refresh_token_issued: "PASS",
     mcp_initialize: "PASS",
-    session_id_present: true
+    tools_list: "PASS",
+    artifact_fetch_tool: "PASS",
+    artifact_delete_tool: "PASS",
+    session_id_present: true,
+    sample_artifact_size: artifactSize,
+    sample_artifact_sha256: artifactSha
   };
 };
