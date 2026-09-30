@@ -77,10 +77,12 @@ export const validatePublicUrl = async (raw: string): Promise<URL> => {
   const url = new URL(raw);
   if (url.protocol !== "https:" && url.protocol !== "http:") throw new Error("ONLY_HTTP_HTTPS_ALLOWED");
   if (url.username || url.password) throw new Error("URL_USERINFO_FORBIDDEN");
-  if (!url.hostname || url.hostname.toLowerCase() === "localhost" || url.hostname.endsWith(".localhost")) {
+  const hostname = url.hostname.replace(/^\[|\]$/g, "");
+  if (!hostname || hostname.toLowerCase() === "localhost" || hostname.toLowerCase().endsWith(".localhost")) {
     throw new Error("LOCALHOST_FORBIDDEN");
   }
-  const answers = await dns.lookup(url.hostname, { all: true, verbatim: true });
+  if (isPrivateAddress(hostname)) throw new Error(`NON_PUBLIC_ADDRESS_FORBIDDEN:${hostname}`);
+  const answers = await dns.lookup(hostname, { all: true, verbatim: true });
   if (!answers.length) throw new Error("DNS_NO_ANSWER");
   for (const answer of answers) {
     if (isPrivateAddress(answer.address)) throw new Error(`NON_PUBLIC_ADDRESS_FORBIDDEN:${answer.address}`);
@@ -122,6 +124,7 @@ export const fetchArtifact = async (input: FetchArtifactInput): Promise<Artifact
   const maxBytes = Math.min(input.max_bytes ?? DEFAULT_MAX_BYTES, DEFAULT_MAX_BYTES);
   const ttl = Math.max(60, Math.min(input.ttl_seconds ?? 3600, MAX_TTL_SECONDS));
   const expectedHash = input.expected_sha256?.toLowerCase();
+  if (!Number.isSafeInteger(maxBytes) || maxBytes <= 0) throw new Error("MAX_BYTES_INVALID");
   if (expectedHash && !/^[0-9a-f]{64}$/.test(expectedHash)) throw new Error("EXPECTED_SHA256_INVALID");
   if (input.expected_size !== undefined && (!Number.isSafeInteger(input.expected_size) || input.expected_size < 0)) {
     throw new Error("EXPECTED_SIZE_INVALID");
@@ -154,9 +157,11 @@ export const fetchArtifact = async (input: FetchArtifactInput): Promise<Artifact
     if (!res.ok) throw new Error(`UPSTREAM_HTTP_${res.status}`);
     if (!res.body) throw new Error("UPSTREAM_EMPTY_BODY");
 
-    const declared = Number(res.headers.get("content-length"));
-    if (Number.isFinite(declared) && declared > maxBytes) throw new Error("ARTIFACT_TOO_LARGE_DECLARED");
-    if (input.expected_size !== undefined && Number.isFinite(declared) && declared !== input.expected_size) {
+    const contentLengthHeader = res.headers.get("content-length");
+    const declared = contentLengthHeader === null ? undefined : Number(contentLengthHeader);
+    if (declared !== undefined && (!Number.isSafeInteger(declared) || declared < 0)) throw new Error("CONTENT_LENGTH_INVALID");
+    if (declared !== undefined && declared > maxBytes) throw new Error("ARTIFACT_TOO_LARGE_DECLARED");
+    if (input.expected_size !== undefined && declared !== undefined && declared !== input.expected_size) {
       throw new Error(`EXPECTED_SIZE_MISMATCH_DECLARED:${declared}`);
     }
 
@@ -211,8 +216,9 @@ export const fetchArtifact = async (input: FetchArtifactInput): Promise<Artifact
 
 export const readChunk = async (id: string, offset: number, length = DEFAULT_CHUNK_BYTES) => {
   const manifest = await getManifest(id);
-  if (!Number.isSafeInteger(offset) || offset < 0 || offset > manifest.size) throw new Error("OFFSET_INVALID");
-  const bounded = Math.min(Math.max(1, length), DEFAULT_CHUNK_BYTES, manifest.size - offset);
+  if (!Number.isSafeInteger(offset) || offset < 0 || offset >= manifest.size) throw new Error("OFFSET_INVALID");
+  if (!Number.isSafeInteger(length) || length <= 0) throw new Error("CHUNK_LENGTH_INVALID");
+  const bounded = Math.min(length, DEFAULT_CHUNK_BYTES, manifest.size - offset);
   const fh = await fs.open(artifactPath(id), "r");
   try {
     const buffer = Buffer.alloc(bounded);
