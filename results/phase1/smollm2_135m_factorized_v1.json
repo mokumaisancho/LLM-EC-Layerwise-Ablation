@@ -1,0 +1,53 @@
+{
+  "schema_version": "PHASE1_FACTORIZED_RESULT_V1",
+  "date": "2026-10-01",
+  "model": "SmolLM2-135M-Instruct-Q4_K_M.gguf",
+  "model_sha256": "2e8040ceae7815abe0dcb3540b9995eaa1fa0d2ca9e797d0a635ae4433c68c2d",
+  "runtime": "llama.cpp b10936 sandbox",
+  "assay": "PHASE1_FACTORIZED_CATEGORICAL_V1",
+  "output_control": "llama.cpp grammar constrained categorical labels",
+  "fixture_count": 10,
+  "candidate_decision_count": 22,
+  "metrics": {
+    "candidate_admissibility_accuracy": 0.5454545454545454,
+    "fixture_selection_accuracy": 0.0,
+    "reframe_accuracy": 0.2,
+    "closure_accuracy": 0.5,
+    "joint_fixture_accuracy": 0.0
+  },
+  "diagnostics": {
+    "candidate_predictions": {
+      "YES": 22,
+      "NO": 0
+    },
+    "candidate_gold": {
+      "YES": 12,
+      "NO": 10
+    },
+    "always_yes_candidate_baseline_accuracy": 0.5454545454545454,
+    "selection_discrimination_above_always_yes_baseline": 0.0,
+    "reframe_predictions": {
+      "YES": 9,
+      "NO": 1
+    },
+    "reframe_gold": {
+      "YES": 1,
+      "NO": 9
+    },
+    "closure_predictions": {
+      "CLOSE": 7,
+      "CONTINUE": 3
+    },
+    "closure_gold": {
+      "CLOSE": 8,
+      "CONTINUE": 2
+    }
+  },
+  "interpretation": {
+    "candidate_selection": "No observed discrimination: the model emitted YES for every candidate, exactly matching the always-YES majority baseline.",
+    "reframing": "Strong YES prior; only 2/10 correct.",
+    "closure": "5/10 correct despite constrained categorical output.",
+    "scientific_scope": "This is a lower-bound result for a 135M instruction model. It does not establish that larger lightweight models share the same limitation.",
+    "comparison_note": "The earlier EC qualification on the controlled Phase-1 fixtures was 10/10 for selection/reframe/closure, but a strict EC-vs-LLM claim should use the cleaned no-label-leakage assay for both arms before final comparison."
+  }
+}
