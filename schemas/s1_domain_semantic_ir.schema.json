@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "s1_domain_semantic_ir.schema.json",
+  "title": "S1 Domain Semantic IR",
+  "type": "object",
+  "required": ["schema_version", "fixture_id", "fixture_generation", "layer_id", "artifact_id", "content_hash", "source_refs", "domain", "entities", "relations", "constraints", "goals"],
+  "properties": {
+    "schema_version": {"const": "S1_DOMAIN_SEMANTIC_IR_V1"},
+    "fixture_id": {"type": "string", "minLength": 1},
+    "fixture_generation": {"type": "string", "minLength": 1},
+    "layer_id": {"const": "S1"},
+    "artifact_id": {"type": "string", "minLength": 1},
+    "content_hash": {"type": "string"},
+    "source_refs": {"type": "array", "items": {"type": "string"}},
+    "domain": {"type": "string", "minLength": 1},
+    "entities": {"type": "array", "items": {"type": "object", "required": ["id", "type"], "properties": {"id": {"type": "string"}, "type": {"type": "string"}, "attributes": {"type": "object"}}, "additionalProperties": true}},
+    "relations": {"type": "array", "items": {"type": "object", "required": ["type", "source", "target"], "properties": {"type": {"type": "string"}, "source": {"type": "string"}, "target": {"type": "string"}, "attributes": {"type": "object"}}, "additionalProperties": true}},
+    "constraints": {"type": "array", "items": {"type": "object"}},
+    "goals": {"type": "array", "items": {"type": "object"}},
+    "assumptions": {"type": "array", "items": {"type": "object"}},
+    "ambiguities": {"type": "array", "items": {"type": "object"}},
+    "oracle_constraints": {"type": "object", "properties": {"required_elements": {"type": "array"}, "allowed_elements": {"type": "array"}, "forbidden_elements": {"type": "array"}, "equivalence_constraints": {"type": "array"}}, "additionalProperties": true}
+  },
+  "additionalProperties": false
+}
