@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "task_input.schema.json",
+  "title": "Phase 1 Task Input",
+  "type": "object",
+  "required": ["schema_version", "fixture_id", "fixture_generation", "domain", "prompt", "source_refs"],
+  "properties": {
+    "schema_version": {"const": "TASK_INPUT_V1"},
+    "fixture_id": {"type": "string", "minLength": 1},
+    "fixture_generation": {"type": "string", "minLength": 1},
+    "domain": {"type": "string", "minLength": 1},
+    "prompt": {"type": "string", "minLength": 1},
+    "context": {"type": "object"},
+    "source_refs": {"type": "array", "items": {"type": "string"}},
+    "protected_intent": {"type": "object"},
+    "notes_for_fixture_author": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
