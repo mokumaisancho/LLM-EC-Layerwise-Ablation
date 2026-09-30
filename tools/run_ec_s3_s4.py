@@ -19,7 +19,6 @@ def select_candidates(candidate_set: dict) -> tuple[list[str], list[str], list[d
         cid = candidate.get("candidate_id")
         evidence = [x for x in candidate.get("evidence_refs", []) if str(x).strip()]
         dependencies = [x for x in candidate.get("dependencies", []) if str(x).strip()]
-        # Deterministic evidence admission: unsupported candidates do not enter the selected frontier.
         admitted = bool(evidence and dependencies)
         if admitted:
             selected.append(cid)
@@ -58,17 +57,31 @@ def ec_residuals(state: dict):
     return fallback_residuals(state), None, "FALLBACK_NO_EC_PATH"
 
 
+def selected_relation(candidate_set: dict, selected: list[str]):
+    selected_set = set(selected)
+    if len(selected_set) < 2:
+        return None
+    for group in candidate_set.get("relation_groups", []):
+        ids = set(group.get("candidate_ids", []))
+        if selected_set <= ids:
+            return group.get("relation_type")
+    return None
+
+
 def closure_decision(candidate_set: dict, selected: list[str], state: dict, residuals: list[dict]):
     ops = {
         c.get("candidate_id"): (c.get("semantic_transition") or {}).get("operation")
         for c in candidate_set.get("candidates", [])
     }
     selected_ops = [ops.get(cid) for cid in selected]
-    if len(selected) > 1:
-        return "CONTINUE", [{"type": "MULTIPLE_ADMISSIBLE_BRANCHES"}]
+    relation = selected_relation(candidate_set, selected)
+
+    if len(selected) > 1 and relation == "COMPETING":
+        return "CONTINUE", [{"type": "MULTIPLE_COMPETING_ADMISSIBLE_BRANCHES"}]
+    if len(selected) > 1 and relation not in {"EQUIVALENT"}:
+        return "CONTINUE", [{"type": "MULTIPLE_UNRESOLVED_ADMISSIBLE_BRANCHES"}]
     if any("unresolved" in str(v.get("semantic_key", "")).lower() for v in state["framing"]["variables"].values()):
         return "CONTINUE", [{"type": "REQUIRED_CONDITION_UNRESOLVED"}]
-    # A selected framing-expansion operation is allowed to resolve an unexplained-observation residual.
     if residuals and any(str(op).startswith(("ADD_", "REFRAME_")) for op in selected_ops if op):
         return "CLOSE", []
     if residuals:
@@ -108,7 +121,8 @@ def main():
             },
             "s4": {
                 "closure_class": closure,
-                "residuals": closure_residuals
+                "residuals": closure_residuals,
+                "selected_relation": selected_relation(s2, selected)
             }
         }
         out = out_root / (fixture.name + ".json")
