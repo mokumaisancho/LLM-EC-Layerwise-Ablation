@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -18,6 +19,14 @@ SCHEMA_MAP = {
     "oracle/s4_closure_execution_result.json": "s4_closure_execution_result.schema.json",
     "fixture_manifest.json": "fixture_manifest.schema.json",
 }
+
+
+def canonical_hash(obj, omit_content_hash=False):
+    value = dict(obj)
+    if omit_content_hash:
+        value.pop("content_hash", None)
+    blob = json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(blob).hexdigest()
 
 
 def main():
@@ -68,11 +77,33 @@ def main():
         if gens != {"phase1_v1"}:
             blocking.append({"fixture": fid, "type": "GENERATION_MISMATCH", "values": sorted(str(x) for x in gens)})
 
+        task = docs["input/task.json"]
         s1 = docs["oracle/s1_domain_semantic_ir.json"]
         s2 = docs["oracle/s2_candidate_set.json"]
         s3 = docs["oracle/s3_selected_reframed_state.json"]
         s4 = docs["oracle/s4_closure_execution_result.json"]
         manifest = docs["fixture_manifest.json"]
+
+        # Artifact identity and chain validation.
+        expected_s1 = canonical_hash(s1, omit_content_hash=True)
+        expected_s2 = canonical_hash(s2, omit_content_hash=True)
+        expected_s3 = canonical_hash(s3, omit_content_hash=True)
+        expected_s4 = canonical_hash(s4, omit_content_hash=True)
+        for layer, obj, expected in [("S1", s1, expected_s1), ("S2", s2, expected_s2), ("S3", s3, expected_s3), ("S4", s4, expected_s4)]:
+            if obj.get("content_hash") != expected:
+                blocking.append({"fixture": fid, "type": "CONTENT_HASH_MISMATCH", "layer": layer, "recorded": obj.get("content_hash"), "expected": expected})
+        if s2.get("semantic_ir_hash") != s1.get("content_hash"):
+            blocking.append({"fixture": fid, "type": "UPSTREAM_HASH_MISMATCH", "edge": "S1->S2"})
+        if s3.get("candidate_set_hash") != s2.get("content_hash"):
+            blocking.append({"fixture": fid, "type": "UPSTREAM_HASH_MISMATCH", "edge": "S2->S3"})
+        if s4.get("selected_state_hash") != s3.get("content_hash"):
+            blocking.append({"fixture": fid, "type": "UPSTREAM_HASH_MISMATCH", "edge": "S3->S4"})
+        expected_manifest_hashes = {
+            "task": canonical_hash(task), "s1_oracle": s1.get("content_hash"), "s2_oracle": s2.get("content_hash"), "s3_oracle": s3.get("content_hash"), "s4_oracle": s4.get("content_hash")
+        }
+        if manifest.get("hashes") != expected_manifest_hashes:
+            blocking.append({"fixture": fid, "type": "MANIFEST_HASH_MISMATCH"})
+
         candidate_ids = {c["candidate_id"] for c in s2.get("candidates", [])}
         acceptable = set(s2.get("oracle_constraints", {}).get("acceptable_candidate_ids", []))
         selected = set(s3.get("selection", {}).get("selected_candidate_ids", []))
