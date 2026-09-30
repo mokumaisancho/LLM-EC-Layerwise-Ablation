@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "s2_candidate_set.schema.json",
+  "title": "S2 Candidate Set",
+  "type": "object",
+  "required": ["schema_version", "fixture_id", "fixture_generation", "layer_id", "artifact_id", "content_hash", "source_refs", "candidates"],
+  "properties": {
+    "schema_version": {"const": "S2_CANDIDATE_SET_V1"},
+    "fixture_id": {"type": "string", "minLength": 1},
+    "fixture_generation": {"type": "string", "minLength": 1},
+    "layer_id": {"const": "S2"},
+    "artifact_id": {"type": "string", "minLength": 1},
+    "content_hash": {"type": "string"},
+    "source_refs": {"type": "array", "items": {"type": "string"}},
+    "semantic_ir_hash": {"type": "string"},
+    "candidates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["candidate_id", "semantic_transition"],
+        "properties": {
+          "candidate_id": {"type": "string"},
+          "semantic_transition": {"type": "object"},
+          "claims": {"type": "array", "items": {"type": "object"}},
+          "dependencies": {"type": "array", "items": {"type": "string"}},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}}
+        },
+        "additionalProperties": true
+      }
+    },
+    "oracle_constraints": {
+      "type": "object",
+      "properties": {
+        "required_candidate_semantics": {"type": "array"},
+        "acceptable_candidate_ids": {"type": "array", "items": {"type": "string"}},
+        "forbidden_candidate_semantics": {"type": "array"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
