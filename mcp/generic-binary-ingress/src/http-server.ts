@@ -6,6 +6,16 @@ import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/
 import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 import { createIngressMcpServer } from "./serverFactory.js";
 import { fetchArtifact } from "./artifactStore.js";
+import {
+  protectedResourceMetadata,
+  authorizationServerMetadata,
+  registerClient,
+  authorizeGet,
+  authorizePost,
+  tokenPost,
+  validateAccessToken,
+  authChallenge
+} from "./oauth.js";
 
 const PORT = Number(process.env.MCP_PORT ?? process.env.PORT ?? 3000);
 const REQUIRE_KEY = (process.env.MCP_REQUIRE_KEY ?? "true").toLowerCase() === "true";
@@ -18,25 +28,26 @@ const servers = new Map<string, McpServer>();
 const app = express();
 app.disable("x-powered-by");
 app.use(express.json({ limit: "1mb" }));
+app.use(express.urlencoded({ extended: false, limit: "64kb" }));
 app.use(cors({
   origin: ALLOWED_ORIGINS.length ? ALLOWED_ORIGINS : false,
-  exposedHeaders: ["mcp-session-id", "Mcp-Session-Id"]
+  exposedHeaders: ["mcp-session-id", "Mcp-Session-Id", "WWW-Authenticate"]
 }));
 
-const reject = (res: express.Response, status: number, message: string) => {
+const reject = (res: express.Response, status: number, message: string, challenge = false) => {
+  if (challenge) res.setHeader("WWW-Authenticate", authChallenge());
   res.status(status).json({ jsonrpc: "2.0", error: { code: -32000, message }, id: null });
 };
 
 const authMiddleware: express.RequestHandler = (req, res, next) => {
   if (!REQUIRE_KEY) return next();
-  if (!API_KEYS.length) return reject(res, 503, "MCP_REQUIRE_KEY=true but MCP_API_KEYS is empty.");
   const auth = Array.isArray(req.headers.authorization) ? req.headers.authorization[0] : req.headers.authorization;
   const bearer = auth?.startsWith("Bearer ") ? auth.slice(7) : undefined;
   const rawX = req.headers["x-api-key"];
   const xKey = Array.isArray(rawX) ? rawX[0] : rawX;
-  const candidate = bearer ?? xKey;
-  if (candidate && API_KEYS.includes(candidate)) return next();
-  return reject(res, 401, "Unauthorized");
+  if (bearer && validateAccessToken(bearer)) return next();
+  if ((bearer && API_KEYS.includes(bearer)) || (xKey && API_KEYS.includes(xKey))) return next();
+  return reject(res, 401, "Unauthorized", true);
 };
 
 const boundaryMiddleware: express.RequestHandler = (req, res, next) => {
@@ -78,7 +89,13 @@ const sessionId = (req: express.Request) => {
   return Array.isArray(h) ? h[0] : h;
 };
 
-app.get("/health", (_req, res) => res.json({ ok: true, service: "generic-binary-ingress", version: "0.1.0" }));
+app.get("/health", (_req, res) => res.json({ ok: true, service: "generic-binary-ingress", version: "0.2.0" }));
+app.get("/.well-known/oauth-protected-resource", protectedResourceMetadata);
+app.get("/.well-known/oauth-authorization-server", authorizationServerMetadata);
+app.post("/oauth/register", registerClient);
+app.get("/oauth/authorize", authorizeGet);
+app.post("/oauth/authorize", authorizePost);
+app.post("/oauth/token", tokenPost);
 
 app.post("/mcp", authMiddleware, boundaryMiddleware, async (req, res) => {
   try {
