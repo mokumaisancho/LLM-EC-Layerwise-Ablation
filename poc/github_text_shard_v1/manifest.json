@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "total_size": 524288,
+  "sha256": "059a307f501cb066980d10bec2e8d16e5bf5c2f912a564b3eb1deef52ab97760",
+  "encoding": "base64",
+  "shards": [
+    {"index":0,"file":"part-000.b64","decoded_size":65536,"sha256":"PLACEHOLDER"},
+    {"index":1,"file":"part-001.b64","decoded_size":65536,"sha256":"PLACEHOLDER"},
+    {"index":2,"file":"part-002.b64","decoded_size":65536,"sha256":"PLACEHOLDER"},
+    {"index":3,"file":"part-003.b64","decoded_size":65536,"sha256":"PLACEHOLDER"},
+    {"index":4,"file":"part-004.b64","decoded_size":65536,"sha256":"PLACEHOLDER"},
+    {"index":5,"file":"part-005.b64","decoded_size":65536,"sha256":"PLACEHOLDER"},
+    {"index":6,"file":"part-006.b64","decoded_size":65536,"sha256":"PLACEHOLDER"},
+    {"index":7,"file":"part-007.b64","decoded_size":65536,"sha256":"PLACEHOLDER"}
+  ]
+}
