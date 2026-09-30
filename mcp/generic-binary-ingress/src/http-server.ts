@@ -6,6 +6,7 @@ import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/
 import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 import { createIngressMcpServer } from "./serverFactory.js";
 import { fetchArtifact } from "./artifactStore.js";
+import { runOAuthSelfTest } from "./oauthSelfTest.js";
 import {
   protectedResourceMetadata,
   authorizationServerMetadata,
@@ -149,6 +150,13 @@ const httpServer = app.listen(PORT, () => {
     })
       .then((manifest) => console.log(`ARTIFACT_SMOKE_PASS ${JSON.stringify(manifest)}`))
       .catch((error) => console.error(`ARTIFACT_SMOKE_FAIL ${error instanceof Error ? error.message : String(error)}`));
+  }
+  if ((process.env.OAUTH_SELFTEST ?? "").toLowerCase() === "true") {
+    setTimeout(() => {
+      void runOAuthSelfTest()
+        .then((result) => console.log(`OAUTH_MCP_SELFTEST_PASS ${JSON.stringify(result)}`))
+        .catch((error) => console.error(`OAUTH_MCP_SELFTEST_FAIL ${error instanceof Error ? error.message : String(error)}`));
+    }, 1500);
   }
 });
 
