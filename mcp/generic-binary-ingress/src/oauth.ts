@@ -4,7 +4,9 @@ import type { Request, Response } from "express";
 const ACCESS_TTL_SECONDS = 3600;
 const CODE_TTL_SECONDS = 300;
 const REFRESH_TTL_SECONDS = 30 * 24 * 3600;
-const SCOPES = ["artifacts:fetch"];
+const RESOURCE_SCOPE = "artifacts:fetch";
+const OFFLINE_SCOPE = "offline_access";
+const SCOPES = [RESOURCE_SCOPE, OFFLINE_SCOPE];
 
 type Client = {
   client_id: string;
@@ -16,11 +18,11 @@ type AuthCode = {
   redirect_uri: string;
   code_challenge: string;
   scope: string;
-  resource?: string;
+  resource: string;
   expires_at: number;
 };
-type AccessToken = { scope: string; expires_at: number };
-type RefreshToken = { client_id: string; scope: string; resource?: string; expires_at: number };
+type AccessToken = { scope: string; resource: string; expires_at: number };
+type RefreshToken = { client_id: string; scope: string; resource: string; expires_at: number };
 
 const clients = new Map<string, Client>();
 const codes = new Map<string, AuthCode>();
@@ -49,12 +51,19 @@ const escapeHtml = (s: string) => s.replace(/[&<>"']/g, (c) => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
 }[c]!));
 
+const normalizeScope = (raw: string) => {
+  const requested = raw.split(/\s+/).filter(Boolean);
+  for (const scope of requested) if (!SCOPES.includes(scope)) throw new Error("invalid_scope");
+  if (!requested.includes(RESOURCE_SCOPE)) requested.unshift(RESOURCE_SCOPE);
+  return Array.from(new Set(requested)).join(" ");
+};
+
 export const protectedResourceMetadata = (_req: Request, res: Response) => {
   const root = baseUrl();
   res.json({
     resource: root,
     authorization_servers: [root],
-    scopes_supported: SCOPES,
+    scopes_supported: [RESOURCE_SCOPE],
     resource_documentation: `${root}/health`
   });
 };
@@ -70,7 +79,8 @@ export const authorizationServerMetadata = (_req: Request, res: Response) => {
     grant_types_supported: ["authorization_code", "refresh_token"],
     token_endpoint_auth_methods_supported: ["none"],
     code_challenge_methods_supported: ["S256"],
-    scopes_supported: SCOPES
+    scopes_supported: SCOPES,
+    authorization_response_iss_parameter_supported: true
   });
 };
 
@@ -101,15 +111,14 @@ const validateAuthorize = (q: Record<string, unknown>) => {
   const response_type = String(q.response_type ?? "");
   const code_challenge = String(q.code_challenge ?? "");
   const method = String(q.code_challenge_method ?? "");
-  const scope = String(q.scope ?? SCOPES.join(" "));
+  const scope = normalizeScope(String(q.scope ?? `${RESOURCE_SCOPE} ${OFFLINE_SCOPE}`));
   const state = String(q.state ?? "");
-  const resource = q.resource ? String(q.resource) : undefined;
+  const resource = String(q.resource ?? baseUrl());
   const client = clients.get(client_id);
   if (!client || !client.redirect_uris.includes(redirect_uri)) throw new Error("invalid_client_or_redirect");
   if (response_type !== "code") throw new Error("unsupported_response_type");
   if (!code_challenge || method !== "S256") throw new Error("pkce_s256_required");
-  for (const s of scope.split(/\s+/).filter(Boolean)) if (!SCOPES.includes(s)) throw new Error("invalid_scope");
-  if (resource && resource !== baseUrl()) throw new Error("invalid_resource");
+  if (resource !== baseUrl()) throw new Error("invalid_resource");
   return { client_id, redirect_uri, code_challenge, scope, state, resource };
 };
 
@@ -137,6 +146,7 @@ export const authorizePost = (req: Request, res: Response) => {
     const target = new URL(v.redirect_uri);
     target.searchParams.set("code", code);
     if (v.state) target.searchParams.set("state", v.state);
+    target.searchParams.set("iss", issuer());
     return res.redirect(302, target.href);
   } catch (error) {
     return res.status(400).json({ error: error instanceof Error ? error.message : "invalid_request" });
@@ -146,10 +156,10 @@ export const authorizePost = (req: Request, res: Response) => {
 const pkceMatches = (verifier: string, challenge: string) =>
   createHash("sha256").update(verifier).digest("base64url") === challenge;
 
-const issueTokens = (client_id: string, scope: string, resource?: string) => {
+const issueTokens = (client_id: string, scope: string, resource: string) => {
   const access_token = token(32);
   const refresh_token = token(40);
-  accessTokens.set(access_token, { scope, expires_at: Date.now() + ACCESS_TTL_SECONDS * 1000 });
+  accessTokens.set(access_token, { scope, resource, expires_at: Date.now() + ACCESS_TTL_SECONDS * 1000 });
   refreshTokens.set(refresh_token, { client_id, scope, resource, expires_at: Date.now() + REFRESH_TTL_SECONDS * 1000 });
   return { access_token, token_type: "Bearer", expires_in: ACCESS_TTL_SECONDS, refresh_token, scope };
 };
@@ -162,9 +172,15 @@ export const tokenPost = (req: Request, res: Response) => {
     const client_id = String(req.body?.client_id ?? "");
     const redirect_uri = String(req.body?.redirect_uri ?? "");
     const verifier = String(req.body?.code_verifier ?? "");
+    const resource = String(req.body?.resource ?? baseUrl());
     const record = codes.get(codeValue);
     if (!record || record.expires_at <= Date.now()) return res.status(400).json({ error: "invalid_grant" });
-    if (record.client_id !== client_id || record.redirect_uri !== redirect_uri || !pkceMatches(verifier, record.code_challenge)) {
+    if (
+      record.client_id !== client_id ||
+      record.redirect_uri !== redirect_uri ||
+      record.resource !== resource ||
+      !pkceMatches(verifier, record.code_challenge)
+    ) {
       return res.status(400).json({ error: "invalid_grant" });
     }
     codes.delete(codeValue);
@@ -173,19 +189,26 @@ export const tokenPost = (req: Request, res: Response) => {
   if (grant === "refresh_token") {
     const refresh = String(req.body?.refresh_token ?? "");
     const client_id = String(req.body?.client_id ?? "");
+    const resource = String(req.body?.resource ?? baseUrl());
     const record = refreshTokens.get(refresh);
-    if (!record || record.expires_at <= Date.now() || record.client_id !== client_id) return res.status(400).json({ error: "invalid_grant" });
+    if (
+      !record ||
+      record.expires_at <= Date.now() ||
+      record.client_id !== client_id ||
+      record.resource !== resource
+    ) return res.status(400).json({ error: "invalid_grant" });
     refreshTokens.delete(refresh);
     return res.json(issueTokens(client_id, record.scope, record.resource));
   }
   return res.status(400).json({ error: "unsupported_grant_type" });
 };
 
-export const validateAccessToken = (value: string | undefined) => {
+export const validateAccessToken = (value: string | undefined, requiredScope = RESOURCE_SCOPE) => {
   cleanExpired();
   if (!value) return false;
   const record = accessTokens.get(value);
-  return Boolean(record && record.expires_at > Date.now());
+  if (!record || record.expires_at <= Date.now() || record.resource !== baseUrl()) return false;
+  return record.scope.split(/\s+/).includes(requiredScope);
 };
 
-export const authChallenge = () => `Bearer resource_metadata="${baseUrl()}/.well-known/oauth-protected-resource", scope="${SCOPES.join(" ")}"`;
+export const authChallenge = () => `Bearer resource_metadata="${baseUrl()}/.well-known/oauth-protected-resource", scope="${RESOURCE_SCOPE}"`;
