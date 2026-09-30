@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "transport": "github_connector_utf8_text_shards",
+  "encoding": "base64",
+  "total_size": 4096,
+  "sha256": "c33417cdc29da3cc0cfb3efffebfa148bc571cedcfc99071417bcd9a5145b251",
+  "shards": [
+    {
+      "index": 0,
+      "file": "part-000.b64",
+      "decoded_size": 4096,
+      "sha256": "c33417cdc29da3cc0cfb3efffebfa148bc571cedcfc99071417bcd9a5145b251"
+    }
+  ]
+}
