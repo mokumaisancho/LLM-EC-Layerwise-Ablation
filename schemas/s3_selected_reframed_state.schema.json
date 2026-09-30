@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "s3_selected_reframed_state.schema.json",
+  "title": "S3 Selected / Reframed State",
+  "type": "object",
+  "required": ["schema_version", "fixture_id", "fixture_generation", "layer_id", "artifact_id", "content_hash", "source_refs", "selection", "framing"],
+  "properties": {
+    "schema_version": {"const": "S3_SELECTED_REFRAMED_STATE_V1"},
+    "fixture_id": {"type": "string", "minLength": 1},
+    "fixture_generation": {"type": "string", "minLength": 1},
+    "layer_id": {"const": "S3"},
+    "artifact_id": {"type": "string", "minLength": 1},
+    "content_hash": {"type": "string"},
+    "source_refs": {"type": "array", "items": {"type": "string"}},
+    "candidate_set_hash": {"type": "string"},
+    "selection": {
+      "type": "object",
+      "required": ["selected_candidate_ids", "rejected_candidate_ids", "decision_reasons"],
+      "properties": {
+        "selected_candidate_ids": {"type": "array", "items": {"type": "string"}},
+        "rejected_candidate_ids": {"type": "array", "items": {"type": "string"}},
+        "decision_reasons": {"type": "array", "items": {"type": "object"}},
+        "ranking": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "framing": {
+      "type": "object",
+      "required": ["reframe_required", "state"],
+      "properties": {
+        "reframe_required": {"type": "boolean"},
+        "trigger_residuals": {"type": "array", "items": {"type": "object"}},
+        "state": {"type": "object"},
+        "revision_operations": {"type": "array", "items": {"type": "object"}},
+        "protected_intent": {"type": "object"}
+      },
+      "additionalProperties": true
+    },
+    "oracle_constraints": {
+      "type": "object",
+      "properties": {
+        "acceptable_selected_candidate_ids": {"type": "array", "items": {"type": "string"}},
+        "reframe_required": {"type": "boolean"},
+        "required_residuals": {"type": "array"},
+        "forbidden_selections": {"type": "array"},
+        "goal_fidelity_constraints": {"type": "array"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
