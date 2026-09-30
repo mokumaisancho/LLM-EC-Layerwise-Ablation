@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "s3_semantic_state.schema.json",
+  "title": "S3 Upstream Semantic State",
+  "type": "object",
+  "required": ["schema_version", "fixture_id", "fixture_generation", "artifact_id", "content_hash", "source_refs", "intent", "framing", "observations"],
+  "properties": {
+    "schema_version": {"const": "S3_SEMANTIC_STATE_V1"},
+    "fixture_id": {"type": "string", "minLength": 1},
+    "fixture_generation": {"type": "string", "minLength": 1},
+    "artifact_id": {"type": "string", "minLength": 1},
+    "content_hash": {"type": "string"},
+    "source_refs": {"type": "array", "items": {"type": "string"}},
+    "intent": {
+      "type": "object",
+      "required": ["original_intent", "success_conditions", "protected_invariants"],
+      "properties": {
+        "original_intent": {"type": "string"},
+        "success_conditions": {"type": "array", "items": {"type": "string"}},
+        "protected_invariants": {"type": "array", "items": {"type": "string"}},
+        "prohibited_substitutions": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "framing": {
+      "type": "object",
+      "required": ["framing_revision_id", "variables", "edges", "goal_coverage"],
+      "properties": {
+        "framing_revision_id": {"type": "integer", "minimum": 0},
+        "variables": {"type": "object"},
+        "edges": {"type": "array", "items": {"type": "array", "minItems": 2, "maxItems": 2}},
+        "goal_coverage": {"type": "object"},
+        "violated_invariants": {"type": "array", "items": {"type": "string"}},
+        "substitutions": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["observation_id", "semantic_key", "evidence_ref"],
+        "properties": {
+          "observation_id": {"type": "string"},
+          "semantic_key": {"type": "string"},
+          "evidence_ref": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
