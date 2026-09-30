@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LLM-EC Layerwise Ablation Experiment Record",
+  "type": "object",
+  "required": [
+    "protocol_version",
+    "task_id",
+    "layer_id",
+    "implementation",
+    "upstream_artifact_hashes",
+    "output_artifact_hash",
+    "metrics"
+  ],
+  "properties": {
+    "protocol_version": {"type": "string"},
+    "task_id": {"type": "string"},
+    "layer_id": {"enum": ["S1", "S2", "S3", "S4"]},
+    "implementation": {"enum": ["LLM", "EC", "ORACLE"]},
+    "model": {
+      "type": ["object", "null"],
+      "properties": {
+        "model_id": {"type": "string"},
+        "temperature": {"type": "number"},
+        "top_p": {"type": "number"},
+        "seed": {"type": ["integer", "null"]},
+        "raw_output_hash": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "upstream_artifact_hashes": {
+      "type": "object",
+      "additionalProperties": {"type": "string"}
+    },
+    "output_artifact_hash": {"type": "string"},
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "semantic_recall": {"type": ["number", "null"]},
+        "candidate_recall": {"type": ["number", "null"]},
+        "correct_candidate_rank": {"type": ["number", "null"]},
+        "selection_accuracy": {"type": ["number", "null"]},
+        "residual_recall": {"type": ["number", "null"]},
+        "reframing_recovery_rate": {"type": ["number", "null"]},
+        "false_closure": {"type": ["boolean", "null"]},
+        "missed_reframe": {"type": ["boolean", "null"]},
+        "final_task_success": {"type": ["number", "boolean", "null"]},
+        "token_cost": {"type": ["number", "null"]},
+        "latency_ms": {"type": ["number", "null"]}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
