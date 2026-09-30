@@ -1,0 +1,39 @@
+{
+  "schema_version": "S3_SELECTED_REFRAMED_STATE_V1",
+  "fixture_id": "P1-001-direct-semantic",
+  "fixture_generation": "phase1_v1",
+  "layer_id": "S3",
+  "artifact_id": "P1-001-S3-ORACLE",
+  "content_hash": "TO_BE_COMPUTED_AT_FREEZE",
+  "source_refs": ["fixtures/phase1_v1/P1-001-direct-semantic/oracle/s2_candidate_set.json"],
+  "candidate_set_hash": "TO_BE_COMPUTED_AT_FREEZE",
+  "selection": {
+    "selected_candidate_ids": ["c-valid"],
+    "rejected_candidate_ids": ["c-distractor"],
+    "decision_reasons": [
+      {"candidate_id": "c-valid", "decision": "ACCEPT", "reason": "Supported by explicit domain rule and evidence constraint."},
+      {"candidate_id": "c-distractor", "decision": "REJECT", "reason": "No evidence support; distractor must not enter domain semantics."}
+    ],
+    "ranking": ["c-valid", "c-distractor"]
+  },
+  "framing": {
+    "reframe_required": false,
+    "trigger_residuals": [],
+    "state": {
+      "goal": "Determine the valid next semantic transition.",
+      "active_rule": "rule-1",
+      "selected_transition": "APPLY_EVIDENCE_SUPPORTED_RULE"
+    },
+    "revision_operations": [],
+    "protected_intent": {
+      "goal": "Preserve the explicit task goal while excluding irrelevant surface-language content."
+    }
+  },
+  "oracle_constraints": {
+    "acceptable_selected_candidate_ids": ["c-valid"],
+    "reframe_required": false,
+    "required_residuals": [],
+    "forbidden_selections": ["c-distractor"],
+    "goal_fidelity_constraints": ["protected_intent must remain unchanged"]
+  }
+}
