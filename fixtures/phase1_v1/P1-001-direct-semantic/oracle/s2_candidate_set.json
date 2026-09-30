@@ -1,0 +1,31 @@
+{
+  "schema_version": "S2_CANDIDATE_SET_V1",
+  "fixture_id": "P1-001-direct-semantic",
+  "fixture_generation": "phase1_v1",
+  "layer_id": "S2",
+  "artifact_id": "P1-001-S2-ORACLE",
+  "content_hash": "TO_BE_COMPUTED_AT_FREEZE",
+  "source_refs": ["fixtures/phase1_v1/P1-001-direct-semantic/oracle/s1_domain_semantic_ir.json"],
+  "semantic_ir_hash": "TO_BE_COMPUTED_AT_FREEZE",
+  "candidates": [
+    {
+      "candidate_id": "c-valid",
+      "semantic_transition": {"operation": "APPLY_EVIDENCE_SUPPORTED_RULE", "target": "goal"},
+      "claims": [{"id": "claim-valid", "statement": "Use the explicit domain rule and ignore the irrelevant distractor."}],
+      "dependencies": ["rule-1"],
+      "evidence_refs": ["rule-1"]
+    },
+    {
+      "candidate_id": "c-distractor",
+      "semantic_transition": {"operation": "PROMOTE_DISTRACTOR", "target": "semantic_model"},
+      "claims": [{"id": "claim-invalid", "statement": "Treat the fluent distractor as a domain rule."}],
+      "dependencies": [],
+      "evidence_refs": []
+    }
+  ],
+  "oracle_constraints": {
+    "required_candidate_semantics": ["APPLY_EVIDENCE_SUPPORTED_RULE", "PROMOTE_DISTRACTOR"],
+    "acceptable_candidate_ids": ["c-valid"],
+    "forbidden_candidate_semantics": []
+  }
+}
