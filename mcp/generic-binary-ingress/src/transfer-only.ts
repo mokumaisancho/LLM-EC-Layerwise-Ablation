@@ -1,5 +1,5 @@
 import express from "express";
-import { fetchArtifact, readChunk } from "./artifactStore.js";
+import { createHash } from "node:crypto";
 
 const PORT = Number(process.env.PORT ?? 3000);
 const MODEL_URL = "https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/main/Qwen3-4B-Q4_K_M.gguf";
@@ -10,50 +10,43 @@ const CSV_CHARS = 30000;
 
 const app = express();
 app.disable("x-powered-by");
-let artifactId = "";
-let readyError = "";
 
-app.get("/health", (_req, res) => {
-  res.status(artifactId ? 200 : readyError ? 500 : 503).json({
-    ok: Boolean(artifactId),
-    state: artifactId ? "READY" : readyError ? "FAILED" : "LOADING",
-    model: "Qwen3-4B-Q4_K_M.gguf",
-    expected_size: EXPECTED_SIZE,
-    part_bytes: PART_BYTES
-  });
-});
+app.get("/health", (_req, res) => res.json({
+  ok: true,
+  state: "READY",
+  model: "Qwen3-4B-Q4_K_M.gguf",
+  expected_size: EXPECTED_SIZE,
+  expected_sha256: EXPECTED_SHA256,
+  part_bytes: PART_BYTES
+}));
 
 app.get("/part.csv", async (req, res) => {
   try {
-    if (!artifactId) return res.status(503).send("NOT_READY\n");
     const index = Number(req.query.index);
     const total = Math.ceil(EXPECTED_SIZE / PART_BYTES);
     if (!Number.isSafeInteger(index) || index < 0 || index >= total) return res.status(400).send("INVALID_INDEX\n");
     const offset = index * PART_BYTES;
     const length = Math.min(PART_BYTES, EXPECTED_SIZE - offset);
-    const chunk = await readChunk(artifactId, offset, length);
+    const end = offset + length - 1;
+    const upstream = await fetch(MODEL_URL, {
+      redirect: "follow",
+      headers: { "User-Agent": "qwen-sandbox-transfer/1.0", "Range": `bytes=${offset}-${end}`, Accept: "application/octet-stream" }
+    });
+    if (upstream.status !== 206) throw new Error(`UPSTREAM_STATUS_${upstream.status}`);
+    const contentRange = upstream.headers.get("content-range") ?? "";
+    if (contentRange !== `bytes ${offset}-${end}/${EXPECTED_SIZE}`) throw new Error(`CONTENT_RANGE_MISMATCH:${contentRange}`);
+    const data = Buffer.from(await upstream.arrayBuffer());
+    if (data.length !== length) throw new Error(`LENGTH_MISMATCH:${data.length}`);
+    const sha256 = createHash("sha256").update(data).digest("hex");
+    const b64 = data.toString("base64");
     const rows: string[] = [];
-    rows.push(["META", index, total, offset, chunk.length, chunk.sha256].join(","));
-    const n = Math.ceil(chunk.base64.length / CSV_CHARS);
-    for (let i = 0; i < n; i++) rows.push(["CHUNK", i + 1, n, chunk.base64.slice(i * CSV_CHARS, (i + 1) * CSV_CHARS)].join(","));
+    rows.push(["META", index, total, offset, data.length, sha256].join(","));
+    const n = Math.ceil(b64.length / CSV_CHARS);
+    for (let i = 0; i < n; i++) rows.push(["CHUNK", i + 1, n, b64.slice(i * CSV_CHARS, (i + 1) * CSV_CHARS)].join(","));
     res.type("text/csv").set("Cache-Control", "public, max-age=86400, immutable").send(rows.join("\n") + "\n");
   } catch (error) {
     res.status(500).type("text/plain").send(`ERROR:${error instanceof Error ? error.message : String(error)}\n`);
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`transfer-only listening on ${PORT}`);
-  void fetchArtifact({
-    url: MODEL_URL,
-    expected_sha256: EXPECTED_SHA256,
-    expected_size: EXPECTED_SIZE,
-    ttl_seconds: 86400
-  }).then((manifest) => {
-    artifactId = manifest.id;
-    console.log(`TRANSFER_ARTIFACT_READY ${JSON.stringify(manifest)}`);
-  }).catch((error) => {
-    readyError = error instanceof Error ? error.message : String(error);
-    console.error(`TRANSFER_ARTIFACT_FAIL ${readyError}`);
-  });
-});
+app.listen(PORT, () => console.log(`transfer-only ready on ${PORT}`));
