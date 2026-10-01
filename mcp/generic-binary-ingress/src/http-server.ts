@@ -151,6 +151,16 @@ const httpServer = app.listen(PORT, () => {
       .then((manifest) => console.log(`ARTIFACT_SMOKE_PASS ${JSON.stringify(manifest)}`))
       .catch((error) => console.error(`ARTIFACT_SMOKE_FAIL ${error instanceof Error ? error.message : String(error)}`));
   }
+  const gasProbeUrl = process.env.GAS_PROBE_URL;
+  if (gasProbeUrl) {
+    void fetch(gasProbeUrl, { redirect: "follow" })
+      .then(async (response) => {
+        const text = await response.text();
+        if (!response.ok) throw new Error(`HTTP_${response.status}:${text.slice(0, 1000)}`);
+        console.log(`GAS_PROBE_PASS ${text.slice(0, 4000)}`);
+      })
+      .catch((error) => console.error(`GAS_PROBE_FAIL ${error instanceof Error ? error.message : String(error)}`));
+  }
   if ((process.env.OAUTH_SELFTEST ?? "").toLowerCase() === "true") {
     setTimeout(() => {
       void runOAuthSelfTest()
