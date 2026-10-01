@@ -1,0 +1,131 @@
+{
+  "schema_version": "TCC_ONE_SHOT_SANDBOX_LLM_V1",
+  "date_jst": "2026-10-02",
+  "objective": "minimize_one_shot_end_to_end_wall_clock_subject_to_correctness_and_sandbox_resource_gates",
+  "hard_invariants": {
+    "default_environment": "GPT_SANDBOX",
+    "mac_allowed_only_for_physical_or_os_specific_device_io": true,
+    "audio_file_tests_must_run_in_sandbox": true,
+    "github_actions_enabled": false,
+    "frozen_fixture_oracle_prompt_scoring_within_run": true,
+    "manual_mid_run_tuning_forbidden": true
+  },
+  "terminal_states": [
+    "PASS_SELECTED",
+    "NO_ADMISSIBLE_MODEL",
+    "INVALID_TEST_CONTRACT",
+    "TRANSPORT_BLOCKED",
+    "SANDBOX_RESOURCE_LIMIT",
+    "MAC_REQUIRED_FOR_PHYSICAL_TEST_ONLY"
+  ],
+  "states": [
+    {
+      "id": "P0_PREFLIGHT",
+      "parallel_checks": ["sandbox_resources", "runtime_capabilities", "fixture_integrity", "candidate_manifests", "audio_fixture_inventory"],
+      "gates": {
+        "disk": "free_disk >= candidate_size * 1.25 AND free_disk_after >= 2GiB",
+        "ram": "available_ram >= 4GiB",
+        "fixtures": "hash_chain == PASS"
+      },
+      "branches": {
+        "fixture_fail": "INVALID_TEST_CONTRACT",
+        "disk_fail": "NEXT_PREDECLARED_CANDIDATE",
+        "ram_fail": "PREFER_LAZY_OR_EXPERT_PAGING"
+      },
+      "next": "P1_INGRESS"
+    },
+    {
+      "id": "P1_INGRESS",
+      "route_order": [
+        "CONNECTOR_NATIVE_RAW_FILE_REFERENCE_MATERIALIZE",
+        "GENERIC_BINARY_INGRESS_IF_DIRECTLY_ATTACHABLE",
+        "GITHUB_BASE64_TEXT_SHARDS"
+      ],
+      "rules": {
+        "preserve_model_bytes": true,
+        "stream_decode_to_destination": true,
+        "whole_artifact_in_memory_forbidden": true,
+        "retry_transient_unit_once": true,
+        "retry_integrity_mismatch_once": true
+      },
+      "branches": {
+        "route_success": "P2_RUNTIME_STRATEGY",
+        "route_unavailable_or_timeout_after_retry": "NEXT_ROUTE",
+        "second_integrity_mismatch": "NEXT_ROUTE_OR_TRANSPORT_BLOCKED",
+        "disk_exhausted": "DELETE_PARTIAL_AND_NEXT_CANDIDATE"
+      },
+      "evidence": ["route", "connector_calls", "source_bytes", "destination_bytes", "wall_clock", "sha256", "size"]
+    },
+    {
+      "id": "P2_RUNTIME_STRATEGY",
+      "model_priority": ["LARGE_MOE", "REQUIRED_LARGE_DENSE", "SMALL_CONTROL_ONLY"],
+      "runtime_mode_order": ["LAZY_OR_EXPERT_PAGING", "MMAP", "NORMAL_LOAD_IF_FITS"],
+      "branches": {
+        "model_size_gt_75pct_ram": "LAZY_OR_EXPERT_PAGING_IF_AVAILABLE_ELSE_MMAP",
+        "model_size_le_75pct_ram": "MMAP_FIRST",
+        "oom_or_kill": "ONE_RETRY_WITH_LAZY_OR_EXPERT_PAGING_ELSE_REJECT_CANDIDATE",
+        "runtime_incompatible": "NEXT_COMPATIBLE_RUNTIME_OR_CANDIDATE"
+      },
+      "next": "P3_SMOKE"
+    },
+    {
+      "id": "P3_SMOKE",
+      "input": "ONE_DETERMINISTIC_MINIMAL_PROMPT_OR_INPUT",
+      "pass": ["normal_exit", "parseable_output", "no_nan_or_corruption", "rss_within_limit"],
+      "branches": {
+        "oom_or_kill": "P2_RUNTIME_STRATEGY_FALLBACK",
+        "template_failure": "ONE_PREDECLARED_TEMPLATE_ADAPTER_RETRY",
+        "second_functional_failure": "REJECT_CANDIDATE"
+      },
+      "next": "P4_FULL_LLM_ASSAY"
+    },
+    {
+      "id": "P4_FULL_LLM_ASSAY",
+      "frozen_inputs_required": true,
+      "parseability_required": 1.0,
+      "branches": {
+        "template_or_parser_defect": "ONE_PREDECLARED_ADAPTER_RETRY",
+        "quality_below_threshold": "FAIL_QUALITY_AND_NEXT_PREDECLARED_CANDIDATE_IF_REQUIRED",
+        "resource_failure_mid_run": "ONE_RUNTIME_MODE_FALLBACK_AND_RESTART_FROM_FIXTURE_1",
+        "fixture_hash_change": "INVALID_TEST_CONTRACT"
+      },
+      "next": "P5_AUDIO_VALIDATION"
+    },
+    {
+      "id": "P5_AUDIO_VALIDATION",
+      "environment": "GPT_SANDBOX",
+      "metrics": ["ja_CER", "en_WER", "release_to_final_latency_if_timestamped", "real_time_factor", "wall_clock", "peak_rss", "load_time"],
+      "branches": {
+        "audio_format_unsupported": "ONE_SANDBOX_CONVERSION_TO_CANONICAL_PCM_WAV",
+        "decoder_unavailable": "NEXT_PREDECLARED_ASR_BACKEND",
+        "oom": "PREDECLARED_MEMORY_OR_BATCH_FALLBACK",
+        "accuracy_failure": "FAIL_QUALITY_AND_CONTINUE_MATRIX",
+        "physical_device_or_os_io_required": "MAC_REQUIRED_FOR_PHYSICAL_TEST_ONLY"
+      },
+      "forbidden": ["MAC_FOR_AUDIO_FILE_ACCURACY", "MAC_FOR_AUDIO_FILE_PERFORMANCE"],
+      "next": "P6_SELECT"
+    },
+    {
+      "id": "P6_SELECT",
+      "admissibility": ["ingress_integrity_pass", "smoke_pass", "frozen_assay_integrity_pass", "correctness_threshold_pass", "sandbox_resource_gate_pass"],
+      "score": "ingress + materialize_or_reconstruct + model_open + full_assay_execution + scoring",
+      "tie_breakers": ["fewer_external_to_sandbox_calls", "lower_peak_rss", "lower_transferred_bytes", "simpler_mainline_runtime"],
+      "branches": {
+        "admissible_candidates_exist": "PASS_SELECTED",
+        "none_due_transport": "TRANSPORT_BLOCKED",
+        "none_due_resources": "SANDBOX_RESOURCE_LIMIT",
+        "none_due_quality_or_compatibility": "NO_ADMISSIBLE_MODEL"
+      }
+    }
+  ],
+  "closure_report_required": [
+    "selected_route_model_runtime",
+    "branch_path",
+    "timings_and_resources",
+    "correctness_and_audio_metrics",
+    "rejected_candidates_with_reason",
+    "uncrossed_blockers",
+    "hashes_and_versions",
+    "next_action_only_if_no_admissible_configuration"
+  ]
+}
