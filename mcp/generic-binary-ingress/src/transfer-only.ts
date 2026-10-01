@@ -5,7 +5,7 @@ const PORT = Number(process.env.PORT ?? 3000);
 const MODEL_URL = "https://huggingface.co/Qwen/Qwen3-4B-GGUF/resolve/main/Qwen3-4B-Q4_K_M.gguf";
 const EXPECTED_SHA256 = "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5";
 const EXPECTED_SIZE = 2497280256;
-const PART_BYTES = 5000000;
+const PART_BYTES = 1000000;
 const CSV_CHARS = 30000;
 
 const app = express();
