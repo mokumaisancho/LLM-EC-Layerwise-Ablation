@@ -5,7 +5,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 import { createIngressMcpServer } from "./serverFactory.js";
-import { fetchArtifact } from "./artifactStore.js";
+import { fetchArtifact, readChunk } from "./artifactStore.js";
 import { runOAuthSelfTest } from "./oauthSelfTest.js";
 import {
   protectedResourceMetadata,
@@ -148,7 +148,25 @@ const httpServer = app.listen(PORT, () => {
       expected_sha256: process.env.ARTIFACT_SMOKE_SHA256 || undefined,
       ttl_seconds: Number(process.env.ARTIFACT_SMOKE_TTL_SECONDS ?? 3600)
     })
-      .then((manifest) => console.log(`ARTIFACT_SMOKE_PASS ${JSON.stringify(manifest)}`))
+      .then(async (manifest) => {
+        console.log(`ARTIFACT_SMOKE_PASS ${JSON.stringify(manifest)}`);
+        const probeLength = 65536;
+        const middleOffset = Math.max(0, Math.floor(manifest.size / 2) - Math.floor(probeLength / 2));
+        const finalOffset = Math.max(0, manifest.size - probeLength);
+        const first = await readChunk(manifest.id, 0, probeLength);
+        const middle = await readChunk(manifest.id, middleOffset, probeLength);
+        const final = await readChunk(manifest.id, finalOffset, probeLength);
+        const magic = Buffer.from(first.base64, "base64").subarray(0, 4).toString("ascii");
+        console.log(`ARTIFACT_CHUNK_PROBE_PASS ${JSON.stringify({
+          id: manifest.id,
+          artifact_size: manifest.size,
+          artifact_sha256: manifest.sha256,
+          gguf_magic: magic,
+          first: { offset: first.offset, length: first.length, sha256: first.sha256 },
+          middle: { offset: middle.offset, length: middle.length, sha256: middle.sha256 },
+          final: { offset: final.offset, length: final.length, sha256: final.sha256 }
+        })}`);
+      })
       .catch((error) => console.error(`ARTIFACT_SMOKE_FAIL ${error instanceof Error ? error.message : String(error)}`));
   }
   const gasProbeUrl = process.env.GAS_PROBE_URL;
