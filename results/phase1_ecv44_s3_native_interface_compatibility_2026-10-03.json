@@ -1,0 +1,38 @@
+{
+  "schema_version": "PHASE1_ECV44_S3_NATIVE_INTERFACE_COMPATIBILITY_2026_10_03_V1",
+  "protocol": "PHASE1_MVP_TCC_V1",
+  "fixture_generation": "phase1_v2",
+  "fixture_count": 10,
+  "source": {
+    "ec_repository": "mokumaisancho/GPT-EC-Closure-Engine",
+    "ec_commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+    "native_api": "v4.ec_next_action_authority.select_next_action",
+    "native_api_blob_sha": "89806d27da266de9bb8a9541129fc47722dea36c",
+    "contract_test": "01_repo/tests/test_ec_next_action_authority.py::test_ec_selects_exactly_one_next_action",
+    "contract_test_blob_sha": "ceefeb551157c9f34ac7ae93c733f6e0ceddad0a"
+  },
+  "phase1_s3_contract": {
+    "schema": "S3_SELECTED_REFRAMED_STATE_V1",
+    "selection_output": "selected_candidate_ids[]",
+    "multi_selection_fixtures": [
+      {"fixture_id": "M003", "selected_count": 2, "relation_type": "COMPETING"},
+      {"fixture_id": "M009", "selected_count": 2, "relation_type": "EQUIVALENT"}
+    ],
+    "singleton_selection_fixture_count": 8,
+    "multi_selection_fixture_count": 2
+  },
+  "finding": {
+    "ec_native_output_cardinality": "EXACTLY_ONE_NEXT_ACTION",
+    "phase1_required_output_cardinality": "ONE_OR_MORE_SELECTED_CANDIDATES",
+    "direct_contract_isomorphic": false,
+    "direct_cardinality_coverage_fixture_count": 8,
+    "direct_cardinality_coverage_rate": 0.8,
+    "metric_type": "REPRESENTATIONAL_COVERAGE_NOT_ACCURACY",
+    "s3_full_admissible_set_selection_authority": "EC_NATIVE_NOT_APPLICABLE_WITHOUT_ADAPTER",
+    "s3_next_action_authority": "EC_NATIVE_APPLICABLE"
+  },
+  "interpretation": "ECv4.4 natively performs singular next-action control, not generic all-admissible-candidate-set filtering. A semantics-preserving outer iteration/adapter is required for the frozen Phase1 S3 selection contract and any such behavior must be attributed to ADAPTER rather than pure EC_NATIVE.",
+  "issue_ref": 27,
+  "github_actions_used": false,
+  "google_drive_used": false
+}
