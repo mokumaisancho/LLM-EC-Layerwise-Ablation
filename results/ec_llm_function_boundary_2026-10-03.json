@@ -1,10 +1,11 @@
 {
-  "schema_version": "EC_LLM_FUNCTION_BOUNDARY_2026_10_03_V1",
+  "schema_version": "EC_LLM_FUNCTION_BOUNDARY_2026_10_03_V2",
   "research_question": "Which externally measurable LLM reasoning/control functions can be replaced or supplemented by deterministic EC without material loss?",
   "scope_rule": "Map externally observable reasoning/runtime functions, not private Transformer attention/MLP internals.",
   "frozen_phase1_terminal": "EC_NATIVE_SCOPE_INCOMPATIBLE",
   "evidence": {
-    "dataset_digest": "8bfce027bdc82a34b78e9b1a87f7812d907db34c164f50a9a996bd41b3b824d6",
+    "phase1_dataset_digest": "8bfce027bdc82a34b78e9b1a87f7812d907db34c164f50a9a996bd41b3b824d6",
+    "s1_successor_dataset_digest": "4d15e1b89c6382a8a5252558525db55cccc700096ad5c92e97d384c9d59cd190",
     "ec_repo": "mokumaisancho/GPT-EC-Closure-Engine",
     "ec_commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
     "ec_reframe_accuracy": 0.9,
@@ -12,7 +13,16 @@
     "qwen_1p5b_reframe_accuracy": 0.9,
     "qwen_0p5b_to_1p5b_gain": 0.8,
     "ec_vs_1p5b_reframe_accuracy_difference": 0.0,
-    "ec_vs_1p5b_paired_disagreement_fixtures": ["M004", "M005"]
+    "ec_vs_1p5b_paired_disagreement_fixtures": ["M004", "M005"],
+    "qwen_1p5b_discriminative_s1_primary_score": 0.72,
+    "qwen_1p5b_discriminative_s1_exact_match_rate": 0.4,
+    "qwen_1p5b_discriminative_s1_per_dimension": {
+      "primary_fact_id": 0.5,
+      "semantic_concept_id": 0.7,
+      "key_relation_id": 0.5,
+      "ambiguity": 0.9,
+      "goal_id": 1.0
+    }
   },
   "function_map": [
     {
@@ -20,20 +30,29 @@
       "function": "language_to_domain_semantic_ir",
       "coarse_layer": "S1",
       "ec_authority": "NO_PHASE1_NATIVE_IMPLEMENTATION",
-      "llm_status": "UNMEASURED_ON_DISCRIMINATIVE_S1_ASSAY",
-      "classification": "UNRESOLVED_LLM_BOUNDARY",
-      "evidence_level": "UNTESTED",
-      "note": "Current Phase1-v2 S1 oracle largely copies all input facts/rules into a wrapper IR, so it is insufficient to establish semantic-extraction replacement boundaries."
+      "llm_status": "MEASURED_QWEN_1P5B_ON_DISCRIMINATIVE_SUCCESSOR_ASSAY",
+      "classification": "PARTIALLY_CAPABLE_WITH_MATERIAL_GROUNDING_ERRORS",
+      "evidence_level": "EMPIRICALLY_MEASURED_LLM_ONLY",
+      "primary_score": 0.72,
+      "fixture_exact_match_rate": 0.4,
+      "strongest_subfunction": {"name":"protected_goal_retention","accuracy":1.0},
+      "weakest_subfunctions": [
+        {"name":"authoritative_primary_evidence_selection","accuracy":0.5},
+        {"name":"semantic_relation_grounding","accuracy":0.5}
+      ],
+      "verified_failures": ["premature ambiguity resolution","source-authority failure","negation/evidence polarity failure","freshness/supersession failure","weaker-evidence prioritization"],
+      "evidence": "results/function_boundary_s1_qwen25_1p5b_actual_2026-10-03.json",
+      "note": "1.5B reliably preserves the task goal and often identifies the right concept, but evidence/relation grounding remains materially weaker. This does not prove an LLM is necessary; it localizes the surviving upstream deficit."
     },
     {
       "function_id": "F02",
       "function": "semantic_candidate_generation",
       "coarse_layer": "S2",
       "ec_authority": "NO_PHASE1_NATIVE_IMPLEMENTATION",
-      "llm_status": "UNMEASURED_ON_PHASE1_V2",
+      "llm_status": "NEXT_EMPIRICAL_TARGET",
       "classification": "UNRESOLVED_LLM_BOUNDARY",
-      "evidence_level": "UNTESTED",
-      "note": "Candidate recall must be measured separately from downstream selection."
+      "evidence_level": "UNTESTED_IN_SUCCESSOR",
+      "note": "Candidate Recall must be measured separately from downstream selection, first with a frozen correct S1 to isolate S2, then optionally with actual S1 to quantify propagation."
     },
     {
       "function_id": "F03",
@@ -72,7 +91,7 @@
       "function": "single_next_action_authority",
       "coarse_layer": "S3_CONTROL",
       "ec_authority": "EC_NATIVE",
-      "llm_status": "PAIRWISE_BENCHMARK_NOT_YET_RUN",
+      "llm_status": "PAIRWISE_BENCHMARK_PENDING_ISSUE_34",
       "classification": "EC_REPLACEABLE_CANDIDATE",
       "evidence_level": "EC_NATIVE_VERIFIED",
       "ec_protocol": "EC_NEXT_ACTION_V1",
@@ -117,36 +136,23 @@
       "llm_status": "EXPECTED_PRIMARY_GENERATIVE_COMPONENT",
       "classification": "LIKELY_LLM_REGION_BUT_NOT_CAUSALLY_LOCALIZED",
       "evidence_level": "HYPOTHESIS_ONLY",
-      "note": "Do not claim necessity until discriminative S1/S2 experiments are completed."
+      "note": "The S1 successor is constrained grounding over visible alternatives, not a proof about open-ended synthesis."
     }
   ],
   "current_boundary": {
-    "proven_externalizable_region": [
-      "residual_detection",
-      "bounded_reframing",
-      "single_next_action_authority",
-      "authority_bound_run_state_evidence_closure",
-      "metacognitive_control_plane"
-    ],
-    "unresolved_minimum_llm_region": [
-      "language_to_domain_semantic_ir",
-      "semantic_candidate_generation",
-      "open_ended_language_realization_and_novel_semantic_synthesis"
-    ],
-    "claim_discipline": "The unresolved list is a test target, not proof that an LLM is necessary."
+    "proven_externalizable_region": ["residual_detection","bounded_reframing","single_next_action_authority","authority_bound_run_state_evidence_closure","metacognitive_control_plane"],
+    "surviving_measured_llm_deficit": ["authoritative_evidence_selection","semantic_relation_grounding","ambiguity_abstention","negation_grounding","freshness_supersession"],
+    "unresolved_minimum_llm_region": ["semantic_candidate_generation","open_ended_language_realization_and_novel_semantic_synthesis"],
+    "claim_discipline": "S1 deficits are measured for Qwen2.5-1.5B but do not establish that deterministic non-LLM alternatives cannot perform them."
   },
   "next_empirical_order": [
-    "audit_and_version_a_discriminative_S1_assay",
-    "run_1p5b_S1_semantic_extraction",
-    "run_1p5b_S2_candidate_recall_with_frozen_S1",
-    "run_same-input_LLM_vs_EC_next_action_authority_assay",
-    "define_successor_closure-sufficient_interface_only_if_needed",
+    "run_1p5b_S2_candidate_recall_with_frozen_correct_S1",
+    "measure_S1_error_propagation_into_S2_if_layer_local_S2_is_adequate",
+    "run_same_input_LLM_vs_EC_next_action_authority_assay",
+    "define_successor_closure_sufficient_interface_only_if_needed",
     "apply_materiality_rule_and_localize_smallest_remaining_LLM_region"
   ],
-  "large_model_policy": {
-    "automatic_4b_branch": false,
-    "reason": "1.5B resolved the frozen capacity-collapse condition"
-  },
+  "large_model_policy": {"automatic_4b_branch":false,"reason":"1.5B resolved the frozen capacity-collapse condition"},
   "github_actions_used": false,
   "google_drive_model_relay_used": false
 }
