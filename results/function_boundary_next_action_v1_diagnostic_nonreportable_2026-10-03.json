@@ -1,0 +1,33 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_NEXT_ACTION_V1_DIAGNOSTIC",
+  "status": "NON_REPORTABLE_ASSAY_DEFECT",
+  "protocol": "FUNCTION_BOUNDARY_NEXT_ACTION_V1",
+  "dataset_digest": "db22a68721e4adc17fd9020adf383cc41d20b66c63cfcb504ca6b6545ca39b6a",
+  "execution_wrapper_commit": "46e9f7437bb27ec9123bebc565dded4f6d6d94ee",
+  "ec": {
+    "repo": "mokumaisancho/GPT-EC-Closure-Engine",
+    "commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+    "source_mode": "EXACT_VENDORED_GIT_BLOBS",
+    "decision_accuracy": 1.0,
+    "reason_accuracy": 1.0,
+    "fail_closed_accuracy": 1.0,
+    "fixture_count": 17
+  },
+  "llm": {
+    "model": "bartowski/Qwen2.5-1.5B-Instruct-GGUF/Qwen2.5-1.5B-Instruct-Q4_K_M.gguf",
+    "sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+    "decision_accuracy": 0.0,
+    "reason_accuracy": 0.058823529411764705,
+    "fail_closed_accuracy": 0.25,
+    "fixture_count": 17
+  },
+  "assay_defect": {
+    "type": "LLM_VISIBLE_POLICY_INCOMPLETE",
+    "missing_rule": "Issue-definition gate is NOT_APPLICABLE when neither action_class nor issue_contract is present.",
+    "effect": "The LLM over-fired REFRAME on legacy-compatible fixtures.",
+    "performance_comparison_authorized": false,
+    "successor": "FUNCTION_BOUNDARY_NEXT_ACTION_V2"
+  },
+  "github_actions_used": false,
+  "google_drive_used": false
+}
