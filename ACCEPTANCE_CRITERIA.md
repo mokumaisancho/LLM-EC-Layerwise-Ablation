@@ -41,3 +41,18 @@ AC-18. At completion, the study identifies at least one of:
 AC-19. Experimental artifacts record protocol/schema version so results remain comparable after the architecture is subdivided.
 
 AC-20. GitHub Actions are not required or automatically enabled by this repository.
+
+## Dependency and MVP enforcement
+
+The normative AC dependency graph, Phase1 MVP scope, frozen materiality/capacity rules, issue dependencies, allowed branches, and terminal states are defined in:
+
+- `docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.md`
+- `docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json`
+
+An AC MUST NOT be marked PASS when any upstream dependency declared by that contract is FAIL or UNKNOWN.
+
+Phase1 MVP requires AC-01,02,03,04,05,06,07,08,09,11,12,13,14,15,16,17,19,20. AC-10 and AC-18 are post-MVP by default unless the coarse result already establishes the final replacement boundary.
+
+The frozen Phase1 MVP materiality threshold is an absolute 0.20 on the defined primary comparison/gain; a one-fixture 0.10 movement is non-material. Ties within 0.10 are reported as `MVP_AMBIGUOUS_DOMINANT_LAYER`; they may not be manually broken.
+
+New deterministic EC implementations for S1/S2 and Qwen3-4B ingress are not Phase1 MVP dependencies. Large-model reference work cannot block the Phase1 coarse-localization path.
