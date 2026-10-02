@@ -1,0 +1,60 @@
+{
+  "protocol": "PHASE1_EC_NATIVE_ADAPTER_V1",
+  "status": "INCOMPATIBLE",
+  "oracle_blind": true,
+  "ec_source": {
+    "repository": "mokumaisancho/GPT-EC-Closure-Engine",
+    "commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2"
+  },
+  "subfunction_authority": {
+    "s3_reframing": {
+      "authority": "EC_NATIVE",
+      "ec_protocols": ["EC_V4_4_RESIDUAL_DETECTOR_V1", "EC_V4_4_FRAMING_SEARCH_V1"],
+      "reportable": true,
+      "evidence": "results/phase1_ecv44_reframe_actual_2026-10-03.json"
+    },
+    "s3_selection": {
+      "authority": "EC_NATIVE_NOT_APPLICABLE",
+      "reportable": false,
+      "reason": "EC_NEXT_ACTION_AUTHORITY_IS_SINGLETON_BUT_PHASE1_S3_REQUIRES_ADMISSIBLE_SET_SELECTION",
+      "evidence_issue": 27,
+      "counterexamples": ["M003", "M009"]
+    },
+    "s4_closure": {
+      "authority": "EC_NATIVE_NOT_APPLICABLE",
+      "reportable": false,
+      "reason": "FROZEN_S3_INTERFACE_DOES_NOT_IDENTIFY_CLOSURE_STATE",
+      "evidence_issue": 28,
+      "structural_upper_bound": 0.8
+    }
+  },
+  "identity_contract": {
+    "mode": "NO_TRANSFORM_FAIL_CLOSED",
+    "upstream_mutation_allowed": false,
+    "oracle_hidden_fields_allowed": false
+  },
+  "qualification_evidence": {
+    "s3_selection": {
+      "ec_test": "01_repo/tests/test_ec_next_action_authority.py::test_ec_selects_exactly_one_next_action",
+      "phase1_schema": "schemas/s3_selected_reframed_state.schema.json",
+      "phase1_multi_select_fixtures": ["M003", "M009"],
+      "issue": 27
+    },
+    "s4_closure": {
+      "phase1_schema": "schemas/s4_closure_execution_result.schema.json",
+      "collisions": [
+        {"signature":"selected=1,rejected=1,reframe=false,residuals=[]","close":["M001","M002","M004","M006","M008","M010"],"continue":["M007"]},
+        {"signature":"selected=2,rejected=1,reframe=false,residuals=[]","close":["M009"],"continue":["M003"]}
+      ],
+      "structural_upper_bound": 0.8,
+      "issue": 28
+    },
+    "s3_reframing": {
+      "actual_accuracy": 0.9,
+      "result": "results/phase1_ecv44_reframe_actual_2026-10-03.json",
+      "divergence_issue": 26
+    }
+  },
+  "terminal_state": "EC_NATIVE_SCOPE_INCOMPATIBLE",
+  "github_actions_used": false
+}
