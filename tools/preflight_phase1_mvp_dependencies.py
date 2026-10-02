@@ -45,17 +45,44 @@ def main() -> int:
         blockers.append({"id": "ISSUE-20", "reason": "EC_RUNNER_MISSING"})
     else:
         text = read(ec_runner)
-        required_markers = ["EC_V4_4_COMMIT", "EC_V4_4_RESIDUAL_DETECTOR_V1", "ec_provenance"]
+        required_markers = [
+            "EC_V4_4_COMMIT",
+            "EC_V4_4_RESIDUAL_DETECTOR_V1",
+            "PHASE1_EC_NATIVE_ADAPTER_V1",
+            "EC_NATIVE_ADAPTER_REQUIRED",
+        ]
         missing = [m for m in required_markers if m not in text]
-        if missing or "FALLBACK_NO_EC_PATH" in text:
+        if missing or "FALLBACK_NO_EC_PATH" in text or "ECV4_4_REPORTABLE" in text:
             blockers.append({
                 "id": "ISSUE-20",
-                "reason": "ACTUAL_ECV4_FAIL_CLOSED_BINDING_NOT_IMPLEMENTED",
+                "reason": "EC_BINDING_GUARD_INCOMPLETE",
                 "missing_markers": missing,
                 "silent_fallback_present": "FALLBACK_NO_EC_PATH" in text,
+                "premature_full_reportable_label": "ECV4_4_REPORTABLE" in text,
             })
         else:
-            passed.append("ISSUE-20_ECV4_BINDING")
+            passed.append("ISSUE-20_FAIL_CLOSED_GUARD")
+
+    adapter = ROOT / "tools/phase1_ec_native_adapter.py"
+    if not adapter.exists():
+        blockers.append({
+            "id": "ISSUE-23",
+            "reason": "EC_NATIVE_ADAPTER_MISSING",
+            "required_protocol": "PHASE1_EC_NATIVE_ADAPTER_V1",
+        })
+    else:
+        adapter_text = read(adapter)
+        required_adapter_markers = [
+            "PHASE1_EC_NATIVE_ADAPTER_V1",
+            "EC_NATIVE_NOT_APPLICABLE",
+            "subfunction_authority",
+            "oracle_blind",
+        ]
+        missing = [m for m in required_adapter_markers if m not in adapter_text]
+        if missing:
+            blockers.append({"id": "ISSUE-23", "reason": "EC_NATIVE_ADAPTER_CONTRACT_INCOMPLETE", "missing_markers": missing})
+        else:
+            passed.append("ISSUE-23_EC_NATIVE_ADAPTER_PRESENT")
 
     llm_s34 = ROOT / "tools/run_llm_s3_s4_cache.py"
     if not llm_s34.exists():
