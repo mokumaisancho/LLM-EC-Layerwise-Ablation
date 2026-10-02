@@ -1,0 +1,112 @@
+{
+  "protocol": "PHASE1_MVP_TCC_V2",
+  "date": "2026-10-03",
+  "successor_of": "PHASE1_MVP_TCC_V1",
+  "parent_contract_path": "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+  "parent_contract_sha256": "11ff5a87342e7e00b2393390beac597574a39d9480c6d3ee1cc8e4e968e345cf",
+  "change_authority": {
+    "issue": 32,
+    "reason": "P0 in V1 required downstream Issue #22 before P2 could emit the already-defined EC_NATIVE_SCOPE_INCOMPATIBLE terminal.",
+    "changed_only": [
+      "dependency scheduling",
+      "preflight staging",
+      "gate ordering needed to reach P2 before downstream-only dependencies"
+    ],
+    "unchanged": [
+      "Phase1-v2 fixtures",
+      "dataset digest",
+      "oracle labels",
+      "materiality thresholds",
+      "capacity-collapse thresholds",
+      "LLM prompts and decoding",
+      "EC source commit and protocols",
+      "scoring semantics",
+      "GitHub Actions prohibition",
+      "Google Drive model-relay prohibition"
+    ]
+  },
+  "canonical_inputs": {
+    "phase1_v2_dataset_sha256": "8bfce027bdc82a34b78e9b1a87f7812d907db34c164f50a9a996bd41b3b824d6",
+    "ec_repo": "mokumaisancho/GPT-EC-Closure-Engine",
+    "ec_commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+    "ec_adapter_protocol": "PHASE1_EC_NATIVE_ADAPTER_V1"
+  },
+  "gate_order": [
+    "P0_EARLY_PRECHECK",
+    "P1_FOUNDATION_GATE",
+    "P2_EC_ADAPTER_GATE",
+    "P2B_DOWNSTREAM_PRECHECK_IF_COMPATIBLE",
+    "DELEGATE_V1_FROM_COMPATIBLE_STATE"
+  ],
+  "preflight_stages": {
+    "early": {
+      "required": [
+        "AC-20_NO_ACTIONS",
+        "FOUNDATION_QUALIFICATION_EVIDENCE",
+        "ISSUE-23_EC_NATIVE_ADAPTER_PRESENT",
+        "ISSUE-21_THRESHOLDS_FROZEN"
+      ],
+      "must_not_require": ["ISSUE-20", "ISSUE-22", "0P5B_MODEL_READY", "ARMS_A_B_C_D_E"]
+    },
+    "downstream_after_p2_pass": {
+      "required": [
+        "ISSUE-20_FAIL_CLOSED_GUARD",
+        "ISSUE-12_FORMAT_SEMANTIC_SPLIT",
+        "ISSUE-22_A_B_E_IMPLEMENTATION",
+        "ISSUE-21_THRESHOLDS_FROZEN"
+      ]
+    }
+  },
+  "branches": {
+    "P0_EARLY_PRECHECK": {
+      "pass": "P1_FOUNDATION_GATE",
+      "fail": "INVALID_TEST_CONTRACT"
+    },
+    "P1_FOUNDATION_GATE": {
+      "pass": "P2_EC_ADAPTER_GATE",
+      "fail": "INVALID_TEST_CONTRACT"
+    },
+    "P2_EC_ADAPTER_GATE": {
+      "qualified_pass": "P2B_DOWNSTREAM_PRECHECK_IF_COMPATIBLE",
+      "missing_or_unqualified": "BLOCKED_EC_NATIVE_ADAPTER",
+      "semantic_incompatibility": "EC_NATIVE_SCOPE_INCOMPATIBLE"
+    },
+    "P2B_DOWNSTREAM_PRECHECK_IF_COMPATIBLE": {
+      "pass": "DELEGATE_V1_FROM_COMPATIBLE_STATE",
+      "fail": "INVALID_TEST_CONTRACT"
+    }
+  },
+  "terminal_states": [
+    "EC_NATIVE_SCOPE_INCOMPATIBLE",
+    "BLOCKED_EC_NATIVE_ADAPTER",
+    "INVALID_TEST_CONTRACT",
+    "MVP_COARSE_LOCALIZED:S1",
+    "MVP_COARSE_LOCALIZED:S2",
+    "MVP_COARSE_LOCALIZED:S3",
+    "MVP_COARSE_LOCALIZED:S4",
+    "MVP_NO_MATERIAL_LAYER",
+    "MVP_AMBIGUOUS_DOMINANT_LAYER",
+    "BLOCKED_EC_BINDING",
+    "BLOCKED_0P5B_INGRESS",
+    "INVALID_LLM_OUTPUT_CONTRACT",
+    "UPSTREAM_HASH_MISMATCH",
+    "INTEGRITY_FAILED",
+    "CAPACITY_LIMIT_AFTER_1P5B",
+    "FAIL_CLOSED_UNKNOWN"
+  ],
+  "invariants": [
+    "V1_ACTUAL_RESULT_REMAINS_INVALID_TEST_CONTRACT",
+    "NO_PLACEHOLDER_COUNTS_AS_ISSUE22_COMPLETION",
+    "NO_MANUAL_MIDRUN_PROMPT_CHANGE",
+    "NO_MANUAL_MIDRUN_FIXTURE_CHANGE",
+    "NO_MANUAL_MIDRUN_THRESHOLD_CHANGE",
+    "NO_SILENT_UPSTREAM_REGENERATION",
+    "NO_FALLBACK_LABELED_AS_ECV4",
+    "NO_HARNESS_LOCAL_RULE_LABELED_AS_ECV4",
+    "NO_ORACLE_LABEL_LEAKAGE",
+    "NO_GITHUB_ACTIONS",
+    "NO_GOOGLE_DRIVE_MODEL_RELAY",
+    "EC_NATIVE_INCOMPATIBILITY_IS_RECORDED_AS_RESULT",
+    "NEW_BLOCKING_RESIDUAL_REQUIRES_ISSUE_AND_FAIL_CLOSED"
+  ]
+}
