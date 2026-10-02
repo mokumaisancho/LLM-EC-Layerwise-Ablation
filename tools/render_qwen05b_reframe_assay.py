@@ -19,6 +19,7 @@ MODEL_URL = 'https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF/resolve
 MODEL_SHA = '6eb923e7d26e9cea28811e1a8e852009b21242fb157b26149d3b188f3a8c8653'
 MODEL_REV = '21ef23001f314d0895bd8439b08157c2d4cd9bb7'
 BASE_RESEARCH_COMMIT = '8ad9b312b560731e93c95a5e54a50f13705b91a0'
+EXPECTED_DATASET_DIGEST = '8bfce027bdc82a34b78e9b1a87f7812d907db34c164f50a9a996bd41b3b824d6'
 STATE = {'status': 'BOOTING', 'phase': 'INIT', 'result': None, 'error': None}
 LOCK = threading.Lock()
 
@@ -76,12 +77,6 @@ def run_assay():
         WORK.mkdir(parents=True, exist_ok=True)
         set_state(status='RUNNING', phase='PRECHECK')
         head = subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD'], text=True).strip()
-        ancestor = subprocess.run(
-            ['git', '-C', str(ROOT), 'merge-base', '--is-ancestor', BASE_RESEARCH_COMMIT, head],
-            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
-        )
-        if ancestor.returncode != 0:
-            raise RuntimeError(f'BASE_RESEARCH_COMMIT_NOT_ANCESTOR:{BASE_RESEARCH_COMMIT}:{head}')
 
         set_state(phase='RUNTIME_ACQUIRE')
         llama_server = find_llama_server()
@@ -93,7 +88,11 @@ def run_assay():
             raise RuntimeError(f'MODEL_SHA_MISMATCH:{actual_sha}')
 
         set_state(phase='FIXTURE_GENERATE')
-        subprocess.run(['python3', 'tools/generate_phase1_measurement_v2_canonical.py'], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
+        generated = subprocess.check_output(['python3', 'tools/generate_phase1_measurement_v2_canonical.py'], cwd=ROOT, text=True)
+        generated_doc = json.loads(generated)
+        actual_digest = generated_doc.get('dataset_digest')
+        if actual_digest != EXPECTED_DATASET_DIGEST:
+            raise RuntimeError(f'DATASET_DIGEST_MISMATCH:{actual_digest}')
         subprocess.run(['python3', 'tools/generate_phase1_v2_s3_states.py'], cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
 
         set_state(phase='LLAMA_START')
@@ -147,6 +146,7 @@ def run_assay():
             'schema_version': 'PHASE1_QWEN25_0P5B_REFRAME_ACTUAL_V1',
             'assay': 'PHASE1_V2_S3_REFRAME_FIXED_STATE_V1',
             'fixture_generation': 'phase1_v2',
+            'dataset_digest': EXPECTED_DATASET_DIGEST,
             'model_repo': 'bartowski/Qwen2.5-0.5B-Instruct-GGUF',
             'model_revision': MODEL_REV,
             'model_file': MODEL.name,
