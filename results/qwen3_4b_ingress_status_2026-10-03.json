@@ -1,0 +1,25 @@
+{
+  "schema_version": "QWEN3_4B_INGRESS_STATUS_V1",
+  "captured_at": "2026-10-03T00:00:00+09:00",
+  "artifact": {
+    "file": "Qwen3-4B-Q4_K_M.gguf",
+    "expected_size": 2497280256,
+    "expected_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5"
+  },
+  "sandbox_materialized": false,
+  "whole_sha_verified_in_current_sandbox": false,
+  "llama_smoke_in_current_sandbox": false,
+  "render_side_full_fetch_previously_verified": true,
+  "current_terminal": "CONNECTOR_MATERIALIZATION_REQUIRED",
+  "current_blocker": "Current GPT sandbox shell cannot directly resolve/reach the remote Render/Hugging Face binary endpoints. A supported ChatGPT connector/file-reference to sandbox materialization boundary is required.",
+  "google_drive_allowed": false,
+  "google_sheets_allowed_for_mainline": false,
+  "github_actions_enabled": false,
+  "critical_path": false,
+  "role": "OPTIONAL_FINAL_LARGE_MODEL_REFERENCE",
+  "do_not_claim": [
+    "model ingress succeeded",
+    "whole-file SHA succeeded in current sandbox",
+    "llama.cpp smoke succeeded for Qwen3-4B"
+  ]
+}
