@@ -22,14 +22,12 @@ def main() -> int:
     blockers: list[dict] = []
     passed: list[str] = []
 
-    # Global invariant: repository must not require Actions.
     workflows = ROOT / ".github" / "workflows"
     if workflows.exists() and any(workflows.iterdir()):
         blockers.append({"id": "AC-20", "reason": "GITHUB_ACTIONS_PRESENT", "path": str(workflows.relative_to(ROOT))})
     else:
         passed.append("AC-20_NO_ACTIONS")
 
-    # Frozen foundation evidence must exist before any measurement implementation is trusted.
     qualification = ROOT / "results/phase1_v2_qualification_2026-10-03.json"
     if not qualification.exists():
         blockers.append({"id": "FOUNDATION", "reason": "QUALIFICATION_RESULT_MISSING"})
@@ -42,7 +40,6 @@ def main() -> int:
         else:
             passed.append("FOUNDATION_QUALIFICATION_EVIDENCE")
 
-    # Issue #20: actual EC binding must be fail-closed and provenance-bearing.
     ec_runner = ROOT / "tools/run_ec_s3_s4.py"
     if not ec_runner.exists():
         blockers.append({"id": "ISSUE-20", "reason": "EC_RUNNER_MISSING"})
@@ -60,7 +57,6 @@ def main() -> int:
         else:
             passed.append("ISSUE-20_ECV4_BINDING")
 
-    # Issue #12: formatting must be measured separately from semantics and a constrained arm must exist.
     llm_s34 = ROOT / "tools/run_llm_s3_s4_cache.py"
     if not llm_s34.exists():
         blockers.append({"id": "ISSUE-12", "reason": "LLM_S3_S4_RUNNER_MISSING"})
@@ -73,7 +69,6 @@ def main() -> int:
         else:
             passed.append("ISSUE-12_FORMAT_SEMANTIC_SPLIT")
 
-    # Issue #22: all coarse-layer / Oracle intervention machinery must exist before A/B/E is attempted.
     issue22_files = [
         ROOT / "tools/run_llm_s1_s2_cache.py",
         ROOT / "tools/run_phase1_oracle_substitution.py",
@@ -85,7 +80,6 @@ def main() -> int:
     else:
         passed.append("ISSUE-22_A_B_E_IMPLEMENTATION")
 
-    # Frozen methodology contract itself is evidence for Issue #21.
     threshold = contract.get("frozen_thresholds", {})
     threshold_required = [
         "oracle_substitution_gain_material_abs",
@@ -103,7 +97,7 @@ def main() -> int:
         "protocol": contract["protocol"],
         "contract_sha256": sha256(CONTRACT),
         "status": "PASS" if not blockers else "BLOCKED",
-        "terminal_state": "P1_FOUNDATION_GATE" if not blockers else "BLOCKED_MVP_IMPLEMENTATION",
+        "terminal_state": "P1_FOUNDATION_GATE" if not blockers else "INVALID_TEST_CONTRACT",
         "passed": passed,
         "blockers": blockers,
         "next_state_if_pass": "P1_FOUNDATION_GATE",
