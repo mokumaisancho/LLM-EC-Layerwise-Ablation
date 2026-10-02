@@ -63,6 +63,26 @@ def _header_int(headers, name: str) -> int:
         raise IntegrityError(f"INVALID_HEADER:{name}={raw}") from exc
 
 
+def fetch_manifest(base_url: str, timeout: float, contract: ModelContract) -> dict:
+    url = f"{base_url.rstrip('/')}/manifest"
+    req = urllib.request.Request(url, headers={"User-Agent": "qwen3-4b-driveless-tcc/1.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            if getattr(resp, "status", 200) != 200:
+                raise TransportError(f"MANIFEST_HTTP_STATUS:{getattr(resp, 'status', None)}")
+            payload = json.loads(resp.read().decode("utf-8"))
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise TransportError(f"MANIFEST_FETCH_FAILED:{exc}") from exc
+    if (
+        payload.get("expected_size") != contract.size
+        or payload.get("expected_sha256") != contract.sha256
+        or payload.get("drive_required") is not False
+        or payload.get("raw_candidate_part_bytes_desc") != list(CANDIDATES)
+    ):
+        raise IntegrityError("MANIFEST_CONTRACT_MISMATCH")
+    return payload
+
+
 def fetch_part(
     base_url: str,
     index: int,
@@ -298,6 +318,17 @@ def run_tcc(base_url: str, output: Path, llama_cli: Path, timeout: float) -> dic
     report["disk"] = disk
     if not disk["pass"]:
         report.update({"terminal": "SANDBOX_RESOURCE_LIMIT", "pass": False})
+        return report
+    if not llama_cli.exists():
+        report.update({"terminal": "RUNTIME_UNAVAILABLE", "pass": False, "error": f"missing:{llama_cli}"})
+        return report
+    try:
+        report["transfer_manifest"] = fetch_manifest(base_url, timeout, contract)
+    except IntegrityError as exc:
+        report.update({"terminal": "INVALID_TRANSFER_CONTRACT", "pass": False, "error": str(exc)})
+        return report
+    except TransportError as exc:
+        report.update({"terminal": "TRANSPORT_BLOCKED", "pass": False, "error": str(exc)})
         return report
 
     enter("SIZE_PROBE")
