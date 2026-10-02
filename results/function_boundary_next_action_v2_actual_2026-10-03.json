@@ -1,0 +1,63 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_NEXT_ACTION_ACTUAL_V2",
+  "protocol": "FUNCTION_BOUNDARY_NEXT_ACTION_V2",
+  "status": "REPORTABLE",
+  "fixture_source": "fixtures/function_boundary_next_action_v1.json",
+  "fixture_blob_sha": "12faa9a4cacf0c91694d25f1ccce45e093d95e44",
+  "fixture_count": 17,
+  "execution_wrapper_commit": "2ffa95e4bb647cdd5f319fdb9198702b4ef0554d",
+  "v1_defect_excluded": true,
+  "ec": {
+    "repo": "mokumaisancho/GPT-EC-Closure-Engine",
+    "commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+    "protocol": "EC_NEXT_ACTION_V1",
+    "source_mode": "EXACT_VENDORED_GIT_BLOBS",
+    "decision_correct": 17,
+    "decision_accuracy": 1.0,
+    "reason_correct": 17,
+    "reason_accuracy": 1.0,
+    "fail_closed_fixture_count": 4,
+    "fail_closed_status_correct": 4,
+    "fail_closed_accuracy": 1.0,
+    "blob_shas": {
+      "ec_next_action_authority.py": "89806d27da266de9bb8a9541129fc47722dea36c",
+      "ec_dynamic_frontier.py": "3cb8eb34c49d90edf2b2fd9bf10f47bb52d38147",
+      "v4/ec_issue_definition_gate.py": "cfa5085cde33cd4629583392adcc7ed088ad10b1",
+      "v4/ec_equation_contract.py": "16962f1eecfb3822395fd24c9d12f092f07a3d9f",
+      "v4/ec_execution_semantics.py": "29814179c19bee3154807be475516173bbe841ef",
+      "v4/ec_variable_space_revision.py": "1c1a41a510271ac121cc4c629937296daffef861"
+    }
+  },
+  "llm": {
+    "model_repo": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
+    "model_file": "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf",
+    "model_sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+    "llama_cpp_tag": "b11146",
+    "temperature": 0,
+    "decision_correct": 1,
+    "decision_accuracy": 0.058823529411764705,
+    "reason_correct": 1,
+    "reason_accuracy": 0.058823529411764705,
+    "fail_closed_fixture_count": 4,
+    "fail_closed_status_correct": 1,
+    "fail_closed_accuracy": 0.25,
+    "collapse_mode": "REFRAME_ALL_17",
+    "only_correct_fixture": "N217"
+  },
+  "comparison": {
+    "ec_minus_llm_decision_accuracy": 0.9411764705882353,
+    "materiality_threshold": 0.2,
+    "material": true,
+    "interpretation": "Under the frozen authority contract, deterministic EC exactly implements the governed next-action function while Qwen2.5-1.5B collapses to REFRAME despite an explicit legacy-gate exception. This establishes replacement evidence for contract-bound next-action authority, not a claim about open-ended planning quality."
+  },
+  "assay_scope": {
+    "shared_function": "structured governed plan/current state -> exactly one next authorized action or governed terminal/fail-closed status",
+    "not_measured": [
+      "open-ended plan generation",
+      "novel semantic synthesis",
+      "independent desirability of the EC policy contract"
+    ]
+  },
+  "github_actions_used": false,
+  "google_drive_used": false
+}
