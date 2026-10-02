@@ -1,0 +1,173 @@
+{
+  "protocol": "PHASE1_MVP_TCC_V1",
+  "date": "2026-10-03",
+  "mvp": {
+    "definition": "minimum scientifically reportable coarse localization of where a lightweight LLM remains necessary versus deterministic EC",
+    "required_ac": ["AC-01","AC-02","AC-03","AC-04","AC-05","AC-06","AC-07","AC-08","AC-09","AC-11","AC-12","AC-13","AC-14","AC-15","AC-16","AC-17","AC-19","AC-20"],
+    "post_mvp_ac": ["AC-10","AC-18"],
+    "scope": {
+      "S1": ["LLM","ORACLE"],
+      "S2": ["LLM","ORACLE"],
+      "S3": ["LLM","ECV4_4","ORACLE"],
+      "S4": ["LLM","ECV4_4","ORACLE"]
+    },
+    "excluded": ["new deterministic EC S1 implementation","new deterministic EC S2 implementation","Qwen3-4B as a critical dependency","fine decomposition before coarse localization"]
+  },
+  "frozen_thresholds": {
+    "purpose": "operational MVP decision rule, not statistical significance",
+    "oracle_substitution_gain_material_abs": 0.20,
+    "llm_vs_ec_joint_layer_difference_material_abs": 0.20,
+    "single_fixture_delta_non_material": 0.10,
+    "dominant_tie_max_difference": 0.10,
+    "capacity_collapse": {
+      "oracle_unique_classes_min": 2,
+      "model_mode_share_min": 0.90,
+      "family_accuracy_max": 0.60,
+      "action": "RUN_1P5B_ONCE"
+    },
+    "max_capacity_auto_escalation": "~1.5B",
+    "auto_escalate_to_4b": false
+  },
+  "canonical_inputs": {
+    "phase1_v2_dataset_sha256": "8bfce027bdc82a34b78e9b1a87f7812d907db34c164f50a9a996bd41b3b824d6",
+    "ec_repo": "mokumaisancho/GPT-EC-Closure-Engine",
+    "ec_commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+    "ec_protocol": "EC_V4_4_RESIDUAL_DETECTOR_V1",
+    "qwen2_5_0_5b": {
+      "size_bytes": 397808192,
+      "sha256": "6eb923e7d26e9cea28811e1a8e852009b21242fb157b26149d3b188f3a8c8653"
+    }
+  },
+  "ac_dependencies": {
+    "AC-19": [],
+    "AC-02": ["AC-19"],
+    "AC-01": ["AC-02"],
+    "AC-07": ["AC-01"],
+    "AC-17": ["AC-07"],
+    "AC-16": ["AC-17"],
+    "AC-03": ["AC-02","AC-19","ISSUE-22"],
+    "AC-04": ["AC-02","AC-03"],
+    "AC-11": ["ISSUE-20"],
+    "AC-12": ["AC-04","AC-11"],
+    "AC-13": ["ISSUE-12","ISSUE-22"],
+    "AC-14": ["AC-01","AC-13"],
+    "AC-15": [],
+    "AC-05": ["AC-01","AC-03","AC-04","AC-07","AC-17","ISSUE-22"],
+    "AC-06": ["AC-04","AC-05","AC-11","AC-12","AC-16","AC-17"],
+    "AC-08": ["AC-05","AC-06","ISSUE-21"],
+    "AC-09": ["AC-05","AC-08","ISSUE-21"],
+    "AC-10": ["AC-08","AC-09","AC-19"],
+    "AC-18": ["AC-03","AC-06","AC-08","AC-10_IF_NEEDED"],
+    "AC-20": []
+  },
+  "issue_dependencies": {
+    "ISSUE-20": {"depends_on": [], "blocks": ["REPORTABLE_EC_S3_S4","AC-11","AC-12","ISSUE-9"]},
+    "ISSUE-12": {"depends_on": [], "blocks": ["REPORTABLE_LLM_SEMANTIC_METRICS","ISSUE-14","ISSUE-9"]},
+    "ISSUE-21": {"depends_on": [], "blocks": ["DOMINANT_LAYER_SELECTION","AC-08","AC-09"]},
+    "ISSUE-22": {"depends_on": ["ISSUE-12"], "blocks": ["ARMS_A_B_E","AC-03","AC-05","AC-08"]},
+    "ISSUE-14": {"depends_on": ["ISSUE-12","0P5B_MODEL_READY"], "blocks": ["ISSUE-9","ARMS_A_B_C_D_E"]},
+    "ISSUE-9": {"depends_on": ["ISSUE-12","ISSUE-14","ISSUE-20"], "blocks": ["ISSUE-1"]},
+    "ISSUE-1": {"depends_on": ["ISSUE-9","ISSUE-21","ISSUE-22","ARMS_A_B_C_D_E","SCORE_AND_GAIN"], "blocks": ["PHASE1_MVP_EXIT"]},
+    "ISSUE-11": {"critical_path": false},
+    "ISSUE-16": {"dependency_role": "OR_ROUTE_FOR_0P5B_MODEL_READY"},
+    "ISSUE-17": {"dependency_role": "OR_ROUTE_FOR_0P5B_MODEL_READY"},
+    "ISSUE-18": {"dependency_role": "OR_ROUTE_FOR_0P5B_MODEL_READY"},
+    "ISSUE-19": {"dependency_role": "OR_ROUTE_FOR_0P5B_MODEL_READY"}
+  },
+  "logical_dependencies": {
+    "0P5B_MODEL_READY": {
+      "operator": "OR",
+      "branches": [
+        "VERIFIED_SANDBOX_ARTIFACT",
+        "CONNECTOR_NATIVE_NON_DRIVE_MATERIALIZATION",
+        "GENERIC_BINARY_INGRESS_DIRECT_ATTACHMENT",
+        "GITHUB_TEXT_SHARD_0P5B",
+        "OTHER_VERIFIED_NON_DRIVE_ROUTE"
+      ],
+      "forbidden": ["GOOGLE_DRIVE_MODEL_RELAY"]
+    }
+  },
+  "states": [
+    "P0_PRECHECK",
+    "P1_FOUNDATION_GATE",
+    "P2_EC_BIND_GATE",
+    "P3_HARNESS_GATE",
+    "P4_LLM_ASSET_GATE",
+    "P5_LLM_CACHE_GATE",
+    "P6_A_B_C_D_E_RUN",
+    "P7_SCORE_AND_GAIN",
+    "P8_LOCALIZE",
+    "P9_EXIT_GATE"
+  ],
+  "branches": {
+    "P0_PRECHECK": {
+      "pass": "P1_FOUNDATION_GATE",
+      "fail": "INVALID_TEST_CONTRACT"
+    },
+    "P1_FOUNDATION_GATE": {
+      "pass": "P2_EC_BIND_GATE",
+      "fail": "INVALID_TEST_CONTRACT"
+    },
+    "P2_EC_BIND_GATE": {
+      "pass": "P3_HARNESS_GATE",
+      "fallback_or_mismatch": "BLOCKED_EC_BINDING"
+    },
+    "P3_HARNESS_GATE": {
+      "pass": "P4_LLM_ASSET_GATE",
+      "fail": "INVALID_TEST_CONTRACT"
+    },
+    "P4_LLM_ASSET_GATE": {
+      "asset_ready": "P5_LLM_CACHE_GATE",
+      "no_route": "BLOCKED_0P5B_INGRESS",
+      "hash_or_size_mismatch": "INTEGRITY_FAILED"
+    },
+    "P5_LLM_CACHE_GATE": {
+      "valid_not_collapsed": "P6_A_B_C_D_E_RUN",
+      "valid_collapsed_0p5b": "RUN_1P5B_ONCE",
+      "schema_constrained_invalid": "INVALID_LLM_OUTPUT_CONTRACT",
+      "collapsed_after_1p5b": "CAPACITY_LIMIT_AFTER_1P5B"
+    },
+    "P6_A_B_C_D_E_RUN": {
+      "pass": "P7_SCORE_AND_GAIN",
+      "upstream_hash_mismatch": "UPSTREAM_HASH_MISMATCH",
+      "other_failure": "INVALID_TEST_CONTRACT"
+    },
+    "P7_SCORE_AND_GAIN": {
+      "complete": "P8_LOCALIZE",
+      "incomplete": "INVALID_TEST_CONTRACT"
+    },
+    "P8_LOCALIZE": {
+      "unique_material_max": "MVP_COARSE_LOCALIZED",
+      "no_material_layer": "MVP_NO_MATERIAL_LAYER",
+      "tie_within_0p10": "MVP_AMBIGUOUS_DOMINANT_LAYER"
+    }
+  },
+  "terminal_states": [
+    "MVP_COARSE_LOCALIZED:S1",
+    "MVP_COARSE_LOCALIZED:S2",
+    "MVP_COARSE_LOCALIZED:S3",
+    "MVP_COARSE_LOCALIZED:S4",
+    "MVP_NO_MATERIAL_LAYER",
+    "MVP_AMBIGUOUS_DOMINANT_LAYER",
+    "BLOCKED_EC_BINDING",
+    "BLOCKED_0P5B_INGRESS",
+    "INVALID_TEST_CONTRACT",
+    "INVALID_LLM_OUTPUT_CONTRACT",
+    "UPSTREAM_HASH_MISMATCH",
+    "INTEGRITY_FAILED",
+    "CAPACITY_LIMIT_AFTER_1P5B",
+    "FAIL_CLOSED_UNKNOWN"
+  ],
+  "invariants": [
+    "NO_MANUAL_MIDRUN_PROMPT_CHANGE",
+    "NO_MANUAL_MIDRUN_FIXTURE_CHANGE",
+    "NO_MANUAL_MIDRUN_THRESHOLD_CHANGE",
+    "NO_SILENT_UPSTREAM_REGENERATION",
+    "NO_FALLBACK_LABELED_AS_ECV4",
+    "NO_V1_V2_POOLING",
+    "NO_ORACLE_LABEL_LEAKAGE",
+    "NO_GITHUB_ACTIONS",
+    "NO_GOOGLE_DRIVE_MODEL_RELAY",
+    "NEW_BLOCKING_RESIDUAL_REQUIRES_ISSUE_AND_FAIL_CLOSED"
+  ]
+}
