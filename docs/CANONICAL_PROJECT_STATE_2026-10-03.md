@@ -3,92 +3,105 @@
 ## Root research goal
 Localize which externally measurable LLM reasoning/control functions can be replaced or supplemented by deterministic EC without material loss.
 
-Authoritative coarse layers:
-- S1: Language -> Domain Semantics
-- S2: Domain Semantics -> Candidate Set
-- S3: Candidate Set + Semantic State -> Selection / Reframing
-- S4: Selected State -> Execution / Closure
+Do not equate these externally measurable functions with private Transformer attention/MLP internals.
 
-Large LLMs are optional reference points, not Phase1 critical-path dependencies.
+## Frozen Phase1-v2 result
 
-## Canonical MVP contract
-Phase1 MVP protocol: `PHASE1_MVP_TCC_V1`.
+The coarse S1/S2/S3/S4 experiment is closed as a historical protocol.
 
-Normative files:
-- `docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.md`
-- `docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json`
-- `ACCEPTANCE_CRITERIA.md`
+Successor TCC: `PHASE1_MVP_TCC_V2`.
+Actual terminal: `EC_NATIVE_SCOPE_INCOMPATIBLE`.
 
-MVP means minimum scientifically reportable coarse localization, not fine decomposition.
+Why:
+- S3 reframing is genuinely shared and reportable.
+- frozen S3 all-admissible-set selection is not isomorphic to EC native singleton next-action authority.
+- frozen S3 representation does not identify generic S4 closure.
 
-MVP layer scope:
-- S1: LLM + Oracle intervention.
-- S2: LLM + Oracle intervention.
-- S3: LLM vs actual ECv4.4 + Oracle intervention.
-- S4: LLM vs actual ECv4.4 + Oracle intervention.
+Do not force incompatible functions into an A/B comparison and do not rewrite the frozen Phase1 result.
 
-New deterministic EC S1/S2 implementations are post-MVP only if coarse localization later makes them relevant.
+## Actual empirical results
 
-Frozen operational materiality: absolute 0.20. One-fixture 0.10 movement is non-material. Material-layer gains within 0.10 terminate as `MVP_AMBIGUOUS_DOMINANT_LAYER`; no manual tie break.
+### Reframing
+Same frozen Phase1-v2 S3 semantic-state assay, 10 fixtures:
+- ECv4.4: `9/10 = 0.90`.
+  - error: M004 false-positive reframe.
+- Qwen2.5-0.5B Q4_K_M: `1/10 = 0.10`.
+  - collapsed to YES on all 10.
+- Qwen2.5-1.5B Q4_K_M: `9/10 = 0.90`.
+  - error: M005 false-negative reframe.
 
-## Current measurement status
-- Phase1 v2 fixture generation: PASS.
-- Oracle-label leakage: PASS, 0 findings.
-- Oracle replay/hash-chain validation: PASS, 10/10.
-- Canonical generated-dataset digest: `8bfce027bdc82a34b78e9b1a87f7812d907db34c164f50a9a996bd41b3b824d6`.
-- Historical deterministic S3/S4 fallback prebaseline: 1.00 across selection/reframe/closure/final success, NONREPORTABLE.
+0.5B -> 1.5B absolute improvement: `+0.80`.
+The frozen capacity-collapse condition is resolved at 1.5B. No automatic 4B escalation is permitted.
 
-## Completed dependency remediation
-- Issue #21 threshold/capacity decision contract: CLOSED/COMPLETE.
-- Issue #12 output-contract vs semantic scoring separation: CLOSED/COMPLETE.
-- `tools/run_llm_s3_s4_cache.py` now has raw + schema-constrained arms, cache reuse, output-contract recording, and provenance.
-- `tools/compare_s3_s4.py` rejects non-reportable LLM/EC results and upstream hash mismatches.
-- `tools/run_ec_s3_s4.py` no longer silently falls back for reportable results. It requires actual ECv4.4 provenance.
-- ECv4.4 pinned for this MVP contract:
-  - repo `mokumaisancho/GPT-EC-Closure-Engine`
-  - commit `d5ec423968f1c9242c590e5e77ccfd92d1f59eb2`
-  - protocol `EC_V4_4_RESIDUAL_DETECTOR_V1`
+Equal EC/1.5B aggregate accuracy does not imply equivalence: paired disagreement is M004/M005.
 
-Actual reportable ECv4.4 execution against the pinned repository is still pending, so Issue #20 remains open.
+### S3 native interface
+EC `EC_NEXT_ACTION_V1` returns exactly one authority-bound next action.
+Frozen Phase1 S3 permits one-or-more selected candidates; M003/M009 require two.
+Result: `EC_NATIVE_NOT_APPLICABLE` for full admissible-set selection, while native next-action authority remains directly testable as a separate subfunction.
+
+### S4 identifiability
+Frozen S3 structural state has CLOSE/CONTINUE label collisions.
+Best structural-majority upper bound: `8/10 = 0.80`.
+This is an interface-identifiability bound, not EC accuracy.
+Native EC run/evidence closure is a richer control-plane function and requires a separate compatible assay.
+
+## Current function boundary
+
+Canonical files:
+- `docs/EC_LLM_FUNCTION_BOUNDARY_2026-10-03.md`
+- `results/ec_llm_function_boundary_2026-10-03.json`
+
+Current classification:
+- S1 language -> semantic IR: unresolved; current S1 oracle is weakly discriminative.
+- S2 semantic candidate generation: unresolved; Candidate Recall not yet measured in the successor protocol.
+- residual detection: EC_NATIVE + 1.5B LLM capable on current assay.
+- bounded reframing: EC_NATIVE + 1.5B LLM capable on current assay.
+- all-admissible-set selection: not isomorphic to EC next-action authority.
+- single next-action authority: EC_NATIVE; paired LLM-vs-EC assay pending.
+- generic frozen-S3 -> S4 closure: not identifiable.
+- authority-bound run/evidence closure: EC_NATIVE at a richer control-plane abstraction.
+- intent continuity, referent binding, contradiction/focus/exploration control, action permit, postflight and COMMIT authority: deterministic EC external control with existing metacognition-vNext POC evidence.
+- open-ended language realization / novel semantic synthesis: likely LLM region but not yet causally localized.
+
+## S1 measurement defect
+
+`tools/generate_phase1_measurement_v2.py` copy-wraps every input fact and every domain rule into S1, with a generic goal and little fixture-specific semantic transformation. Therefore a high score on the old S1 representation would not establish semantic-extraction competence.
+
+Do not use the old S1 oracle to conclude that an LLM is or is not necessary. A versioned discriminative successor assay is required.
 
 ## Active critical path
-1. Execute actual pinned ECv4.4 S3/S4 and close Issue #20 only after reportable results pass.
-2. Implement Issue #22: LLM S1/S2, A/B arms, one-layer-at-a-time Oracle substitution, and per-layer gain scoring.
-3. Satisfy logical dependency `0P5B_MODEL_READY` through any verified non-Drive route.
-4. Run Issue #14 frozen ~0.5B capacity point.
-5. Run A/B/C/D/E with frozen upstream hashes.
-6. Calculate per-layer Oracle substitution gain.
-7. Apply frozen 0.20 materiality/tie rules.
-8. Exit at one predefined MVP terminal state.
-9. Only after MVP: split the selected layer if required.
 
-## 0.5B asset dependency
-`0P5B_MODEL_READY` is an OR dependency. Issues #16/#17/#18/#19 are alternative ingress implementations, not a sequential mandatory chain.
+Issue #33 — discriminative S1 + 1.5B S1->S2 measurement:
+1. freeze a successor S1 benchmark testing distractor filtering, domain-term disambiguation, relation extraction, protected-intent retention and ambiguity/residual representation;
+2. run Qwen2.5-1.5B on model-visible task only;
+3. persist S1;
+4. run S2 from that exact S1;
+5. measure Candidate Recall separately from selection.
 
-Allowed route classes:
-- already verified sandbox artifact;
-- connector-native non-Drive materialization;
-- directly attachable Generic Binary Ingress;
-- GitHub text-shard fallback for the 0.5B artifact;
-- another size/SHA-verified non-Drive route.
+Issue #34 — shared next-action authority comparison:
+1. freeze structured plan/current-state fixtures;
+2. provide identical inputs to EC and Qwen2.5-1.5B;
+3. measure exact next-action accuracy and fail-closed correctness separately.
 
-Google Drive model relay is prohibited by the MVP TCC.
+Closure-sufficient successor work is conditional: only introduce it if #33/#34 leave closure as a material unresolved boundary.
 
-## Qwen3-4B ingress status
-`Qwen3-4B-Q4_K_M.gguf` has NOT been materialized into the current GPT sandbox.
-Expected size: 2,497,280,256 bytes.
-Expected SHA-256: `7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5`.
+## Retired old critical-path items
+- Issue #20: closed; actual EC binding resolved, full generic S1-S4 EC baseline invalid under frozen semantics.
+- Issue #22: closed/not-planned; old full A/B/E runner superseded.
+- Issue #23: closed; adapter qualification complete.
+- Issue #24: closed/not-planned for frozen protocol; Oracle intervention design retained for compatible successor subfunctions.
+- Issue #25: closed; S1->S3 oracle-blind adapter implemented.
+- Issue #26: closed; M004 divergence preserved as research result.
+- Issues #27/#28: closed as architecture/interface findings.
+- Issues #29/#30/#31: capacity execution investigations resolved; valid 1.5B result exists.
+- Issue #32: closed; TCC dependency scheduling corrected in V2.
 
-Qwen3-4B is outside the Phase1 MVP critical path and remains optional final-reference work.
-
-## Fail-closed rules
-- No fallback may be labeled/reportable as ECv4.
-- No semantic LLM metric from invalid/raw output-contract results.
-- No causal claim without identical upstream hashes.
-- No v1/v2 pooling.
-- No hidden taxonomy/oracle labels in model-visible inputs.
-- No prompt/fixture/threshold tuning after freeze.
-- ~1.5B is allowed exactly once only when the frozen capacity-collapse rule fires.
-- No automatic 4B escalation.
+## Constraints
+- materiality threshold remains absolute `0.20` unless a successor rule is frozen before measurement.
+- no hidden/oracle labels in model-visible inputs.
+- no post-freeze prompt/fixture/threshold tuning.
+- no automatic Qwen3-4B branch.
+- Qwen3-4B ingress is optional reference work, not current critical path.
 - GitHub Actions remain disabled.
-- New blocking residuals require issue registration and a new versioned TCC contract; no mid-run branch invention.
+- Google Drive model relay is prohibited.
