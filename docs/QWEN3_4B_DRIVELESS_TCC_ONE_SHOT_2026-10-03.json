@@ -1,0 +1,112 @@
+{
+  "schema_version": "QWEN3_4B_DRIVELESS_TCC_ONE_SHOT_V1",
+  "date_jst": "2026-10-03",
+  "objective": "Move Qwen3-4B-Q4_K_M.gguf from the existing Render range service into the GPT sandbox without Google Drive/Sheets, verify integrity, and complete llama.cpp smoke in one run without manual mid-run tuning.",
+  "model": {
+    "name": "Qwen3-4B-Q4_K_M.gguf",
+    "size": 2497280256,
+    "sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5"
+  },
+  "hard_constraints": {
+    "google_drive_allowed": false,
+    "google_sheets_allowed": false,
+    "mac_allowed": false,
+    "github_actions_enabled": false,
+    "manual_mid_run_chunk_tuning_allowed": false,
+    "model_substitution_allowed": false,
+    "acceptance_criteria_mutation_allowed": false
+  },
+  "state_order": [
+    "PRECHECK",
+    "SIZE_PROBE",
+    "FREEZE_CHUNK_SIZE",
+    "TRANSFER",
+    "WHOLE_VERIFY",
+    "LLAMA_SMOKE",
+    "EXIT_GATE"
+  ],
+  "precheck": {
+    "required_free_disk": "model_size + 2GiB reserve",
+    "runtime_default": "/mnt/data/llama-b10936/llama-b10936/llama-cli",
+    "render_base_url_default": "https://qwen3-4b-range-temp.onrender.com",
+    "failure": "SANDBOX_RESOURCE_LIMIT"
+  },
+  "size_probe": {
+    "candidate_part_bytes_desc": [67108864, 33554432, 16777216, 8388608, 4194304],
+    "candidate_mib_desc": [64, 32, 16, 8, 4],
+    "probe_part_index": 0,
+    "attempts_per_candidate": 2,
+    "success_requires": [
+      "HTTP 200",
+      "exact X-Part/X-Byte/X-Model metadata",
+      "exact byte length",
+      "part SHA-256 equals X-Part-SHA256"
+    ],
+    "selection": "first/largest candidate that passes end-to-end",
+    "integrity_failure": "INTEGRITY_FAILED immediately",
+    "transport_failure_after_retry": "next smaller declared candidate",
+    "all_transport_candidates_fail": "TRANSPORT_BLOCKED"
+  },
+  "freeze": {
+    "rule": "Selected part size is immutable for that transfer attempt.",
+    "forbidden": "ad-hoc/manual size changes"
+  },
+  "transfer": {
+    "write_strategy": "preallocate one .partial GGUF and pwrite verified streamed bytes directly to final offsets; do not retain duplicate shard files",
+    "parts": "0..ceil(model_size/part_bytes)-1",
+    "attempts_per_part": 2,
+    "part_integrity_failure_after_retry": "INTEGRITY_FAILED",
+    "part_transport_failure_after_retry": "delete partial file and restart once at next smaller predeclared part size",
+    "smallest_size_transport_failure": "TRANSPORT_BLOCKED",
+    "whole_model_in_memory": false
+  },
+  "whole_verify": {
+    "required": [
+      "file size == 2497280256",
+      "first four bytes == GGUF",
+      "SHA-256 == 7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5"
+    ],
+    "failure": "INTEGRITY_FAILED",
+    "success_action": "atomic rename .partial to final GGUF"
+  },
+  "llama_smoke": {
+    "prompt": "Return exactly: SANDBOX_LLM_OK",
+    "generation_tokens": 16,
+    "temperature": 0,
+    "conversation_mode": false,
+    "pass": "llama-cli exit code 0 and output contains SANDBOX_LLM_OK",
+    "runtime_missing": "RUNTIME_UNAVAILABLE",
+    "functional_or_timeout_failure": "SMOKE_FAILED"
+  },
+  "terminal_states": [
+    "PASS_MODEL_READY",
+    "INVALID_TRANSFER_CONTRACT",
+    "TRANSPORT_BLOCKED",
+    "INTEGRITY_FAILED",
+    "SANDBOX_RESOURCE_LIMIT",
+    "RUNTIME_UNAVAILABLE",
+    "SMOKE_FAILED"
+  ],
+  "exit_gate": {
+    "pass_only_if": [
+      "whole_verify PASS",
+      "llama_smoke PASS"
+    ],
+    "pass_terminal": "PASS_MODEL_READY",
+    "fail_closed": true
+  },
+  "execution": {
+    "controller": "tools/run_qwen3_4b_driveless_tcc.py",
+    "regression_test": "tests/test_qwen3_4b_driveless_tcc.py",
+    "single_command": "python3 tools/run_qwen3_4b_driveless_tcc.py",
+    "report": "/mnt/data/qwen3_4b_driveless_tcc_report.json"
+  },
+  "forbidden_runtime_behavior": [
+    "asking the user which chunk size to try next",
+    "manual retries beyond the declared retry count",
+    "switching back to Google Drive/Sheets",
+    "changing the model or expected hash during the run",
+    "continuing after an integrity failure",
+    "claiming success before whole-file SHA and llama smoke both pass"
+  ]
+}
