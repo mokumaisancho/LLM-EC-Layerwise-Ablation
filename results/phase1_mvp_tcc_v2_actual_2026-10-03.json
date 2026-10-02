@@ -1,0 +1,41 @@
+{
+  "schema_version": "PHASE1_MVP_TCC_V2_ACTUAL_RESULT_V1",
+  "protocol": "PHASE1_MVP_TCC_V2",
+  "date": "2026-10-03",
+  "successor_of": "PHASE1_MVP_TCC_V1",
+  "terminal_state": "EC_NATIVE_SCOPE_INCOMPATIBLE",
+  "return_code": 4,
+  "validation": {
+    "branch": "experiment/ec-native-scope-terminal-20261003",
+    "commit": "0029ecdf0eca0997c0a45f410fc57a65fb623e69",
+    "render_service": "srv-db028n9srm7s73dqiqb0",
+    "render_deploy": "dep-db028o1srm7s73dqit5g",
+    "adapter_self_test": "PASS",
+    "early_preflight": "PASS",
+    "expected_terminal_assertion": "PASS"
+  },
+  "foundation": {
+    "status": "PASS",
+    "dataset_digest": "8bfce027bdc82a34b78e9b1a87f7812d907db34c164f50a9a996bd41b3b824d6"
+  },
+  "adapter_qualification": {
+    "protocol": "PHASE1_EC_NATIVE_ADAPTER_V1",
+    "status": "INCOMPATIBLE",
+    "oracle_blind": true,
+    "s3_reframing": "EC_NATIVE",
+    "s3_selection": "EC_NATIVE_NOT_APPLICABLE",
+    "s4_closure": "EC_NATIVE_NOT_APPLICABLE"
+  },
+  "dependency_decision": {
+    "downstream_issue22_required": false,
+    "reason": "P2 semantic incompatibility is terminal before downstream-only dependencies in V2"
+  },
+  "v1_actual_terminal_preserved": "INVALID_TEST_CONTRACT",
+  "methodology_change": "dependency scheduling only",
+  "fixtures_changed": false,
+  "thresholds_changed": false,
+  "prompts_changed": false,
+  "scoring_changed": false,
+  "github_actions_used": false,
+  "google_drive_model_relay_used": false
+}
