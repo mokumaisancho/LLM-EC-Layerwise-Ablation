@@ -11,7 +11,8 @@ from pathlib import Path
 
 EC_V4_4_REPO = "mokumaisancho/GPT-EC-Closure-Engine"
 EC_V4_4_COMMIT = "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2"
-EC_V4_4_PROTOCOL = "EC_V4_4_RESIDUAL_DETECTOR_V1"
+EC_V4_4_RESIDUAL_PROTOCOL = "EC_V4_4_RESIDUAL_DETECTOR_V1"
+EC_NATIVE_ADAPTER_PROTOCOL = "PHASE1_EC_NATIVE_ADAPTER_V1"
 
 
 def load_json(path: Path):
@@ -34,7 +35,7 @@ def git_head(repo_root: Path) -> str:
         raise RuntimeError(f"EC_GIT_HEAD_UNAVAILABLE:{type(exc).__name__}") from exc
 
 
-def load_ecv44(repo_root: Path):
+def load_ecv44_residual_detector(repo_root: Path):
     repo_root = repo_root.resolve()
     head = git_head(repo_root)
     if head != EC_V4_4_COMMIT:
@@ -51,23 +52,25 @@ def load_ecv44(repo_root: Path):
     spec.loader.exec_module(mod)
 
     protocol = getattr(mod, "PROTOCOL", None)
-    if protocol != EC_V4_4_PROTOCOL:
+    if protocol != EC_V4_4_RESIDUAL_PROTOCOL:
         raise RuntimeError(f"EC_PROTOCOL_MISMATCH:{protocol}")
     if not callable(getattr(mod, "detect_residuals", None)):
         raise RuntimeError("EC_DETECT_RESIDUALS_MISSING")
 
-    ec_provenance = {
+    provenance = {
         "repository": EC_V4_4_REPO,
         "commit": head,
         "protocol": protocol,
         "module_path": "01_repo/src/v4/ec_residual_detector.py",
         "module_sha256": file_sha256(module_path),
-        "reportable": True,
+        "authority": "EC_NATIVE",
+        "reportable_as_full_s3_s4": False,
     }
-    return mod, ec_provenance
+    return mod, provenance
 
 
-def select_candidates(candidate_set: dict) -> tuple[list[str], list[str], list[dict]]:
+def select_candidates_diagnostic(candidate_set: dict) -> tuple[list[str], list[str], list[dict]]:
+    """Harness-local diagnostic only. This is NOT ECv4.4 selection authority."""
     selected, rejected, reasons = [], [], []
     for candidate in candidate_set.get("candidates", []):
         cid = candidate.get("candidate_id")
@@ -90,7 +93,7 @@ def ec_residuals(state: dict, ec_mod):
         observations=state.get("observations", []),
     )
     protocol = result.get("protocol")
-    if protocol != EC_V4_4_PROTOCOL:
+    if protocol != EC_V4_4_RESIDUAL_PROTOCOL:
         raise RuntimeError(f"EC_RUNTIME_PROTOCOL_MISMATCH:{protocol}")
     return result.get("residuals", [])
 
@@ -106,14 +109,14 @@ def selected_relation(candidate_set: dict, selected: list[str]):
     return None
 
 
-def closure_decision(candidate_set: dict, selected: list[str], state: dict, residuals: list[dict]):
+def closure_decision_diagnostic(candidate_set: dict, selected: list[str], state: dict, residuals: list[dict]):
+    """Harness-local diagnostic only. This is NOT EC closure authority."""
     ops = {
         c.get("candidate_id"): (c.get("semantic_transition") or {}).get("operation")
         for c in candidate_set.get("candidates", [])
     }
     selected_ops = [ops.get(cid) for cid in selected]
     relation = selected_relation(candidate_set, selected)
-
     if len(selected) > 1 and relation == "COMPETING":
         return "CONTINUE", [{"type": "MULTIPLE_COMPETING_ADMISSIBLE_BRANCHES"}]
     if len(selected) > 1 and relation not in {"EQUIVALENT"}:
@@ -127,33 +130,26 @@ def closure_decision(candidate_set: dict, selected: list[str], state: dict, resi
     return "CLOSE", []
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--root", default="fixtures/phase1_v2/generated")
-    ap.add_argument("--out", default="results/ec_s3_s4")
-    ap.add_argument("--ec-repo-root", default=os.environ.get("EC_V4_4_REPO_ROOT"))
-    args = ap.parse_args()
-
-    if not args.ec_repo_root:
-        raise SystemExit("EC_V4_4_REPO_ROOT is required; reportable EC runs are fail-closed")
-
-    ec_mod, ec_provenance = load_ecv44(Path(args.ec_repo_root))
-    root, out_root = Path(args.root), Path(args.out)
+def run_residual_diagnostic(root: Path, out_root: Path, ec_mod, provenance: dict):
     rows = []
-
     for fixture in sorted(p for p in root.iterdir() if p.is_dir()):
         s2 = load_json(fixture / "oracle" / "s2_candidate_set.json")
         state = load_json(fixture / "upstream" / "s3_semantic_state.json")
-        selected, rejected, reasons = select_candidates(s2)
+        selected, rejected, reasons = select_candidates_diagnostic(s2)
         residuals = ec_residuals(state, ec_mod)
-        reframe = bool(residuals)
-        closure, closure_residuals = closure_decision(s2, selected, state, residuals)
+        closure, closure_residuals = closure_decision_diagnostic(s2, selected, state, residuals)
         result = {
             "fixture_id": fixture.name,
-            "implementation": "EC",
-            "ec_mode": "ECV4_4_REPORTABLE",
-            "ec_protocol": EC_V4_4_PROTOCOL,
-            "ec_provenance": ec_provenance,
+            "implementation": "MIXED_DIAGNOSTIC",
+            "ec_mode": "ECV4_4_RESIDUAL_DIAGNOSTIC_NONREPORTABLE",
+            "reportable": False,
+            "reason": "S3 selection and S4 closure are harness-local until PHASE1_EC_NATIVE_ADAPTER_V1 is qualified",
+            "ec_provenance": provenance,
+            "subfunction_authority": {
+                "s3_selection": "HARNESS_DIAGNOSTIC",
+                "s3_reframing_residual_detection": "EC_NATIVE",
+                "s4_closure": "HARNESS_DIAGNOSTIC",
+            },
             "upstream": {
                 "candidate_set_hash": s2.get("content_hash"),
                 "semantic_state_hash": state.get("content_hash"),
@@ -163,7 +159,7 @@ def main():
                 "rejected_candidate_ids": rejected,
                 "decision_reasons": reasons,
                 "residuals": residuals,
-                "reframe_required": reframe,
+                "reframe_required": bool(residuals),
             },
             "s4": {
                 "closure_class": closure,
@@ -175,13 +171,34 @@ def main():
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         rows.append(result)
+    return rows
 
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--root", default="fixtures/phase1_v2/generated")
+    ap.add_argument("--out", default="results/ec_s3_s4")
+    ap.add_argument("--ec-repo-root", default=os.environ.get("EC_V4_4_REPO_ROOT"))
+    ap.add_argument("--diagnostic-residual-only", action="store_true")
+    args = ap.parse_args()
+
+    if not args.ec_repo_root:
+        raise SystemExit("EC_V4_4_REPO_ROOT is required")
+
+    ec_mod, provenance = load_ecv44_residual_detector(Path(args.ec_repo_root))
+    if not args.diagnostic_residual_only:
+        raise SystemExit(
+            "EC_NATIVE_ADAPTER_REQUIRED: Issue #23 / PHASE1_EC_NATIVE_ADAPTER_V1 must qualify "
+            "actual EC-native S3/S4 authority before a reportable run"
+        )
+
+    rows = run_residual_diagnostic(Path(args.root), Path(args.out), ec_mod, provenance)
     print(json.dumps({
-        "run": "EC_S3_S4",
+        "run": "EC_S3_S4_DIAGNOSTIC",
         "fixture_count": len(rows),
-        "result_count": len(rows),
-        "ec_provenance": ec_provenance,
-        "status": "PASS_REPORTABLE",
+        "ec_provenance": provenance,
+        "adapter_protocol_required": EC_NATIVE_ADAPTER_PROTOCOL,
+        "status": "PASS_NONREPORTABLE_DIAGNOSTIC",
     }, ensure_ascii=False, indent=2))
 
 
