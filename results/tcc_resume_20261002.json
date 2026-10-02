@@ -1,0 +1,65 @@
+{
+  "schema_version": "tcc-resume-state-1.0",
+  "captured_at": "2026-10-02T09:00:00+09:00",
+  "phase": "PRECHECK",
+  "goal": "Acquire and verify Qwen3-4B-Q4_K_M.gguf in GPT sandbox, then run deterministic smoke and frozen B0/B1/B2 DEV_SCREEN.",
+  "artifact": {
+    "repo": "Qwen/Qwen3-4B-GGUF",
+    "file": "Qwen3-4B-Q4_K_M.gguf",
+    "expected_size": 2497280256,
+    "expected_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+    "public_source_identity_reverified": true
+  },
+  "route_results": [
+    {
+      "route": "SHEETS_GAS_RELAY_LEGACY",
+      "status": "UNAVAILABLE_AFTER_RETRY",
+      "evidence": "QWEN_XFER_00 was reduced to Range bytes=0-999999 and OBSCURA_RELAY_FETCH(A1) was explicitly retriggered; repeated live reads still returned LOADING with no META/chunk payload.",
+      "decision": "Do not continue manual tuning of this route."
+    },
+    {
+      "route": "DIRECT_URL_OR_NATIVE_ATTACHMENT",
+      "status": "SOURCE_VERIFIED_BUT_SANDBOX_TRANSFER_BLOCKED",
+      "evidence": "Official Qwen Hugging Face file reports the exact expected SHA256. GPT sandbox direct network probe failed DNS resolution; runtime URL download also failed on the large Xet-backed artifact.",
+      "decision": "Treat direct sandbox ingress as unavailable in the current runtime, not as a model integrity failure."
+    },
+    {
+      "route": "GOOGLE_DRIVE_COPY",
+      "status": "NOT_PRESENT",
+      "evidence": "Connected Drive search found no existing Qwen3-4B-Q4_K_M.gguf copy.",
+      "decision": "No Drive copy to materialize."
+    },
+    {
+      "route": "GENERIC_BINARY_INGRESS_IF_DIRECTLY_ATTACHABLE",
+      "status": "BLOCKED_BY_RENDER_WORKSPACE_SELECTION",
+      "evidence": "Render connector requires an explicitly confirmed workspace before service inspection/action and forbids automatic workspace selection.",
+      "decision": "Do not guess workspace."
+    },
+    {
+      "route": "GITHUB_BASE64_TEXT_SHARDS",
+      "status": "NOT_EXECUTED",
+      "evidence": "Would expand a 2.497 GB artifact to roughly 3.33 GB of base64 plus repository/tool overhead and is not an efficient sandbox ingress path.",
+      "decision": "Keep as last-resort predeclared route; do not execute unless no direct binary route becomes available."
+    }
+  ],
+  "current_blocker": "No permitted high-bandwidth binary ingress path into GPT sandbox is currently available without selecting the correct Render workspace or providing the model as an attachment/Drive file.",
+  "not_a_failure_of": [
+    "Qwen artifact identity",
+    "expected whole-file SHA256",
+    "B0/B1/B2 experiment design",
+    "TCC state-machine design"
+  ],
+  "next_transition": {
+    "preferred": "Inspect the user-confirmed Render workspace and generic-binary-ingress service, then materialize the verified binary into GPT sandbox if the service exposes a directly attachable artifact.",
+    "fallback": "Use a user-provided/native attachment or existing Google Drive copy of the exact verified GGUF.",
+    "after_ingress": [
+      "verify exact size and SHA256",
+      "prepare llama.cpp-compatible runtime",
+      "deterministic smoke",
+      "DEV_SCREEN on frozen 12 cases for B0/B1/B2",
+      "freeze code/prompts/decoding",
+      "run frozen 18-case holdout",
+      "score EXIT_GATE without threshold or holdout changes"
+    ]
+  }
+}
