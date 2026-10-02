@@ -5,7 +5,6 @@ import hashlib
 import json
 import os
 import pathlib
-import shutil
 import subprocess
 import threading
 import time
@@ -19,7 +18,7 @@ MODEL = WORK / 'Qwen2.5-0.5B-Instruct-Q4_K_M.gguf'
 MODEL_URL = 'https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF/resolve/21ef23001f314d0895bd8439b08157c2d4cd9bb7/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf'
 MODEL_SHA = '6eb923e7d26e9cea28811e1a8e852009b21242fb157b26149d3b188f3a8c8653'
 MODEL_REV = '21ef23001f314d0895bd8439b08157c2d4cd9bb7'
-REPO_COMMIT = '8ad9b312b560731e93c95a5e54a50f13705b91a0'
+BASE_RESEARCH_COMMIT = '8ad9b312b560731e93c95a5e54a50f13705b91a0'
 STATE = {'status': 'BOOTING', 'phase': 'INIT', 'result': None, 'error': None}
 LOCK = threading.Lock()
 
@@ -77,8 +76,12 @@ def run_assay():
         WORK.mkdir(parents=True, exist_ok=True)
         set_state(status='RUNNING', phase='PRECHECK')
         head = subprocess.check_output(['git', '-C', str(ROOT), 'rev-parse', 'HEAD'], text=True).strip()
-        if head != REPO_COMMIT:
-            raise RuntimeError(f'REPO_COMMIT_MISMATCH:{head}')
+        ancestor = subprocess.run(
+            ['git', '-C', str(ROOT), 'merge-base', '--is-ancestor', BASE_RESEARCH_COMMIT, head],
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+        )
+        if ancestor.returncode != 0:
+            raise RuntimeError(f'BASE_RESEARCH_COMMIT_NOT_ANCESTOR:{BASE_RESEARCH_COMMIT}:{head}')
 
         set_state(phase='RUNTIME_ACQUIRE')
         llama_server = find_llama_server()
@@ -148,7 +151,8 @@ def run_assay():
             'model_revision': MODEL_REV,
             'model_file': MODEL.name,
             'model_sha256': MODEL_SHA,
-            'repo_commit': REPO_COMMIT,
+            'base_research_commit': BASE_RESEARCH_COMMIT,
+            'execution_head': head,
             'fixture_count': len(rows),
             'correct': correct,
             'accuracy': correct / len(rows),
