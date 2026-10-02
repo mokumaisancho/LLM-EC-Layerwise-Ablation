@@ -1,0 +1,52 @@
+{
+  "protocol": "PHASE1_ORACLE_INTERVENTION_V1",
+  "purpose": "causal one-layer Oracle intervention with exact upstream identity preservation",
+  "gain_definition": "final_success(do(layer=Oracle)) - final_success(baseline)",
+  "global_invariants": [
+    "UPSTREAM_OF_TARGET_LAYER_BYTE_IDENTITY_PRESERVED",
+    "UPSTREAM_HASHES_EQUAL_BASELINE",
+    "NO_HIDDEN_ORACLE_FIELD_VISIBLE_TO_NON_ORACLE_DOWNSTREAM_IMPLEMENTATION",
+    "DOWNSTREAM_IMPLEMENTATION_AND_DECODING_UNCHANGED",
+    "NO_SILENT_REGENERATION",
+    "NO_INVENTED_CANDIDATE_ID_AT_S3"
+  ],
+  "interventions": {
+    "S1": {
+      "fixed_upstream": ["task"],
+      "oracle_action": "use canonical Oracle S1 for the same frozen task",
+      "rerun_downstream": ["S2","S3","S4"]
+    },
+    "S2": {
+      "fixed_upstream": ["actual_S1_artifact","actual_S1_hash"],
+      "oracle_action": "construct intervention S2 from Oracle candidate semantics but bind semantic_ir_hash to the exact actual S1 hash; provenance marks INTERVENTION_NOT_DERIVATION",
+      "rerun_downstream": ["S3","S4"]
+    },
+    "S3": {
+      "fixed_upstream": ["actual_S2_candidate_set","actual_semantic_state","their_hashes"],
+      "oracle_action": "select only acceptable candidate IDs that exist in the fixed actual candidate set; apply Oracle reframe authority",
+      "if_acceptable_candidate_absent": "INTERVENTION_NOT_IDENTIFIABLE_UPSTREAM_DEFICIT",
+      "rerun_downstream": ["S4"]
+    },
+    "S4": {
+      "fixed_upstream": ["actual_S3_selected_reframed_state","its_hash"],
+      "oracle_action": "replace execution/closure only; preserve all upstream correctness/errors",
+      "rerun_downstream": []
+    }
+  },
+  "required_intervention_provenance": [
+    "protocol",
+    "target_layer",
+    "baseline_run_id",
+    "fixture_id",
+    "baseline_upstream_hashes",
+    "intervention_artifact_hash",
+    "oracle_authority_ref",
+    "intervention_not_derivation"
+  ],
+  "fail_closed": {
+    "upstream_hash_mismatch": "UPSTREAM_HASH_MISMATCH",
+    "unknown_candidate_at_s3": "INVALID_TEST_CONTRACT",
+    "missing_provenance": "INVALID_TEST_CONTRACT",
+    "downstream_runtime_changed": "INVALID_TEST_CONTRACT"
+  }
+}
