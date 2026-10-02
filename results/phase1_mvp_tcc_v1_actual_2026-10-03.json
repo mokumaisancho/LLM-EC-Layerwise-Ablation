@@ -1,0 +1,38 @@
+{
+  "schema_version": "PHASE1_MVP_TCC_V1_ACTUAL_RESULT_V1",
+  "protocol": "PHASE1_MVP_TCC_V1",
+  "date": "2026-10-03",
+  "terminal_state": "INVALID_TEST_CONTRACT",
+  "preserved": true,
+  "execution_context": {
+    "branch": "experiment/ec-native-scope-terminal-20261003",
+    "commit": "7194e43019a2032f123e1c91c79f9de2bfde9848",
+    "render_service": "srv-db025e60tbcc73fsblk0"
+  },
+  "preflight": {
+    "status": "BLOCKED",
+    "passed": [
+      "AC-20_NO_ACTIONS",
+      "FOUNDATION_QUALIFICATION_EVIDENCE",
+      "ISSUE-20_FAIL_CLOSED_GUARD",
+      "ISSUE-23_EC_NATIVE_ADAPTER_PRESENT",
+      "ISSUE-12_FORMAT_SEMANTIC_SPLIT",
+      "ISSUE-21_THRESHOLDS_FROZEN"
+    ],
+    "blockers": [
+      {
+        "id": "ISSUE-22",
+        "reason": "S1_S2_ORACLE_GAIN_IMPLEMENTATION_MISSING",
+        "missing_files": [
+          "tools/run_llm_s1_s2_cache.py",
+          "tools/run_phase1_oracle_substitution.py",
+          "tools/score_phase1_mvp.py"
+        ]
+      }
+    ]
+  },
+  "interpretation": "V1 required downstream Issue #22 assets in P0 before the P2 EC-native semantic-scope gate. The run is preserved as INVALID_TEST_CONTRACT and is not retroactively rewritten.",
+  "successor": "PHASE1_MVP_TCC_V2",
+  "successor_issue": 32,
+  "github_actions_used": false
+}
