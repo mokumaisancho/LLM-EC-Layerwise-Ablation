@@ -1,0 +1,73 @@
+{
+  "schema_version": "PHASE1_QWEN25_1P5B_REFRAME_ACTUAL_V1",
+  "assay": "PHASE1_V2_S3_REFRAME_FIXED_STATE_V1",
+  "fixture_generation": "phase1_v2",
+  "dataset_digest": "8bfce027bdc82a34b78e9b1a87f7812d907db34c164f50a9a996bd41b3b824d6",
+  "model": {
+    "repository": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
+    "revision": "main",
+    "file": "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf",
+    "size_bytes": 986048768,
+    "sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370"
+  },
+  "runtime": {
+    "llama_cpp_tag": "b11146",
+    "llama_cpp_asset": "llama-b11146-bin-ubuntu-x64.tar.gz",
+    "llama_cpp_asset_sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+    "execution_environment": "Render Starter build pipeline",
+    "pipeline_resources": "2 CPU / 8 GB RAM",
+    "execution_wrapper_commit": "f26ef46094fab31fe7118831479b97bb094e6a73",
+    "base_research_commit": "8ad9b312b560731e93c95a5e54a50f13705b91a0",
+    "context_tokens": 768,
+    "batch": 32,
+    "ubatch": 32,
+    "threads": 1,
+    "temperature": 0,
+    "grammar": "YES|NO",
+    "google_drive_used": false,
+    "github_actions_used": false
+  },
+  "result": {
+    "fixture_count": 10,
+    "correct": 9,
+    "accuracy": 0.9,
+    "prediction_distribution": {"YES": 0, "NO": 10},
+    "gold_distribution": {"YES": 1, "NO": 9},
+    "mode_share": 1.0,
+    "output_contract_valid": true,
+    "capacity_collapse_rule_fired": false,
+    "capacity_limit_after_1p5b": false
+  },
+  "rows": [
+    {"fixture_id":"M001","prediction":false,"gold":false,"correct":true,"raw":"NO","upstream_state_hash":"5cea45ee92a2dce07212307973ebd825109d5a78abfa2945e749eb6845cdc52b"},
+    {"fixture_id":"M002","prediction":false,"gold":false,"correct":true,"raw":"NO","upstream_state_hash":"7a4441d1785ddcd7006f12531cbc54973982ed873a66124b141281e42465ef60"},
+    {"fixture_id":"M003","prediction":false,"gold":false,"correct":true,"raw":"NO","upstream_state_hash":"7c7084168d5886d9fac42a3a3cf594507ef078c20025fb3f0bf0964742b1b0be"},
+    {"fixture_id":"M004","prediction":false,"gold":false,"correct":true,"raw":"NO","upstream_state_hash":"28859f9c770a6dc7ecc7ab620cd021f5b2917612abf8c8f9ae5727c3677b50e0"},
+    {"fixture_id":"M005","prediction":false,"gold":true,"correct":false,"raw":"NO","upstream_state_hash":"9ca5e71b56d3ec42f64818311bd61dbf9cd9471bdd55d427a9224282588238e5"},
+    {"fixture_id":"M006","prediction":false,"gold":false,"correct":true,"raw":"NO","upstream_state_hash":"49719841a2eb4677a2d5b3392b72a22b8e88d05ddf161b68134c14c432b76958"},
+    {"fixture_id":"M007","prediction":false,"gold":false,"correct":true,"raw":"NO","upstream_state_hash":"c84da928d2d3c0eedc2d50047c5197b2e5c8aa9858b9f4c184bf330a453a2b01"},
+    {"fixture_id":"M008","prediction":false,"gold":false,"correct":true,"raw":"NO","upstream_state_hash":"ebaa93ee7b8dafed899012e98d120a89f32b184702b8c21d0fdf7fd294e635ed"},
+    {"fixture_id":"M009","prediction":false,"gold":false,"correct":true,"raw":"NO","upstream_state_hash":"ae69902c565c3ea605820300e5b8829c8b132ed0963224344e453ce986145136"},
+    {"fixture_id":"M010","prediction":false,"gold":false,"correct":true,"raw":"NO","upstream_state_hash":"c93bb371a3c4ccf7765ea76cb74107b790168c317a627cc846fc7fb672b61c00"}
+  ],
+  "capacity_comparison": {
+    "qwen2_5_0p5b_accuracy": 0.1,
+    "qwen2_5_1p5b_accuracy": 0.9,
+    "absolute_improvement": 0.8,
+    "frozen_escalation_condition_resolved": true,
+    "automatic_4b_branch_allowed": false
+  },
+  "ecv4_4_reframe_comparison": {
+    "ec_accuracy": 0.9,
+    "llm_1p5b_accuracy": 0.9,
+    "accuracy_difference": 0.0,
+    "paired_disagreement_fixtures": ["M004", "M005"],
+    "paired_disagreement_rate": 0.2,
+    "note": "Equal aggregate accuracy masks different error topology: EC false-positive on M004; 1.5B LLM false-negative on M005. This assay alone does not complete A/B/C/D/E causal localization."
+  },
+  "interpretation": {
+    "primary": "The frozen 1.5B follow-up removed the 0.5B capacity-collapse condition: family accuracy rose from 0.10 to 0.90 under the unchanged schema-constrained assay.",
+    "capacity_scope": "No CAPACITY_LIMIT_AFTER_1P5B terminal applies because the frozen collapse condition requires family accuracy <= 0.60. No automatic 4B branch is permitted.",
+    "oracle_labels_model_visible": false
+  }
+}
