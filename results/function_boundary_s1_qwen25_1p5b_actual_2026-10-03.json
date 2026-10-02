@@ -1,0 +1,74 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S1_QWEN25_1P5B_ACTUAL_V1",
+  "protocol": "FUNCTION_BOUNDARY_S1_V1",
+  "date": "2026-10-03",
+  "dataset": {
+    "fixture_count": 10,
+    "field_decisions": 50,
+    "digest": "4d15e1b89c6382a8a5252558525db55cccc700096ad5c92e97d384c9d59cd190",
+    "freeze_commit": "8b152cae466521cfce027717ae890e1e68a42f6b",
+    "frozen_before_model_run": true
+  },
+  "model": {
+    "repository": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
+    "file": "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf",
+    "size_bytes": 986048768,
+    "sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370"
+  },
+  "runtime": {
+    "execution_environment": "Render build pipeline",
+    "render_service": "srv-db02tr6gekts73fvlt1g",
+    "render_deploy": "dep-db02trugekts73fvlvi0",
+    "execution_wrapper_commit": "5b614351f196c67ef93dab1646db83c1306460ac",
+    "llama_cpp_tag": "b11146",
+    "llama_cpp_asset_sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+    "temperature": 0,
+    "context_tokens": 1024,
+    "grammar_constrained_to_visible_ids": true,
+    "oracle_fields_model_visible": false,
+    "github_actions_used": false,
+    "google_drive_used": false
+  },
+  "result": {
+    "field_correct_total": 36,
+    "field_decisions": 50,
+    "primary_score": 0.72,
+    "fixture_exact_match_count": 4,
+    "fixture_exact_match_rate": 0.4,
+    "per_dimension_accuracy": {
+      "primary_fact_id": 0.5,
+      "semantic_concept_id": 0.7,
+      "key_relation_id": 0.5,
+      "ambiguity": 0.9,
+      "goal_id": 1.0
+    }
+  },
+  "rows": [
+    {"fixture_id":"S101","category":"domain_term_disambiguation","prediction":{"primary_fact_id":"f2","semantic_concept_id":"c_claim_exposure","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f2","semantic_concept_id":"c_claim_exposure","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"correct_fields":5,"exact_match":true},
+    {"fixture_id":"S102","category":"near_miss_concept","prediction":{"primary_fact_id":"f1","semantic_concept_id":"c_authorization","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f2","semantic_concept_id":"c_authorization","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"correct_fields":3,"exact_match":false},
+    {"fixture_id":"S103","category":"unresolved_ambiguity","prediction":{"primary_fact_id":"f2","semantic_concept_id":"c_policy_owner","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f1","semantic_concept_id":"c_unresolved","key_relation_id":"r3","ambiguity":"YES","goal_id":"g1"},"correct_fields":1,"exact_match":false},
+    {"fixture_id":"S104","category":"causal_relation","prediction":{"primary_fact_id":"f1","semantic_concept_id":"c_causal_auth","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f2","semantic_concept_id":"c_causal_auth","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"correct_fields":4,"exact_match":false},
+    {"fixture_id":"S105","category":"protected_intent_reframe","prediction":{"primary_fact_id":"f2","semantic_concept_id":"c_system_auth_failure","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f2","semantic_concept_id":"c_system_auth_failure","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"correct_fields":5,"exact_match":true},
+    {"fixture_id":"S106","category":"source_authority_conflict","prediction":{"primary_fact_id":"f1","semantic_concept_id":"c_active","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f3","semantic_concept_id":"c_active","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"correct_fields":3,"exact_match":false},
+    {"fixture_id":"S107","category":"domain_near_synonym","prediction":{"primary_fact_id":"f1","semantic_concept_id":"c_estimate","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f1","semantic_concept_id":"c_estimate","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"correct_fields":5,"exact_match":true},
+    {"fixture_id":"S108","category":"mandatory_control_scope","prediction":{"primary_fact_id":"f3","semantic_concept_id":"c_control_constraint","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f3","semantic_concept_id":"c_control_constraint","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"correct_fields":5,"exact_match":true},
+    {"fixture_id":"S109","category":"negation_evidence","prediction":{"primary_fact_id":"f1","semantic_concept_id":"c_fraud_confirmed","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f1","semantic_concept_id":"c_no_fraud_evidence","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"correct_fields":3,"exact_match":false},
+    {"fixture_id":"S110","category":"freshness_supersession","prediction":{"primary_fact_id":"f1","semantic_concept_id":"c_approved","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f2","semantic_concept_id":"c_revoked","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"correct_fields":2,"exact_match":false}
+  ],
+  "findings": {
+    "strongest_dimension": "goal_id",
+    "strongest_dimension_accuracy": 1.0,
+    "weakest_dimensions": ["primary_fact_id","key_relation_id"],
+    "weakest_dimension_accuracy": 0.5,
+    "verified_failure_modes": [
+      "near-miss evidence/source selection",
+      "premature ambiguity resolution",
+      "weaker correlation chosen as primary evidence despite correct causal relation",
+      "source-authority relation failure",
+      "negation/evidence polarity failure",
+      "freshness/supersession failure"
+    ],
+    "interpretation": "Qwen2.5-1.5B preserves the protected goal reliably and often identifies the correct concept, but semantic grounding to the authoritative evidence/relation remains materially weaker. This localizes a substantial part of the surviving upstream gap inside evidence/relation grounding rather than goal retention.",
+    "does_not_prove_llm_necessity": true
+  }
+}
