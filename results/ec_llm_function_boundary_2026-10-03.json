@@ -1,0 +1,152 @@
+{
+  "schema_version": "EC_LLM_FUNCTION_BOUNDARY_2026_10_03_V1",
+  "research_question": "Which externally measurable LLM reasoning/control functions can be replaced or supplemented by deterministic EC without material loss?",
+  "scope_rule": "Map externally observable reasoning/runtime functions, not private Transformer attention/MLP internals.",
+  "frozen_phase1_terminal": "EC_NATIVE_SCOPE_INCOMPATIBLE",
+  "evidence": {
+    "dataset_digest": "8bfce027bdc82a34b78e9b1a87f7812d907db34c164f50a9a996bd41b3b824d6",
+    "ec_repo": "mokumaisancho/GPT-EC-Closure-Engine",
+    "ec_commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+    "ec_reframe_accuracy": 0.9,
+    "qwen_0p5b_reframe_accuracy": 0.1,
+    "qwen_1p5b_reframe_accuracy": 0.9,
+    "qwen_0p5b_to_1p5b_gain": 0.8,
+    "ec_vs_1p5b_reframe_accuracy_difference": 0.0,
+    "ec_vs_1p5b_paired_disagreement_fixtures": ["M004", "M005"]
+  },
+  "function_map": [
+    {
+      "function_id": "F01",
+      "function": "language_to_domain_semantic_ir",
+      "coarse_layer": "S1",
+      "ec_authority": "NO_PHASE1_NATIVE_IMPLEMENTATION",
+      "llm_status": "UNMEASURED_ON_DISCRIMINATIVE_S1_ASSAY",
+      "classification": "UNRESOLVED_LLM_BOUNDARY",
+      "evidence_level": "UNTESTED",
+      "note": "Current Phase1-v2 S1 oracle largely copies all input facts/rules into a wrapper IR, so it is insufficient to establish semantic-extraction replacement boundaries."
+    },
+    {
+      "function_id": "F02",
+      "function": "semantic_candidate_generation",
+      "coarse_layer": "S2",
+      "ec_authority": "NO_PHASE1_NATIVE_IMPLEMENTATION",
+      "llm_status": "UNMEASURED_ON_PHASE1_V2",
+      "classification": "UNRESOLVED_LLM_BOUNDARY",
+      "evidence_level": "UNTESTED",
+      "note": "Candidate recall must be measured separately from downstream selection."
+    },
+    {
+      "function_id": "F03",
+      "function": "residual_detection",
+      "coarse_layer": "S3",
+      "ec_authority": "EC_NATIVE",
+      "llm_status": "CAPABLE_AT_1P5B_ON_FIXED_REFRAME_ASSAY",
+      "classification": "DUAL_CAPABLE",
+      "evidence_level": "EMPIRICALLY_PAIRED",
+      "ec_protocol": "EC_V4_4_RESIDUAL_DETECTOR_V1",
+      "note": "EC contributes machine-readable residual types; EC/1.5B aggregate reframe accuracy is equal but error topology differs."
+    },
+    {
+      "function_id": "F04",
+      "function": "bounded_intent_preserving_reframing",
+      "coarse_layer": "S3",
+      "ec_authority": "EC_NATIVE",
+      "llm_status": "CAPABLE_AT_1P5B_ON_FIXED_REFRAME_ASSAY",
+      "classification": "DUAL_CAPABLE",
+      "evidence_level": "EMPIRICALLY_PAIRED",
+      "ec_protocol": "EC_V4_4_FRAMING_SEARCH_V1",
+      "note": "EC false-positive M004; 1.5B LLM false-negative M005."
+    },
+    {
+      "function_id": "F05",
+      "function": "all_admissible_candidate_set_selection",
+      "coarse_layer": "S3",
+      "ec_authority": "EC_NATIVE_NOT_APPLICABLE",
+      "llm_status": "NOT_YET_MEASURED_UNDER_SUCCESSOR_SUBFUNCTION_ASSAY",
+      "classification": "NOT_ISOMORPHIC_TO_EC_NEXT_ACTION_AUTHORITY",
+      "evidence_level": "INTERFACE_VERIFIED",
+      "note": "Phase1 requires one-or-more selected candidates; EC native next-action control returns exactly one action."
+    },
+    {
+      "function_id": "F06",
+      "function": "single_next_action_authority",
+      "coarse_layer": "S3_CONTROL",
+      "ec_authority": "EC_NATIVE",
+      "llm_status": "PAIRWISE_BENCHMARK_NOT_YET_RUN",
+      "classification": "EC_REPLACEABLE_CANDIDATE",
+      "evidence_level": "EC_NATIVE_VERIFIED",
+      "ec_protocol": "EC_NEXT_ACTION_V1",
+      "note": "Native EC contract deterministically returns exactly one authority-bound actionable next step."
+    },
+    {
+      "function_id": "F07",
+      "function": "generic_outcome_closure_from_frozen_s3",
+      "coarse_layer": "S4",
+      "ec_authority": "EC_NATIVE_NOT_APPLICABLE",
+      "llm_status": "COMPARISON_INVALID_UNDER_CURRENT_INTERFACE",
+      "classification": "NOT_IDENTIFIABLE_FROM_FROZEN_INTERFACE",
+      "evidence_level": "IDENTIFIABILITY_AUDIT",
+      "structural_upper_bound": 0.8,
+      "note": "Different CLOSE/CONTINUE labels collide under the same frozen S3 structural signature."
+    },
+    {
+      "function_id": "F08",
+      "function": "authority_bound_run_state_evidence_closure",
+      "coarse_layer": "CONTROL_PLANE",
+      "ec_authority": "EC_NATIVE",
+      "llm_status": "NOT_REQUIRED_FOR_NATIVE_EC_AUTHORITY",
+      "classification": "EC_REPLACEABLE_CANDIDATE",
+      "evidence_level": "EC_NATIVE_REGRESSION_VERIFIED",
+      "note": "EC atomic closure is a richer run/evidence-state authority and is not isomorphic to frozen Phase1 generic S4."
+    },
+    {
+      "function_id": "F09",
+      "function": "intent_continuity_referent_binding_contradiction_focus_exploration_action_permit_postflight_commit",
+      "coarse_layer": "METACOGNITIVE_CONTROL_PLANE",
+      "ec_authority": "EC_NATIVE_POC",
+      "llm_status": "EXTERNAL_CONTROL_AROUND_LLM",
+      "classification": "DETERMINISTIC_EXTERNALIZABLE_CONTROL",
+      "evidence_level": "POC_REGRESSION_VERIFIED",
+      "note": "Metacognition-vNext POC1-10 110/110 plus POC11 12/12, POC12 14/14, POC13 15/15; this is external runtime control, not Transformer-internal replacement."
+    },
+    {
+      "function_id": "F10",
+      "function": "open_ended_language_realization_and_novel_semantic_synthesis",
+      "coarse_layer": "GENERATION",
+      "ec_authority": "NO_NATIVE_GENERATOR",
+      "llm_status": "EXPECTED_PRIMARY_GENERATIVE_COMPONENT",
+      "classification": "LIKELY_LLM_REGION_BUT_NOT_CAUSALLY_LOCALIZED",
+      "evidence_level": "HYPOTHESIS_ONLY",
+      "note": "Do not claim necessity until discriminative S1/S2 experiments are completed."
+    }
+  ],
+  "current_boundary": {
+    "proven_externalizable_region": [
+      "residual_detection",
+      "bounded_reframing",
+      "single_next_action_authority",
+      "authority_bound_run_state_evidence_closure",
+      "metacognitive_control_plane"
+    ],
+    "unresolved_minimum_llm_region": [
+      "language_to_domain_semantic_ir",
+      "semantic_candidate_generation",
+      "open_ended_language_realization_and_novel_semantic_synthesis"
+    ],
+    "claim_discipline": "The unresolved list is a test target, not proof that an LLM is necessary."
+  },
+  "next_empirical_order": [
+    "audit_and_version_a_discriminative_S1_assay",
+    "run_1p5b_S1_semantic_extraction",
+    "run_1p5b_S2_candidate_recall_with_frozen_S1",
+    "run_same-input_LLM_vs_EC_next_action_authority_assay",
+    "define_successor_closure-sufficient_interface_only_if_needed",
+    "apply_materiality_rule_and_localize_smallest_remaining_LLM_region"
+  ],
+  "large_model_policy": {
+    "automatic_4b_branch": false,
+    "reason": "1.5B resolved the frozen capacity-collapse condition"
+  },
+  "github_actions_used": false,
+  "google_drive_model_relay_used": false
+}
