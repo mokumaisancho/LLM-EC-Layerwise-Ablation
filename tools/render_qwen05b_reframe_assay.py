@@ -13,7 +13,7 @@ import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-WORK = pathlib.Path('/tmp/qwen05b-assay')
+WORK = pathlib.Path('/tmp/phase1-capacity-assay')
 
 BASE_RESEARCH_COMMIT = '8ad9b312b560731e93c95a5e54a50f13705b91a0'
 EXPECTED_DATASET_DIGEST = '8bfce027bdc82a34b78e9b1a87f7812d907db34c164f50a9a996bd41b3b824d6'
@@ -23,13 +23,14 @@ LLAMA_FILE = 'llama-b11146-bin-ubuntu-x64.tar.gz'
 LLAMA_URL = f'https://github.com/ggml-org/llama.cpp/releases/download/{LLAMA_TAG}/{LLAMA_FILE}'
 LLAMA_SHA256 = 'c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410'
 
-MODEL_FILE = 'Qwen2.5-0.5B-Instruct-Q4_K_M.gguf'
+MODEL_REPO = os.environ.get('ASSAY_MODEL_REPO', 'bartowski/Qwen2.5-0.5B-Instruct-GGUF')
+MODEL_REV = os.environ.get('ASSAY_MODEL_REV', '21ef23001f314d0895bd8439b08157c2d4cd9bb7')
+MODEL_FILE = os.environ.get('ASSAY_MODEL_FILE', 'Qwen2.5-0.5B-Instruct-Q4_K_M.gguf')
+MODEL_SHA256 = os.environ.get('ASSAY_MODEL_SHA256', '6eb923e7d26e9cea28811e1a8e852009b21242fb157b26149d3b188f3a8c8653')
+MODEL_SIZE_EXPECTED = int(os.environ.get('ASSAY_MODEL_SIZE_BYTES', '0') or '0')
 MODEL = WORK / MODEL_FILE
-MODEL_REPO = 'bartowski/Qwen2.5-0.5B-Instruct-GGUF'
-MODEL_REV = '21ef23001f314d0895bd8439b08157c2d4cd9bb7'
 MODEL_URL = f'https://huggingface.co/{MODEL_REPO}/resolve/{MODEL_REV}/{MODEL_FILE}'
-MODEL_SHA256 = '6eb923e7d26e9cea28811e1a8e852009b21242fb157b26149d3b188f3a8c8653'
-MODEL_SIZE = 397808192
+CAPACITY_LABEL = os.environ.get('ASSAY_CAPACITY_LABEL', '0.5B')
 
 STATE = {'status': 'BOOTING', 'phase': 'INIT', 'result': None, 'error': None}
 LOCK = threading.Lock()
@@ -50,8 +51,8 @@ def sha256(path: pathlib.Path) -> str:
 
 
 def download(url: str, dest: pathlib.Path):
-    req = urllib.request.Request(url, headers={'User-Agent': 'phase1-qwen05b-assay/2'})
-    with urllib.request.urlopen(req, timeout=120) as src, dest.open('wb') as out:
+    req = urllib.request.Request(url, headers={'User-Agent': 'phase1-capacity-assay/1'})
+    with urllib.request.urlopen(req, timeout=180) as src, dest.open('wb') as out:
         while True:
             chunk = src.read(1024 * 1024)
             if not chunk:
@@ -76,7 +77,7 @@ def acquire_runtime() -> pathlib.Path:
     return matches[0]
 
 
-def post_json(url: str, payload: dict, timeout: int = 120):
+def post_json(url: str, payload: dict, timeout: int = 180):
     req = urllib.request.Request(
         url,
         data=json.dumps(payload).encode('utf-8'),
@@ -99,27 +100,23 @@ def run_assay():
 
         set_state(phase='MODEL_ACQUIRE')
         download(MODEL_URL, MODEL)
-        if MODEL.stat().st_size != MODEL_SIZE:
-            raise RuntimeError(f'MODEL_SIZE_MISMATCH:{MODEL.stat().st_size}')
+        actual_size = MODEL.stat().st_size
+        if MODEL_SIZE_EXPECTED and actual_size != MODEL_SIZE_EXPECTED:
+            raise RuntimeError(f'MODEL_SIZE_MISMATCH:{actual_size}')
         actual_model_sha = sha256(MODEL)
         if actual_model_sha != MODEL_SHA256:
             raise RuntimeError(f'MODEL_SHA_MISMATCH:{actual_model_sha}')
 
         set_state(phase='FIXTURE_GENERATE')
         generated = subprocess.check_output(
-            ['python3', 'tools/generate_phase1_measurement_v2_canonical.py'],
-            cwd=ROOT,
-            text=True,
+            ['python3', 'tools/generate_phase1_measurement_v2_canonical.py'], cwd=ROOT, text=True
         )
-        generated_doc = json.loads(generated)
-        actual_digest = generated_doc.get('dataset_digest')
+        actual_digest = json.loads(generated).get('dataset_digest')
         if actual_digest != EXPECTED_DATASET_DIGEST:
             raise RuntimeError(f'DATASET_DIGEST_MISMATCH:{actual_digest}')
         subprocess.run(
-            ['python3', 'tools/generate_phase1_v2_s3_states.py'],
-            cwd=ROOT,
-            check=True,
-            stdout=subprocess.DEVNULL,
+            ['python3', 'tools/generate_phase1_v2_s3_states.py'], cwd=ROOT,
+            check=True, stdout=subprocess.DEVNULL,
         )
 
         set_state(phase='LLAMA_START')
@@ -128,14 +125,13 @@ def run_assay():
             [
                 str(llama_server), '-m', str(MODEL),
                 '-c', '768', '-b', '32', '-ub', '32',
-                '--threads', '1', '--host', '127.0.0.1', '--port', '18080',
+                '--threads', '1', '--no-warmup',
+                '--host', '127.0.0.1', '--port', '18080',
             ],
-            stdout=server_log,
-            stderr=subprocess.STDOUT,
-            text=True,
+            stdout=server_log, stderr=subprocess.STDOUT, text=True,
         )
         ready = False
-        for _ in range(180):
+        for _ in range(240):
             if server.poll() is not None:
                 break
             try:
@@ -148,7 +144,7 @@ def run_assay():
             time.sleep(1)
         if not ready:
             server_log.flush()
-            tail = (WORK / 'llama.log').read_text(errors='replace')[-5000:]
+            tail = (WORK / 'llama.log').read_text(errors='replace')[-6000:]
             raise RuntimeError('LLAMA_SERVER_NOT_READY:' + tail)
 
         set_state(phase='INFERENCE')
@@ -178,25 +174,28 @@ def run_assay():
             pred = True if raw.startswith('YES') else False if raw.startswith('NO') else None
             hidden = json.loads((d / 'hidden/evaluation.json').read_text())
             gold = bool(hidden['reframe_required'])
-            rows.append({
+            row = {
                 'fixture_id': d.name,
                 'prediction': pred,
                 'gold': gold,
                 'correct': pred == gold,
                 'raw': raw,
                 'upstream_state_hash': state.get('content_hash'),
-            })
+            }
+            rows.append(row)
+            print('ASSAY_FIXTURE=' + json.dumps(row, separators=(',', ':')), flush=True)
 
         correct = sum(int(r['correct']) for r in rows)
         result = {
-            'schema_version': 'PHASE1_QWEN25_0P5B_REFRAME_ACTUAL_V1',
+            'schema_version': 'PHASE1_QWEN_CAPACITY_REFRAME_ACTUAL_V1',
             'assay': 'PHASE1_V2_S3_REFRAME_FIXED_STATE_V1',
+            'capacity_label': CAPACITY_LABEL,
             'fixture_generation': 'phase1_v2',
             'dataset_digest': EXPECTED_DATASET_DIGEST,
             'model_repo': MODEL_REPO,
             'model_revision': MODEL_REV,
             'model_file': MODEL_FILE,
-            'model_size_bytes': MODEL_SIZE,
+            'model_size_bytes': actual_size,
             'model_sha256': MODEL_SHA256,
             'llama_cpp_tag': LLAMA_TAG,
             'llama_cpp_asset': LLAMA_FILE,
