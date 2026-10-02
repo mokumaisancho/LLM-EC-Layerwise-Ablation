@@ -1,0 +1,53 @@
+{
+  "schema_version": "QWEN3_4B_DRIVELESS_CHUNK_POLICY_V1",
+  "date_jst": "2026-10-02",
+  "model": "Qwen3-4B-Q4_K_M.gguf",
+  "model_size": 2497280256,
+  "model_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
+  "hard_constraints": {
+    "google_drive_allowed": false,
+    "google_sheets_allowed_in_primary_route": false,
+    "manual_mid_run_chunk_tuning_allowed": false,
+    "github_actions_enabled": false
+  },
+  "rationale": {
+    "legacy_1000000_bytes": "Historical compatibility value introduced only to fit the Google Sheets IMPORTDATA/result envelope. It is not an optimal Render-to-sandbox transport size.",
+    "render_capacity": "Render previously fetched and SHA-256 verified the complete 2497280256-byte model, so upstream/Render model size is not the limiting dimension.",
+    "remaining_unknown": "Maximum reliable single response accepted by the ChatGPT-side ingress path."
+  },
+  "transport": {
+    "preferred_endpoint": "/part.bin",
+    "encoding": "raw_binary",
+    "base64_for_primary_route": false,
+    "candidate_part_bytes_desc": [67108864, 33554432, 16777216, 8388608, 4194304],
+    "candidate_mib_desc": [64, 32, 16, 8, 4],
+    "part_counts": {
+      "67108864": 38,
+      "33554432": 75,
+      "16777216": 149,
+      "8388608": 298,
+      "4194304": 596
+    },
+    "legacy_csv_endpoint": "/part.csv",
+    "legacy_csv_part_bytes": 1000000,
+    "legacy_csv_role": "compatibility_only"
+  },
+  "tcc_selection": {
+    "state_order": ["PRECHECK", "PROBE_CHUNK_SIZE", "FREEZE_CHUNK_SIZE", "TRANSFER", "VERIFY_PARTS", "VERIFY_WHOLE_FILE", "EXIT_GATE"],
+    "probe_order": [67108864, 33554432, 16777216, 8388608, 4194304],
+    "probe_rule": "Try each declared size once from largest to smallest through the actual end-to-end receiving path. Select the first size that completes with exact byte length and matching X-Part-SHA256.",
+    "freeze_rule": "Once selected, use the same part size for the full run. Do not tune manually mid-run.",
+    "failure_rule": "If a selected size later has one transient failure, retry that part once. A second transport-size failure restarts the run at the next smaller predeclared size; model bytes and acceptance criteria remain unchanged.",
+    "terminal_pass": "Whole file size and SHA-256 exactly match the model registry.",
+    "all_candidates_fail": "TRANSPORT_BLOCKED"
+  },
+  "implementation": {
+    "source": "mcp/generic-binary-ingress/src/transfer-only.ts",
+    "commit": "11148d8be2579743afb2c0aee39d614eab71d8f2",
+    "validation_service": "qwen3-4b-range-temp",
+    "validation_deploy": "dep-davplf60tbcc73et5hqg",
+    "build_status": "PASS",
+    "existing_tests": "5/5 PASS",
+    "service_status": "LIVE"
+  }
+}
