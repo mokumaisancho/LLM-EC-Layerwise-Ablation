@@ -17,7 +17,7 @@ def load_runner():
     return mod
 
 
-class ReportableECBindingTest(unittest.TestCase):
+class ECBindingTest(unittest.TestCase):
     def setUp(self):
         self.mod = load_runner()
 
@@ -34,26 +34,26 @@ class ReportableECBindingTest(unittest.TestCase):
         )
         return tmp, root
 
-    def test_correct_pinned_protocol_is_reportable(self):
-        tmp, root = self.make_repo(self.mod.EC_V4_4_PROTOCOL)
+    def test_correct_pinned_residual_module_is_nonreportable_for_full_s3_s4(self):
+        tmp, root = self.make_repo(self.mod.EC_V4_4_RESIDUAL_PROTOCOL)
         self.addCleanup(tmp.cleanup)
         original = self.mod.git_head
         self.mod.git_head = lambda _: self.mod.EC_V4_4_COMMIT
         self.addCleanup(setattr, self.mod, "git_head", original)
-        ec, provenance = self.mod.load_ecv44(root)
-        self.assertEqual(ec.PROTOCOL, self.mod.EC_V4_4_PROTOCOL)
-        self.assertTrue(provenance["reportable"])
-        self.assertEqual(provenance["commit"], self.mod.EC_V4_4_COMMIT)
+        ec, provenance = self.mod.load_ecv44_residual_detector(root)
+        self.assertEqual(ec.PROTOCOL, self.mod.EC_V4_4_RESIDUAL_PROTOCOL)
+        self.assertFalse(provenance["reportable_as_full_s3_s4"])
+        self.assertEqual(provenance["authority"], "EC_NATIVE")
         self.assertEqual(len(provenance["module_sha256"]), 64)
 
     def test_commit_mismatch_fails_closed(self):
-        tmp, root = self.make_repo(self.mod.EC_V4_4_PROTOCOL)
+        tmp, root = self.make_repo(self.mod.EC_V4_4_RESIDUAL_PROTOCOL)
         self.addCleanup(tmp.cleanup)
         original = self.mod.git_head
         self.mod.git_head = lambda _: "0" * 40
         self.addCleanup(setattr, self.mod, "git_head", original)
         with self.assertRaisesRegex(RuntimeError, "EC_COMMIT_MISMATCH"):
-            self.mod.load_ecv44(root)
+            self.mod.load_ecv44_residual_detector(root)
 
     def test_protocol_mismatch_fails_closed(self):
         tmp, root = self.make_repo("WRONG_PROTOCOL")
@@ -62,12 +62,15 @@ class ReportableECBindingTest(unittest.TestCase):
         self.mod.git_head = lambda _: self.mod.EC_V4_4_COMMIT
         self.addCleanup(setattr, self.mod, "git_head", original)
         with self.assertRaisesRegex(RuntimeError, "EC_PROTOCOL_MISMATCH"):
-            self.mod.load_ecv44(root)
+            self.mod.load_ecv44_residual_detector(root)
 
-    def test_silent_fallback_removed(self):
+    def test_full_run_is_adapter_gated(self):
         text = SCRIPT.read_text(encoding="utf-8")
+        self.assertIn("EC_NATIVE_ADAPTER_REQUIRED", text)
+        self.assertIn("PHASE1_EC_NATIVE_ADAPTER_V1", text)
+        self.assertIn("ECV4_4_RESIDUAL_DIAGNOSTIC_NONREPORTABLE", text)
+        self.assertNotIn("ECV4_4_REPORTABLE", text)
         self.assertNotIn("FALLBACK_NO_EC_PATH", text)
-        self.assertNotIn("fallback_residuals", text)
 
 
 if __name__ == "__main__":
