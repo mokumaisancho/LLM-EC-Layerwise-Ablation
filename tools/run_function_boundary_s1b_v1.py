@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import hashlib, importlib.util, json, pathlib, subprocess
+import hashlib, importlib.util, json, pathlib, subprocess, sys
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 FIXTURE=ROOT/'fixtures'/'function_boundary_s1b_v1.json'
@@ -22,7 +22,7 @@ def load_module():
  actual=git_blob_sha(SOURCE.read_bytes())
  if actual!=EXPECTED_SOURCE_BLOB: raise RuntimeError(f'EC_SOURCE_BLOB_MISMATCH:{actual}')
  spec=importlib.util.spec_from_file_location('poc07_epistemic_cache',SOURCE)
- mod=importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+ mod=importlib.util.module_from_spec(spec); sys.modules[spec.name]=mod; spec.loader.exec_module(mod)
  return mod,actual
 
 def scope(mod, raw):
