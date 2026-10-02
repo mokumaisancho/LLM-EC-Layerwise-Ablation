@@ -1,194 +1,182 @@
 {
-  "schema_version": "EC_LLM_FUNCTION_BOUNDARY_2026_10_03_V3",
+  "schema_version": "EC_LLM_FUNCTION_BOUNDARY_2026_10_03_V4",
   "research_question": "Which externally measurable LLM reasoning/control functions can be replaced or supplemented by deterministic EC without material loss?",
-  "scope_rule": "Map externally observable reasoning/runtime functions, not private Transformer attention/MLP internals.",
-  "frozen_phase1_terminal": "EC_NATIVE_SCOPE_INCOMPATIBLE",
+  "scope_rule": "Externally observable reasoning/runtime functions only; no claims about private Transformer attention/MLP internals.",
   "materiality_threshold": 0.20,
+  "frozen_phase1_terminal": "EC_NATIVE_SCOPE_INCOMPATIBLE",
   "evidence": {
-    "phase1_dataset_digest": "8bfce027bdc82a34b78e9b1a87f7812d907db34c164f50a9a996bd41b3b824d6",
-    "s1_successor_dataset_digest": "4d15e1b89c6382a8a5252558525db55cccc700096ad5c92e97d384c9d59cd190",
-    "s2_successor_dataset_digest": "130f57b09549e260311d69f1b22a56fbfb0a3220880009fd132c1e76e05df14c",
-    "next_action_fixture_blob_sha": "12faa9a4cacf0c91694d25f1ccce45e093d95e44",
     "ec_repo": "mokumaisancho/GPT-EC-Closure-Engine",
     "ec_commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
-    "ec_reframe_accuracy": 0.90,
-    "qwen_0p5b_reframe_accuracy": 0.10,
-    "qwen_1p5b_reframe_accuracy": 0.90,
-    "qwen_0p5b_to_1p5b_gain": 0.80,
-    "qwen_1p5b_s1_primary_score": 0.72,
-    "qwen_1p5b_s1_exact_match_rate": 0.40,
+    "qwen_1p5b_s1_mixed_primary_score": 0.72,
+    "qwen_1p5b_s1_mixed_exact_match_rate": 0.40,
+    "ec_s1b_accuracy": 1.0,
+    "ec_s1b_fail_open_count": 0,
     "qwen_1p5b_s2_oracle_s1_recall": 0.40,
     "qwen_1p5b_s2_oracle_s1_precision": 0.42105263157894735,
     "qwen_1p5b_s2_actual_s1_recall": 0.30,
-    "qwen_1p5b_s2_actual_s1_precision": 0.30,
     "s1_to_s2_recall_propagation_delta": 0.10,
+    "ec_reframe_accuracy": 0.90,
+    "qwen_1p5b_reframe_accuracy": 0.90,
     "ec_next_action_accuracy": 1.0,
-    "qwen_1p5b_next_action_accuracy": 0.058823529411764705,
-    "next_action_accuracy_gap": 0.9411764705882353
+    "qwen_1p5b_next_action_accuracy": 0.058823529411764705
   },
   "function_map": [
     {
-      "function_id": "F01",
-      "function": "language_to_domain_semantic_ir",
-      "coarse_layer": "S1",
-      "ec_authority": "NO_CURRENT_NATIVE_IMPLEMENTATION",
-      "llm_status": "MEASURED_QWEN_1P5B",
-      "classification": "CURRENT_LLM_REGION_WITH_MATERIAL_GROUNDING_ERRORS",
-      "evidence_level": "EMPIRICALLY_MEASURED_LLM_ONLY",
-      "primary_score": 0.72,
-      "fixture_exact_match_rate": 0.40,
-      "per_dimension_accuracy": {
-        "authoritative_primary_evidence_selection": 0.50,
-        "semantic_concept": 0.70,
-        "semantic_relation_grounding": 0.50,
-        "ambiguity": 0.90,
-        "protected_goal_retention": 1.0
-      },
-      "evidence": "results/function_boundary_s1_qwen25_1p5b_actual_2026-10-03.json",
-      "note": "Current EC has no native S1 generator. Qwen2.5-1.5B is partially capable but evidence and relation grounding are materially weak. This identifies the current architecture boundary, not a proof that only an LLM can perform S1."
+      "function_id": "F01A",
+      "function": "raw_language_to_structured_claims_concepts_relations",
+      "coarse_layer": "S1A",
+      "ec_authority": "NO_CURRENT_NATIVE_LANGUAGE_PARSER",
+      "llm_status": "CURRENT_COMPONENT; NOT YET ISOLATED FROM S1B IN A PAIRED ASSAY",
+      "classification": "CURRENT_LLM_OR_GENERATIVE_REGION",
+      "evidence_level": "PARTIALLY_LOCALIZED",
+      "known_qwen_1p5b_failures_from_mixed_s1": [
+        "relation grounding",
+        "negation/evidence polarity interpretation",
+        "freshness/supersession relation extraction",
+        "source-authority relation extraction"
+      ],
+      "note": "The old S1 score bundled language parsing with post-parse epistemic control. S1B is now independently externalized, so only the language-to-structure part remains here."
+    },
+    {
+      "function_id": "F01B",
+      "function": "structured_evidence_authority_freshness_conflict_abstention",
+      "coarse_layer": "S1B",
+      "ec_authority": "EC_NATIVE_POC7_PLUS_V4_AUTHORITY_BINDING",
+      "llm_status": "NOT_REQUIRED_AFTER_STRUCTURING",
+      "classification": "EC_EXTERNALIZABLE",
+      "evidence_level": "EMPIRICALLY_MEASURED_EC",
+      "ec_accuracy": 1.0,
+      "fail_open_count": 0,
+      "fixture_count": 10,
+      "dataset_digest": "38e10530d0645bc73418fcfd61f5137d1da53ffd27e7324a2eb0a615a4e082b3",
+      "verified": [
+        "source validation/quarantine",
+        "freshness/supersession",
+        "same-claim conflict abstention",
+        "explicit contradiction abstention",
+        "exception resolution",
+        "expiry",
+        "revocation",
+        "derived revocation propagation",
+        "scope-specific retrieval"
+      ],
+      "evidence": "results/function_boundary_s1b_ec_actual_2026-10-03.json",
+      "note": "Does not parse raw language or infer arbitrary semantic relations; it governs already-structured evidence."
     },
     {
       "function_id": "F02",
       "function": "semantic_candidate_generation",
       "coarse_layer": "S2",
-      "ec_authority": "NO_CURRENT_NATIVE_IMPLEMENTATION",
+      "ec_authority": "NO_CURRENT_NATIVE_GENERATOR",
       "llm_status": "MEASURED_QWEN_1P5B",
       "classification": "CURRENT_LLM_REGION_BUT_MAJOR_CAPABILITY_DEFICIT",
       "evidence_level": "EMPIRICALLY_MEASURED_LLM_ONLY",
       "oracle_s1_candidate_recall": 0.40,
       "oracle_s1_candidate_precision": 0.42105263157894735,
       "actual_s1_candidate_recall": 0.30,
-      "actual_s1_candidate_precision": 0.30,
-      "s1_error_propagation_recall_delta": 0.10,
+      "s1_error_propagation_delta": 0.10,
       "propagation_material": false,
       "evidence": "results/function_boundary_s2_qwen25_1p5b_actual_2026-10-03.json",
-      "note": "The dominant measured deficit is S2 candidate construction itself: even with correct S1, recall is 0.40. Current EC has no native candidate generator, so this remains inside the current LLM/generative region pending a deterministic successor implementation."
+      "next_split": "deterministic ontology expansion vs novelty residual"
     },
     {
       "function_id": "F03",
       "function": "residual_detection",
       "coarse_layer": "S3",
       "ec_authority": "EC_NATIVE",
-      "llm_status": "CAPABLE_AT_1P5B_ON_FIXED_REFRAME_ASSAY",
       "classification": "DUAL_CAPABLE_EXTERNALIZABLE",
-      "evidence_level": "EMPIRICALLY_PAIRED",
-      "ec_protocol": "EC_V4_4_RESIDUAL_DETECTOR_V1",
-      "note": "EC and 1.5B both reach 0.90 aggregate reframe accuracy but differ on M004/M005, proving the control function can be externalized while preserving distinct error topology."
+      "ec_accuracy_context": 0.90,
+      "qwen_1p5b_accuracy_context": 0.90,
+      "evidence_level": "EMPIRICALLY_PAIRED"
     },
     {
       "function_id": "F04",
       "function": "bounded_intent_preserving_reframing",
       "coarse_layer": "S3",
       "ec_authority": "EC_NATIVE",
-      "llm_status": "CAPABLE_AT_1P5B_ON_FIXED_REFRAME_ASSAY",
       "classification": "DUAL_CAPABLE_EXTERNALIZABLE",
-      "evidence_level": "EMPIRICALLY_PAIRED",
-      "ec_protocol": "EC_V4_4_FRAMING_SEARCH_V1",
       "ec_accuracy": 0.90,
       "qwen_1p5b_accuracy": 0.90,
-      "note": "EC false-positive M004; 1.5B false-negative M005."
+      "error_topology": "EC false-positive M004; LLM false-negative M005",
+      "evidence_level": "EMPIRICALLY_PAIRED"
     },
     {
       "function_id": "F05",
       "function": "all_admissible_candidate_set_selection",
       "coarse_layer": "S3",
-      "ec_authority": "EC_NATIVE_NOT_APPLICABLE",
-      "llm_status": "NOT_REQUIRED_FOR_CURRENT_BOUNDARY_CLAIM",
       "classification": "NOT_ISOMORPHIC_TO_EC_NEXT_ACTION_AUTHORITY",
-      "evidence_level": "INTERFACE_VERIFIED",
-      "note": "The frozen Phase1 all-admissible-set function and EC singleton next-action authority are different functions and must not be scored as substitutes."
+      "evidence_level": "INTERFACE_VERIFIED"
     },
     {
       "function_id": "F06",
       "function": "single_next_action_authority",
       "coarse_layer": "S3_CONTROL",
-      "ec_authority": "EC_NATIVE",
-      "llm_status": "MEASURED_QWEN_1P5B",
+      "ec_authority": "EC_NEXT_ACTION_V1",
       "classification": "EC_REPLACEABLE_UNDER_FROZEN_CONTROL_CONTRACT",
-      "evidence_level": "EMPIRICALLY_PAIRED",
-      "ec_protocol": "EC_NEXT_ACTION_V1",
-      "ec_decision_accuracy": 1.0,
-      "qwen_1p5b_decision_accuracy": 0.058823529411764705,
+      "ec_accuracy": 1.0,
+      "qwen_1p5b_accuracy": 0.058823529411764705,
       "absolute_gap": 0.9411764705882353,
-      "material": true,
       "qwen_collapse_mode": "REFRAME_ALL_17",
-      "evidence": "results/function_boundary_next_action_v2_actual_2026-10-03.json",
-      "note": "V2 corrected the V1 policy-completeness defect before inference, preserved all 17 fixtures/oracles, and required EC 17/17 precheck. The result establishes EC replacement for contract-bound next-action authority. It does not establish that the EC policy itself is independently optimal for open-ended planning."
+      "evidence_level": "EMPIRICALLY_PAIRED",
+      "evidence": "results/function_boundary_next_action_v2_actual_2026-10-03.json"
     },
     {
       "function_id": "F07",
       "function": "generic_outcome_closure_from_frozen_s3",
       "coarse_layer": "S4",
-      "ec_authority": "EC_NATIVE_NOT_APPLICABLE",
-      "llm_status": "COMPARISON_INVALID_UNDER_CURRENT_INTERFACE",
       "classification": "NOT_IDENTIFIABLE_FROM_FROZEN_INTERFACE",
-      "evidence_level": "IDENTIFIABILITY_AUDIT",
       "structural_upper_bound": 0.80,
-      "note": "Different CLOSE/CONTINUE labels collide under the same frozen S3 structural signature."
+      "evidence_level": "IDENTIFIABILITY_AUDIT"
     },
     {
       "function_id": "F08",
       "function": "authority_bound_run_state_evidence_closure",
       "coarse_layer": "CONTROL_PLANE",
       "ec_authority": "EC_NATIVE",
-      "llm_status": "NOT_NEEDED_FOR_NATIVE_EC_AUTHORITY",
       "classification": "EC_EXTERNALIZABLE_CANDIDATE",
-      "evidence_level": "EC_NATIVE_REGRESSION_VERIFIED",
-      "note": "EC atomic closure is richer than frozen generic S4; a paired comparison is unnecessary unless the goal changes from externalizability to model-vs-EC equivalence."
+      "evidence_level": "EC_NATIVE_REGRESSION_VERIFIED"
     },
     {
       "function_id": "F09",
-      "function": "intent_continuity_referent_binding_contradiction_focus_exploration_action_permit_postflight_commit",
+      "function": "metacognitive_runtime_control",
       "coarse_layer": "METACOGNITIVE_CONTROL_PLANE",
       "ec_authority": "EC_NATIVE_POC",
-      "llm_status": "EXTERNAL_CONTROL_AROUND_LLM",
       "classification": "DETERMINISTIC_EXTERNALIZABLE_CONTROL",
-      "evidence_level": "POC_REGRESSION_VERIFIED",
-      "note": "Metacognition-vNext POC1-10 110/110 plus POC11 12/12, POC12 14/14, POC13 15/15. This is external runtime control, not Transformer-internal replacement."
+      "evidence_level": "POC_REGRESSION_VERIFIED"
     },
     {
       "function_id": "F10",
       "function": "open_ended_language_realization_and_novel_semantic_synthesis",
       "coarse_layer": "GENERATION",
       "ec_authority": "NO_NATIVE_GENERATOR",
-      "llm_status": "EXPECTED_PRIMARY_GENERATIVE_COMPONENT",
       "classification": "UNRESOLVED_CURRENT_LLM_REGION",
-      "evidence_level": "HYPOTHESIS_ONLY",
-      "note": "The S1/S2 successors are constrained semantic/candidate tasks and do not prove necessity for open-ended synthesis."
+      "evidence_level": "HYPOTHESIS_ONLY"
     }
   ],
   "current_boundary": {
     "proven_externalizable_or_replaceable_region": [
-      "residual_detection",
-      "bounded_intent_preserving_reframing",
-      "single_next_action_authority",
-      "authority_bound_run_state_evidence_closure",
-      "metacognitive_control_plane"
+      "structured evidence authority/freshness/conflict control",
+      "residual detection",
+      "bounded intent-preserving reframing",
+      "single next-action authority",
+      "authority-bound run-state/evidence closure",
+      "metacognitive runtime control"
     ],
     "current_llm_or_generative_region_in_this_architecture": [
-      "language_to_domain_semantic_ir",
-      "semantic_candidate_generation",
-      "open_ended_language_realization_and_novel_semantic_synthesis"
+      "raw language -> structured claims/concepts/relations",
+      "semantic candidate generation",
+      "open-ended language realization / novel semantic synthesis"
     ],
-    "measured_1p5b_weaknesses": [
-      "authoritative_evidence_selection",
-      "semantic_relation_grounding",
-      "semantic_candidate_generation",
-      "negation_grounding",
-      "freshness_supersession"
-    ],
-    "claim_discipline": "The current LLM-region list means EC presently has no native substitute there; it does not prove a deterministic non-LLM substitute is impossible."
+    "claim_discipline": "Current LLM-region means no validated EC substitute yet, not proof that a deterministic non-LLM substitute is impossible."
   },
   "next_empirical_order": [
-    "test whether S1 authoritative-evidence and relation-grounding can be externalized as deterministic pre-LLM control",
-    "test whether S2 candidate generation can be split into deterministic ontology expansion plus LLM novelty residual",
-    "only if those fail, retain them in the minimum LLM region",
-    "do not reopen 4B unless a remaining boundary question specifically requires capacity escalation"
+    "split S2 into deterministic ontology expansion and novelty residual",
+    "measure deterministic known-candidate expansion coverage against S2 gold sets",
+    "measure only the uncovered residual with LLM if any",
+    "retain raw-language S1A as LLM region until a separate parser/extractor replacement is tested",
+    "do not reopen 4B unless a remaining boundary specifically requires capacity escalation"
   ],
-  "large_model_policy": {
-    "automatic_4b_branch": false,
-    "reason": "1.5B resolved the reframe capacity-collapse question; current unresolved questions are function-boundary questions, not generic model-size questions"
-  },
+  "large_model_policy": {"automatic_4b_branch": false},
   "github_actions_used": false,
   "google_drive_model_relay_used": false
 }
