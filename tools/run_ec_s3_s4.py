@@ -2,15 +2,69 @@
 from __future__ import annotations
 
 import argparse
-import importlib
+import hashlib
+import importlib.util
 import json
 import os
-import sys
+import subprocess
 from pathlib import Path
+
+EC_V4_4_REPO = "mokumaisancho/GPT-EC-Closure-Engine"
+EC_V4_4_COMMIT = "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2"
+EC_V4_4_PROTOCOL = "EC_V4_4_RESIDUAL_DETECTOR_V1"
 
 
 def load_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def file_sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def git_head(repo_root: Path) -> str:
+    try:
+        return subprocess.check_output(
+            ["git", "-C", str(repo_root), "rev-parse", "HEAD"],
+            text=True,
+            stderr=subprocess.STDOUT,
+            timeout=10,
+        ).strip()
+    except Exception as exc:
+        raise RuntimeError(f"EC_GIT_HEAD_UNAVAILABLE:{type(exc).__name__}") from exc
+
+
+def load_ecv44(repo_root: Path):
+    repo_root = repo_root.resolve()
+    head = git_head(repo_root)
+    if head != EC_V4_4_COMMIT:
+        raise RuntimeError(f"EC_COMMIT_MISMATCH:{head}")
+
+    module_path = repo_root / "01_repo" / "src" / "v4" / "ec_residual_detector.py"
+    if not module_path.is_file():
+        raise RuntimeError("EC_RESIDUAL_DETECTOR_MISSING")
+
+    spec = importlib.util.spec_from_file_location("llm_ec_pinned_ec_residual_detector", module_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("EC_MODULE_SPEC_UNAVAILABLE")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    protocol = getattr(mod, "PROTOCOL", None)
+    if protocol != EC_V4_4_PROTOCOL:
+        raise RuntimeError(f"EC_PROTOCOL_MISMATCH:{protocol}")
+    if not callable(getattr(mod, "detect_residuals", None)):
+        raise RuntimeError("EC_DETECT_RESIDUALS_MISSING")
+
+    ec_provenance = {
+        "repository": EC_V4_4_REPO,
+        "commit": head,
+        "protocol": protocol,
+        "module_path": "01_repo/src/v4/ec_residual_detector.py",
+        "module_sha256": file_sha256(module_path),
+        "reportable": True,
+    }
+    return mod, ec_provenance
 
 
 def select_candidates(candidate_set: dict) -> tuple[list[str], list[str], list[dict]]:
@@ -29,32 +83,16 @@ def select_candidates(candidate_set: dict) -> tuple[list[str], list[str], list[d
     return selected, rejected, reasons
 
 
-def fallback_residuals(state: dict) -> list[dict]:
-    variables = state["framing"]["variables"]
-    explained = {
-        str(obs)
-        for variable in variables.values()
-        for obs in variable.get("explains", [])
-    }
-    out = []
-    for observation in state.get("observations", []):
-        oid = observation.get("observation_id")
-        if oid and oid not in explained:
-            out.append({"type": "UNEXPLAINED_OBSERVATION", "subject": oid})
-    return out
-
-
-def ec_residuals(state: dict):
-    ec_root = os.environ.get("EC_V4_4_PYTHONPATH")
-    if ec_root:
-        sys.path.insert(0, ec_root)
-        try:
-            mod = importlib.import_module("v4.ec_residual_detector")
-            result = mod.detect_residuals(state["intent"], state["framing"], observations=state.get("observations", []))
-            return result.get("residuals", []), result.get("protocol"), "ECV4_4"
-        except Exception as exc:
-            return fallback_residuals(state), None, "FALLBACK:" + type(exc).__name__
-    return fallback_residuals(state), None, "FALLBACK_NO_EC_PATH"
+def ec_residuals(state: dict, ec_mod):
+    result = ec_mod.detect_residuals(
+        state["intent"],
+        state["framing"],
+        observations=state.get("observations", []),
+    )
+    protocol = result.get("protocol")
+    if protocol != EC_V4_4_PROTOCOL:
+        raise RuntimeError(f"EC_RUNTIME_PROTOCOL_MISMATCH:{protocol}")
+    return result.get("residuals", [])
 
 
 def selected_relation(candidate_set: dict, selected: list[str]):
@@ -93,43 +131,58 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default="fixtures/phase1_v2/generated")
     ap.add_argument("--out", default="results/ec_s3_s4")
+    ap.add_argument("--ec-repo-root", default=os.environ.get("EC_V4_4_REPO_ROOT"))
     args = ap.parse_args()
+
+    if not args.ec_repo_root:
+        raise SystemExit("EC_V4_4_REPO_ROOT is required; reportable EC runs are fail-closed")
+
+    ec_mod, ec_provenance = load_ecv44(Path(args.ec_repo_root))
     root, out_root = Path(args.root), Path(args.out)
     rows = []
+
     for fixture in sorted(p for p in root.iterdir() if p.is_dir()):
         s2 = load_json(fixture / "oracle" / "s2_candidate_set.json")
         state = load_json(fixture / "upstream" / "s3_semantic_state.json")
         selected, rejected, reasons = select_candidates(s2)
-        residuals, protocol, mode = ec_residuals(state)
+        residuals = ec_residuals(state, ec_mod)
         reframe = bool(residuals)
         closure, closure_residuals = closure_decision(s2, selected, state, residuals)
         result = {
             "fixture_id": fixture.name,
             "implementation": "EC",
-            "ec_mode": mode,
-            "ec_protocol": protocol,
+            "ec_mode": "ECV4_4_REPORTABLE",
+            "ec_protocol": EC_V4_4_PROTOCOL,
+            "ec_provenance": ec_provenance,
             "upstream": {
                 "candidate_set_hash": s2.get("content_hash"),
-                "semantic_state_hash": state.get("content_hash")
+                "semantic_state_hash": state.get("content_hash"),
             },
             "s3": {
                 "selected_candidate_ids": selected,
                 "rejected_candidate_ids": rejected,
                 "decision_reasons": reasons,
                 "residuals": residuals,
-                "reframe_required": reframe
+                "reframe_required": reframe,
             },
             "s4": {
                 "closure_class": closure,
                 "residuals": closure_residuals,
-                "selected_relation": selected_relation(s2, selected)
-            }
+                "selected_relation": selected_relation(s2, selected),
+            },
         }
         out = out_root / (fixture.name + ".json")
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         rows.append(result)
-    print(json.dumps({"run": "EC_S3_S4", "fixture_count": len(rows), "result_count": len(rows)}, indent=2))
+
+    print(json.dumps({
+        "run": "EC_S3_S4",
+        "fixture_count": len(rows),
+        "result_count": len(rows),
+        "ec_provenance": ec_provenance,
+        "status": "PASS_REPORTABLE",
+    }, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":
