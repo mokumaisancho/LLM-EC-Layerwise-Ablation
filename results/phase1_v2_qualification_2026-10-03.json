@@ -1,0 +1,55 @@
+{
+  "schema_version": "PHASE1_V2_QUALIFICATION_2026_10_03_V1",
+  "captured_at": "2026-10-03T00:00:00+09:00",
+  "fixture_generation": "phase1_v2",
+  "fixture_count": 10,
+  "canonical_relation_contract": "S2_RELATION_GROUPS_V1",
+  "dataset_digest": "8bfce027bdc82a34b78e9b1a87f7812d907db34c164f50a9a996bd41b3b824d6",
+  "leakage_gate": {
+    "status": "PASS",
+    "visible_paths_scanned": ["input/task.json"],
+    "blocking_findings": 0
+  },
+  "oracle_replay": {
+    "status": "PASS",
+    "fixtures_passed": 10,
+    "fixtures_total": 10,
+    "checks": [
+      "oracle selection matches hidden acceptable candidate ids",
+      "oracle reframe flag matches hidden evaluation",
+      "oracle closure class matches hidden evaluation",
+      "S1-S4 content hashes recompute exactly",
+      "S1->S2->S3->S4 hash chain is continuous",
+      "fixture manifest oracle hashes match generated artifacts"
+    ]
+  },
+  "deterministic_s3_s4_prebaseline": {
+    "status": "PASS_NONREPORTABLE_FALLBACK",
+    "implementation": "tools/run_ec_s3_s4.py fallback semantics",
+    "ec_mode": "FALLBACK_NO_EC_PATH",
+    "selection_accuracy": 1.0,
+    "reframe_accuracy": 1.0,
+    "closure_accuracy": 1.0,
+    "final_task_success": 1.0,
+    "reportable_as_ecv4_result": false,
+    "reason": "Actual ECv4 residual detector was not connected in the GPT sandbox; the repository script therefore uses its deterministic fallback path. This is useful as a harness prebaseline only and must not be presented as the final ECv4 measurement."
+  },
+  "measurement_readiness": {
+    "phase1_v2_fixture_generation": "PASS",
+    "oracle_replay": "PASS",
+    "oracle_label_leakage": "PASS",
+    "ec_s3_s4_harness": "PASS",
+    "actual_ecv4_s3_s4": "BLOCKED_EC_PATH_NOT_BOUND",
+    "ec_s1_s2": "NOT_IMPLEMENTED",
+    "llm_0_5b": "BLOCKED_BY_SANDBOX_MODEL_INGRESS",
+    "a_b_c_d_e_comparison": "WAITING_FOR_ACTUAL_ECV4_AND_LLM",
+    "oracle_substitution_gain": "WAITING_FOR_COMPARISON"
+  },
+  "hard_rules": {
+    "large_llm_required_for_initial_study": false,
+    "qwen3_4b_role": "OPTIONAL_FINAL_REFERENCE",
+    "fallback_may_be_reported_as_ecv4": false,
+    "github_actions": false,
+    "google_drive_for_large_model_ingress": false
+  }
+}
