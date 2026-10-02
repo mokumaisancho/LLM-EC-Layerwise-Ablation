@@ -43,12 +43,13 @@ def canonical_digest(data):
  return hashlib.sha256(json.dumps(subject,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest()
 
 def acquire_ec():
- base=WORK/'ec'; (base/'v4').mkdir(parents=True,exist_ok=True); (base/'v4/__init__.py').write_text('')
+ base=ROOT/'vendor'/'ecv44'
  observed={}
  for rel,expected in EC_FILES.items():
-  src=f'https://raw.githubusercontent.com/mokumaisancho/GPT-EC-Closure-Engine/{EC_COMMIT}/01_repo/src/v4/{pathlib.Path(rel).name}'
-  b=download(src,base/rel); actual=git_blob_sha(b); observed[rel]=actual
-  if actual!=expected: raise RuntimeError(f'EC_BLOB_MISMATCH:{rel}:{actual}')
+  p=base/rel
+  if not p.exists(): raise RuntimeError(f'EC_VENDOR_MISSING:{rel}')
+  b=p.read_bytes(); actual=git_blob_sha(b); observed[rel]=actual
+  if actual!=expected: raise RuntimeError(f'EC_BLOB_MISMATCH:{rel}:{actual}:{expected}')
  sys.path.insert(0,str(base)); importlib.invalidate_caches()
  ena=importlib.import_module('ec_next_action_authority'); df=importlib.import_module('ec_dynamic_frontier')
  return ena,df,observed
@@ -79,7 +80,6 @@ def normalize_ec(ena,df,fx):
   return {'status':status,'work_id':work,'reason_code':reason},out,visible_dynamic
  except Exception as e:
   msg=str(e); reason=msg.split(':',1)[0] if msg.startswith('PRIOR_ART_GATE_PASS_REQUIRED:') else msg
-  if reason not in REASONS: reason=reason
   return {'status':'FAIL_CLOSED','work_id':'NONE','reason_code':reason},{'exception_type':type(e).__name__,'exception':msg},visible_dynamic
 
 def post_json(url,payload,timeout=180):
@@ -152,7 +152,7 @@ def main():
   if not ready: log.flush(); raise RuntimeError('LLAMA_NOT_READY:'+(WORK/'llama.log').read_text(errors='replace')[-4000:])
   print('NA_STATE=LLM_INFERENCE',flush=True); llm_rows=run_llm('http://127.0.0.1:18080/completion',data,ec_rows)
   ec_summary=summarize(ec_rows); llm_summary=summarize(llm_rows); gap=ec_summary['decision_accuracy']-llm_summary['decision_accuracy']
-  result={'schema_version':'FUNCTION_BOUNDARY_NEXT_ACTION_ACTUAL_V1','protocol':'FUNCTION_BOUNDARY_NEXT_ACTION_V1','dataset_digest':EXPECTED_DIGEST,'execution_wrapper_commit':head,'ec':{'repo':'mokumaisancho/GPT-EC-Closure-Engine','commit':EC_COMMIT,'blob_shas':ec_blobs,'protocol':'EC_NEXT_ACTION_V1','summary':ec_summary},'llm':{'model_repo':MODEL_REPO,'model_file':MODEL_FILE,'model_size_bytes':MODEL_SIZE,'model_sha256':MODEL_SHA,'llama_cpp_tag':LLAMA_TAG,'temperature':0,'summary':llm_summary},'comparison':{'ec_minus_llm_decision_accuracy':gap,'materiality_threshold':0.20,'material':abs(gap)>=0.20},'github_actions_used':False,'google_drive_used':False}
+  result={'schema_version':'FUNCTION_BOUNDARY_NEXT_ACTION_ACTUAL_V1','protocol':'FUNCTION_BOUNDARY_NEXT_ACTION_V1','dataset_digest':EXPECTED_DIGEST,'execution_wrapper_commit':head,'ec':{'repo':'mokumaisancho/GPT-EC-Closure-Engine','commit':EC_COMMIT,'blob_shas':ec_blobs,'source_mode':'EXACT_VENDORED_GIT_BLOBS','protocol':'EC_NEXT_ACTION_V1','summary':ec_summary},'llm':{'model_repo':MODEL_REPO,'model_file':MODEL_FILE,'model_size_bytes':MODEL_SIZE,'model_sha256':MODEL_SHA,'llama_cpp_tag':LLAMA_TAG,'temperature':0,'summary':llm_summary},'comparison':{'ec_minus_llm_decision_accuracy':gap,'materiality_threshold':0.20,'material':abs(gap)>=0.20},'github_actions_used':False,'google_drive_used':False}
   OUT.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n'); print('NA_TERMINAL='+json.dumps(result,separators=(',',':')),flush=True)
  finally:
   if server.poll() is None: server.terminate()
