@@ -1,0 +1,51 @@
+{
+  "schema_version": "PHASE1_S4_IDENTIFIABILITY_AUDIT_2026_10_03_V1",
+  "protocol": "PHASE1_MVP_TCC_V1",
+  "fixture_generation": "phase1_v2",
+  "fixture_count": 10,
+  "interfaces": {
+    "s3_schema": "S3_SELECTED_REFRAMED_STATE_V1",
+    "s4_schema": "S4_CLOSURE_EXECUTION_RESULT_V1"
+  },
+  "structural_signature_fields": [
+    "selected_candidate_count",
+    "rejected_candidate_count",
+    "reframe_required",
+    "trigger_residual_types"
+  ],
+  "collision_groups": [
+    {
+      "signature": {"selected": 1, "rejected": 1, "reframe_required": false, "trigger_residual_types": []},
+      "closure_labels": {
+        "CLOSE": ["M001", "M002", "M004", "M006", "M008", "M010"],
+        "CONTINUE": ["M007"]
+      }
+    },
+    {
+      "signature": {"selected": 2, "rejected": 1, "reframe_required": false, "trigger_residual_types": []},
+      "closure_labels": {
+        "CLOSE": ["M009"],
+        "CONTINUE": ["M003"]
+      }
+    }
+  ],
+  "separately_identifiable": [
+    {
+      "fixture_id": "M005",
+      "signature": {"selected": 1, "rejected": 1, "reframe_required": true, "trigger_residual_types": ["MODEL_CANNOT_REPRESENT_OBSERVATION"]},
+      "closure": "CLOSE"
+    }
+  ],
+  "identifiability": {
+    "closure_is_deterministic_function_of_structural_signature": false,
+    "best_possible_majority_correct": 8,
+    "total": 10,
+    "best_possible_majority_accuracy": 0.8,
+    "metric_type": "INTERFACE_IDENTIFIABILITY_BOUND_NOT_EC_ACCURACY"
+  },
+  "finding": "The frozen S3 artifact does not expose enough generic closure-relevant state to distinguish at least M003 from M009 and M007 from several CLOSE fixtures.",
+  "required_resolution": "Do not simulate EC closure under PHASE1_MVP_TCC_V1. Mark EC-native S4 NOT_IDENTIFIABLE_FROM_FROZEN_S3_INTERFACE. Any closure-sufficient enrichment of S3 requires a new versioned methodology/protocol.",
+  "issue_ref": 28,
+  "github_actions_used": false,
+  "google_drive_used": false
+}
