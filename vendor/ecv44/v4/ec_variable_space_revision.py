@@ -108,6 +108,12 @@ def apply_variable_space_revision(
     expected_revision_id: int,
     authority_ref: str,
 ) -> dict[str, Any]:
+    """Apply evidence-bound representation changes before EC hard binding.
+
+    The operation set is intentionally explicit. Closure/frontier authority is not
+    weakened: the output receives a new revision id and digest, and every mutation
+    requires evidence provenance.
+    """
     if not str(authority_ref or "").strip():
         raise VariableSpaceRevisionError("REVISION_AUTHORITY_REQUIRED")
     revision = space.get("revision_id")
@@ -237,6 +243,7 @@ def validate_revision_request(
     space: Mapping[str, Any],
     request: Mapping[str, Any] | None,
 ) -> dict[str, Any]:
+    """Dry-run a proposed revision; used by the Issue Definition Gate."""
     req = dict(request or {})
     operations = req.get("operations") or ()
     if not operations:
