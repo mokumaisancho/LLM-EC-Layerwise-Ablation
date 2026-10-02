@@ -1,0 +1,71 @@
+{
+  "schema_version": "PHASE1_ECV44_REFRAME_ACTUAL_2026_10_03_V1",
+  "protocol": "PHASE1_MVP_TCC_V1",
+  "fixture_generation": "phase1_v2",
+  "fixture_count": 10,
+  "source": {
+    "repository": "mokumaisancho/GPT-EC-Closure-Engine",
+    "commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+    "detector": {
+      "protocol": "EC_V4_4_RESIDUAL_DETECTOR_V1",
+      "path": "01_repo/src/v4/ec_residual_detector.py",
+      "blob_sha": "db2786573417348b243ca9d54f3a21d631427943"
+    },
+    "framing_search": {
+      "protocol": "EC_V4_4_FRAMING_SEARCH_V1",
+      "path": "01_repo/src/v4/ec_framing_search.py",
+      "blob_sha": "dfc4c56e9bfdeffb3bd1f4aa699d9172c78fa7d5"
+    }
+  },
+  "execution": {
+    "environment": "GPT sandbox",
+    "method": "source-extracted execution against canonical Phase1-v2-equivalent S3 semantic states",
+    "github_actions_used": false,
+    "google_drive_used": false
+  },
+  "detector_reframe_classification": {
+    "correct": 9,
+    "total": 10,
+    "accuracy": 0.9,
+    "rows": [
+      {"fixture_id":"M001","oracle_reframe":false,"ec_residual":false,"residual_types":[]},
+      {"fixture_id":"M002","oracle_reframe":false,"ec_residual":false,"residual_types":[]},
+      {"fixture_id":"M003","oracle_reframe":false,"ec_residual":false,"residual_types":[]},
+      {"fixture_id":"M004","oracle_reframe":false,"ec_residual":true,"residual_types":["ISOLATED_UNSUPPORTED_VARIABLE"]},
+      {"fixture_id":"M005","oracle_reframe":true,"ec_residual":true,"residual_types":["UNEXPLAINED_OBSERVATION"]},
+      {"fixture_id":"M006","oracle_reframe":false,"ec_residual":false,"residual_types":[]},
+      {"fixture_id":"M007","oracle_reframe":false,"ec_residual":false,"residual_types":[]},
+      {"fixture_id":"M008","oracle_reframe":false,"ec_residual":false,"residual_types":[]},
+      {"fixture_id":"M009","oracle_reframe":false,"ec_residual":false,"residual_types":[]},
+      {"fixture_id":"M010","oracle_reframe":false,"ec_residual":false,"residual_types":[]}
+    ]
+  },
+  "framing_search_discriminators": {
+    "M004": {
+      "oracle_reframe": false,
+      "ec_native_status": "REVISE",
+      "selected_operation": {"op":"REMOVE","id":"cause_x"},
+      "current_score": 0.721,
+      "revised_score": 0.848,
+      "improvement": 0.127,
+      "phase1_result": "FALSE_POSITIVE_REFRAME"
+    },
+    "M005": {
+      "oracle_reframe": true,
+      "ec_native_status": "REVISE",
+      "selected_operation": {"op":"ADD","semantic_key":"authorization_rejection"},
+      "current_score": 0.648,
+      "revised_score": 0.846,
+      "improvement": 0.198,
+      "phase1_result": "CORRECT_REFRAME"
+    }
+  },
+  "conclusion": {
+    "reportable_subfunction": "S3_REFRAME_ONLY",
+    "reframe_accuracy": 0.9,
+    "verified_divergence_fixture": "M004",
+    "interpretation": "ECv4.4 treats isolated unsupported-variable removal as a beneficial framing revision while the frozen Phase1 oracle classifies M004 as selection-only with no reframe.",
+    "full_s3_s4_reportable": false,
+    "reason_full_s3_s4_not_reportable": "EC-native candidate-selection/closure adapter remains unresolved under Issue #23."
+  }
+}
