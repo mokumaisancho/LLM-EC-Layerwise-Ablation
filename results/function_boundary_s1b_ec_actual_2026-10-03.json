@@ -1,0 +1,51 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S1B_EC_ACTUAL_V1",
+  "protocol": "FUNCTION_BOUNDARY_S1B_V1",
+  "status": "REPORTABLE",
+  "dataset_digest": "38e10530d0645bc73418fcfd61f5137d1da53ffd27e7324a2eb0a615a4e082b3",
+  "execution_wrapper_commit": "67c2fa932c8de6ea0abe5cc3d5079af0ba6f7e94",
+  "ec_source": {
+    "repo": "mokumaisancho/GPT-EC-Closure-Engine",
+    "commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+    "path": "02_experiments/metacognition_vnext/poc07_epistemic_cache/epistemic_cache.py",
+    "git_blob_sha": "838ef8f679a4c7c6226312fca4c693bcd3822bb8",
+    "source_mode": "EXACT_VENDORED_GIT_BLOB"
+  },
+  "fixture_count": 10,
+  "correct": 10,
+  "accuracy": 1.0,
+  "fail_open_count": 0,
+  "acceptance": {"minimum_accuracy": 0.8, "fail_open_allowed": 0},
+  "pass": true,
+  "verified_cases": [
+    "valid_authoritative_retrieval",
+    "invalid_source_quarantine",
+    "freshness_supersession",
+    "same_claim_unresolved_conflict",
+    "explicit_contradiction_abstention",
+    "exception_resolves_conflict",
+    "expiry_fallback",
+    "direct_revocation_fallback",
+    "derived_revocation_propagation",
+    "scope_specificity"
+  ],
+  "scope_boundary": {
+    "externalized": [
+      "structured evidence source validation",
+      "freshness/supersession",
+      "conflict abstention",
+      "revocation propagation",
+      "expiry",
+      "scope-specific retrieval"
+    ],
+    "not_externalized_by_this_assay": [
+      "raw-language parsing",
+      "negation interpretation from text",
+      "arbitrary semantic relation extraction",
+      "novel candidate generation"
+    ]
+  },
+  "interpretation": "The earlier S1 score bundled language parsing with post-parse epistemic control. Existing pinned EC deterministically handles the tested post-parse authority/freshness/conflict subfunctions with 10/10 exact outcomes and zero fail-open cases. This narrows the remaining S1 boundary to pre-structured semantic extraction/relation interpretation rather than all of S1.",
+  "github_actions_used": false,
+  "google_drive_used": false
+}
