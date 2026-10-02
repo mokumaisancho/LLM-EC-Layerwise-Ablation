@@ -1,65 +1,57 @@
 {
-  "schema_version": "tcc-resume-state-1.0",
-  "captured_at": "2026-10-02T09:00:00+09:00",
-  "phase": "PRECHECK",
-  "goal": "Acquire and verify Qwen3-4B-Q4_K_M.gguf in GPT sandbox, then run deterministic smoke and frozen B0/B1/B2 DEV_SCREEN.",
-  "artifact": {
-    "repo": "Qwen/Qwen3-4B-GGUF",
+  "schema_version": "tcc-resume-state-2.0",
+  "captured_at": "2026-10-03T00:00:00+09:00",
+  "root_goal": "Localize which externally measurable LLM reasoning/control functions S1-S4 can be replaced or supplemented by deterministic EC without material loss.",
+  "phase": "PHASE1_V2_QUALIFIED_AWAITING_REPORTED_EC_AND_LIGHTWEIGHT_LLM",
+  "phase1_v2": {
+    "fixture_generation": "PASS",
+    "fixture_count": 10,
+    "dataset_digest": "8bfce027bdc82a34b78e9b1a87f7812d907db34c164f50a9a996bd41b3b824d6",
+    "leakage_gate": "PASS_0_FINDINGS",
+    "oracle_replay": "PASS_10_OF_10",
+    "deterministic_s3_s4_harness": {
+      "status": "PASS_NONREPORTABLE_FALLBACK",
+      "ec_mode": "FALLBACK_NO_EC_PATH",
+      "selection_accuracy": 1.0,
+      "reframe_accuracy": 1.0,
+      "closure_accuracy": 1.0,
+      "final_task_success": 1.0,
+      "reportable_as_ecv4": false
+    },
+    "blocking_issue": 20
+  },
+  "large_model_reference": {
     "file": "Qwen3-4B-Q4_K_M.gguf",
     "expected_size": 2497280256,
     "expected_sha256": "7485fe6f11af29433bc51cab58009521f205840f5b4ae3a32fa7f92e8534fdf5",
-    "public_source_identity_reverified": true
+    "sandbox_materialized": false,
+    "current_terminal": "CONNECTOR_MATERIALIZATION_REQUIRED",
+    "critical_path": false,
+    "role": "OPTIONAL_FINAL_REFERENCE",
+    "google_drive_allowed": false,
+    "verified_server_side": "Render-side full acquisition and SHA verification succeeded previously; current failure is the ChatGPT remote-binary to sandbox materialization boundary."
   },
-  "route_results": [
-    {
-      "route": "SHEETS_GAS_RELAY_LEGACY",
-      "status": "UNAVAILABLE_AFTER_RETRY",
-      "evidence": "QWEN_XFER_00 was reduced to Range bytes=0-999999 and OBSCURA_RELAY_FETCH(A1) was explicitly retriggered; repeated live reads still returned LOADING with no META/chunk payload.",
-      "decision": "Do not continue manual tuning of this route."
-    },
-    {
-      "route": "DIRECT_URL_OR_NATIVE_ATTACHMENT",
-      "status": "SOURCE_VERIFIED_BUT_SANDBOX_TRANSFER_BLOCKED",
-      "evidence": "Official Qwen Hugging Face file reports the exact expected SHA256. GPT sandbox direct network probe failed DNS resolution; runtime URL download also failed on the large Xet-backed artifact.",
-      "decision": "Treat direct sandbox ingress as unavailable in the current runtime, not as a model integrity failure."
-    },
-    {
-      "route": "GOOGLE_DRIVE_COPY",
-      "status": "NOT_PRESENT",
-      "evidence": "Connected Drive search found no existing Qwen3-4B-Q4_K_M.gguf copy.",
-      "decision": "No Drive copy to materialize."
-    },
-    {
-      "route": "GENERIC_BINARY_INGRESS_IF_DIRECTLY_ATTACHABLE",
-      "status": "BLOCKED_BY_RENDER_WORKSPACE_SELECTION",
-      "evidence": "Render connector requires an explicitly confirmed workspace before service inspection/action and forbids automatic workspace selection.",
-      "decision": "Do not guess workspace."
-    },
-    {
-      "route": "GITHUB_BASE64_TEXT_SHARDS",
-      "status": "NOT_EXECUTED",
-      "evidence": "Would expand a 2.497 GB artifact to roughly 3.33 GB of base64 plus repository/tool overhead and is not an efficient sandbox ingress path.",
-      "decision": "Keep as last-resort predeclared route; do not execute unless no direct binary route becomes available."
-    }
+  "next_transitions": [
+    "Bind actual ECv4 for reportable S3/S4 measurements and fail closed on fallback.",
+    "Complete reportable EC S1/S2 or explicitly freeze the first measurement scope to Oracle-fixed upstream plus measured S3/S4.",
+    "Run the frozen Phase1 v2 S3/S4 assay with a lightweight ~0.5B instruction model using identical upstream hashes.",
+    "Run A/B/C/D/E comparisons and compute Oracle substitution gain.",
+    "Select the single highest-materiality layer and split only that layer.",
+    "Escalate to ~1.5B only if 0.5B remains capacity-ambiguous.",
+    "Use Qwen3-4B only as optional final reference once a supported sandbox materialization route exists."
   ],
-  "current_blocker": "No permitted high-bandwidth binary ingress path into GPT sandbox is currently available without selecting the correct Render workspace or providing the model as an attachment/Drive file.",
-  "not_a_failure_of": [
-    "Qwen artifact identity",
-    "expected whole-file SHA256",
-    "B0/B1/B2 experiment design",
-    "TCC state-machine design"
-  ],
-  "next_transition": {
-    "preferred": "Inspect the user-confirmed Render workspace and generic-binary-ingress service, then materialize the verified binary into GPT sandbox if the service exposes a directly attachable artifact.",
-    "fallback": "Use a user-provided/native attachment or existing Google Drive copy of the exact verified GGUF.",
-    "after_ingress": [
-      "verify exact size and SHA256",
-      "prepare llama.cpp-compatible runtime",
-      "deterministic smoke",
-      "DEV_SCREEN on frozen 12 cases for B0/B1/B2",
-      "freeze code/prompts/decoding",
-      "run frozen 18-case holdout",
-      "score EXIT_GATE without threshold or holdout changes"
-    ]
-  }
+  "hard_constraints": {
+    "github_actions": false,
+    "google_drive_large_model_ingress": false,
+    "v1_v2_pooling": false,
+    "hidden_oracle_labels_visible_to_model": false,
+    "fallback_reportable_as_ecv4": false,
+    "manual_mid_run_tuning_after_freeze": false
+  },
+  "authoritative_evidence": [
+    "docs/CANONICAL_PROJECT_STATE_2026-10-03.md",
+    "results/phase1_v2_qualification_2026-10-03.json",
+    "results/qwen3_4b_ingress_status_2026-10-03.json",
+    "issues/20"
+  ]
 }
