@@ -135,6 +135,8 @@ def verify_equation_evidence(contract: Mapping[str, Any] | None, evidence: Mappi
 
         implementation_fingerprints[eq_id] = _norm(obs.get("implementation_fingerprint")) or equation_fingerprint(obs)
 
+    # If mathematically distinct equations are all mapped to one implementation fingerprint,
+    # their semantics have been collapsed (e.g. scalar/diagonal/dense objectives -> one generic LS path).
     expected_fp = definition["equation_fingerprints"]
     ids = sorted(expected)
     for i, left in enumerate(ids):
