@@ -1,0 +1,52 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S1A_HYBRID_ROUTE_V1",
+  "issue": 42,
+  "derived_from_paired_issue": 38,
+  "status": "FROZEN_BEFORE_SUCCESSOR_GENERATOR",
+  "input_contract": "supplied semantic dictionary + raw prompt; five-field S1A output",
+  "field_routing": {
+    "primary_fact_id": "QWEN2_5_1P5B",
+    "semantic_concept_id": "DETERMINISTIC_S1A_CORE",
+    "key_relation_id": "DETERMINISTIC_S1A_CORE",
+    "ambiguity": "DETERMINISTIC_S1A_CORE",
+    "goal_id": "DETERMINISTIC_S1A_CORE"
+  },
+  "deterministic_core_commit": "84c8585e7362976069d2a385b370a20084534b79",
+  "qwen_contract": {
+    "repository": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
+    "file": "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf",
+    "sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+    "temperature": 0,
+    "context_tokens": 1024,
+    "output_grammar": "visible IDs only + YES/NO ambiguity",
+    "oracle_visible": false,
+    "family_visible": false
+  },
+  "successor_constraints": {
+    "forbid_issue38_16_fixtures": true,
+    "forbid_prior_family_reuse": true,
+    "new_generator_must_be_committed_after_this_route": true,
+    "seed_must_equal_generator_freeze_commit": true,
+    "post_freeze_prompt_change": false,
+    "post_freeze_route_change": false,
+    "post_freeze_scorer_change": false
+  },
+  "arms": [
+    "DETERMINISTIC_S1A_CORE",
+    "QWEN2_5_1P5B",
+    "FROZEN_HYBRID"
+  ],
+  "metrics": [
+    "five_field_micro_accuracy",
+    "fixture_exact_match",
+    "per_dimension_accuracy",
+    "per_family_accuracy",
+    "paired_discordance",
+    "invalid_output_count"
+  ],
+  "materiality_threshold": 0.20,
+  "claim_discipline": "No winner claim from issue 38 field routing. Hybrid claims require this fresh successor only. Supplied-dictionary scope only.",
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
