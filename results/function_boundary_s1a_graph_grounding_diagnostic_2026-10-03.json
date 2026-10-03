@@ -1,0 +1,63 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S1A_GRAPH_GROUNDING_DIAGNOSTIC_ACTUAL_V1",
+  "protocol": "FUNCTION_BOUNDARY_S1A_GRAPH_GROUNDING_DIAGNOSTIC_V1",
+  "date": "2026-10-03",
+  "issue": 38,
+  "frozen_runner_commit": "8fbc4f71770ec1088085b59e863e664015a24f14",
+  "source_protocol": "FUNCTION_BOUNDARY_S1_V1",
+  "source_dataset_digest": "4d15e1b89c6382a8a5252558525db55cccc700096ad5c92e97d384c9d59cd190",
+  "predictor_contract": {
+    "oracle_visible_to_predictor": false,
+    "category_visible_to_predictor": false,
+    "domain_specific_rules": false,
+    "domain_specific_synonyms": false,
+    "relation_selection": "0.70 token-TFIDF cosine + 0.30 char-trigram cosine on prompt vs ID-expanded relation semantics",
+    "unique_relation_reference": "use unique referenced concept/fact directly",
+    "multi_or_no_reference": "generic lexical retrieval",
+    "goal_selection": "generic lexical retrieval from raw prompt",
+    "ambiguity": "YES only for explicit insufficient/unresolved semantics",
+    "post_score_tuning": false
+  },
+  "result": {
+    "field_correct_total": 31,
+    "field_decisions": 50,
+    "primary_score": 0.62,
+    "fixture_exact_match_count": 2,
+    "fixture_exact_match_rate": 0.20,
+    "per_dimension_accuracy": {
+      "primary_fact_id": 0.60,
+      "semantic_concept_id": 0.40,
+      "key_relation_id": 0.30,
+      "ambiguity": 0.90,
+      "goal_id": 0.90
+    },
+    "rows": [
+      {"fixture_id":"S101","prediction":{"primary_fact_id":"f3","semantic_concept_id":"c_physical_exposure","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f2","semantic_concept_id":"c_claim_exposure","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"correct_fields":2,"exact_match":false},
+      {"fixture_id":"S102","prediction":{"primary_fact_id":"f3","semantic_concept_id":"c_marketing","key_relation_id":"r3","ambiguity":"NO","goal_id":"g2"},"oracle":{"primary_fact_id":"f2","semantic_concept_id":"c_authorization","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"correct_fields":1,"exact_match":false},
+      {"fixture_id":"S103","prediction":{"primary_fact_id":"f1","semantic_concept_id":"c_task_owner","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f1","semantic_concept_id":"c_unresolved","key_relation_id":"r3","ambiguity":"YES","goal_id":"g1"},"correct_fields":2,"exact_match":false},
+      {"fixture_id":"S104","prediction":{"primary_fact_id":"f2","semantic_concept_id":"c_causal_auth","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f2","semantic_concept_id":"c_causal_auth","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"correct_fields":5,"exact_match":true},
+      {"fixture_id":"S105","prediction":{"primary_fact_id":"f2","semantic_concept_id":"c_system_auth_failure","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f2","semantic_concept_id":"c_system_auth_failure","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"correct_fields":4,"exact_match":false},
+      {"fixture_id":"S106","prediction":{"primary_fact_id":"f1","semantic_concept_id":"c_active","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f3","semantic_concept_id":"c_active","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"correct_fields":4,"exact_match":false},
+      {"fixture_id":"S107","prediction":{"primary_fact_id":"f1","semantic_concept_id":"c_payment","key_relation_id":"r3","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f1","semantic_concept_id":"c_estimate","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"correct_fields":3,"exact_match":false},
+      {"fixture_id":"S108","prediction":{"primary_fact_id":"f3","semantic_concept_id":"c_control_constraint","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f3","semantic_concept_id":"c_control_constraint","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"correct_fields":5,"exact_match":true},
+      {"fixture_id":"S109","prediction":{"primary_fact_id":"f1","semantic_concept_id":"c_fraud_confirmed","key_relation_id":"r3","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f1","semantic_concept_id":"c_no_fraud_evidence","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"correct_fields":3,"exact_match":false},
+      {"fixture_id":"S110","prediction":{"primary_fact_id":"f1","semantic_concept_id":"c_approved","key_relation_id":"r1","ambiguity":"NO","goal_id":"g1"},"oracle":{"primary_fact_id":"f2","semantic_concept_id":"c_revoked","key_relation_id":"r2","ambiguity":"NO","goal_id":"g1"},"correct_fields":2,"exact_match":false}
+    ]
+  },
+  "comparison": {
+    "qwen25_1p5b_primary": 0.72,
+    "qwen25_1p5b_exact": 0.40,
+    "deterministic_minus_qwen_primary": -0.10,
+    "deterministic_minus_qwen_exact": -0.20
+  },
+  "stage2_gate": {"threshold":0.60,"pass":true},
+  "interpretation": "Generic deterministic graph grounding recovers a material portion of supplied-dictionary S1 but trails Qwen1.5B, with the main weakness concentrated in relation and concept selection. Independent holdout required before generalization claims.",
+  "claim_limits": [
+    "Retrospective diagnostic only; the benchmark was inspected before this deterministic baseline was created.",
+    "This tests grounding against supplied semantic dictionaries, not ontology induction from unconstrained raw text.",
+    "No post-score tuning was performed."
+  ],
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
