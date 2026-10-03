@@ -1,0 +1,40 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B_METADATA_BLIND_ACTUAL_V2",
+  "protocol": "FUNCTION_BOUNDARY_S2B_METADATA_BLIND_HOLDOUT_V2",
+  "issue": 39,
+  "core_freeze_commit": "3ef026d9db6d2fef93c70d15f70fbbff4a98ac00",
+  "validator_commit": "e1e7b7717bd3a827d7c072998945e90e310dd4b8",
+  "generator_freeze_commit": "5ba03b66dd6b16a2505e40129f808e589ce28bab",
+  "seed": "5ba03b66dd6b16a2505e40129f808e589ce28bab",
+  "holdout_digest": "dca0663302e7fdb50241f08f10df14e395c401d47e6c93e8e1cbd31e57e8364d",
+  "fixture_count": 8,
+  "engine_input_boundary": "structured relation/operator + candidate natural-language text only",
+  "forbidden_predictor_inputs": ["gold","action_class","target","constraint_preserved","forbidden"],
+  "metrics": {
+    "candidate_recall": 0.875,
+    "candidate_precision": 0.875,
+    "exact_set_rate": 0.75,
+    "true_positive_total": 14,
+    "emitted_total": 16,
+    "gold_total": 16,
+    "family_metrics": {
+      "INSUFFICIENT_TO_RESOLVE": {"fixtures":2,"recall":1.0,"precision":1.0,"exact_set_rate":1.0},
+      "ADMISSIBLE_UNDER_CONSTRAINT": {"fixtures":2,"recall":0.75,"precision":0.75,"exact_set_rate":0.5},
+      "BLOCKS_INFERENCE": {"fixtures":2,"recall":0.75,"precision":0.75,"exact_set_rate":0.5},
+      "SUPERSEDES": {"fixtures":2,"recall":1.0,"precision":1.0,"exact_set_rate":1.0}
+    }
+  },
+  "interpretation": {
+    "finding": "After removing action_class/target/constraint metadata from predictor input, deterministic candidate-text interpretation remains strong but not perfect.",
+    "supported_claim": "A substantial portion of candidate-text -> structured-action interpretation is deterministically externalizable once the relation operator is already structured.",
+    "remaining_residual": "Candidate-text interpretation under constraint-preservation and blocked-inference paraphrases remains imperfect; raw-language relation/operator extraction and candidate invention remain untested."
+  },
+  "claim_limits": [
+    "Does not test raw language -> relation/operator extraction.",
+    "Does not test invention of missing candidates/actions.",
+    "Synthetic holdout with frozen core and generator; no post-score tuning."
+  ],
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
