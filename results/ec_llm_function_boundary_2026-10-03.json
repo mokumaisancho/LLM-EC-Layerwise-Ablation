@@ -1,30 +1,72 @@
 {
-  "schema_version": "EC_LLM_FUNCTION_BOUNDARY_2026_10_03_V6",
+  "schema_version": "EC_LLM_FUNCTION_BOUNDARY_2026_10_03_V7",
   "research_question": "Which externally measurable LLM reasoning/control functions can be replaced or supplemented by deterministic EC or deterministic external control without material loss?",
   "scope_rule": "Externally observable reasoning/runtime functions only; no claims about private Transformer attention/MLP internals.",
   "materiality_threshold": 0.20,
   "frozen_phase1_terminal": "EC_NATIVE_SCOPE_INCOMPATIBLE",
+  "validation_repair": {
+    "parent_issue": 39,
+    "regression_issue": 40,
+    "repaired_defects": [
+      "S1A first successor reused historical structural families and was downgraded to relexicalization/domain-transfer evidence",
+      "S2A historical +0.35 recall comparison used unequal output budgets and was superseded by same-k comparison",
+      "S2B original 1.00 assay exposed structured candidate/action metadata and was superseded for boundary purposes by metadata-blind candidate-text interpretation"
+    ],
+    "regression_test_commit": "12f6c7baa3311395448002284d940fd164f26e11",
+    "regression_tests_passed": 4,
+    "regression_tests_failed": 0
+  },
   "evidence": {
     "ec_repo": "mokumaisancho/GPT-EC-Closure-Engine",
     "ec_commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
-    "qwen_1p5b_s1_mixed_primary_score": 0.72,
-    "qwen_1p5b_s1_mixed_exact_match_rate": 0.40,
+    "qwen_1p5b_s1_historical_primary_score": 0.72,
+    "qwen_1p5b_s1_historical_exact_match_rate": 0.40,
+    "deterministic_s1a_disjoint_primary_score": 0.7375,
+    "deterministic_s1a_disjoint_exact_match_rate": 0.3125,
+    "deterministic_s1a_disjoint_fixture_count": 16,
+    "deterministic_s1a_disjoint_digest": "3192d093d3f2162f94e22e8a2e30ea5dbb691cfc42a7913492435d511d506b9a",
     "ec_s1b_accuracy": 1.0,
     "ec_s1b_fail_open_count": 0,
-    "qwen_1p5b_s2_oracle_s1_recall": 0.40,
-    "qwen_1p5b_s2_oracle_s1_precision": 0.42105263157894735,
-    "qwen_1p5b_s2_actual_s1_recall": 0.30,
-    "s1_to_s2_recall_propagation_delta": 0.10,
-    "deterministic_s2a_oracle_s1_recall": 0.75,
-    "deterministic_s2a_oracle_s1_precision": 0.50,
-    "deterministic_s2a_actual_s1_recall": 0.65,
-    "deterministic_s2a_residual_fraction": 0.25,
-    "deterministic_minus_qwen_s2_recall": 0.35,
-    "s2b_symbolic_holdout_recall": 1.0,
-    "s2b_symbolic_holdout_precision": 1.0,
-    "s2b_symbolic_holdout_exact_set_rate": 1.0,
-    "s2b_symbolic_fail_open_count": 0,
-    "s2b_symbolic_holdout_digest": "b9f3db5ea4b3476863049d488f2295b09fb7660f7ba9f19ecf9bf71f744f305c",
+    "qwen_1p5b_s2_original_oracle_s1_recall": 0.40,
+    "qwen_1p5b_s2_original_oracle_s1_precision": 0.42105263157894735,
+    "qwen_1p5b_s2_original_emitted_total": 19,
+    "deterministic_s2a_top3_recall": 0.75,
+    "deterministic_s2a_top3_precision": 0.50,
+    "s2a_equal_budget": {
+      "k1": {
+        "deterministic_recall": 0.35,
+        "deterministic_precision": 0.70,
+        "deterministic_f1": 0.4666666666666667,
+        "qwen_recall": 0.25,
+        "qwen_precision": 0.50,
+        "qwen_f1": 0.3333333333333333,
+        "recall_delta": 0.10
+      },
+      "k2": {
+        "deterministic_recall": 0.50,
+        "deterministic_precision": 0.50,
+        "deterministic_f1": 0.50,
+        "qwen_recall": 0.25,
+        "qwen_precision": 0.25,
+        "qwen_f1": 0.25,
+        "recall_delta": 0.25
+      },
+      "k3": {
+        "deterministic_recall": 0.75,
+        "deterministic_precision": 0.50,
+        "deterministic_f1": 0.60,
+        "qwen_recall": 0.45,
+        "qwen_precision": 0.30,
+        "qwen_f1": 0.36,
+        "recall_delta": 0.30
+      }
+    },
+    "s2b_fully_structured_closure_recall": 1.0,
+    "s2b_fully_structured_closure_precision": 1.0,
+    "s2b_metadata_blind_recall": 0.875,
+    "s2b_metadata_blind_precision": 0.875,
+    "s2b_metadata_blind_exact_set_rate": 0.75,
+    "s2b_metadata_blind_digest": "dca0663302e7fdb50241f08f10df14e395c401d47e6c93e8e1cbd31e57e8364d",
     "ec_reframe_accuracy": 0.90,
     "qwen_1p5b_reframe_accuracy": 0.90,
     "ec_next_action_accuracy": 1.0,
@@ -32,19 +74,26 @@
   },
   "function_map": [
     {
-      "function_id": "F01A",
-      "function": "raw_language_to_structured_claims_concepts_relations",
+      "function_id": "F01A1",
+      "function": "supplied_dictionary_language_to_structured_grounding",
       "coarse_layer": "S1A",
-      "ec_authority": "NO_CURRENT_NATIVE_LANGUAGE_PARSER",
-      "classification": "CURRENT_LLM_OR_GENERATIVE_REGION",
-      "evidence_level": "PARTIALLY_LOCALIZED",
-      "known_qwen_1p5b_failures_from_mixed_s1": [
-        "relation grounding",
-        "negation/evidence polarity interpretation",
-        "freshness/supersession relation extraction",
-        "source-authority relation extraction"
-      ],
-      "next_split": "deterministic parser/extractor vs residual semantic interpretation"
+      "ec_authority": "NO_CURRENT_NATIVE_LANGUAGE_PARSER; EXTERNAL_DETERMINISTIC_BASELINE",
+      "classification": "PARTIALLY_DETERMINISTIC_EXTERNALIZABLE",
+      "evidence_level": "PROSPECTIVE_STRUCTURALLY_DISJOINT_SYNTHETIC_HOLDOUT",
+      "primary_score": 0.7375,
+      "exact_match_rate": 0.3125,
+      "fixture_count": 16,
+      "evidence": "results/function_boundary_s1a_disjoint_holdout_actual_2026-10-03.json",
+      "claim_limit": "Requires an already supplied semantic dictionary; does not establish ontology induction or unconstrained semantic invention."
+    },
+    {
+      "function_id": "F01A2",
+      "function": "unconstrained_raw_language_to_new_ontology_and_relation_operator_induction",
+      "coarse_layer": "S1A_GENERATIVE",
+      "ec_authority": "NO_VALIDATED_DETERMINISTIC_SUBSTITUTE",
+      "classification": "UNRESOLVED_CURRENT_LLM_OR_GENERATIVE_REGION",
+      "evidence_level": "BOUNDARY_LOCALIZED_NOT_CAUSALLY_TESTED",
+      "next_test": "separate raw-language operator/ontology induction from downstream grounding"
     },
     {
       "function_id": "F01B",
@@ -60,40 +109,45 @@
     },
     {
       "function_id": "F02A",
-      "function": "explicit_ontology_candidate_retrieval",
+      "function": "explicit_ontology_fixed_budget_candidate_retrieval",
       "coarse_layer": "S2A",
       "ec_authority": "NO_CURRENT_NATIVE_GENERATOR; EXTERNAL_DETERMINISTIC_BASELINE",
       "classification": "PARTIALLY_DETERMINISTIC_EXTERNALIZABLE",
-      "evidence_level": "EMPIRICALLY_MEASURED_GOLD_BLIND_DETERMINISTIC",
-      "oracle_s1_candidate_recall": 0.75,
-      "oracle_s1_candidate_precision": 0.50,
-      "actual_s1_candidate_recall": 0.65,
-      "qwen_1p5b_oracle_s1_candidate_recall": 0.40,
-      "recall_advantage_over_qwen": 0.35,
-      "material_advantage": true,
-      "evidence": "results/function_boundary_s2a_deterministic_actual_2026-10-03.json",
-      "claim_limit": "Deterministic retrieval coverage when the candidate ontology already exists; not native EC open-ended candidate generation."
+      "evidence_level": "EMPIRICALLY_SAME_BUDGET_PAIRED",
+      "same_k": {
+        "k1": {"deterministic_recall":0.35,"qwen_recall":0.25,"deterministic_precision":0.70,"qwen_precision":0.50},
+        "k2": {"deterministic_recall":0.50,"qwen_recall":0.25,"deterministic_precision":0.50,"qwen_precision":0.25},
+        "k3": {"deterministic_recall":0.75,"qwen_recall":0.45,"deterministic_precision":0.50,"qwen_precision":0.30}
+      },
+      "evidence": "results/function_boundary_s2a_equal_budget_actual_2026-10-03.json",
+      "claim_limit": "Fixed-budget retrieval when the candidate ontology already exists; not open-ended candidate generation. The old unequal-budget +0.35 claim is superseded."
     },
     {
-      "function_id": "F02B1",
-      "function": "structured_relation_to_candidate_action_closure",
-      "coarse_layer": "S2B_RELATION_CLOSURE",
+      "function_id": "F02B0",
+      "function": "fully_structured_relation_and_action_metadata_closure",
+      "coarse_layer": "S2B_STRUCTURED_CLOSURE",
       "ec_authority": "EXTERNAL_DETERMINISTIC_SYMBOLIC_BASELINE",
-      "classification": "DETERMINISTIC_EXTERNALIZABLE_AFTER_STRUCTURING",
-      "evidence_level": "COMMIT_SEEDED_SYNTHETIC_HOLDOUT",
-      "tested_operators": [
-        "INSUFFICIENT_TO_RESOLVE",
-        "ADMISSIBLE_UNDER_CONSTRAINT",
-        "BLOCKS_INFERENCE",
-        "SUPERSEDES"
-      ],
-      "fixture_count": 16,
+      "classification": "DETERMINISTIC_EXTERNALIZABLE_AFTER_FULL_STRUCTURING",
+      "evidence_level": "COMMIT_SEEDED_SYNTHETIC_HOLDOUT_UNIT_BOUNDARY",
       "candidate_recall": 1.0,
       "candidate_precision": 1.0,
       "exact_set_rate": 1.0,
-      "fail_open_count": 0,
       "evidence": "results/function_boundary_s2b_symbolic_actual_2026-10-03.json",
-      "claim_limit": "Requires structured relation operators and structured candidate metadata; does not measure raw-language relation extraction or candidate invention."
+      "claim_limit": "Receives structured action metadata; retained as a downstream closure/control result, not evidence for candidate-text interpretation."
+    },
+    {
+      "function_id": "F02B1",
+      "function": "structured_relation_to_candidate_text_interpretation_and_closure",
+      "coarse_layer": "S2B_RELATION_CONDITIONED_INTERPRETATION",
+      "ec_authority": "EXTERNAL_DETERMINISTIC_TEXT_BASELINE",
+      "classification": "PARTIALLY_DETERMINISTIC_EXTERNALIZABLE",
+      "evidence_level": "METADATA_BLIND_COMMIT_SEEDED_SYNTHETIC_HOLDOUT",
+      "candidate_recall": 0.875,
+      "candidate_precision": 0.875,
+      "exact_set_rate": 0.75,
+      "fixture_count": 8,
+      "evidence": "results/function_boundary_s2b_metadata_blind_actual_2026-10-03.json",
+      "claim_limit": "Requires structured relation/operator. Predictor sees candidate natural-language text only, not action_class/target/constraint metadata. Does not test missing-candidate invention."
     },
     {
       "function_id": "F02B2",
@@ -101,7 +155,7 @@
       "coarse_layer": "S2B_GENERATION",
       "classification": "UNRESOLVED_CURRENT_LLM_REGION",
       "evidence_level": "BOUNDARY_LOCALIZED_NOT_CAUSALLY_TESTED",
-      "note": "The current deterministic assays assume candidate/action classes already exist. Creating a missing candidate/action class remains untested."
+      "note": "Creating a missing candidate/action class remains untested."
     },
     {
       "function_id": "F03",
@@ -178,31 +232,31 @@
     }
   ],
   "current_boundary": {
-    "proven_externalizable_or_replaceable_region": [
+    "proven_or_substantially_externalizable_region": [
+      "supplied-dictionary semantic grounding to 0.7375 field accuracy on structurally-disjoint synthetic holdout",
       "structured evidence authority/freshness/conflict control",
-      "structured relation closure for the four tested operators",
+      "explicit-ontology fixed-budget retrieval on tested assay",
+      "relation-conditioned candidate-text interpretation to 0.875 recall/precision",
+      "fully structured relation/action closure",
       "residual detection",
       "bounded intent-preserving reframing",
       "single next-action authority",
       "authority-bound run-state/evidence closure",
       "metacognitive runtime control"
     ],
-    "partially_externalizable_region": [
-      "explicit-ontology candidate retrieval: 0.75 recall on frozen natural-semantic S2 assay"
-    ],
     "unresolved_region": [
-      "raw language -> structured claims/concepts/relation operators",
+      "unconstrained raw language -> new ontology / structured relation-operator induction",
       "candidate ontology/action-class construction when the correct candidate is absent",
       "open-ended language realization / genuinely novel semantic synthesis"
     ],
-    "boundary_summary": "Once semantics, relation operators, and candidate/action metadata are structured, most measured downstream reasoning/control is deterministic-externalizable. The remaining unvalidated LLM region is concentrated in semantic structuring and genuine ontology/novel synthesis.",
+    "boundary_summary": "The validated deterministic region extends into supplied-dictionary grounding and relation-conditioned candidate-text interpretation, not only downstream control. The remaining unvalidated generative region is concentrated in ontology/operator induction, missing-candidate invention, and genuinely novel synthesis.",
     "claim_discipline": "Unresolved means no validated deterministic substitute yet; it is not proof of LLM necessity."
   },
   "next_empirical_order": [
-    "split S1A with a fresh benchmark: deterministic parser/extractor vs residual semantic interpretation",
-    "separately test candidate ontology construction when the correct action class is intentionally absent from the supplied ontology",
-    "only then measure genuinely novel residual with Qwen2.5-1.5B",
-    "do not reopen 4B unless a remaining boundary specifically requires capacity escalation"
+    "paired Qwen2.5-1.5B measurement on the exact repaired 16-fixture S1A disjoint holdout if direct engine comparison is needed",
+    "test candidate ontology construction with the correct action class intentionally absent",
+    "test unconstrained raw-language relation/operator induction separately from downstream closure",
+    "use larger models only for a specifically localized capacity residual; do not reopen 4B automatically"
   ],
   "large_model_policy": {"automatic_4b_branch": false},
   "github_actions_used": false,
