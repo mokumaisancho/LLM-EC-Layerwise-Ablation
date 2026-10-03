@@ -1,0 +1,95 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2A_DETERMINISTIC_ACTUAL_V1",
+  "protocol": "FUNCTION_BOUNDARY_S2A_DETERMINISTIC_V1",
+  "date": "2026-10-03",
+  "issue": 36,
+  "frozen_runner_commit": "57d27422ae3f3888a4cccbc680fc83244a6d3b31",
+  "frozen_contract_commit": "0d375df6434c44f96fed07093eb4ebaa6f6d77b1",
+  "source": {
+    "protocol": "FUNCTION_BOUNDARY_S2_V2",
+    "source_commit": "92a47625ff779d5a8e82ba96f0c863b340067724",
+    "dataset_digest": "130f57b09549e260311d69f1b22a56fbfb0a3220880009fd132c1e76e05df14c",
+    "fixture_count": 10,
+    "gold_candidate_total_per_arm": 20
+  },
+  "predictor_contract": {
+    "gold_visible_to_predictor": false,
+    "category_visible_to_predictor": false,
+    "domain_specific_rules": false,
+    "domain_specific_synonyms": false,
+    "score": "0.70 token TF-IDF cosine + 0.30 character-trigram cosine",
+    "emission": "top 3 candidate IDs as unordered set",
+    "post_freeze_tuning": false
+  },
+  "arms": {
+    "ORACLE_S1": {
+      "candidate_recall": 0.75,
+      "candidate_precision": 0.5,
+      "true_positive_total": 15,
+      "emitted_candidate_total": 30,
+      "gold_candidate_total": 20,
+      "exact_set_count": 0,
+      "exact_set_rate": 0.0,
+      "residual_gold_total": 5,
+      "residual_gold_fraction": 0.25,
+      "per_fixture": {
+        "C201": {"candidate_ids":["a1","a4","a5"],"tp":2,"recall":1.0,"precision":0.6666666666666666,"residual_gold":[]},
+        "C202": {"candidate_ids":["a1","a2","a5"],"tp":2,"recall":1.0,"precision":0.6666666666666666,"residual_gold":[]},
+        "C203": {"candidate_ids":["a2","a3","a4"],"tp":1,"recall":0.5,"precision":0.3333333333333333,"residual_gold":["a1"]},
+        "C204": {"candidate_ids":["a1","a2","a5"],"tp":2,"recall":1.0,"precision":0.6666666666666666,"residual_gold":[]},
+        "C205": {"candidate_ids":["a1","a2","a5"],"tp":2,"recall":1.0,"precision":0.6666666666666666,"residual_gold":[]},
+        "C206": {"candidate_ids":["a1","a2","a5"],"tp":2,"recall":1.0,"precision":0.6666666666666666,"residual_gold":[]},
+        "C207": {"candidate_ids":["a1","a2","a6"],"tp":2,"recall":1.0,"precision":0.6666666666666666,"residual_gold":[]},
+        "C208": {"candidate_ids":["a1","a3","a4"],"tp":1,"recall":0.5,"precision":0.3333333333333333,"residual_gold":["a2"]},
+        "C209": {"candidate_ids":["a3","a5","a6"],"tp":0,"recall":0.0,"precision":0.0,"residual_gold":["a1","a2"]},
+        "C210": {"candidate_ids":["a1","a3","a4"],"tp":1,"recall":0.5,"precision":0.3333333333333333,"residual_gold":["a2"]}
+      }
+    },
+    "ACTUAL_S1": {
+      "candidate_recall": 0.65,
+      "candidate_precision": 0.43333333333333335,
+      "true_positive_total": 13,
+      "emitted_candidate_total": 30,
+      "gold_candidate_total": 20,
+      "exact_set_count": 0,
+      "exact_set_rate": 0.0,
+      "residual_gold_total": 7,
+      "residual_gold_fraction": 0.35,
+      "per_fixture": {
+        "C201": {"candidate_ids":["a1","a4","a5"],"tp":2,"recall":1.0,"precision":0.6666666666666666,"residual_gold":[]},
+        "C202": {"candidate_ids":["a1","a3","a5"],"tp":1,"recall":0.5,"precision":0.3333333333333333,"residual_gold":["a2"]},
+        "C203": {"candidate_ids":["a3","a4","a5"],"tp":0,"recall":0.0,"precision":0.0,"residual_gold":["a1","a2"]},
+        "C204": {"candidate_ids":["a1","a2","a5"],"tp":2,"recall":1.0,"precision":0.6666666666666666,"residual_gold":[]},
+        "C205": {"candidate_ids":["a1","a2","a5"],"tp":2,"recall":1.0,"precision":0.6666666666666666,"residual_gold":[]},
+        "C206": {"candidate_ids":["a1","a2","a5"],"tp":2,"recall":1.0,"precision":0.6666666666666666,"residual_gold":[]},
+        "C207": {"candidate_ids":["a1","a2","a6"],"tp":2,"recall":1.0,"precision":0.6666666666666666,"residual_gold":[]},
+        "C208": {"candidate_ids":["a1","a3","a4"],"tp":1,"recall":0.5,"precision":0.3333333333333333,"residual_gold":["a2"]},
+        "C209": {"candidate_ids":["a3","a5","a6"],"tp":0,"recall":0.0,"precision":0.0,"residual_gold":["a1","a2"]},
+        "C210": {"candidate_ids":["a1","a3","a4"],"tp":1,"recall":0.5,"precision":0.3333333333333333,"residual_gold":["a2"]}
+      }
+    }
+  },
+  "comparison": {
+    "qwen25_1p5b_oracle_s1_recall": 0.4,
+    "qwen25_1p5b_oracle_s1_precision": 0.42105263157894735,
+    "deterministic_minus_llm_recall": 0.35,
+    "materiality_threshold": 0.2,
+    "material_advantage": true
+  },
+  "classification": "MIXED_DETERMINISTIC_AND_GENERATIVE_REGION",
+  "interpretation": {
+    "known_ontology_externalizable_fraction_on_this_assay": 0.75,
+    "uncovered_residual_fraction": 0.25,
+    "residual_fixture_ids": ["C203","C208","C209","C210"],
+    "claim": "Most gold candidates on the frozen explicit-ontology assay can be surfaced by a gold-blind deterministic retrieval layer; a material residual remains. The residual is not evidence of LLM necessity until symbolic closure rules are tested on a fresh frozen successor assay."
+  },
+  "claim_limits": [
+    "This is deterministic retrieval over an explicit ontology, not native EC candidate generation.",
+    "The fixed top-3 emission favors recall and exact-set rate is descriptive only.",
+    "The residual does not prove that an LLM is required.",
+    "No post-freeze tuning was performed."
+  ],
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
