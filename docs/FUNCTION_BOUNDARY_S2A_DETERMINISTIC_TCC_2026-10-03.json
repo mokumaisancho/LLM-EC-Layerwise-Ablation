@@ -1,0 +1,52 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2A_DETERMINISTIC_TCC_V1",
+  "date": "2026-10-03",
+  "issue": 36,
+  "research_question": "How much of frozen S2 candidate construction can be externalized as deterministic retrieval over an explicit candidate ontology before invoking an LLM for residual novelty?",
+  "input": {
+    "protocol": "FUNCTION_BOUNDARY_S2_V2",
+    "source_commit": "92a47625ff779d5a8e82ba96f0c863b340067724",
+    "path": "fixtures/function_boundary_s2_v2.json",
+    "dataset_digest": "130f57b09549e260311d69f1b22a56fbfb0a3220880009fd132c1e76e05df14c",
+    "primary_arm": "oracle_s1",
+    "secondary_arm": "actual_s1"
+  },
+  "predictor": {
+    "gold_visible": false,
+    "category_specific_rules": false,
+    "domain_specific_synonyms": false,
+    "normalization": "lowercase; underscore/hyphen to spaces; ASCII alphanumeric tokenization; fixed generic English stopwords",
+    "query_expansion": "selected fact/concept/relation/goal semantic strings plus semantic dictionary entries whose IDs are explicitly referenced by the selected relation string",
+    "token_score": "TF-IDF cosine over candidate documents; IDF=log((N+1)/(df+1))+1",
+    "char_score": "character trigram frequency cosine over normalized strings",
+    "combined_score": "0.70 * token_score + 0.30 * char_score",
+    "emission": "top 3 unique candidate IDs as an unordered set",
+    "tie_break": "candidate ID lexical ascending"
+  },
+  "metrics": {
+    "primary": "candidate_recall",
+    "secondary": ["candidate_precision", "exact_set_rate", "residual_gold_fraction"],
+    "existing_llm_oracle_s1_recall": 0.4,
+    "existing_llm_oracle_s1_precision": 0.42105263157894735,
+    "materiality_threshold": 0.2
+  },
+  "classification_branches": [
+    {"condition": "recall >= 0.80", "classification": "MOSTLY_DETERMINISTIC_KNOWN_ONTOLOGY_REGION"},
+    {"condition": "0.40 <= recall < 0.80", "classification": "MIXED_DETERMINISTIC_AND_GENERATIVE_REGION"},
+    {"condition": "recall < 0.40", "classification": "GENERIC_DETERMINISTIC_RETRIEVAL_INSUFFICIENT"}
+  ],
+  "claim_limits": [
+    "This does not claim current EC natively generates candidates.",
+    "Failure does not prove deterministic candidate generation is impossible.",
+    "Success only establishes externalizability when the candidate ontology is explicit and visible.",
+    "No result authorizes automatic Qwen3-4B escalation."
+  ],
+  "forbidden": [
+    "post-freeze threshold tuning",
+    "gold-dependent prediction logic",
+    "fixture/category-specific rules",
+    "domain-specific synonym injection",
+    "GitHub Actions",
+    "Google Drive model relay"
+  ]
+}
