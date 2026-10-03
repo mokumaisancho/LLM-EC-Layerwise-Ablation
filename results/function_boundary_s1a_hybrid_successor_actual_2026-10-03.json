@@ -1,0 +1,100 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S1A_HYBRID_SUCCESSOR_ACTUAL_V1",
+  "protocol": "FUNCTION_BOUNDARY_S1A_HYBRID_SUCCESSOR_THREE_ARM_V1",
+  "date": "2026-10-03",
+  "issue": 42,
+  "route_freeze_commit": "b9fc26809da58ed25572454f3de5a09e99930b6a",
+  "generator_freeze_commit": "d38cda27c906fa8c92b070c97821da3f0143e6ed",
+  "execution_wrapper_commit": "b160fc16136f14fd5d05d0aa135a87cc41c2d316",
+  "holdout_digest": "8cf95fa3e9fc44c5ad155ac38b551aaa497f8fa82133cb5ef0f39e9d97a55404",
+  "fixture_count": 16,
+  "render": {
+    "service_id": "srv-db0fcgfavr4c73fetmng",
+    "deploy_id": "dep-db0fchnavr4c73fetuqg",
+    "status": "live"
+  },
+  "model": {
+    "repository": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
+    "file": "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf",
+    "size_bytes": 986048768,
+    "sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370"
+  },
+  "hybrid_route": {
+    "primary_fact_id": "qwen25_1p5b",
+    "semantic_concept_id": "deterministic_frozen",
+    "key_relation_id": "deterministic_frozen",
+    "ambiguity": "deterministic_frozen",
+    "goal_id": "deterministic_frozen"
+  },
+  "arms": {
+    "deterministic_frozen": {
+      "field_correct_total": 65,
+      "field_decisions": 80,
+      "primary_score": 0.8125,
+      "fixture_exact_match_count": 8,
+      "fixture_exact_match_rate": 0.5,
+      "per_dimension_accuracy": {
+        "primary_fact_id": 0.625,
+        "semantic_concept_id": 0.75,
+        "key_relation_id": 0.75,
+        "ambiguity": 1.0,
+        "goal_id": 0.9375
+      }
+    },
+    "qwen25_1p5b": {
+      "field_correct_total": 59,
+      "field_decisions": 80,
+      "primary_score": 0.7375,
+      "fixture_exact_match_count": 4,
+      "fixture_exact_match_rate": 0.25,
+      "invalid_output_count": 0,
+      "per_dimension_accuracy": {
+        "primary_fact_id": 0.9375,
+        "semantic_concept_id": 0.4375,
+        "key_relation_id": 0.5,
+        "ambiguity": 1.0,
+        "goal_id": 0.8125
+      }
+    },
+    "frozen_hybrid": {
+      "field_correct_total": 70,
+      "field_decisions": 80,
+      "primary_score": 0.875,
+      "fixture_exact_match_count": 10,
+      "fixture_exact_match_rate": 0.625,
+      "per_dimension_accuracy": {
+        "primary_fact_id": 0.9375,
+        "semantic_concept_id": 0.75,
+        "key_relation_id": 0.75,
+        "ambiguity": 1.0,
+        "goal_id": 0.9375
+      }
+    }
+  },
+  "comparison": {
+    "best_single_primary": 0.8125,
+    "hybrid_minus_best_single_primary": 0.0625,
+    "best_single_exact": 0.5,
+    "hybrid_minus_best_single_exact": 0.125,
+    "materiality_threshold": 0.2,
+    "hybrid_primary_material_vs_best_single": false
+  },
+  "interpretation": {
+    "finding": "The prospectively frozen field router reproduces the complementary error topology on a fresh eight-family synthetic successor and improves both micro field accuracy and exact-fixture accuracy over either single arm, but the primary-score uplift is below the project's 0.20 materiality threshold.",
+    "architecture_implication": "Under a supplied semantic dictionary, primary evidence selection and downstream concept/relation/goal grounding behave as separable functions: Qwen is stronger at primary-fact selection while deterministic grounding is stronger on the other tested semantic fields.",
+    "remaining_boundary": [
+      "unconstrained raw language to new ontology / relation-operator induction",
+      "candidate/action construction when the correct candidate is absent",
+      "open-ended language realization and genuinely novel semantic synthesis"
+    ]
+  },
+  "claim_limits": [
+    "Fresh synthetic successor, not a natural-corpus benchmark.",
+    "Routing was frozen before successor generator creation; generator/digest were frozen before scoring.",
+    "Scope is supplied-dictionary grounding only.",
+    "The 0.0625 primary uplift is descriptive and non-material under the pre-existing 0.20 threshold."
+  ],
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
