@@ -6,125 +6,110 @@ Localize which externally measurable LLM reasoning/control functions can be repl
 Do not equate these externally measurable functions with private Transformer attention/MLP internals.
 
 ## Frozen historical Phase1-v2 result
+The coarse S1/S2/S3/S4 protocol is closed at `EC_NATIVE_SCOPE_INCOMPATIBLE` because the old S3/S4 abstractions mixed functions that are not isomorphic to EC-native authority contracts.
 
-The coarse S1/S2/S3/S4 experiment is closed as a historical protocol.
+## Actual empirical boundary
 
-Successor TCC: `PHASE1_MVP_TCC_V2`.
-Actual terminal: `EC_NATIVE_SCOPE_INCOMPATIBLE`.
+### S1
+Qwen2.5-1.5B discriminative S1:
+- primary `36/50 = 0.72`
+- exact fixture `4/10 = 0.40`
+- fact `0.50`; concept `0.70`; relation `0.50`; ambiguity `0.90`; goal `1.00`
 
-Why:
-- S3 reframing is genuinely shared and reportable.
-- frozen S3 all-admissible-set selection is not isomorphic to EC native singleton next-action authority.
-- frozen S3 representation does not identify generic S4 closure.
-
-Do not force incompatible functions into an A/B comparison and do not rewrite the frozen Phase1 result.
-
-## Actual empirical results
-
-### S1 discriminative successor
-Qwen2.5-1.5B on `FUNCTION_BOUNDARY_S1_V1`:
-- primary score `36/50 = 0.72`
-- exact fixture match `4/10 = 0.40`
-- primary evidence `0.50`
-- semantic concept `0.70`
-- key relation `0.50`
-- ambiguity `0.90`
-- protected goal `1.00`
-
-S1 was subsequently split:
-- S1A raw language -> structured claims/concepts/relations: unresolved.
+S1 split:
+- S1A raw language -> structured claims/concepts/relation operators: unresolved.
 - S1B structured evidence authority/freshness/conflict/abstention: EC `10/10 = 1.00`, fail-open `0`.
 
-### S2 candidate construction
-Frozen `FUNCTION_BOUNDARY_S2_V2` with correct S1:
-- Qwen2.5-1.5B Candidate Recall `0.40`
-- Candidate Precision `0.4210526316`
+### S2 initial LLM result
+Frozen `FUNCTION_BOUNDARY_S2_V2`, correct S1:
+- Qwen2.5-1.5B recall `0.40`
+- precision `0.4210526316`
 
-With actual measured S1:
-- Candidate Recall `0.30`
-- propagation delta `0.10`, below materiality `0.20`
+Actual S1 arm recall `0.30`; propagation delta `0.10 < 0.20`, so measured S2 deficit was mostly local to S2.
 
-Therefore the larger measured deficit was S2 itself rather than S1 propagation.
+### S2A — explicit ontology retrieval
+Issue #36 froze a gold-blind deterministic baseline before scoring.
 
-### S2A deterministic explicit-ontology retrieval
-Issue #36 froze a gold-blind deterministic baseline before scoring:
-- no category rules
-- no domain-specific synonym table
-- resolved S1 semantic strings + relation-linked dictionary expansion
-- `0.70` token TF-IDF cosine + `0.30` char-trigram cosine
-- top 3 candidate IDs, tie by ID
+ORACLE_S1:
+- recall `15/20 = 0.75`
+- precision `15/30 = 0.50`
+- residual `5/20 = 0.25`
+- recall advantage over Qwen1.5B `+0.35 > 0.20`
 
-Actual ORACLE_S1 result:
-- Candidate Recall `15/20 = 0.75`
-- Candidate Precision `15/30 = 0.50`
-- residual gold `5/20 = 0.25`
-- deterministic minus Qwen1.5B recall `+0.35`, materially above `0.20`
+ACTUAL_S1:
+- recall `13/20 = 0.65`
+- precision `13/30 = 0.4333333333`
 
-Actual ACTUAL_S1 result:
-- Candidate Recall `13/20 = 0.65`
-- Candidate Precision `13/30 = 0.4333333333`
+Conclusion: when a candidate ontology is explicit, a large part of S2 is deterministic retrieval rather than an LLM-only function. This is not native EC candidate generation.
 
-Interpretation:
-- a large part of the current S2 assay is externalizable as deterministic retrieval when a candidate ontology is explicit;
-- the remaining `25%` is unresolved, not proven LLM-dependent;
-- do not call this native EC candidate generation.
+Evidence: `results/function_boundary_s2a_deterministic_actual_2026-10-03.json`.
 
-Canonical evidence:
-`results/function_boundary_s2a_deterministic_actual_2026-10-03.json`
+### S2B — structured relation closure
+Issue #37 avoided retesting C203/C208/C209/C210 after adding rules. It froze both a symbolic engine and holdout generator in commit `0911957782c05ab65a15e303f25d987ac675061c`, then used that commit SHA as the holdout seed.
 
-### Reframing
-Same frozen Phase1-v2 S3 semantic-state assay, 10 fixtures:
-- ECv4.4: `9/10 = 0.90`.
-- Qwen2.5-0.5B: `1/10 = 0.10`, YES-collapse.
-- Qwen2.5-1.5B: `9/10 = 0.90`.
+Fresh synthetic structural holdout:
+- 16 fixtures; 4 each for `INSUFFICIENT_TO_RESOLVE`, `ADMISSIBLE_UNDER_CONSTRAINT`, `BLOCKS_INFERENCE`, `SUPERSEDES`
+- holdout digest `b9f3db5ea4b3476863049d488f2295b09fb7660f7ba9f19ecf9bf71f744f305c`
+- candidate IDs/order generated from the freeze commit seed
+- predictor sees structured relation operator + candidate metadata, not gold or candidate surface text
 
-0.5B -> 1.5B improvement `+0.80`; capacity collapse resolved at 1.5B. No automatic 4B escalation.
+Actual result:
+- recall `32/32 = 1.00`
+- precision `32/32 = 1.00`
+- exact set `16/16 = 1.00`
+- forbidden fail-open `0`
+- every relation family recall/precision/exact `1.00`
 
-### Single next-action authority
-Frozen paired V2, 17 fixtures:
-- EC decision accuracy `17/17 = 1.00`
+Conclusion: the four tested residual relation-closure functions are deterministic-externalizable once relation operators and candidate/action metadata are structured.
+
+This does NOT show that raw-language relation extraction or missing-candidate invention is deterministic.
+
+Evidence: `results/function_boundary_s2b_symbolic_actual_2026-10-03.json`.
+Authoritative reproducibility: frozen runner + seed/digest manifest; no hand-expanded holdout copy is authoritative.
+
+### Downstream control
+Reframing, same frozen 10-fixture assay:
+- ECv4.4 `0.90`
+- Qwen2.5-0.5B `0.10` YES-collapse
+- Qwen2.5-1.5B `0.90`
+
+Single next-action authority, 17 frozen fixtures:
+- EC `17/17 = 1.00`
 - Qwen2.5-1.5B `1/17 = 0.0588235`, REFRAME-all collapse
-- absolute gap `0.9411765`
+- gap `0.9411765`
 
-Under this frozen authority-bound control contract, EC is a validated replacement for the single-next-action authority function.
+Frozen generic S4 remains non-identifiable from its old interface; authority-bound run/evidence closure is EC-native at a richer control-plane abstraction.
 
-### S4 identifiability
-Frozen S3 structural state has CLOSE/CONTINUE label collisions.
-Best structural-majority upper bound `8/10 = 0.80`.
-This is an interface-identifiability bound, not EC accuracy.
+## Current smallest unresolved region
+Canonical machine map: `results/ec_llm_function_boundary_2026-10-03.json`.
 
-## Current function boundary
+Measured deterministic/externalizable region now includes:
+- structured evidence authority/freshness/conflict control;
+- explicit-ontology retrieval to substantial coverage (`0.75` recall);
+- structured relation closure for the four tested operators;
+- residual detection;
+- bounded reframing;
+- single next-action authority;
+- authority-bound run/evidence closure;
+- metacognitive runtime control.
 
-Canonical machine-readable map:
-`results/ec_llm_function_boundary_2026-10-03.json`
+Remaining unvalidated LLM/generative region is concentrated in:
+1. raw language -> structured claims/concepts/relation operators (S1A);
+2. candidate ontology/action-class construction when the correct candidate is absent;
+3. genuinely novel semantic/action synthesis and language realization.
 
-Current classification:
-- S1A raw language -> structured semantic representation: unresolved/current LLM region.
-- S1B evidence authority/freshness/conflict control: EC externalizable.
-- S2A explicit-ontology candidate retrieval: partially deterministic externalizable; recall `0.75`.
-- S2B residual after deterministic retrieval: `0.25`, unresolved.
-- residual detection: EC + 1.5B LLM capable on current assay.
-- bounded reframing: EC + 1.5B LLM capable on current assay.
-- all-admissible-set selection: not isomorphic to EC next-action authority.
-- single next-action authority: EC replaceable under frozen control contract.
-- generic frozen-S3 -> S4 closure: not identifiable.
-- authority-bound run/evidence closure: EC-native at richer control-plane abstraction.
-- metacognitive runtime control: deterministic EC externalizable control.
-- open-ended language realization / genuinely novel semantic synthesis: unresolved current LLM region.
+`unvalidated LLM region` means no deterministic substitute has yet been validated, not that an LLM is proven necessary.
 
 ## Active critical path
-
-1. Freeze a fresh S2-residual holdout before adding residual-specific symbolic rules.
-2. Test generic symbolic relation closure on unseen ambiguity, symmetric alternatives, blocking/negation and supersession cases.
-3. Measure only any still-uncovered residual with Qwen2.5-1.5B.
-4. Keep S1A separate; test parser/extractor replacements only in a dedicated successor assay.
-5. Introduce closure-sufficient successor work only if closure remains material after the upstream boundary is localized.
+1. Split S1A on a fresh holdout: deterministic parser/extractor vs residual semantic interpretation.
+2. Separately test candidate-ontology construction with intentionally absent candidate/action classes.
+3. Only then use Qwen2.5-1.5B on the genuinely uncovered residual.
+4. No automatic 4B escalation.
 
 ## Constraints
-- materiality threshold remains absolute `0.20` unless a successor rule is frozen before measurement.
-- no hidden/oracle labels in model-visible inputs.
-- no post-freeze prompt/fixture/threshold tuning.
-- no automatic Qwen3-4B branch.
-- Qwen3-4B ingress is optional reference work, not current critical path.
-- GitHub Actions remain disabled.
-- Google Drive model relay is prohibited.
+- materiality threshold `0.20` unless frozen before a successor measurement;
+- no hidden/oracle labels in model-visible inputs;
+- no post-freeze tuning;
+- no automatic Qwen3-4B branch;
+- GitHub Actions disabled;
+- Google Drive model relay prohibited.
