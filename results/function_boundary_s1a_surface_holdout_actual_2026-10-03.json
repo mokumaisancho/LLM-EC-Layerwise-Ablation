@@ -1,0 +1,53 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S1A_SURFACE_HOLDOUT_ACTUAL_V1",
+  "protocol": "FUNCTION_BOUNDARY_S1A_SURFACE_HOLDOUT_V1",
+  "date": "2026-10-03",
+  "issue": 38,
+  "algorithm_freeze_commit": "8fbc4f71770ec1088085b59e863e664015a24f14",
+  "generator_freeze_commit": "2790aa58bd00e216c80d1eaa21ab57f0c399e857",
+  "seed": "2790aa58bd00e216c80d1eaa21ab57f0c399e857",
+  "holdout_digest": "3dc33b88c805c600da5a69ec5b3dcdf913ee92bed86c45e0c12c370cc2f60469",
+  "fixture_count": 20,
+  "result": {
+    "field_correct_total": 72,
+    "field_decisions": 100,
+    "primary_score": 0.72,
+    "fixture_exact_match_count": 7,
+    "fixture_exact_match_rate": 0.35,
+    "per_dimension_accuracy": {
+      "primary_fact_id": 0.65,
+      "semantic_concept_id": 0.60,
+      "key_relation_id": 0.45,
+      "ambiguity": 0.95,
+      "goal_id": 0.95
+    },
+    "per_family": {
+      "causal_intervention": {"fixtures":2,"primary_score":0.70,"exact_rate":0.50},
+      "mandatory_control": {"fixtures":2,"primary_score":0.90,"exact_rate":0.50},
+      "domain_homonym": {"fixtures":2,"primary_score":0.60,"exact_rate":0.50},
+      "source_authority": {"fixtures":2,"primary_score":0.90,"exact_rate":0.50},
+      "representation_gap": {"fixtures":2,"primary_score":0.80,"exact_rate":0.00},
+      "unresolved_referent": {"fixtures":2,"primary_score":0.70,"exact_rate":0.50},
+      "near_miss_authority": {"fixtures":2,"primary_score":0.80,"exact_rate":0.50},
+      "negation_evidence": {"fixtures":2,"primary_score":0.60,"exact_rate":0.00},
+      "freshness_supersession": {"fixtures":2,"primary_score":0.50,"exact_rate":0.00},
+      "domain_near_synonym": {"fixtures":2,"primary_score":0.70,"exact_rate":0.50}
+    }
+  },
+  "gate": {"required_primary_score":0.60,"pass":true},
+  "interpretation": {
+    "finding": "With an already supplied semantic dictionary, frozen deterministic graph grounding generalizes to a commit-seeded surface/domain holdout at 0.72 micro field accuracy.",
+    "strong_dimensions": ["ambiguity 0.95","goal 0.95"],
+    "remaining_weak_dimensions": ["key relation 0.45","semantic concept 0.60","primary fact 0.65"],
+    "remaining_failure_concentration": ["freshness/supersession","negation/evidence polarity","relation choice under representation gaps"]
+  },
+  "claim_limits": [
+    "This holdout is synthetic and commit-seeded; it is independent of the historical S101-S110 ID/surface forms but not a natural corpus benchmark.",
+    "This tests grounding against an explicitly supplied semantic dictionary, not ontology induction from unconstrained raw text.",
+    "No paired Qwen1.5B result exists yet on this exact 20-fixture holdout, so the historical Qwen 0.72 result is not a fair same-holdout comparison.",
+    "No post-freeze algorithm tuning was performed."
+  ],
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
