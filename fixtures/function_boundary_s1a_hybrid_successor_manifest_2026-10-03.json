@@ -1,0 +1,31 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S1A_HYBRID_SUCCESSOR_MANIFEST_V1",
+  "protocol": "FUNCTION_BOUNDARY_S1A_HYBRID_SUCCESSOR_V1",
+  "issue": 42,
+  "route_freeze_commit": "b9fc26809da58ed25572454f3de5a09e99930b6a",
+  "generator_freeze_commit": "d38cda27c906fa8c92b070c97821da3f0143e6ed",
+  "seed": "d38cda27c906fa8c92b070c97821da3f0143e6ed",
+  "fixture_count": 16,
+  "holdout_digest": "8cf95fa3e9fc44c5ad155ac38b551aaa497f8fa82133cb5ef0f39e9d97a55404",
+  "families": [
+    "directed_graph_reachability",
+    "set_intersection_membership",
+    "cardinality_limit_violation",
+    "unit_conversion_equivalence",
+    "parity_constraint_check",
+    "weighted_capacity_sum",
+    "uniqueness_constraint_collision",
+    "equality_substitution_chain"
+  ],
+  "freeze_order": [
+    "route_contract",
+    "generator",
+    "manifest_digest",
+    "execution_wrapper",
+    "scoring"
+  ],
+  "score_observed_before_manifest": false,
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
