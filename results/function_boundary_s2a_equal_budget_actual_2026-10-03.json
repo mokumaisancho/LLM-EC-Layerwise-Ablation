@@ -1,0 +1,59 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2A_EQUAL_BUDGET_ACTUAL_V1",
+  "protocol": "FUNCTION_BOUNDARY_S2A_EQUAL_BUDGET_V1",
+  "issue": 39,
+  "source": {
+    "protocol": "FUNCTION_BOUNDARY_S2_V2",
+    "fixture_commit": "92a47625ff779d5a8e82ba96f0c863b340067724",
+    "dataset_digest": "130f57b09549e260311d69f1b22a56fbfb0a3220880009fd132c1e76e05df14c",
+    "arm": "ORACLE_S1_ONLY"
+  },
+  "contract_commit": "caced7be568fded25bde009371de45225d9555fc",
+  "execution_wrapper_commit": "028f3c2b4e96a402310b306697e9c065d0ea8fe9",
+  "render": {
+    "service_id": "srv-db0ec6s9v7es73b2gmvg",
+    "deploy_id": "dep-db0ec7s9v7es73b2gr90",
+    "status": "LIVE"
+  },
+  "model": {
+    "repository": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
+    "file": "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf",
+    "size_bytes": 986048768,
+    "sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370"
+  },
+  "runtime": {
+    "llama_cpp_tag": "b11146",
+    "llama_cpp_asset_sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+    "temperature": 0,
+    "context_tokens": 1024
+  },
+  "candidate_budgets": [1, 2, 3],
+  "deterministic": {
+    "1": {"candidate_recall":0.35,"candidate_precision":0.70,"candidate_f1":0.4666666666666667,"true_positive_total":7,"emitted_candidate_total":10,"gold_candidate_total":20,"exact_set_rate":0.0,"invalid_output_count":0},
+    "2": {"candidate_recall":0.50,"candidate_precision":0.50,"candidate_f1":0.50,"true_positive_total":10,"emitted_candidate_total":20,"gold_candidate_total":20,"exact_set_rate":0.20,"invalid_output_count":0},
+    "3": {"candidate_recall":0.75,"candidate_precision":0.50,"candidate_f1":0.60,"true_positive_total":15,"emitted_candidate_total":30,"gold_candidate_total":20,"exact_set_rate":0.0,"invalid_output_count":0}
+  },
+  "qwen25_1p5b": {
+    "1": {"candidate_recall":0.25,"candidate_precision":0.50,"candidate_f1":0.3333333333333333,"true_positive_total":5,"emitted_candidate_total":10,"gold_candidate_total":20,"exact_set_rate":0.0,"invalid_output_count":0},
+    "2": {"candidate_recall":0.25,"candidate_precision":0.25,"candidate_f1":0.25,"true_positive_total":5,"emitted_candidate_total":20,"gold_candidate_total":20,"exact_set_rate":0.0,"invalid_output_count":0},
+    "3": {"candidate_recall":0.45,"candidate_precision":0.30,"candidate_f1":0.36,"true_positive_total":9,"emitted_candidate_total":30,"gold_candidate_total":20,"exact_set_rate":0.0,"invalid_output_count":0}
+  },
+  "same_k_delta_deterministic_minus_qwen": {
+    "1": {"recall":0.10,"precision":0.20,"f1":0.13333333333333336},
+    "2": {"recall":0.25,"precision":0.25,"f1":0.25},
+    "3": {"recall":0.30,"precision":0.20,"f1":0.24}
+  },
+  "interpretation": {
+    "finding": "Under equal fixed candidate budgets on the same frozen ORACLE_S1 explicit-ontology assay, the deterministic retrieval baseline has higher recall, precision, and F1 than Qwen2.5-1.5B at k=1, k=2, and k=3.",
+    "boundary_implication": "Explicit-ontology candidate retrieval contains a substantial deterministic-externalizable component on this assay; the result does not establish open-ended candidate invention or general superiority outside this task."
+  },
+  "claim_limits": [
+    "Small 10-fixture frozen synthetic/semantic assay; do not generalize beyond explicit-ontology retrieval.",
+    "Fixed-budget retrieval differs from the original variable-cardinality all-admissible set-construction task.",
+    "Same-k comparisons only; the historical 30-vs-19 +0.35 claim is superseded.",
+    "No post-result tuning was performed."
+  ],
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
