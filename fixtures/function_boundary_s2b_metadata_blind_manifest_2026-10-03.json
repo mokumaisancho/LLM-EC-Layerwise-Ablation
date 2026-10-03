@@ -1,0 +1,15 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B_METADATA_BLIND_MANIFEST_V2",
+  "protocol": "FUNCTION_BOUNDARY_S2B_METADATA_BLIND_HOLDOUT_V2",
+  "core_freeze_commit": "3ef026d9db6d2fef93c70d15f70fbbff4a98ac00",
+  "validator_commit": "e1e7b7717bd3a827d7c072998945e90e310dd4b8",
+  "generator_freeze_commit": "5ba03b66dd6b16a2505e40129f808e589ce28bab",
+  "seed_source": "generator freeze commit SHA",
+  "seed": "5ba03b66dd6b16a2505e40129f808e589ce28bab",
+  "fixture_count": 8,
+  "holdout_digest": "dca0663302e7fdb50241f08f10df14e395c401d47e6c93e8e1cbd31e57e8364d",
+  "engine_input_boundary": "structured relation/operator + candidate natural-language text only",
+  "forbidden_predictor_inputs": ["gold","action_class","target","constraint_preserved","forbidden"],
+  "canonicalization_for_digest": "sha256(json.dumps(fixtures, sort_keys=True, separators=(',', ':')).encode())",
+  "expanded_fixture_storage": "regenerate deterministically from generator + seed; manifest digest is authoritative"
+}
