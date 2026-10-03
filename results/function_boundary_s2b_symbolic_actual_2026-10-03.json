@@ -1,0 +1,57 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B_SYMBOLIC_ACTUAL_V1",
+  "protocol": "FUNCTION_BOUNDARY_S2B_SYMBOLIC_HOLDOUT_V1",
+  "date": "2026-10-03",
+  "issue": 37,
+  "freeze_commit": "0911957782c05ab65a15e303f25d987ac675061c",
+  "seed_source": "freeze commit SHA",
+  "holdout_digest": "b9f3db5ea4b3476863049d488f2295b09fb7660f7ba9f19ecf9bf71f744f305c",
+  "fixture_count": 16,
+  "families": [
+    "INSUFFICIENT_TO_RESOLVE",
+    "ADMISSIBLE_UNDER_CONSTRAINT",
+    "BLOCKS_INFERENCE",
+    "SUPERSEDES"
+  ],
+  "engine_input_boundary": "structured relation operator + structured candidate metadata; no gold and no candidate surface text",
+  "metrics": {
+    "candidate_recall": 1.0,
+    "candidate_precision": 1.0,
+    "exact_set_rate": 1.0,
+    "true_positive_total": 32,
+    "emitted_total": 32,
+    "gold_total": 32,
+    "fail_open_forbidden_count": 0,
+    "family_metrics": {
+      "INSUFFICIENT_TO_RESOLVE": {"fixtures":4,"tp":8,"emitted":8,"gold":8,"exact":4,"fail_open":0,"recall":1.0,"precision":1.0,"exact_set_rate":1.0},
+      "ADMISSIBLE_UNDER_CONSTRAINT": {"fixtures":4,"tp":8,"emitted":8,"gold":8,"exact":4,"fail_open":0,"recall":1.0,"precision":1.0,"exact_set_rate":1.0},
+      "BLOCKS_INFERENCE": {"fixtures":4,"tp":8,"emitted":8,"gold":8,"exact":4,"fail_open":0,"recall":1.0,"precision":1.0,"exact_set_rate":1.0},
+      "SUPERSEDES": {"fixtures":4,"tp":8,"emitted":8,"gold":8,"exact":4,"fail_open":0,"recall":1.0,"precision":1.0,"exact_set_rate":1.0}
+    },
+    "gate_pass": true,
+    "classification": "DETERMINISTIC_SYMBOLIC_CLOSURE_EXTERNALIZABLE"
+  },
+  "gate": {
+    "required_recall": 0.90,
+    "required_precision": 0.80,
+    "required_fail_open": 0,
+    "pass": true
+  },
+  "interpretation": {
+    "result": "The tested S2 residual relation-closure families are deterministic-externalizable once the relation operator and candidate metadata are already structured.",
+    "remaining_boundary": [
+      "raw language -> structured relation/operator extraction",
+      "candidate ontology construction when the correct action class/candidate is not already represented",
+      "genuinely novel semantic/action synthesis and language realization"
+    ]
+  },
+  "claim_limits": [
+    "This is a synthetic commit-seeded structural holdout, not a natural-language end-to-end benchmark.",
+    "Success does not prove raw-language relation extraction is deterministic.",
+    "Success does not prove novel candidate invention is deterministic.",
+    "The predictor does not inspect gold or candidate surface text."
+  ],
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
