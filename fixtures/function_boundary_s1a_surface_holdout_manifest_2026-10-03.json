@@ -1,0 +1,13 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S1A_SURFACE_HOLDOUT_MANIFEST_V1",
+  "protocol": "FUNCTION_BOUNDARY_S1A_SURFACE_HOLDOUT_V1",
+  "algorithm_freeze_commit": "8fbc4f71770ec1088085b59e863e664015a24f14",
+  "generator_freeze_commit": "2790aa58bd00e216c80d1eaa21ab57f0c399e857",
+  "seed_source": "generator freeze commit SHA",
+  "seed": "2790aa58bd00e216c80d1eaa21ab57f0c399e857",
+  "generator": "tools/generate_s1a_surface_holdout.py",
+  "fixture_count": 20,
+  "holdout_digest": "3dc33b88c805c600da5a69ec5b3dcdf913ee92bed86c45e0c12c370cc2f60469",
+  "canonicalization_for_digest": "sha256(json.dumps(fixtures, sort_keys=True, separators=(',', ':')).encode())",
+  "note": "The holdout is deterministically regenerated from the frozen generator and seed; the S1A grounding algorithm was frozen before this generator was created."
+}
