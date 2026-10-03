@@ -1,0 +1,25 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S1A_DISJOINT_HOLDOUT_MANIFEST_V2",
+  "protocol": "FUNCTION_BOUNDARY_S1A_DISJOINT_HOLDOUT_V2",
+  "algorithm_freeze_commit": "84c8585e7362976069d2a385b370a20084534b79",
+  "validator_commit": "702ba031ab057229547e82bbef88ce04ff58fcc7",
+  "generator_freeze_commit": "8d8a333ebc17e73ee04a43baf3a3976c865d621f",
+  "seed_source": "generator freeze commit SHA",
+  "seed": "8d8a333ebc17e73ee04a43baf3a3976c865d621f",
+  "generator": "tools/generate_s1a_disjoint_holdout.py",
+  "fixture_count": 16,
+  "holdout_digest": "3192d093d3f2162f94e22e8a2e30ea5dbb691cfc42a7913492435d511d506b9a",
+  "families": [
+    "temporal_interval_overlap",
+    "quantified_exception_scope",
+    "identity_merge_by_key",
+    "prerequisite_dependency",
+    "aggregate_vs_instance_scope",
+    "conditional_branch_activation",
+    "part_whole_attribution",
+    "measurement_scope_missing"
+  ],
+  "structural_disjointness": "None of the eight family labels or generating templates reuse the ten S101-S110 / prior surface-holdout families.",
+  "canonicalization_for_digest": "sha256(json.dumps(fixtures, sort_keys=True, separators=(',', ':')).encode())",
+  "expanded_fixture_storage": "regenerate deterministically from generator + seed; manifest digest is authoritative"
+}
