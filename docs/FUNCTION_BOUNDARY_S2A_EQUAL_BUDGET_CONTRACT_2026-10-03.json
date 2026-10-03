@@ -1,0 +1,24 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2A_EQUAL_BUDGET_CONTRACT_V1",
+  "issue": 39,
+  "source_fixture": {
+    "protocol": "FUNCTION_BOUNDARY_S2_V2",
+    "commit": "92a47625ff779d5a8e82ba96f0c863b340067724",
+    "dataset_digest": "130f57b09549e260311d69f1b22a56fbfb0a3220880009fd132c1e76e05df14c",
+    "arm": "ORACLE_S1_ONLY"
+  },
+  "engines": [
+    "deterministic lexical retrieval: 0.70 token TF-IDF cosine + 0.30 char-trigram cosine",
+    "Qwen2.5-1.5B-Instruct-Q4_K_M, temperature=0"
+  ],
+  "candidate_budgets": [1,2,3],
+  "budget_rule": "For each k, each engine MUST emit exactly k unique IDs from the same visible candidate ontology. Invalid or fewer/more outputs fail that fixture for that k; do not backfill outside the engine.",
+  "metrics_per_k": ["candidate_recall","candidate_precision","candidate_f1","exact_set_rate","invalid_output_count"],
+  "comparison_rule": "Only same-k values may be compared. The historical 30-vs-19 emitted-candidate recall delta is non-comparative diagnostic evidence and must not be used as a superiority claim.",
+  "freeze_rule": "Prompt, grammar, deterministic scorer, fixture, model, and metrics are frozen before rerun. No post-result tuning.",
+  "constraints": {
+    "github_actions": false,
+    "google_drive": false,
+    "qwen3_4b_required": false
+  }
+}
