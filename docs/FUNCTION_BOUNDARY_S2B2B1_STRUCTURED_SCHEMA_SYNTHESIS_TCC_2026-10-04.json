@@ -1,0 +1,38 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B2B1_STRUCTURED_SCHEMA_SYNTHESIS_TCC_V1",
+  "issue": 43,
+  "stage": "B1_STRUCTURED_REQUIREMENTS_TO_NOVEL_SCHEMA",
+  "supersedes": "FUNCTION_BOUNDARY_S2B2B_ONTOLOGY_INVENTION_TCC_V1",
+  "supersession_reason": "The prior contract prohibited deterministic ontology mutation and would therefore pre-bake an LLM-only proposal advantage despite fully structured target semantics.",
+  "deterministic_synth_core_commit": "8dbb9457c08af65ae1b5e7fde503ddfb58205533",
+  "research_question": "When no supplied primitive schema satisfies the target but required preconditions/effects/forbidden effects are explicitly structured, can a generic deterministic synthesizer construct a novel action schema as reliably as Qwen2.5-1.5B?",
+  "visible": [
+    "parameters and domains",
+    "structured required preconditions",
+    "structured required effects",
+    "structured forbidden effects",
+    "current symbolic state",
+    "predicate vocabulary/arity",
+    "known primitive schemas that cannot satisfy target"
+  ],
+  "hidden": ["family/category", "oracle validity", "gold canonical proposal", "scoring annotations"],
+  "arms": {
+    "deterministic": "generic binding enumeration plus concrete-to-variable schema templating; novel schema marker authorized",
+    "qwen25_1p5b": "same visible structured requirements; exactly one novel-schema proposal; temperature 0"
+  },
+  "semantic_validity": [
+    "known primitive composer returns no authorized candidate",
+    "proposal parameter/binding vocabulary is valid",
+    "all required preconditions are represented by the proposed schema and hold under its binding",
+    "all required effects are represented by the proposed schema under its binding",
+    "no forbidden effect is produced",
+    "proposal schema is not identical to an existing primitive schema"
+  ],
+  "metrics": ["valid_proposal_rate", "exact_canonical_schema_rate", "invalid_output_count", "forbidden_effect_count", "per_family"],
+  "interpretation_rule": "If deterministic synthesis succeeds, structured missing-class construction is externalizable and must not be attributed to LLM generative necessity. Only residual missing semantic/causal knowledge proceeds to B2.",
+  "b2_gate": "B2 may begin only after B1 is frozen and audited; B2 must remove enough structured causal/schema information that the answer cannot be mechanically copied from the target contract.",
+  "no_post_freeze_tuning": true,
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
