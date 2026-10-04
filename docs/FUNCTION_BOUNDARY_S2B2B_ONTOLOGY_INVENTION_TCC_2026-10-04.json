@@ -1,0 +1,85 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B2B_ONTOLOGY_INVENTION_TCC_V1",
+  "issue": 43,
+  "stage": "B_GENUINE_MISSING_CLASS_SCHEMA_PROPOSAL",
+  "stage_a_evidence_commit": "2a93bc38d263850963536bc092f03377cc787b48",
+  "closed_world_core_commit": "c83632855cc775b8502e6a1ded18a3f3b022f19a",
+  "research_question": "When no supplied primitive action schema can satisfy a structured goal, can Qwen2.5-1.5B propose a semantically valid new action schema while deterministic EC correctly fails closed without ontology mutation?",
+  "isolation_rule": "Target/constraint semantics remain structured so this stage tests missing action-schema construction, not raw-language relation extraction.",
+  "deterministic_arm": {
+    "policy": "closed-world",
+    "behavior": "run frozen known-primitive composer; if no authorized primitive instance exists, emit no candidate and classify FAIL_CLOSED_NO_AUTHORIZED_CLASS",
+    "ontology_mutation": false,
+    "novel_class_generation": false
+  },
+  "qwen_arm": {
+    "model": "Qwen2.5-1.5B-Instruct-Q4_K_M",
+    "temperature": 0,
+    "output_contract": {
+      "proposal_kind": "NEW_CLASS",
+      "action_class": "PROPOSED_NEW_CLASS",
+      "parameters": "exact visible parameter names",
+      "preconditions": "symbolic atom templates over visible predicates and parameters",
+      "effects": "symbolic atom templates over visible predicates and parameters",
+      "bindings": "visible domain values"
+    },
+    "surface_name_not_scored": true
+  },
+  "predictor_visible": [
+    "structured target effects",
+    "structured forbidden effects",
+    "current symbolic state",
+    "parameter names and domains",
+    "allowed predicate vocabulary with arity",
+    "existing primitive action schemas that intentionally cannot satisfy the target"
+  ],
+  "predictor_hidden": [
+    "oracle validity outcome",
+    "fixture family/category",
+    "gold schema template",
+    "scoring annotations"
+  ],
+  "semantic_validator": {
+    "required": [
+      "no existing primitive can satisfy target under any binding",
+      "proposal_kind is NEW_CLASS",
+      "proposal uses only visible predicates/parameters/domain values",
+      "instantiated proposal preconditions are satisfied by current state",
+      "instantiated effects include every target effect",
+      "instantiated effects include no forbidden effect",
+      "proposal schema is not semantically identical to any supplied primitive schema"
+    ],
+    "not_required": [
+      "surface action-class naming match",
+      "exact ordering of preconditions/effects"
+    ]
+  },
+  "outcomes": [
+    "AUTHORIZED_KNOWN_COMPOSITION",
+    "NOVEL_CLASS_PROPOSED_AND_ORACLE_VALID",
+    "NOVEL_CLASS_INVALID",
+    "FAIL_CLOSED_NO_AUTHORIZED_CLASS"
+  ],
+  "metrics": [
+    "valid_novel_proposal_rate",
+    "invalid_novel_proposal_rate",
+    "deterministic_fail_closed_rate",
+    "known_primitive_leak_count",
+    "forbidden_effect_count",
+    "per_family"
+  ],
+  "claim_rule": "A valid Qwen proposal demonstrates generative schema-proposal capability under an explicit structured goal. It does not prove unconstrained semantic invention. Deterministic fail-closed is a safety/control capability, not an accuracy failure.",
+  "freeze_order": [
+    "contract",
+    "validator/scorer",
+    "fixture generator",
+    "holdout manifest",
+    "deterministic closed-world replay",
+    "Qwen paired proposal run",
+    "post-run error audit"
+  ],
+  "no_post_freeze_tuning": true,
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
