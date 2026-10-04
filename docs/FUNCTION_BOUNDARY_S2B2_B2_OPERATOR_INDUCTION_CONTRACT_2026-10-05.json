@@ -1,0 +1,146 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B2_B2_OPERATOR_INDUCTION_CONTRACT_V1",
+  "protocol": "S2B2_MVP_TCC_V3",
+  "issue": 43,
+  "stage": "B2_OPERATOR_INDUCTION_FROM_STRUCTURED_TRANSITIONS",
+  "research_question": "When the required operator schema is absent from the supplied ontology and is not explicitly stated as target preconditions/effects, can an engine infer the unique reusable operator from structured positive and negative transition examples?",
+  "claim_boundary": "formal operator induction inside a frozen typed symbolic hypothesis space; not raw-language parsing, world-knowledge invention, or open-ended semantic synthesis",
+  "paired_authority": {
+    "deterministic_may_induce_operator": true,
+    "qwen_may_induce_operator": true,
+    "same_visible_input_required": true,
+    "same_semantic_output_type_required": true,
+    "class_surface_name_not_part_of_output": true
+  },
+  "visible_input": {
+    "parameters": "ordered visible variable names with declared types",
+    "predicate_vocabulary": "predicate -> ordered argument types",
+    "supplied_primitive_ontology": "known operator schemas intentionally excluding the hidden target semantic signature",
+    "positive_examples": "at least 2 state transitions, each with parameter binding, before state, and after state",
+    "negative_examples": "one per hidden precondition, each with binding and unchanged before/after state",
+    "heldout_target": "new entity binding plus before state only; heldout after state hidden from both engines"
+  },
+  "forbidden_visible": [
+    "fixture family/category",
+    "hidden operator schema",
+    "heldout target after state",
+    "gold/expected/oracle labels",
+    "complete required precondition/effect lists",
+    "scoring annotations"
+  ],
+  "hypothesis_space": {
+    "parameter_count": [1, 2, 3],
+    "atom_templates": "all and only type-compatible predicate applications to visible parameter variables",
+    "precondition_count": [1, 3],
+    "add_effect_count": [1, 3],
+    "delete_effect_count": 1,
+    "add_delete_must_be_disjoint": true,
+    "every_parameter_must_appear_somewhere": true,
+    "predicate_not_in_visible_vocabulary_forbidden": true,
+    "constants_inside_schema_forbidden": true,
+    "duplicate_atoms_semantically_collapsed": true
+  },
+  "output_schema": {
+    "proposal_kind": "INDUCED_OPERATOR",
+    "parameters": "exact ordered visible parameter-variable list; grammar-constrained, not a scored free-text decision",
+    "preconditions": "unordered set of visible typed atom templates",
+    "add_effects": "unordered set of visible typed atom templates",
+    "delete_effects": "unordered set containing exactly one visible typed atom template"
+  },
+  "transition_semantics": {
+    "applicable": "every precondition atom instantiated under the example binding exists in before state",
+    "apply": "after = (before - instantiated delete_effects) union instantiated add_effects",
+    "positive_consistency": "operator is applicable and computed after equals visible after exactly",
+    "negative_consistency": "visible after equals before and operator is not applicable because at least one instantiated precondition is absent"
+  },
+  "identifiability_gate": {
+    "required_hypotheses_consistent_with_all_examples": 1,
+    "zero": "B2_NO_VALID_HYPOTHESIS",
+    "more_than_one": "B2_AMBIGUOUS_HYPOTHESIS",
+    "must_run_before_model_inference": true,
+    "hidden_oracle": "the unique semantic signature from an independent brute-force evaluator"
+  },
+  "heldout_target_gate": {
+    "binding_entities_must_not_equal_any_training_binding": true,
+    "hidden_operator_must_be_applicable": true,
+    "heldout_after_is_hidden": true,
+    "scoring": "proposal must equal the unique semantic signature and reproduce hidden heldout after under the formal transition semantics"
+  },
+  "generator_design_constraints": {
+    "fixture_count": 16,
+    "structural_family_count": 8,
+    "two_variants_per_family": true,
+    "families_disjoint_from_B1_by_transition_structure": true,
+    "positive_examples_min": 2,
+    "negative_examples": "one omission example for each hidden precondition",
+    "positive_noise_rule": "positive examples contain different non-common noise atoms so noise cannot become a spurious common precondition",
+    "negative_omission_rule": "each negative contains all hidden preconditions except exactly one, preventing every proper hidden-precondition subset from satisfying all negatives",
+    "delete_effect_is_hidden_precondition": true,
+    "positive_transitions_have_no_exogenous_state_change": true
+  },
+  "freeze_order": [
+    "B2_CONTRACT_HYPOTHESIS_SPACE",
+    "B2_DETERMINISTIC_INDUCER",
+    "B2_INDEPENDENT_SCORER_IDENTIFIABILITY_EVALUATOR",
+    "B2_GENERATOR",
+    "B2_PREFLIGHT_AND_MANIFEST_DIGEST",
+    "B2_QWEN_PAIRED_RUNNER_AND_GRAMMAR",
+    "B2_STATIC_IMPORT_PREFLIGHT",
+    "B2_INFERENCE_ONCE_AND_RAW_CACHE",
+    "B2_INDEPENDENT_POSTRUN_AUDIT",
+    "SINGLE_BOUNDARY_MAP_UPDATE"
+  ],
+  "pre_inference_gates": [
+    "NO_ORACLE_OR_FAMILY_LEAKAGE",
+    "NO_COMPLETE_SCHEMA_IN_TARGET",
+    "STRUCTURAL_DISJOINTNESS_FROM_A_AND_B1",
+    "HIDDEN_SIGNATURE_ABSENT_FROM_SUPPLIED_ONTOLOGY",
+    "EXACTLY_ONE_HYPOTHESIS_CONSISTENT_PER_FIXTURE",
+    "HELDOUT_BINDING_NOVEL",
+    "DETERMINISTIC_AND_QWEN_VISIBLE_HASH_IDENTICAL",
+    "DETERMINISTIC_AND_QWEN_OUTPUT_AUTHORITY_IDENTICAL",
+    "STATIC_COMPILE_IMPORT_PASS"
+  ],
+  "scoring": {
+    "primary_metric": "valid_induced_schema_rate",
+    "secondary_metrics": [
+      "exact_semantic_signature_rate",
+      "heldout_transition_success_rate",
+      "invalid_output_count",
+      "fail_open_count",
+      "deterministic_search_bound_count",
+      "per_family"
+    ],
+    "materiality_abs": 0.20,
+    "deterministic_search_bound_is_not_semantic_failure": true,
+    "class_name_scoring": false,
+    "array_order_scoring": false
+  },
+  "qwen": {
+    "repository": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
+    "file": "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf",
+    "size_bytes": 986048768,
+    "sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+    "temperature": 0,
+    "llama_cpp_tag": "b11146",
+    "grammar_policy": "JSON structure, exact visible parameter list, and typed visible atom vocabulary are constrained; semantic atom selection remains free inside the same frozen hypothesis space"
+  },
+  "terminal_rules": {
+    "deterministic_minus_qwen_gte_0p20": "B2_DETERMINISTIC_MATERIAL_ADVANTAGE",
+    "qwen_minus_deterministic_gte_0p20": "B2_LLM_MATERIAL_ADVANTAGE",
+    "otherwise": "B2_NO_MATERIAL_SEPARATION",
+    "zero_identifiable_hypothesis": "B2_NO_VALID_HYPOTHESIS",
+    "multiple_identifiable_hypotheses": "B2_AMBIGUOUS_HYPOTHESIS",
+    "search_bound": "DETERMINISTIC_SEARCH_BOUND"
+  },
+  "invariants": [
+    "NO_POST_FREEZE_PROMPT_FIXTURE_SCORER_GRAMMAR_THRESHOLD_OR_HYPOTHESIS_CHANGE",
+    "NO_PREDICTOR_AUTHORED_ORACLE",
+    "NO_B1_RESULT_RELABELED_AS_B2",
+    "NO_MODEL_RETRY_FOR_SEMANTIC_FAILURE",
+    "NO_GITHUB_ACTIONS",
+    "NO_GOOGLE_DRIVE_MODEL_RELAY",
+    "NO_QWEN3_4B_AUTO_BRANCH",
+    "NEW_BLOCKING_RESIDUAL_REQUIRES_REGISTRY_AND_VERSIONED_SUCCESSOR"
+  ]
+}
