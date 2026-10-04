@@ -1,0 +1,40 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B2A_INDEPENDENT_AUDIT_V1",
+  "protocol": "S2B2_MVP_TCC_V2",
+  "terminal": "STAGE_A_AUDIT_PASS",
+  "dataset_digest": "a58e978a26f86f41ce9b08e36003e08c4682cd144a3d70a5aa945bd539f0f845",
+  "fixture_count": 16,
+  "family_count": 8,
+  "oracle_independent_recompute_match": "16/16",
+  "gold_absent_from_existing_candidates": "16/16",
+  "raw_cache_rows": 16,
+  "qwen_recomputed": {
+    "tp": 9,
+    "emitted": 16,
+    "gold": 16,
+    "recall": 0.5625,
+    "precision": 0.5625,
+    "f1": 0.5625,
+    "exact_set_rate": 0.5625,
+    "invalid": 0,
+    "fail_open": 7
+  },
+  "saved_result_match": true,
+  "per_family_tp": {
+    "approved_activation": {"fixtures": 2, "tp": 1},
+    "capacity_route": {"fixtures": 2, "tp": 2},
+    "retention_archive": {"fixtures": 2, "tp": 2},
+    "safe_release": {"fixtures": 2, "tp": 0},
+    "snapshot_restore": {"fixtures": 2, "tp": 2},
+    "threat_quarantine": {"fixtures": 2, "tp": 1},
+    "validated_seal": {"fixtures": 2, "tp": 0},
+    "verified_publish": {"fixtures": 2, "tp": 1}
+  },
+  "predictor_core_used_for_oracle_audit": false,
+  "model_rerun": false,
+  "execution": {
+    "render_service": "srv-db14noad0e5s73e3ovu0",
+    "render_deploy": "dep-db14npid0e5s73e3p3fg",
+    "source_commit": "95de3ab42f1c463a50054b31ddf8beb5506834b6"
+  }
+}
