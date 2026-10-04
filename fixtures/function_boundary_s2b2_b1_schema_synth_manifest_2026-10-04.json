@@ -1,0 +1,27 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B2_B1_MANIFEST_V1",
+  "protocol": "S2B2_MVP_TCC_V2",
+  "stage": "B1_EXPLICIT_SCHEMA_SYNTHESIS",
+  "deterministic_core_commit": "3dab663ca2747f102b5c6c3e916119cc0b468708",
+  "output_contract_commit": "8ada6bd17b5409e32106afab70692b3cdbf47bef",
+  "scorer_commit": "f2ee566eb132362b731d21712d4d601b541e3497",
+  "generator_commit": "04f9b2fff2fde06f2b1be6cfc6030954f59c2f8c",
+  "seed": "04f9b2fff2fde06f2b1be6cfc6030954f59c2f8c",
+  "fixture_count": 16,
+  "family_count": 8,
+  "holdout_digest": "dde736e4f37b55567af45726e378291bfa07d44d39ee58e2038804582426e650",
+  "structural_fingerprints": [
+    "6ddc844ee709d99af8b9bf205f2d1df01941f49954b244aaa39d792a286ce539",
+    "7bf792aed05b54df27f9acae6382ffdbbf66aeec7abfb38455e5bd5c2b5f2d08",
+    "7ebcc477375d9e6aaaf86f37e6eebd2245552ef884d2c2d2c11fbdf0ec20d8e2",
+    "8563241b834559d047017a2047b66a22b2d9f6b23f058942cf6ca096c2754b0c",
+    "8af3b9d7667188272b9adea987e7d4a4993c77d2436bd07c6cc086c5762fbed0",
+    "95ce8d497b348cfe5f89152ec456803b4226f2d205343e6f7f8994edf7db46c2",
+    "e9ef47decb153806eb2e32b7f3395daa04dbc4ecbc6c50b341d1b3df773392cf",
+    "f6b18f94ff26da6d05e6b168c09f569605389ad7f2f4152621ab3aa5e8e83f31"
+  ],
+  "generator_frozen_before_manifest": true,
+  "model_inference_before_manifest": false,
+  "family_model_visible": false,
+  "oracle_model_visible": false
+}
