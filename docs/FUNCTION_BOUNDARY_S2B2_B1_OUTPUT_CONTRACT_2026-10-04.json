@@ -1,0 +1,44 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B2_B1_OUTPUT_CONTRACT_V1",
+  "protocol": "S2B2_MVP_TCC_V2",
+  "issue": 43,
+  "stage": "B1_EXPLICIT_SCHEMA_SYNTHESIS",
+  "deterministic_core_commit": "3dab663ca2747f102b5c6c3e916119cc0b468708",
+  "paired_authority": {
+    "deterministic_may_emit_new_class": true,
+    "qwen_may_emit_new_class": true,
+    "same_visible_input_required": true,
+    "same_output_schema_required": true
+  },
+  "output_schema": {
+    "proposal_kind": "NEW_CLASS",
+    "action_class": "string; surface name ignored by scorer",
+    "parameters": "array of visible parameter variable names",
+    "preconditions": "array of symbolic atoms {pred,args}",
+    "effects": "array of symbolic atoms {pred,args}",
+    "constraints": {
+      "forbidden_effects": "array of symbolic atoms {pred,args}"
+    }
+  },
+  "semantic_validity": [
+    "proposal_kind == NEW_CLASS",
+    "parameter set equals required parameter set",
+    "all predicates are in visible predicate_vocabulary with correct arity",
+    "all variables are declared parameters",
+    "precondition set equals required_preconditions",
+    "effect set equals required_effects",
+    "forbidden-effect constraint set equals required forbidden_effects",
+    "semantic signature differs from every supplied known primitive",
+    "class surface name and array ordering are not scored"
+  ],
+  "known_ontology_insufficiency": "before inference, exhaustive independent binding evaluation must show no supplied primitive can satisfy all explicit requirements without violating forbidden effects",
+  "primary_metric": "valid_schema_proposal_rate",
+  "secondary_metrics": ["invalid_output_rate","forbidden_fail_open_count","exact_semantic_signature_rate","per_family"],
+  "materiality_abs": 0.20,
+  "oracle_hidden": true,
+  "family_hidden": true,
+  "no_post_freeze_tuning": true,
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
