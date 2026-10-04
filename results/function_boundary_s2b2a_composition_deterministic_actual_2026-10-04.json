@@ -1,0 +1,43 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B2A_COMPOSITION_DETERMINISTIC_ACTUAL_V1",
+  "protocol": "FUNCTION_BOUNDARY_S2B2A_COMPOSITION_HOLDOUT_V1",
+  "issue": 43,
+  "stage": "A_COMPOSITION_FROM_KNOWN_PRIMITIVES",
+  "holdout_digest": "a58e978a26f86f41ce9b08e36003e08c4682cd144a3d70a5aa945bd539f0f845",
+  "fixture_count": 16,
+  "family_count": 8,
+  "core_freeze_commit": "c83632855cc775b8502e6a1ded18a3f3b022f19a",
+  "scorer_freeze_commit": "93cadd8062d4b1075126d785ee0cc11ee8040f24",
+  "generator_freeze_commit": "f88e37abf64c10e7e56ce61b5b5c9d6fbb09a075",
+  "metrics": {
+    "candidate_recall": 1.0,
+    "candidate_precision": 1.0,
+    "f1": 1.0,
+    "exact_set_rate": 1.0,
+    "true_positive_total": 16,
+    "emitted_total": 16,
+    "gold_total": 16,
+    "invalid_output_count": 0,
+    "forbidden_fail_open_count": 0,
+    "per_family": {
+      "safe_release": {"fixtures":2,"recall":1.0,"precision":1.0,"exact_set_rate":1.0},
+      "verified_publish": {"fixtures":2,"recall":1.0,"precision":1.0,"exact_set_rate":1.0},
+      "retention_archive": {"fixtures":2,"recall":1.0,"precision":1.0,"exact_set_rate":1.0},
+      "snapshot_restore": {"fixtures":2,"recall":1.0,"precision":1.0,"exact_set_rate":1.0},
+      "threat_quarantine": {"fixtures":2,"recall":1.0,"precision":1.0,"exact_set_rate":1.0},
+      "capacity_route": {"fixtures":2,"recall":1.0,"precision":1.0,"exact_set_rate":1.0},
+      "validated_seal": {"fixtures":2,"recall":1.0,"precision":1.0,"exact_set_rate":1.0},
+      "approved_activation": {"fixtures":2,"recall":1.0,"precision":1.0,"exact_set_rate":1.0}
+    }
+  },
+  "interpretation": "A generic operator-agnostic symbolic unification/composition core can construct all missing candidate instances on this frozen Stage-A assay when the required primitive action schemas, effects, preconditions and target domains are already supplied.",
+  "claim_limits": [
+    "The result does not test invention of a missing action class or operator.",
+    "The result does not test raw-language extraction of relation/operator/effects.",
+    "The result does not test open-ended language realization.",
+    "The relation requirements and primitive semantics are already structured."
+  ],
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
