@@ -1,0 +1,63 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B2_B1_AUDITED_ACTUAL_V1",
+  "protocol": "S2B2_MVP_TCC_V3",
+  "issue": 43,
+  "evidence_issues": [45, 46],
+  "holdout_digest": "dde736e4f37b55567af45726e378291bfa07d44d39ee58e2038804582426e650",
+  "fixture_count": 16,
+  "family_count": 8,
+  "runner_commit": "ec26fee3e0a85598f1d6ad2d55d9b6f128461d33",
+  "render_service": "srv-db11bafavr4c739pvqm0",
+  "render_inference_deploy": "dep-db1dgltg1s2s739m72qg",
+  "raw_cache": {
+    "path": "results/function_boundary_s2b2_b1_qwen_raw_cache_2026-10-05.json",
+    "sha256": "909af3cee35f48c9a3d52ec932d4b2fc3a650d2301ea135fb8b811ea3d417ae3",
+    "integrity_terminal": "B1_RAW_CACHE_INTEGRITY_PASS"
+  },
+  "semantic_cache": {
+    "path": "results/function_boundary_s2b2_b1_qwen_semantic_cache_2026-10-05.json",
+    "sha256": "842484f8bf14dc5d74c249c8b00622926b1e4e49d7c4ca6ab61609bf16cabfae"
+  },
+  "audit": {
+    "script": "tools/audit_s2b2b1_paired_v3.py",
+    "terminal": "B1_SCORE_AUDIT_PASS",
+    "combined_evidence_terminal": "B1_EVIDENCE_AUDIT_PASS",
+    "model_reinference_during_audit": false
+  },
+  "frozen_contract": {
+    "commit": "8ada6bd17b5409e32106afab70692b3cdbf47bef",
+    "parameter_variable_names_required_before_inference": true,
+    "both_arms_authorized_new_class": true,
+    "materiality_abs": 0.20
+  },
+  "arms": {
+    "deterministic": {"valid_total": 16, "valid_rate": 1.0, "fail_open_count": 0},
+    "qwen25_1p5b": {
+      "valid_total": 1,
+      "valid_rate": 0.0625,
+      "invalid_total": 15,
+      "fail_open_count": 15,
+      "reason_counts": {"PARAMETER_MISMATCH": 10, "PRECONDITION_MISMATCH": 3, "EFFECT_MISMATCH": 2, "VALID": 1}
+    }
+  },
+  "paired_delta_deterministic_minus_qwen": 0.9375,
+  "representation_relaxed_sensitivity": {
+    "authoritative": false,
+    "normalization": "concrete domain value -> unique visible parameter variable only",
+    "qwen_valid_total": 4,
+    "qwen_valid_rate": 0.25,
+    "deterministic_minus_qwen": 0.75,
+    "material_gap_remains": true
+  },
+  "terminal": "B1_DETERMINISTIC_MATERIAL_ADVANTAGE_AUDITED",
+  "claim": "When complete structured schema requirements are already visible, NEW_CLASS schema construction is deterministic-externalizable on this frozen assay.",
+  "claim_limits": [
+    "B1 is not operator induction.",
+    "B1 is not unconstrained ontology invention.",
+    "The Qwen comparison is specific to the frozen exact schema contract.",
+    "The externalizability conclusion does not require Qwen to be worse; deterministic 16/16 is sufficient for that boundary claim."
+  ],
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
