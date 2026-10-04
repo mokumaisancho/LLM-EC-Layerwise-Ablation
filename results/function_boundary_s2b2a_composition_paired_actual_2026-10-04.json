@@ -1,0 +1,88 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B2A_COMPOSITION_PAIRED_ACTUAL_V1",
+  "protocol": "FUNCTION_BOUNDARY_S2B2A_COMPOSITION_PAIRED_V1",
+  "issue": 43,
+  "stage": "A_COMPOSITION_FROM_KNOWN_PRIMITIVES",
+  "holdout_digest": "a58e978a26f86f41ce9b08e36003e08c4682cd144a3d70a5aa945bd539f0f845",
+  "fixture_count": 16,
+  "family_count": 8,
+  "execution_wrapper_commit": "008f18dc90d5d19be0eeb787e5076cadd08e21c7",
+  "render": {
+    "service_id": "srv-db113749v7es73deia90",
+    "deploy_id": "dep-db11429srm7s739it2b0",
+    "status": "live"
+  },
+  "model": {
+    "repository": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
+    "file": "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf",
+    "size_bytes": 986048768,
+    "sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370"
+  },
+  "runtime": {
+    "llama_cpp_tag": "b11146",
+    "llama_cpp_asset_sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+    "temperature": 0,
+    "context_tokens": 1024,
+    "candidate_budget_per_fixture": 1,
+    "grammar_constrained_to_visible_primitive_vocabulary": true,
+    "oracle_model_visible": false,
+    "family_model_visible": false
+  },
+  "arms": {
+    "deterministic_frozen": {
+      "candidate_recall": 1.0,
+      "candidate_precision": 1.0,
+      "f1": 1.0,
+      "exact_set_rate": 1.0,
+      "invalid_output_count": 0,
+      "forbidden_fail_open_count": 0
+    },
+    "qwen25_1p5b": {
+      "candidate_recall": 0.5625,
+      "candidate_precision": 0.5625,
+      "f1": 0.5625,
+      "exact_set_rate": 0.5625,
+      "true_positive_total": 9,
+      "emitted_total": 16,
+      "gold_total": 16,
+      "invalid_output_count": 0,
+      "forbidden_fail_open_count": 7,
+      "per_family": {
+        "approved_activation": 0.5,
+        "capacity_route": 1.0,
+        "retention_archive": 1.0,
+        "safe_release": 0.0,
+        "snapshot_restore": 1.0,
+        "threat_quarantine": 0.5,
+        "validated_seal": 0.0,
+        "verified_publish": 0.5
+      }
+    }
+  },
+  "paired_delta_qwen_minus_deterministic": {
+    "recall": -0.4375,
+    "precision": -0.4375,
+    "f1": -0.4375,
+    "exact_set_rate": -0.4375
+  },
+  "materiality_threshold": 0.20,
+  "material_gap": true,
+  "classification": "KNOWN_PRIMITIVE_COMPOSITION_DETERMINISTIC_EXTERNALIZABLE_ON_ASSAY",
+  "claim_limits": [
+    "Stage A tests composition/binding from an already supplied symbolic primitive ontology only.",
+    "It does not test invention of a missing action class/operator.",
+    "It does not test raw-language relation extraction.",
+    "It does not prove Qwen is generally worse at planning; this is a constrained symbolic-composition assay.",
+    "Same frozen 16 fixtures and exactly one-candidate budget were used for both arms."
+  ],
+  "execution_blocker_repair": {
+    "first_deploy": "dep-db1138c9v7es73deiedg",
+    "failure": "ModuleNotFoundError before inference",
+    "repair_commit": "008f18dc90d5d19be0eeb787e5076cadd08e21c7",
+    "repair_scope": "sibling import path only",
+    "measurement_contamination": false
+  },
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
