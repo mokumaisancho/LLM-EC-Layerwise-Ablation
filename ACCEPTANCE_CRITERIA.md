@@ -44,15 +44,22 @@ AC-20. GitHub Actions are not required or automatically enabled by this reposito
 
 ## Dependency and MVP enforcement
 
-The normative AC dependency graph, Phase1 MVP scope, frozen materiality/capacity rules, issue dependencies, allowed branches, and terminal states are defined in:
+The normative coarse Phase1 AC dependency graph, MVP scope, frozen materiality/capacity rules, issue dependencies, allowed branches, and terminal states are defined in:
 
 - `docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.md`
 - `docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json`
 
-An AC MUST NOT be marked PASS when any upstream dependency declared by that contract is FAIL or UNKNOWN.
+Current S2B2 fine-decomposition authority for issue #43 is:
+
+- `docs/S2B2_MVP_AC_DEPENDENCY_TCC_2026-10-04_V2.md`
+- `docs/S2B2_MVP_AC_DEPENDENCY_TCC_2026-10-04_V2.json`
+
+`S2B2_MVP_TCC_V1` is superseded and MUST NOT be executed. S2B2 V2 splits the work into `A_AUDIT -> B1_EXPLICIT_SCHEMA_SYNTHESIS -> B2_OPERATOR_INDUCTION -> boundary update`, with fail-closed gates for Oracle circularity, structural overlap, raw-evidence loss, asymmetric capability contracts, mechanical target leakage, ontology non-novelty, non-identifiable B2 fixtures, and metric inconsistency.
+
+An AC or local S2B2 AC MUST NOT be marked PASS when any upstream dependency declared by the applicable contract is FAIL or UNKNOWN.
 
 Phase1 MVP requires AC-01,02,03,04,05,06,07,08,09,11,12,13,14,15,16,17,19,20. AC-10 and AC-18 are post-MVP by default unless the coarse result already establishes the final replacement boundary.
 
-The frozen Phase1 MVP materiality threshold is an absolute 0.20 on the defined primary comparison/gain; a one-fixture 0.10 movement is non-material. Ties within 0.10 are reported as `MVP_AMBIGUOUS_DOMINANT_LAYER`; they may not be manually broken.
+The frozen materiality threshold remains an absolute 0.20 on the defined primary comparison/gain. A methodology change after a result is observed requires a versioned successor contract; the failed protocol may not be repaired in place.
 
-New deterministic EC implementations for S1/S2 and Qwen3-4B ingress are not Phase1 MVP dependencies. Large-model reference work cannot block the Phase1 coarse-localization path.
+New deterministic EC implementations for S1/S2 and Qwen3-4B ingress are not Phase1 MVP dependencies. Large-model reference work cannot block the current localized S2B2 path.
