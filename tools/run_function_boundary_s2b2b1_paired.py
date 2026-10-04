@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PIN = "ec26fee3e0a85598f1d6ad2d55d9b6f128461d33"
+PUBLIC_REPO = "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation.git"
 
 
 def run(*args: str) -> subprocess.CompletedProcess[str]:
@@ -22,13 +23,13 @@ def fail(detail: str) -> None:
 
 # Infrastructure-only adapter for Render service quota reuse.
 # It never executes the superseded B1 implementation in this branch.
-p = run("git", "fetch", "origin", "main")
+p = run("git", "fetch", "--no-tags", PUBLIC_REPO, "main")
 if p.returncode:
-    fail("git fetch origin main: " + (p.stderr or p.stdout).strip())
+    fail("public main fetch: " + (p.stderr or p.stdout).strip())
 
 p = run("git", "cat-file", "-e", PIN + "^{commit}")
 if p.returncode:
-    fail("frozen V3 commit unavailable")
+    fail("frozen V3 commit unavailable after public main fetch")
 
 p = run("git", "checkout", "--detach", PIN)
 if p.returncode:
