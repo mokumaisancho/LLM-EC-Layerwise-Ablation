@@ -1,0 +1,24 @@
+{
+  "protocol":"S2B2_MVP_TCC_V3",
+  "owner_issue":43,
+  "residual_issue":44,
+  "inherits_v2":{"human_commit":"d2b01209d98756d41df26d6cf8945f7b419e9599","machine_commit":"003e8b8fd72c26d150a6c4dd0bb4b43f5e660a45"},
+  "stage_a_terminal":"STAGE_A_AUDIT_PASS",
+  "scientific_method_change":false,
+  "authorized_delta":["fix Python boolean literal in B1 preflight","add py_compile gate","add import smoke gate","require B1_PREFLIGHT_PASS before model acquisition"],
+  "forbidden_changes":["B1 fixtures","B1 generator","B1 deterministic core","B1 scorer","B1 output contract","materiality threshold","pinned Qwen model","research question"],
+  "new_local_ac":{"L00_IMPLEMENTATION_STATIC_VALID":["PY_COMPILE_PASS","IMPORT_SMOKE_PASS","B1_PREFLIGHT_PROCESS_PASS","NO_GITHUB_ACTIONS"]},
+  "prefix_states":["P0A_STATIC_COMPILE","P0B_IMPORT_SMOKE","P0C_SCIENTIFIC_PREFLIGHT"],
+  "model_acquisition_allowed_only_after":"P0C_SCIENTIFIC_PREFLIGHT_PASS",
+  "implementation_failure_terminal":"IMPLEMENTATION_PREFLIGHT_FAILED",
+  "b1_frozen_assets":{
+    "core":"3dab663ca2747f102b5c6c3e916119cc0b468708",
+    "output_contract":"8ada6bd17b5409e32106afab70692b3cdbf47bef",
+    "scorer":"f2ee566eb132362b731d21712d4d601b541e3497",
+    "generator":"04f9b2fff2fde06f2b1be6cfc6030954f59c2f8c",
+    "manifest":"2372e72231d17ff7e9996199635fa26d5ce52194",
+    "holdout_digest":"dde736e4f37b55567af45726e378291bfa07d44d39ee58e2038804582426e650"
+  },
+  "materiality_abs":0.20,
+  "invariants":["NO_GITHUB_ACTIONS","NO_GOOGLE_DRIVE_MODEL_RELAY","NO_QWEN3_4B_AUTO_BRANCH","NO_MODEL_ACQUISITION_BEFORE_STATIC_AND_SCIENTIFIC_PREFLIGHT"]
+}
