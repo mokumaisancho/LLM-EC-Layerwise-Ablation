@@ -1,0 +1,56 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B2A_COMPOSITION_TCC_V1",
+  "issue": 43,
+  "stage": "A_COMPOSITION_FROM_KNOWN_PRIMITIVES",
+  "core_freeze_commit": "c83632855cc775b8502e6a1ded18a3f3b022f19a",
+  "research_question": "When every required action primitive already exists but the correct bound candidate instance is absent from the candidate list, can a generic deterministic symbolic composer construct the candidate set without material loss versus Qwen2.5-1.5B?",
+  "predictor_visible": [
+    "structured relation operator label",
+    "concrete required effects",
+    "concrete forbidden effects",
+    "current symbolic state",
+    "primitive action schemas with parameters/preconditions/effects",
+    "parameter domains",
+    "distractor existing candidate instances"
+  ],
+  "predictor_forbidden": [
+    "oracle",
+    "gold candidate set",
+    "family/category label",
+    "fixture-specific routing rules",
+    "post-freeze synonym tables",
+    "generated gold candidate surface text"
+  ],
+  "deterministic_engine": {
+    "implementation": "tools/s2b2a_composition_core.py",
+    "rule": "generic parameter binding + precondition satisfaction + required-effect overlap + forbidden-effect exclusion",
+    "operator_specific_branching": false,
+    "ontology_mutation": false
+  },
+  "qwen_arm": {
+    "model": "Qwen2.5-1.5B-Instruct-Q4_K_M",
+    "temperature": 0,
+    "same_visible_semantics": true,
+    "output_contract": "JSON array of {action_class, bindings}; action_class and binding values must come from visible primitive vocabulary/domains",
+    "ranking": false
+  },
+  "scoring": {
+    "surface_text_scored": false,
+    "semantic_fields": ["action_class", "bindings"],
+    "metrics": ["candidate_recall", "candidate_precision", "f1", "exact_set_rate", "invalid_output_count", "forbidden_fail_open_count", "per_family"],
+    "materiality_threshold": 0.20
+  },
+  "holdout_rules": [
+    "generator is frozen after this contract and core freeze",
+    "no reuse of the eight S2B metadata-blind fixtures",
+    "gold is explicitly authored in generator cases and is not derived by calling the deterministic core",
+    "every gold action_class must already exist in primitive_actions",
+    "no gold candidate instance may appear in existing_candidates",
+    "no prompt/grammar/threshold/core change after generator freeze"
+  ],
+  "claim_limit": "A pass establishes composition/binding from an already supplied symbolic primitive ontology only. It is not evidence for invention of a missing action class/operator.",
+  "stage_b_gate": "Stage B ontology-invention assay may begin only after Stage A evidence is frozen and audited.",
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
