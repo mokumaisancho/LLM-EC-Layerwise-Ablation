@@ -44,7 +44,6 @@ def known_primitive_can_satisfy(visible:dict)->bool:
             pre={atom_key(subst(a,b)) for a in p.get("preconditions",[])}
             if not pre.issubset(state): continue
             eff={atom_key(subst(a,b)) for a in p.get("effects",[])}
-            # Instantiate requirements over the same visible binding where possible.
             if any(x not in b for x in req["parameters"]): continue
             r_eff={atom_key(subst(a,b)) for a in req.get("required_effects",[])}
             r_forbid={atom_key(subst(a,b)) for a in req.get("forbidden_effects",[])}
@@ -66,6 +65,6 @@ def main()->int:
         if "oracle" not in f or "semantic_signature" not in f["oracle"]: failures.append({"id":f["id"],"gate":"ORACLE_RECORD_MISSING"})
     if failures:
         print(json.dumps({"terminal":"B1_PREFLIGHT_FAIL","failures":failures},indent=2)); return 2
-    out={"terminal":"B1_PREFLIGHT_PASS","protocol":"S2B2_MVP_TCC_V2","fixture_count":16,"family_count":8,"holdout_digest":digest,"known_primitive_insufficient":"16/16","visible_leakage":"0/16","structural_fingerprints":8,"model_inference":false}
+    out={"terminal":"B1_PREFLIGHT_PASS","protocol":"S2B2_MVP_TCC_V3","fixture_count":16,"family_count":8,"holdout_digest":digest,"known_primitive_insufficient":"16/16","visible_leakage":"0/16","structural_fingerprints":8,"model_inference":False}
     print(json.dumps(out,indent=2)); return 0
 if __name__=="__main__": raise SystemExit(main())
