@@ -1,0 +1,40 @@
+{
+  "protocol":"S2B2_MVP_TCC_V2",
+  "date":"2026-10-04",
+  "owner_issue":43,
+  "supersedes":["S2B2_MVP_TCC_V1","FUNCTION_BOUNDARY_S2B2B_ONTOLOGY_INVENTION_TCC_V1"],
+  "stages":["A_AUDIT","B1_EXPLICIT_SCHEMA_SYNTHESIS","B2_OPERATOR_INDUCTION"],
+  "global_ac_required":["AC-01","AC-02","AC-04","AC-06","AC-07","AC-10","AC-13","AC-14","AC-16","AC-17","AC-19","AC-20"],
+  "local_ac_order":["L01_SCOPE","L02_FREEZE_ORDER","L03_VISIBLE_IDENTITY","L04_ORACLE_INDEPENDENCE","L05_LEAKAGE_ZERO","L06_STRUCTURAL_DISJOINTNESS","L07_A_AUDIT_RAW_RECOMPUTABLE","L08_A_ORACLE_RECOMPUTABLE","L09_B1_SYMMETRIC_GENERATION_AUTHORITY","L10_B1_KNOWN_ONTOLOGY_INSUFFICIENT","L11_B1_PAIRED_OUTPUT_CONTRACT","L12_B1_METRIC_RECOMPUTATION","L13_B2_NO_MECHANICAL_TARGET_COPY","L14_B2_SEMANTIC_NOVELTY","L15_B2_IDENTIFIABLE_UNIQUE_HYPOTHESIS","L16_B2_PAIRED_OUTPUT_CONTRACT","L17_B2_METRIC_RECOMPUTATION","L18_PROVENANCE_COMPLETE","L19_BOUNDARY_UPDATE_SINGLE_COMMIT"],
+  "mvp":{
+    "A_AUDIT":{"rerun_model":false,"fixture_count":16,"dataset_digest":"a58e978a26f86f41ce9b08e36003e08c4682cd144a3d70a5aa945bd539f0f845","result_commit":"2a93bc38d263850963536bc092f03377cc787b48","required_raw_totals":{"tp":9,"emitted":16,"gold":16,"invalid":0,"fail_open":7}},
+    "B1":{"fixture_count":16,"family_count":8,"both_arms_may_emit_new_schema":true,"primary_metric":"valid_schema_proposal_rate"},
+    "B2":{"fixture_count":16,"family_count":8,"both_arms_may_emit_new_schema":true,"positive_examples_min":2,"negative_examples_min":1,"primary_metric":"valid_induced_schema_rate","unique_hypothesis_required":true},
+    "full_exit":"A_AUDIT_PASS + valid_B1 + valid_B2 + one_boundary_update"
+  },
+  "pinned_qwen":{"repository":"bartowski/Qwen2.5-1.5B-Instruct-GGUF","file":"Qwen2.5-1.5B-Instruct-Q4_K_M.gguf","size_bytes":986048768,"sha256":"1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370","temperature":0,"llama_cpp_tag":"b11146"},
+  "stage_a_evidence":{"core_commit":"c83632855cc775b8502e6a1ded18a3f3b022f19a","generator_commit":"f88e37abf64c10e7e56ce61b5b5c9d6fbb09a075","paired_result_commit":"2a93bc38d263850963536bc092f03377cc787b48","render_resource":"srv-db113749v7es73deia90","raw_log_reconstruction":{"fixture_rows":16,"tp":9,"fail_open":7,"invalid":0,"aggregate_matches_saved_result":true}},
+  "gates":{
+    "G0_PREDECESSOR":{"fail":"INVALID_PREDECESSOR_STATE"},
+    "G1_SUPERSESSION":{"rule":"no executable Stage-B authority may reference V1 or 260eb9aad1d4616fe92566fb697c047b1dc0bb96","fail":"SUPERSEDED_CONTRACT_IN_USE"},
+    "G2_FREEZE_ORDER":{"rule":"algorithm_or_hypothesis_grammar -> scorer_output_schema -> generator -> manifest_digest -> inference -> result -> boundary_update","fail":"FREEZE_ORDER_VIOLATION"},
+    "G3_LEAKAGE":{"fail":"ORACLE_OR_LABEL_LEAKAGE"},
+    "G4_ORACLE_INDEPENDENCE":{"rule":"Oracle/scorer must not import or call tested engine","fail":"CIRCULAR_ORACLE"},
+    "G5_STRUCTURAL_DISJOINTNESS":{"rule":"structural fingerprints disjoint; renaming does not count","fail":"HOLDOUT_NOT_INDEPENDENT"},
+    "G6_RAW_CACHE":{"rule":"per-fixture raw output required for aggregate recomputation","fail":"RAW_EVIDENCE_MISSING"},
+    "G7_SYMMETRIC_AUTHORITY":{"rule":"both paired arms same visible hash and same output type; both may synthesize schema in B1/B2","fail":"ASYMMETRIC_CAPABILITY_CONTRACT"},
+    "G8_B1_KNOWN_ONTOLOGY_INSUFFICIENT":{"fail":"KNOWN_PRIMITIVE_ALREADY_SUFFICIENT"},
+    "G9_NO_NAME_SCORING":{"fail":"SURFACE_LABEL_SCORING_CONTAMINATION"},
+    "G10_B2_NO_MECHANICAL_COPY":{"rule":"visible target does not contain complete hidden schema/effects projection","fail":"B2_TARGET_LEAKS_SCHEMA"},
+    "G11_B2_SEMANTIC_NOVELTY":{"fail":"ONTOLOGY_CLASS_NOT_ACTUALLY_NOVEL"},
+    "G12_B2_IDENTIFIABILITY":{"rule":"exactly one schema in frozen hypothesis space fits all positive/negative examples","zero":"B2_NO_VALID_HYPOTHESIS","multiple":"B2_AMBIGUOUS_HYPOTHESIS"},
+    "G13_METRIC_RECOMPUTATION":{"fail":"METRIC_INCONSISTENCY"},
+    "G14_NO_POST_RESULT_REPAIR":{"fail":"FAIL_CLOSED_UNKNOWN"}
+  },
+  "materiality_abs":0.20,
+  "b1_branches":{"det_minus_qwen_gte_0p20":"B1_DETERMINISTIC_MATERIAL_ADVANTAGE","qwen_minus_det_gte_0p20":"B1_LLM_MATERIAL_ADVANTAGE","otherwise":"B1_NO_MATERIAL_SEPARATION"},
+  "b2_branches":{"det_minus_qwen_gte_0p20":"B2_DETERMINISTIC_MATERIAL_ADVANTAGE","qwen_minus_det_gte_0p20":"B2_LLM_MATERIAL_ADVANTAGE","otherwise":"B2_NO_MATERIAL_SEPARATION","deterministic_search_bound":"DETERMINISTIC_SEARCH_BOUND_NOT_LLM_NECESSITY"},
+  "states":["P0_PRECHECK","P1_STAGE_A_AUDIT","P2_B1_FREEZE_GATE","P3_B1_CONTAMINATION_GATE","P4_B1_EXECUTE_CACHE","P5_B1_SCORE_AUDIT","P6_B1_TERMINAL","P7_B2_FREEZE_GATE","P8_B2_CONTAMINATION_IDENTIFIABILITY_GATE","P9_B2_EXECUTE_CACHE","P10_B2_SCORE_AUDIT","P11_BOUNDARY_UPDATE","P12_MVP_EXIT"],
+  "terminal_states":["STAGE_A_AUDIT_PASS","B1_DETERMINISTIC_MATERIAL_ADVANTAGE","B1_LLM_MATERIAL_ADVANTAGE","B1_NO_MATERIAL_SEPARATION","B2_DETERMINISTIC_MATERIAL_ADVANTAGE","B2_LLM_MATERIAL_ADVANTAGE","B2_NO_MATERIAL_SEPARATION","S2B2_MVP_COMPLETE","INVALID_PREDECESSOR_STATE","SUPERSEDED_CONTRACT_IN_USE","FREEZE_ORDER_VIOLATION","ORACLE_OR_LABEL_LEAKAGE","CIRCULAR_ORACLE","HOLDOUT_NOT_INDEPENDENT","RAW_EVIDENCE_MISSING","ASYMMETRIC_CAPABILITY_CONTRACT","KNOWN_PRIMITIVE_ALREADY_SUFFICIENT","SURFACE_LABEL_SCORING_CONTAMINATION","B2_TARGET_LEAKS_SCHEMA","ONTOLOGY_CLASS_NOT_ACTUALLY_NOVEL","B2_NO_VALID_HYPOTHESIS","B2_AMBIGUOUS_HYPOTHESIS","METRIC_INCONSISTENCY","BLOCKED_QWEN1P5B_EXECUTION","FAIL_CLOSED_UNKNOWN"],
+  "invariants":["NO_GITHUB_ACTIONS","NO_GOOGLE_DRIVE_MODEL_RELAY","NO_QWEN3_4B_AUTO_BRANCH","NO_PREDICTOR_AUTHORED_ORACLE","NO_AGGREGATE_ONLY_QWEN_EVIDENCE","NO_ASYMMETRIC_GENERATION_AUTHORITY","NO_RELEXICALIZATION_AS_INDEPENDENT_HOLDOUT","NO_CLASS_NAME_SCORING","NO_B1_EVIDENCE_RELABELED_AS_B2","NO_B2_NONUNIQUE_ORACLE","NEW_BLOCKER_REQUIRES_REGISTRY_AND_VERSIONED_SUCCESSOR"]
+}
