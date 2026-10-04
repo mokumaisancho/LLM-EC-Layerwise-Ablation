@@ -1,0 +1,30 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B2B1_SCHEMA_DETERMINISTIC_ACTUAL_V1",
+  "protocol": "FUNCTION_BOUNDARY_S2B2B1_STRUCTURED_SCHEMA_HOLDOUT_V1",
+  "issue": 43,
+  "stage": "B1_STRUCTURED_REQUIREMENTS_TO_NOVEL_SCHEMA",
+  "holdout_digest": "fb1cb2373edc3f95433541a1c7dd72b936e0e04b28e6ff79d738a64643b0b082",
+  "fixture_count": 16,
+  "family_count": 8,
+  "synth_core_freeze_commit": "8dbb9457c08af65ae1b5e7fde503ddfb58205533",
+  "validator_freeze_commit": "836e89b953ec56d9e29aaf3e1ff21ad3d3b7c676",
+  "generator_freeze_commit": "adbf16f2a8493fa328e142ae2b6962ed89f022c0",
+  "metrics": {
+    "known_primitive_solution_rate": 0.0,
+    "novel_schema_proposal_rate": 1.0,
+    "semantically_valid_proposal_rate": 1.0,
+    "exact_canonical_schema_rate": 1.0,
+    "forbidden_effect_count": 0,
+    "invalid_proposal_count": 0
+  },
+  "classification": "STRUCTURED_MISSING_CLASS_SCHEMA_SYNTHESIS_DETERMINISTIC_EXTERNALIZABLE_ON_ASSAY",
+  "interpretation": "Even when the required class is absent from the supplied primitive ontology, a generic deterministic synthesizer can construct a new schema when the required preconditions/effects and constraints are already explicitly structured.",
+  "claim_limits": [
+    "This does not test inference of missing causal semantics.",
+    "This does not test raw-language operator induction.",
+    "This does not authorize unrestricted ontology mutation; the synthesis step is explicitly scoped by structured requirements and validator gates."
+  ],
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
