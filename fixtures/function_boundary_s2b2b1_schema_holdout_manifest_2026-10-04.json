@@ -1,0 +1,25 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B2B1_SCHEMA_HOLDOUT_MANIFEST_V1",
+  "protocol": "FUNCTION_BOUNDARY_S2B2B1_STRUCTURED_SCHEMA_HOLDOUT_V1",
+  "issue": 43,
+  "stage": "B1_STRUCTURED_REQUIREMENTS_TO_NOVEL_SCHEMA",
+  "synth_core_freeze_commit": "8dbb9457c08af65ae1b5e7fde503ddfb58205533",
+  "contract_freeze_commit": "c4744d5110e3a89373edb7863f13ba03a9815b75",
+  "validator_freeze_commit": "836e89b953ec56d9e29aaf3e1ff21ad3d3b7c676",
+  "generator_freeze_commit": "adbf16f2a8493fa328e142ae2b6962ed89f022c0",
+  "seed": "adbf16f2a8493fa328e142ae2b6962ed89f022c0",
+  "fixture_count": 16,
+  "family_count": 8,
+  "holdout_digest": "fb1cb2373edc3f95433541a1c7dd72b936e0e04b28e6ff79d738a64643b0b082",
+  "fixture_order": ["N016","N012","N002","N009","N005","N007","N001","N003","N013","N006","N008","N015","N004","N010","N014","N011"],
+  "pre_model_gates": {
+    "known_primitive_candidate_count_all_fixtures": 0,
+    "deterministic_synth_proposal_count_per_fixture": 1,
+    "deterministic_synth_exact_hidden_canonical": "16/16",
+    "post_fixture_rule_change": false
+  },
+  "claim_limit": "This B1 holdout tests schema synthesis from explicit structured requirements. It does not test missing semantic/causal knowledge.",
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
