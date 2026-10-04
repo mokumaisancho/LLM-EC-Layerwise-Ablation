@@ -10,8 +10,8 @@ import time
 import urllib.request
 from collections import defaultdict
 
-from tools.generate_s2b2a_composition_holdout import generate
-from tools.s2b2a_composition_core import canonical_candidate_set, compose
+from generate_s2b2a_composition_holdout import generate
+from s2b2a_composition_core import canonical_candidate_set, compose
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 WORK = pathlib.Path('/tmp/function-boundary-s2b2a-paired')
