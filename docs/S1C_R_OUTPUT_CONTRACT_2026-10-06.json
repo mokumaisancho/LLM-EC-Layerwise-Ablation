@@ -1,0 +1,60 @@
+{
+  "schema_version": "S1C_R_TYPED_IR_OUTPUT_CONTRACT_V1",
+  "protocol": "S1C_SEMANTIC_SPACE_TCC_V1",
+  "issue": 48,
+  "stage": "MVP_R_RAW_LANGUAGE_GROUNDING",
+  "research_question": "Ground raw language into a frozen opaque typed semantic inventory without testing vocabulary invention.",
+  "visible_input_contract": {
+    "raw_text": "natural-language evidence/task text",
+    "entity_registry": "neutral entity IDs and types; entity identity resolution is in scope but open-ended entity discovery is not",
+    "opaque_semantic_inventory": "predicate IDs such as P01 with only type signature/arity, never natural-language glosses",
+    "frozen_demonstrations": "raw-language examples paired with typed IR, identical for both arms",
+    "no_hidden_fields_visible": ["family","oracle_ir","semantic_gloss","canonical_natural_language_label","downstream_expected_result","scoring_annotation"]
+  },
+  "output_schema": {
+    "status": ["OK","AMBIGUOUS"],
+    "atoms": [{
+      "predicate": "opaque visible predicate ID",
+      "arguments": ["visible entity IDs in semantic argument order"],
+      "polarity": ["POS","NEG"],
+      "modality": ["ASSERTED","REQUIRED","POSSIBLE"]
+    }]
+  },
+  "output_rules": [
+    "When status=AMBIGUOUS, atoms must be empty.",
+    "When status=OK, every predicate must exist in the visible opaque inventory.",
+    "Argument count/types must satisfy the visible predicate signature.",
+    "Atom order is not scored.",
+    "Duplicate atoms collapse under canonical set semantics.",
+    "Surface wording or hidden natural-language predicate names are never emitted or scored.",
+    "Both deterministic and Qwen arms have identical output authority."
+  ],
+  "primary_metrics": {
+    "semantic_slot_accuracy": "Jaccard over canonical (predicate,polarity,modality) slot set; 1.0 for equal empty sets only on correctly ambiguous fixtures",
+    "exact_typed_ir_rate": "exact status plus exact canonical atom set including argument order, polarity and modality"
+  },
+  "secondary_metrics": {
+    "argument_binding_accuracy": "fraction of gold atoms whose predicate/polarity/modality matched and whose ordered arguments exactly match",
+    "type_arity_valid_rate": "fraction of emitted atoms valid under visible signatures and entity types",
+    "relation_direction_accuracy": "for multi-argument gold atoms with correct predicate/polarity/modality and same entity multiset, fraction with correct argument order",
+    "negation_modality_accuracy": "for gold predicate+argument matches, fraction with exact polarity and modality",
+    "abstention_accuracy": "fixture-level correctness of AMBIGUOUS vs OK status"
+  },
+  "materiality_abs": 0.20,
+  "scoring_prohibitions": [
+    "No class/predicate natural-language name scoring.",
+    "No predictor-specific normalization after inference.",
+    "No family-specific weights.",
+    "No use of downstream result to rewrite the upstream gold IR.",
+    "No post-result metric selection."
+  ],
+  "scope_exclusions": [
+    "new predicate vocabulary invention",
+    "open-ended named-entity discovery",
+    "world-knowledge acquisition",
+    "language realization quality"
+  ],
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
