@@ -1,0 +1,90 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S2B2_B2_AUDITED_ACTUAL_V1",
+  "protocol": "S2B2_MVP_TCC_V3",
+  "issue": 43,
+  "holdout_digest": "4905b09f7c77cbad0e99a9c4bd98b1fd78a31d369f1019951d5d5864902db077",
+  "fixture_count": 16,
+  "family_count": 8,
+  "runner_commit": "50b609963b41c696a0295bad84fe351678a186ea",
+  "audit_script_commit": "074aaec9c0e719cde71506232a8c60b8e3793882",
+  "render_service": "srv-db11bafavr4c739pvqm0",
+  "render_inference_deploy": "dep-db20rj97lnhs73d6opmg",
+  "render_audit_deploy": "dep-db212nmk1f9s738n52pg",
+  "actual_file_sha256": "3b81fc37a39dead3f15c4cc68a6144735c5fc50c346bb1a313673b2b801d3106",
+  "frozen_assets": {
+    "contract": "96a99c0a58f5063f72b3dfd593c6e14e3a29a96c",
+    "inducer": "30d47b6c36a195f986cb26e36d5245e4bbf0d89a",
+    "independent_scorer": "9c4ab5f12f33f443d213d8e6854a0461b461ae33",
+    "generator": "78cc047200e8e5338294efcc3ad45039c31755bf",
+    "preflight": "1dcc5a122631232e92977eba6516b42a6cf1244c",
+    "manifest": "a01819f5120dd4762817022bdfc1844023541c79"
+  },
+  "pre_inference_gates": {
+    "scientific_preflight": "B2_PREFLIGHT_PASS",
+    "runner_preflight": "B2_RUNNER_PREFLIGHT_PASS",
+    "identifiable_unique_count": 16,
+    "deterministic_unique_match_count": 16,
+    "b1_structural_fingerprint_overlap": 0,
+    "leakage_count": 0,
+    "runner_hidden_field_reference": false,
+    "grammar_concrete_entity_leakage": 0
+  },
+  "postrun_audit": {
+    "terminal": "B2_EVIDENCE_AUDIT_PASS",
+    "model_reinference": false,
+    "visible_hash_match": "16/16",
+    "raw_parse_match": "16/16",
+    "identifiable_unique_count": "16/16",
+    "deterministic_independent_oracle_match": "16/16",
+    "qwen_valid_heldout_transition_match": "2/2",
+    "result_overturning_gate_failures": 0
+  },
+  "raw_evidence_manifest": [
+    {"fixture_id":"B201","visible_sha256":"9a88076735dea5dd739880d984911ae770025007486b02ed3c0d9e0fe7eeac52","raw_sha256":"6f99bfaa6c1f03be618dc9584d66d91120b3d820a7efe3b1f15ee73c91009eee","prediction_sha256":"239542d74aafe3588e81dc33d4affb92cbe9cf0448f74adbd57a695b46f09002"},
+    {"fixture_id":"B202","visible_sha256":"456ed0aae11976a9e4f1dab4e2c1a97a1cbe9c814ed8778f93f95460026750c3","raw_sha256":"6f99bfaa6c1f03be618dc9584d66d91120b3d820a7efe3b1f15ee73c91009eee","prediction_sha256":"239542d74aafe3588e81dc33d4affb92cbe9cf0448f74adbd57a695b46f09002"},
+    {"fixture_id":"B203","visible_sha256":"1ae73c0c71111a6865d1d23b358a3f1ad43976a6db27617972153e3f0664b203","raw_sha256":"7d6647e3733e80391bb1d8c05feb920940dfe21972458c0234fb02e3349c8298","prediction_sha256":"218f83c40e65a5ce096f71ab3fb49da01e1c9c2f45c2752707190b7709e74456"},
+    {"fixture_id":"B204","visible_sha256":"8abc485203c1b1d49d10178604b72873e69c8dad99813f536c9e5608a84bdd90","raw_sha256":"7d6647e3733e80391bb1d8c05feb920940dfe21972458c0234fb02e3349c8298","prediction_sha256":"218f83c40e65a5ce096f71ab3fb49da01e1c9c2f45c2752707190b7709e74456"},
+    {"fixture_id":"B205","visible_sha256":"49405823d9713690c53285ced65dac09036a4f60cb7b8ce343cd036e96c181bb","raw_sha256":"1b6a90805cdee4c3210cb4cd390132c48dcebf0982ab81108281a7df585efb09","prediction_sha256":"92f343724714d38baede2721b82f2ef84033b03e1c289110d0a7ca00e1b3ea5e"},
+    {"fixture_id":"B206","visible_sha256":"c90afc1840884557018249489b05fd655c705a88137e20236f971ef32c69b69c","raw_sha256":"77ca03ead513919ecde98e3e7f2163dea1bf1fd4037ecb41c56ba579b35e0567","prediction_sha256":"3cf67df8ae80574ae1f7c8677f7721e56212c4a48f6ae5dd86cf67129d8a7158"},
+    {"fixture_id":"B207","visible_sha256":"88d0509f40d885d2ae5d9f6572243686673ef82ea2ca48c988acfb6dd8be3c13","raw_sha256":"bffb3f296b7c1046d8be3a8e3ede2bfe743b5df05909835d00174eeac452b6d6","prediction_sha256":"77d52ece50034ac6b8c9ccf78aca8489d1277ae39690c9ca72109135d9d50747"},
+    {"fixture_id":"B208","visible_sha256":"d86ec508c521782514d832f87bb6b5f722cae2a9671c4d3a86ddf906adf5ffe5","raw_sha256":"bffb3f296b7c1046d8be3a8e3ede2bfe743b5df05909835d00174eeac452b6d6","prediction_sha256":"77d52ece50034ac6b8c9ccf78aca8489d1277ae39690c9ca72109135d9d50747"},
+    {"fixture_id":"B209","visible_sha256":"119d48cb69f9dfcd76ea76c51430d77f630cada794f38d315c92e0365774b094","raw_sha256":"35a87475f28ded564d7439ed85a6d00f31748a53693167829dded2e5514c6417","prediction_sha256":"3ea791a332bf009519e4f1f2afd64126dfe7095872756f0e516f783a2a3ed7ee"},
+    {"fixture_id":"B210","visible_sha256":"cee746c8cace6f6172cac3328478261696a91c24c0d3b90ea13af8be7643b8a6","raw_sha256":"ff953b75512d6678633cc8949fd131ddb9d2c94c8ae0ec2ce19d8af198b44ab6","prediction_sha256":"3ea791a332bf009519e4f1f2afd64126dfe7095872756f0e516f783a2a3ed7ee"},
+    {"fixture_id":"B211","visible_sha256":"161f1071c824e724399b7e44d2a92cde67cc5c1cda42493fcfb6aeae048afd91","raw_sha256":"78e2950291084012c7fcbffb06e2479fafeeb4d4c3a9590d6d25a8a74c9c075b","prediction_sha256":"19105ba2903cd0ebde9e0685cb3d61115152690509ade0fee91f94492fe002e8"},
+    {"fixture_id":"B212","visible_sha256":"c9d8539498236cd83fb75baefe14f234ac03dc95eb3d4fbfd6ddf61216e7d649","raw_sha256":"78e2950291084012c7fcbffb06e2479fafeeb4d4c3a9590d6d25a8a74c9c075b","prediction_sha256":"19105ba2903cd0ebde9e0685cb3d61115152690509ade0fee91f94492fe002e8"},
+    {"fixture_id":"B213","visible_sha256":"bcddc4f357eb0ee52cff9a43bbe5d6830825efea96c2b9128a28ad3228a8225d","raw_sha256":"123d5a5e248e5f80df91f1b6aab06bd402e3f0f5c72d516dbbb8f83bb768e43f","prediction_sha256":"7e38986c63631de506b499447e13993e75572f0bbc83c6516b55e1f6b191c73f"},
+    {"fixture_id":"B214","visible_sha256":"06afdf088f0cab0f680a5e128de9ced54838ded8de8e39d046ceef9f8f4fafae","raw_sha256":"123d5a5e248e5f80df91f1b6aab06bd402e3f0f5c72d516dbbb8f83bb768e43f","prediction_sha256":"7e38986c63631de506b499447e13993e75572f0bbc83c6516b55e1f6b191c73f"},
+    {"fixture_id":"B215","visible_sha256":"5646a49b29b3373c9e1bbbd0806124db3db9237e3c49d4549d735a335b48538c","raw_sha256":"680667aa82d7ea5d807c3d1d7d32c03a160547dad22d8c8be496d64211b63f29","prediction_sha256":"0e8aa7cf11df55d0271da0c4ce3ba161ee5397a5d700c6fc6eeae7aa7b08b45c"},
+    {"fixture_id":"B216","visible_sha256":"79793b3d91eaba40d36fc2d1be98c0c655acc138b0435fa3bff98024ec313680","raw_sha256":"680667aa82d7ea5d807c3d1d7d32c03a160547dad22d8c8be496d64211b63f29","prediction_sha256":"0e8aa7cf11df55d0271da0c4ce3ba161ee5397a5d700c6fc6eeae7aa7b08b45c"}
+  ],
+  "arms": {
+    "deterministic": {
+      "valid_total": 16,
+      "valid_rate": 1.0,
+      "search_bound_count": 0
+    },
+    "qwen25_1p5b": {
+      "valid_total": 2,
+      "valid_rate": 0.125,
+      "invalid_total": 14,
+      "reason_counts": {
+        "SEMANTIC_SIGNATURE_MISMATCH": 12,
+        "UNUSED_PARAMETER": 2,
+        "VALID": 2
+      }
+    }
+  },
+  "paired_delta_deterministic_minus_qwen": 0.875,
+  "materiality_abs": 0.20,
+  "terminal": "B2_DETERMINISTIC_MATERIAL_ADVANTAGE_AUDITED",
+  "claim": "Within the frozen typed symbolic hypothesis space, reusable operator induction from structured positive/negative transitions is deterministic-externalizable on this assay.",
+  "claim_limits": [
+    "B2 is not raw-language parsing.",
+    "B2 is not world-knowledge acquisition.",
+    "B2 is not unbounded predicate/operator invention outside the frozen vocabulary and hypothesis grammar.",
+    "The externalizability conclusion is restricted to identifiable finite symbolic hypothesis spaces."
+  ],
+  "github_actions_used": false,
+  "google_drive_used": false,
+  "qwen3_4b_used": false
+}
