@@ -1,0 +1,42 @@
+{
+  "schema_version": "S1C_R_VISIBLE_FIXTURE_SCHEMA_V1",
+  "protocol": "S1C_SEMANTIC_SPACE_TCC_V1",
+  "issue": 48,
+  "fixture": {
+    "id": "hidden from model; audit identifier only",
+    "family": "hidden",
+    "visible": {
+      "raw_text": "string",
+      "entity_registry": {
+        "E01": {"type": "T01", "surface_forms": ["model-visible mention form"]}
+      },
+      "opaque_semantic_inventory": {
+        "P01": {"arg_types": ["T01"]},
+        "P02": {"arg_types": ["T01", "T02"]}
+      },
+      "demonstrations": [
+        {
+          "raw_text": "string",
+          "entity_registry": {"D01": {"type": "T01", "surface_forms": ["mention"]}},
+          "typed_ir": {
+            "status": "OK",
+            "atoms": [{"predicate":"P01","arguments":["D01"],"polarity":"POS","modality":"ASSERTED"}]
+          }
+        }
+      ]
+    },
+    "oracle": {
+      "typed_ir": {
+        "status": "OK or AMBIGUOUS",
+        "atoms": []
+      },
+      "downstream_expected_result": "hidden optional causal replay artifact"
+    }
+  },
+  "visibility_rules": [
+    "Only the object under visible is supplied to paired predictors.",
+    "Fixture id/family/oracle are never serialized into model-visible prompt content.",
+    "surface_forms identify entities only; they may not contain hidden predicate IDs or semantic gloss annotations.",
+    "opaque predicate IDs are randomly assigned independently of semantic meaning before heldout generation and contain no mnemonic substrings."
+  ]
+}
