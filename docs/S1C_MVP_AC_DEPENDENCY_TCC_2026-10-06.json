@@ -1,0 +1,48 @@
+{
+  "schema_version": "S1C_SEMANTIC_SPACE_TCC_V1",
+  "issue": 48,
+  "prerequisite": {
+    "issue_43_terminal": "S2B2_MVP_COMPLETE",
+    "boundary_commit": "348ef61bd517b855db97b723a3ee70a0c1be6bcf"
+  },
+  "materiality_abs": 0.20,
+  "mvp_r": {
+    "purpose": "raw_language_to_frozen_opaque_typed_ir",
+    "fixture_count": 16,
+    "family_count": 8,
+    "required_ac": ["R01_SCOPE","R02_OUTPUT_IDENTITY","R03_SCORER_INDEPENDENCE","R04_DETERMINISTIC_FREEZE","R05_HOLDOUT_INDEPENDENCE","R06_LEAKAGE_ZERO","R07_IDENTIFIABLE","R08_VISIBLE_IDENTITY","R09_RAW_RECOMPUTABLE","R10_METRIC_RECOMPUTABLE","R11_DOWNSTREAM_CAUSAL","R12_NO_POST_RESULT_REPAIR"],
+    "primary_metrics": ["semantic_slot_accuracy","exact_typed_ir_rate"],
+    "secondary_metrics": ["argument_binding_accuracy","type_arity_accuracy","relation_direction_accuracy","negation_modality_accuracy","abstention_accuracy","fixed_b2_downstream_success"],
+    "branches": {
+      "qwen_minus_deterministic_gte_0p20_primary_or_downstream": "R_LLM_MATERIAL_ADVANTAGE",
+      "deterministic_minus_qwen_gte_0p20": "R_DETERMINISTIC_MATERIAL_ADVANTAGE",
+      "otherwise": "R_NO_MATERIAL_SEPARATION"
+    },
+    "branch_actions": {
+      "R_LLM_MATERIAL_ADVANTAGE": "STOP_V_AND_UPDATE_BOUNDARY",
+      "R_DETERMINISTIC_MATERIAL_ADVANTAGE": "PROCEED_MVP_V",
+      "R_NO_MATERIAL_SEPARATION": "PROCEED_MVP_V"
+    }
+  },
+  "mvp_v": {
+    "purpose": "denotational_semantic_slot_discovery_without_canonical_names",
+    "conditional_on": ["R_DETERMINISTIC_MATERIAL_ADVANTAGE","R_NO_MATERIAL_SEPARATION"],
+    "required_ac": ["V01_DENOTATIONAL_CONTRACT","V02_EQUIVALENCE_SCORER","V03_DETERMINISTIC_DISCOVERY_FREEZE","V04_HOLDOUT_INDEPENDENCE","V05_LEAKAGE_ZERO","V06_IDENTIFIABLE_DENOTATION","V07_PAIRED_AUTHORITY","V08_RAW_RECOMPUTABLE","V09_METRIC_RECOMPUTABLE","V10_SINGLE_BOUNDARY_UPDATE"]
+  },
+  "phases": ["P0_AUTHORITY","P1_R_CONTRACT_SCORER_FREEZE","P2_R_DETERMINISTIC_FREEZE","P3_R_GENERATOR_CORPUS_FREEZE","P4_R_PREINFERENCE_GATES","P5_R_PAIRED_EXECUTE_ONCE","P6_R_INDEPENDENT_AUDIT","P7_R_TERMINAL","P8_V_CONTRACT_SCORER_ALGO_FREEZE","P9_V_GENERATOR_AND_GATES","P10_V_PAIRED_EXECUTE_ONCE","P11_V_INDEPENDENT_AUDIT","P12_SINGLE_BOUNDARY_UPDATE"],
+  "fail_closed": ["INVALID_PREDECESSOR_STATE","FREEZE_ORDER_VIOLATION","STRUCTURAL_HOLDOUT_REUSE","ANSWER_BEARING_SYMBOL_LEAKAGE","ORACLE_FAMILY_CATEGORY_LEAKAGE","CIRCULAR_ORACLE_OR_SCORER","ASYMMETRIC_VISIBLE_INPUT","ASYMMETRIC_OUTPUT_AUTHORITY","GRAMMAR_ENCODES_SEMANTIC_ANSWER","NON_IDENTIFIABLE_FIXTURE","RAW_EVIDENCE_MISSING","METRIC_RECOMPUTATION_MISMATCH","DOWNSTREAM_SOLVER_DRIFT","POST_RESULT_REPAIR_ATTEMPT","FAIL_CLOSED_UNKNOWN"],
+  "unexpected_failure_action": "REGISTER_ISSUE_TERMINATE_PROTOCOL_VERSION_CREATE_SUCCESSOR_REFREEZE",
+  "model": {
+    "name": "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf",
+    "sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+    "llama_cpp": "b11146",
+    "temperature": 0
+  },
+  "constraints": {
+    "github_actions": false,
+    "google_drive_relay": false,
+    "automatic_qwen3_4b": false,
+    "open_ended_world_knowledge_invention_in_mvp": false,
+    "natural_corpus_broad_generalization_in_mvp": false
+  }
+}
