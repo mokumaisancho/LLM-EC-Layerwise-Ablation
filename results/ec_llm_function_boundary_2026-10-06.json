@@ -1,0 +1,71 @@
+{
+  "schema_version": "EC_LLM_FUNCTION_BOUNDARY_2026_10_06_V1",
+  "supersedes": "results/ec_llm_function_boundary_2026-10-03.json",
+  "protocol_authority": "S2B2_MVP_TCC_V3",
+  "materiality_threshold": 0.20,
+  "inherited_prior_boundary": true,
+  "s2b2": {
+    "stage_a": {
+      "terminal": "STAGE_A_AUDIT_PASS",
+      "status": "INHERITED_VALID"
+    },
+    "b1_explicit_schema_synthesis": {
+      "evidence": "results/function_boundary_s2b2_b1_audited_actual_2026-10-05.json",
+      "deterministic_valid_rate": 1.0,
+      "qwen25_1p5b_valid_rate": 0.0625,
+      "deterministic_minus_qwen": 0.9375,
+      "terminal": "B1_DETERMINISTIC_MATERIAL_ADVANTAGE_AUDITED",
+      "classification": "DETERMINISTIC_EXTERNALIZABLE_AFTER_EXPLICIT_STRUCTURING",
+      "claim_limit": "Complete structured parameters/preconditions/effects/forbidden effects are visible."
+    },
+    "b2_operator_induction": {
+      "evidence": "results/function_boundary_s2b2_b2_audited_actual_2026-10-06.json",
+      "holdout_digest": "4905b09f7c77cbad0e99a9c4bd98b1fd78a31d369f1019951d5d5864902db077",
+      "deterministic_valid_rate": 1.0,
+      "qwen25_1p5b_valid_rate": 0.125,
+      "deterministic_minus_qwen": 0.875,
+      "deterministic_search_bound_count": 0,
+      "qwen_reason_counts": {
+        "SEMANTIC_SIGNATURE_MISMATCH": 12,
+        "UNUSED_PARAMETER": 2,
+        "VALID": 2
+      },
+      "audit": {
+        "visible_hash_match": "16/16",
+        "raw_parse_match": "16/16",
+        "independent_oracle_match": "16/16",
+        "qwen_valid_heldout_transition_match": "2/2",
+        "result_overturning_gate_failures": 0,
+        "model_reinference": false
+      },
+      "terminal": "B2_DETERMINISTIC_MATERIAL_ADVANTAGE_AUDITED",
+      "classification": "DETERMINISTIC_EXTERNALIZABLE_IN_FINITE_TYPED_IDENTIFIABLE_SPACE",
+      "claim_limit": "No claim about raw-language parsing, world-knowledge acquisition, or unbounded predicate/operator invention."
+    }
+  },
+  "boundary_delta": {
+    "newly_externalizable": [
+      "new action-schema construction from complete structured requirements",
+      "uniquely identifiable operator induction inside a frozen typed symbolic hypothesis space"
+    ],
+    "llm_assisted_not_necessary_proven": [
+      "primary-evidence fact selection inside supplied-dictionary S1A synthetic assays"
+    ],
+    "unresolved_generative": [
+      "raw natural language -> semantic vocabulary/ontology/typed relation representation without a supplied dictionary",
+      "new predicate/operator/world-model semantics outside the supplied vocabulary and frozen hypothesis grammar",
+      "open-ended language realization and unconstrained semantic synthesis"
+    ],
+    "boundary_summary": "The empirical boundary moved upstream: symbolic composition, search and identifiable operator induction are deterministic-externalizable once the semantic space is explicitly represented. The remaining causal target is creation of that semantic space from unstructured language/world knowledge."
+  },
+  "next_empirical_order": [
+    "raw language -> typed semantic/operator IR",
+    "separate vocabulary discovery from relation/operator grounding",
+    "hold downstream B2 solver fixed while substituting upstream semantic representation",
+    "then test out-of-vocabulary semantic invention",
+    "replicate on less synthetic/natural corpus"
+  ],
+  "github_actions_used": false,
+  "google_drive_model_relay_used": false,
+  "automatic_qwen3_4b_branch": false
+}
