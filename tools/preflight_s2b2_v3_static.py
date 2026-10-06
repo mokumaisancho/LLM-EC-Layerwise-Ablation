@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 import py_compile
 import subprocess
 import sys
@@ -17,6 +18,12 @@ def fail(detail:str)->None:
 
 
 def main()->int:
+    if os.environ.get("S1C_R_PREFLIGHT") == "1":
+        q=subprocess.run([sys.executable,str(TOOLS/"preflight_s1c_r.py")],cwd=ROOT,text=True,capture_output=True)
+        sys.stdout.write(q.stdout)
+        if q.stderr:
+            sys.stderr.write(q.stderr)
+        return q.returncode
     active=set()
     for pattern in ("*s2b2b1*.py","preflight_s2b2b1.py","preflight_s2b2_v3_static.py"):
         active.update(TOOLS.glob(pattern))
