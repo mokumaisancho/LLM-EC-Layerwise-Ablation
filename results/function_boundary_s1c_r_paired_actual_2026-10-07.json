@@ -1,0 +1,2702 @@
+{
+  "schema_version": "FUNCTION_BOUNDARY_S1C_R_PAIRED_ACTUAL_V1",
+  "protocol": "FUNCTION_BOUNDARY_S1C_R_PAIRED_V1",
+  "tcc": "S1C_SEMANTIC_SPACE_TCC_V1",
+  "issue": 48,
+  "terminal": "R_PAIRED_METRICS_READY_AUDIT_REQUIRED",
+  "holdout_digest": "8a0baf43121bddefdbbba78ce0a437dcc9a00b7e85a4b9b3cac3440409a5d43a",
+  "fixture_count": 16,
+  "family_count": 8,
+  "source_blob_pins": {
+    "score_s1c_r_typed_ir.py": "e10e0ab83ac75538659e5fb313efa20e8f5c8653",
+    "s1c_r_deterministic_grounder.py": "74c6a9832bc7e5ab4594e0868e235a0106d4a0d6",
+    "generate_s1c_r_holdout.py": "4cfca707a440e03d992f2a2ab35fb2d9293cf37e",
+    "preflight_s1c_r.py": "bf2ae7a16d63fbc2d53a2d70ebb923dad7f8f175"
+  },
+  "visible_hashes": {
+    "R01": "b572e5f9cd242c416994f4be3b5e50f02b7ec69aef58fc0cb29b3303aa71f490",
+    "R02": "14d82b22861fbcc4762fdee29930f69c927ad9643eec85ea0c79a6ed5320b226",
+    "R03": "b3d90acc796a247f5476b9ece02e5123dd5ad038583d6a700a510b5ba2732610",
+    "R04": "20cda407002997b41908b7b412f1210a34175f141db8224c2e1a26614d884cac",
+    "R05": "3609ca343e8569e2d2a3103c0873e1fa8c1df761e2505b31c10d6800ae183ee7",
+    "R06": "0731745163da97687c63e5b54f80ad3fd7a5de61c8e5123dafc26e68820744fd",
+    "R07": "20c02aed142b06a5c511cee8b91a907154cf0d859ea5ac5b9ceb080295c1da4a",
+    "R08": "b249a3f29500adb7b6cc36c98c3d9309223125c1bf3c434ce97dc5afd83049b1",
+    "R09": "fbb9da7e3ff74974972379b6cfa8689e7f87a13d252965dd0abb0e04babf84e5",
+    "R10": "95321139148668f263c003963e7da221fdea2b66e720a94e9de021dd0f336085",
+    "R11": "8bdd664348afd0ed4d71570ad692c4b7eb6b6f5805ec6bb2086d0ebc7e543772",
+    "R12": "4c4926c4bcf811f2358809168b1d60f0c3c9fcb445ef6cff2ca06fb65f610b6f",
+    "R13": "5060bb44b0873631c2d7684ad98140713d1d603e81f62da9b63d5f8861d4ea62",
+    "R14": "2b9a409c540b11acaadec421caf4ac130da452911ce333bb25ac52c249a824b4",
+    "R15": "10eb0559bd1061661997aee68b3678e066108c3296e6905a08bacc69ae296e55",
+    "R16": "f6abc233b31a1a23d7a8625dc7b452f4766d040a5f16c4e6e24663fc7d2bc563"
+  },
+  "preflight": {
+    "protocol": "S1C_R_PREINFERENCE_GATE_V1",
+    "pass": true,
+    "terminal": "S1C_R_PREINFERENCE_PASS",
+    "checks": {
+      "fixture_count": true,
+      "family_count": true,
+      "family_names_unique": true,
+      "prior_family_name_collision_zero": true,
+      "structural_descriptor_collision_zero": true,
+      "opaque_inventory_only_ids_and_signatures": true,
+      "model_visible_hidden_field_leakage_zero": true,
+      "demo_mapping_identifiable": true,
+      "oracle_valid_under_independent_scorer": true,
+      "independent_oracle_recompute": true,
+      "visible_hash_count": true,
+      "deterministic_output_scored_without_oracle_access": true,
+      "grounder_manifest_oracle_hidden": true,
+      "grounder_manifest_family_hidden": true,
+      "grounder_manifest_post_result_tuning_false": true
+    },
+    "failure_count": 0,
+    "failures": [],
+    "fixture_count": 16,
+    "family_count": 8,
+    "visible_hashes": {
+      "R01": "b572e5f9cd242c416994f4be3b5e50f02b7ec69aef58fc0cb29b3303aa71f490",
+      "R02": "14d82b22861fbcc4762fdee29930f69c927ad9643eec85ea0c79a6ed5320b226",
+      "R03": "b3d90acc796a247f5476b9ece02e5123dd5ad038583d6a700a510b5ba2732610",
+      "R04": "20cda407002997b41908b7b412f1210a34175f141db8224c2e1a26614d884cac",
+      "R05": "3609ca343e8569e2d2a3103c0873e1fa8c1df761e2505b31c10d6800ae183ee7",
+      "R06": "0731745163da97687c63e5b54f80ad3fd7a5de61c8e5123dafc26e68820744fd",
+      "R07": "20c02aed142b06a5c511cee8b91a907154cf0d859ea5ac5b9ceb080295c1da4a",
+      "R08": "b249a3f29500adb7b6cc36c98c3d9309223125c1bf3c434ce97dc5afd83049b1",
+      "R09": "fbb9da7e3ff74974972379b6cfa8689e7f87a13d252965dd0abb0e04babf84e5",
+      "R10": "95321139148668f263c003963e7da221fdea2b66e720a94e9de021dd0f336085",
+      "R11": "8bdd664348afd0ed4d71570ad692c4b7eb6b6f5805ec6bb2086d0ebc7e543772",
+      "R12": "4c4926c4bcf811f2358809168b1d60f0c3c9fcb445ef6cff2ca06fb65f610b6f",
+      "R13": "5060bb44b0873631c2d7684ad98140713d1d603e81f62da9b63d5f8861d4ea62",
+      "R14": "2b9a409c540b11acaadec421caf4ac130da452911ce333bb25ac52c249a824b4",
+      "R15": "10eb0559bd1061661997aee68b3678e066108c3296e6905a08bacc69ae296e55",
+      "R16": "f6abc233b31a1a23d7a8625dc7b452f4766d040a5f16c4e6e24663fc7d2bc563"
+    },
+    "deterministic_preinference_score": {
+      "primary": {
+        "semantic_slot_accuracy": 0.75,
+        "exact_typed_ir_rate": 0.5625
+      },
+      "secondary": {
+        "argument_binding_accuracy": 0.8333333333333334,
+        "type_arity_valid_rate": 1.0,
+        "relation_direction_accuracy": 1.0,
+        "negation_modality_accuracy": 1.0,
+        "abstention_accuracy": 0.9375
+      },
+      "valid_prediction_rate": 1.0,
+      "invalid_prediction_count": 0
+    },
+    "scientific_rule": "No generator, scorer, predictor, threshold, or fixture repair is authorized after this gate from observed scores. Failure requires a versioned successor protocol."
+  },
+  "model": {
+    "repository": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
+    "file": "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf",
+    "size_bytes": 986048768,
+    "sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370"
+  },
+  "runtime": {
+    "llama_cpp_tag": "b11146",
+    "llama_cpp_asset_sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+    "temperature": 0,
+    "context_tokens": 4096,
+    "grammar_policy": "all type-valid visible atoms up to four; no semantic answer encoded",
+    "github_actions_used": false,
+    "google_drive_used": false,
+    "qwen3_4b_used": false
+  },
+  "arms": {
+    "deterministic": {
+      "protocol": "S1C_R_INDEPENDENT_TYPED_IR_SCORER_V1",
+      "pass": true,
+      "terminal": "S1C_R_SCORE_COMPLETE",
+      "primary": {
+        "semantic_slot_accuracy": 0.75,
+        "exact_typed_ir_rate": 0.5625
+      },
+      "secondary": {
+        "argument_binding_accuracy": 0.8333333333333334,
+        "type_arity_valid_rate": 1.0,
+        "relation_direction_accuracy": 1.0,
+        "negation_modality_accuracy": 1.0,
+        "abstention_accuracy": 0.9375
+      },
+      "valid_prediction_rate": 1.0,
+      "invalid_prediction_count": 0,
+      "reason_counts": {
+        "VALID": 16
+      },
+      "per_family": {
+        "alias_reference_state": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 0.5,
+          "exact_typed_ir_rate": 0.0,
+          "argument_binding_accuracy": 1.0,
+          "type_arity_valid_rate": 1.0,
+          "relation_direction_accuracy": null,
+          "negation_modality_accuracy": 1.0,
+          "abstention_accuracy": 1.0,
+          "valid_prediction_rate": 1.0,
+          "invalid_prediction_count": 0
+        },
+        "binary_direction_passive": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 1.0,
+          "exact_typed_ir_rate": 1.0,
+          "argument_binding_accuracy": 1.0,
+          "type_arity_valid_rate": 1.0,
+          "relation_direction_accuracy": 1.0,
+          "negation_modality_accuracy": 1.0,
+          "abstention_accuracy": 1.0,
+          "valid_prediction_rate": 1.0,
+          "invalid_prediction_count": 0
+        },
+        "cross_sentence_relation_state": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 1.0,
+          "exact_typed_ir_rate": 1.0,
+          "argument_binding_accuracy": 1.0,
+          "type_arity_valid_rate": 1.0,
+          "relation_direction_accuracy": 1.0,
+          "negation_modality_accuracy": 1.0,
+          "abstention_accuracy": 1.0,
+          "valid_prediction_rate": 1.0,
+          "invalid_prediction_count": 0
+        },
+        "explicit_unresolved_alternative": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 0.5,
+          "exact_typed_ir_rate": 0.5,
+          "argument_binding_accuracy": null,
+          "type_arity_valid_rate": 1.0,
+          "relation_direction_accuracy": null,
+          "negation_modality_accuracy": null,
+          "abstention_accuracy": 0.5,
+          "valid_prediction_rate": 1.0,
+          "invalid_prediction_count": 0
+        },
+        "multi_entity_conjunction": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 0.75,
+          "exact_typed_ir_rate": 0.5,
+          "argument_binding_accuracy": 0.75,
+          "type_arity_valid_rate": 1.0,
+          "relation_direction_accuracy": null,
+          "negation_modality_accuracy": 1.0,
+          "abstention_accuracy": 1.0,
+          "valid_prediction_rate": 1.0,
+          "invalid_prediction_count": 0
+        },
+        "negation_with_contrast": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 0.75,
+          "exact_typed_ir_rate": 0.5,
+          "argument_binding_accuracy": 0.75,
+          "type_arity_valid_rate": 1.0,
+          "relation_direction_accuracy": null,
+          "negation_modality_accuracy": 1.0,
+          "abstention_accuracy": 1.0,
+          "valid_prediction_rate": 1.0,
+          "invalid_prediction_count": 0
+        },
+        "possibility_vs_observation": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 0.75,
+          "exact_typed_ir_rate": 0.5,
+          "argument_binding_accuracy": 0.75,
+          "type_arity_valid_rate": 1.0,
+          "relation_direction_accuracy": null,
+          "negation_modality_accuracy": 1.0,
+          "abstention_accuracy": 1.0,
+          "valid_prediction_rate": 1.0,
+          "invalid_prediction_count": 0
+        },
+        "requirement_vs_observation": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 0.75,
+          "exact_typed_ir_rate": 0.5,
+          "argument_binding_accuracy": 0.75,
+          "type_arity_valid_rate": 1.0,
+          "relation_direction_accuracy": null,
+          "negation_modality_accuracy": 1.0,
+          "abstention_accuracy": 1.0,
+          "valid_prediction_rate": 1.0,
+          "invalid_prediction_count": 0
+        }
+      },
+      "rows": [
+        {
+          "fixture_id": "R01",
+          "family": "alias_reference_state",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.5,
+          "exact_typed_ir": false,
+          "abstention_correct": true,
+          "argument_binding_num": 1,
+          "argument_binding_den": 1,
+          "type_arity_valid_num": 2,
+          "type_arity_valid_den": 2,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 1,
+          "negation_modality_den": 1,
+          "gold_atom_count": 1,
+          "pred_atom_count": 2
+        },
+        {
+          "fixture_id": "R02",
+          "family": "alias_reference_state",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.5,
+          "exact_typed_ir": false,
+          "abstention_correct": true,
+          "argument_binding_num": 1,
+          "argument_binding_den": 1,
+          "type_arity_valid_num": 2,
+          "type_arity_valid_den": 2,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 1,
+          "negation_modality_den": 1,
+          "gold_atom_count": 1,
+          "pred_atom_count": 2
+        },
+        {
+          "fixture_id": "R03",
+          "family": "binary_direction_passive",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 1.0,
+          "exact_typed_ir": true,
+          "abstention_correct": true,
+          "argument_binding_num": 1,
+          "argument_binding_den": 1,
+          "type_arity_valid_num": 1,
+          "type_arity_valid_den": 1,
+          "relation_direction_num": 1,
+          "relation_direction_den": 1,
+          "negation_modality_num": 1,
+          "negation_modality_den": 1,
+          "gold_atom_count": 1,
+          "pred_atom_count": 1
+        },
+        {
+          "fixture_id": "R04",
+          "family": "binary_direction_passive",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 1.0,
+          "exact_typed_ir": true,
+          "abstention_correct": true,
+          "argument_binding_num": 1,
+          "argument_binding_den": 1,
+          "type_arity_valid_num": 1,
+          "type_arity_valid_den": 1,
+          "relation_direction_num": 1,
+          "relation_direction_den": 1,
+          "negation_modality_num": 1,
+          "negation_modality_den": 1,
+          "gold_atom_count": 1,
+          "pred_atom_count": 1
+        },
+        {
+          "fixture_id": "R05",
+          "family": "negation_with_contrast",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "NEG",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "NEG",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.5,
+          "exact_typed_ir": false,
+          "abstention_correct": true,
+          "argument_binding_num": 1,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 1,
+          "type_arity_valid_den": 1,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 1,
+          "negation_modality_den": 1,
+          "gold_atom_count": 2,
+          "pred_atom_count": 1
+        },
+        {
+          "fixture_id": "R06",
+          "family": "negation_with_contrast",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "NEG",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "NEG",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 1.0,
+          "exact_typed_ir": true,
+          "abstention_correct": true,
+          "argument_binding_num": 2,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 2,
+          "type_arity_valid_den": 2,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 2,
+          "negation_modality_den": 2,
+          "gold_atom_count": 2,
+          "pred_atom_count": 2
+        },
+        {
+          "fixture_id": "R07",
+          "family": "requirement_vs_observation",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "REQUIRED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.5,
+          "exact_typed_ir": false,
+          "abstention_correct": true,
+          "argument_binding_num": 1,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 1,
+          "type_arity_valid_den": 1,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 1,
+          "negation_modality_den": 1,
+          "gold_atom_count": 2,
+          "pred_atom_count": 1
+        },
+        {
+          "fixture_id": "R08",
+          "family": "requirement_vs_observation",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "REQUIRED"
+              },
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "REQUIRED"
+              },
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 1.0,
+          "exact_typed_ir": true,
+          "abstention_correct": true,
+          "argument_binding_num": 2,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 2,
+          "type_arity_valid_den": 2,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 2,
+          "negation_modality_den": 2,
+          "gold_atom_count": 2,
+          "pred_atom_count": 2
+        },
+        {
+          "fixture_id": "R09",
+          "family": "possibility_vs_observation",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "POSSIBLE"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "POSSIBLE"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 1.0,
+          "exact_typed_ir": true,
+          "abstention_correct": true,
+          "argument_binding_num": 2,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 2,
+          "type_arity_valid_den": 2,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 2,
+          "negation_modality_den": 2,
+          "gold_atom_count": 2,
+          "pred_atom_count": 2
+        },
+        {
+          "fixture_id": "R10",
+          "family": "possibility_vs_observation",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "POSSIBLE"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.5,
+          "exact_typed_ir": false,
+          "abstention_correct": true,
+          "argument_binding_num": 1,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 1,
+          "type_arity_valid_den": 1,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 1,
+          "negation_modality_den": 1,
+          "gold_atom_count": 2,
+          "pred_atom_count": 1
+        },
+        {
+          "fixture_id": "R11",
+          "family": "multi_entity_conjunction",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E02"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E02"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 1.0,
+          "exact_typed_ir": true,
+          "abstention_correct": true,
+          "argument_binding_num": 2,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 2,
+          "type_arity_valid_den": 2,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 2,
+          "negation_modality_den": 2,
+          "gold_atom_count": 2,
+          "pred_atom_count": 2
+        },
+        {
+          "fixture_id": "R12",
+          "family": "multi_entity_conjunction",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E02"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.5,
+          "exact_typed_ir": false,
+          "abstention_correct": true,
+          "argument_binding_num": 1,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 1,
+          "type_arity_valid_den": 1,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 1,
+          "negation_modality_den": 1,
+          "gold_atom_count": 2,
+          "pred_atom_count": 1
+        },
+        {
+          "fixture_id": "R13",
+          "family": "cross_sentence_relation_state",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 1.0,
+          "exact_typed_ir": true,
+          "abstention_correct": true,
+          "argument_binding_num": 2,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 2,
+          "type_arity_valid_den": 2,
+          "relation_direction_num": 1,
+          "relation_direction_den": 1,
+          "negation_modality_num": 2,
+          "negation_modality_den": 2,
+          "gold_atom_count": 2,
+          "pred_atom_count": 2
+        },
+        {
+          "fixture_id": "R14",
+          "family": "cross_sentence_relation_state",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 1.0,
+          "exact_typed_ir": true,
+          "abstention_correct": true,
+          "argument_binding_num": 2,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 2,
+          "type_arity_valid_den": 2,
+          "relation_direction_num": 1,
+          "relation_direction_den": 1,
+          "negation_modality_num": 2,
+          "negation_modality_den": 2,
+          "gold_atom_count": 2,
+          "pred_atom_count": 2
+        },
+        {
+          "fixture_id": "R15",
+          "family": "explicit_unresolved_alternative",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "AMBIGUOUS",
+            "atoms": []
+          },
+          "semantic_slot_accuracy": 0.0,
+          "exact_typed_ir": false,
+          "abstention_correct": false,
+          "argument_binding_num": 0,
+          "argument_binding_den": 0,
+          "type_arity_valid_num": 1,
+          "type_arity_valid_den": 1,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 0,
+          "negation_modality_den": 0,
+          "gold_atom_count": 0,
+          "pred_atom_count": 1
+        },
+        {
+          "fixture_id": "R16",
+          "family": "explicit_unresolved_alternative",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "AMBIGUOUS",
+            "atoms": []
+          },
+          "canonical_oracle": {
+            "status": "AMBIGUOUS",
+            "atoms": []
+          },
+          "semantic_slot_accuracy": 1.0,
+          "exact_typed_ir": true,
+          "abstention_correct": true,
+          "argument_binding_num": 0,
+          "argument_binding_den": 0,
+          "type_arity_valid_num": 0,
+          "type_arity_valid_den": 0,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 0,
+          "negation_modality_den": 0,
+          "gold_atom_count": 0,
+          "pred_atom_count": 0
+        }
+      ]
+    },
+    "qwen25_1p5b": {
+      "protocol": "S1C_R_INDEPENDENT_TYPED_IR_SCORER_V1",
+      "pass": true,
+      "terminal": "S1C_R_SCORE_COMPLETE",
+      "primary": {
+        "semantic_slot_accuracy": 0.203125,
+        "exact_typed_ir_rate": 0.0
+      },
+      "secondary": {
+        "argument_binding_accuracy": 0.3333333333333333,
+        "type_arity_valid_rate": 0.45454545454545453,
+        "relation_direction_accuracy": 1.0,
+        "negation_modality_accuracy": 1.0,
+        "abstention_accuracy": 0.4375
+      },
+      "valid_prediction_rate": 0.4375,
+      "invalid_prediction_count": 9,
+      "reason_counts": {
+        "AMBIGUOUS_WITH_ATOMS": 9,
+        "VALID": 7
+      },
+      "per_family": {
+        "alias_reference_state": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 0.3333333333333333,
+          "exact_typed_ir_rate": 0.0,
+          "argument_binding_accuracy": 1.0,
+          "type_arity_valid_rate": 1.0,
+          "relation_direction_accuracy": null,
+          "negation_modality_accuracy": 1.0,
+          "abstention_accuracy": 1.0,
+          "valid_prediction_rate": 1.0,
+          "invalid_prediction_count": 0
+        },
+        "binary_direction_passive": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 0.625,
+          "exact_typed_ir_rate": 0.0,
+          "argument_binding_accuracy": 1.0,
+          "type_arity_valid_rate": 1.0,
+          "relation_direction_accuracy": 1.0,
+          "negation_modality_accuracy": 1.0,
+          "abstention_accuracy": 1.0,
+          "valid_prediction_rate": 1.0,
+          "invalid_prediction_count": 0
+        },
+        "cross_sentence_relation_state": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 0.3333333333333333,
+          "exact_typed_ir_rate": 0.0,
+          "argument_binding_accuracy": 0.5,
+          "type_arity_valid_rate": 0.5,
+          "relation_direction_accuracy": 1.0,
+          "negation_modality_accuracy": 1.0,
+          "abstention_accuracy": 0.5,
+          "valid_prediction_rate": 0.5,
+          "invalid_prediction_count": 1
+        },
+        "explicit_unresolved_alternative": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 0.0,
+          "exact_typed_ir_rate": 0.0,
+          "argument_binding_accuracy": null,
+          "type_arity_valid_rate": 0.0,
+          "relation_direction_accuracy": null,
+          "negation_modality_accuracy": null,
+          "abstention_accuracy": 0.0,
+          "valid_prediction_rate": 0.0,
+          "invalid_prediction_count": 2
+        },
+        "multi_entity_conjunction": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 0.16666666666666666,
+          "exact_typed_ir_rate": 0.0,
+          "argument_binding_accuracy": 0.25,
+          "type_arity_valid_rate": 0.6666666666666666,
+          "relation_direction_accuracy": null,
+          "negation_modality_accuracy": 1.0,
+          "abstention_accuracy": 0.5,
+          "valid_prediction_rate": 0.5,
+          "invalid_prediction_count": 1
+        },
+        "negation_with_contrast": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 0.0,
+          "exact_typed_ir_rate": 0.0,
+          "argument_binding_accuracy": 0.0,
+          "type_arity_valid_rate": 0.0,
+          "relation_direction_accuracy": null,
+          "negation_modality_accuracy": null,
+          "abstention_accuracy": 0.0,
+          "valid_prediction_rate": 0.0,
+          "invalid_prediction_count": 2
+        },
+        "possibility_vs_observation": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 0.16666666666666666,
+          "exact_typed_ir_rate": 0.0,
+          "argument_binding_accuracy": 0.25,
+          "type_arity_valid_rate": 0.42857142857142855,
+          "relation_direction_accuracy": null,
+          "negation_modality_accuracy": 1.0,
+          "abstention_accuracy": 0.5,
+          "valid_prediction_rate": 0.5,
+          "invalid_prediction_count": 1
+        },
+        "requirement_vs_observation": {
+          "fixture_count": 2,
+          "semantic_slot_accuracy": 0.0,
+          "exact_typed_ir_rate": 0.0,
+          "argument_binding_accuracy": 0.0,
+          "type_arity_valid_rate": 0.0,
+          "relation_direction_accuracy": null,
+          "negation_modality_accuracy": null,
+          "abstention_accuracy": 0.0,
+          "valid_prediction_rate": 0.0,
+          "invalid_prediction_count": 2
+        }
+      },
+      "rows": [
+        {
+          "fixture_id": "R01",
+          "family": "alias_reference_state",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01",
+                  "E02"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.3333333333333333,
+          "exact_typed_ir": false,
+          "abstention_correct": true,
+          "argument_binding_num": 1,
+          "argument_binding_den": 1,
+          "type_arity_valid_num": 4,
+          "type_arity_valid_den": 4,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 1,
+          "negation_modality_den": 1,
+          "gold_atom_count": 1,
+          "pred_atom_count": 3
+        },
+        {
+          "fixture_id": "R02",
+          "family": "alias_reference_state",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01",
+                  "E02"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.3333333333333333,
+          "exact_typed_ir": false,
+          "abstention_correct": true,
+          "argument_binding_num": 1,
+          "argument_binding_den": 1,
+          "type_arity_valid_num": 4,
+          "type_arity_valid_den": 4,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 1,
+          "negation_modality_den": 1,
+          "gold_atom_count": 1,
+          "pred_atom_count": 3
+        },
+        {
+          "fixture_id": "R03",
+          "family": "binary_direction_passive",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E02",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 1.0,
+          "exact_typed_ir": false,
+          "abstention_correct": true,
+          "argument_binding_num": 1,
+          "argument_binding_den": 1,
+          "type_arity_valid_num": 2,
+          "type_arity_valid_den": 2,
+          "relation_direction_num": 1,
+          "relation_direction_den": 1,
+          "negation_modality_num": 1,
+          "negation_modality_den": 1,
+          "gold_atom_count": 1,
+          "pred_atom_count": 2
+        },
+        {
+          "fixture_id": "R04",
+          "family": "binary_direction_passive",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01",
+                  "E02"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.25,
+          "exact_typed_ir": false,
+          "abstention_correct": true,
+          "argument_binding_num": 1,
+          "argument_binding_den": 1,
+          "type_arity_valid_num": 4,
+          "type_arity_valid_den": 4,
+          "relation_direction_num": 1,
+          "relation_direction_den": 1,
+          "negation_modality_num": 1,
+          "negation_modality_den": 1,
+          "gold_atom_count": 1,
+          "pred_atom_count": 4
+        },
+        {
+          "fixture_id": "R05",
+          "family": "negation_with_contrast",
+          "fixture_valid": true,
+          "prediction_valid": false,
+          "prediction_reason": "AMBIGUOUS_WITH_ATOMS",
+          "canonical_prediction": null,
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "NEG",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.0,
+          "exact_typed_ir": false,
+          "abstention_correct": false,
+          "argument_binding_num": 0,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 0,
+          "type_arity_valid_den": 2,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 0,
+          "negation_modality_den": 0,
+          "gold_atom_count": 2,
+          "pred_atom_count": 0
+        },
+        {
+          "fixture_id": "R06",
+          "family": "negation_with_contrast",
+          "fixture_valid": true,
+          "prediction_valid": false,
+          "prediction_reason": "AMBIGUOUS_WITH_ATOMS",
+          "canonical_prediction": null,
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "NEG",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.0,
+          "exact_typed_ir": false,
+          "abstention_correct": false,
+          "argument_binding_num": 0,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 0,
+          "type_arity_valid_den": 4,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 0,
+          "negation_modality_den": 0,
+          "gold_atom_count": 2,
+          "pred_atom_count": 0
+        },
+        {
+          "fixture_id": "R07",
+          "family": "requirement_vs_observation",
+          "fixture_valid": true,
+          "prediction_valid": false,
+          "prediction_reason": "AMBIGUOUS_WITH_ATOMS",
+          "canonical_prediction": null,
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "REQUIRED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.0,
+          "exact_typed_ir": false,
+          "abstention_correct": false,
+          "argument_binding_num": 0,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 0,
+          "type_arity_valid_den": 4,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 0,
+          "negation_modality_den": 0,
+          "gold_atom_count": 2,
+          "pred_atom_count": 0
+        },
+        {
+          "fixture_id": "R08",
+          "family": "requirement_vs_observation",
+          "fixture_valid": true,
+          "prediction_valid": false,
+          "prediction_reason": "AMBIGUOUS_WITH_ATOMS",
+          "canonical_prediction": null,
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "REQUIRED"
+              },
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.0,
+          "exact_typed_ir": false,
+          "abstention_correct": false,
+          "argument_binding_num": 0,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 0,
+          "type_arity_valid_den": 4,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 0,
+          "negation_modality_den": 0,
+          "gold_atom_count": 2,
+          "pred_atom_count": 0
+        },
+        {
+          "fixture_id": "R09",
+          "family": "possibility_vs_observation",
+          "fixture_valid": true,
+          "prediction_valid": false,
+          "prediction_reason": "AMBIGUOUS_WITH_ATOMS",
+          "canonical_prediction": null,
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "POSSIBLE"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.0,
+          "exact_typed_ir": false,
+          "abstention_correct": false,
+          "argument_binding_num": 0,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 0,
+          "type_arity_valid_den": 4,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 0,
+          "negation_modality_den": 0,
+          "gold_atom_count": 2,
+          "pred_atom_count": 0
+        },
+        {
+          "fixture_id": "R10",
+          "family": "possibility_vs_observation",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E02"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "POSSIBLE"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.3333333333333333,
+          "exact_typed_ir": false,
+          "abstention_correct": true,
+          "argument_binding_num": 1,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 3,
+          "type_arity_valid_den": 3,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 1,
+          "negation_modality_den": 1,
+          "gold_atom_count": 2,
+          "pred_atom_count": 3
+        },
+        {
+          "fixture_id": "R11",
+          "family": "multi_entity_conjunction",
+          "fixture_valid": true,
+          "prediction_valid": false,
+          "prediction_reason": "AMBIGUOUS_WITH_ATOMS",
+          "canonical_prediction": null,
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E02"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.0,
+          "exact_typed_ir": false,
+          "abstention_correct": false,
+          "argument_binding_num": 0,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 0,
+          "type_arity_valid_den": 2,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 0,
+          "negation_modality_den": 0,
+          "gold_atom_count": 2,
+          "pred_atom_count": 0
+        },
+        {
+          "fixture_id": "R12",
+          "family": "multi_entity_conjunction",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E02"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P01",
+                "arguments": [
+                  "E02"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.3333333333333333,
+          "exact_typed_ir": false,
+          "abstention_correct": true,
+          "argument_binding_num": 1,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 4,
+          "type_arity_valid_den": 4,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 1,
+          "negation_modality_den": 1,
+          "gold_atom_count": 2,
+          "pred_atom_count": 3
+        },
+        {
+          "fixture_id": "R13",
+          "family": "cross_sentence_relation_state",
+          "fixture_valid": true,
+          "prediction_valid": true,
+          "prediction_reason": "VALID",
+          "canonical_prediction": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P02",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.6666666666666666,
+          "exact_typed_ir": false,
+          "abstention_correct": true,
+          "argument_binding_num": 2,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 4,
+          "type_arity_valid_den": 4,
+          "relation_direction_num": 1,
+          "relation_direction_den": 1,
+          "negation_modality_num": 2,
+          "negation_modality_den": 2,
+          "gold_atom_count": 2,
+          "pred_atom_count": 3
+        },
+        {
+          "fixture_id": "R14",
+          "family": "cross_sentence_relation_state",
+          "fixture_valid": true,
+          "prediction_valid": false,
+          "prediction_reason": "AMBIGUOUS_WITH_ATOMS",
+          "canonical_prediction": null,
+          "canonical_oracle": {
+            "status": "OK",
+            "atoms": [
+              {
+                "predicate": "P03",
+                "arguments": [
+                  "E01",
+                  "E03"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              },
+              {
+                "predicate": "P04",
+                "arguments": [
+                  "E01"
+                ],
+                "polarity": "POS",
+                "modality": "ASSERTED"
+              }
+            ]
+          },
+          "semantic_slot_accuracy": 0.0,
+          "exact_typed_ir": false,
+          "abstention_correct": false,
+          "argument_binding_num": 0,
+          "argument_binding_den": 2,
+          "type_arity_valid_num": 0,
+          "type_arity_valid_den": 4,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 0,
+          "negation_modality_den": 0,
+          "gold_atom_count": 2,
+          "pred_atom_count": 0
+        },
+        {
+          "fixture_id": "R15",
+          "family": "explicit_unresolved_alternative",
+          "fixture_valid": true,
+          "prediction_valid": false,
+          "prediction_reason": "AMBIGUOUS_WITH_ATOMS",
+          "canonical_prediction": null,
+          "canonical_oracle": {
+            "status": "AMBIGUOUS",
+            "atoms": []
+          },
+          "semantic_slot_accuracy": 0.0,
+          "exact_typed_ir": false,
+          "abstention_correct": false,
+          "argument_binding_num": 0,
+          "argument_binding_den": 0,
+          "type_arity_valid_num": 0,
+          "type_arity_valid_den": 4,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 0,
+          "negation_modality_den": 0,
+          "gold_atom_count": 0,
+          "pred_atom_count": 0
+        },
+        {
+          "fixture_id": "R16",
+          "family": "explicit_unresolved_alternative",
+          "fixture_valid": true,
+          "prediction_valid": false,
+          "prediction_reason": "AMBIGUOUS_WITH_ATOMS",
+          "canonical_prediction": null,
+          "canonical_oracle": {
+            "status": "AMBIGUOUS",
+            "atoms": []
+          },
+          "semantic_slot_accuracy": 0.0,
+          "exact_typed_ir": false,
+          "abstention_correct": false,
+          "argument_binding_num": 0,
+          "argument_binding_den": 0,
+          "type_arity_valid_num": 0,
+          "type_arity_valid_den": 2,
+          "relation_direction_num": 0,
+          "relation_direction_den": 0,
+          "negation_modality_num": 0,
+          "negation_modality_den": 0,
+          "gold_atom_count": 0,
+          "pred_atom_count": 0
+        }
+      ]
+    }
+  },
+  "raw_qwen_rows": [
+    {
+      "fixture_id": "R01",
+      "family": "alias_reference_state",
+      "visible_sha256": "b572e5f9cd242c416994f4be3b5e50f02b7ec69aef58fc0cb29b3303aa71f490",
+      "raw_sha256": "329ce2dc0b9eabae3350fec5ed36c91f27b2af49a3b3481643e18a3f5dcc8cdf",
+      "raw": "{\"status\":\"OK\",\"atoms\":[{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P01\"},{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P02\"},{\"arguments\":[\"E01\",\"E02\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P03\"},{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P02\"}]}",
+      "prediction": {
+        "status": "OK",
+        "atoms": [
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P01"
+          },
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P02"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E02"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P03"
+          },
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P02"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "R02",
+      "family": "alias_reference_state",
+      "visible_sha256": "14d82b22861fbcc4762fdee29930f69c927ad9643eec85ea0c79a6ed5320b226",
+      "raw_sha256": "dccf34ed771c6511c6e025648e19108cbb5164c321020c9b52530d93c6463d62",
+      "raw": "{\"status\":\"OK\",\"atoms\":[{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P01\"},{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P02\"},{\"arguments\":[\"E01\",\"E02\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P03\"},{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P01\"}]}",
+      "prediction": {
+        "status": "OK",
+        "atoms": [
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P01"
+          },
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P02"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E02"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P03"
+          },
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P01"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "R03",
+      "family": "binary_direction_passive",
+      "visible_sha256": "b3d90acc796a247f5476b9ece02e5123dd5ad038583d6a700a510b5ba2732610",
+      "raw_sha256": "40fd2356303dce7d828570d1e906e4919f127928a786e8a1cc59bd3debc2d432",
+      "raw": "{\"status\":\"OK\",\"atoms\":[{\"arguments\":[\"E01\",\"E03\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P03\"},{\"arguments\":[\"E02\",\"E03\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P03\"}]}",
+      "prediction": {
+        "status": "OK",
+        "atoms": [
+          {
+            "arguments": [
+              "E01",
+              "E03"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P03"
+          },
+          {
+            "arguments": [
+              "E02",
+              "E03"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P03"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "R04",
+      "family": "binary_direction_passive",
+      "visible_sha256": "20cda407002997b41908b7b412f1210a34175f141db8224c2e1a26614d884cac",
+      "raw_sha256": "4ee214c0a3c91ba83e40918e686c02774ebe0e701006f9269c5d83f984da4945",
+      "raw": "{\"status\":\"OK\",\"atoms\":[{\"arguments\":[\"E01\",\"E03\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P01\"},{\"arguments\":[\"E01\",\"E02\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P02\"},{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P04\"},{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P03\"}]}",
+      "prediction": {
+        "status": "OK",
+        "atoms": [
+          {
+            "arguments": [
+              "E01",
+              "E03"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P01"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E02"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P02"
+          },
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P04"
+          },
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P03"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "R05",
+      "family": "negation_with_contrast",
+      "visible_sha256": "3609ca343e8569e2d2a3103c0873e1fa8c1df761e2505b31c10d6800ae183ee7",
+      "raw_sha256": "261034674d2bbf881a467c54a671844ca8a3c8cf3a4005b7b1a1285326d67a2d",
+      "raw": "{\"status\":\"AMBIGUOUS\",\"atoms\":[{\"arguments\":[\"E01\",\"E02\"],\"modality\":\"POSSIBLE\",\"polarity\":\"NEG\",\"predicate\":\"P01\"},{\"arguments\":[\"E01\",\"E02\"],\"modality\":\"POSSIBLE\",\"polarity\":\"POS\",\"predicate\":\"P01\"}]}",
+      "prediction": {
+        "status": "AMBIGUOUS",
+        "atoms": [
+          {
+            "arguments": [
+              "E01",
+              "E02"
+            ],
+            "modality": "POSSIBLE",
+            "polarity": "NEG",
+            "predicate": "P01"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E02"
+            ],
+            "modality": "POSSIBLE",
+            "polarity": "POS",
+            "predicate": "P01"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "R06",
+      "family": "negation_with_contrast",
+      "visible_sha256": "0731745163da97687c63e5b54f80ad3fd7a5de61c8e5123dafc26e68820744fd",
+      "raw_sha256": "667e74cc60c64888312a990e7d1d08671b428eb28bc031c635c6aad9e28b0a2a",
+      "raw": "{\"status\":\"AMBIGUOUS\",\"atoms\":[{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P01\"},{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"NEG\",\"predicate\":\"P01\"},{\"arguments\":[\"E02\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P04\"},{\"arguments\":[\"E02\"],\"modality\":\"ASSERTED\",\"polarity\":\"NEG\",\"predicate\":\"P04\"}]}",
+      "prediction": {
+        "status": "AMBIGUOUS",
+        "atoms": [
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P01"
+          },
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "NEG",
+            "predicate": "P01"
+          },
+          {
+            "arguments": [
+              "E02"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P04"
+          },
+          {
+            "arguments": [
+              "E02"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "NEG",
+            "predicate": "P04"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "R07",
+      "family": "requirement_vs_observation",
+      "visible_sha256": "20c02aed142b06a5c511cee8b91a907154cf0d859ea5ac5b9ceb080295c1da4a",
+      "raw_sha256": "cd3dfb8c114b8979a56314cf4d2c55081f620928b7e2767397a270670c48394a",
+      "raw": "{\"status\":\"AMBIGUOUS\",\"atoms\":[{\"arguments\":[\"E01\",\"E02\"],\"modality\":\"POSSIBLE\",\"polarity\":\"POS\",\"predicate\":\"P02\"},{\"arguments\":[\"E01\",\"E02\"],\"modality\":\"REQUIRED\",\"polarity\":\"POS\",\"predicate\":\"P02\"},{\"arguments\":[\"E01\",\"E03\"],\"modality\":\"POSSIBLE\",\"polarity\":\"POS\",\"predicate\":\"P03\"},{\"arguments\":[\"E01\",\"E03\"],\"modality\":\"REQUIRED\",\"polarity\":\"POS\",\"predicate\":\"P03\"}]}",
+      "prediction": {
+        "status": "AMBIGUOUS",
+        "atoms": [
+          {
+            "arguments": [
+              "E01",
+              "E02"
+            ],
+            "modality": "POSSIBLE",
+            "polarity": "POS",
+            "predicate": "P02"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E02"
+            ],
+            "modality": "REQUIRED",
+            "polarity": "POS",
+            "predicate": "P02"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E03"
+            ],
+            "modality": "POSSIBLE",
+            "polarity": "POS",
+            "predicate": "P03"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E03"
+            ],
+            "modality": "REQUIRED",
+            "polarity": "POS",
+            "predicate": "P03"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "R08",
+      "family": "requirement_vs_observation",
+      "visible_sha256": "b249a3f29500adb7b6cc36c98c3d9309223125c1bf3c434ce97dc5afd83049b1",
+      "raw_sha256": "3c4edd8189fddd0f4a8ed18cac3643b9c53e5cf8954a017f7c666afd950d52c8",
+      "raw": "{\"status\":\"AMBIGUOUS\",\"atoms\":[{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P01\"},{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P03\"},{\"arguments\":[\"E02\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P01\"},{\"arguments\":[\"E02\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P03\"}]}",
+      "prediction": {
+        "status": "AMBIGUOUS",
+        "atoms": [
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P01"
+          },
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P03"
+          },
+          {
+            "arguments": [
+              "E02"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P01"
+          },
+          {
+            "arguments": [
+              "E02"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P03"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "R09",
+      "family": "possibility_vs_observation",
+      "visible_sha256": "fbb9da7e3ff74974972379b6cfa8689e7f87a13d252965dd0abb0e04babf84e5",
+      "raw_sha256": "3a1c6e0c7857b658ba5b6ebe5e21add2c5cb1b78087112ba8d87effbe51ab021",
+      "raw": "{\"status\":\"AMBIGUOUS\",\"atoms\":[{\"arguments\":[\"E01\",\"E02\"],\"modality\":\"POSSIBLE\",\"polarity\":\"POS\",\"predicate\":\"P02\"},{\"arguments\":[\"E01\",\"E02\"],\"modality\":\"POSSIBLE\",\"polarity\":\"POS\",\"predicate\":\"P02\"},{\"arguments\":[\"E01\",\"E03\"],\"modality\":\"POSSIBLE\",\"polarity\":\"POS\",\"predicate\":\"P03\"},{\"arguments\":[\"E01\",\"E03\"],\"modality\":\"POSSIBLE\",\"polarity\":\"POS\",\"predicate\":\"P03\"}]}",
+      "prediction": {
+        "status": "AMBIGUOUS",
+        "atoms": [
+          {
+            "arguments": [
+              "E01",
+              "E02"
+            ],
+            "modality": "POSSIBLE",
+            "polarity": "POS",
+            "predicate": "P02"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E02"
+            ],
+            "modality": "POSSIBLE",
+            "polarity": "POS",
+            "predicate": "P02"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E03"
+            ],
+            "modality": "POSSIBLE",
+            "polarity": "POS",
+            "predicate": "P03"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E03"
+            ],
+            "modality": "POSSIBLE",
+            "polarity": "POS",
+            "predicate": "P03"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "R10",
+      "family": "possibility_vs_observation",
+      "visible_sha256": "95321139148668f263c003963e7da221fdea2b66e720a94e9de021dd0f336085",
+      "raw_sha256": "711e95ccc8f8739ff24907da0dca43871c2b15b894f87ef557d1aa7375af8e91",
+      "raw": "{\"status\":\"OK\",\"atoms\":[{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P04\"},{\"arguments\":[\"E02\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P04\"},{\"arguments\":[\"E01\",\"E03\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P02\"}]}",
+      "prediction": {
+        "status": "OK",
+        "atoms": [
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P04"
+          },
+          {
+            "arguments": [
+              "E02"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P04"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E03"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P02"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "R11",
+      "family": "multi_entity_conjunction",
+      "visible_sha256": "8bdd664348afd0ed4d71570ad692c4b7eb6b6f5805ec6bb2086d0ebc7e543772",
+      "raw_sha256": "2ca4ae9bd6ba70468faa761ab12435b377afb8c3e40fc6de7486092c0db05375",
+      "raw": "{\"status\":\"AMBIGUOUS\",\"atoms\":[{\"arguments\":[\"E01\",\"E02\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P02\"},{\"arguments\":[\"E01\",\"E02\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P02\"}]}",
+      "prediction": {
+        "status": "AMBIGUOUS",
+        "atoms": [
+          {
+            "arguments": [
+              "E01",
+              "E02"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P02"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E02"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P02"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "R12",
+      "family": "multi_entity_conjunction",
+      "visible_sha256": "4c4926c4bcf811f2358809168b1d60f0c3c9fcb445ef6cff2ca06fb65f610b6f",
+      "raw_sha256": "08bd7a27c0f93e0978c2efd5bb06b2265b230c99f1085bbf8f19ba7f41e13c15",
+      "raw": "{\"status\":\"OK\",\"atoms\":[{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P01\"},{\"arguments\":[\"E02\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P01\"},{\"arguments\":[\"E01\",\"E03\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P02\"},{\"arguments\":[\"E02\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P01\"}]}",
+      "prediction": {
+        "status": "OK",
+        "atoms": [
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P01"
+          },
+          {
+            "arguments": [
+              "E02"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P01"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E03"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P02"
+          },
+          {
+            "arguments": [
+              "E02"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P01"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "R13",
+      "family": "cross_sentence_relation_state",
+      "visible_sha256": "5060bb44b0873631c2d7684ad98140713d1d603e81f62da9b63d5f8861d4ea62",
+      "raw_sha256": "59e0270a25c6374a5114553751caee1498de19963cf98029894a10bb050e98ba",
+      "raw": "{\"status\":\"OK\",\"atoms\":[{\"arguments\":[\"E01\",\"E03\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P04\"},{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P02\"},{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P03\"},{\"arguments\":[\"E01\",\"E03\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P04\"}]}",
+      "prediction": {
+        "status": "OK",
+        "atoms": [
+          {
+            "arguments": [
+              "E01",
+              "E03"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P04"
+          },
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P02"
+          },
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P03"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E03"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P04"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "R14",
+      "family": "cross_sentence_relation_state",
+      "visible_sha256": "2b9a409c540b11acaadec421caf4ac130da452911ce333bb25ac52c249a824b4",
+      "raw_sha256": "8a87f343f928a1cacab08184aee2246ae21b1dffd54c80472adb45c25e1442d8",
+      "raw": "{\"status\":\"AMBIGUOUS\",\"atoms\":[{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P01\"},{\"arguments\":[\"E01\",\"E03\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P03\"},{\"arguments\":[\"E01\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P04\"},{\"arguments\":[\"E02\"],\"modality\":\"ASSERTED\",\"polarity\":\"POS\",\"predicate\":\"P04\"}]}",
+      "prediction": {
+        "status": "AMBIGUOUS",
+        "atoms": [
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P01"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E03"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P03"
+          },
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P04"
+          },
+          {
+            "arguments": [
+              "E02"
+            ],
+            "modality": "ASSERTED",
+            "polarity": "POS",
+            "predicate": "P04"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "R15",
+      "family": "explicit_unresolved_alternative",
+      "visible_sha256": "10eb0559bd1061661997aee68b3678e066108c3296e6905a08bacc69ae296e55",
+      "raw_sha256": "cf90759c45165f4d97e717cdad807411c394b46b54c9f55cb36481d8c55fd737",
+      "raw": "{\"status\":\"AMBIGUOUS\",\"atoms\":[{\"arguments\":[\"E01\"],\"modality\":\"POSSIBLE\",\"polarity\":\"POS\",\"predicate\":\"P01\"},{\"arguments\":[\"E02\"],\"modality\":\"POSSIBLE\",\"polarity\":\"POS\",\"predicate\":\"P01\"},{\"arguments\":[\"E01\"],\"modality\":\"POSSIBLE\",\"polarity\":\"POS\",\"predicate\":\"P03\"},{\"arguments\":[\"E02\"],\"modality\":\"POSSIBLE\",\"polarity\":\"POS\",\"predicate\":\"P03\"}]}",
+      "prediction": {
+        "status": "AMBIGUOUS",
+        "atoms": [
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "POSSIBLE",
+            "polarity": "POS",
+            "predicate": "P01"
+          },
+          {
+            "arguments": [
+              "E02"
+            ],
+            "modality": "POSSIBLE",
+            "polarity": "POS",
+            "predicate": "P01"
+          },
+          {
+            "arguments": [
+              "E01"
+            ],
+            "modality": "POSSIBLE",
+            "polarity": "POS",
+            "predicate": "P03"
+          },
+          {
+            "arguments": [
+              "E02"
+            ],
+            "modality": "POSSIBLE",
+            "polarity": "POS",
+            "predicate": "P03"
+          }
+        ]
+      }
+    },
+    {
+      "fixture_id": "R16",
+      "family": "explicit_unresolved_alternative",
+      "visible_sha256": "f6abc233b31a1a23d7a8625dc7b452f4766d040a5f16c4e6e24663fc7d2bc563",
+      "raw_sha256": "df0aa3e3515c607676ef841075e48f6a5d6ff8056fe0c96fe0032441408bd342",
+      "raw": "{\"status\":\"AMBIGUOUS\",\"atoms\":[{\"arguments\":[\"E01\",\"E03\"],\"modality\":\"POSSIBLE\",\"polarity\":\"POS\",\"predicate\":\"P01\"},{\"arguments\":[\"E01\",\"E03\"],\"modality\":\"POSSIBLE\",\"polarity\":\"NEG\",\"predicate\":\"P01\"}]}",
+      "prediction": {
+        "status": "AMBIGUOUS",
+        "atoms": [
+          {
+            "arguments": [
+              "E01",
+              "E03"
+            ],
+            "modality": "POSSIBLE",
+            "polarity": "POS",
+            "predicate": "P01"
+          },
+          {
+            "arguments": [
+              "E01",
+              "E03"
+            ],
+            "modality": "POSSIBLE",
+            "polarity": "NEG",
+            "predicate": "P01"
+          }
+        ]
+      }
+    }
+  ],
+  "primary_deltas_qwen_minus_deterministic": {
+    "semantic_slot_accuracy": -0.546875,
+    "exact_typed_ir_rate": -0.5625
+  },
+  "materiality_abs": 0.2,
+  "final_branch_authorized": false,
+  "required_next_gates": [
+    "R08_INDEPENDENT_RAW_REPARSE_AND_METRIC_RECOMPUTE",
+    "R11_FIXED_B2_CAUSAL_REPLAY",
+    "R12_NO_POST_RESULT_REPAIR"
+  ],
+  "claim_limit": "Paired raw-language grounding inside a frozen opaque typed semantic inventory only. No vocabulary discovery, open-ended world knowledge, or final causal boundary claim is authorized before independent audit and fixed-B2 replay."
+}
