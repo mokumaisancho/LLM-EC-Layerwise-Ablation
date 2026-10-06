@@ -18,6 +18,13 @@ def fail(detail:str)->None:
 
 
 def main()->int:
+    if os.environ.get("S1C_V_PREFLIGHT") == "1":
+        q=subprocess.run([sys.executable,str(TOOLS/"preflight_s1c_v.py")],cwd=ROOT,text=True,capture_output=True)
+        (ROOT/"s1c_v_preflight_result.json").write_text(q.stdout,encoding="utf-8")
+        sys.stdout.write(q.stdout)
+        if q.stderr:
+            sys.stderr.write(q.stderr)
+        return q.returncode
     if os.environ.get("S1C_R_POSTRUN") == "1":
         runtime=ROOT/"results"/"function_boundary_s1c_r_paired_actual_2026-10-07.json"
         audit=ROOT/"results"/"function_boundary_s1c_r_postrun_audit_runtime.json"
