@@ -18,6 +18,20 @@ def fail(detail:str)->None:
 
 
 def main()->int:
+    if os.environ.get("S1C_R_RUNNER_PREFLIGHT") == "1":
+        q=subprocess.run([sys.executable,str(TOOLS/"preflight_s1c_r_runner.py")],cwd=ROOT,text=True,capture_output=True)
+        (ROOT/"s1c_r_runner_preflight_result.json").write_text(q.stdout,encoding="utf-8")
+        sys.stdout.write(q.stdout)
+        if q.stderr:
+            sys.stderr.write(q.stderr)
+        return q.returncode
+    if os.environ.get("S1C_R_PAIRED") == "1":
+        q=subprocess.run([sys.executable,str(TOOLS/"run_s1c_r_paired_v1.py")],cwd=ROOT,text=True,capture_output=True)
+        (ROOT/"s1c_r_paired_console.txt").write_text(q.stdout,encoding="utf-8")
+        sys.stdout.write(q.stdout)
+        if q.stderr:
+            sys.stderr.write(q.stderr)
+        return q.returncode
     if os.environ.get("S1C_R_PREFLIGHT") == "1":
         q=subprocess.run([sys.executable,str(TOOLS/"preflight_s1c_r.py")],cwd=ROOT,text=True,capture_output=True)
         (ROOT/"s1c_r_preflight_result.json").write_text(q.stdout,encoding="utf-8")
