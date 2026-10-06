@@ -1,0 +1,134 @@
+{
+  "schema_version": "S1C_V_DENOTATIONAL_DISCOVERY_CONTRACT_V1",
+  "protocol": "S1C_SEMANTIC_SPACE_TCC_V1",
+  "issue": 48,
+  "prerequisite": {
+    "terminal": "R_DETERMINISTIC_MATERIAL_ADVANTAGE",
+    "audited_commit": "2260508a6d7b16112115259785f294066db08574"
+  },
+  "question": "Without canonical semantic slot names/IDs, can an engine discover a reusable typed semantic partition from raw language plus identically visible behavioral demonstrations, then ground unseen raw language into that discovered partition?",
+  "visible_input": {
+    "type_inventory": "opaque type IDs only",
+    "training_examples": {
+      "fields": [
+        "example_id",
+        "raw_text",
+        "entity_registry",
+        "observable_behavior_signature"
+      ],
+      "behavior_signature": "typed observable transition/extension behavior; no canonical predicate/slot identity"
+    },
+    "heldout_examples": {
+      "fields": [
+        "example_id",
+        "raw_text",
+        "entity_registry"
+      ],
+      "behavior_signature_visible": false
+    },
+    "slot_count_bound": {
+      "min": 1,
+      "max": 8
+    },
+    "canonical_semantic_names_visible": false,
+    "canonical_semantic_ids_visible": false,
+    "family_visible": false,
+    "oracle_partition_visible": false
+  },
+  "output": {
+    "discovered_slots": [
+      {
+        "slot_id": "arbitrary engine-local identifier; surface name ignored by scorer",
+        "arg_types": [
+          "opaque type IDs"
+        ],
+        "training_members": [
+          "visible training example IDs"
+        ]
+      }
+    ],
+    "heldout_assignments": [
+      {
+        "example_id": "heldout example ID",
+        "slot_id": "one emitted discovered slot",
+        "arguments": [
+          "visible entity IDs in semantic argument order"
+        ],
+        "polarity": [
+          "POS",
+          "NEG"
+        ],
+        "modality": [
+          "ASSERTED",
+          "REQUIRED",
+          "POSSIBLE"
+        ]
+      }
+    ],
+    "abstentions": [
+      {
+        "example_id": "heldout example ID",
+        "status": "AMBIGUOUS"
+      }
+    ]
+  },
+  "denotational_equivalence": {
+    "slot_surface_names_scored": false,
+    "slot_alignment": "maximum one-to-one matching using training denotation agreement first, then independent heldout denotation agreement; hidden canonical names never used",
+    "valid_slot": "all training members assigned to a slot must share one independently recomputed observable behavior signature and compatible argument types",
+    "heldout_correctness": "assignment is correct only if the aligned discovered slot has the same hidden denotation on independent probes and arguments/polarity/modality are correct",
+    "partition_metric": "pairwise same-slot/different-slot agreement over training examples after excluding ambiguous examples",
+    "assignment_metric": "heldout denotational assignment accuracy after label-free alignment",
+    "exact_metric": "all heldout assignments/abstentions and discovered partition correct up to slot permutation"
+  },
+  "primary_metrics": [
+    "training_partition_pairwise_accuracy",
+    "heldout_denotational_assignment_accuracy",
+    "exact_discovery_and_grounding_rate"
+  ],
+  "secondary_metrics": [
+    "argument_binding_accuracy",
+    "polarity_modality_accuracy",
+    "abstention_accuracy",
+    "slot_purity",
+    "slot_coverage",
+    "fixed_b2_downstream_success"
+  ],
+  "fairness": {
+    "identical_visible_input": true,
+    "identical_slot_count_bound": true,
+    "identical_output_authority": true,
+    "arbitrary_slot_names_ignored": true,
+    "no_predictor_specific_normalization": true,
+    "no_post_result_matching_rule_change": true
+  },
+  "result_overturning_fail_closed": [
+    "CANONICAL_SLOT_NAME_OR_ID_LEAKAGE",
+    "FAMILY_OR_ORACLE_PARTITION_LEAKAGE",
+    "SCORER_CALLS_TESTED_PREDICTOR",
+    "GENERATOR_AUTHORED_CIRCULAR_ORACLE",
+    "ASYMMETRIC_BEHAVIORAL_SUPERVISION",
+    "ASYMMETRIC_SLOT_BUDGET",
+    "STRUCTURAL_HOLDOUT_REUSE",
+    "NON_IDENTIFIABLE_DENOTATION",
+    "RAW_EVIDENCE_MISSING",
+    "METRIC_RECOMPUTATION_MISMATCH",
+    "DOWNSTREAM_SOLVER_DRIFT",
+    "POST_RESULT_REPAIR_ATTEMPT",
+    "FAIL_CLOSED_UNKNOWN"
+  ],
+  "materiality_abs": 0.2,
+  "branch": {
+    "qwen_minus_deterministic_gte_0p20": "V_LLM_MATERIAL_ADVANTAGE",
+    "deterministic_minus_qwen_gte_0p20": "V_DETERMINISTIC_MATERIAL_ADVANTAGE",
+    "otherwise": "V_NO_MATERIAL_SEPARATION"
+  },
+  "constraints": {
+    "qwen_reference": "Qwen2.5-1.5B-Instruct-Q4_K_M",
+    "temperature": 0,
+    "github_actions": false,
+    "google_drive_relay": false,
+    "automatic_qwen3_4b": false,
+    "open_ended_world_knowledge": false
+  }
+}
