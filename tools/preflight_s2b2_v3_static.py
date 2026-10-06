@@ -18,6 +18,21 @@ def fail(detail:str)->None:
 
 
 def main()->int:
+    if os.environ.get("S1C_R_POSTRUN") == "1":
+        runtime=ROOT/"results"/"function_boundary_s1c_r_paired_actual_2026-10-07.json"
+        audit=ROOT/"results"/"function_boundary_s1c_r_postrun_audit_runtime.json"
+        replay=ROOT/"results"/"function_boundary_s1c_r_fixed_b2_replay_runtime.json"
+        a=subprocess.run([sys.executable,str(TOOLS/"audit_s1c_r_paired_v1.py"),str(runtime),"--output",str(audit)],cwd=ROOT,text=True,capture_output=True)
+        sys.stdout.write(a.stdout)
+        if a.stderr:
+            sys.stderr.write(a.stderr)
+        if a.returncode:
+            return a.returncode
+        r=subprocess.run([sys.executable,str(TOOLS/"replay_s1c_r_fixed_b2.py"),str(runtime),str(audit),"--output",str(replay)],cwd=ROOT,text=True,capture_output=True)
+        sys.stdout.write(r.stdout)
+        if r.stderr:
+            sys.stderr.write(r.stderr)
+        return r.returncode
     if os.environ.get("S1C_R_RUNNER_PREFLIGHT") == "1":
         q=subprocess.run([sys.executable,str(TOOLS/"preflight_s1c_r_runner.py")],cwd=ROOT,text=True,capture_output=True)
         (ROOT/"s1c_r_runner_preflight_result.json").write_text(q.stdout,encoding="utf-8")
