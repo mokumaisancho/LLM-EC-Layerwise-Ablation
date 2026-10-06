@@ -1,0 +1,78 @@
+{
+  "schema_version": "S1C_ACTIVE_WORK_STATE_V1",
+  "updated_date": "2026-10-07",
+  "root_issue": 48,
+  "active_stage": "MVP_V_PAIRED_EXECUTION_V2",
+  "predecessor_terminal": {
+    "stage": "MVP_R",
+    "terminal": "R_DETERMINISTIC_MATERIAL_ADVANTAGE",
+    "audited_commit": "2260508a6d7b16112115259785f294066db08574"
+  },
+  "v1_runtime_residual": {
+    "issue": 49,
+    "deploy": "dep-db2nscc9v7es739jq100",
+    "terminal": "BUILD_FAILED_TRANSPORT_TIMEOUT_BEFORE_FIRST_RESULT",
+    "measurement_contaminated": false
+  },
+  "v2": {
+    "scientific_assets_unchanged": true,
+    "only_execution_change": "local llama-server HTTP response timeout 180s -> 600s",
+    "runner_commit": "d62afe59f2d2aa87c1bf5d14eeacdf3f69e1d6b1",
+    "runner_preflight_commit": "efd1897a84c5acd07690512b510538e5bd836934",
+    "postrun_audit_commit": "2a4a57766fb87780f93295444aa2e00449dfb861",
+    "causal_replay_commit": "da04b2c85fbfbe8d759364f114cc1859e7d36af8",
+    "terminal_classifier_commit": "08d9ae80fada2e4bf4396f3830687f4c4653581c",
+    "runner_preflight_deploy": "dep-db2nv5ijnfac73fcjovg",
+    "runner_preflight_status": "PASS_LIVE",
+    "paired_deploy": "dep-db2nvl67bikc73abe01g",
+    "paired_status": "IN_PROGRESS"
+  },
+  "immutable_scientific_assets": {
+    "denotational_contract": "a86e19bd02047a8c7e7d22aa67f399511eb04879",
+    "independent_scorer": "066bc56f799c209c5642b62acc8b4b7ad0a3e208",
+    "deterministic_discovery": "347b752db4250cc09b7b237e5881da5b0f503042",
+    "generator": "f9c9d82fb74b908afd175910204bebcd27e848ad",
+    "scientific_preflight": "cbd1817790734169b93e6f0613121bd316250806",
+    "model": "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf",
+    "model_sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+    "llama_cpp": "b11146",
+    "temperature": 0
+  },
+  "next_branch": [
+    {
+      "condition": "V2_DEPLOY_LIVE",
+      "actions": [
+        "recover S1C_V_TERMINAL raw runtime JSON from Render build logs",
+        "persist runtime JSON to results/ without model reinference",
+        "execute frozen V2 independent postrun raw/metric audit",
+        "execute frozen fixed-B2 causal replay",
+        "execute frozen terminal classifier",
+        "publish one boundary update only if all gates PASS"
+      ]
+    },
+    {
+      "condition": "V2_BUILD_FAILED_BEFORE_ANY_COMPLETED_TASK",
+      "actions": [
+        "register operational residual",
+        "do not treat as assay result",
+        "create versioned successor changing execution mechanics only",
+        "rerun preflight before inference"
+      ]
+    },
+    {
+      "condition": "V2_FAILURE_AFTER_ANY_COMPLETED_TASK",
+      "actions": [
+        "preserve all raw emitted evidence",
+        "fail closed for aggregate causal claim",
+        "register residual and successor protocol",
+        "do not mix partial V2 evidence with successor results"
+      ]
+    }
+  ],
+  "prohibitions": [
+    "no post-result contract/scorer/deterministic algorithm/generator/prompt/slot-budget repair",
+    "no Google Drive relay",
+    "no GitHub Actions",
+    "no automatic Qwen3-4B escalation"
+  ]
+}
