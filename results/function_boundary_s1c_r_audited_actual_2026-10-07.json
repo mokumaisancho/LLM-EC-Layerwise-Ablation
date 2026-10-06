@@ -1,0 +1,60 @@
+{
+  "schema_version": "S1C_R_AUDITED_TERMINAL_V1",
+  "protocol": "S1C_SEMANTIC_SPACE_TCC_V1",
+  "issue": 48,
+  "date": "2026-10-07",
+  "terminal": "R_DETERMINISTIC_MATERIAL_ADVANTAGE",
+  "branch_action": "PROCEED_MVP_V",
+  "evidence": {
+    "paired_runtime_commit": "616f21fb36368ebb6fd852e447d45a8803d2c613",
+    "paired_runtime_path": "results/function_boundary_s1c_r_paired_actual_2026-10-07.json",
+    "postrun_audit_freeze_commit": "1f1e7171bf3828c16b7a6953585236d4ce7e0d72",
+    "fixed_b2_replay_freeze_commit": "0e13a20e9b1e94da83ccded35f05e22a7fd63ead",
+    "postrun_dispatch_commit": "01d4e48b429bea6ec45b5c11535446880711d9b1",
+    "render_service": "s2b2-v3-static-preflight-temp",
+    "render_deploy": "dep-db2n9j6k1f9s739fpjng",
+    "render_deploy_status": "live",
+    "dispatch_semantics": "postrun dispatcher executes independent audit first, terminates nonzero on audit failure, then executes fixed-B2 replay and returns replay exit code"
+  },
+  "gates": {
+    "preinference": "PASS",
+    "independent_postrun_raw_metric_audit": "PASS",
+    "fixed_b2_causal_replay": "PASS",
+    "result_overturning_gate_failures": 0,
+    "post_result_scientific_repair": false,
+    "model_reinference_during_audit_replay": false
+  },
+  "paired_primary": {
+    "deterministic": {
+      "semantic_slot_accuracy": 0.75,
+      "exact_typed_ir_rate": 0.5625
+    },
+    "qwen25_1p5b": {
+      "semantic_slot_accuracy": 0.203125,
+      "exact_typed_ir_rate": 0
+    },
+    "qwen_minus_deterministic": {
+      "semantic_slot_accuracy": -0.546875,
+      "exact_typed_ir_rate": -0.5625
+    },
+    "materiality_abs": 0.2
+  },
+  "fixed_b2_causal_replay": {
+    "fixture_count": 16,
+    "oracle_downstream_success": 1,
+    "deterministic_downstream_success": 0.6875,
+    "qwen25_1p5b_downstream_success": 0.3125,
+    "qwen_minus_deterministic_downstream": -0.375
+  },
+  "interpretation": {
+    "accepted_claim": "Within a frozen opaque typed semantic inventory learnable from identical demonstrations, the tested deterministic external grounder materially outperformed Qwen2.5-1.5B on both typed-IR grounding and fixed downstream causal success on this frozen assay.",
+    "prohibited_claims": [
+      "This does not establish natural-corpus broad generalization.",
+      "This does not establish open-ended world-knowledge acquisition.",
+      "This does not establish vocabulary or semantic-slot invention.",
+      "This does not justify automatic Qwen3-4B escalation."
+    ],
+    "remaining_boundary": "semantic-slot/vocabulary discovery without supplied canonical slot identities"
+  },
+  "next_tcc_stage": "MVP_V"
+}
