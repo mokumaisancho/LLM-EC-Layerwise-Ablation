@@ -65,9 +65,7 @@ def _solver_contract(contract: Any) -> None:
         for atom in schema[k]:
             _atom(atom)
     available = set(bindings) | set(static)
-    for atom in [*before, *schema["preconditions"], *schema["add_effects"], *schema["delete_effects"]]:
-        if atom in before:
-            continue
+    for atom in [*schema["preconditions"], *schema["add_effects"], *schema["delete_effects"]]:
         for v in atom["args"]:
             if v not in available:
                 deny("SOLVER_SCHEMA_UNBOUND_PARAMETER")
