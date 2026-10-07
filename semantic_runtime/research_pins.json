@@ -1,0 +1,26 @@
+{
+  "schema_version": "SEMANTIC_RUNTIME_RESEARCH_PINS_V1",
+  "files": {
+    "docs/S1C_V31_DENOTATIONAL_DISCOVERY_CONTRACT_2026-10-07.json": "f77a112f90620e64c48fb824a65ca7a995b04212",
+    "tools/s1c_v31_public_hypotheses.py": "fe7b7b9a6203624e93ffdce1d542404fd250e63d",
+    "tools/generate_s1c_v31_corpus.py": "a324ddd9ad9fbeb4e7cbb0b4a684a65a153d3a4b",
+    "tools/validate_s1c_v31_corpus.py": "65746d0224b527f02f9caa20595a2fdf0690fb2c",
+    "tools/score_s1c_v31_denotational.py": "f2df24b1994bc8da2b66b6280b41aba37d02d10e",
+    "tools/s1c_v31_deterministic_baseline.py": "b5bf066dd2dd55a2cdcf076b09f5183c441b9866",
+    "tools/s1c_v31_json_schema.py": "e97276494ecd21b62a3ad23c5e37cb7cdaa2c68d",
+    "tools/preflight_s1c_v31.py": "0475ec4c7c576fc8a50c62b06f0a4cbd8b975b10",
+    "tools/audit_s1c_v31_independent.py": "b7b116d9705213facd5dbc7348e65717600d1ae9",
+    "tools/replay_s1c_v31_fixed_b2.py": "da0fc48d530dd19f06f81f3aec7d8ec680dd2cb9",
+    "tools/classify_s1c_v31_terminal.py": "6c71fdd9b90003f17dc0d3eca10c54bcfc14fc2b",
+    "docs/S1C_V32_MEASUREMENT_SEPARATION_CONTRACT_2026-10-08.json": "416633b311428146948989ad76d50fa9651bace9",
+    "tools/score_s1c_v32_denotational.py": "2a1bd54341e44b0896d57f1d7cccdec17e42db34",
+    "tools/audit_s1c_v32_independent.py": "dc08d4980ef1c52c4a842c7e337c5471838e2c80",
+    "tools/replay_s1c_v32_fixed_b2.py": "89d0af86d15b5090a887bd0b9b35d90e65c69261",
+    "tools/classify_s1c_v32_terminal.py": "f6c3134080a91da01ea000b82f3fa9c09fe0874e",
+    "tools/run_s1c_v32_paired_v1.py": "7880e0f3182ae3446a5ebad3720c38f49945b662",
+    "results/s1c_v32_paired_actual_2026-10-08.json": "c3f746dcec0a8ab150844f028e3b29a83bdffb99",
+    "results/s1c_v32_audited_terminal_2026-10-08.json": "0009c8574c50f7dc0e9c85132796cb407ffc8c2e",
+    "results/s1c_v32_boundary_regression_2026-10-08.json": "fa1a9b68384b139cd5cdd95d9339ee40f79d503c",
+    "results/s1c_semantic_space_final_boundary_2026-10-08.json": "7fa2a9ffc564dd1e60b5b5a66515ecbe89c14664"
+  }
+}
