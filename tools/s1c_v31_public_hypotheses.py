@@ -8,13 +8,6 @@ OPERATIONS = ("KEEP", "SET0", "SET1", "FLIP")
 STATE_SPACE = tuple(itertools.product((0, 1), repeat=3))
 TRAINING_PROBE_INDICES = (0, 1, 2, 4)
 EVALUATION_PROBE_INDICES = (3, 5, 6, 7)
-PROBE_LAYOUT = {
-    "A1": (0, 1),
-    "A2": (2, 4),
-    "B1": (0, 2),
-    "B2": (1, 4),
-}
-
 
 def normalize_code(code: Sequence[str]) -> tuple[str, str, str]:
     value = tuple(str(x).upper() for x in code)
@@ -112,7 +105,6 @@ def public_manifest() -> dict[str, Any]:
         "function_count": len(PUBLIC_HYPOTHESES),
         "training_probe_indices": list(TRAINING_PROBE_INDICES),
         "evaluation_probe_indices": list(EVALUATION_PROBE_INDICES),
-        "probe_layout": {k: list(v) for k, v in PROBE_LAYOUT.items()},
         "selected_target_functions_visible": False,
         "semantic_slot_names_encoded": False,
     }
@@ -124,7 +116,6 @@ __all__ = [
     "STATE_SPACE",
     "TRAINING_PROBE_INDICES",
     "EVALUATION_PROBE_INDICES",
-    "PROBE_LAYOUT",
     "PUBLIC_HYPOTHESES",
     "all_codes",
     "apply_code",
