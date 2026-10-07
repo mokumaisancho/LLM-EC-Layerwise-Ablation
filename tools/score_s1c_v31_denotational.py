@@ -114,7 +114,7 @@ def validate_prediction(task: dict[str, Any], prediction: Any) -> dict[str, Any]
 
         types = slot.get("arg_types")
         members = slot.get("training_members")
-        if not isinstance(types, list) or not all(isinstance(x, str) and x for x in types):
+        if not isinstance(types, list) or not (1 <= len(types) <= 2) or not all(isinstance(x, str) and x for x in types):
             return {"valid": False, "reason": "SLOT_ARG_TYPES_INVALID"}
         if not isinstance(members, list) or not members:
             return {"valid": False, "reason": "SLOT_MEMBERS_INVALID"}
