@@ -18,6 +18,11 @@ def fail(detail:str)->None:
 
 
 def main()->int:
+    if os.environ.get("SEMANTIC_RUNTIME_V2_TRUST") == "1":
+        q=subprocess.run([sys.executable,str(TOOLS/"preflight_semantic_runtime_v2.py")],cwd=ROOT,text=True,capture_output=True)
+        sys.stdout.write(q.stdout)
+        if q.stderr:sys.stderr.write(q.stderr)
+        return q.returncode
     if os.environ.get("SEMANTIC_RUNTIME_P03") == "1":
         q=subprocess.run([sys.executable,str(TOOLS/"evidence_semantic_runtime_product.py")],cwd=ROOT,text=True,capture_output=True)
         (ROOT/"semantic_runtime_p03_result.json").write_text(q.stdout,encoding="utf-8")
