@@ -1,0 +1,37 @@
+{
+  "schema_version": "SEMANTIC_RUNTIME_PRODUCT_P03_RESULT_V1",
+  "issue": 54,
+  "ecv4": {
+    "suite_ref": "31d0a0998c2fa5f5120b6bd2c6026a4f3702fd12",
+    "ecv4_ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+    "phase_trace": [
+      "I54:PRIOR_ART",
+      "I54:REPAIR",
+      "I54:REGRESSION",
+      "I54:EVIDENCE"
+    ],
+    "terminal": "PRODUCT_MVP_COMPLETE"
+  },
+  "render_deploy": "dep-db3c1jui0phs739hm360",
+  "checks": {
+    "product_pin_manifest_blob_fixed": true,
+    "research_pin_manifest_blob_fixed": true,
+    "p01_replay_pass": true,
+    "p02_replay_pass": true,
+    "cli_discover_exit_zero": true,
+    "api_cli_ir_identical": true,
+    "cli_execute_exit_zero": true,
+    "api_cli_execution_identical": true,
+    "execution_applicable": true,
+    "canonical_ir_sha_stable": true
+  },
+  "canonical_ir_sha256": "695312aaaeffa1d9f45e78957cbc4952791116998eb567050c692e15a4df199b",
+  "canonical_execution_sha256": "79bdecd7b35befa6870ee64153fdce098f026ed99d5d59883813aefe08cdfaac",
+  "p01_result_commit": "bbb7ddad5f8700987087715a30362d2ed2e221fa",
+  "p02_result_commit": "7d3e77de9980179ea4280aaaa3f402b944c33159",
+  "product_pins_manifest_blob": "a87611cbc93638e262a07ec67afdcf8d936d740b",
+  "research_pins_manifest_blob": "bdce80d5b6bfdc07a0d2ce799b099c0ed9ab22be",
+  "product_claim": "Reusable deterministic semantic-space runtime is qualified for finite typed/auditable contracts represented by the frozen public runtime schemas.",
+  "claim_limit": "No unrestricted ontology invention, open-ended world-knowledge acquisition, or general LLM replacement claim.",
+  "terminal": "PRODUCT_MVP_COMPLETE"
+}
