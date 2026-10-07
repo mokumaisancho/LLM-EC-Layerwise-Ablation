@@ -2,7 +2,7 @@
   "schema_version": "S1C_ACTIVE_WORK_STATE_V1",
   "updated_date": "2026-10-07",
   "root_issue": 48,
-  "active_stage": "MVP_V_V2_INVALIDATED_V3_REQUIRED",
+  "active_stage": "MVP_V_V31_PAIRED_EXECUTION",
   "predecessor_terminal": {
     "stage": "MVP_R",
     "terminal": "R_DETERMINISTIC_MATERIAL_ADVANTAGE",
@@ -49,12 +49,23 @@
   },
   "next_branch": [
     {
-      "condition": "ISSUE_50_OPEN",
+      "condition": "V31_PAIRED_LIVE",
       "actions": [
-        "do not run V2 postrun terminal classification for scientific claim",
-        "preserve V2 runtime as invalidated diagnostic evidence",
-        "design MVP-V V3 from audited MVP-R terminal",
-        "refreeze contract/scorer/deterministic baseline/generator/structural novelty/grammar/audit before any inference"
+        "retrieve s1c_v31_paired_runtime.json without reinference",
+        "persist exact runtime evidence to GitHub",
+        "run frozen independent postrun audit",
+        "run frozen fixed-B2 causal replay",
+        "run frozen terminal classifier",
+        "publish exactly one boundary update if all gates pass"
+      ]
+    },
+    {
+      "condition": "V31_ASSAY_EXECUTION_INVALID_OR_BUILD_FAILED",
+      "actions": [
+        "preserve raw evidence",
+        "do not publish scientific metrics",
+        "register versioned residual",
+        "do not repair in place"
       ]
     }
   ],
@@ -63,5 +74,28 @@
     "no Google Drive relay",
     "no GitHub Actions",
     "no automatic Qwen3-4B escalation"
-  ]
+  ],
+  "v31": {
+    "contract_commit": "0ddaabb4a5a074d02df68c2d2798329857321f67",
+    "public_hypothesis_commit": "a84a583a3a88cea592924e3f32c9356cb89e8cb4",
+    "corpus_commit": "65580f02abeb71412c081be62804b27104515a0c",
+    "oracle_validator_commit": "e700f5745553d744dc301d6a8955babd819db73b",
+    "scorer_commit": "e2da28aacebea26149286a19aea042a96be3bb60",
+    "deterministic_baseline_commit": "c6785250c884734ef2338f72ad7610d7ba940a6c",
+    "schema_commit": "b2a370acfd7d1022670b158d0de40258e2f6a901",
+    "scientific_preflight_commit": "52865fec3601e11e6f8ccf713d569f61c460946e",
+    "scientific_preflight": "PASS",
+    "sandbox_generic_hypothesis_recompute": "PASS_8_OF_8",
+    "schema_runtime_smoke_commit": "ae6b316efda5e706e7dd550165672a911549a919",
+    "schema_runtime_smoke": "PASS",
+    "runner_commit": "7536bc6cab08e1d1a27d08866c78d5f442e07efb",
+    "runner_preflight_commit": "32e46f114fdcb631e147fd9dcd05afde13e1dda5",
+    "runner_preflight": "PASS",
+    "independent_audit_commit": "ccfe6b893137545c87be2e6e743b7fd872a4e13c",
+    "fixed_b2_replay_commit": "28de719c11782581cca728ec4fc4ea4bb8f4be2b",
+    "terminal_classifier_commit": "cb43a34216bb2b7737278f7ba97c17d28ed94187",
+    "paired_deploy": "dep-db385em7bikc73bvts7g",
+    "paired_status": "IN_PROGRESS",
+    "scientific_result_available": false
+  }
 }
