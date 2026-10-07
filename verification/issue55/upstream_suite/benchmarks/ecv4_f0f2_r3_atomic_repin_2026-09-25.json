@@ -1,0 +1,57 @@
+{
+  "schema_version": 2,
+  "protocol": "SUITE_EC_V4_R3_EXACT_REPIN_QUALIFICATION_V2",
+  "status": "PASS_TARGETED_INTEGRATED",
+  "ec_v4": {
+    "repo": "mokumaisancho/GPT-EC-Closure-Engine",
+    "branch": "GPT-EC-V4",
+    "ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+    "rollback_ref": "c0cad551ca09f645ebe608bae4086de2e6f58bfd"
+  },
+  "qualified_v3_inner_ref": "c847e967523a22444a30251fdbd1962adf56e16a",
+  "ec_qualification": {
+    "source": "GPT-EC-V4:benchmarks/EC_V4_R3_INTEGRATED_QUALIFICATION_2026-09-25.json",
+    "cases_total": 11,
+    "cases_passed": 11
+  },
+  "suite_contract_qualification": {
+    "mode": "DETERMINISTIC_CONTRACT_HARNESS",
+    "cases_total": 10,
+    "cases_passed": 10,
+    "cases": [
+      "positive exact-ref contract",
+      "wrong exact ref blocked",
+      "wrong rollback ref blocked",
+      "revision-watermark invariant loss blocked",
+      "plan-disposition binding loss blocked",
+      "dynamic-state authority forwarding loss blocked",
+      "relevance authority forwarding loss blocked",
+      "evidence authorization tamper blocked",
+      "evidence case-count mismatch blocked",
+      "locked-file drift blocked"
+    ]
+  },
+  "integrated_cases_total": 21,
+  "integrated_cases_passed": 21,
+  "suite_binding_checks": {
+    "adapter_exact_ref": "PASS",
+    "candidate_contract_exact_ref": "PASS",
+    "manifest_exact_ref": "PASS",
+    "active_runtime_exact_ref": "PASS",
+    "rollback_to_previous_qualified_v4": "PASS",
+    "dynamic_state_authority_forwarding": "PASS",
+    "relevance_authority_forwarding": "PASS",
+    "runtime_revision_watermark_declared": "PASS",
+    "same_revision_state_digest_consistency_declared": "PASS",
+    "plan_disposition_binding_declared": "PASS",
+    "completed_descendant_criticality_filter_declared": "PASS",
+    "explicit_stateful_v4_control_plane_declared": "PASS"
+  },
+  "canonical_experimental_repin_authorized": true,
+  "production_promotion_authorized": false,
+  "limitations": [
+    "Full repository-wide pytest is not claimed by this evidence.",
+    "The Suite contract harness validates the exact repin/invariant surface; EC runtime behavior is inherited from the separately recorded exact-ref integrated qualification.",
+    "Cross-process observation freshness remains the responsibility of the independent dynamic-state authority."
+  ]
+}
