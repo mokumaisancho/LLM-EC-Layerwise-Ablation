@@ -1,0 +1,47 @@
+{
+  "protocol": "S1C_V31_SYNTHETIC_JSON_SCHEMA_RUNTIME_SMOKE_V1",
+  "pass": true,
+  "terminal": "S1C_V31_SYNTHETIC_JSON_SCHEMA_RUNTIME_SMOKE_PASS",
+  "preflight_terminal": "S1C_V31_PREFLIGHT_PASS",
+  "render": {
+    "service_id": "srv-db14rn6gekts73c773eg",
+    "deploy_id": "dep-db3823id0e5s73febvtg",
+    "deploy_status": "live",
+    "commit": "aadaea867d5ab1384b4f7f43901f5a68f60fe450"
+  },
+  "runtime": {
+    "llama_cpp_tag": "b11146",
+    "llama_cpp_asset_sha256": "c150306eb16b5ab696f76a8bdf810c35fd98a24e82158742e6fa28f420ff8410",
+    "model_file": "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf",
+    "model_sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+    "temperature": 0,
+    "endpoint": "/completion",
+    "constraint_field": "json_schema"
+  },
+  "minimal_schema": {
+    "raw_sha256": "478a2db24dd5e1d05efd4027177ff21d07c36bdf98c82552bbc0d6d1d1e77f56",
+    "parsed": {
+      "slot_id": "S01",
+      "probe_id": "Q03",
+      "bits": [
+        1,
+        0,
+        1
+      ]
+    },
+    "bare_string_id_regression": false
+  },
+  "actual_v31_schema": {
+    "task_id": "V311",
+    "raw_sha256": "2334a93ae88ecf37c7115a46e67bcac05362e7bddce5803da116ef984b0cd052",
+    "top_level_keys": [
+      "abstentions",
+      "discovered_slots",
+      "heldout_assignments"
+    ],
+    "slot_count": 1,
+    "bare_slot_id_regression": false
+  },
+  "scientific_measurement_performed": false,
+  "paired_model_inference_authorized": true
+}
