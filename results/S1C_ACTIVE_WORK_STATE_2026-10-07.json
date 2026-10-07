@@ -2,7 +2,7 @@
   "schema_version": "S1C_ACTIVE_WORK_STATE_V1",
   "updated_date": "2026-10-07",
   "root_issue": 48,
-  "active_stage": "MVP_V_PAIRED_EXECUTION_V2",
+  "active_stage": "MVP_V_V2_INVALIDATED_V3_REQUIRED",
   "predecessor_terminal": {
     "stage": "MVP_R",
     "terminal": "R_DETERMINISTIC_MATERIAL_ADVANTAGE",
@@ -25,7 +25,16 @@
     "runner_preflight_deploy": "dep-db2nv5ijnfac73fcjovg",
     "runner_preflight_status": "PASS_LIVE",
     "paired_deploy": "dep-db2nvl67bikc73abe01g",
-    "paired_status": "IN_PROGRESS"
+    "paired_status": "LIVE_BUT_RESULT_INVALIDATED",
+    "invalidated_by_issue": 50,
+    "result_use_authorized": false,
+    "invalidate_reasons": [
+      "QWEN_JSON_GRAMMAR_STRING_LITERAL_BUG_ALL_8_TRUNCATED",
+      "V05H02_RAW_TEXT_DENOTATION_MISMATCH",
+      "VISIBLE_BEHAVIOR_SIGNATURE_PARTITION_LEAKAGE",
+      "NO_INDEPENDENT_HELDOUT_BEHAVIORAL_EQUIVALENCE",
+      "STRUCTURAL_DISJOINTNESS_GATE_NAME_ONLY"
+    ]
   },
   "immutable_scientific_assets": {
     "denotational_contract": "a86e19bd02047a8c7e7d22aa67f399511eb04879",
@@ -40,32 +49,12 @@
   },
   "next_branch": [
     {
-      "condition": "V2_DEPLOY_LIVE",
+      "condition": "ISSUE_50_OPEN",
       "actions": [
-        "recover S1C_V_TERMINAL raw runtime JSON from Render build logs",
-        "persist runtime JSON to results/ without model reinference",
-        "execute frozen V2 independent postrun raw/metric audit",
-        "execute frozen fixed-B2 causal replay",
-        "execute frozen terminal classifier",
-        "publish one boundary update only if all gates PASS"
-      ]
-    },
-    {
-      "condition": "V2_BUILD_FAILED_BEFORE_ANY_COMPLETED_TASK",
-      "actions": [
-        "register operational residual",
-        "do not treat as assay result",
-        "create versioned successor changing execution mechanics only",
-        "rerun preflight before inference"
-      ]
-    },
-    {
-      "condition": "V2_FAILURE_AFTER_ANY_COMPLETED_TASK",
-      "actions": [
-        "preserve all raw emitted evidence",
-        "fail closed for aggregate causal claim",
-        "register residual and successor protocol",
-        "do not mix partial V2 evidence with successor results"
+        "do not run V2 postrun terminal classification for scientific claim",
+        "preserve V2 runtime as invalidated diagnostic evidence",
+        "design MVP-V V3 from audited MVP-R terminal",
+        "refreeze contract/scorer/deterministic baseline/generator/structural novelty/grammar/audit before any inference"
       ]
     }
   ],
