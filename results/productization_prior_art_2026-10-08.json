@@ -1,0 +1,35 @@
+{
+  "protocol": "PRODUCTIZATION_PRIOR_ART_V1",
+  "issue": 54,
+  "ecv4_phase": "I54:PRIOR_ART",
+  "pass": true,
+  "selected_basis": [
+    {
+      "path": "tools/s1c_v31_public_hypotheses.py",
+      "blob_sha": "fe7b7b9a6203624e93ffdce1d542404fd250e63d",
+      "reuse": "COPY/REFACTOR_PRODUCTION_SAFE_CORE",
+      "oracle_scorer_dependency": false
+    },
+    {
+      "path": "tools/s1c_v31_deterministic_baseline.py",
+      "blob_sha": "b5bf066dd2dd55a2cdcf076b09f5183c441b9866",
+      "reuse": "EXTRACT_DISCOVERY_AND_GROUNDING_CORE",
+      "oracle_scorer_dependency": false
+    },
+    {
+      "path": "tools/s2b2b2_enumerative_inducer.py",
+      "blob_sha": "3ea2365b7d49f766fbdc14fd82c6ca44b2d29eb9",
+      "reuse": "REUSE_DOWNSTREAM_DETERMINISTIC_SOLVER",
+      "oracle_scorer_dependency": false
+    }
+  ],
+  "forbidden_reuse": [
+    "score_* modules",
+    "validate_* oracle modules",
+    "reference truth tables",
+    "corpus generators",
+    "research-only result adapters"
+  ],
+  "conclusion": "No new algorithm is required for product MVP. Extract a production package around the three audited deterministic cores, add public contracts and fail-closed validation, and keep frozen research assets byte-identical.",
+  "next_ecv4_phase": "I54:REPAIR"
+}
