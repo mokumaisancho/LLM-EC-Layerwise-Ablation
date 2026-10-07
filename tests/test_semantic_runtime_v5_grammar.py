@@ -142,13 +142,13 @@ class RealV5GrammarAcceptance(unittest.TestCase):
             self.assertNotEqual(rows[f"H{i:02d}"]["status"],"EXPLICIT_MATCH")
 
     def test_04_missing_colon_ambiguity_rejected(self):
-        self.approve()
-        solver=copy.deepcopy(self.solver);solver["assignment_example_id"]="H03"
+        solver=copy.deepcopy(self.solver)
+        solver["assignment_example_id"]="H03"
         self.write("solver",solver)
+        self.approve()
         r=self.cli()
         self.assertEqual(r.returncode,3)
-        self.assertIn("SOLVER_NOT_APPROVED",r.stderr)
-        self.write("solver",self.solver)
+        self.assertIn("EXECUTION_TARGET_NOT_EXPLICITLY_CLASSIFIED",r.stderr)
 
     def test_05_mixed_intent_cannot_be_approved(self):
         bad=copy.deepcopy(self.grammar)
