@@ -165,6 +165,12 @@ class ProductSemanticRuntimeTests(unittest.TestCase):
         bad["discovered_slots"][1]["training_members"] = list(
             bad["discovered_slots"][0]["training_members"]
         )
+        bad["discovered_slots"][1]["evaluation_probe_predictions"] = copy.deepcopy(
+            bad["discovered_slots"][0]["evaluation_probe_predictions"]
+        )
+        bad["discovered_slots"][1]["arg_types"] = list(
+            bad["discovered_slots"][0]["arg_types"]
+        )
         with self.assertRaisesRegex(RuntimeContractError, "TRAINING_PARTITION_NOT_EXACT"):
             validate_semantic_ir(bad, task["visible"])
 
