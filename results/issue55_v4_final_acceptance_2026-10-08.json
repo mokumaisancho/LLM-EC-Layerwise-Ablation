@@ -1,0 +1,87 @@
+{
+  "schema_version": "ISSUE55_V4_FINAL_ACCEPTANCE_V1",
+  "issue": 55,
+  "terminal": "ISSUE55_CODE_ACCEPTANCE_COMPLETE",
+  "scope": "Local owner-controlled finite typed semantic runtime with operator-installed task+solver approval. No live user Mac deployment performed.",
+  "trust_boundary": {
+    "caller_controls": [
+      "IR",
+      "task_contract",
+      "solver_contract",
+      "policy_id"
+    ],
+    "not_caller_controlled": [
+      "approved_policy_v3.json installation",
+      "trusted package directory",
+      "executor OS user"
+    ],
+    "implementation": "V4 checks directory/file ownership and permissions, no-follow directory-relative open, regular single-link policy, bounded read, default-deny policy; exact SHA256 match of approved task+solver; V2 rederived IR and solver contract validation before execution",
+    "operational_assumption": "Same-UID malicious program, compromised owner installation or administrator intentionally bypassing the policy are outside this interface's threat model."
+  },
+  "source_blobs": {
+    "semantic_runtime/execution_v2.py": "43975bea1b8e25aba491925d14edc9dd3407b29c",
+    "semantic_runtime/execution_v3.py": "6ca34c3e02ffc91bfe12c3cd6338afc08fcfe091",
+    "semantic_runtime/execution_v4.py": "da2769fc683943bfcc52915bd8fee622cd332d4a",
+    "semantic_runtime/approved_policy_v3.json": "ac738151ca612061d517de21b2e3637092fa115c",
+    "tools/install_semantic_runtime_policy_v4.py": "db359332d948e894d2bef8597f5d0ac8a679b392",
+    "tools/semantic_runtime_cli_v4.py": "735a7903e665e3b6b4e1c58c84f918c54fa689f0",
+    "tests/test_semantic_runtime_operator_install_v4.py": "934a6f2166a7aaefd7752d06d75b806cc232dd1e",
+    "tools/preflight_issue55_v4.py": "839e1d1b29bea82b1cf9bfbb109f4d8c9562d90b",
+    "tools/audit_issue55_suite_ecv4.py": "f5a92a091b83d4206d3b3a01d856d467d0097d55"
+  },
+  "verification": {
+    "render_deploy": "dep-db3d6regekts73e9si50",
+    "render_status": "live",
+    "render_source_commit": "0a68eabadf9a643cb1dbdacea2ae515e57cda3b8",
+    "product_pins": "11/11",
+    "research_pins": "21/21",
+    "test_suites": {
+      "v1": "10/10",
+      "v2": "15/15",
+      "v3": "7/7",
+      "v4_nonmock": "13/13"
+    },
+    "no_operator_approval_by_default": true,
+    "positive_approval_test_source": "real non-mocked policy file installed atomically into isolated owner-owned runtime bundle",
+    "negative_tests": [
+      "unapproved policy",
+      "forged task",
+      "forged solver",
+      "forged IR",
+      "unapproved policy ID",
+      "policy symlink",
+      "group/world writable policy",
+      "group/world writable install directory",
+      "implicit overwrite attempt"
+    ],
+    "suite": {
+      "upstream_ref": "31d0a0998c2fa5f5120b6bd2c6026a4f3702fd12",
+      "actual_pinned_evaluator": "verification/issue55/upstream_suite/src/suite_v4_atomic_gate_v4.py",
+      "status": "PASS",
+      "tampered_suite_manifest_blocked": true,
+      "suite_production_ready": false
+    },
+    "ecv4": {
+      "upstream_ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+      "actual_pinned_module": "verification/issue55/upstream_ecv4/ec_dynamic_frontier.py",
+      "sequence": [
+        "I55:REPAIR",
+        "I55:REGRESSION",
+        "I55:EVIDENCE"
+      ],
+      "tampered_digest_blocked": true,
+      "untrusted_state_blocked": true
+    },
+    "final_gate": "ISSUE55_FINAL_SUITECV4_AUDIT_V1",
+    "final_gate_terminal": "ISSUE55_CODE_ACCEPTANCE_COMPLETE"
+  },
+  "accepted_claim": "Versioned V4 authorized entrypoint rejects unapproved task/solver and forged IR for the pinned finite typed runtime; owner-installed policy positive integration and negative controls are verified on Render Linux.",
+  "not_claimed": [
+    "V1/V2 legacy execution entrypoints are retroactively secure",
+    "same-UID malicious software isolation",
+    "macOS machine field-tested",
+    "any third-party access",
+    "unrestricted LLM capabilities"
+  ],
+  "recommended_next_step": "User-owned Mac installation is a separate opt-in environment acceptance step, not required to close this code-level trust-boundary issue."
+}
