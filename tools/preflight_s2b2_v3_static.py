@@ -18,6 +18,23 @@ def fail(detail:str)->None:
 
 
 def main()->int:
+    if os.environ.get("S1C_V32_POSTRUN") == "1":
+        runtime=ROOT/"results"/"s1c_v32_paired_actual_2026-10-08.json"
+        audit=ROOT/"results"/"s1c_v32_postrun_audit_actual_2026-10-08.json"
+        replay=ROOT/"results"/"s1c_v32_fixed_b2_replay_actual_2026-10-08.json"
+        terminal=ROOT/"results"/"s1c_v32_terminal_actual_2026-10-08.json"
+        a=subprocess.run([sys.executable,str(TOOLS/"audit_s1c_v32_independent.py"),str(runtime),"--output",str(audit)],cwd=ROOT,text=True,capture_output=True)
+        sys.stdout.write(a.stdout)
+        if a.stderr: sys.stderr.write(a.stderr)
+        if a.returncode: return a.returncode
+        r=subprocess.run([sys.executable,str(TOOLS/"replay_s1c_v32_fixed_b2.py"),str(runtime),str(audit),"--output",str(replay)],cwd=ROOT,text=True,capture_output=True)
+        sys.stdout.write(r.stdout)
+        if r.stderr: sys.stderr.write(r.stderr)
+        if r.returncode: return r.returncode
+        t=subprocess.run([sys.executable,str(TOOLS/"classify_s1c_v32_terminal.py"),str(audit),str(replay),"--output",str(terminal)],cwd=ROOT,text=True,capture_output=True)
+        sys.stdout.write(t.stdout)
+        if t.stderr: sys.stderr.write(t.stderr)
+        return t.returncode
     if os.environ.get("S1C_V32_RUNNER_PREFLIGHT") == "1":
         q=subprocess.run([sys.executable,str(TOOLS/"preflight_s1c_v32_runner.py")],cwd=ROOT,text=True,capture_output=True)
         (ROOT/"s1c_v32_runner_preflight_result.json").write_text(q.stdout,encoding="utf-8")
