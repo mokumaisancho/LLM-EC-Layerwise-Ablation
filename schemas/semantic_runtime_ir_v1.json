@@ -1,0 +1,20 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"semantic_runtime_ir_v1.json",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["protocol","discovered_slots","heldout_assignments","abstentions"],
+  "properties":{
+    "protocol":{"const":"SEMANTIC_RUNTIME_IR_V1"},
+    "discovered_slots":{"type":"array","minItems":2,"maxItems":2,"items":{"$ref":"#/$defs/slot"}},
+    "heldout_assignments":{"type":"array","items":{"$ref":"#/$defs/assignment"}},
+    "abstentions":{"type":"array","items":{"$ref":"#/$defs/abstention"}}
+  },
+  "$defs":{
+    "bits3":{"type":"array","minItems":3,"maxItems":3,"items":{"type":"integer","enum":[0,1]}},
+    "eval":{"type":"object","additionalProperties":false,"required":["probe_id","predicted_after"],"properties":{"probe_id":{"enum":["Q03","Q05","Q06","Q07"]},"predicted_after":{"$ref":"#/$defs/bits3"}}},
+    "slot":{"type":"object","additionalProperties":false,"required":["slot_id","arg_types","training_members","evaluation_probe_predictions"],"properties":{"slot_id":{"type":"string","minLength":1},"arg_types":{"type":"array","minItems":1,"items":{"type":"string","minLength":1}},"training_members":{"type":"array","minItems":2,"maxItems":2,"uniqueItems":true,"items":{"type":"string","minLength":1}},"evaluation_probe_predictions":{"type":"array","minItems":4,"maxItems":4,"items":{"$ref":"#/$defs/eval"}}}},
+    "assignment":{"type":"object","additionalProperties":false,"required":["example_id","slot_id","arguments","polarity","modality"],"properties":{"example_id":{"type":"string","minLength":1},"slot_id":{"type":"string","minLength":1},"arguments":{"type":"array","minItems":1,"items":{"type":"string","minLength":1}},"polarity":{"enum":["POS","NEG"]},"modality":{"enum":["ASSERTED","REQUIRED","POSSIBLE"]}}},
+    "abstention":{"type":"object","additionalProperties":false,"required":["example_id","status"],"properties":{"example_id":{"type":"string","minLength":1},"status":{"const":"AMBIGUOUS"}}}
+  }
+}
