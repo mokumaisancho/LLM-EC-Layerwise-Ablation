@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"semantic_runtime_solver_v1.json",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["protocol","assignment_example_id","parameter_from_arguments","static_binding","before","operator_schema"],
+  "properties":{
+    "protocol":{"const":"SEMANTIC_RUNTIME_SOLVER_V1"},
+    "assignment_example_id":{"type":"string","minLength":1},
+    "required_polarity":{"enum":["POS","NEG"]},
+    "required_modality":{"enum":["ASSERTED","REQUIRED","POSSIBLE"]},
+    "parameter_from_arguments":{"type":"object","additionalProperties":{"type":"integer","minimum":0}},
+    "static_binding":{"type":"object","additionalProperties":{"type":"string"}},
+    "before":{"type":"array","items":{"$ref":"#/$defs/atom"}},
+    "operator_schema":{"$ref":"#/$defs/operator"}
+  },
+  "$defs":{
+    "atom":{"type":"object","additionalProperties":false,"required":["pred","args"],"properties":{"pred":{"type":"string","minLength":1},"args":{"type":"array","items":{"type":"string"}}}},
+    "operator":{"type":"object","additionalProperties":true,"required":["preconditions","add_effects","delete_effects"],"properties":{"preconditions":{"type":"array","items":{"$ref":"#/$defs/atom"}},"add_effects":{"type":"array","items":{"$ref":"#/$defs/atom"}},"delete_effects":{"type":"array","items":{"$ref":"#/$defs/atom"}}}}
+  }
+}
