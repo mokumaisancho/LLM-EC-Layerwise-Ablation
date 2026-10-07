@@ -2,7 +2,7 @@
   "schema_version": "S1C_ACTIVE_WORK_STATE_V1",
   "updated_date": "2026-10-07",
   "root_issue": 48,
-  "active_stage": "MVP_V_V31_PAIRED_EXECUTION",
+  "active_stage": "MVP_V_V32_PAIRED_EXECUTION",
   "predecessor_terminal": {
     "stage": "MVP_R",
     "terminal": "R_DETERMINISTIC_MATERIAL_ADVANTAGE",
@@ -49,23 +49,22 @@
   },
   "next_branch": [
     {
-      "condition": "V31_PAIRED_LIVE",
+      "condition": "V32_PAIRED_METRICS_READY_AUDIT_REQUIRED",
       "actions": [
-        "retrieve s1c_v31_paired_runtime.json without reinference",
-        "persist exact runtime evidence to GitHub",
-        "run frozen independent postrun audit",
-        "run frozen fixed-B2 causal replay",
-        "run frozen terminal classifier",
-        "publish exactly one boundary update if all gates pass"
+        "recover exact V32 runtime JSON and verify whole-file SHA",
+        "persist exact runtime evidence to results/",
+        "run frozen V32 independent postrun audit",
+        "run frozen V32 fixed-B2 causal replay",
+        "run frozen V32 terminal classifier",
+        "publish one boundary update only if all gates PASS"
       ]
     },
     {
-      "condition": "V31_ASSAY_EXECUTION_INVALID_OR_BUILD_FAILED",
+      "condition": "V32_ASSAY_EXECUTION_INVALID",
       "actions": [
-        "preserve raw evidence",
+        "recover and persist invalid evidence",
         "do not publish scientific metrics",
-        "register versioned residual",
-        "do not repair in place"
+        "register versioned execution residual"
       ]
     }
   ],
@@ -95,7 +94,28 @@
     "fixed_b2_replay_commit": "28de719c11782581cca728ec4fc4ea4bb8f4be2b",
     "terminal_classifier_commit": "cb43a34216bb2b7737278f7ba97c17d28ed94187",
     "paired_deploy": "dep-db385em7bikc73bvts7g",
+    "paired_status": "NO_SCIENTIFIC_RESULT",
+    "scientific_result_available": false,
+    "completed_qwen_tasks": 1,
+    "observed_semantic_violation": "TRAINING_MEMBER_DUPLICATED",
+    "residual_issue": 52
+  },
+  "v32": {
+    "measurement_contract_commit": "6b1c31e66816440dea8b2960c1534f96a78cd725",
+    "scorer_commit": "5f87dafb79f43298662a948786a457a6533e6391",
+    "independent_audit_commit": "8ccf41d6e9f063980d8b4e5745297d0856dbc8e4",
+    "fixed_b2_replay_commit": "63808af37afeb2a9863d17d1573adae9f50b766d",
+    "terminal_classifier_commit": "bb4a59bef35e6bff26f9b35d70e58e22961d4652",
+    "paired_runner_commit": "04e100808d28d898554f9687c3affd8ae1a896d4",
+    "runner_preflight_commit": "73c80c86b76e92e34d465c6c87015e701769a080",
+    "runner_preflight": "PASS",
+    "qwen_prompt_byte_identical_to_v31": true,
+    "dataset_changed": false,
+    "model_changed": false,
+    "public_hypothesis_changed": false,
+    "paired_deploy": "dep-db38akom7kps73dd6jfg",
     "paired_status": "IN_PROGRESS",
-    "scientific_result_available": false
+    "scientific_result_available": false,
+    "evidence_recovery": "base64 chunk manifest + chunks emitted after runner"
   }
 }
