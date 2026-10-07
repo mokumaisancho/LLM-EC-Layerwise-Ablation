@@ -1,0 +1,18 @@
+{
+  "schema_version": "SEMANTIC_RUNTIME_PRODUCT_PINS_V1",
+  "issue": 54,
+  "phase": "P01_COMPLETE_FREEZE",
+  "files": {
+    "semantic_runtime/__init__.py": "d3353f77df92068af81cf5d66e3686d0d5a32eae",
+    "semantic_runtime/public_hypotheses.py": "fe7b7b9a6203624e93ffdce1d542404fd250e63d",
+    "semantic_runtime/discovery.py": "99720c37b2416aa780ec380cfea1de08e1472867",
+    "semantic_runtime/solver.py": "3ea2365b7d49f766fbdc14fd82c6ca44b2d29eb9",
+    "semantic_runtime/runtime.py": "c8ddd1a0e39e0888e9c6a919eeb2adb39a28cdd4",
+    "tools/semantic_runtime_cli.py": "38eaf04b22e2f83fe26f1e27631322575e938f57",
+    "schemas/semantic_runtime_task_v1.json": "b9b59c72bccf91a3261e56bf4dc52a61eb4c0944",
+    "schemas/semantic_runtime_ir_v1.json": "0c455d0ee0dfc69a49ea5300a6148ddcb5961dac",
+    "schemas/semantic_runtime_solver_v1.json": "964ff6336c28aa4e27ff7edcf84056fee282b5c4",
+    "tests/test_semantic_runtime_product.py": "89e41ccf319bb348b12ca622ab34f534a4aee567",
+    "tools/preflight_semantic_runtime_product.py": "d1a884e1426fb7df48166ea0224c7eaef4e5185f"
+  }
+}
