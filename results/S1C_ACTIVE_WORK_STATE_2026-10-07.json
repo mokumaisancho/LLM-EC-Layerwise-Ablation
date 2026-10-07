@@ -2,7 +2,7 @@
   "schema_version": "S1C_ACTIVE_WORK_STATE_V1",
   "updated_date": "2026-10-07",
   "root_issue": 48,
-  "active_stage": "MVP_V_V32_PAIRED_EXECUTION",
+  "active_stage": "S1C_MVP_BOUNDARY_COMPLETE_PRODUCTIZATION_NEXT",
   "predecessor_terminal": {
     "stage": "MVP_R",
     "terminal": "R_DETERMINISTIC_MATERIAL_ADVANTAGE",
@@ -49,22 +49,11 @@
   },
   "next_branch": [
     {
-      "condition": "V32_PAIRED_METRICS_READY_AUDIT_REQUIRED",
+      "condition": "CURRENT_MVP_BOUNDARY_COMPLETE",
       "actions": [
-        "recover exact V32 runtime JSON and verify whole-file SHA",
-        "persist exact runtime evidence to results/",
-        "run frozen V32 independent postrun audit",
-        "run frozen V32 fixed-B2 causal replay",
-        "run frozen V32 terminal classifier",
-        "publish one boundary update only if all gates PASS"
-      ]
-    },
-    {
-      "condition": "V32_ASSAY_EXECUTION_INVALID",
-      "actions": [
-        "recover and persist invalid evidence",
-        "do not publish scientific metrics",
-        "register versioned execution residual"
+        "do not reopen V3.2 scientific assets",
+        "start reusable runtime integration/productization as a new issue",
+        "preserve claim limits and audited source pins"
       ]
     }
   ],
@@ -114,8 +103,20 @@
     "model_changed": false,
     "public_hypothesis_changed": false,
     "paired_deploy": "dep-db38akom7kps73dd6jfg",
-    "paired_status": "IN_PROGRESS",
-    "scientific_result_available": false,
-    "evidence_recovery": "base64 chunk manifest + chunks emitted after runner"
+    "paired_status": "COMPLETE_AUDITED",
+    "scientific_result_available": true,
+    "evidence_recovery": "base64 chunk manifest + chunks emitted after runner",
+    "terminal": "V32_DETERMINISTIC_MATERIAL_ADVANTAGE",
+    "paired_runtime_commit": "5c79eaa6bb6a1e497edaed9d6d3b2ad2859b3de6",
+    "paired_runtime_sha256": "52c9f11a83a5118a44a3da3206e38c839d03f6818047b3d4b05c41f2bafffc76",
+    "audited_terminal_commit": "7cabdf435457afd6ef429088f04d488d085606da",
+    "boundary_regression_commit": "3175cd3d4906d5f61f8ca3cb7a5d006cb13f929a",
+    "final_boundary_commit": "937563bf16ee8bd11a974d352ad8084a087988db"
+  },
+  "ecv4": {
+    "suite_ref": "31d0a0998c2fa5f5120b6bd2c6026a4f3702fd12",
+    "ecv4_ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+    "last_completed_phase": "I48:EVIDENCE",
+    "frontier": "NO_OPEN_RESEARCH_WORK_FOR_CURRENT_MVP"
   }
 }
