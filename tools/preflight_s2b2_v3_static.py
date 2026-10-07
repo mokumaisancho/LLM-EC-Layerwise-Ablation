@@ -18,6 +18,11 @@ def fail(detail:str)->None:
 
 
 def main()->int:
+    if os.environ.get("ISSUE55_FINAL_AUDIT") == "1":
+        q=subprocess.run([sys.executable,str(TOOLS/"audit_issue55_suite_ecv4.py")],cwd=ROOT,text=True,capture_output=True)
+        sys.stdout.write(q.stdout)
+        if q.stderr:sys.stderr.write(q.stderr)
+        return q.returncode
     if os.environ.get("ISSUE55_V4_PREFLIGHT") == "1":
         q=subprocess.run([sys.executable,str(TOOLS/"preflight_issue55_v4.py")],cwd=ROOT,text=True,capture_output=True)
         sys.stdout.write(q.stdout)
