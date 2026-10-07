@@ -2,7 +2,7 @@
   "schema_version": "S1C_ACTIVE_WORK_STATE_V1",
   "updated_date": "2026-10-07",
   "root_issue": 54,
-  "active_stage": "PRODUCT_MVP_COMPLETE",
+  "active_stage": "SEMANTIC_RUNTIME_PRODUCT_MVP_COMPLETE",
   "predecessor_terminal": {
     "stage": "MVP_R",
     "terminal": "R_DETERMINISTIC_MATERIAL_ADVANTAGE",
@@ -51,9 +51,9 @@
     {
       "condition": "PRODUCT_MVP_COMPLETE",
       "actions": [
-        "do not modify frozen V3.2 scientific assets",
-        "use semantic_runtime package and public schemas for downstream integrations",
-        "open a new versioned issue only for a new product requirement or hypothesis class"
+        "keep product and research pins immutable unless a new versioned product issue is opened",
+        "use semantic_runtime public schemas and API/CLI for finite typed/auditable contracts",
+        "do not broaden claim to unrestricted ontology/world-knowledge tasks"
       ]
     }
   ],
@@ -123,17 +123,18 @@
     "issue": 54,
     "terminal": "PRODUCT_MVP_COMPLETE",
     "prior_art_commit": "8189bf62054207b24c885b435caa4dd290a92ec2",
-    "p01_commit": "2ff53165432fab14e58670ecdb3f117a925565f1",
-    "p02_commit": "bba0186f5b677c81c23a2b19a35ba510cb767a56",
-    "final_evidence_commit": "ac690dd588851167aea28e541e9c0810d9b6ca99",
-    "documentation_commit": "9c74f1a6361463897166ac36289f8af6a3e0b300",
-    "render_evidence_deploy": "dep-db3bjpjtqb8s7387p5r0",
-    "public_api": [
-      "discover_and_ground",
-      "execute_validated_ir"
+    "p01_result_commit": "bbb7ddad5f8700987087715a30362d2ed2e221fa",
+    "product_pins_commit": "6ccaaffcb768ca9f9e413bca58bcf11c68b02928",
+    "p02_result_commit": "7d3e77de9980179ea4280aaaa3f402b944c33159",
+    "p03_final_commit": "961b7b068286d5554600afbf856d79611a916af2",
+    "canonical_ir_sha256": "695312aaaeffa1d9f45e78957cbc4952791116998eb567050c692e15a4df199b",
+    "canonical_execution_sha256": "79bdecd7b35befa6870ee64153fdce098f026ed99d5d59883813aefe08cdfaac",
+    "public_entrypoints": [
+      "semantic_runtime.discover_and_ground",
+      "semantic_runtime.execute_validated_ir",
+      "tools/semantic_runtime_cli.py"
     ],
-    "research_pin_gate": "PASS_21_OF_21",
-    "v32_compatibility": "PASS_8_OF_8",
-    "non_assay_e2e": "PASS"
+    "product_pins_manifest_blob": "a87611cbc93638e262a07ec67afdcf8d936d740b",
+    "research_pins_manifest_blob": "bdce80d5b6bfdc07a0d2ce799b099c0ed9ab22be"
   }
 }
