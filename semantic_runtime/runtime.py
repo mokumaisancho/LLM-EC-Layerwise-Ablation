@@ -70,6 +70,29 @@ def validate_task_contract(task_contract: dict[str, Any]) -> dict[str, Any]:
         _fail("TYPE_INVENTORY_INVALID")
     type_set = set(types)
 
+    public = visible.get("public_behavior_hypothesis")
+    if public is not None:
+        if not isinstance(public, dict):
+            _fail("PUBLIC_HYPOTHESIS_MANIFEST_INVALID")
+        if public.get("function_count") != 64:
+            _fail("PUBLIC_HYPOTHESIS_FUNCTION_COUNT_INVALID")
+        if public.get("coordinate_operations") != ["KEEP", "SET0", "SET1", "FLIP"]:
+            _fail("PUBLIC_HYPOTHESIS_OPERATIONS_INVALID")
+        if public.get("selected_target_functions_visible") is not False:
+            _fail("PUBLIC_HYPOTHESIS_TARGET_VISIBILITY_FORBIDDEN")
+        if public.get("semantic_slot_names_encoded") is not False:
+            _fail("PUBLIC_HYPOTHESIS_SLOT_NAME_ENCODING_FORBIDDEN")
+
+    bound = visible.get("slot_count_bound")
+    if bound is not None:
+        if (
+            not isinstance(bound, dict)
+            or not isinstance(bound.get("min"), int)
+            or not isinstance(bound.get("max"), int)
+            or not (bound["min"] <= 2 <= bound["max"])
+        ):
+            _fail("SLOT_COUNT_BOUND_EXCLUDES_RUNTIME_OUTPUT")
+
     train = visible.get("training_examples")
     held = visible.get("heldout_examples")
     probes = visible.get("evaluation_probes")
