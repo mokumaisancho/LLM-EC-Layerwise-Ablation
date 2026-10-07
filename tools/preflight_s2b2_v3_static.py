@@ -18,6 +18,13 @@ def fail(detail:str)->None:
 
 
 def main()->int:
+    if os.environ.get("S1C_V31_PREFLIGHT") == "1":
+        q=subprocess.run([sys.executable,str(TOOLS/"preflight_s1c_v31.py")],cwd=ROOT,text=True,capture_output=True)
+        (ROOT/"s1c_v31_preflight_result.json").write_text(q.stdout,encoding="utf-8")
+        sys.stdout.write(q.stdout)
+        if q.stderr:
+            sys.stderr.write(q.stderr)
+        return q.returncode
     if os.environ.get("S1C_V_V2_RUN") == "1":
         q=subprocess.run([sys.executable,str(TOOLS/"run_s1c_v_paired_v2.py")],cwd=ROOT,text=True,capture_output=True)
         sys.stdout.write(q.stdout)
