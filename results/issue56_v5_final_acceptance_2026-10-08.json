@@ -1,0 +1,106 @@
+{
+  "protocol": "ISSUE56_V5_FINAL_ACCEPTANCE_V1",
+  "issue": 56,
+  "date": "2026-10-08",
+  "terminal": "ISSUE56_V5_CODE_AND_MAC_ACCEPTANCE_COMPLETE",
+  "root_cause": "The V1/V4 ambiguous() heuristic matches a few literal markers (notably 'unresolved between:'), so a semantically ambiguous free-text phrase lacking the colon was assigned a lexical slot S02 instead of abstained.",
+  "fix": "Versioned V5 explicitly operator-approved exact full-line English single-entity templates, unique training partition binding, deterministic cross-check against legacy grounding, abstain all unrecognized/mixed/negated/unsupported text, exact task+solver policy digest authorization, V2 IR rederivation.",
+  "source_blobs": {
+    "semantic_runtime/constrained_v5.py": "12901d199098b7bc7bda0fc6166f52b6073f0493",
+    "semantic_runtime/approved_policy_v5.json": "d81cda988ce70e7dd42f3693bce0a197551c5127",
+    "tools/install_semantic_runtime_policy_v5.py": "a27131b61a0a28fde2133a66357b5c20fb9ff8fa",
+    "tools/semantic_runtime_cli_v5.py": "c4ec340410656929f007dbdf3a31c8663bb01bcc",
+    "tests/test_semantic_runtime_v5_grammar.py": "5ed221e0227b8c270fa537bedf295f5ee1422032",
+    "tools/preflight_issue56_v5.py": "98de0eb6e9a9a31bfb79224fb86bcaa54db8116d",
+    "tools/audit_issue56_suite_ecv4.py": "5e24d40e99655f898b8e6b69a543732fa17da941"
+  },
+  "render": {
+    "deploy_id": "dep-db3do1t9fdbs73dbk29g",
+    "status": "live",
+    "source_commit": "56a4cf44e5add7a55f4a07c0df0cf1c4e0f11935",
+    "final_protocol": "ISSUE56_FINAL_SUITECV4_AUDIT_V1",
+    "final_terminal": "ISSUE56_V5_CODE_AND_MAC_ACCEPTANCE_COMPLETE",
+    "tests": {
+      "v5_nonassay_real_policy": "12/12 PASS",
+      "v4_real_policy": "13/13 PASS",
+      "v2_forged_ir": "15/15 PASS",
+      "v1_legacy": "10/10 PASS"
+    },
+    "test_corpus": {
+      "training_examples": 4,
+      "heldout_examples": 16,
+      "known_templates": "H01 H02 H11 H12",
+      "unsupported_abstained": "H03 H04 H05 H06 H07 H08 H09 H10 H13 H14 H15 H16"
+    },
+    "unchanged_research_pins": "21/21",
+    "unchanged_product_pins": "11/11",
+    "v5_shipped_policy": "EMPTY_DEFAULT_DENY",
+    "legacy_v4_shipped_policy": "EMPTY_DEFAULT_DENY",
+    "suite": {
+      "upstream_ref": "31d0a0998c2fa5f5120b6bd2c6026a4f3702fd12",
+      "actual_pinned_evaluator": true,
+      "official_gate": "PASS",
+      "corrupted_config_rejected": true,
+      "upstream_suite_production_ready": false
+    },
+    "ecv4": {
+      "upstream_ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+      "actual_pinned_module": true,
+      "selected": [
+        "I56:REPAIR",
+        "I56:REGRESSION",
+        "I56:EVIDENCE"
+      ],
+      "tampered_digest_rejected": true,
+      "untrusted_state_rejected": true
+    }
+  },
+  "authorized_mac_field": {
+    "os": "macOS 14.4.1",
+    "remote_tool": "Desktop Commander",
+    "device_managed_by_owner": true,
+    "versioned_root": "~/semantic-runtime-v5",
+    "installed_source_pin": "7fa0ecb5333cc27dc5363de29f946d1591d61fc7",
+    "new_v5_files_pin_verified": "4/4",
+    "original_v4_installed_files_not_modified": true,
+    "original_v5_base_policy_approvals_after": 0,
+    "isolated_positive_test_policy_approvals": 1,
+    "isolated_h03_block_test_policy_approvals": 1,
+    "preserved_v1_v4_result": {
+      "example": "H03",
+      "ambiguous_phrase_missing_colon": "unresolved between Claim G opens review OR Claim G disables review",
+      "assigned_slot": "S02"
+    },
+    "v5_result": {
+      "example": "H03",
+      "status": "ABSTAIN_UNSUPPORTED_OR_AMBIGUOUS",
+      "authorized_h03_solver_execution": "REJECTED_EXECUTION_TARGET_NOT_EXPLICITLY_CLASSIFIED"
+    },
+    "valid_examples": [
+      "H01:EXPLICIT_MATCH",
+      "H02:EXPLICIT_MATCH"
+    ],
+    "approved_h01_execution": "PASS_SYNTHETIC_IN_MEMORY_ONLY",
+    "wrong_policy_id": "REJECTED",
+    "memory_free_percent_before": 65,
+    "memory_free_percent_after": 62,
+    "note_on_memory": "memory_free_percent is a system-wide observation and changes cannot be attributed to this short-lived Python task alone",
+    "swap_mb_before": 0,
+    "swap_mb_after": 0,
+    "peak_child_rss_bytes": 23379968,
+    "additional_disk_kib_after": 664,
+    "persistent_runtime_process_count_after": 0,
+    "python_dependencies_installed": 0,
+    "privilege_escalation_used": false,
+    "external_business_state_mutated": false
+  },
+  "accepted_claim": "For the explicitly operator-approved finite, typed, single-entity English command templates in the tested corpus, V5 abstains unmatched instructions including the previously misclassified ambiguous phrase and refuses execution even with an otherwise approved H03 task/solver.",
+  "claim_limits": [
+    "not free-form language understanding",
+    "not general Japanese natural-language processing",
+    "not arbitrary business workflow automation",
+    "not a guarantee against compromised same-UID owner runtime",
+    "legacy V1-V4 entrypoints remain and must not be used for untrusted free text"
+  ],
+  "docs": "docs/SEMANTIC_RUNTIME_V5_APPROVED_GRAMMAR.md"
+}
