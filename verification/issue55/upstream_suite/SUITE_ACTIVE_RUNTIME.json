@@ -1,0 +1,28 @@
+{
+  "schema_version": 3,
+  "status": "ACTIVE_EXPERIMENTAL",
+  "active_generation": "V4",
+  "architecture": "V4_OUTER_CONTROL_OVER_QUALIFIED_V3_INNER_RUNTIME",
+  "canonical_factory": "src/ec_v4_adapter.py:ECV4SuiteBridge.from_ec_v4_checkout",
+  "ec_v4": {
+    "repo": "mokumaisancho/GPT-EC-Closure-Engine",
+    "branch": "GPT-EC-V4",
+    "ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+    "rollback_ref": "c0cad551ca09f645ebe608bae4086de2e6f58bfd"
+  },
+  "qualified_v3_inner_ref": "c847e967523a22444a30251fdbd1962adf56e16a",
+  "control_protocol": "EC_V4_CONTROL_PLANE_V1",
+  "inner_closure_authority": "GPT-EC-V3",
+  "qualification": "benchmarks/ecv4_f0f2_r3_atomic_repin_2026-09-25.json",
+  "r3_controls": {
+    "runtime_revision_watermark": true,
+    "same_revision_state_digest_consistency": true,
+    "plan_disposition_binding": true,
+    "completed_descendant_criticality_filter": true,
+    "explicit_stateful_v4_control_plane": true
+  },
+  "direct_v3_canonical_use": false,
+  "v3_rollback_compatibility_retained": true,
+  "github_actions_enabled": false,
+  "production_ready": false
+}
