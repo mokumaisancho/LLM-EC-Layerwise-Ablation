@@ -78,8 +78,8 @@ release. Avoid running the approval installer on the default-deny base package.
   V5 abstained H03 and **rejected execution even with a task/solver-specific approval
   for H03**. Known commands H01/H02 remained actionable.
 - No persistent daemon, no new Python dependency, no real business mutation,
-  and no permission elevation. Base V5 policy has zero approvals; isolated demo
-  policy alone has one.
+  and no permission elevation. Base V5 policy has zero approvals; separately
+  isolated approved-execution and blocked-H03 test bundles each have scoped approvals.
 - Evidence: `results/issue56_v5_final_acceptance_2026-10-08.json`.
 
 Qualification is bounded to the declared grammar, **not** full Japanese
