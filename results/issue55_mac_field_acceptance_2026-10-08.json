@@ -1,0 +1,85 @@
+{
+  "protocol": "ISSUE55_MAC_FIELD_ACCEPTANCE_V1",
+  "date": "2026-10-08",
+  "scope": "owner-managed macOS dry-run only",
+  "machine": {
+    "os": "macOS 14.4.1",
+    "physical_ram_bytes": 17179869184,
+    "remote_agent": "Desktop Commander",
+    "memory_free_percent_before": 67,
+    "memory_free_percent_after": 67,
+    "swap_used_mb_before": 0,
+    "swap_used_mb_after": 0
+  },
+  "installation": {
+    "root": "~/semantic-runtime-v4",
+    "github_source_pin": "0a68eabadf9a643cb1dbdacea2ae515e57cda3b8",
+    "pinned_files": "10/10 git blob SHA verified",
+    "payload_bytes": 51722,
+    "mac_disk_usage_kib": 360,
+    "python": "3.14.7",
+    "pip_installs": 0,
+    "git_clone": false,
+    "resident_processes": 0
+  },
+  "accepted_use_case": "Synthetic insurance claim review control, purely in-memory deterministic state transition. No real claims system or external actions.",
+  "behavior": {
+    "training_examples": 4,
+    "slots": [
+      [
+        "S01",
+        "T01",
+        "T02"
+      ],
+      [
+        "S02",
+        "T03",
+        "T04"
+      ]
+    ],
+    "heldout_assignments": [
+      [
+        "H01",
+        "S01"
+      ],
+      [
+        "H02",
+        "S02"
+      ]
+    ],
+    "ambiguous_abstained": [
+      "H03"
+    ],
+    "demo_solver_result": {
+      "applicable": true,
+      "removed": [
+        "PENDING(CLAIM_DEMO)"
+      ],
+      "added": [
+        "DONE(CLAIM_DEMO)"
+      ]
+    }
+  },
+  "authorization": {
+    "source_root_default_deny": true,
+    "isolated_demo_policy_installed": true,
+    "policy_permissions": "0600 owner apple",
+    "approval_scope": "exact task/solver digests",
+    "forged_ir_rejected": true,
+    "wrong_policy_id_rejected": true,
+    "operator_password_or_elevation": false,
+    "external_accounts_accessed": false
+  },
+  "resource_use": {
+    "peak_child_rss_bytes": 22020096,
+    "swap_used_mb": 0,
+    "background_runtime_process_count_after": 0
+  },
+  "important_limitation": {
+    "observed": "The phrase 'unresolved between Claim G opens review OR ...' (without colon) was assigned S02 instead of abstaining, whereas 'unresolved between:' (with colon) correctly abstained.",
+    "cause": "Brittle lexical ambiguous() heuristic checks exact 'unresolved between:' substring or other narrow patterns.",
+    "implication": "Do not claim unrestricted natural-language ambiguity detection; only approved finite task+solver pairs can execute. No real workflow integration qualified."
+  },
+  "status": "MAC_FIELD_DRY_RUN_PASS_WITH_LEXICAL_LIMITATION",
+  "code_research_pins_changed": false
+}
