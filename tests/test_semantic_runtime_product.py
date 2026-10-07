@@ -49,7 +49,7 @@ def _obs(code, index):
 
 
 def _entity(eid):
-    return {eid: {"type": "T01", "surface_forms": [f"{eid} item"]}}
+    return {"E01": {"type": "T01", "surface_forms": [f"{eid} item"]}}
 
 
 def _train(eid, text, code, indices):
