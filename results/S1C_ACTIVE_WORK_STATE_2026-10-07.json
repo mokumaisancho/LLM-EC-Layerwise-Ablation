@@ -153,5 +153,32 @@
     "final_evidence_commit": "7886a1f1811823902e0fd4a96873405f0fc40649",
     "mac_os_field_acceptance": "NOT_RUN_OPERATOR_OPT_IN_REQUIRED",
     "legacy_v1_v2": "NOT_AUTHORIZATION_SAFE_FOR_EXTERNAL_CALLERS"
+  },
+  "runtime_finite_intent_successor": {
+    "issue": 56,
+    "terminal": "ISSUE56_V5_CODE_AND_MAC_ACCEPTANCE_COMPLETE",
+    "safe_entrypoint": "semantic_runtime.constrained_v5.execute_authorized_ir",
+    "safe_classification": "semantic_runtime.constrained_v5.classify_authorized",
+    "cli": "tools/semantic_runtime_cli_v5.py",
+    "authorized_scope": "FINITE_EXACT_SINGLE_ENTITY_ENGLISH_OPERATOR_APPROVED_TEMPLATES",
+    "unrecognized_text": "ABSTAIN_UNSUPPORTED_OR_AMBIGUOUS",
+    "legacy_informal_grounder_for_execution": "NOT_AUTHORIZED_WITHOUT_V5_STRICT_GATE",
+    "test_counts": {
+      "v5": 12,
+      "v4": 13,
+      "v2": 15,
+      "v1": 10
+    },
+    "fixed_research_pins": 21,
+    "fixed_product_pins": 11,
+    "ecv4_stage": "I56:EVIDENCE_COMPLETE",
+    "suiteref": "31d0a0998c2fa5f5120b6bd2c6026a4f3702fd12",
+    "ecv4ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+    "field_mac": "LOW_MEMORY_REAL_EXECUTION_PASS",
+    "field_concrete_regression": "UNRESOLVED_BETWEEN_NO_COLON_ABSTAINS",
+    "base_policy": "DEFAULT_DENY",
+    "verified_render_deploy": "dep-db3do1t9fdbs73dbk29g",
+    "final_evidence_commit": "e7db57761f232a114f473c7320d59475c22430f9",
+    "claim_limit": "Not general natural-language ambiguity detection, Japanese support, open-ended semantic-space invention, nor any real insurance claims system integration"
   }
 }
