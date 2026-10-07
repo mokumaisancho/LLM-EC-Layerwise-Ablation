@@ -1,0 +1,54 @@
+{
+  "schema_version": 4,
+  "suite": "GPT-Development-Suite",
+  "mode": "FAIL_CLOSED",
+  "status": "V4_R3_ATOMIC_REPIN_LOCK",
+  "required_on_candidate_load": true,
+  "ec_v4": {
+    "repo": "mokumaisancho/GPT-EC-Closure-Engine",
+    "branch": "GPT-EC-V4",
+    "ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+    "rollback_ref": "c0cad551ca09f645ebe608bae4086de2e6f58bfd",
+    "qualified_v3_parent": "c847e967523a22444a30251fdbd1962adf56e16a"
+  },
+  "authority": {
+    "active_generation": "V4",
+    "outer_control_authority": "GPT-EC-V4:V4ControlPlane",
+    "outer_control_protocol": "EC_V4_CONTROL_PLANE_V1",
+    "stateful_outer_control_scope": "EXPLICIT_RUNTIME_INSTANCE",
+    "closure_authority": "GPT-EC-V3",
+    "worker_self_close_allowed": false,
+    "derived_components_authoritative": false
+  },
+  "required_invariants": {
+    "runtime_stage": "EXPERIMENTAL_PINNED",
+    "production_ready": false,
+    "exact_operation_binding": true,
+    "dynamic_frontier": true,
+    "decision_bound_evidence": true,
+    "external_authority_resolution": true,
+    "dynamic_state_authority_forwarding": true,
+    "relevance_authority_forwarding": true,
+    "runtime_revision_watermark": true,
+    "same_revision_state_digest_consistency": true,
+    "plan_disposition_binding": true,
+    "completed_descendant_criticality_filter": true,
+    "explicit_stateful_v4_control_plane": true,
+    "v3_static_fallback": true
+  },
+  "file_integrity": {
+    "SUITE_ACTIVE_RUNTIME.json": "62ac5996412d8e5f17b2f722f4f1791bd0579f34",
+    "SUITE_V4_MANIFEST_CANDIDATE.json": "75b9060809b0de6bfbe6d7e496355517f3ec250e",
+    "ECV4_SUITE_CANDIDATE.json": "6c92d58271143276b118502ee19c569734fcdcfb",
+    "src/ec_v4_adapter.py": "796a0a05775b23d14588404b574f66b5b90273fd",
+    "src/ec_v4_candidate_contract.py": "08234e555eb31c9fc8f7d29711302040402077ea",
+    "src/suite_v4_atomic_gate.py": "2fb53d5fa3125c30858d5023e840ea997147cd12",
+    "src/suite_v4_atomic_gate_v4.py": "38e5ac8f578c52be5f0a732173389db26f2aab83",
+    "scripts/ec_v4_atomic_e2e.py": "3d79e04e3a6aefe824a2d6822d9830d80dd459f1",
+    "benchmarks/ecv4_f0f2_r3_atomic_repin_2026-09-25.json": "e9f47aa3f7ba28fa8a5023579a128a21fc1725b4"
+  },
+  "required_evidence": [
+    "benchmarks/ecv4_f0f2_r3_atomic_repin_2026-09-25.json"
+  ],
+  "transition_rule": "CANONICAL_EXPERIMENTAL_V4_R3_REPIN_ALLOWED_ONLY_FOR_EXACT_F0F2_REF_WITH_LOCK_INTEGRITY_AUTHORITY_FORWARDING_MONOTONIC_REVISION_AND_PLAN_STATE_BINDING; V3_INNER_AUTHORITY_REMAINS; PRODUCTION_SEPARATE"
+}
