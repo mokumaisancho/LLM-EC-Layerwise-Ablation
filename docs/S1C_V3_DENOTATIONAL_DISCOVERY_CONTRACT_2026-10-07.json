@@ -1,0 +1,164 @@
+{
+  "schema_version": "S1C_V3_DENOTATIONAL_DISCOVERY_CONTRACT_V1",
+  "protocol": "S1C_SEMANTIC_SPACE_TCC_V1",
+  "issue": 48,
+  "successor_of": {
+    "invalidated_issue": 50,
+    "last_valid_terminal": "R_DETERMINISTIC_MATERIAL_ADVANTAGE",
+    "last_valid_commit": "2260508a6d7b16112115259785f294066db08574"
+  },
+  "question": "Without canonical semantic slot names/IDs, can an engine discover a reusable typed semantic partition from raw language plus non-label-equivalent partial behavioral observations, then ground unseen raw language into that discovered partition?",
+  "visible_input": {
+    "type_inventory": "opaque type IDs only",
+    "training_examples": {
+      "fields": [
+        "example_id",
+        "raw_text",
+        "entity_registry",
+        "behavior_observations"
+      ],
+      "behavior_observations": "two partial before/after probes per example; every example receives a distinct probe subset and distinct observation bundle",
+      "forbidden": [
+        "canonical slot ID",
+        "canonical slot name/gloss",
+        "family",
+        "oracle rule ID",
+        "full denotation fingerprint",
+        "identical per-slot signature"
+      ]
+    },
+    "heldout_examples": {
+      "fields": [
+        "example_id",
+        "raw_text",
+        "entity_registry"
+      ],
+      "behavior_observations_visible": false
+    },
+    "slot_count_bound": {
+      "min": 1,
+      "max": 4
+    },
+    "canonical_semantic_names_visible": false,
+    "canonical_semantic_ids_visible": false,
+    "oracle_partition_visible": false
+  },
+  "identifiability": {
+    "training_examples_per_task": 4,
+    "true_slots_per_task": 2,
+    "observations_per_training_example": 2,
+    "single_example_rule_identification_forbidden": true,
+    "required_single_example_candidate_rule_count_min": 2,
+    "correct_pair_union_must_identify_exactly_one_denotation": true,
+    "all_three_pair_partitions_enumerated": true,
+    "unique_valid_partition_required": true,
+    "exact_behavior_bundle_reuse_forbidden": true,
+    "exact_probe_subset_reuse_forbidden": true
+  },
+  "hidden_reference": {
+    "denotation_basis": "fixed finite transition-rule library over 3-bit probe states",
+    "independent_probe_bank": "full 8-state truth table hidden from both predictors",
+    "scorer_alignment": "derive each predicted slot's compatible hidden denotation from member observations, then verify on hidden full truth table; surface names ignored",
+    "phrase_oracle_validation": "separate independent phrase-to-denotation validator must recompute every training/heldout intended denotation; generator-authored tags alone are non-authoritative"
+  },
+  "output": {
+    "discovered_slots": [
+      {
+        "slot_id": "arbitrary engine-local identifier",
+        "arg_types": [
+          "opaque type IDs"
+        ],
+        "training_members": [
+          "visible training example IDs"
+        ]
+      }
+    ],
+    "heldout_assignments": [
+      {
+        "example_id": "heldout ID",
+        "slot_id": "one discovered slot",
+        "arguments": [
+          "visible entity IDs in semantic order"
+        ],
+        "polarity": [
+          "POS",
+          "NEG"
+        ],
+        "modality": [
+          "ASSERTED",
+          "REQUIRED",
+          "POSSIBLE"
+        ]
+      }
+    ],
+    "abstentions": [
+      {
+        "example_id": "heldout ID",
+        "status": "AMBIGUOUS"
+      }
+    ]
+  },
+  "corpus": {
+    "tasks": 8,
+    "normal_heldout_per_task": 2,
+    "ambiguous_heldout_per_task": 1,
+    "total_heldout": 24,
+    "ambiguity_coverage_required": true,
+    "structural_descriptor": "UNKNOWN_PARTITION_FROM_DISTINCT_PARTIAL_TRANSITION_PROBES__RAW_LANGUAGE_HELDOUT_TRANSFER",
+    "prior_structural_descriptor_collision_allowed": false
+  },
+  "primary_metrics": [
+    "training_partition_pairwise_accuracy",
+    "heldout_denotational_assignment_accuracy",
+    "exact_discovery_and_grounding_rate"
+  ],
+  "secondary_metrics": [
+    "argument_binding_accuracy",
+    "polarity_modality_accuracy",
+    "abstention_accuracy",
+    "slot_purity",
+    "slot_coverage",
+    "fixed_b2_downstream_success"
+  ],
+  "fairness": {
+    "identical_visible_input": true,
+    "identical_slot_count_bound": true,
+    "identical_output_authority": true,
+    "arbitrary_slot_names_ignored": true,
+    "no_predictor_specific_normalization": true,
+    "no_post_result_matching_rule_change": true
+  },
+  "runtime_fail_closed": [
+    "COMMON_PREFIX_TRUNCATION_ACROSS_ARMS_OR_TASKS",
+    "PARSER_FAILURE_RATE_GTE_0P25",
+    "GRAMMAR_CANONICAL_OUTPUT_ROUNDTRIP_FAIL",
+    "GRAMMAR_JSON_STRING_LITERAL_ENCODING_FAIL",
+    "RAW_CACHE_ABSENT_OR_HASH_MISMATCH"
+  ],
+  "result_overturning_fail_closed": [
+    "VISIBLE_PARTITION_LABEL_EQUIVALENT_FEATURE",
+    "CANONICAL_SLOT_NAME_OR_ID_LEAKAGE",
+    "FAMILY_OR_ORACLE_PARTITION_LEAKAGE",
+    "SCORER_CALLS_TESTED_PREDICTOR",
+    "GENERATOR_ORACLE_NOT_INDEPENDENTLY_RECOMPUTED",
+    "ASYMMETRIC_BEHAVIORAL_SUPERVISION",
+    "ASYMMETRIC_SLOT_BUDGET",
+    "STRUCTURAL_HOLDOUT_REUSE",
+    "NON_IDENTIFIABLE_PARTITION",
+    "AMBIGUITY_COVERAGE_MISSING",
+    "RAW_TEXT_DENOTATION_MISMATCH",
+    "METRIC_RECOMPUTATION_MISMATCH",
+    "DOWNSTREAM_SOLVER_DRIFT",
+    "POST_RESULT_REPAIR_ATTEMPT",
+    "FAIL_CLOSED_UNKNOWN"
+  ],
+  "materiality_abs": 0.2,
+  "constraints": {
+    "qwen_reference": "Qwen2.5-1.5B-Instruct-Q4_K_M",
+    "temperature": 0,
+    "github_actions": false,
+    "google_drive_relay": false,
+    "automatic_qwen3_4b": false,
+    "open_ended_world_knowledge": false
+  }
+}
