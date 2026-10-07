@@ -95,21 +95,31 @@ def main() -> int:
             if replay != first:
                 return fail("NON_DETERMINISTIC_REPLAY", {"task_id": tid})
 
-        # Production API must refuse the full research task because it carries hidden authority.
+        # The audited V3.2 task envelope is public metadata + visible contract and must remain compatible.
         full_task = copy.deepcopy(task)
-        full_task["protocol"] = "SEMANTIC_RUNTIME_TASK_V1"
         try:
-            discover_and_ground(full_task)
+            full_product = discover_and_ground(full_task)
+        except RuntimeContractError as exc:
+            return fail("FULL_V32_PUBLIC_TASK_REJECTED", {"task_id": tid, "error": str(exc)})
+        if canonical_json(full_product) != canonical_json(product):
+            return fail("FULL_V32_PUBLIC_TASK_BEHAVIOR_DRIFT", {"task_id": tid})
+
+        # Hidden authority is tested by explicit injection, not by misclassifying public task metadata.
+        hidden_task = copy.deepcopy(task)
+        hidden_task["oracle"] = {"forbidden": True}
+        try:
+            discover_and_ground(hidden_task)
         except RuntimeContractError as exc:
             if "FORBIDDEN_INPUT_KEY" not in str(exc):
-                return fail("FULL_RESEARCH_TASK_REJECTED_FOR_WRONG_REASON", {"task_id": tid, "error": str(exc)})
+                return fail("HIDDEN_AUTHORITY_REJECTED_FOR_WRONG_REASON", {"task_id": tid, "error": str(exc)})
         else:
-            return fail("FULL_RESEARCH_TASK_HIDDEN_AUTHORITY_ACCEPTED", {"task_id": tid})
+            return fail("HIDDEN_AUTHORITY_ACCEPTED", {"task_id": tid})
 
         rows.append(
             {
                 "task_id": tid,
                 "exact_behavior_match": True,
+                "full_v32_public_task_compatible": True,
                 "replays": 20,
                 "canonical_sha256": hashlib.sha256(first).hexdigest(),
                 "hidden_authority_rejected": True,
@@ -124,6 +134,7 @@ def main() -> int:
         "task_count": len(rows),
         "exact_behavior_match": "8/8",
         "deterministic_replays": 160,
+        "full_v32_public_task_compatibility": "8/8",
         "hidden_authority_rejection": "8/8",
         "production_imports_research_predictor": False,
         "rows": rows,
