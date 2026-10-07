@@ -1,0 +1,60 @@
+{
+  "schema_version": 4,
+  "suite": "GPT-Development-Suite",
+  "status": "V4_R3_ATOMIC_CANDIDATE",
+  "runtime_stage": "EXPERIMENTAL_PINNED",
+  "production_ready": false,
+  "canonical_factory": "src/ec_v4_adapter.py:ECV4SuiteBridge.from_ec_v4_checkout",
+  "architecture": "V4_OUTER_CONTROL_OVER_QUALIFIED_V3_INNER_RUNTIME",
+  "ec": {
+    "generation": "V4",
+    "repo": "mokumaisancho/GPT-EC-Closure-Engine",
+    "branch": "GPT-EC-V4",
+    "ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+    "rollback_ref": "c0cad551ca09f645ebe608bae4086de2e6f58bfd",
+    "qualified_v3_parent": "c847e967523a22444a30251fdbd1962adf56e16a",
+    "control_protocol": "EC_V4_CONTROL_PLANE_V1"
+  },
+  "authority_model": {
+    "active_generation": "V4",
+    "outer_control_authority": "GPT-EC-V4:V4ControlPlane",
+    "outer_control_protocol": "EC_V4_CONTROL_PLANE_V1",
+    "outer_control_exact_ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+    "stateful_outer_control_scope": "EXPLICIT_RUNTIME_INSTANCE",
+    "closure_authority": "GPT-EC-V3",
+    "runtime_gateway": "GPT-EC-V3:GPTECRuntimeGateway",
+    "worker_self_close_allowed": false,
+    "derived_components_authoritative": false
+  },
+  "v4_controls": {
+    "dynamic_frontier": true,
+    "decision_bound_evidence": true,
+    "external_authority_resolution": true,
+    "dynamic_state_authority_forwarding": true,
+    "relevance_authority_forwarding": true,
+    "state_revision_binding": true,
+    "state_digest_binding": true,
+    "observation_ref_binding": true,
+    "prior_art_relevance_binding": true,
+    "runtime_revision_watermark": true,
+    "same_revision_state_digest_consistency": true,
+    "plan_disposition_binding": true,
+    "completed_descendant_criticality_filter": true,
+    "explicit_stateful_v4_control_plane": true,
+    "v3_static_fallback": true
+  },
+  "routing": {
+    "github_actions_enabled": false,
+    "raw_project_io_bypass_allowed": false,
+    "exact_operation_binding": true,
+    "generic_run_argv_enabled": false
+  },
+  "qualification_sources": [
+    "GPT-EC-V4:benchmarks/EC_V4_POST_LAYOUT_REQUALIFICATION_2026-09-25.json",
+    "GPT-EC-V4:benchmarks/EC_V4_R3_REVISION_WATERMARK_TARGETED_RESULT.json",
+    "GPT-EC-V4:benchmarks/EC_V4_R3_DYNAMIC_FRONTIER_STATE_CORRECTNESS_RESULT.json",
+    "GPT-EC-V4:benchmarks/EC_V4_R3_INTEGRATED_QUALIFICATION_2026-09-25.json",
+    "benchmarks/ecv4_f0f2_r3_atomic_repin_2026-09-25.json"
+  ],
+  "promotion_rule": "EXPERIMENTAL_V4_R3_REPIN_REQUIRES_EXACT_REF_LOCK_AUTHORITY_FORWARDING_REVISION_MONOTONICITY_AND_PLAN_STATE_BINDING; V3_INNER_AUTHORITY_PRESERVED; PRODUCTION_REQUIRES_SEPARATE_QUALIFICATION"
+}
