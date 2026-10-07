@@ -1,0 +1,83 @@
+{
+  "schema_version": "S1C_V32_AUDITED_TERMINAL_V1",
+  "protocol": "S1C_SEMANTIC_SPACE_TCC_V1",
+  "date": "2026-10-08",
+  "root_issue": 48,
+  "residual_issue": 52,
+  "terminal": "V32_DETERMINISTIC_MATERIAL_ADVANTAGE",
+  "evidence": {
+    "paired_runtime_path": "results/s1c_v32_paired_actual_2026-10-08.json",
+    "paired_runtime_commit": "5c79eaa6bb6a1e497edaed9d6d3b2ad2859b3de6",
+    "paired_runtime_sha256": "52c9f11a83a5118a44a3da3206e38c839d03f6818047b3d4b05c41f2bafffc76",
+    "paired_runtime_bytes": 198741,
+    "render_paired_deploy": "dep-db38akom7kps73dd6jfg",
+    "render_postrun_deploy": "dep-db38mtss728c73bn3qjg",
+    "frozen_audit_commit": "8ccf41d6e9f063980d8b4e5745297d0856dbc8e4",
+    "frozen_replay_commit": "63808af37afeb2a9863d17d1573adae9f50b766d",
+    "frozen_classifier_commit": "bb4a59bef35e6bff26f9b35d70e58e22961d4652"
+  },
+  "gates": {
+    "independent_postrun_audit": "PASS",
+    "raw_qwen_rows_verified": "8/8",
+    "parser_failure_rate": 0,
+    "result_overturning_gate_failures": 0,
+    "model_reinference": false,
+    "fixed_b2_causal_replay": "PASS",
+    "terminal_classifier": "PASS"
+  },
+  "deterministic": {
+    "primary": {
+      "semantic_output_validity_rate": 1,
+      "training_partition_adjusted_rand_index": 1,
+      "unseen_probe_behavior_accuracy": 1,
+      "heldout_denotational_assignment_accuracy": 0.9583333333333334,
+      "exact_discovery_and_grounding_rate": 0.875
+    },
+    "fixed_b2_downstream_success": 0.9375
+  },
+  "qwen25_1p5b": {
+    "primary": {
+      "semantic_output_validity_rate": 0,
+      "training_partition_adjusted_rand_index": 0,
+      "unseen_probe_behavior_accuracy": 0,
+      "heldout_denotational_assignment_accuracy": 0,
+      "exact_discovery_and_grounding_rate": 0
+    },
+    "semantic_invalid_tasks": [
+      "V311",
+      "V312",
+      "V313",
+      "V314",
+      "V315",
+      "V316",
+      "V317",
+      "V318"
+    ],
+    "semantic_invalid_reason": "TRAINING_MEMBER_DUPLICATED",
+    "fixed_b2_downstream_success": 0
+  },
+  "deltas_qwen_minus_deterministic": {
+    "semantic_output_validity_rate": -1,
+    "training_partition_adjusted_rand_index": -1,
+    "unseen_probe_behavior_accuracy": -1,
+    "heldout_denotational_assignment_accuracy": -0.9583333333333334,
+    "exact_discovery_and_grounding_rate": -0.875,
+    "fixed_b2_downstream_success": -0.9375
+  },
+  "interpretation": {
+    "accepted_claim": "Within the frozen finite public 64-function coordinate-wise transition assay, deterministic external machinery materially outperformed Qwen2.5-1.5B, with no predeclared material metric favoring Qwen.",
+    "limitation": "The observed Qwen failure is dominated by repeated cross-field semantic-output invalidity (duplicate training membership); it does not by itself prove unrestricted semantic/ontology discovery superiority.",
+    "prohibited_claims": [
+      "No unrestricted ontology invention claim.",
+      "No open-ended world-knowledge claim.",
+      "No automatic extrapolation from Qwen2.5-1.5B to larger models."
+    ]
+  },
+  "governance": {
+    "suite_ref": "31d0a0998c2fa5f5120b6bd2c6026a4f3702fd12",
+    "ecv4_ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+    "ecv4_selected_phase": "I52:EVIDENCE",
+    "post_result_scientific_tuning": false
+  },
+  "next_ecv4_step": "I48:REPAIR"
+}
