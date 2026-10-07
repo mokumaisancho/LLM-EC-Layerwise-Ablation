@@ -10,7 +10,6 @@ from typing import Any
 
 from s1c_v31_public_hypotheses import (
     EVALUATION_PROBE_INDICES,
-    PROBE_LAYOUT,
     PUBLIC_HYPOTHESES,
     apply_code,
     candidates,
