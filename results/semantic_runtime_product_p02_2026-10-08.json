@@ -1,0 +1,21 @@
+{
+  "schema_version": "SEMANTIC_RUNTIME_PRODUCT_P02_RESULT_V1",
+  "issue": 54,
+  "ecv4_phase": "I54:REGRESSION",
+  "terminal": "PRODUCT_P02_REGRESSION_PASS",
+  "render_deploy": "dep-db3c0qaj9qps73f047vg",
+  "regression_gate": "tools/regress_semantic_runtime_product_v2.py",
+  "checks": {
+    "product_pins_11_of_11": true,
+    "research_pins_21_of_21": true,
+    "in_process_100x_byte_stable": true,
+    "training_order_24x_invariant": true,
+    "cli_5x_byte_stable": true,
+    "negative_contract_cases_12_of_12": true,
+    "bounded_log_redaction": true,
+    "downstream_adapter_smoke": true
+  },
+  "baseline_output_sha256": "695312aaaeffa1d9f45e78957cbc4952791116998eb567050c692e15a4df199b",
+  "failure_count": 0,
+  "next_ecv4_phase": "I54:EVIDENCE"
+}
