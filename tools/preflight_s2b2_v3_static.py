@@ -18,6 +18,12 @@ def fail(detail:str)->None:
 
 
 def main()->int:
+    if os.environ.get("PRODUCT_RUNTIME_PREFLIGHT") == "1":
+        q=subprocess.run([sys.executable,str(TOOLS/"preflight_product_semantic_runtime.py")],cwd=ROOT,text=True,capture_output=True)
+        (ROOT/"product_runtime_preflight_result.json").write_text(q.stdout,encoding="utf-8")
+        sys.stdout.write(q.stdout)
+        if q.stderr: sys.stderr.write(q.stderr)
+        return q.returncode
     if os.environ.get("S1C_V32_POSTRUN") == "1":
         runtime=ROOT/"results"/"s1c_v32_paired_actual_2026-10-08.json"
         audit=ROOT/"results"/"s1c_v32_postrun_audit_actual_2026-10-08.json"
