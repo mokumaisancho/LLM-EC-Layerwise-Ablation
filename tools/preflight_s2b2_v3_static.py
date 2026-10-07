@@ -18,6 +18,31 @@ def fail(detail:str)->None:
 
 
 def main()->int:
+    if os.environ.get("S1C_V32_RUNNER_PREFLIGHT") == "1":
+        q=subprocess.run([sys.executable,str(TOOLS/"preflight_s1c_v32_runner.py")],cwd=ROOT,text=True,capture_output=True)
+        (ROOT/"s1c_v32_runner_preflight_result.json").write_text(q.stdout,encoding="utf-8")
+        sys.stdout.write(q.stdout)
+        if q.stderr:
+            sys.stderr.write(q.stderr)
+        return q.returncode
+    if os.environ.get("S1C_V32_PAIRED") == "1":
+        import base64, hashlib
+        q=subprocess.run([sys.executable,str(TOOLS/"run_s1c_v32_paired_v1.py")],cwd=ROOT,text=True,capture_output=True)
+        sys.stdout.write(q.stdout)
+        if q.stderr:
+            sys.stderr.write(q.stderr)
+        evidence=ROOT/"s1c_v32_paired_runtime.json"
+        if evidence.exists():
+            raw=evidence.read_bytes()
+            b64=base64.b64encode(raw).decode("ascii")
+            chunk_size=3000
+            chunks=[b64[i:i+chunk_size] for i in range(0,len(b64),chunk_size)]
+            print("S1C_V32_EVIDENCE_MANIFEST="+json.dumps({"sha256":hashlib.sha256(raw).hexdigest(),"bytes":len(raw),"chunks":len(chunks)},separators=(",",":")))
+            for i,chunk in enumerate(chunks,1):
+                print(f"S1C_V32_EVIDENCE_CHUNK={i}/{len(chunks)}:{chunk}")
+        else:
+            print("S1C_V32_EVIDENCE_MISSING")
+        return q.returncode
     if os.environ.get("S1C_V31_RUNNER_PREFLIGHT") == "1":
         q=subprocess.run([sys.executable,str(TOOLS/"preflight_s1c_v31_runner.py")],cwd=ROOT,text=True,capture_output=True)
         (ROOT/"s1c_v31_runner_preflight_result.json").write_text(q.stdout,encoding="utf-8")
