@@ -4,7 +4,6 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "protocol",
     "visible"
   ],
   "properties": {
@@ -113,6 +112,14 @@
           }
         }
       }
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "structural_descriptor": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "$defs": {
