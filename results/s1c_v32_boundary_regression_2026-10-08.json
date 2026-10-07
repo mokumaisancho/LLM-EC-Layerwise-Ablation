@@ -1,0 +1,22 @@
+{
+  "protocol": "S1C_V32_BOUNDARY_REGRESSION_V1",
+  "ecv4_phase": "I48:REGRESSION",
+  "pass": true,
+  "terminal": "S1C_V32_BOUNDARY_REGRESSION_PASS",
+  "checks": {
+    "terminal_consistent": true,
+    "evidence_sha_bound": true,
+    "raw_rows_8of8": true,
+    "parser_failure_zero": true,
+    "overturning_gate_zero": true,
+    "no_reinference": true,
+    "fixed_b2_pass": true,
+    "qwen_no_material_metric": true,
+    "limitation_present": true,
+    "no_auto_4b_claim": true
+  },
+  "accepted_boundary": "Within the frozen finite public 64-function coordinate-wise transition assay, deterministic external machinery materially outperformed Qwen2.5-1.5B, with no predeclared material metric favoring Qwen.",
+  "limitation": "The observed Qwen failure is dominated by repeated cross-field semantic-output invalidity (duplicate training membership); it does not by itself prove unrestricted semantic/ontology discovery superiority.",
+  "source_audited_commit": "7cabdf435457afd6ef429088f04d488d085606da",
+  "next_ecv4_phase": "I48:EVIDENCE"
+}
