@@ -18,7 +18,7 @@ EXPECTED_BLOBS = {
     "docs/S1C_V31_DENOTATIONAL_DISCOVERY_CONTRACT_2026-10-07.json": "f77a112f90620e64c48fb824a65ca7a995b04212",
     "tools/s1c_v31_public_hypotheses.py": "fe7b7b9a6203624e93ffdce1d542404fd250e63d",
     "tools/generate_s1c_v31_corpus.py": "a324ddd9ad9fbeb4e7cbb0b4a684a65a153d3a4b",
-    "tools/validate_s1c_v31_corpus.py": "d4fe66cf213ea047ce11735e4d68d782ca400501",
+    "tools/validate_s1c_v31_corpus.py": "65746d0224b527f02f9caa20595a2fdf0690fb2c",
     "tools/score_s1c_v31_denotational.py": "f2df24b1994bc8da2b66b6280b41aba37d02d10e",
     "tools/s1c_v31_deterministic_baseline.py": "b5bf066dd2dd55a2cdcf076b09f5183c441b9866",
     "tools/s1c_v31_json_schema.py": "e97276494ecd21b62a3ad23c5e37cb7cdaa2c68d",
