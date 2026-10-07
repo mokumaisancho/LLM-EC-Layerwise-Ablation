@@ -1,0 +1,46 @@
+{
+  "schema_version": 2,
+  "status": "EXPERIMENTAL_PINNED_CANDIDATE",
+  "suite_base_ref": "8c5e24edc610116ca6da2e925796490a464b274c",
+  "ec": {
+    "generation": "V4",
+    "repo": "mokumaisancho/GPT-EC-Closure-Engine",
+    "branch": "GPT-EC-V4",
+    "ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+    "rollback_ref": "c0cad551ca09f645ebe608bae4086de2e6f58bfd",
+    "qualified_v3_parent": "c847e967523a22444a30251fdbd1962adf56e16a"
+  },
+  "compatibility": {
+    "v3_gateway_preserved": true,
+    "v3_permit_contract_preserved": true,
+    "v3_postflight_contract_preserved": true,
+    "v3_human_utility_final_gate_preserved": true,
+    "new_outer_control_protocol": "EC_V4_CONTROL_PLANE_V1",
+    "dynamic_frontier_opt_in": true,
+    "decision_bound_evidence_opt_in": true,
+    "authority_hardening_r2": true,
+    "dynamic_state_authority_forwarding": true,
+    "relevance_authority_forwarding": true,
+    "runtime_revision_watermark": true,
+    "same_revision_state_digest_consistency": true,
+    "plan_disposition_binding": true,
+    "completed_descendant_criticality_filter": true,
+    "explicit_stateful_v4_control_plane": true
+  },
+  "required_candidate_evidence": {
+    "ec_runtime_qualification": "00_control/EC_V4_RUNTIME_QUALIFICATION_2026-09-25.json",
+    "ec_r2_delta_qualification": "00_control/EC_V4_R2_DELTA_QUALIFICATION_2026-09-25.json",
+    "post_layout_requalification": "benchmarks/EC_V4_POST_LAYOUT_REQUALIFICATION_2026-09-25.json",
+    "ec_r3_integrated_qualification": "benchmarks/EC_V4_R3_INTEGRATED_QUALIFICATION_2026-09-25.json"
+  },
+  "suite_invariants": {
+    "github_actions_enabled": false,
+    "exact_operation_binding": true,
+    "worker_self_close_allowed": false,
+    "derived_components_authoritative": false,
+    "production_ready": false,
+    "qualified_suite_main_must_remain_unchanged_until_candidate_requalified": true
+  },
+  "promotion_gate": "ATOMIC_V4_R3_REPIN_QUALIFICATION_REQUIRED",
+  "github_actions": "NOT_USED"
+}
