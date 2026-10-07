@@ -86,8 +86,8 @@ def _arg_types(registry: dict[str, Any]) -> list[str]:
 
 
 def validate_task_contract(task_contract: dict[str, Any]) -> dict[str, Any]:
-    _exact_keys(task_contract, {"protocol", "visible"}, "TASK_ROOT_KEYS_INVALID")
     _reject_hidden_keys(task_contract)
+    _exact_keys(task_contract, {"protocol", "visible"}, "TASK_ROOT_KEYS_INVALID")
     if task_contract["protocol"] != TASK_PROTOCOL:
         _fail("TASK_PROTOCOL_INVALID")
 
