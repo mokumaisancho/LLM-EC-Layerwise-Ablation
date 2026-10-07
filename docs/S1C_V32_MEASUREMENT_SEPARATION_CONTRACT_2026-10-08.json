@@ -1,0 +1,108 @@
+{
+  "schema_version": "S1C_V32_MEASUREMENT_SEPARATION_CONTRACT_V1",
+  "protocol": "S1C_SEMANTIC_SPACE_TCC_V1",
+  "issue": 52,
+  "predecessor": {
+    "v31_contract_commit": "0ddaabb4a5a074d02df68c2d2798329857321f67",
+    "v31_paired_deploy": "dep-db385em7bikc73bvts7g",
+    "v31_scientific_result_authorized": false,
+    "observed_before_successor_freeze": {
+      "completed_qwen_tasks": 1,
+      "task_id": "V311",
+      "json_parse_valid": true,
+      "raw_sha256": "b654689eb3516ad21cc13aae4b0a97e426ca7ca4eb6452ed2e521bcc603efa4e",
+      "semantic_violation": "TRAINING_MEMBER_DUPLICATED",
+      "aggregate_scientific_metrics_emitted": false
+    }
+  },
+  "unchanged_scientific_assets": {
+    "denotational_contract": "docs/S1C_V31_DENOTATIONAL_DISCOVERY_CONTRACT_2026-10-07.json",
+    "public_hypothesis_class": "tools/s1c_v31_public_hypotheses.py",
+    "corpus_generator": "tools/generate_s1c_v31_corpus.py",
+    "independent_oracle_validator": "tools/validate_s1c_v31_corpus.py",
+    "deterministic_baseline": "tools/s1c_v31_deterministic_baseline.py",
+    "json_schema": "tools/s1c_v31_json_schema.py",
+    "qwen_prompt": "byte-identical V3.1 system prompt",
+    "qwen_model": "Qwen2.5-1.5B-Instruct-Q4_K_M",
+    "qwen_model_sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+    "llama_cpp_tag": "b11146",
+    "temperature": 0,
+    "dataset_changed": false,
+    "prompt_changed": false,
+    "model_changed": false,
+    "behavior_hypothesis_changed": false
+  },
+  "measurement_boundary": {
+    "execution_invalid": {
+      "meaning": "harness/runtime cannot establish a trustworthy model observation",
+      "conditions": [
+        "transport failure",
+        "raw response missing or hash mismatch",
+        "JSON parse failure",
+        "output violates constraints that the supplied JSON Schema itself should have enforced",
+        "common-prefix truncation indicating systematic structured-output failure",
+        "model/runtime/source hash drift"
+      ],
+      "scientific_task_score_authorized": false,
+      "assay_terminal": "V32_ASSAY_EXECUTION_INVALID",
+      "evidence_must_be_preserved": true,
+      "process_exit_policy": "return zero after writing INVALID evidence so deployment remains retrievable"
+    },
+    "semantic_invalid_prediction": {
+      "meaning": "a parseable schema-conforming model response violates cross-field semantic/partition requirements",
+      "examples": [
+        "training member duplicated across discovered slots",
+        "training member missing from discovered partition",
+        "heldout example duplicated across assignment/abstention",
+        "assignment references a non-emitted local slot"
+      ],
+      "scientific_observation_authorized": true,
+      "continue_remaining_tasks": true,
+      "per_task_score_policy": "all semantic task metrics = 0; semantic_output_validity = 0",
+      "raw_evidence_required": true
+    },
+    "semantic_valid_prediction": {
+      "per_task_score_policy": "same V3.1 label-free unseen-probe scoring",
+      "semantic_output_validity": 1
+    }
+  },
+  "aggregate_metrics": {
+    "primary": [
+      "semantic_output_validity_rate",
+      "training_partition_adjusted_rand_index",
+      "unseen_probe_behavior_accuracy",
+      "heldout_denotational_assignment_accuracy",
+      "exact_discovery_and_grounding_rate"
+    ],
+    "secondary": [
+      "training_partition_pairwise_accuracy",
+      "argument_binding_accuracy",
+      "polarity_modality_accuracy",
+      "abstention_accuracy",
+      "slot_coverage",
+      "fixed_b2_downstream_success"
+    ],
+    "materiality_abs": 0.2
+  },
+  "evidence_preservation": {
+    "every_completed_task_raw_response": true,
+    "every_raw_sha256": true,
+    "semantic_validity_reason_per_task": true,
+    "invalid_terminal_file_served": true,
+    "nonzero_build_exit_for_scientific_invalidity": false
+  },
+  "anti_tuning": {
+    "no_prompt_change": true,
+    "no_fixture_change": true,
+    "no_model_change": true,
+    "no_temperature_change": true,
+    "no_hypothesis_change": true,
+    "no_post_v32_result_repair": true
+  },
+  "governance": {
+    "suite_ref": "31d0a0998c2fa5f5120b6bd2c6026a4f3702fd12",
+    "ecv4_ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+    "github_actions": false,
+    "google_drive_relay": false
+  }
+}
