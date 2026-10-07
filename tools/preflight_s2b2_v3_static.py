@@ -18,6 +18,12 @@ def fail(detail:str)->None:
 
 
 def main()->int:
+    if os.environ.get("PRODUCT_RUNTIME_EVIDENCE") == "1":
+        q=subprocess.run([sys.executable,str(TOOLS/"evidence_product_semantic_runtime.py")],cwd=ROOT,text=True,capture_output=True)
+        (ROOT/"product_runtime_evidence_result.json").write_text(q.stdout,encoding="utf-8")
+        sys.stdout.write(q.stdout)
+        if q.stderr: sys.stderr.write(q.stderr)
+        return q.returncode
     if os.environ.get("PRODUCT_RUNTIME_REGRESSION") == "1":
         q=subprocess.run([sys.executable,str(TOOLS/"regress_product_runtime_v32_compat.py")],cwd=ROOT,text=True,capture_output=True)
         (ROOT/"product_runtime_regression_result.json").write_text(q.stdout,encoding="utf-8")
