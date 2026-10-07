@@ -1,6 +1,11 @@
 from __future__ import annotations
 import copy
 import unittest
+import json
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
 from semantic_runtime import RuntimeContractError, discover_and_ground
 from semantic_runtime.execution_v2 import execute_validated_ir
 from tests.test_semantic_runtime_product import make_task, make_solver
@@ -71,6 +76,23 @@ class TrustBoundaryV2(unittest.TestCase):
 
     def test_14_state_shape(self):
         self.rejects("SOLVER_STATE",self.contract,lambda x:x["before"].append({"pred":"UNEXPECTED"}))
+
+    def test_15_cli_task_bound_execution(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root=Path(folder)
+            for name,data in (("task",self.task),("ir",self.ir),("solver",self.contract)):
+                (root/(name+".json")).write_text(json.dumps(data),encoding="utf-8")
+            cli=Path(__file__).resolve().parents[1]/"tools"/"semantic_runtime_cli_v2.py"
+            ok=subprocess.run([sys.executable,str(cli),"execute",str(root/"ir.json"),str(root/"task.json"),str(root/"solver.json")],capture_output=True,text=True,cwd=cli.parents[1])
+            self.assertEqual(ok.returncode,0,ok.stderr)
+            self.assertEqual(json.loads(ok.stdout)["protocol"],"SEMANTIC_RUNTIME_EXECUTION_V2")
+            bad=json.loads((root/"ir.json").read_text())
+            bad["heldout_assignments"][0]["arguments"]=["FORGED"]
+            (root/"ir.json").write_text(json.dumps(bad),encoding="utf-8")
+            reject=subprocess.run([sys.executable,str(cli),"execute",str(root/"ir.json"),str(root/"task.json"),str(root/"solver.json")],capture_output=True,text=True,cwd=cli.parents[1])
+            self.assertEqual(reject.returncode,3)
+            self.assertIn("FAIL_CLOSED",reject.stderr)
+
 
 
 if __name__=="__main__":
