@@ -75,11 +75,17 @@ def norm(text: str) -> str:
     return re.sub(r"\s+", " ", str(text).lower()).strip()
 
 
-def _phrase_hits(text: str, phrases: list[tuple[str, str, str]]) -> list[tuple[str, str]]:
+def _contains_phrase(text: str, phrase: str) -> bool:
     low = norm(text)
+    target = norm(phrase)
+    pattern = r"(?<![a-z0-9])" + re.escape(target) + r"(?![a-z0-9])"
+    return re.search(pattern, low) is not None
+
+
+def _phrase_hits(text: str, phrases: list[tuple[str, str, str]]) -> list[tuple[str, str]]:
     hits = []
     for side, kind, phrase in phrases:
-        if norm(phrase) in low:
+        if _contains_phrase(text, phrase):
             hits.append((side, kind))
     return hits
 
@@ -242,8 +248,8 @@ def validate_task(task: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str, 
         raw = str(ex.get("raw_text") or "")
         low = norm(raw)
         if "unresolved between:" in low and " or " in low:
-            a_hit = norm(spec["A"]["held"]) in low
-            b_hit = norm(spec["B"]["held"]) in low
+            a_hit = _contains_phrase(raw, spec["A"]["held"])
+            b_hit = _contains_phrase(raw, spec["B"]["held"])
             if not (a_hit and b_hit):
                 failures.append({"gate": "AMBIGUOUS_PHRASE_DOES_NOT_COVER_BOTH_TARGETS", "example_id": eid})
             heldout_ref[eid] = {"status": "AMBIGUOUS"}
