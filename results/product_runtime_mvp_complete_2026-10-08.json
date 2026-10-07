@@ -1,0 +1,89 @@
+{
+  "schema_version": "PRODUCT_SEMANTIC_RUNTIME_MVP_V1",
+  "protocol": "PRODUCT_SEMANTIC_RUNTIME_EVIDENCE_V1",
+  "issue": 54,
+  "date": "2026-10-08",
+  "pass": true,
+  "terminal": "PRODUCT_MVP_COMPLETE",
+  "ecv4": {
+    "suite_ref": "31d0a0998c2fa5f5120b6bd2c6026a4f3702fd12",
+    "ecv4_ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+    "phase_trace": [
+      "I54:PRIOR_ART",
+      "I54:REPAIR",
+      "I54:REGRESSION",
+      "I54:EVIDENCE"
+    ],
+    "frontier": "NO_OPEN_PRODUCT_MVP_WORK"
+  },
+  "public_api": {
+    "python": [
+      "discover_and_ground(task_contract)",
+      "execute_validated_ir(validated_semantic_ir, solver_contract)"
+    ],
+    "cli": [
+      "python tools/semantic_runtime_cli.py discover-ground task.json",
+      "python tools/semantic_runtime_cli.py execute ir.json solver.json"
+    ],
+    "schemas": [
+      "schemas/semantic_runtime_task_v1.json",
+      "schemas/semantic_runtime_ir_v1.json",
+      "schemas/semantic_runtime_solver_v1.json"
+    ]
+  },
+  "gates": {
+    "research_pin_gate": "PASS_21_OF_21",
+    "core_extraction_gate": "PASS",
+    "production_import_gate": "PASS",
+    "public_schema_gate": "PASS",
+    "non_assay_regression": "10/10",
+    "v32_exact_behavior_compatibility": "8/8",
+    "v32_full_public_task_compatibility": "8/8",
+    "deterministic_replays": 160,
+    "hidden_authority_rejection": "8/8",
+    "bounded_log_gate": "PASS",
+    "api_cli_ir_byte_equivalent": true,
+    "api_cli_execution_byte_equivalent": true,
+    "downstream_operator_applicable": true,
+    "expected_effect": {
+      "pred": "DONE",
+      "args": [
+        "JOB"
+      ]
+    },
+    "scientific_assets_modified": false
+  },
+  "hashes": {
+    "non_assay_canonical_ir_sha256": "695312aaaeffa1d9f45e78957cbc4952791116998eb567050c692e15a4df199b",
+    "non_assay_canonical_execution_sha256": "79bdecd7b35befa6870ee64153fdce098f026ed99d5d59883813aefe08cdfaac",
+    "product_file_blobs": {
+      "semantic_runtime/__init__.py": "d3353f77df92068af81cf5d66e3686d0d5a32eae",
+      "semantic_runtime/public_hypotheses.py": "fe7b7b9a6203624e93ffdce1d542404fd250e63d",
+      "semantic_runtime/discovery.py": "99720c37b2416aa780ec380cfea1de08e1472867",
+      "semantic_runtime/solver.py": "3ea2365b7d49f766fbdc14fd82c6ca44b2d29eb9",
+      "semantic_runtime/runtime.py": "e9d582c89994600128f455ee8e98919d9faf472d",
+      "semantic_runtime/research_pins.json": "bdce80d5b6bfdc07a0d2ce799b099c0ed9ab22be",
+      "schemas/semantic_runtime_task_v1.json": "b9b59c72bccf91a3261e56bf4dc52a61eb4c0944",
+      "schemas/semantic_runtime_ir_v1.json": "0c455d0ee0dfc69a49ea5300a6148ddcb5961dac",
+      "schemas/semantic_runtime_solver_v1.json": "964ff6336c28aa4e27ff7edcf84056fee282b5c4",
+      "tools/semantic_runtime_cli.py": "38eaf04b22e2f83fe26f1e27631322575e938f57",
+      "tools/preflight_product_semantic_runtime.py": "f256efda813d0eac95b37d01be46595f2c668e4e",
+      "tools/regress_product_runtime_v32_compat.py": "3a3973fd2cd706910d248c59d8ecc38eb723b0ae",
+      "tests/test_semantic_runtime_product.py": "3077c63f4a33814ac10c72c04255d1fb5c84e1e1"
+    }
+  },
+  "evidence": {
+    "prior_art_commit": "8189bf62054207b24c885b435caa4dd290a92ec2",
+    "p01_commit": "2ff53165432fab14e58670ecdb3f117a925565f1",
+    "p02_commit": "bba0186f5b677c81c23a2b19a35ba510cb767a56",
+    "p03_render_deploy": "dep-db3bjpjtqb8s7387p5r0",
+    "p03_render_status": "live",
+    "documentation_commit": "9c74f1a6361463897166ac36289f8af6a3e0b300"
+  },
+  "dependencies": {
+    "github_actions_required": false,
+    "google_drive_required": false,
+    "model_runtime_required": false
+  },
+  "claim_limit": "Finite typed/auditable semantic or transition spaces only; no unrestricted ontology invention, open-ended world-knowledge acquisition, or general replacement of arbitrary LLM reasoning."
+}
