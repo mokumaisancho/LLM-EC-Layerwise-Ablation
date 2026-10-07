@@ -1,33 +1,298 @@
 {
-  "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "$id":"semantic_runtime_task_v1.json",
-  "type":"object",
-  "additionalProperties":false,
-  "required":["protocol","visible"],
-  "properties":{
-    "protocol":{"const":"SEMANTIC_RUNTIME_TASK_V1"},
-    "visible":{
-      "type":"object",
-      "additionalProperties":false,
-      "required":["type_inventory","training_examples","evaluation_probes","heldout_examples"],
-      "properties":{
-        "type_inventory":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},
-        "training_examples":{"type":"array","minItems":4,"maxItems":4,"items":{"$ref":"#/$defs/training_example"}},
-        "evaluation_probes":{"type":"array","minItems":4,"maxItems":4,"prefixItems":[{"$ref":"#/$defs/eval_q03"},{"$ref":"#/$defs/eval_q05"},{"$ref":"#/$defs/eval_q06"},{"$ref":"#/$defs/eval_q07"}],"items":false},
-        "heldout_examples":{"type":"array","minItems":1,"items":{"$ref":"#/$defs/heldout_example"}}
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "semantic_runtime_task_v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol",
+    "visible"
+  ],
+  "properties": {
+    "protocol": {
+      "const": "SEMANTIC_RUNTIME_TASK_V1"
+    },
+    "visible": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type_inventory",
+        "training_examples",
+        "evaluation_probes",
+        "heldout_examples"
+      ],
+      "properties": {
+        "type_inventory": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "training_examples": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "$ref": "#/$defs/training_example"
+          }
+        },
+        "evaluation_probes": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "prefixItems": [
+            {
+              "$ref": "#/$defs/eval_q03"
+            },
+            {
+              "$ref": "#/$defs/eval_q05"
+            },
+            {
+              "$ref": "#/$defs/eval_q06"
+            },
+            {
+              "$ref": "#/$defs/eval_q07"
+            }
+          ],
+          "items": false
+        },
+        "heldout_examples": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/heldout_example"
+          }
+        },
+        "public_behavior_hypothesis": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "coordinate_operations",
+            "function_count",
+            "selected_target_functions_visible",
+            "semantic_slot_names_encoded"
+          ],
+          "properties": {
+            "coordinate_operations": {
+              "const": [
+                "KEEP",
+                "SET0",
+                "SET1",
+                "FLIP"
+              ]
+            },
+            "function_count": {
+              "const": 64
+            },
+            "selected_target_functions_visible": {
+              "const": false
+            },
+            "semantic_slot_names_encoded": {
+              "const": false
+            }
+          }
+        },
+        "slot_count_bound": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "min",
+            "max"
+          ],
+          "properties": {
+            "min": {
+              "type": "integer",
+              "maximum": 2
+            },
+            "max": {
+              "type": "integer",
+              "minimum": 2
+            }
+          }
+        }
       }
     }
   },
-  "$defs":{
-    "bits3":{"type":"array","minItems":3,"maxItems":3,"items":{"type":"integer","enum":[0,1]}},
-    "entity":{"type":"object","additionalProperties":false,"required":["type","surface_forms"],"properties":{"type":{"type":"string","minLength":1},"surface_forms":{"type":"array","minItems":1,"items":{"type":"string","minLength":1}}}},
-    "registry":{"type":"object","minProperties":1,"additionalProperties":{"$ref":"#/$defs/entity"}},
-    "observation":{"type":"object","additionalProperties":false,"required":["probe_id","before","after"],"properties":{"probe_id":{"type":"string","pattern":"^Q[0-9]{2}$"},"before":{"$ref":"#/$defs/bits3"},"after":{"$ref":"#/$defs/bits3"}}},
-    "training_example":{"type":"object","additionalProperties":false,"required":["example_id","raw_text","entity_registry","behavior_observations"],"properties":{"example_id":{"type":"string","minLength":1},"raw_text":{"type":"string","minLength":1},"entity_registry":{"$ref":"#/$defs/registry"},"behavior_observations":{"type":"array","minItems":1,"items":{"$ref":"#/$defs/observation"}}}},
-    "heldout_example":{"type":"object","additionalProperties":false,"required":["example_id","raw_text","entity_registry"],"properties":{"example_id":{"type":"string","minLength":1},"raw_text":{"type":"string","minLength":1},"entity_registry":{"$ref":"#/$defs/registry"}}},
-    "eval_q03":{"type":"object","additionalProperties":false,"required":["probe_id","before"],"properties":{"probe_id":{"const":"Q03"},"before":{"$ref":"#/$defs/bits3"}}},
-    "eval_q05":{"type":"object","additionalProperties":false,"required":["probe_id","before"],"properties":{"probe_id":{"const":"Q05"},"before":{"$ref":"#/$defs/bits3"}}},
-    "eval_q06":{"type":"object","additionalProperties":false,"required":["probe_id","before"],"properties":{"probe_id":{"const":"Q06"},"before":{"$ref":"#/$defs/bits3"}}},
-    "eval_q07":{"type":"object","additionalProperties":false,"required":["probe_id","before"],"properties":{"probe_id":{"const":"Q07"},"before":{"$ref":"#/$defs/bits3"}}}
+  "$defs": {
+    "bits3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "integer",
+        "enum": [
+          0,
+          1
+        ]
+      }
+    },
+    "entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "surface_forms"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "surface_forms": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "registry": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/entity"
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "probe_id",
+        "before",
+        "after"
+      ],
+      "properties": {
+        "probe_id": {
+          "type": "string",
+          "pattern": "^Q[0-9]{2}$"
+        },
+        "before": {
+          "$ref": "#/$defs/bits3"
+        },
+        "after": {
+          "$ref": "#/$defs/bits3"
+        }
+      }
+    },
+    "training_example": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "example_id",
+        "raw_text",
+        "entity_registry",
+        "behavior_observations"
+      ],
+      "properties": {
+        "example_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "raw_text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entity_registry": {
+          "$ref": "#/$defs/registry"
+        },
+        "behavior_observations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/observation"
+          }
+        }
+      }
+    },
+    "heldout_example": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "example_id",
+        "raw_text",
+        "entity_registry"
+      ],
+      "properties": {
+        "example_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "raw_text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entity_registry": {
+          "$ref": "#/$defs/registry"
+        }
+      }
+    },
+    "eval_q03": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "probe_id",
+        "before"
+      ],
+      "properties": {
+        "probe_id": {
+          "const": "Q03"
+        },
+        "before": {
+          "$ref": "#/$defs/bits3"
+        }
+      }
+    },
+    "eval_q05": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "probe_id",
+        "before"
+      ],
+      "properties": {
+        "probe_id": {
+          "const": "Q05"
+        },
+        "before": {
+          "$ref": "#/$defs/bits3"
+        }
+      }
+    },
+    "eval_q06": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "probe_id",
+        "before"
+      ],
+      "properties": {
+        "probe_id": {
+          "const": "Q06"
+        },
+        "before": {
+          "$ref": "#/$defs/bits3"
+        }
+      }
+    },
+    "eval_q07": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "probe_id",
+        "before"
+      ],
+      "properties": {
+        "probe_id": {
+          "const": "Q07"
+        },
+        "before": {
+          "$ref": "#/$defs/bits3"
+        }
+      }
+    }
   }
 }
