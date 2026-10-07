@@ -8,7 +8,6 @@ from typing import Any
 
 from s1c_v31_public_hypotheses import (
     EVALUATION_PROBE_INDICES,
-    PROBE_LAYOUT,
     code_key,
     observations,
     probe_input,
@@ -16,6 +15,12 @@ from s1c_v31_public_hypotheses import (
 )
 
 PROTOCOL = "S1C_V31_CORPUS_GENERATOR_V1"
+PROBE_LAYOUT = {
+    "A1": (0, 1),
+    "A2": (2, 4),
+    "B1": (0, 2),
+    "B2": (1, 4),
+}
 STRUCTURAL_DESCRIPTOR = (
     "UNKNOWN_PARTITION_FROM_DISTINCT_PARTIAL_TRANSITIONS_WITH_PUBLIC_GENERIC_HYPOTHESIS"
     "__UNSEEN_PROBE_PREDICTION__RAW_LANGUAGE_TRANSFER"
