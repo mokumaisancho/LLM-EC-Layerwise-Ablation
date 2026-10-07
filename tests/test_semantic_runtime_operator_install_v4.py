@@ -144,5 +144,25 @@ except (RuntimeContractError,OSError,ValueError,KeyError,TypeError) as exc:
         self.assertEqual(a.returncode,0)
         self.assertEqual(a.stdout,b.stdout)
 
+    def test_12_real_operator_policy_v4_cli(self):
+        self.assertEqual(self.install().returncode,0)
+        tools_dir=self.root/"tools"
+        tools_dir.mkdir()
+        shutil.copy2(ROOT/"tools"/"semantic_runtime_cli_v4.py", tools_dir/"semantic_runtime_cli_v4.py")
+        good=subprocess.run([sys.executable,str(tools_dir/"semantic_runtime_cli_v4.py"),
+            "execute",str(self.root/"ir.json"),str(self.root/"task.json"),
+            str(self.root/"solver.json"),"--policy-id","only_this_pair"],cwd=self.root,capture_output=True,text=True)
+        self.assertEqual(good.returncode,0,good.stdout+good.stderr)
+        self.assertEqual(json.loads(good.stdout)["protocol"],"SEMANTIC_RUNTIME_EXECUTION_V4")
+        bad=subprocess.run([sys.executable,str(tools_dir/"semantic_runtime_cli_v4.py"),
+            "execute",str(self.root/"ir.json"),str(self.root/"task.json"),
+            str(self.root/"solver.json"),"--policy-id","unauthorized"],cwd=self.root,capture_output=True,text=True)
+        self.assertEqual(bad.returncode,3)
+        self.assertIn("FAIL_CLOSED",bad.stderr)
+
+    def test_13_no_implicit_operator_grants(self):
+        self.assertEqual(json.loads((ROOT/"semantic_runtime"/"approved_policy_v3.json").read_text())["approvals"],[])
+        self.assertEqual(self.execute().returncode,3)
+
 if __name__=="__main__":
     unittest.main()
