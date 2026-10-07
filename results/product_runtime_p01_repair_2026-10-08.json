@@ -1,0 +1,41 @@
+{
+  "schema_version": "PRODUCT_RUNTIME_P01_REPAIR_V1",
+  "issue": 54,
+  "ecv4_phase": "I54:REPAIR",
+  "pass": true,
+  "terminal": "PRODUCT_RUNTIME_P01_REPAIR_PASS",
+  "implementation": {
+    "package": "semantic_runtime",
+    "public_api": [
+      "discover_and_ground",
+      "execute_validated_ir"
+    ],
+    "cli": "tools/semantic_runtime_cli.py",
+    "schemas": [
+      "schemas/semantic_runtime_task_v1.json",
+      "schemas/semantic_runtime_ir_v1.json",
+      "schemas/semantic_runtime_solver_v1.json"
+    ]
+  },
+  "gates": {
+    "research_pin_gate": "PASS_21_OF_21",
+    "core_extraction_gate": "PASS",
+    "production_import_gate": "PASS",
+    "public_schema_gate": "PASS",
+    "non_assay_regression_tests": "10/10",
+    "canonical_smoke_sha256": "695312aaaeffa1d9f45e78957cbc4952791116998eb567050c692e15a4df199b",
+    "determinism_replay": "PASS",
+    "cli_smoke": "PASS",
+    "post_result_scientific_tuning": false
+  },
+  "render": {
+    "service": "srv-db14rn6gekts73c773eg",
+    "deploy": "dep-db3bhip42hec73972g40"
+  },
+  "sandbox": {
+    "core_equivalent_tests": "9/9 PASS",
+    "repo_clone": "BLOCKED_BY_SANDBOX_DNS",
+    "exact_repo_validation": "completed on Render checkout"
+  },
+  "next_ecv4_phase": "I54:REGRESSION"
+}
