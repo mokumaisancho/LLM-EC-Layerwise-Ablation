@@ -18,6 +18,13 @@ def fail(detail:str)->None:
 
 
 def main()->int:
+    if os.environ.get("S1C_V31_SCHEMA_SMOKE") == "1":
+        q=subprocess.run([sys.executable,str(TOOLS/"smoke_s1c_v31_json_schema_runtime.py")],cwd=ROOT,text=True,capture_output=True)
+        (ROOT/"s1c_v31_schema_smoke_result.json").write_text(q.stdout,encoding="utf-8")
+        sys.stdout.write(q.stdout)
+        if q.stderr:
+            sys.stderr.write(q.stderr)
+        return q.returncode
     if os.environ.get("S1C_V31_PREFLIGHT") == "1":
         q=subprocess.run([sys.executable,str(TOOLS/"preflight_s1c_v31.py")],cwd=ROOT,text=True,capture_output=True)
         (ROOT/"s1c_v31_preflight_result.json").write_text(q.stdout,encoding="utf-8")
