@@ -25,13 +25,13 @@ EXPECTED_BLOBS = {
 }
 
 PRIOR_STRUCTURAL_CORES = {
-    "S1A_GRAPH_GROUNDING": (True, False, "GRAPH_OR_TYPED_SYMBOLS", False, False),
-    "S2A_KNOWN_PRIMITIVE_COMPOSITION": (True, False, "KNOWN_PRIMITIVES", False, False),
-    "S2B1_SCHEMA_SYNTHESIS": (True, False, "SCHEMA_REQUIREMENTS", False, False),
-    "S2B2_OPERATOR_INDUCTION": (True, False, "POS_NEG_STATE_TRANSITIONS", False, False),
-    "S1C_R_RAW_GROUNDING": (True, False, "TYPED_IR_DEMONSTRATIONS", False, False),
-    "S1C_V2_INVALID": (False, True, "IDENTICAL_SLOT_SIGNATURE", False, False),
-    "S1C_V3_INVALID": (False, True, "DISTINCT_PARTIAL_TRANSITION_PROBES", True, False),
+    "S1A_GRAPH_GROUNDING": (True, False, "GRAPH_OR_TYPED_SYMBOLS", False, False, 0),
+    "S2A_KNOWN_PRIMITIVE_COMPOSITION": (True, False, "KNOWN_PRIMITIVES", False, False, 0),
+    "S2B1_SCHEMA_SYNTHESIS": (True, False, "SCHEMA_REQUIREMENTS", False, False, 0),
+    "S2B2_OPERATOR_INDUCTION": (True, False, "POS_NEG_STATE_TRANSITIONS", False, False, 0),
+    "S1C_R_RAW_GROUNDING": (True, False, "TYPED_IR_DEMONSTRATIONS", False, False, 0),
+    "S1C_V2_INVALID": (False, True, "IDENTICAL_SLOT_SIGNATURE", False, False, 0),
+    "S1C_V3_INVALID": (False, True, "DISTINCT_PARTIAL_TRANSITION_PROBES", False, False, 0),
 }
 
 
@@ -143,12 +143,14 @@ def _structural_core(task: dict[str, Any]) -> tuple[Any, ...]:
     )
     has_unseen_probe_output_target = bool(visible.get("evaluation_probes"))
     held_behavior_visible = any("behavior_observations" in ex for ex in visible["heldout_examples"])
+    public_hypothesis_count = int((visible.get("public_behavior_hypothesis") or {}).get("function_count") or 0)
     return (
         visible_slot_inventory,
         unknown_partition,
         behavior,
         has_unseen_probe_output_target,
         held_behavior_visible,
+        public_hypothesis_count,
     )
 
 
@@ -208,7 +210,7 @@ def main() -> int:
         core = _structural_core(task)
         collisions = [name for name, prior in PRIOR_STRUCTURAL_CORES.items() if core == prior]
         ok = (
-            core == (False, True, "DISTINCT_PARTIAL_TRANSITION_PROBES", True, False)
+            core == (False, True, "DISTINCT_PARTIAL_TRANSITION_PROBES", True, False, 64)
             and not collisions
             and task.get("structural_descriptor")
             == "UNKNOWN_PARTITION_FROM_DISTINCT_PARTIAL_TRANSITIONS_WITH_PUBLIC_GENERIC_HYPOTHESIS__UNSEEN_PROBE_PREDICTION__RAW_LANGUAGE_TRANSFER"
