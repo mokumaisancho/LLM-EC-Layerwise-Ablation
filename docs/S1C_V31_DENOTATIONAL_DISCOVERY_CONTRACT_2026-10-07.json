@@ -1,0 +1,259 @@
+{
+  "schema_version": "S1C_V31_DENOTATIONAL_DISCOVERY_CONTRACT_V1",
+  "protocol": "S1C_SEMANTIC_SPACE_TCC_V1",
+  "issue": 51,
+  "successor_of": {
+    "invalidated_stage": "MVP_V_V3",
+    "invalidated_issue": 51,
+    "last_valid_stage": "MVP_R",
+    "last_valid_terminal": "R_DETERMINISTIC_MATERIAL_ADVANTAGE",
+    "last_valid_commit": "2260508a6d7b16112115259785f294066db08574"
+  },
+  "question": "Without canonical slot names/IDs or a hidden target-library advantage, can an engine discover a reusable typed semantic partition from raw language plus distinct partial state transitions, predict each discovered slot on unseen neutral states, and ground unseen raw language into those slots?",
+  "public_behavior_hypothesis_class": {
+    "state_space": "3 binary coordinates",
+    "per_coordinate_operations": [
+      "KEEP",
+      "SET0",
+      "SET1",
+      "FLIP"
+    ],
+    "cartesian_function_count": 64,
+    "visible_identically_to_both_arms": true,
+    "selected_target_functions_visible": false,
+    "semantic_slot_names_encoded": false,
+    "claim_limit": "finite coordinate-wise transition hypothesis class; not unrestricted ontology/operator invention"
+  },
+  "model_visible": {
+    "type_inventory": "opaque type IDs only",
+    "training_examples": {
+      "fields": [
+        "example_id",
+        "raw_text",
+        "entity_registry",
+        "behavior_observations"
+      ],
+      "behavior_observation_fields": [
+        "probe_id",
+        "before",
+        "after"
+      ],
+      "probe_layout_per_true_slot_pair": {
+        "A1": [
+          0,
+          1
+        ],
+        "A2": [
+          2,
+          4
+        ],
+        "B1": [
+          0,
+          2
+        ],
+        "B2": [
+          1,
+          4
+        ]
+      },
+      "rules": [
+        "each individual example is consistent with at least two public hypotheses",
+        "the union of the correct two same-slot examples identifies exactly one public hypothesis",
+        "no alternative pairing yields two unique distinct public hypotheses",
+        "all four probe subsets and all four observation bundles are distinct",
+        "no selected target function ID, slot fingerprint, family, oracle label, or semantic gloss is visible"
+      ]
+    },
+    "evaluation_probes": {
+      "probe_indices": [
+        3,
+        5,
+        6,
+        7
+      ],
+      "inputs_visible": true,
+      "expected_outputs_visible": false,
+      "disjoint_from_all_training_probe_indices": true
+    },
+    "heldout_examples": {
+      "fields": [
+        "example_id",
+        "raw_text",
+        "entity_registry"
+      ],
+      "behavior_visible": false
+    },
+    "canonical_slot_names_visible": false,
+    "canonical_slot_ids_visible": false,
+    "family_visible": false,
+    "oracle_partition_visible": false
+  },
+  "output_contract": {
+    "discovered_slots": {
+      "fields": [
+        "slot_id",
+        "arg_types",
+        "training_members",
+        "evaluation_probe_predictions"
+      ],
+      "slot_id": "arbitrary engine-local identifier",
+      "evaluation_probe_prediction_fields": [
+        "probe_id",
+        "predicted_after"
+      ],
+      "requirements": [
+        "every training example belongs to exactly one discovered slot",
+        "every discovered slot predicts exactly Q03,Q05,Q06,Q07 once each",
+        "surface slot names have no scoring authority"
+      ]
+    },
+    "heldout_assignments": {
+      "fields": [
+        "example_id",
+        "slot_id",
+        "arguments",
+        "polarity",
+        "modality"
+      ]
+    },
+    "abstentions": {
+      "fields": [
+        "example_id",
+        "status"
+      ],
+      "status": "AMBIGUOUS"
+    }
+  },
+  "denotational_scoring": {
+    "training_partition_metric": "adjusted Rand index plus pairwise agreement; label permutation invariant",
+    "slot_alignment": "maximum one-to-one matching by unseen evaluation-probe output agreement gated by exact arg_types",
+    "alignment_probe_indices": [
+      3,
+      5,
+      6,
+      7
+    ],
+    "training_probe_indices_excluded_from_behavior_alignment": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "tie_policy": "different maximizing matchings that change heldout correctness or terminal branch fail closed",
+    "surface_names_used": false,
+    "generator_rule_ids_used_for_alignment": false,
+    "predictor_membership_used_to_infer_missing_probe_outputs": false
+  },
+  "primary_metrics": [
+    "training_partition_adjusted_rand_index",
+    "unseen_probe_behavior_accuracy",
+    "heldout_denotational_assignment_accuracy",
+    "exact_discovery_and_grounding_rate"
+  ],
+  "secondary_metrics": [
+    "training_partition_pairwise_accuracy",
+    "argument_binding_accuracy",
+    "polarity_modality_accuracy",
+    "abstention_accuracy",
+    "slot_coverage",
+    "fixed_b2_downstream_success"
+  ],
+  "corpus": {
+    "tasks": 8,
+    "training_examples_per_task": 4,
+    "normal_heldout_per_task": 2,
+    "ambiguous_heldout_per_task": 1,
+    "total_heldout": 24,
+    "structural_descriptor": "UNKNOWN_PARTITION_FROM_DISTINCT_PARTIAL_TRANSITIONS_WITH_PUBLIC_GENERIC_HYPOTHESIS__UNSEEN_PROBE_PREDICTION__RAW_LANGUAGE_TRANSFER"
+  },
+  "predictor_authority": {
+    "allowed_shared_reference": "public 64-function coordinate-transform specification only",
+    "forbidden_predictor_inputs_or_imports": [
+      "selected target function IDs",
+      "scorer-only reference outputs",
+      "oracle validator output",
+      "corpus generator semantic spec",
+      "scorer module",
+      "hidden heldout denotation"
+    ],
+    "preflight_ast_import_gate_required": true
+  },
+  "independent_oracle": {
+    "selected_target_functions": "validator/scorer-only",
+    "phrase_to_target_validation": "separate declarative phrase map from generator implementation",
+    "unseen_probe_expected_outputs": "independently recomputed from selected target function under the public generic semantics",
+    "text_oracle_mismatch": "result-overturning fail closed"
+  },
+  "malformed_output_policy": {
+    "runner_terminal": "ASSAY_EXECUTION_INVALID",
+    "score_as_zero": false,
+    "parser_failure_rate_allowed": 0,
+    "common_prefix_parse_failure_count_to_block": 2
+  },
+  "grammar_and_schema": {
+    "canonical_authority": "JSON Schema",
+    "runtime_constraint": "JSON Schema directly if pinned llama.cpp supports it; otherwise mechanically generated GBNF",
+    "canonical_output_positive_roundtrip_required": true,
+    "quoted_ID_positive_cases_required": true,
+    "bare_ID_negative_case_required": true,
+    "llama_grammar_validator_runtime_smoke_required_before_model_inference": true
+  },
+  "structural_novelty": {
+    "name_only_check_forbidden": true,
+    "required_against": [
+      "S1A",
+      "S2A",
+      "S2B1",
+      "S2B2",
+      "S1C-R",
+      "S1C-V1/V2",
+      "S1C-V3-invalid"
+    ],
+    "exact_structural_collision": "block",
+    "high_similarity_collision": "independent review required"
+  },
+  "fairness": {
+    "identical_visible_input": true,
+    "identical_public_hypothesis_class": true,
+    "identical_output_schema": true,
+    "identical_slot_budget": true,
+    "predictor_specific_normalization": false,
+    "predictor_specific_grammar": false,
+    "post_result_matching_change": false
+  },
+  "result_overturning_fail_closed": [
+    "PREDICTOR_HIDDEN_REFERENCE_ACCESS",
+    "VISIBLE_PARTITION_LABEL_EQUIVALENT_FEATURE",
+    "CANONICAL_SLOT_NAME_OR_ID_LEAKAGE",
+    "FAMILY_OR_ORACLE_LEAKAGE",
+    "NON_IDENTIFIABLE_PUBLIC_HYPOTHESIS_TASK",
+    "GENERATOR_ORACLE_NOT_INDEPENDENTLY_RECOMPUTED",
+    "TEXT_ORACLE_MISMATCH",
+    "STRUCTURAL_HOLDOUT_REUSE",
+    "AMBIGUITY_COVERAGE_MISSING",
+    "GRAMMAR_OR_SCHEMA_ROUNDTRIP_FAILURE",
+    "COMMON_PREFIX_TRUNCATION",
+    "RAW_EVIDENCE_MISSING",
+    "INDEPENDENT_METRIC_RECOMPUTATION_MISMATCH",
+    "DOWNSTREAM_SOLVER_DRIFT",
+    "POST_RESULT_REPAIR_ATTEMPT",
+    "FAIL_CLOSED_UNKNOWN"
+  ],
+  "materiality_abs": 0.2,
+  "branch_policy": {
+    "material_metric_in_both_directions": "FAIL_CLOSED_CONFLICTING_MATERIAL_DIRECTIONS",
+    "qwen_only_material_advantage": "V31_LLM_MATERIAL_ADVANTAGE",
+    "deterministic_only_material_advantage": "V31_DETERMINISTIC_MATERIAL_ADVANTAGE",
+    "otherwise": "V31_NO_MATERIAL_SEPARATION"
+  },
+  "governance": {
+    "suite_ref": "31d0a0998c2fa5f5120b6bd2c6026a4f3702fd12",
+    "ecv4_ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+    "suite_lock_audit": "PASS_9_OF_9",
+    "ecv4_prior_art_gate": "PASS",
+    "github_actions": false,
+    "google_drive_relay": false,
+    "automatic_qwen3_4b": false,
+    "repair_in_place_after_results": false
+  }
+}
