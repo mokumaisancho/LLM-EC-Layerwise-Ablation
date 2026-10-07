@@ -136,5 +136,22 @@
     ],
     "product_pins_manifest_blob": "a87611cbc93638e262a07ec67afdcf8d936d740b",
     "research_pins_manifest_blob": "bdce80d5b6bfdc07a0d2ce799b099c0ed9ab22be"
+  },
+  "runtime_trust_boundary_successor": {
+    "issue": 55,
+    "status": "CODE_ACCEPTANCE_COMPLETE",
+    "terminal": "ISSUE55_CODE_ACCEPTANCE_COMPLETE",
+    "safe_entrypoint": "semantic_runtime.execution_v4.execute_authorized_ir",
+    "safe_cli": "tools/semantic_runtime_cli_v4.py",
+    "default_policy": "DENY_ALL_UNTIL_OPERATOR_INSTALL",
+    "real_nonmock_installed_bundle_tests": "13/13 PASS",
+    "frozen_v1_v2_v3_regression": "10/10 + 15/15 + 7/7 PASS",
+    "research_pins": "21/21 PASS",
+    "product_pins": "11/11 PASS",
+    "suite_official_gate": "PASS",
+    "ecv4_frontier": "NO_OPEN_ISSUE55_AUTHORITY_WORK",
+    "final_evidence_commit": "7886a1f1811823902e0fd4a96873405f0fc40649",
+    "mac_os_field_acceptance": "NOT_RUN_OPERATOR_OPT_IN_REQUIRED",
+    "legacy_v1_v2": "NOT_AUTHORIZATION_SAFE_FOR_EXTERNAL_CALLERS"
   }
 }
