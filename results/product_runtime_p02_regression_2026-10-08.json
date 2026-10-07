@@ -1,0 +1,19 @@
+{
+  "schema_version": "PRODUCT_RUNTIME_P02_REGRESSION_V1",
+  "issue": 54,
+  "ecv4_phase": "I54:REGRESSION",
+  "pass": true,
+  "terminal": "PRODUCT_RUNTIME_P02_REGRESSION_PASS",
+  "audited_dataset_digest": "972345a1b7f266c5015e82b24de3614c93874f7915df341281166b1fd448c261",
+  "gates": {
+    "task_count": 8,
+    "exact_behavior_match": "8/8",
+    "full_v32_public_task_compatibility": "8/8",
+    "deterministic_replays": 160,
+    "hidden_authority_rejection": "8/8",
+    "production_imports_research_predictor": false,
+    "post_result_scientific_tuning": false
+  },
+  "render_deploy": "dep-db3bj03bc2fs73d83990",
+  "next_ecv4_phase": "I54:EVIDENCE"
+}
