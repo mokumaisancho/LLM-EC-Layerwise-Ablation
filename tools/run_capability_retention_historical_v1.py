@@ -18,7 +18,7 @@ from semantic_runtime.constrained_v5 import classify_explicit
 from tests.test_semantic_runtime_v5_grammar import make_field_task,make_grammar
 
 LABELS=ROOT/"evaluation/capability_retention_historical_labels_v1.json"
-LABELS_BLOB_EXPECTED="__PIN_LABELS_BLOB_SHA__"
+LABELS_BLOB_EXPECTED="8e69fa806d3443bd0b3bafe41d649d56c48b5629"
 
 
 def main()->int:
