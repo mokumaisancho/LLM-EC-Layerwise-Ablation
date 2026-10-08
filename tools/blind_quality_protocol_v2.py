@@ -19,6 +19,7 @@ if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from evaluation.quality_blind_v2 import (
     ARMS, ARM_PROTOCOL, PUBLIC_PROTOCOL, SEAL_PROTOCOL,
     BlindProtocolError, make_precommit, validate_public, validate_arm, score, sha,
+    unique_object_pairs,
 )
 
 def read(path: Path):
@@ -26,7 +27,7 @@ def read(path: Path):
         raise BlindProtocolError("INPUT_NOT_FILE")
     if path.stat().st_size>16_000_000:
         raise BlindProtocolError("INPUT_TOO_LARGE")
-    return json.loads(path.read_text(encoding="utf-8"))
+    return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=unique_object_pairs)
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
