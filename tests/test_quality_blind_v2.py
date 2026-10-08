@@ -175,7 +175,15 @@ class BlindQualityEvaluatorTests(unittest.TestCase):
         self.assertNotIn("raw_output",json.dumps(p))
         self.assertEqual(set(a),set(ARMS))
 
-    def test_18_repeatability(self):
+    def test_18_missing_overlap_review_rejected(self):
+        def modify(p,g,a,s):p["public_provenance"]["training_overlap_reviewed"]=False
+        self.reject(modify,"PROVENANCE_NOT_REVIEWED_OR_HISTORICAL_OVERLAP")
+
+    def test_19_label_key_anywhere_in_public_rejected(self):
+        def modify(p,g,a,s):p["task_context"]["nested"]=[{"labels":{"B0001":"OPEN"}}]
+        self.reject(modify,"PUBLIC_CONTAINS_EVALUATION_KEY")
+
+    def test_20_repeatability(self):
         self.assertEqual(sha(self.run_score()),sha(self.run_score()))
 
 
