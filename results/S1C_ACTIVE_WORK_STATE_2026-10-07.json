@@ -180,5 +180,35 @@
     "verified_render_deploy": "dep-db3do1t9fdbs73dbk29g",
     "final_evidence_commit": "e7db57761f232a114f473c7320d59475c22430f9",
     "claim_limit": "Not general natural-language ambiguity detection, Japanese support, open-ended semantic-space invention, nor any real insurance claims system integration"
+  },
+  "capability_retention_gate_v1": {
+    "issue": 57,
+    "original_issue": 1,
+    "status": "DIAGNOSTIC_GATE_IMPLEMENTED_FULL_CLAIM_BLOCKED",
+    "terminal": "CAPABILITY_RETENTION_GATE_IMPLEMENTED_QUALITY_UNPROVEN",
+    "external_methodology": "self-consuming-llm-minimal-loop/research/registry.json (evaluation principles only)",
+    "frozen_benchmark": "REUSED_HISTORICAL_16_NOT_INDEPENDENT",
+    "v1_correct": "11/16",
+    "v5_correct": "14/16",
+    "legitimate_correct_v1": "6/6",
+    "legitimate_correct_v5": "4/6",
+    "v5_correct_to_abstain": [
+      "H07",
+      "H10"
+    ],
+    "v1_invalid_false_action": 5,
+    "v5_invalid_false_action": 0,
+    "critical_capability_regression": true,
+    "original_llm_matched_cache": "MISSING",
+    "v4_authorized_end_to_end_paired": "NOT_MEASURED",
+    "independent_holdout": "MISSING",
+    "full_non_degradation_claim": "PROHIBITED",
+    "gate_tests": "16/16 PASS",
+    "frozen_scientific_pins": "21/21 PASS",
+    "frozen_product_pins": "11/11 PASS",
+    "suite_gate": "PASS",
+    "ecv4_phase": "I57:EVIDENCE",
+    "evidence_commit": "9058058a85d9004ba0cd1d2d15c5bd6814eacccc",
+    "origin_issue_1": "OPEN"
   }
 }
