@@ -187,5 +187,21 @@ class BlindQualityEvaluatorTests(unittest.TestCase):
         self.assertEqual(sha(self.run_score()),sha(self.run_score()))
 
 
+    def test_21_duplicate_action_key_is_format_failure(self):
+        # JSON's default last-key-wins behavior must not invent a valid answer.
+        p,g,arms,seal=fixture()
+        arm=arms["LLM0"]
+        raw='{"action":"CLOSE","action":"OPEN"}'
+        row=arm["raw_rows"][0]
+        row["raw_output"]=raw
+        row["raw_sha256"]=hashlib.sha256(raw.encode()).hexdigest()
+        arm["raw_rows_sha256"]=sha(arm["raw_rows"])
+        seal["arm_raw_commitments"]["LLM0"]=sha(arm)
+        report=score(p,g,arms,seal,salt=SALT)
+        self.assertEqual(report["arm_metrics"]["LLM0"]["format_failures"],1)
+        self.assertEqual(report["arm_metrics"]["LLM0"]["correct"],5)
+        self.assertFalse(report["quality_preservation_certified"])
+
+
 if __name__=="__main__":
     unittest.main()
