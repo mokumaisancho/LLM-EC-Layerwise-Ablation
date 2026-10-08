@@ -1,0 +1,122 @@
+{
+  "protocol": "LLM_EC_RETROSPECTIVE_GOLD_LABELS_V1",
+  "origin": "REUSED_HISTORICAL",
+  "prior_visible_source": "tests/test_semantic_runtime_v5_grammar.py",
+  "not_heldout": true,
+  "not_independent": true,
+  "author_label_limit": "Retrospective human-interpreted labels; used solely to demonstrate measurement sensitivity, not estimate generalization or LLM performance.",
+  "labels": [
+    {
+      "case_id": "H01",
+      "gold_action": "OPEN",
+      "capability": "canonical_open",
+      "critical": true,
+      "tail": false
+    },
+    {
+      "case_id": "H02",
+      "gold_action": "CLOSE",
+      "capability": "canonical_close",
+      "critical": true,
+      "tail": false
+    },
+    {
+      "case_id": "H03",
+      "gold_action": "ABSTAIN",
+      "capability": "mixed_ambiguity_no_colon",
+      "critical": true,
+      "tail": true
+    },
+    {
+      "case_id": "H04",
+      "gold_action": "ABSTAIN",
+      "capability": "mixed_ambiguity_with_colon",
+      "critical": true,
+      "tail": true
+    },
+    {
+      "case_id": "H05",
+      "gold_action": "ABSTAIN",
+      "capability": "negation",
+      "critical": true,
+      "tail": true
+    },
+    {
+      "case_id": "H06",
+      "gold_action": "ABSTAIN",
+      "capability": "mixed_intent",
+      "critical": true,
+      "tail": true
+    },
+    {
+      "case_id": "H07",
+      "gold_action": "OPEN",
+      "capability": "unseen_japanese_expression",
+      "critical": true,
+      "tail": true
+    },
+    {
+      "case_id": "H08",
+      "gold_action": "ABSTAIN",
+      "capability": "question_not_action",
+      "critical": true,
+      "tail": true
+    },
+    {
+      "case_id": "H09",
+      "gold_action": "ABSTAIN",
+      "capability": "side_effect_injection",
+      "critical": true,
+      "tail": true
+    },
+    {
+      "case_id": "H10",
+      "gold_action": "OPEN",
+      "capability": "unseen_english_paraphrase",
+      "critical": true,
+      "tail": true
+    },
+    {
+      "case_id": "H11",
+      "gold_action": "OPEN",
+      "capability": "canonical_open",
+      "critical": true,
+      "tail": false
+    },
+    {
+      "case_id": "H12",
+      "gold_action": "CLOSE",
+      "capability": "canonical_close",
+      "critical": true,
+      "tail": false
+    },
+    {
+      "case_id": "H13",
+      "gold_action": "ABSTAIN",
+      "capability": "negation",
+      "critical": true,
+      "tail": true
+    },
+    {
+      "case_id": "H14",
+      "gold_action": "ABSTAIN",
+      "capability": "possibility_not_action",
+      "critical": true,
+      "tail": true
+    },
+    {
+      "case_id": "H15",
+      "gold_action": "ABSTAIN",
+      "capability": "mixed_ambiguity",
+      "critical": true,
+      "tail": true
+    },
+    {
+      "case_id": "H16",
+      "gold_action": "ABSTAIN",
+      "capability": "instruction_injection",
+      "critical": true,
+      "tail": true
+    }
+  ]
+}
