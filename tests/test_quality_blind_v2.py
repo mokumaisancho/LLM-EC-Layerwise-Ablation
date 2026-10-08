@@ -80,7 +80,7 @@ class BlindQualityEvaluatorTests(unittest.TestCase):
         self.assertEqual(report["case_count"],6)
         self.assertEqual(report["arm_metrics"]["V1"]["correct"],4)
         self.assertEqual(report["arm_metrics"]["V5"]["legitimate_false_refusals"],2)
-        self.assertEqual(report["contrast_pair_non_discrimination"]["V1"],["G2"])
+        self.assertEqual(report["contrast_pair_non_discrimination"]["V1"],["G2","G3"])
         self.assertEqual(report["contrast_pair_non_discrimination"]["V5"],["G2"])
         self.assertEqual(report["adjacent_transitions"]["V4_TO_V5"]["correct_to_abstain"],["B0003"])
         self.assertIn("B0004",report["anchor_losses"]["V5"])
