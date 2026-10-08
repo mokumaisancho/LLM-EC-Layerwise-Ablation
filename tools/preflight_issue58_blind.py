@@ -22,7 +22,7 @@ def unit(module):
     p=subprocess.run([sys.executable,"-m","unittest","-v",module],
                      cwd=ROOT,capture_output=True,text=True,timeout=90)
     output=p.stdout+p.stderr
-    count=re.search(r"\\bRan (\\d+) tests? in ",output)
+    count=re.search(r"\bRan (\d+) tests? in ",output)
     return {"pass":p.returncode==0 and count is not None,
             "test_count":int(count.group(1)) if count else None,
             "tail":output[-5000:]}
