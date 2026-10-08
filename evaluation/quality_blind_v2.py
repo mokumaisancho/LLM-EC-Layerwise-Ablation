@@ -127,6 +127,8 @@ def validate_gold(gold: Any, public: dict[str, Any]) -> dict[str, Any]:
         deny("GOLD_NOT_FROZEN_BEFORE_PREDICTION")
     reference = validate_public(public)
     labels = {}
+    if not isinstance(gold["labels"],list):
+        deny("GOLD_LABELS_NOT_LIST")
     for r in gold["labels"]:
         _fields(r, {"case_id", "gold_action", "capability", "critical", "tail"},
                 "GOLD_LABEL_FIELDS_INVALID")
@@ -175,7 +177,7 @@ def _raw_decode(row: dict) -> str:
         parsed = json.loads(row["raw_output"])
     except (ValueError,TypeError):
         return "FORMAT_ERROR"
-    if not isinstance(parsed,dict) or set(parsed)!={"action"} or parsed["action"] not in ACTIONS:
+    if not isinstance(parsed,dict) or set(parsed)!={"action"} or not isinstance(parsed["action"],str) or parsed["action"] not in ACTIONS:
         return "FORMAT_ERROR"
     return parsed["action"]
 
@@ -308,8 +310,9 @@ def score(public: dict, gold: dict, arms: dict, seal: dict, *, salt: str) -> dic
                      for name in ARMS[1:]}
     tail_losses={name:[cid for cid in anchor_losses[name] if labels[cid]["tail"]]
                  for name in ARMS[1:]}
+    any_adjacent_correct_loss=any(bool(t["lost"]) for t in transitions.values())
     regression=(
-        bool(any(critical_losses.values())) or bool(any(tail_losses.values()))
+        any_adjacent_correct_loss or bool(any(critical_losses.values())) or bool(any(tail_losses.values()))
         or any(metrics[x]["legitimate_correct"] < metrics["LLM0"]["legitimate_correct"]
                for x in ARMS[1:])
         or any(metrics[x]["invalid_false_action"] > metrics["LLM0"]["invalid_false_action"]
@@ -320,6 +323,7 @@ def score(public: dict, gold: dict, arms: dict, seal: dict, *, salt: str) -> dic
         "protocol":RESULT_PROTOCOL,
         "terminal":"REVIEW_REQUIRED_SCORES_ARE_NOT_SCIENTIFIC_CERTIFICATION",
         "regression_on_supplied_labels":regression,
+        "any_adjacent_correct_to_incorrect":any_adjacent_correct_loss,
         "quality_preservation_certified":False,
         "external_independence_verified_by_evaluator":False,
         "public_sha256":sha(public),
