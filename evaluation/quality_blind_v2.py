@@ -36,6 +36,16 @@ def deny(reason: str) -> None:
     raise BlindProtocolError(reason)
 
 
+def unique_object_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    """Reject ambiguous duplicate object members before evaluation or hashing."""
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            deny("DUPLICATE_JSON_KEY")
+        result[key] = value
+    return result
+
+
 def canon(v: Any) -> str:
     return json.dumps(v, sort_keys=True, ensure_ascii=False, separators=(",", ":"), allow_nan=False)
 
@@ -176,7 +186,7 @@ def _raw_decode(row: dict) -> str:
     if hashlib.sha256(row["raw_output"].encode()).hexdigest() != row["raw_sha256"]:
         deny("RAW_OUTPUT_TAMPERED")
     try:
-        parsed = json.loads(row["raw_output"])
+        parsed = json.loads(row["raw_output"], object_pairs_hook=unique_object_pairs)
     except (ValueError,TypeError):
         return "FORMAT_ERROR"
     if not isinstance(parsed,dict) or set(parsed)!={"action"} or not isinstance(parsed["action"],str) or parsed["action"] not in ACTIONS:
