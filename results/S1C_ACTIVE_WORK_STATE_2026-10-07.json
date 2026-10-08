@@ -228,5 +228,39 @@
     "audit_deploy": "dep-db407h49v7es738kh8kg",
     "next_gate": "independent human-labeled unseen corpus, isolated output cache, pinned original LLM0, real V4 execution, counterfactual tests prior to 4-arm comparison",
     "original_research_pins_modified": false
+  },
+  "scientific_blind_evaluation_v2": {
+    "issue": 58,
+    "parent_issue": 57,
+    "original_issue": 1,
+    "protocol": "CAPABILITY_BLIND_PUBLIC/GOLD/ARM/SEAL_V2",
+    "implementation": "PASS",
+    "validation": "40/40 PASS",
+    "suite": "PASS",
+    "ecv4": "PASS",
+    "provenance": "REQUIRES_EXTERNAL_INDEPENDENT_REVIEW",
+    "raw_original_llm0": "MISSING",
+    "matched_authorized_v4": "MISSING",
+    "fresh_independent_gold": "MISSING",
+    "matched_four_arm_result": "NOT_RUN",
+    "actual_replacement_quality": "NOT_ESTABLISHED",
+    "old_legacy_four_arm_certification": "DISABLED",
+    "historical_H07_retraction": "S01 positive match is lexical coincidental; not evidence Japanese semantics",
+    "static_answer_leak_code_path": "NO_DIRECT_GOLD_IN_EXERCISED_RUNTIME_BUT_HISTORICAL_SHARED_FIXTURE_PRESENT",
+    "newly_enforced_controls": [
+      "salted gold precommit",
+      "no-gold prediction/freeze",
+      "four raw output hash snapshots",
+      "precommitted action ontology",
+      "contrast pair failures",
+      "no legacy fixtures as independent",
+      "no scientific certification from self-attestation"
+    ],
+    "final_render_deploy": "dep-db40e9cs728c73fg0o4g",
+    "evidence_commit": "98bbb0625991e5459e44d95982b18eebef2ca5d5",
+    "terminal": "METHOD_IMPLEMENTED_REAL_FOUR_ARM_EVIDENCE_PENDING",
+    "issue58": "OPEN",
+    "issue57": "OPEN",
+    "issue1": "OPEN"
   }
 }
