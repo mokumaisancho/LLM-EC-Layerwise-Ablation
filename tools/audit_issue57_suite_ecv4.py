@@ -85,7 +85,7 @@ def ecv4_check():
           "primary_goal":"non-degradation measurement contract, without any model-quality sign-off","additional_goals":[],"issues":issues}
     completed=[]
     selected=[]
-    observation="https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/55"
+    observation="https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/57"
     for revision,expected in enumerate(identifiers):
         candidate=[x for x in issues if x["issue_id"] not in completed]
         ctx={"protocol":ec.PROTOCOL,
