@@ -85,5 +85,16 @@ class BlindQualityCLITests(unittest.TestCase):
         self.assertEqual(freeze.returncode,3)
         self.assertIn("PRECOMMIT_PUBLIC_IDENTITY_INVALID",freeze.stderr)
 
+
+    def test_05_duplicate_object_member_rejected_before_commitment(self):
+        public=self.root/"public.json"
+        original=public.read_text(encoding="utf-8")
+        self.assertIn('"protocol":',original)
+        public.write_text(original.replace('"protocol":','"protocol":"spoofed","protocol":',1),encoding="utf-8")
+        result=self.run_cmd("prepare","--public",str(public),
+                            "--gold",str(self.root/"private_gold.json"))
+        self.assertEqual(result.returncode,3)
+        self.assertIn("DUPLICATE_JSON_KEY",result.stderr)
+
 if __name__=="__main__":
     unittest.main()
