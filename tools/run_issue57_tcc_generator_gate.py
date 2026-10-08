@@ -55,17 +55,18 @@ def node(name, kind, *, depends=(), branches=None, failure=None, reads=(), write
 def make_spec():
     steps = ["method"] + [name for name, _ in REQUIREMENTS]
     entries = [node("run_method_preflight", "action", writes=["method_passed"],
-                    failure="blocked")]
+                    failure="blocked_method_preflight")]
     for i, name in enumerate(steps):
         next_target = steps[i + 1] if i + 1 < len(steps) else "ready_for_external_qualification"
         if next_target in steps:
             next_target += "_gate"
-        entries.append(node(name + "_gate", "gate", branches={"pass": next_target, "fail": "blocked"},
+        entries.append(node(name + "_gate", "gate", branches={"pass": next_target, "fail": "blocked_" + name},
                             depends=("run_method_preflight",) if i == 0 else (),
                             reads=("method_passed",) if i == 0 else ()))
     entries.extend([
         node("ready_for_external_qualification", "terminal", terminal="SUCCESS"),
-        node("blocked", "terminal", terminal="BLOCKED"),
+        node("blocked_method_preflight", "terminal", terminal="BLOCKED"),
+        *(node("blocked_" + name, "terminal", terminal="BLOCKED") for name in steps),
     ])
     spec = {
         "schema": "tcc.spec.v3",
