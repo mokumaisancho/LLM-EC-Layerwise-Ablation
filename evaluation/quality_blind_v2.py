@@ -121,7 +121,7 @@ def validate_gold(gold: Any, public: dict[str, Any]) -> dict[str, Any]:
     if not all(isinstance(prov[k], str) and prov[k] for k in
                ("independent_adjudicator", "adjudication_protocol")):
         deny("GOLD_ADJUDICATOR_MISSING")
-    if prov["independent_adjudicator"] == public["public_provenance"]["source_id"]:
+    if prov["independent_adjudicator"] in (public["public_provenance"]["source_id"],public["public_provenance"]["independent_author"]):
         deny("GOLD_SOURCE_NOT_SEPARATED")
     if prov["annotation_complete_before_predictions"] is not True:
         deny("GOLD_NOT_FROZEN_BEFORE_PREDICTION")
@@ -174,10 +174,9 @@ def _raw_decode(row: dict) -> str:
     try:
         parsed = json.loads(row["raw_output"])
     except (ValueError,TypeError):
-        deny("UNPARSEABLE_MODEL_OUTPUT")
-    _fields(parsed, {"action"}, "OUTPUT_ACTION_SCHEMA_INVALID")
-    if parsed["action"] not in ACTIONS:
-        deny("OUTPUT_ACTION_UNKNOWN")
+        return "FORMAT_ERROR"
+    if not isinstance(parsed,dict) or set(parsed)!={"action"} or parsed["action"] not in ACTIONS:
+        return "FORMAT_ERROR"
     return parsed["action"]
 
 
@@ -217,7 +216,7 @@ def validate_arm(arm: dict, public: dict) -> dict[str, str]:
 
 
 def _confusion(gold: dict, decisions: dict) -> dict:
-    out = {"correct":0,"legitimate_total":0,"legitimate_correct":0,
+    out = {"correct":0,"format_failures":0,"legitimate_total":0,"legitimate_correct":0,
            "legitimate_false_refusals":0,"wrong_action":0,
            "invalid_total":0,"invalid_false_action":0,"critical_loss_ids":[],
            "tail_total":0,"tail_correct":0}
@@ -226,6 +225,7 @@ def _confusion(gold: dict, decisions: dict) -> dict:
         answer,pred = g["gold_action"],decisions[cid]
         valid = pred==answer
         out["correct"]+=int(valid)
+        out["format_failures"]+=int(pred=="FORMAT_ERROR")
         by_capability[g["capability"]]["total"]+=1
         by_capability[g["capability"]]["correct"]+=int(valid)
         if g["tail"]:
@@ -233,7 +233,7 @@ def _confusion(gold: dict, decisions: dict) -> dict:
             out["tail_correct"]+=int(valid)
         if answer=="ABSTAIN":
             out["invalid_total"]+=1
-            out["invalid_false_action"]+=int(pred!="ABSTAIN")
+            out["invalid_false_action"]+=int(pred in ("OPEN","CLOSE"))
         else:
             out["legitimate_total"]+=1
             out["legitimate_correct"]+=int(valid)
