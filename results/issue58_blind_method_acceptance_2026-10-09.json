@@ -1,0 +1,102 @@
+{
+  "protocol": "ISSUE58_BLIND_EVALUATION_ACCEPTANCE_V1",
+  "audit_date_jst": "2026-10-09",
+  "issue": 58,
+  "original": 1,
+  "parent": 57,
+  "terminal": "METHOD_IMPLEMENTED_AND_LEGACY_QUALITY_CERTIFICATION_DISABLED_REAL_4ARM_UNTESTED",
+  "problem": "Previous historical runner imports its development fixture and maps known training pair IDs directly to OPEN/CLOSE; its retrospective gold was written after the fixture. V1 Japanese text tokenization discards Japanese meaning and outputs S01 for start,end,nonsense. The historical H07 OPEN match is not semantic understanding.",
+  "changed_protocol": {
+    "spec": "evaluation/BLIND_FOUR_ARM_METHOD_V2.md",
+    "evaluator": "evaluation/quality_blind_v2.py",
+    "pipeline": "tools/blind_quality_protocol_v2.py",
+    "phases": [
+      "independent input and gold creation",
+      "salted gold precommit",
+      "real predictor run with no gold accessible",
+      "raw LLM0/V1/V4/V5 output seal",
+      "gold release after independently timestamped seal",
+      "independent scorer after freeze",
+      "separate provenance review"
+    ],
+    "actions": [
+      "OPEN",
+      "CLOSE",
+      "ABSTAIN"
+    ],
+    "invariants": [
+      "gold and secret never passed to predictor/freeze CLI",
+      "full raw output SHA256 and case-level input SHA256",
+      "four arms mandatory",
+      "no old H01-H16 fixture IDs",
+      "no oracle/answer/label keys in public JSON",
+      "affirmative training overlap review",
+      "contrast gold pairs have different intent labels",
+      "all semantic counterfactual pair errors reported",
+      "invalid JSON raw counted as FORMAT_ERROR not omitted",
+      "no certificate based on self-reported source/ref/timestamp",
+      "legacy scientific success path disabled"
+    ],
+    "causal_claim": "NOT_AUTOMATICALLY_PROVEN",
+    "reproducibility": "versioned Git source blob and frozen commit required; manual external custody verification still mandatory"
+  },
+  "code_blobs": {
+    "evaluator": "132d1957ce1a3a69e992d42ae0e0b0a368ebeb36",
+    "cli": "2fe563e55a5eeb97e502d73518c3f3585ae20cac",
+    "tests_evaluator": "8f70c8a9c96125bf909decbc1cec1ad8880b7cc9",
+    "tests_cli": "b821dbff57b05655f8b6be305b2f17648557b649",
+    "retired_old_full_claim": "3a0b84754167fd9b176ba7278d58bfb8c826ea26",
+    "legacy_contract_tests": "332982a449e5ab0aae040cbaa1eb249c0a2b6931",
+    "preflight": "2b2056ce8d6f63e0e8ab4c072db9c64ca41eafda",
+    "independent_audit": "f6fd33063dc0f55171924caa5f7d200fdfe7881c",
+    "protocol_doc": "52764cb40df05b9303222674f7b3a26f3427ff06"
+  },
+  "verification": {
+    "final_render_deploy": "dep-db40e9cs728c73fg0o4g",
+    "source_commit": "667d12812edc3508358f414a3ad965c99f6be293",
+    "final_audit_protocol": "ISSUE58_FINAL_SUITECV4_AUDIT_V1",
+    "status": "PASS",
+    "tests": {
+      "blind_evaluator": "20/20 PASS",
+      "three_stage_subprocess_cli": "4/4 PASS",
+      "legacy_comparator": "16/16 PASS",
+      "total": 40
+    },
+    "frozen_research_21": "PASS",
+    "frozen_product_11": "PASS",
+    "production_imports_quality_scorer": false,
+    "old_test_fixture_imports_new_evaluator": false,
+    "suite": {
+      "ref": "31d0a0998c2fa5f5120b6bd2c6026a4f3702fd12",
+      "official_gate": "PASS",
+      "negative_mutation_rejected": true,
+      "production_ready": false
+    },
+    "ecv4": {
+      "ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+      "dynamic_issue_sequence": [
+        "I58:REPAIR",
+        "I58:REGRESSION",
+        "I58:EVIDENCE"
+      ],
+      "untrusted_state_rejected": true,
+      "digest_tamper_rejected": true
+    },
+    "terminal": "ISSUE58_METHOD_CODE_PASS_REAL_FOUR_ARM_PENDING"
+  },
+  "remains": {
+    "externally_owned_and_independently_gold_labeled_unseen_corpus": "NOT_AVAILABLE",
+    "provenance_verified_independently": "NOT_AVAILABLE",
+    "raw_original_llm0_matched_case_responses_and_artifact_pin": "NOT_AVAILABLE",
+    "v4_authorized_matched_full_execution": "NOT_AVAILABLE",
+    "actual_four_arm_comparison": "NOT_RUN",
+    "scientific_non_degradation": "NOT_ESTABLISHED",
+    "gap": "Hashes and self-attested provenance cannot alone prove correct time order, truly unseen data, or real model execution."
+  },
+  "issues": {
+    "method_implementation": "PASS",
+    "issue58": "OPEN_AS_UNRESOLVED_SCIENTIFIC_COMPARISON",
+    "issue57": "OPEN",
+    "issue1": "OPEN"
+  }
+}
