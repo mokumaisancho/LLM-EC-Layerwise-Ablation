@@ -43,14 +43,15 @@ def main():
     closing = slots[frozenset(("T03", "T04"))]
     slot_action = {opening: "OPEN", closing: "CLOSE"}
     upstream = {x["example_id"]: x for x in upstream1["heldout_assignments"]}
-    if not set(upstream) <= set(inputs):
-        raise AssertionError("UNKNOWN_UPSTREAM_CASE")
+    abstentions = {x["example_id"]: x["status"] for x in upstream1["abstentions"]}
+    if set(upstream) & set(abstentions) or (set(upstream) | set(abstentions)) != set(inputs):
+        raise AssertionError("V1_CLASSIFICATION_AND_ABSTENTION_COVERAGE_DRIFT")
     cases = []
     for cid in sorted(inputs):
         a = upstream.get(cid)
         bypass = (slot_action.get(a["slot_id"], "ABSTAIN")
                   if a is not None and a["polarity"] == "POS"
-                  and a["modality"] == "ASSERTED" else None if a is None else "ABSTAIN")
+                  and a["modality"] == "ASSERTED" else "ABSTAIN")
         item = decisions[cid]
         strict = slot_action.get(item["slot_id"], "ABSTAIN") if item["status"] == "EXPLICIT_MATCH" else "ABSTAIN"
         if strict != "ABSTAIN" and strict != bypass:
@@ -58,19 +59,20 @@ def main():
         cases.append({
             "case_id": cid,
             "raw_text": inputs[cid]["raw_text"],
-            "upstream_available": a is not None,
-            "bypass_grammar_only_counterfactual": bypass if a is not None else "UPSTREAM_MISSING",
+            "v1_assignment_present": a is not None,
+            "v1_resolution": "CLASSIFIED" if a is not None else abstentions[cid],
+            "bypass_grammar_only_counterfactual": bypass,
             "strict_v5": strict,
             "strict_status": item["status"],
-            "difference": a is not None and strict != bypass,
+            "difference": strict != bypass,
         })
     changed = [x["case_id"] for x in cases if x["difference"]]
-    missing = [x["case_id"] for x in cases if not x["upstream_available"]]
+    abstained = sorted(abstentions)
     h10 = next(x for x in cases if x["case_id"] == "H10")
     if h10["bypass_grammar_only_counterfactual"] != "OPEN" or h10["strict_v5"] != "ABSTAIN":
         raise AssertionError("EXPECTED_H10_GATE_WITNESS_CHANGED")
-    if set(missing) != {"H04", "H15"}:
-        raise AssertionError("UPSTREAM_COVERAGE_DRIFT")
+    if set(abstained) != {"H04", "H15"} or set(abstentions.values()) != {"AMBIGUOUS"}:
+        raise AssertionError("V1_ABSTENTION_DRIFT")
     # Japanese counterfactuals show H07 accidental OPEN caused by ASCII-only semantics.
     japanese = {}
     for label, example in {
@@ -105,8 +107,9 @@ def main():
         "grammar_sha256": digest(grammar),
         "v5_full_case_count": len(inputs),
         "v1_upstream_assignment_count": len(upstream),
-        "unmatched_missing_upstream_cases": missing,
-        "matched_case_count": len(upstream),
+        "v1_explicit_abstention_cases": abstained,
+        "v1_explicit_abstention_count": len(abstained),
+        "matched_case_count": len(inputs),
         "strict_grammar_rejected_upstream_actions": changed,
         "strict_grammar_rejected_upstream_action_count": len(changed),
         "H10_observation": "Development fixture: upstream OPEN; strict grammar ABSTAIN. This localizes a gate output difference, NOT external semantic correctness or four-arm non-degradation.",
