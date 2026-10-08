@@ -3,6 +3,7 @@
 from __future__ import annotations
 import hashlib
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -20,7 +21,11 @@ def pinned(name,count):
 def unit(module):
     p=subprocess.run([sys.executable,"-m","unittest","-v",module],
                      cwd=ROOT,capture_output=True,text=True,timeout=90)
-    return {"pass":p.returncode==0,"tail":(p.stdout+p.stderr)[-5000:]}
+    output=p.stdout+p.stderr
+    count=re.search(r"\\bRan (\\d+) tests? in ",output)
+    return {"pass":p.returncode==0 and count is not None,
+            "test_count":int(count.group(1)) if count else None,
+            "tail":output[-5000:]}
 
 def main():
     tests={
