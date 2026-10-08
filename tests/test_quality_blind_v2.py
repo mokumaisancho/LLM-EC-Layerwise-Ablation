@@ -203,5 +203,55 @@ class BlindQualityEvaluatorTests(unittest.TestCase):
         self.assertFalse(report["quality_preservation_certified"])
 
 
+    def test_22_original_anchor_worst_case_and_tail_retention(self):
+        report=self.run_score()
+        v5=report["retention_vs_llm0"]["V5"]
+        self.assertEqual(v5["all"]["anchor_correct"],6)
+        self.assertEqual(v5["all"]["retained"],4)
+        self.assertEqual(v5["all"]["lost"],2)
+        self.assertEqual(v5["worst_capability_retention_rate"],0.0)
+        self.assertIn("japanese_counterfactual",v5["worst_capability_ids"])
+        self.assertEqual(v5["tail"]["anchor_correct"],3)
+        self.assertEqual(v5["tail"]["retained"],1)
+        self.assertEqual(v5["tail"]["correct_to_abstain"],["B0003","B0004"])
+        self.assertEqual(v5["critical"]["lost"],2)
+        self.assertEqual(report["arm_metrics"]["V5"]["critical_loss_ids"],["B0003","B0004"])
+        self.assertFalse(report["non_degradation_diagnostic_only"])
+        self.assertFalse(report["monotonic_correctness_diagnostic_only"])
+        self.assertFalse(report["quality_preservation_certified"])
+
+    def test_23_zero_anchor_success_not_misread_as_perfect_retention(self):
+        p,g,arms,seal=fixture()
+        anchor=arms["LLM0"]
+        for row in anchor["raw_rows"][2:4]:
+            row["raw_output"]='{"action":"ABSTAIN"}'
+            row["raw_sha256"]=hashlib.sha256(row["raw_output"].encode()).hexdigest()
+        anchor["raw_rows_sha256"]=sha(anchor["raw_rows"])
+        seal["arm_raw_commitments"]["LLM0"]=sha(anchor)
+        report=score(p,g,arms,seal,salt=SALT)
+        group=report["retention_vs_llm0"]["V5"]["capabilities"]["japanese_counterfactual"]
+        self.assertEqual(group["anchor_correct"],0)
+        self.assertIsNone(group["retention_rate"])
+        self.assertFalse(group["estimable"])
+        self.assertIn("japanese_counterfactual",
+                      report["retention_vs_llm0"]["V5"]["unestimable_capabilities"])
+        self.assertFalse(report["quality_preservation_certified"])
+
+    def test_24_no_credit_for_fixes_to_llm0_failures_in_retention(self):
+        p,g,arms,seal=fixture()
+        anchor=arms["LLM0"]
+        row=anchor["raw_rows"][0]
+        row["raw_output"]='{"action":"CLOSE"}'
+        row["raw_sha256"]=hashlib.sha256(row["raw_output"].encode()).hexdigest()
+        anchor["raw_rows_sha256"]=sha(anchor["raw_rows"])
+        seal["arm_raw_commitments"]["LLM0"]=sha(anchor)
+        report=score(p,g,arms,seal,salt=SALT)
+        v5=report["retention_vs_llm0"]["V5"]
+        self.assertEqual(v5["all"]["anchor_correct"],5)
+        self.assertEqual(v5["all"]["retained"],3)
+        self.assertEqual(v5["all"]["lost"],2)
+        self.assertFalse(report["quality_preservation_certified"])
+
+
 if __name__=="__main__":
     unittest.main()
