@@ -1,0 +1,63 @@
+{
+  "protocol": "ISSUE57_QA_CONTAMINATION_AUDIT_V1",
+  "date": "2026-10-09",
+  "audit_script": "tools/audit_issue57_question_answer_contamination.py",
+  "audit_source_commit": "5b70305e0cb0b235c3633e518beb8781a806b230",
+  "render_deploy": "dep-db407h49v7es738kh8kg",
+  "render_status": "live",
+  "terminal": "FULL_FOUR_ARM_COMPARISON_BLOCKED_BY_CONFOUNDERS",
+  "H07": {
+    "original": "Claim K を審査開始する",
+    "opposite": "Claim K を審査終了する",
+    "ambiguous": "Claim K よくわからない",
+    "nonsense": "Claim K xyzqvblp",
+    "original_tokens": [
+      "<claim>"
+    ],
+    "all_v1_results": "S01 / POS / ASSERTED",
+    "all_v5_results": "ABSTAIN_UNSUPPORTED_OR_AMBIGUOUS",
+    "cause": "Japanese characters excluded by discovery TOKEN_RE, generic entity token remains and lexical similarity chooses same slot regardless of semantic polarity.",
+    "revised_claim": "The historical V1 H07 OPEN label-match is not evidence that V1 understood Japanese."
+  },
+  "H10": {
+    "original": "Please open review for Claim N",
+    "v1": "S01 / POS / ASSERTED",
+    "v5": "ABSTAIN_UNSUPPORTED_OR_AMBIGUOUS",
+    "cause": "V5 requires full-string match to operator-approved templates beginning with {entity}.",
+    "revised_claim": "A real coverage restriction on this benign English paraphrase, but historical evaluation is not independently blind."
+  },
+  "answer_key_audit": {
+    "production_predicate_uses_gold_file_on_exercised_path": false,
+    "blocked_dynamic_gold_file_reads": 0,
+    "product_static_imports_gold_or_scorer": false,
+    "visible_training_before_after_demos_present": true,
+    "v5_action_ids_operator_preapproved": [
+      "review_open",
+      "review_close"
+    ],
+    "v5_templates_explicitly_enumerated": true,
+    "historical_evaluator_imports_test_fixture": true,
+    "historical_evaluator_manual_mapping": {
+      "T01/T02": "OPEN",
+      "T03/T04": "CLOSE"
+    },
+    "historical_gold_file_loaded_after_predictions": true,
+    "note": "No direct reading of heldout gold by exercised production predictor found; fixed fixture/gold mapping is not a blind independent evaluation, so semantics-preservation claims must not rely on it."
+  },
+  "comparison": {
+    "user_condition_only_if_no_problems": false,
+    "four_arm_executed": false,
+    "blockers": [
+      "H07 false positive semantics",
+      "test fixtures and answer mapping coupled in retrospective harness",
+      "missing independent genuinely unseen benchmark",
+      "missing pinned actual original LLM0 matched outputs",
+      "missing matched V4 authorized policy execution"
+    ],
+    "successor_issue": 58,
+    "parent_issue": 57,
+    "origin_issue": 1,
+    "old_historical_metric_interpretation": "QUALIFIED_NOT_PROOF_OF_JAPANESE_CAPABILITY",
+    "frozen_research_and_product_files_changed": false
+  }
+}
