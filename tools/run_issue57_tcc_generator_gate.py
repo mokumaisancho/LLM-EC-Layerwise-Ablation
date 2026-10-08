@@ -157,7 +157,7 @@ def run(tcc_root: Path, source_commit: str):
     if str(tcc_root) not in sys.path:
         sys.path.insert(0, str(tcc_root))
     from tcc.recipe_builder_v3 import build_recipe_from_context, generate_tcc_from_context
-    from tcc.core_v3 import validate_spec, compile_spec
+    from tcc.core_v3 import validate_spec, compile_spec, normalize_spec
     from tcc.runtime_v3 import execute_graph, to_ecv4_evidence
     spec = make_spec()
     context = context_for(spec, source_commit)
@@ -170,7 +170,7 @@ def run(tcc_root: Path, source_commit: str):
     material = generated["spec"]
     if validate_spec(material):
         raise RuntimeError("TCC_SPEC_INVALID:" + str(validate_spec(material)))
-    if material != spec:
+    if material != normalize_spec(spec):
         raise RuntimeError("TCC_GENERATOR_SEMANTIC_DRIFT")
     graph = compile_spec(material)
     method_pass, method_evidence = audit()
