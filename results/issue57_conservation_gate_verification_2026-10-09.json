@@ -1,0 +1,98 @@
+{
+  "protocol": "ISSUE57_RETENTION_GATE_VERIFICATION_V2",
+  "date_jst": "2026-10-09",
+  "repository": "mokumaisancho/LLM-EC-Layerwise-Ablation",
+  "source_commit": "75ad946487f2acc58b55f97c82486c3ccf14a872",
+  "source_tree_blobs": {
+    "evaluation/BLIND_FOUR_ARM_METHOD_V2.md": "7a39dd0c6887d1639d6f4cdc6bf9e56b5d32e241",
+    "evaluation/quality_blind_v2.py": "ffaad202c504e56f0f46314e2b02392a9c1a5799",
+    "tests/test_quality_blind_v2.py": "2e2c5f19f340ee2a39cf095bfc98484062181b6f",
+    "tools/preflight_issue58_blind.py": "22bce62b90d40868a3527cacfcbee38b68f208cc",
+    "tools/audit_issue58_suite_ecv4.py": "15521bcfcbe12178dd10700ad5d27e960f756768"
+  },
+  "objective": "Freeze scientifically sound LLM0/V1/V4/V5 matched evaluation and reuse only conservation principles from self-consuming-llm-minimal-loop; code, issues and experiments remain in this repository.",
+  "method": {
+    "anchor": "LLM0 fixed; all later arms assessed against same original-correct subset",
+    "paired_generations": [
+      "LLM0",
+      "V1",
+      "V4",
+      "V5"
+    ],
+    "dimensions": [
+      "absolute_accuracy",
+      "critical_worst_case_retention",
+      "capability_worst_case_retention",
+      "tail_retention",
+      "correct_to_abstain",
+      "correct_to_wrong_action",
+      "correct_to_format_error",
+      "invalid_false_action",
+      "contrast_pair_non_discrimination",
+      "adjacent_correct_to_incorrect",
+      "cumulative_anchor_losses"
+    ],
+    "zero_denominator": "null; not retained and not zero",
+    "cause_attribution": "Separate controlled ablation with fixed and hash-verified upstream output; observational stage delta is not causal proof",
+    "gold": "separately adjudicated and salted-precommitted before genuine runs; released only after frozen output commitments",
+    "sample_reuse": "historical H01-H16 diagnostic only; independent evaluation requires genuinely unseen corpus"
+  },
+  "verification": {
+    "environment": "authorized Mac remote executor; clean shallow clone to /private/tmp/llm-ec-retention-20261009; no GitHub Actions",
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 tools/audit_issue58_suite_ecv4.py",
+    "status": "PASS",
+    "tests": {
+      "blind_evaluator": 24,
+      "three_stage_cli": 5,
+      "legacy_retention": 16,
+      "total": 45,
+      "pass": 45,
+      "fail": 0
+    },
+    "frozen_research_21": "PASS",
+    "frozen_product_11": "PASS",
+    "suite": {
+      "pinned_ref": "31d0a0998c2fa5f5120b6bd2c6026a4f3702fd12",
+      "audit": "PASS",
+      "production_ready": false
+    },
+    "ecv4": {
+      "pinned_ref": "f0f2d4a8634a130b710a326072438a51428929a3",
+      "audit": "PASS"
+    }
+  },
+  "requirements_next": {
+    "R1": {
+      "description": "Independent, genuinely unseen, independently adjudicated bilingual/task-context-matched corpus and gold, precommitted before any output inspection",
+      "state": "MISSING"
+    },
+    "R2": {
+      "description": "Original LLM0 model/weights/prompt/tokenizer/decoding/runtime hashes and actual outputs for exact R1 inputs",
+      "state": "MISSING"
+    },
+    "R3": {
+      "description": "Genuine V1, V4 authorized and V5 policy-matched execution with identical visible case IDs and shared task contract",
+      "state": "MISSING"
+    },
+    "R4": {
+      "description": "Independent order-of-access/provenance audit, private gold separation, output freeze before gold release",
+      "state": "MISSING"
+    },
+    "R5": {
+      "description": "Predeclared critical/tail non-inferiority margins, sampling uncertainty and controlled strict-gate subtraction",
+      "state": "MISSING"
+    }
+  },
+  "gates": {
+    "method_implementation": "PASS",
+    "scientific_four_arm_comparison": "NOT_RUN",
+    "causal_attribution": "NOT_ESTABLISHED",
+    "quality_preservation_certified": false,
+    "reason": "Self-attested integrity/commitments and synthetic tests cannot prove unseen data, model provenance, time ordering or domain-general non-degradation.",
+    "issue1": "OPEN",
+    "issue57": "OPEN",
+    "issue58": "OPEN"
+  },
+  "next_action": "Acquire independent R1 and baseline R2 without exposing private gold, freeze matched four-arm run manifests/policy inputs, then run R3/R4 with no model tuning from evaluation outputs; only afterward compute R5.",
+  "stop_state": "METHOD_VERIFIED_REAL_EVIDENCE_REQUIRED"
+}
