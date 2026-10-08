@@ -240,6 +240,8 @@ def _confusion(gold: dict, decisions: dict) -> dict:
         valid = pred==answer
         out["correct"]+=int(valid)
         out["format_failures"]+=int(pred=="FORMAT_ERROR")
+        if g["critical"] and not valid:
+            out["critical_loss_ids"].append(cid)
         by_capability[g["capability"]]["total"]+=1
         by_capability[g["capability"]]["correct"]+=int(valid)
         if g["tail"]:
@@ -256,6 +258,73 @@ def _confusion(gold: dict, decisions: dict) -> dict:
     out["accuracy"]=out["correct"]/len(gold)
     out["capabilities"]=dict(sorted(by_capability.items()))
     return out
+
+
+
+def _retention_stratum(labels: dict, anchor: dict, candidate: dict, ids: list[str]) -> dict:
+    """Measure retained baseline successes, rather than aggregate accuracy.
+
+    Zero baseline successes give a null rate, never 100% retention.
+    """
+    baseline_correct = sorted(cid for cid in ids
+                              if anchor[cid] == labels[cid]["gold_action"])
+    lost = sorted(cid for cid in baseline_correct
+                  if candidate[cid] != labels[cid]["gold_action"])
+    abstained = sorted(cid for cid in lost if candidate[cid] == "ABSTAIN"
+                       and labels[cid]["gold_action"] != "ABSTAIN")
+    wrong = sorted(cid for cid in lost if candidate[cid] in ("OPEN", "CLOSE")
+                   and candidate[cid] != labels[cid]["gold_action"])
+    format_errors = sorted(cid for cid in lost if candidate[cid] == "FORMAT_ERROR")
+    n = len(baseline_correct)
+    return {
+        "anchor_correct": n,
+        "retained": n - len(lost),
+        "lost": len(lost),
+        "retention_rate": (n - len(lost)) / n if n else None,
+        "lost_case_ids": lost,
+        "correct_to_abstain": abstained,
+        "correct_to_wrong_action": wrong,
+        "correct_to_format_error": format_errors,
+        "estimable": bool(n),
+    }
+
+
+def _baseline_retention(labels: dict, pred: dict) -> dict:
+    """Every arm is scored against the same frozen original LLM0 anchor."""
+    anchor = pred["LLM0"]
+    capability_ids = defaultdict(list)
+    for cid, row in labels.items():
+        capability_ids[row["capability"]].append(cid)
+    by_arm = {}
+    for name in ARMS[1:]:
+        candidate = pred[name]
+        capabilities = {
+            key: _retention_stratum(labels, anchor, candidate, ids)
+            for key, ids in sorted(capability_ids.items())
+        }
+        critical = _retention_stratum(
+            labels, anchor, candidate,
+            [cid for cid, row in labels.items() if row["critical"]]
+        )
+        tail = _retention_stratum(
+            labels, anchor, candidate,
+            [cid for cid, row in labels.items() if row["tail"]]
+        )
+        estimable = {key: v["retention_rate"] for key, v in capabilities.items()
+                     if v["estimable"]}
+        worst = min(estimable.values()) if estimable else None
+        by_arm[name] = {
+            "all": _retention_stratum(labels, anchor, candidate, list(labels)),
+            "capabilities": capabilities,
+            "worst_capability_retention_rate": worst,
+            "worst_capability_ids": sorted(key for key, v in estimable.items()
+                                           if v == worst),
+            "unestimable_capabilities": sorted(key for key, v in capabilities.items()
+                                               if not v["estimable"]),
+            "critical": critical,
+            "tail": tail,
+        }
+    return by_arm
 
 
 def score(public: dict, gold: dict, arms: dict, seal: dict, *, salt: str) -> dict:
@@ -291,6 +360,7 @@ def score(public: dict, gold: dict, arms: dict, seal: dict, *, salt: str) -> dic
             deny("ARM_SEAL_DRIFT")
         pred[name]=validate_arm(arms[name],public)
     metrics={name:_confusion(labels,pred[name]) for name in ARMS}
+    retention_vs_llm0=_baseline_retention(labels,pred)
     transitions={}
     losses=[]
     for predecessor,successor in zip(ARMS,ARMS[1:]):
@@ -342,6 +412,10 @@ def score(public: dict, gold: dict, arms: dict, seal: dict, *, salt: str) -> dic
         "gold_commitment":commitment["gold_commitment"],
         "case_count":len(cases),"arm_metrics":metrics,
         "adjacent_transitions":transitions,"anchor_losses":anchor_losses,
+        "retention_vs_llm0":retention_vs_llm0,
+        "non_degradation_diagnostic_only":not regression,
+        "monotonic_correctness_diagnostic_only":not any_adjacent_correct_loss,
+        "retention_definition":"Conditional on LLM0-correct cases; baseline errors excluded, zero baseline successes reported as null.",
         "critical_anchor_losses":critical_losses,"tail_anchor_losses":tail_losses,
         "contrast_pair_non_discrimination":pair_errors,
         "critical_note":"Independent source, genuine model inference, freeze chronology and no training overlap REQUIRE separate review; hashes/self-declarations alone cannot prove any of them."
