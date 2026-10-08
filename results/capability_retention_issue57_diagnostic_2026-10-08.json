@@ -1,0 +1,122 @@
+{
+  "protocol": "ISSUE57_CAPABILITY_RETENTION_V1_EVIDENCE",
+  "issue": 57,
+  "origin_issue": 1,
+  "date": "2026-10-08",
+  "terminal": "CAPABILITY_RETENTION_GATE_IMPLEMENTED_QUALITY_UNPROVEN",
+  "source": {
+    "borrowed_principle_repo": "mokumaisancho/self-consuming-llm-minimal-loop",
+    "registry_blob": "ed9c1442249d657bc5a825ccfec7049c607a81c6",
+    "borrowed": [
+      "generation-0 frozen reference",
+      "non-degradation",
+      "critical/worst-case retention",
+      "rare/tail capability preservation",
+      "evaluation-only heldout data",
+      "component ablation"
+    ],
+    "exclusions": [
+      "self-consuming training dynamics",
+      "synthetic-only updates",
+      "model collapse claim",
+      "direct use of unfinished self-consuming experimental results"
+    ]
+  },
+  "frozen_contract": "evaluation/CAPABILITY_RETENTION_CONTRACT_V1.md",
+  "verified_blobs": {
+    "evaluator": "e4e08d5cbab821bee005f63251b87c6d6c558f97",
+    "frozen_historical_labels": "8e69fa806d3443bd0b3bafe41d649d56c48b5629",
+    "historical_runner": "ea9c7fec40b038afc9831ac47563efbe38a0b253",
+    "unit_tests": "b54459a7165a4c5b2d9228da0b19eb519d28f886",
+    "preflight": "40c22a7014562261793d6aa215765d52277ccdde",
+    "suite_ecv4_audit": "a0124b51548074f5821e0c6180205f15dd6472e8",
+    "contract": "83bac90e85688ef967fa7092c89efa1710740259"
+  },
+  "tests": {
+    "unit": "16/16 PASS",
+    "historical_diagnostic": "PASS",
+    "missing_original_llm": "FAIL_CLOSED",
+    "independent_holdout_requirement": "FAIL_CLOSED",
+    "legacy_scientific_pins": "21/21 PASS",
+    "legacy_product_pins": "11/11 PASS"
+  },
+  "historical_diagnostic": {
+    "origin": "REUSED_HISTORICAL",
+    "case_count": 16,
+    "benchmark_sha256": "9a996ce403467056d7b178ae7f13b034905c4b75f6dd0b536d71dccdb2fd698b",
+    "evaluator_mode": "DIAGNOSTIC_ONLY",
+    "v1": {
+      "correct": 11,
+      "total": 16,
+      "accuracy": 0.6875,
+      "legitimate_correct": 6,
+      "legitimate_count": 6,
+      "legitimate_false_refusal": 0,
+      "invalid_false_action": 5,
+      "tail_correct": 7,
+      "tail_count": 12
+    },
+    "v5": {
+      "correct": 14,
+      "total": 16,
+      "accuracy": 0.875,
+      "legitimate_correct": 4,
+      "legitimate_count": 6,
+      "legitimate_false_refusal": 2,
+      "invalid_false_action": 0,
+      "tail_correct": 10,
+      "tail_count": 12
+    },
+    "controlled_gate_ablation": {
+      "same_upstream_v1_discover_and_ground": true,
+      "v5_can_only_reject_an_upstream_action": true,
+      "correct_to_abstain": [
+        "H07",
+        "H10"
+      ],
+      "correct_to_wrong": [],
+      "wrong_to_correct": [
+        "H03",
+        "H06",
+        "H08",
+        "H09",
+        "H16"
+      ],
+      "critical_loss": [
+        "H07",
+        "H10"
+      ],
+      "rare_tail_loss": [
+        "H07",
+        "H10"
+      ],
+      "cause_hypothesis": "V5 full-string template admission rejects valid Japanese imperative and unregistered English paraphrase although V1 yielded correct action",
+      "causal_scope": "Local filter-only input/decision comparison for these historical cases; no general causal claim about LLM vs EC"
+    },
+    "interpretation": "Aggregate accuracy gain of 18.75 percentage points hides legitimate-action retention decline from 6/6 to 4/6; rare/tail aggregate 7/12 to 10/12 also hides two particular tail losses."
+  },
+  "qualification": {
+    "render_deploy": "dep-db3q3sui0phs73b5q670",
+    "render_source_commit": "8da33bd31d515fc18eb64f07e66c51c07947d769",
+    "suite_pinned_source": "31d0a0998c2fa5f5120b6bd2c6026a4f3702fd12",
+    "suite_original_evaluator": "PASS",
+    "suite_manifest_tamper": "BLOCKED",
+    "ecv4_pinned_source": "f0f2d4a8634a130b710a326072438a51428929a3",
+    "ecv4_phase_trace": [
+      "I57:REPAIR",
+      "I57:REGRESSION",
+      "I57:EVIDENCE"
+    ],
+    "ecv4_tamper_rejected": true,
+    "final_gate": "ISSUE57_FINAL_SUITECV4_AUDIT_V1",
+    "final_terminal": "ISSUE57_GATE_IMPLEMENTED_QUALITY_UNPROVEN"
+  },
+  "not_measured": {
+    "original_llm_matching_outputs": true,
+    "v4_end_to_end_authorized_matching_execution": true,
+    "independent_unseen_capability_corpus": true,
+    "statistical_error_bounds": true,
+    "original_llm_vs_ec_non_degradation": true
+  },
+  "closure_scope": "The evaluator and first retrospective loss-detection test are completed. #57 full preservation certification remains OPEN until genuinely independent matched original LLM/V1/V4/V5 observations are available. #1 remains OPEN."
+}
