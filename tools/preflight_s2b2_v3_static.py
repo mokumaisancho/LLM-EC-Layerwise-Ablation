@@ -18,6 +18,11 @@ def fail(detail:str)->None:
 
 
 def main()->int:
+    if os.environ.get("ISSUE58_BLIND_PREFLIGHT") == "1":
+        q=subprocess.run([sys.executable,str(TOOLS/"preflight_issue58_blind.py")],cwd=ROOT,text=True,capture_output=True)
+        sys.stdout.write(q.stdout)
+        if q.stderr:sys.stderr.write(q.stderr)
+        return q.returncode
     if os.environ.get("ISSUE57_QA_LEAKAGE_AUDIT") == "1":
         q=subprocess.run([sys.executable,str(TOOLS/"audit_issue57_question_answer_contamination.py")],cwd=ROOT,text=True,capture_output=True)
         sys.stdout.write(q.stdout)
