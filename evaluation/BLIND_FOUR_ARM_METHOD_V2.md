@@ -153,6 +153,16 @@ sample selection, model training, retry decisions, or stopping rule.
 To change the model after viewing these results requires a *different*
 freshly frozen evaluation corpus and versioned protocol.
 
+## Migration: legacy full-quality path retired
+
+`tools/capability_retention_v1.py` remains readable for reproducible
+V1→V5 retrospective *diagnostics only*. Its non-diagnostic mode now fails
+with `LEGACY_FULL_QUALITY_UNVERIFIABLE_USE_BLIND_V2`, even when all four
+arms are self-attested and benchmark origin says `INDEPENDENT_UNSEEN`.
+The old CLI `tools/run_capability_retention_gate_v1.py` therefore also
+rejects unsafe full-certification requests. This prevents old scripted
+claim paths from bypassing the blinded protocol.
+
 ## Current status
 
 - 20 evaluator/negative tests + 4 process-level CLI tests; old 16
