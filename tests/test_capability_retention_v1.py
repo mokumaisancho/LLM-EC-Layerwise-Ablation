@@ -53,11 +53,9 @@ class CapabilityRetentionContractTests(unittest.TestCase):
     def test_03_reused_historical_cannot_claim_full_quality(self):
         self.rejects(sample(include_llm=True),"FULL_COMPARISON_REQUIRES_INDEPENDENT_BENCHMARK",diagnostic=False)
 
-    def test_04_full_independent_synthetic_regression_flag(self):
-        report=evaluate(sample(origin="INDEPENDENT_UNSEEN",include_llm=True),diagnostic=False)
-        self.assertEqual(report["terminal"],"CAPABILITY_RETENTION_REGRESSION")
-        self.assertEqual(report["anchor_transitions"]["V5"]["correct_to_abstain"],["B"])
-        self.assertFalse(report["causal_replacement_proven"])
+    def test_04_legacy_full_claim_disabled_even_if_four_arms_self_attested(self):
+        self.rejects(sample(origin="INDEPENDENT_UNSEEN",include_llm=True),
+            "LEGACY_FULL_QUALITY_UNVERIFIABLE_USE_BLIND_V2",diagnostic=False)
 
     def test_05_missing_case_rejected(self):
         x=sample()
