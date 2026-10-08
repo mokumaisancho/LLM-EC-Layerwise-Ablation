@@ -142,7 +142,7 @@ def main():
          "suite":suite,"ecv4":ecv4,
          "runtime":{"pass":run.get("pass"),"terminal":run.get("terminal"),
                     "gates":run.get("checks"),
-                    "test_counts":{"blind_evaluator":20,"cli_process":4,"legacy_retention":16}},
+                    "test_counts":{name:item.get("test_count") for name,item in run.get("tests",{}).items()}},
          "pass":passed,"terminal":"ISSUE58_METHOD_CODE_PASS_REAL_FOUR_ARM_PENDING" if passed else "ISSUE58_FINAL_FAIL_CLOSED",
          "claim_limit":"Blind procedure and pinned regressions only; no actual independent external gold, LLM0 cache, or end-to-end four-arm score provided."},indent=2))
     return 0 if passed else 3
