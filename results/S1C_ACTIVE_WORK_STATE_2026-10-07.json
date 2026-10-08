@@ -210,5 +210,23 @@
     "ecv4_phase": "I57:EVIDENCE",
     "evidence_commit": "9058058a85d9004ba0cd1d2d15c5bd6814eacccc",
     "origin_issue_1": "OPEN"
+  },
+  "capability_retention_leakage_audit": {
+    "date": "2026-10-09",
+    "issue": 58,
+    "parent_issue": 57,
+    "origin_issue": 1,
+    "terminal": "FULL_FOUR_ARM_COMPARISON_BLOCKED_BY_CONFOUNDERS",
+    "result_overturned": "H07 V1 historical correct OPEN cannot be interpreted as Japanese understanding. Japanese open/close/nonsense all map to S01 and original tokens only contain <claim>.",
+    "h10": "V5 exact-template grammar rejects a valid English paraphrase that V1 assigned to S01; historical evaluation cannot quantify independent generalization.",
+    "runtime_gold_file_read_exercised_path": "NOT_OBSERVED_0_ATTEMPTS",
+    "static_product_gold_imports": "NOT_FOUND_IN_INSPECTED_MODULES",
+    "benchmark_coupling": "Historical runner imports test fixture including predeclared grammar and hand maps T01/T02 to OPEN and T03/T04 to CLOSE; gold labels loaded after predictor; not blind independent test.",
+    "comparison_user_condition": "NOT_MET_DO_NOT_EXECUTE_4_ARM",
+    "original_llm_four_arm": "NOT_RUN",
+    "evidence_commit": "bd7fb10449d09949415c1acfe393f08006fb8dfd",
+    "audit_deploy": "dep-db407h49v7es738kh8kg",
+    "next_gate": "independent human-labeled unseen corpus, isolated output cache, pinned original LLM0, real V4 execution, counterfactual tests prior to 4-arm comparison",
+    "original_research_pins_modified": false
   }
 }
