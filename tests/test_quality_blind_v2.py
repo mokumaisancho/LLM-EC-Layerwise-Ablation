@@ -98,7 +98,7 @@ class BlindQualityEvaluatorTests(unittest.TestCase):
         self.reject(modify,"FOUR_GENUINE_ARMS_REQUIRED")
 
     def test_05_wrong_precommitted_gold_rejected(self):
-        def modify(p,g,a,s):g["labels"][0]["gold_action"]="CLOSE"
+        def modify(p,g,a,s):g["labels"][5]["gold_action"]="CLOSE"
         self.reject(modify,"GOLD_REVEAL_PRECOMMIT_MISMATCH")
 
     def test_06_fake_raw_hash_rejected(self):
