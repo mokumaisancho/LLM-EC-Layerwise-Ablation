@@ -168,6 +168,11 @@ def evaluate(bundle: dict[str, Any], *, diagnostic: bool = False) -> dict[str, A
         if not diagnostic and "LLM0" not in bundle["arms"]:
             fail("BLOCKED_REFERENCE_LLM0_OUTPUT_MISSING")
         fail("ARM_SET_INCOMPLETE_OR_UNEXPECTED")
+    if not diagnostic:
+        # Historical arm metadata is self-attested, and this comparator cannot
+        # independently verify source blindness, real LLM0 inference, or the
+        # gold/output time-order chain. Never issue scientific certification.
+        fail("LEGACY_FULL_QUALITY_UNVERIFIABLE_USE_BLIND_V2")
     arms = {name:_check_arm(name,bundle["arms"][name],benchmark_hash,cases) for name in required}
     summary = {name:_metrics(rows,cases) for name,rows in arms.items()}
     sequence = list(required)
