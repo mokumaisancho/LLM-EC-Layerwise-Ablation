@@ -48,7 +48,7 @@ class CapabilityRetentionContractTests(unittest.TestCase):
         self.assertEqual(report["arm_metrics"]["V5"]["invalid_false_action"],0)
 
     def test_02_missing_llm0_fails_closed(self):
-        self.rejects(sample(),"BLOCKED_REFERENCE_LLM0_OUTPUT_MISSING",diagnostic=False)
+        self.rejects(sample(origin="INDEPENDENT_UNSEEN"),"BLOCKED_REFERENCE_LLM0_OUTPUT_MISSING",diagnostic=False)
 
     def test_03_reused_historical_cannot_claim_full_quality(self):
         self.rejects(sample(include_llm=True),"FULL_COMPARISON_REQUIRES_INDEPENDENT_BENCHMARK",diagnostic=False)
