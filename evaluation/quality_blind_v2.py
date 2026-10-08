@@ -22,7 +22,9 @@ RESULT_PROTOCOL = "CAPABILITY_BLIND_RESULT_V2"
 HEX64 = re.compile(r"[0-9a-f]{64}\Z")
 HISTORICAL_ID = re.compile(r"H(?:0[1-9]|1[0-6])\Z")
 SUSPICIOUS = frozenset(("gold", "gold_action", "oracle", "answer", "answer_key",
-                        "expected", "expected_action", "scorer", "correct_label"))
+                        "expected", "expected_action", "scorer", "correct_label",
+                        "label", "labels", "reference_answer", "reference_label",
+                        "ground_truth", "solution", "target_action"))
 MAX_CASES = 10000
 
 
@@ -77,8 +79,8 @@ def validate_public(public: Any) -> dict[str, Any]:
         deny("SOURCE_ID_INVALID")
     if not isinstance(provenance["independent_author"], str) or not provenance["independent_author"]:
         deny("PUBLIC_AUTHOR_MISSING")
-    if type(provenance["training_overlap_reviewed"]) is not bool or type(provenance["prior_v5_fixture_excluded"]) is not bool:
-        deny("PROVENANCE_FLAGS_INVALID")
+    if provenance["training_overlap_reviewed"] is not True or provenance["prior_v5_fixture_excluded"] is not True:
+        deny("PROVENANCE_NOT_REVIEWED_OR_HISTORICAL_OVERLAP")
     _check_no_gold(public["task_context"])
     cases = public["cases"]
     if not isinstance(cases, list) or not 4 <= len(cases) <= MAX_CASES:
