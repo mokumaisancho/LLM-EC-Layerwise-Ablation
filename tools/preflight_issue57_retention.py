@@ -29,8 +29,10 @@ def main():
         record={
             "terminal":data["terminal"],
             "benchmark_sha256":data["report"]["input_benchmark_sha256"],
-            "V1_metrics":data["report"]["arm_metrics"]["V1"],
-            "V5_metrics":data["report"]["arm_metrics"]["V5"],
+            "V1_metrics":{k:data["report"]["arm_metrics"]["V1"][k] for k in
+                ("correct","accuracy","legitimate_count","legitimate_correct","legitimate_false_refusal","invalid_false_action","tail_count","tail_correct")},
+            "V5_metrics":{k:data["report"]["arm_metrics"]["V5"][k] for k in
+                ("correct","accuracy","legitimate_count","legitimate_correct","legitimate_false_refusal","invalid_false_action","tail_count","tail_correct")},
             "lost_wrong":t["correct_to_wrong"],
             "lost_abstain":t["correct_to_abstain"],
             "gained":t["incorrect_to_correct"],
