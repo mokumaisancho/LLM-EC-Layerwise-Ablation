@@ -155,7 +155,7 @@ freshly frozen evaluation corpus and versioned protocol.
 
 ## Current status
 
-- 18 evaluator/negative tests + 4 process-level CLI tests; old 16
+- 20 evaluator/negative tests + 4 process-level CLI tests; old 16
   retrospective comparator tests retained (not reused as independent data).
 - 21 research and 11 product pinned artifacts preserved.
 - Gold/salt not provided to freeze process in direct subprocess test.
