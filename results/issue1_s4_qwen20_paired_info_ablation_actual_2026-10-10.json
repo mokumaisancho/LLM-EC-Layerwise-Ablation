@@ -1,0 +1,445 @@
+{
+  "protocol": "ISSUE1_S4_QWEN20_ACTUAL_PAIRED_OUTPUT_SEAL_20261010_V1",
+  "source_commit_at_run": "88a83f67fba82fb77ec18b471da055ebfe76386d",
+  "pre_registered_contract_blob_sha1": "74e04a3b7598a0327bf45aea8ed2bfd6be5d0fa5",
+  "source_verification": {
+    "model_actual_calls": 20,
+    "paired_frozen_cases": 10,
+    "original_A_E_completed": false,
+    "independent_gold": false
+  },
+  "result": {
+    "EC_native_closure_compared": false,
+    "actual_inferences": 20,
+    "case_results": [
+      {
+        "case_id": "M001",
+        "enriched": {
+          "arm": "ENRICHED",
+          "input_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "55283796e2d4df9519a52917b3db9e48709b345752017d766681491ea1e11dc6",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "e760cdcd37aead7326c6b3558668331b56d70edd81842fa3143a976477df9e77"
+        },
+        "enriched_correct": true,
+        "full_public_features_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+        "public_deterministic_correct": true,
+        "reference": "CLOSE",
+        "shared_fixed_structural_signature_sha256": "314090f1ad29ae242bdb1b759c2d11192380a4ba28a8fabf73b36698b393662d",
+        "structure": {
+          "arm": "STRUCTURAL",
+          "input_sha256": "fbb7ec5d9a7e56f0165c9b92bc7d28107a2066f593b81a492a16e5c4cb98fffb",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "e3cadca0c1b2076f810a4b7e22c2e65f4ed9e5794868fe66601d2360a34efad5",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "d9ac1b8b5b57b2780a5a0aa5f052c6f5a31a37d76fc5595c39ab67bf2dd6ceb6",
+          "stdout_sha256": "e82a7d55a45fd1386e3377191a9de9e458e79507e879f7e056663e79e58160c4"
+        },
+        "structure_correct": true
+      },
+      {
+        "case_id": "M002",
+        "enriched": {
+          "arm": "ENRICHED",
+          "input_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "55283796e2d4df9519a52917b3db9e48709b345752017d766681491ea1e11dc6",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "d1899123684e6d113966283c3aa68f524e4f945ffee981fc333950b6d96fe8eb"
+        },
+        "enriched_correct": true,
+        "full_public_features_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+        "public_deterministic_correct": true,
+        "reference": "CLOSE",
+        "shared_fixed_structural_signature_sha256": "314090f1ad29ae242bdb1b759c2d11192380a4ba28a8fabf73b36698b393662d",
+        "structure": {
+          "arm": "STRUCTURAL",
+          "input_sha256": "fbb7ec5d9a7e56f0165c9b92bc7d28107a2066f593b81a492a16e5c4cb98fffb",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "e3cadca0c1b2076f810a4b7e22c2e65f4ed9e5794868fe66601d2360a34efad5",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "9c24a95f44c634b0941a68543662a1dc9f764b12b1cbc867f32e9f303d1dfc43"
+        },
+        "structure_correct": true
+      },
+      {
+        "case_id": "M003",
+        "enriched": {
+          "arm": "ENRICHED",
+          "input_sha256": "3196cd085dd9596f7893df372c2409c193453625ea56b94923115b0d6bd1548b",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "efb7c1766d4b4f9e6e6c24379e925ca62cd43be290118f4f94043e32c915559b",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "91c75a7da463dd3784d5a217c8fc43c34634b680bb126830ce898f57619e718a"
+        },
+        "enriched_correct": false,
+        "full_public_features_sha256": "3196cd085dd9596f7893df372c2409c193453625ea56b94923115b0d6bd1548b",
+        "public_deterministic_correct": true,
+        "reference": "CONTINUE",
+        "shared_fixed_structural_signature_sha256": "79e9871632ba721d3994c824b00b8d131da25863e84583b3d1ed02bc180df4b6",
+        "structure": {
+          "arm": "STRUCTURAL",
+          "input_sha256": "50def6e35391c0cabe8233c66504bae994706c91219ab0a74012a6cc844051d9",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "6ea6613dd29060a53a72e90b8bbebe77ad1d14952a78ad9abe757690d732270e",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "324464addb9773a1c744eb50405756db4fd5a863c15ce895c121bc652e14df85",
+          "stdout_sha256": "4cd9ea70090e78da26b8076a62bbb8fac7c85553c5cd7ea28a78454db0c468d9"
+        },
+        "structure_correct": false
+      },
+      {
+        "case_id": "M004",
+        "enriched": {
+          "arm": "ENRICHED",
+          "input_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "55283796e2d4df9519a52917b3db9e48709b345752017d766681491ea1e11dc6",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "e1dd0cf238a3cd83e73b7f82f28f0b501b77e04808b5de1a1b55ea417ff47762"
+        },
+        "enriched_correct": true,
+        "full_public_features_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+        "public_deterministic_correct": true,
+        "reference": "CLOSE",
+        "shared_fixed_structural_signature_sha256": "314090f1ad29ae242bdb1b759c2d11192380a4ba28a8fabf73b36698b393662d",
+        "structure": {
+          "arm": "STRUCTURAL",
+          "input_sha256": "fbb7ec5d9a7e56f0165c9b92bc7d28107a2066f593b81a492a16e5c4cb98fffb",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "e3cadca0c1b2076f810a4b7e22c2e65f4ed9e5794868fe66601d2360a34efad5",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "5391d0f5ae5f908e938f2419c72a96f7114dc0acc25d22220484fede98499eab"
+        },
+        "structure_correct": true
+      },
+      {
+        "case_id": "M005",
+        "enriched": {
+          "arm": "ENRICHED",
+          "input_sha256": "7ff3c39b6e8f5fdf3e3acd6f01c005969e69755174b0eb0c3e37923faf0f3d9f",
+          "model_oracle_access": false,
+          "parsed_prediction": "CONTINUE",
+          "prompt_sha256": "13792112cdfc76ca340612b28870e36a629e27770d4a8d9887d5f830a9ed9d13",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CONTINUE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "ff16f1ed9f10fa0586baba610dc6d899d6c7c807df2337d6bec3af63d3279d1c"
+        },
+        "enriched_correct": false,
+        "full_public_features_sha256": "7ff3c39b6e8f5fdf3e3acd6f01c005969e69755174b0eb0c3e37923faf0f3d9f",
+        "public_deterministic_correct": true,
+        "reference": "CLOSE",
+        "shared_fixed_structural_signature_sha256": "a33cc776b879e0465613a788fa92c91762246321a34b8a5b5acb16ed6f8093ac",
+        "structure": {
+          "arm": "STRUCTURAL",
+          "input_sha256": "eab281c4aaf8dbaf7bbc4ed8e9af85137e57c760620d03f0adbb811ca4e4738b",
+          "model_oracle_access": false,
+          "parsed_prediction": "CONTINUE",
+          "prompt_sha256": "2037486dcc6320ad52e18ea36b53fc71a44851d56270166669c2151b9c7542f2",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CONTINUE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "dc8a3e346d13509cb4e64dbb367b0a388c37f3637bf2daebcdbf8ed2bf450472"
+        },
+        "structure_correct": false
+      },
+      {
+        "case_id": "M006",
+        "enriched": {
+          "arm": "ENRICHED",
+          "input_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "55283796e2d4df9519a52917b3db9e48709b345752017d766681491ea1e11dc6",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "18acd7d3b364df951e404e60972131bc8939d016007bcca60df03ec001f3be58"
+        },
+        "enriched_correct": true,
+        "full_public_features_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+        "public_deterministic_correct": true,
+        "reference": "CLOSE",
+        "shared_fixed_structural_signature_sha256": "314090f1ad29ae242bdb1b759c2d11192380a4ba28a8fabf73b36698b393662d",
+        "structure": {
+          "arm": "STRUCTURAL",
+          "input_sha256": "fbb7ec5d9a7e56f0165c9b92bc7d28107a2066f593b81a492a16e5c4cb98fffb",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "e3cadca0c1b2076f810a4b7e22c2e65f4ed9e5794868fe66601d2360a34efad5",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "cfb5ae90da91a5d5f8fc3ac2fc9d0752b902c35c5c102c508561a03b6623d706"
+        },
+        "structure_correct": true
+      },
+      {
+        "case_id": "M007",
+        "enriched": {
+          "arm": "ENRICHED",
+          "input_sha256": "656b2eb0c2d96af30fda77f1b2c420f36701c05d26f3ad345cca20f965fbc7f7",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "f05d721c2a71fffe4cd40d7c81835ace5bb897829c7fd589e9fb21cd3b353f0b",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "3ac8be75d5f5765f66fafa44bfd8cfe718db859c8859884cbf80d81154d2be38"
+        },
+        "enriched_correct": false,
+        "full_public_features_sha256": "656b2eb0c2d96af30fda77f1b2c420f36701c05d26f3ad345cca20f965fbc7f7",
+        "public_deterministic_correct": true,
+        "reference": "CONTINUE",
+        "shared_fixed_structural_signature_sha256": "314090f1ad29ae242bdb1b759c2d11192380a4ba28a8fabf73b36698b393662d",
+        "structure": {
+          "arm": "STRUCTURAL",
+          "input_sha256": "fbb7ec5d9a7e56f0165c9b92bc7d28107a2066f593b81a492a16e5c4cb98fffb",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "e3cadca0c1b2076f810a4b7e22c2e65f4ed9e5794868fe66601d2360a34efad5",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "7f1bc1602554cde4d35c495c09ad9d3596ed48b61819ce0a99e8916d03c9634b"
+        },
+        "structure_correct": false
+      },
+      {
+        "case_id": "M008",
+        "enriched": {
+          "arm": "ENRICHED",
+          "input_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "55283796e2d4df9519a52917b3db9e48709b345752017d766681491ea1e11dc6",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "49e02a80a9d52cd39afba6ece795b57073f026255f75e3797b6e5d381130420b"
+        },
+        "enriched_correct": true,
+        "full_public_features_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+        "public_deterministic_correct": true,
+        "reference": "CLOSE",
+        "shared_fixed_structural_signature_sha256": "314090f1ad29ae242bdb1b759c2d11192380a4ba28a8fabf73b36698b393662d",
+        "structure": {
+          "arm": "STRUCTURAL",
+          "input_sha256": "fbb7ec5d9a7e56f0165c9b92bc7d28107a2066f593b81a492a16e5c4cb98fffb",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "e3cadca0c1b2076f810a4b7e22c2e65f4ed9e5794868fe66601d2360a34efad5",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "bace2dbb24c470449e92e6e13255490d61f9179de6880ee0783650dae74d91a0"
+        },
+        "structure_correct": true
+      },
+      {
+        "case_id": "M009",
+        "enriched": {
+          "arm": "ENRICHED",
+          "input_sha256": "78fb6a97cbc8753a6cc717dbb3faffcf7a7a8ecee81f5102c351f9405512502e",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "2cb59556e2acfd2ba6bc13499a202221087d52adfea1e744873ac3b9afd5dad9",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "673e4a76d445c4eaf11581311d4d0467cd33bb98a4cf3fd1aeaf1a496c75a2e6"
+        },
+        "enriched_correct": true,
+        "full_public_features_sha256": "78fb6a97cbc8753a6cc717dbb3faffcf7a7a8ecee81f5102c351f9405512502e",
+        "public_deterministic_correct": true,
+        "reference": "CLOSE",
+        "shared_fixed_structural_signature_sha256": "79e9871632ba721d3994c824b00b8d131da25863e84583b3d1ed02bc180df4b6",
+        "structure": {
+          "arm": "STRUCTURAL",
+          "input_sha256": "50def6e35391c0cabe8233c66504bae994706c91219ab0a74012a6cc844051d9",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "6ea6613dd29060a53a72e90b8bbebe77ad1d14952a78ad9abe757690d732270e",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "35dfaa5fe4fc50fd7603d8548d3f1ca82ca7664e40be872abc570e06a3673ffb"
+        },
+        "structure_correct": true
+      },
+      {
+        "case_id": "M010",
+        "enriched": {
+          "arm": "ENRICHED",
+          "input_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "55283796e2d4df9519a52917b3db9e48709b345752017d766681491ea1e11dc6",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "ad86eeacebcf9c4485bcbc5324463cd8e1118b1d58daec3d3d2ffd8321667714"
+        },
+        "enriched_correct": true,
+        "full_public_features_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+        "public_deterministic_correct": true,
+        "reference": "CLOSE",
+        "shared_fixed_structural_signature_sha256": "314090f1ad29ae242bdb1b759c2d11192380a4ba28a8fabf73b36698b393662d",
+        "structure": {
+          "arm": "STRUCTURAL",
+          "input_sha256": "fbb7ec5d9a7e56f0165c9b92bc7d28107a2066f593b81a492a16e5c4cb98fffb",
+          "model_oracle_access": false,
+          "parsed_prediction": "CLOSE",
+          "prompt_sha256": "e3cadca0c1b2076f810a4b7e22c2e65f4ed9e5794868fe66601d2360a34efad5",
+          "protocol": "S4_PUBLIC_ARM_RAW_INFERENCE_V1",
+          "raw_response": "CLOSE",
+          "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+          "stdout_sha256": "5c663a9acb20a9c2a07db1750d5f331f9f3d1169eef72ba6fff44149f44684f6"
+        },
+        "structure_correct": true
+      }
+    ],
+    "cases": 10,
+    "decision": "NO_MATERIAL_INFORMATION_EFFECT_DETECTED_ON_EXPOSED_FIXTURES",
+    "enhanced_deterministic_typed_policy_correct": 10,
+    "enriched_correct": 7,
+    "independent_holdout": false,
+    "materiality_threshold": 0.2,
+    "no_input_gold_leak": true,
+    "original_phase1_oracle_A_to_E_completed": false,
+    "paired_enriched_minus_structural_accuracy": 0,
+    "preregistered_contract_git_blob_sha1": "74e04a3b7598a0327bf45aea8ed2bfd6be5d0fa5",
+    "preregistration": {
+      "comparison": {
+        "arm1": "STRUCTURAL_S3_PUBLIC",
+        "arm2": "ENRICHED_S3_PLUS_PUBLIC_S2_RELATIONS_REQUIRED_CONDITION",
+        "comparator": "deterministic public typed-feature policy on enriched inputs; diagnostic only",
+        "deny_gold_fields": [
+          "oracle",
+          "hidden",
+          "gold",
+          "reference_label",
+          "fixture_id",
+          "case_id",
+          "selected_operation",
+          "category"
+        ],
+        "fixed_non_target_features": [
+          "selected_count",
+          "rejected_count",
+          "reframe_required",
+          "trigger_residual_types"
+        ],
+        "materiality_abs": 0.2,
+        "negative_controls": [
+          "mask relation_groups on M003",
+          "mask required_condition_state on M007"
+        ],
+        "primary": "paired correctness difference enriched - structural across ten exposed cases",
+        "result_causal_claim_limit": "causal effect of including public semantic features on these exposed cases only, not replacement of LLM/EC native S4 or generalized performance",
+        "same_case_order": true,
+        "same_model_and_decode": true,
+        "score": "correct exact CLOSE or CONTINUE on the frozen source reference, format-error counts incorrect",
+        "treatment_features": [
+          "relation_groups",
+          "required_condition_state"
+        ]
+      },
+      "dataset": {
+        "cases": [
+          "M001",
+          "M002",
+          "M003",
+          "M004",
+          "M005",
+          "M006",
+          "M007",
+          "M008",
+          "M009",
+          "M010"
+        ],
+        "existing_sanitizer_source_blob": "d7aa6d74946064ffb6b9896c8c9ae94573f11630",
+        "generation": "phase1_v2",
+        "generator_blobs": {
+          "tools/generate_phase1_measurement_v2.py": "26bf4a57451769f0a1b617687abe216f773faa8f",
+          "tools/generate_phase1_measurement_v2_canonical.py": "e354884f20a534a3be429ffdcff5f72135472436"
+        },
+        "source_generated_from": [
+          "tools/generate_phase1_measurement_v2.py",
+          "tools/generate_phase1_measurement_v2_canonical.py"
+        ]
+      },
+      "exit_decision_rule": {
+        "if_enriched_gain_gte_0p2": "STRUCTURED_UPSTREAM_INFORMATION_MATERIAL_ON_EXPOSED_FIXTURES_ONLY",
+        "if_fail": "FAIL_CLOSED",
+        "if_gain_below_0p2": "NO_MATERIAL_INFORMATION_EFFECT_DETECTED_ON_EXPOSED_FIXTURES"
+      },
+      "model": {
+        "engine": "llama.cpp Mac llama-cli",
+        "engine_binary_sha256": "023712cb97abef06769a544fe034a92cc57921bd60fd9fcd2c02e325839641c2",
+        "gbnf": "root ::= \"CLOSE\" | \"CONTINUE\"",
+        "gpu_layers": 0,
+        "id": "Qwen2.5-1.5B-Instruct-Q4_K_M",
+        "max_new_tokens": 20,
+        "no_prompt_tuning_after_observing_outputs": true,
+        "seed": 0,
+        "sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+        "size_bytes": 986048768,
+        "temperature": 0,
+        "threads": 4
+      },
+      "not_independent_heldout": true,
+      "not_oracle_substitution": true,
+      "not_original_frozen_phase1": true,
+      "origin_issue": 1,
+      "protocol": "ISSUE1_S4_PUBLIC_INFORMATION_CONTROLLED_MODEL_ABLATION_V1",
+      "purpose": "Test whether reintroducing public upstream S2 relation and unresolved-required-condition signals (rather than changing model or oracle gold) causally affects a fixed real Qwen closure decision over paired frozen Phase1 10-case cases.",
+      "research_commit_at_freeze": "877432512dd1c3221a7565b671a909dc0baf1cdf",
+      "research_status_not_permitted": [
+        "ORIGINAL_ISSUE_1_CLOSED",
+        "INDEPENDENT_MODEL_RETENTION_CERTIFIED",
+        "FULL_S1_S4_A_TO_E_CAUSAL_LOCALIZATION_COMPLETE"
+      ],
+      "status": "FROZEN_BEFORE_MODEL_RUN",
+      "stop_conditions": [
+        "source_model_runtime_contract_SHA_mismatch",
+        "gold_visible_to_predictor",
+        "case_order_coverage_not_ten",
+        "non_case_matched_prompt",
+        "decode_unfixed",
+        "unseen_custody_claim",
+        "original_phase1_legacy_protocol_changed"
+      ]
+    },
+    "protocol": "ISSUE1_S4_PUBLIC_INFORMATION_CONTROLLED_MODEL_ABLATION_V1",
+    "same_model_same_prompt_same_decode_except_public_treatment": true,
+    "scientific_original_issue_completed": false,
+    "source_pins_proven": true,
+    "structural_correct": 7,
+    "terminal": "S4_TWO_ARM_ACTUAL_QWEN_PUBLIC_INFORMATION_INTERVENTION_COMPLETE"
+  }
+}
