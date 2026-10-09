@@ -1,0 +1,1042 @@
+{
+  "schema": "ISSUE1_S3_ORACLE_INTERVENTION_ACTUAL_20261010",
+  "source_commit": "ddad9299671e650d5a66ab0088b2af5ce48856ce",
+  "unit_tests_passed": 12,
+  "scope": "native one-action function ONLY; historical exposed 17, not original full S1-S4 A-E",
+  "evidence": {
+    "actual_native_EC_outputs_used": true,
+    "cached_real_LLM_outputs_used": true,
+    "case_count": 17,
+    "cases": [
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I20:repair"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N201",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I20:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I20:repair"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I20:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I20:repair"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I20:repair"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "89a24dc778e18e2ebc90911892a728b2c6fdbaa736cd48f8228fa6db4e41d373"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N202",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I02:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I02:repair"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I02:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I02:repair"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "6e7832c17aca5f93bd57685ff90c788e0b66ced105920b5a6cf87f89c4869f38"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N203",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I01:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I01:repair"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I01:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I01:repair"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "ead661b4acdc062f83465722c8b6bc3bb058275d68eb810f75be19a7cfa09d6a"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:regression"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N204",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I01:regression"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I01:regression"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:regression"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "8710709162456dd5b31e36a5cf04609e5ea81f64f44f0cfd6b575e3d759e6d4c"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:evidence"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N205",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I01:evidence",
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I01:evidence"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I01:evidence",
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I01:evidence"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:evidence"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "d15bdd55eb5b77a2b92c9e4745b723bbb91936e032d64d97706b73cdaae5a9e4"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N206",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I01:regression",
+            "work:I01:repair",
+            "work:I02:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I02:repair"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I01:regression",
+            "work:I01:repair",
+            "work:I02:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I02:repair"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "82ac3e7063bd54b72055706abd5e5695077bd27f8284f4a630de3d21f6f8f6dc"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "ALL_REMAINING_WORK_BLOCKED",
+          "status": "BLOCKED",
+          "work_id": "NONE"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N207",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "BLOCKED",
+          "next_completed_work_ids": [
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "BLOCKED",
+          "next_completed_work_ids": [
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "ALL_REMAINING_WORK_BLOCKED",
+          "status": "BLOCKED",
+          "work_id": "NONE"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "a32118d59a847b5fb13d715101085a60b4ae11abd1d35ed444909c18e638aa26"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N208",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:evidence",
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "NO_OPEN_WORK",
+          "next_completed_work_ids": [
+            "work:I01:evidence",
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "NO_OPEN_WORK",
+          "next_completed_work_ids": [
+            "work:I01:evidence",
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:evidence",
+            "work:I01:regression",
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "22aa03b7d6f66b037200db648ac77d3d7e564eda6ed38d71a11fd8d268e4b2db"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I04:repair"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N209",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I04:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I04:repair"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I04:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I04:repair"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I04:repair"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "1062f2e49e2131abf3b3973e5c24bcfca5b24a3e87ad07fe02874ed4fa3a5b42"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:prior-art"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N210",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I01:prior-art"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I01:prior-art"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I01:prior-art"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I01:prior-art"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:prior-art"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "1e90eec16ee0c65c59faa2f77f4acae1df794142724533de3755d80b2e7bbdf5"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N211",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:prior-art"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I01:prior-art",
+            "work:I01:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I01:repair"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I01:prior-art",
+            "work:I01:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I01:repair"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:prior-art"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "180c91eedf74ac792fe45e23cff351aa8f65803823b593b719e4e660dccac5c0"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "PRIOR_ART_GATE_PASS_REQUIRED",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N212",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:prior-art"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "FAIL_CLOSED",
+          "next_completed_work_ids": [
+            "work:I01:prior-art"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "FAIL_CLOSED",
+          "next_completed_work_ids": [
+            "work:I01:prior-art"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:prior-art"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "PRIOR_ART_GATE_PASS_REQUIRED",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "8b64585b84ffe05b254765f2c68262e6e767c70dae6bfcd59056eae6027722a0"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "EC_PLAN_AUTHORITY_INVALID",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N213",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "FAIL_CLOSED",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "FAIL_CLOSED",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "EC_PLAN_AUTHORITY_INVALID",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "d8bedc34b9724c220514bea5cce27fb849b6ce3e0f3ad7ddac31fbb9dfaf97cb"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "WORK_CANNOT_BE_BOTH_COMPLETE_AND_BLOCKED",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N214",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "FAIL_CLOSED",
+          "next_completed_work_ids": [
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "FAIL_CLOSED",
+          "next_completed_work_ids": [
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [
+            "work:I01:repair"
+          ],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "WORK_CANNOT_BE_BOTH_COMPLETE_AND_BLOCKED",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "4f2ecdfd9fb98679efac505085c80434228950252343ed486992972a2dfa87e8"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N215",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I02:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I02:repair"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I02:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I02:repair"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "215541a7485445712042deed9f573594ecaf9aa4f9d4ceab140049481d64ce76"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N216",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I02:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I02:repair"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "ACTION_APPLIED",
+          "next_completed_work_ids": [
+            "work:I02:repair"
+          ],
+          "reason": "ONE_VISIBLE_ACTION_APPLIED",
+          "work_id": "work:I02:repair"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": false,
+        "llm_downstream_success": false,
+        "model_exact_reason_correct": false,
+        "model_intervention_gain": 1,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "18df477db7d636f0ec6ca755588481a2bd7390c4a608101a89cfaec731fe2f5b"
+      },
+      {
+        "actual_pinned_native_ec_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "cached_actual_qwen_s3": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "case_id": "N217",
+        "downstream_llm_A": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_native_EC_B": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_oracle_intervention_E": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "downstream_placebo": {
+          "event": "REFRAME",
+          "next_completed_work_ids": [],
+          "reason": "NO_WORK_MUTATION",
+          "work_id": "NONE"
+        },
+        "ec_S3_selection_correct": true,
+        "ec_downstream_success": true,
+        "llm_S3_selection_correct": true,
+        "llm_downstream_success": true,
+        "model_exact_reason_correct": true,
+        "model_intervention_gain": 0,
+        "oracle_intervention_downstream_success": true,
+        "oracle_s3_only": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "oracle_visible_only_in_evaluation_and_E": true,
+        "same_upstream_across_arms": true,
+        "upstream_sha256": "b153ee6eab403340a449f21d90eb6e9963ec8242abdab08ad1737261757a81f0"
+      }
+    ],
+    "causal_gain_oracle_S3_minus_llm_S3": 0.9411764705882353,
+    "conclusion_limit": "S3 Oracle substitution causally fixes errors for this pre-exposed structured native next-action selection, not original unrestricted S1-S4 A-E semantics.",
+    "counterfactual_target": "S3 singleton next-action only",
+    "downstream": "pure fixed visible governed work transition, NOT full generic EC-native S4",
+    "ec_downstream_success": 17,
+    "ec_pinned_source_commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+    "ec_report_git_blob_sha1": "e1dc56646c3635ea79c2efebb92c3cbbbafe4e6b",
+    "ec_selection_correct": 17,
+    "fixture_git_blob_sha1": "12faa9a4cacf0c91694d25f1ccce45e093d95e44",
+    "independent_gold": false,
+    "llm_downstream_success": 1,
+    "llm_report_git_blob_sha1": "2d28b0f955be0980c9867d61a0974bcfb80df14b",
+    "llm_selection_correct": 1,
+    "material_causal_gain_on_exposed_structured_next_action": true,
+    "materiality_threshold": 0.2,
+    "new_LLM_inferences": 0,
+    "oracle_S3_only_downstream_success": 17,
+    "original_generic_s3_multiselection_tested": false,
+    "original_issue_closure_authorized": false,
+    "original_s1_s4_A_to_E_completed": false,
+    "placebo_effect": 0,
+    "preregistered_contract_blob_sha1": "bc322fc3c9e4890b5c8907267ad26d16619ced93",
+    "protocol": "ISSUE1_NEXT_ACTION_S3_ORACLE_CAUSAL_INTERVENTION_V1",
+    "same_visible_upstream_for_all_arms": true,
+    "terminal": "VERSIONED_S3_ORACLE_CAUSAL_GAIN_MEASURED_SCOPED"
+  }
+}
