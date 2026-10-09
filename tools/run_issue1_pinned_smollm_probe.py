@@ -66,13 +66,15 @@ def verify_model(path: Path) -> dict:
             "scientific_original_llm0_designation": "NOT_ESTABLISHED"}
 
 
-def run_one(llama: Path, model: Path, prompt: str, *, seconds: int):
+def run_one(llama: Path, model: Path, prompt: str, *, seconds: int, grammar: str | None = None):
     command = [
         str(llama), "--single-turn", "--no-warmup", "-m", str(model),
         "-p", prompt, "-n", "16", "-t", "4", "-ngl", "0",
         "--temp", "0", "--seed", "0", "-no-cnv", "--simple-io",
         "--no-display-prompt", "--log-disable",
     ]
+    if grammar is not None:
+        command += ["--grammar", grammar]
     proc = subprocess.run(command, capture_output=True, text=True,
                           timeout=seconds, stdin=subprocess.DEVNULL)
     raw_stdout = proc.stdout
