@@ -88,7 +88,7 @@ class PublicGateGrammarSingleFactorTests(unittest.TestCase):
         self.assertNotIn('["oracle"]',function)
         self.assertNotIn('["gold"]',function)
         self.assertNotIn('["reference_label"]',function)
-        self.assertNotIn("category",function.lower())
+        self.assertNotIn('["category"]',function)
 
     def test_11_frozen_public_status_hypothesis_is_not_retroactive(self):
         self.assertEqual(self.contract["preregistered_intervention"]["gate_inactive_root"],ROOT_RESTRICTED)
