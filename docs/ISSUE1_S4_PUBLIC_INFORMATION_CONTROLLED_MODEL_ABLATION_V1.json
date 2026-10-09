@@ -1,0 +1,102 @@
+{
+  "protocol": "ISSUE1_S4_PUBLIC_INFORMATION_CONTROLLED_MODEL_ABLATION_V1",
+  "status": "FROZEN_BEFORE_MODEL_RUN",
+  "origin_issue": 1,
+  "research_commit_at_freeze": "877432512dd1c3221a7565b671a909dc0baf1cdf",
+  "purpose": "Test whether reintroducing public upstream S2 relation and unresolved-required-condition signals (rather than changing model or oracle gold) causally affects a fixed real Qwen closure decision over paired frozen Phase1 10-case cases.",
+  "not_original_frozen_phase1": true,
+  "not_oracle_substitution": true,
+  "not_independent_heldout": true,
+  "dataset": {
+    "generation": "phase1_v2",
+    "cases": [
+      "M001",
+      "M002",
+      "M003",
+      "M004",
+      "M005",
+      "M006",
+      "M007",
+      "M008",
+      "M009",
+      "M010"
+    ],
+    "source_generated_from": [
+      "tools/generate_phase1_measurement_v2.py",
+      "tools/generate_phase1_measurement_v2_canonical.py"
+    ],
+    "generator_blobs": {
+      "tools/generate_phase1_measurement_v2.py": "26bf4a57451769f0a1b617687abe216f773faa8f",
+      "tools/generate_phase1_measurement_v2_canonical.py": "e354884f20a534a3be429ffdcff5f72135472436"
+    },
+    "existing_sanitizer_source_blob": "d7aa6d74946064ffb6b9896c8c9ae94573f11630"
+  },
+  "model": {
+    "id": "Qwen2.5-1.5B-Instruct-Q4_K_M",
+    "sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+    "size_bytes": 986048768,
+    "engine": "llama.cpp Mac llama-cli",
+    "engine_binary_sha256": "023712cb97abef06769a544fe034a92cc57921bd60fd9fcd2c02e325839641c2",
+    "temperature": 0,
+    "seed": 0,
+    "threads": 4,
+    "gpu_layers": 0,
+    "max_new_tokens": 20,
+    "gbnf": "root ::= \"CLOSE\" | \"CONTINUE\"",
+    "no_prompt_tuning_after_observing_outputs": true
+  },
+  "comparison": {
+    "arm1": "STRUCTURAL_S3_PUBLIC",
+    "arm2": "ENRICHED_S3_PLUS_PUBLIC_S2_RELATIONS_REQUIRED_CONDITION",
+    "same_model_and_decode": true,
+    "same_case_order": true,
+    "fixed_non_target_features": [
+      "selected_count",
+      "rejected_count",
+      "reframe_required",
+      "trigger_residual_types"
+    ],
+    "treatment_features": [
+      "relation_groups",
+      "required_condition_state"
+    ],
+    "deny_gold_fields": [
+      "oracle",
+      "hidden",
+      "gold",
+      "reference_label",
+      "fixture_id",
+      "case_id",
+      "selected_operation",
+      "category"
+    ],
+    "score": "correct exact CLOSE or CONTINUE on the frozen source reference, format-error counts incorrect",
+    "primary": "paired correctness difference enriched - structural across ten exposed cases",
+    "comparator": "deterministic public typed-feature policy on enriched inputs; diagnostic only",
+    "negative_controls": [
+      "mask relation_groups on M003",
+      "mask required_condition_state on M007"
+    ],
+    "materiality_abs": 0.2,
+    "result_causal_claim_limit": "causal effect of including public semantic features on these exposed cases only, not replacement of LLM/EC native S4 or generalized performance"
+  },
+  "stop_conditions": [
+    "source_model_runtime_contract_SHA_mismatch",
+    "gold_visible_to_predictor",
+    "case_order_coverage_not_ten",
+    "non_case_matched_prompt",
+    "decode_unfixed",
+    "unseen_custody_claim",
+    "original_phase1_legacy_protocol_changed"
+  ],
+  "exit_decision_rule": {
+    "if_enriched_gain_gte_0p2": "STRUCTURED_UPSTREAM_INFORMATION_MATERIAL_ON_EXPOSED_FIXTURES_ONLY",
+    "if_gain_below_0p2": "NO_MATERIAL_INFORMATION_EFFECT_DETECTED_ON_EXPOSED_FIXTURES",
+    "if_fail": "FAIL_CLOSED"
+  },
+  "research_status_not_permitted": [
+    "ORIGINAL_ISSUE_1_CLOSED",
+    "INDEPENDENT_MODEL_RETENTION_CERTIFIED",
+    "FULL_S1_S4_A_TO_E_CAUSAL_LOCALIZATION_COMPLETE"
+  ]
+}
