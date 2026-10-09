@@ -43,14 +43,16 @@ def spec() -> dict:
             "No timestamp schedule, no task registration, no user UI activity, no automatic issue closure",
             "Emit one explicit terminal, ECv4-handoff evidence, source hash and genuinely unresolved requirements",
         ],
-        "state_keys": ["origin_verified","original_terminal","scoped_verified","external_structural_ready"],
+        "state_keys": ["origin_verified","original_terminal","methods_passed","scoped_verified","external_structural_ready"],
         "immutable_state_keys": [],
         "entry_nodes":["verify_frozen_origin"],
         "nodes":[
             node("verify_frozen_origin","action", writes=("origin_verified","original_terminal"),
                  failure="blocked_integrity"),
-            node("route_original_scope","gate", depends=("verify_frozen_origin",),
-                 reads=("origin_verified","original_terminal"),
+            node("audit_suite_ecv4","action",depends=("verify_frozen_origin",),
+                 writes=("methods_passed",),failure="blocked_integrity"),
+            node("route_original_scope","gate", depends=("audit_suite_ecv4",),
+                 reads=("origin_verified","original_terminal","methods_passed"),
                  branches={"frozen_incompatible":"verify_scoped_successor",
                            "unanticipated_change":"blocked_integrity"}),
             node("verify_scoped_successor","action",writes=("scoped_verified",),
@@ -126,10 +128,24 @@ def execute(tcc_root: Path, *, study_dir: Path | None = None,
                 "writes":{"origin_verified":True,"original_terminal":result["frozen_tcc_replay"]["terminal"]},
                 "evidence":["original:real-TCC-replay:rc4:EC_NATIVE_SCOPE_INCOMPATIBLE",
                             "original:finite-bound:8/10:not-EC-accuracy"]}
+    def methods_handler(_node,_state,_attempt):
+        try:
+            p=subprocess.run([sys.executable,str(ROOT/"tools/audit_issue58_suite_ecv4.py")],
+                             cwd=ROOT,text=True,capture_output=True,timeout=90)
+            report=json.loads(p.stdout)
+            if p.returncode or report.get("pass") is not True or report.get("suite",{}).get("pass") is not True or report.get("ecv4",{}).get("pass") is not True:
+                raise ValueError("SUITE_ECV4_METHOD_GATE_FAILED")
+            observed["method_audit"]={"pass":True,"suite_pass":True,"ecv4_pass":True,
+                                       "terminal":report.get("terminal")}
+        except Exception as ex:
+            observed["error"]="METHOD:"+type(ex).__name__+":"+str(ex)[:160]
+            return {"status":"failure","evidence":["method-audit:FAIL:"+type(ex).__name__]}
+        return {"status":"success","writes":{"methods_passed":True},
+                "evidence":["method-audit:SUITE_PASS:ECV4_PASS"]}
     def scope_gate(_node,state,_attempt):
         observed["branch_decision"]="incompatible" if state.get("original_terminal")=="EC_NATIVE_SCOPE_INCOMPATIBLE" else "unexpected"
         return {"outcome":"frozen_incompatible" if observed["branch_decision"]=="incompatible"
-                and state.get("origin_verified") is True else "unanticipated_change",
+                and state.get("origin_verified") is True and state.get("methods_passed") is True else "unanticipated_change",
                 "evidence":["route:"+observed["branch_decision"]]}
     def successor_handler(_node,_state,_attempt):
         try:
@@ -171,6 +187,7 @@ def execute(tcc_root: Path, *, study_dir: Path | None = None,
                 "evidence":["scientific-independence:NOT_PROVEN","original-five-arm:NOT_RUN"]}
     result=execute_graph(graph,{
         "verify_frozen_origin":origin_handler,
+        "audit_suite_ecv4":methods_handler,
         "route_original_scope":scope_gate,
         "verify_scoped_successor":successor_handler,
         "check_blind_study":study_handler,
@@ -200,6 +217,7 @@ def execute(tcc_root: Path, *, study_dir: Path | None = None,
         "starts_background_process":False,
         "actual_frozen_tcc_replay":observed.get("origin",{}).get("frozen_tcc_replay"),
         "scoped_successor":observed.get("successor"),
+        "method_audit":observed.get("method_audit"),
         "external_public_study_readiness":observed.get("study_readiness"),
         "next_execution_branch":"NEED_VERSIONED_COMPARABLE_EC_NATIVE_S1_S4_CONTRACT_AND_INDEPENDENT_REVIEW",
         "tcc_terminal_id":terminal,
