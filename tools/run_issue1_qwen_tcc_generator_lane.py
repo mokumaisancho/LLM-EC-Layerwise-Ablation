@@ -86,8 +86,9 @@ def execute(tcc_root: Path, source_commit: str, model_dir: Path, llama_cli: Path
         try:
             for name,info in MODELS.items():
                 verify(model_dir/info["filename"],info)
-            if not llama_cli.is_file() or llama_cli.is_symlink():
-                raise ValueError("LLAMA_BINARY_INVALID")
+            actual_binary = llama_cli.resolve(strict=True)
+            if not actual_binary.is_file() or hashlib.sha256(actual_binary.read_bytes()).hexdigest() != "023712cb97abef06769a544fe034a92cc57921bd60fd9fcd2c02e325839641c2":
+                raise ValueError("LLAMA_BINARY_SHA256_PIN_MISMATCH")
         except (OSError,ValueError) as exc:
             observed["pin_failure"]=type(exc).__name__+":"+str(exc)
             return {"status":"failure","evidence":["pin:FAIL:"+type(exc).__name__]}
