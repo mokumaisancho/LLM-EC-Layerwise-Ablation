@@ -53,7 +53,11 @@ def modules(src:Path):
     sys.path[:0]=[str(src/"v4"),str(src)]
     importlib.invalidate_caches()
     for name in ("ec_next_action_authority","ec_dynamic_frontier"):
-        if name in sys.modules:raise ValueError("IMPORTED_MODULE_CACHE_NOT_CLEAN:"+name)
+        if name in sys.modules:
+            existing=Path(sys.modules[name].__file__).resolve(strict=True)
+            expected=(src/"v4"/(name+".py")).resolve(strict=True)
+            if existing!=expected or blob_sha(existing.read_bytes())!=PINS[name+".py"]:
+                raise ValueError("IMPORTED_MODULE_CACHE_NOT_PINNED:"+name)
     ena=importlib.import_module("ec_next_action_authority")
     df=importlib.import_module("ec_dynamic_frontier")
     for name,module in (("ec_next_action_authority.py",ena),("ec_dynamic_frontier.py",df)):
