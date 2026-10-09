@@ -140,7 +140,8 @@ def audit_report(envelope:dict)->dict:
 
 
 def run(tcc_root:Path,ec_root:Path|None,*,study_dir:Path|None=None,
-        report:Path=REPORT)->dict:
+        report:Path=REPORT,model:Path|None=None,llama:Path|None=None,
+        seconds:int=65)->dict:
     import subprocess
     if not tcc_root.is_dir():raise ValueError("PINNED_TCC_MISSING")
     head=subprocess.run(["git","-C",str(tcc_root),"rev-parse","HEAD"],
@@ -187,8 +188,39 @@ def run(tcc_root:Path,ec_root:Path|None,*,study_dir:Path|None=None,
                 "evidence":["upstream:real-frozen-TCC-native-EC17-Qwen17-SUITE-ECv4-VERIFIED"]}
     def paired(_node,_state,_attempt):
         try:
-            if not report.is_file() or report.is_symlink():
-                raise ValueError("REAL_20_MODEL_RAW_REPORT_MISSING")
+            if report.is_symlink():
+                raise ValueError("MODEL_REPORT_SYMLINK_PROHIBITED")
+            if not report.is_file():
+                if model is None or llama is None:
+                    raise ValueError("REAL_20_MODEL_RAW_REPORT_MISSING_AND_NO_PINNED_EXECUTION_ASSETS")
+                from tools.run_issue1_s4_public_info_paired_llm_v1 import run as run_live_model
+                import os,tempfile
+                raw=run_live_model(model,llama,seconds)
+                envelope_live={
+                    "protocol":"ISSUE1_S4_QWEN20_ACTUAL_PAIRED_OUTPUT_SEAL_20261010_V1",
+                    "source_commit_at_run":head,
+                    "pre_registered_contract_blob_sha1":raw["preregistered_contract_git_blob_sha1"],
+                    "source_verification":{
+                      "model_actual_calls":20,"paired_frozen_cases":10,
+                      "original_A_E_completed":False,"independent_gold":False,
+                    },
+                    "result":raw,
+                }
+                report.parent.mkdir(parents=True,exist_ok=True)
+                tmp_path=None
+                try:
+                    with tempfile.NamedTemporaryFile(mode="w",encoding="utf-8",dir=report.parent,
+                         prefix=".issue1_s4_pending_",suffix=".json",delete=False) as staging:
+                        tmp_path=Path(staging.name)
+                        json.dump(envelope_live,staging,ensure_ascii=False,sort_keys=True,indent=2)
+                        staging.write("\\n")
+                        staging.flush()
+                        os.fsync(staging.fileno())
+                    # Atomic create only; never overwrite a competing evidence record.
+                    os.link(tmp_path,report)
+                finally:
+                    if tmp_path is not None:
+                        tmp_path.unlink(missing_ok=True)
             envelope=json.loads(report.read_text())
             result=audit_report(envelope)
             state["S4"]=result
@@ -277,9 +309,13 @@ def main()->int:
     ap.add_argument("--ec-root",type=Path)
     ap.add_argument("--study-dir",type=Path)
     ap.add_argument("--report",type=Path,default=REPORT)
+    ap.add_argument("--model",type=Path)
+    ap.add_argument("--llama-cli",type=Path)
+    ap.add_argument("--seconds",type=int,default=65)
     a=ap.parse_args()
     try:
-        data=run(a.tcc_root,a.ec_root,study_dir=a.study_dir,report=a.report)
+        data=run(a.tcc_root,a.ec_root,study_dir=a.study_dir,report=a.report,
+                 model=a.model,llama=a.llama_cli,seconds=a.seconds)
         print(json.dumps(data,sort_keys=True,ensure_ascii=False,indent=2))
         return 0 if data["terminal"]=="ALL_AVAILABLE_SCOPED_EXPERIMENTS_AUDITED_ORIGINAL_FULL_STUDY_STILL_OPEN" else 3
     except Exception as exc:
