@@ -1,0 +1,23 @@
+{
+  "protocol": "ISSUE1_NATIVE_NEXT_ACTION_PUBLIC_DYNAMIC_GUARD_V2",
+  "status": "VERSIONED_RETROSPECTIVE_SUCCESSOR_FROZEN_BEFORE_RUN",
+  "predecessor": "ISSUE1_NEXT_ACTION_S3_PUBLIC_GUARD_DECOMPOSITION_V1",
+  "predecessor_source_report": "results/issue1_public_gate_gbnf_qwen17_actual_2026-10-10.json",
+  "target": "Remaining dynamic dependency and urgency error cases in versioned author-exposed 17-case native next-action function.",
+  "mechanism": "Use only public dependency_graph and issue_state urgency in dynamic_spec plus existing visible plan. Do not look at answer, EC output, category, or fixture ID in guard.",
+  "new_checks": [
+    "DYNAMIC_DEPENDENCY_NOT_READY: an EXECUTE work item for issue X is disallowed if any public dependency Y is not fully completed in current work state.",
+    "DYNAMIC_URGENCY_DOMINANCE: for two dependency-ready issues with equal blocker priority, numeric priority and dependency criticality, a choice with lower public urgency than another ready issue is rejected."
+  ],
+  "no_claims": [
+    "not an independent benchmark",
+    "not original phase1 A-E",
+    "not unrestricted world-model semantics",
+    "hybrid fixes due native fallback not LLM gains"
+  ],
+  "threshold": 0.2,
+  "fixture_blob": "12faa9a4cacf0c91694d25f1ccce45e093d95e44",
+  "qwen_real_result_blob": "194029b43188663538452c3583950ec60c533aff",
+  "ec_native_actual_blob": "e1dc56646c3635ea79c2efebb92c3cbbbafe4e6b",
+  "no_schedules": true
+}
