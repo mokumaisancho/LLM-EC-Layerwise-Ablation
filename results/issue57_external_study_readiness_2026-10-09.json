@@ -1,0 +1,164 @@
+{
+  "candidate_llm_readiness": {
+    "declared_size": 986048512,
+    "layer_digest": "sha256:183715c435899236895da3869489cc30ac241476b4971a20285b1a462818a5b4",
+    "manifest_present": true,
+    "model_bytes_present": false,
+    "name": "qwen2.5/1.5b",
+    "readiness": "STORAGE_BLOB_MISSING_OR_WRONG_SIZE",
+    "runtime_inference_performed": false,
+    "selected_as_llm0": false,
+    "sha256_of_bytes_verified": false
+  },
+  "compiler_ref": "786d52c1efbc9271096f9311d768ef49bcd116e2",
+  "date_jst": "2026-10-09T13:08:11.967251+09:00",
+  "issue_ids": [
+    1,
+    57,
+    58
+  ],
+  "next_critical_action": "Independent author and independent adjudicator provide unseen public corpus and sealed gold commitment before any prediction; then choose and pin genuine original LLM0, obtain explicit V4 policy authority, freeze identical-case raw arms and have separate reviewer confirm chronology and provenance.",
+  "observed_test_counts": {
+    "existing_blind_v2": 24,
+    "existing_cli": 5,
+    "external_asset_preflight_new": 8,
+    "legacy_retention": 16,
+    "pass": 53,
+    "total": 53
+  },
+  "protocol": "ISSUE57_EXTERNAL_STUDY_READINESS_ACTUAL_V1",
+  "research_repo": "mokumaisancho/LLM-EC-Layerwise-Ablation",
+  "shipped_v4_policy": "DEFAULT_DENY_ZERO_APPROVALS",
+  "shipped_v5_policy": "DEFAULT_DENY_ZERO_APPROVALS",
+  "source_commit": "566043a48a48c69fdb506a7cc13e23caffeefff9",
+  "status": {
+    "authorized_v4": "NOT_ATTESTED",
+    "ecv4_closure": "FORBIDDEN",
+    "gold_leakage": "NO_PRIVATE_GOLD_OPENED_BY_PREFLIGHT",
+    "independent_data": "NOT_SUPPLIED",
+    "matched_four_arm_run": "NOT_RUN",
+    "original_llm0": "NOT_PINNED_AND_NOT_EXECUTED",
+    "scientific_non_degradation": "NOT_ESTABLISHED",
+    "source_independence": "UNVERIFIED"
+  },
+  "study_readiness": {
+    "blockers": [
+      "EXTERNAL_STUDY_DIR_MISSING"
+    ],
+    "external_gold_independence_verified": false,
+    "genuine_inference_verified": false,
+    "machine_structural_complete": false,
+    "provenance_custody_verified": false,
+    "quality_preservation_certified": false,
+    "scientific_four_arm_run": "NOT_ESTABLISHED",
+    "stage": "PUBLIC_CORPUS",
+    "stages": {}
+  },
+  "tcc_compiler_read_only": true,
+  "tcc_generator": {
+    "audit_evidence": {
+      "checks": {
+        "blind_evaluator": 24,
+        "legacy_retention": 16,
+        "three_stage_cli": 5
+      },
+      "ecv4_pass": true,
+      "error_tail": "",
+      "returncode": 0,
+      "suite_pass": true,
+      "terminal": "ISSUE58_METHOD_CODE_PASS_REAL_FOUR_ARM_PENDING"
+    },
+    "audit_pass": true,
+    "ecv4_closure_authorized": false,
+    "ecv4_handoff_protocol": "tcc.ecv4-evidence.v0",
+    "edges": 16,
+    "events": [
+      {
+        "attempt": 1,
+        "event": "NODE_START",
+        "kind": "action",
+        "node_id": "run_method_preflight",
+        "seq": 1
+      },
+      {
+        "event": "HANDLER_EVIDENCE",
+        "items": [
+          "audit_issue58:PASS"
+        ],
+        "node_id": "run_method_preflight",
+        "seq": 2
+      },
+      {
+        "event": "STATE_WRITE",
+        "node_id": "run_method_preflight",
+        "seq": 3,
+        "state_hash": "sha256:ca7838970bb8dbccad2756616854237857e581414a0f68aa7b28747a0d9030c2",
+        "transition_seq": 1
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_SUCCESS",
+        "node_id": "run_method_preflight",
+        "seq": 4
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_START",
+        "kind": "gate",
+        "node_id": "method_gate",
+        "seq": 5
+      },
+      {
+        "event": "HANDLER_EVIDENCE",
+        "items": [
+          "gate:method:PASS"
+        ],
+        "node_id": "method_gate",
+        "seq": 6
+      },
+      {
+        "event": "GATE_SELECTED",
+        "node_id": "method_gate",
+        "outcome": "pass",
+        "seq": 7,
+        "target": "gold_gate"
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_START",
+        "kind": "gate",
+        "node_id": "gold_gate",
+        "seq": 8
+      },
+      {
+        "event": "HANDLER_EVIDENCE",
+        "items": [
+          "gate:gold:UNVERIFIED"
+        ],
+        "node_id": "gold_gate",
+        "seq": 9
+      },
+      {
+        "event": "GATE_SELECTED",
+        "node_id": "gold_gate",
+        "outcome": "fail",
+        "seq": 10,
+        "target": "blocked_gold"
+      },
+      {
+        "event": "TERMINAL_REACHED",
+        "node_id": "blocked_gold",
+        "seq": 11,
+        "terminal_status": "BLOCKED"
+      }
+    ],
+    "generated_spec": "tcc.spec.v3",
+    "nodes": 17,
+    "recipe": "suite.tcc-generation-recipe.v4",
+    "runtime_status": "BLOCKED",
+    "source_fingerprint": "sha256:9e8f37d63151b6df0af01773755b89dd0e593a1927dcf58125ba020fdaa5f33f",
+    "spec_hash": "sha256:8ad653876dac33d75a5ac8d82ac959034ae2527c7caae3de1f910b8bce8e73e7",
+    "terminal": "blocked_gold"
+  },
+  "terminal": "SOURCE_PRECOMMIT_REQUIRED_AND_CANDIDATE_MODEL_ARTIFACT_ABSENT"
+}
