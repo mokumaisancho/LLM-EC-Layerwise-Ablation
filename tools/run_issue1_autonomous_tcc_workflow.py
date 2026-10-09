@@ -236,7 +236,7 @@ def execute(tcc_root: Path, *, study_dir: Path | None = None,
 def main() -> int:
     p=argparse.ArgumentParser()
     p.add_argument("--tcc-root",type=Path,required=True)
-    p.add_argument("--study-dir",type=Path)
+    p.add_argument("--study-dir",type=Path,default=ROOT/"evaluation"/"external_study_v1")
     p.add_argument("--source-commit")
     p.add_argument("--out",type=Path)
     a=p.parse_args()
