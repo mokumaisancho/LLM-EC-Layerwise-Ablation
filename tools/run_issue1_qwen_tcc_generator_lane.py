@@ -40,7 +40,7 @@ def spec() -> dict:
             "TCC diagnostic SUCCESS cannot close issue #1/#57/#58 or certify quality preservation",
         ],
         "state_keys": ["pins_verified", "sweep_artifact_sha256", "case_count"],
-        "immutable_state_keys": ["pins_verified"],
+        "immutable_state_keys": [],
         "entry_nodes": ["verify_pin"],
         "nodes": [
             node("verify_pin", "action", writes=("pins_verified",), failure="blocked_pin"),
