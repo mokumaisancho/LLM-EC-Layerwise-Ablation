@@ -66,7 +66,7 @@ def contract()->dict:
     }
 
 
-def run(tcc_root:Path,ec_root:Path,study_dir:Path|None=None)->dict:
+def run(tcc_root:Path,ec_root:Path,study_dir:Path|None=None,*,model:Path|None=None,llama:Path|None=None)->dict:
     h=subprocess.run(["git","-C",str(tcc_root),"rev-parse","HEAD"],text=True,capture_output=True,timeout=15)
     if h.returncode or h.stdout.strip()!=TCC_SOURCE:
         raise ValueError("TCC_COMPILER_SOURCE_NOT_PINNED")
@@ -90,7 +90,7 @@ def run(tcc_root:Path,ec_root:Path,study_dir:Path|None=None)->dict:
 
     def earlier(_node,_state,_attempt):
         try:
-            v=stage4(tcc_root,ec_root)
+            v=stage4(tcc_root,ec_root,model=model,llama=llama)
             if v["terminal"]!="semantic_new_test_required" or not v["machine_scoped_complete"]:
                 raise ValueError("PREVIOUS_GBNF_RESEARCH_BRANCH_CHANGED")
             if v["original_A_E_S1_S4_completed"] or v["independent_gold_certified"]:
@@ -153,7 +153,7 @@ def run(tcc_root:Path,ec_root:Path,study_dir:Path|None=None)->dict:
                 "evidence":["after-public-dynamic-guard:"+str(state.get("dynamic_residual"))]}
 
     def external(_node,_state,_attempt):
-        v=inspect_study(study_dir)
+        v=inspect_study(study_dir or ROOT/"evaluation/external_study_v1")
         if any(v.get(k) is not False for k in (
              "external_gold_independence_verified","provenance_custody_verified","genuine_inference_verified")):
             observed["failure"]="EXTERNAL_SCIENTIFIC_CUSTODY_FALSE_CERTIFICATE"
@@ -204,10 +204,12 @@ def main()->int:
     p.add_argument("--tcc-root",type=Path,required=True)
     p.add_argument("--ec-root",type=Path,required=True)
     p.add_argument("--study-dir",type=Path)
+    p.add_argument("--model",type=Path)
+    p.add_argument("--llama-cli",type=Path)
     p.add_argument("--out",type=Path)
     a=p.parse_args()
     try:
-        v=run(a.tcc_root,a.ec_root,a.study_dir)
+        v=run(a.tcc_root,a.ec_root,a.study_dir,model=a.model,llama=a.llama_cli)
         txt=json.dumps(v,ensure_ascii=False,sort_keys=True,indent=2)+"\n"
         if a.out:
             a.out.write_text(txt)
