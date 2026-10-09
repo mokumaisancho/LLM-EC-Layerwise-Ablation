@@ -1,0 +1,246 @@
+{
+  "protocol": "ISSUE1_SELF_DIRECTED_ORIGIN_TO_STAGE3_2026_10_10_SEALED_V1",
+  "true_original_task_complete": false,
+  "scoped_machine_workflow_completed": true,
+  "registered_new_schedule": false,
+  "meaningful_new_science": "20 real paired Qwen S4 public-info inferences; 7/10 structural vs 7/10 enriched, deterministic typed public 10/10",
+  "unit_tests_passed": 158,
+  "suite_pass": true,
+  "ecv4_pass": true,
+  "actual_evidence": {
+    "TCC_compiler_sha": "786d52c1efbc9271096f9311d768ef49bcd116e2",
+    "background_self_prompt_loop": false,
+    "ecv4_evidence": {
+      "closure_authority": "ECv4",
+      "evidence": [
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "verify_origin_and_s2",
+          "seq": 1
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "upstream:real-frozen-TCC-native-EC17-Qwen17-SUITE-ECv4-VERIFIED"
+          ],
+          "node_id": "verify_origin_and_s2",
+          "seq": 2
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "verify_origin_and_s2",
+          "seq": 3,
+          "state_hash": "sha256:31574520032a62cc939a4ab31a3f12bc6dcc68e2e8584f133746fd14926e68f8",
+          "transition_seq": 1
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "verify_origin_and_s2",
+          "seq": 4
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "verify_s4_paired_real_inference",
+          "seq": 5
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "S4-real-model-paired20:PASS",
+            "actual-info-treatment:no_material_effect"
+          ],
+          "node_id": "verify_s4_paired_real_inference",
+          "seq": 6
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "verify_s4_paired_real_inference",
+          "seq": 7,
+          "state_hash": "sha256:05b71aad8f3c0ed0f8470661107ede110435ca8e9a6c3a402bfd94a46b9b86d7",
+          "transition_seq": 2
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "verify_s4_paired_real_inference",
+          "seq": 8
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "gate",
+          "node_id": "branch_on_real_information_effect",
+          "seq": 9
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "frozen-materiality-threshold:0.2"
+          ],
+          "node_id": "branch_on_real_information_effect",
+          "seq": 10
+        },
+        {
+          "event": "GATE_SELECTED",
+          "node_id": "branch_on_real_information_effect",
+          "outcome": "no_material_effect",
+          "seq": 11,
+          "target": "diagnose_model_information_use"
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "diagnose_model_information_use",
+          "seq": 12
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "no-gain:next-science-semantic-grounding-not-relabel-answers"
+          ],
+          "node_id": "diagnose_model_information_use",
+          "seq": 13
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "diagnose_model_information_use",
+          "seq": 14,
+          "state_hash": "sha256:337c841138a37e88a55ded90f1cf33171eb7c77439354e8e5d5734d7845529ab",
+          "transition_seq": 3
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "diagnose_model_information_use",
+          "seq": 15
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "check_external_scientific_gate",
+          "seq": 16
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "independent-scientific-gold:NOT_VERIFIED",
+            "original-full-five-arm:NOT_RUN"
+          ],
+          "node_id": "check_external_scientific_gate",
+          "seq": 17
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "check_external_scientific_gate",
+          "seq": 18,
+          "state_hash": "sha256:fbc9f4948b9a3b9392e026d72124b24e8f238b0a3a96ef5b12dc074bb2653d43",
+          "transition_seq": 4
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "check_external_scientific_gate",
+          "seq": 19
+        },
+        {
+          "event": "TERMINAL_REACHED",
+          "node_id": "accept_scoped_machine_terminal",
+          "seq": 20,
+          "terminal_status": "SUCCESS"
+        }
+      ],
+      "runtime_result": "TERMINAL",
+      "schema": "tcc.ecv4-evidence.v0",
+      "spec_hash": "sha256:1f5a7a8400654539898bf866738b5095dd10c324252d9c344f52434778ed82c0",
+      "state_hash": "sha256:fbc9f4948b9a3b9392e026d72124b24e8f238b0a3a96ef5b12dc074bb2653d43",
+      "state_transitions": [
+        {
+          "node_id": "verify_origin_and_s2",
+          "seq": 1,
+          "state_hash": "sha256:31574520032a62cc939a4ab31a3f12bc6dcc68e2e8584f133746fd14926e68f8",
+          "writes": {
+            "earlier_verified": true
+          }
+        },
+        {
+          "node_id": "verify_s4_paired_real_inference",
+          "seq": 2,
+          "state_hash": "sha256:05b71aad8f3c0ed0f8470661107ede110435ca8e9a6c3a402bfd94a46b9b86d7",
+          "writes": {
+            "material_effect": "no_material_effect",
+            "paired_verified": true
+          }
+        },
+        {
+          "node_id": "diagnose_model_information_use",
+          "seq": 3,
+          "state_hash": "sha256:337c841138a37e88a55ded90f1cf33171eb7c77439354e8e5d5734d7845529ab",
+          "writes": {
+            "diagnosis": "NO_MATERIAL_GAIN_EXPOSED"
+          }
+        },
+        {
+          "node_id": "check_external_scientific_gate",
+          "seq": 4,
+          "state_hash": "sha256:fbc9f4948b9a3b9392e026d72124b24e8f238b0a3a96ef5b12dc074bb2653d43",
+          "writes": {
+            "external_readiness": "EXTERNAL_INDEPENDENCE_NOT_VERIFIED"
+          }
+        }
+      ],
+      "tcc_id": "ISSUE1-AUTONOMOUS-AFTER-S4-REAL-20-V1",
+      "terminal_id": "accept_scoped_machine_terminal",
+      "terminal_status": "SUCCESS"
+    },
+    "ecv4_original_issue_closure_authorized": false,
+    "failure": null,
+    "full_original_s1_s4_A_E_completed": false,
+    "graph_edges": 13,
+    "graph_nodes": 9,
+    "graph_spec_sha": "sha256:1f5a7a8400654539898bf866738b5095dd10c324252d9c344f52434778ed82c0",
+    "independent_gold_gate": {
+      "blockers": [
+        "EXTERNAL_STUDY_DIR_MISSING"
+      ],
+      "provenance_certified": false,
+      "stage": "PUBLIC_CORPUS"
+    },
+    "mechanistic_interpretation": {
+      "mechanism": "ADDED_PUBLIC_INFORMATION_NOT_USED_IN_FIXED_QWEN_ASSAY",
+      "model_pairwise_label_changes": [],
+      "next_scientific_target": "NEW_UNSEEN_SEMANTIC_GROUNDING_ASSAY_WITH_INDEPENDENT_GOLD_AND_FIXED_INTERFACE",
+      "wrong_cases_need_not_imply_universal_incapacity": true
+    },
+    "new_actual_llm_info_intervention": {
+      "actual_qwen_changed_decisions": [],
+      "branch": "no_material_effect",
+      "calls": 20,
+      "cases": 10,
+      "enriched_correct": 7,
+      "materiality_threshold": 0.2,
+      "paired_enriched_minus_structural": 0,
+      "provenance_scope": "source-hash-matched real raw model outputs on historical exposed fixtures, not independent unseen or original native S4",
+      "structural_correct": 7,
+      "typed_public_correct": 10
+    },
+    "new_scheduled_tasks": false,
+    "prior_actual_machine_studies": {
+      "Qwen17": "REAL_PINNED_CASES_CACHED",
+      "native_EC17": "REPLAY_MATCH",
+      "original_phase1": "EC_NATIVE_SCOPE_INCOMPATIBLE"
+    },
+    "protocol": "ISSUE1_AUTONOMOUS_CAUSAL_INFORMATION_STAGE3_TCC_V1",
+    "repo_source_commit": "d6a1fb0870f4ca5d17d9dad86993d9f3ed12e505",
+    "scientific_capability_preservation_certified": false,
+    "tcc_terminal_id": "accept_scoped_machine_terminal",
+    "tcc_terminal_status": "SUCCESS",
+    "terminal": "ALL_AVAILABLE_SCOPED_EXPERIMENTS_AUDITED_ORIGINAL_FULL_STUDY_STILL_OPEN"
+  }
+}
