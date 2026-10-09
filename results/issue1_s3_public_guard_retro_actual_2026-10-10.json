@@ -1,0 +1,614 @@
+{
+  "protocol": "ISSUE1_REAL_QWEN_PUBLIC_POLICY_RETROSPECTIVE_20261010_SEAL_V1",
+  "scope": "frozen 17 exposed cases, not independent, native EC fallback gains not model performance",
+  "source_terminal": "RETROSPECTIVE_PUBLIC_S3_INVARIANT_COVERAGE_DIAGNOSTIC_COMPLETE",
+  "evidence": {
+    "LLM_semantic_accuracy_improved_by_guard": false,
+    "Qwen_baseline_correct": 2,
+    "Qwen_wrong": 15,
+    "actual_Qwen_model_report_git_blob_sha1": "194029b43188663538452c3583950ec60c533aff",
+    "actual_model_inference_reused": 17,
+    "cases": 17,
+    "guard_detected_wrong_case_ids": [
+      "N201",
+      "N202",
+      "N203",
+      "N204",
+      "N205",
+      "N206",
+      "N207",
+      "N208",
+      "N209",
+      "N210",
+      "N212",
+      "N213",
+      "N214"
+    ],
+    "guard_missed_wrong_case_ids": [
+      "N215",
+      "N216"
+    ],
+    "guard_rejection_reason_counts": {
+      "BLOCKED_BUT_OPEN_ACTIONABLE_EXISTS": 1,
+      "EXECUTION_WORK_NOT_ACTIONABLE": 4,
+      "INCONSISTENT_WORK_STATE": 1,
+      "INVALID_PLAN_AUTHORITY": 1,
+      "OPEN_ACTIONABLE_WORK_EXISTS": 8,
+      "UNSATISFIED_PRIOR_ART_GATE": 1
+    },
+    "hybrid_gains_attributable_to_native_EC": true,
+    "hybrid_native_EC_invocations_due_to_guard": 13,
+    "hybrid_total_correct_using_EC_fallback": 15,
+    "independent_holdout": false,
+    "interpreted_remaining_subfunction": "dynamic dependency readiness/urgency arbitration",
+    "new_model_calls": 0,
+    "no_native_EC_input_in_guard": true,
+    "no_oracle_input_in_guard": true,
+    "original_full_A_E_completed": false,
+    "predeclared_guard_git_blob_sha1": "cca329611bd5aa14b4c5813719ab9507e4daaebb",
+    "protocol": "ISSUE1_NEXT_ACTION_S3_PUBLIC_GUARD_DECOMPOSITION_V1",
+    "public_invariant_guards_detected_wrong": 13,
+    "public_invariant_guards_false_rejected_correct": 0,
+    "pure_native_EC_total_correct": 17,
+    "rows": [
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I20:repair"
+        },
+        "frozen_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I20:repair"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": true,
+        "hybrid_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I20:repair"
+        },
+        "hybrid_correct": true,
+        "id": "N201",
+        "llm_exact_correct": false,
+        "public_guard_rule_ids": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "public_input_sha256": "89a24dc778e18e2ebc90911892a728b2c6fdbaa736cd48f8228fa6db4e41d373",
+        "raw_Qwen_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "raw_Qwen_output_sha256": "ef320ed57e0387db62fac38a8b3c39b3476550a6dcdcfd901dd53f81f77111b1"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "frozen_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": true,
+        "hybrid_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "hybrid_correct": true,
+        "id": "N202",
+        "llm_exact_correct": false,
+        "public_guard_rule_ids": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "public_input_sha256": "6e7832c17aca5f93bd57685ff90c788e0b66ced105920b5a6cf87f89c4869f38",
+        "raw_Qwen_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "raw_Qwen_output_sha256": "ef320ed57e0387db62fac38a8b3c39b3476550a6dcdcfd901dd53f81f77111b1"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "frozen_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": true,
+        "hybrid_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "hybrid_correct": true,
+        "id": "N203",
+        "llm_exact_correct": false,
+        "public_guard_rule_ids": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "public_input_sha256": "ead661b4acdc062f83465722c8b6bc3bb058275d68eb810f75be19a7cfa09d6a",
+        "raw_Qwen_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "raw_Qwen_output_sha256": "ef320ed57e0387db62fac38a8b3c39b3476550a6dcdcfd901dd53f81f77111b1"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:regression"
+        },
+        "frozen_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:regression"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": true,
+        "hybrid_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:regression"
+        },
+        "hybrid_correct": true,
+        "id": "N204",
+        "llm_exact_correct": false,
+        "public_guard_rule_ids": [
+          "EXECUTION_WORK_NOT_ACTIONABLE"
+        ],
+        "public_input_sha256": "8710709162456dd5b31e36a5cf04609e5ea81f64f44f0cfd6b575e3d759e6d4c",
+        "raw_Qwen_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "raw_Qwen_output_sha256": "f0ac17724549d73d09889040264b9a2fd27bbbca3bbf1d77da99098ca5580aa6"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:evidence"
+        },
+        "frozen_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:evidence"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": true,
+        "hybrid_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:evidence"
+        },
+        "hybrid_correct": true,
+        "id": "N205",
+        "llm_exact_correct": false,
+        "public_guard_rule_ids": [
+          "EXECUTION_WORK_NOT_ACTIONABLE"
+        ],
+        "public_input_sha256": "d15bdd55eb5b77a2b92c9e4745b723bbb91936e032d64d97706b73cdaae5a9e4",
+        "raw_Qwen_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "raw_Qwen_output_sha256": "f0ac17724549d73d09889040264b9a2fd27bbbca3bbf1d77da99098ca5580aa6"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "frozen_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": true,
+        "hybrid_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "hybrid_correct": true,
+        "id": "N206",
+        "llm_exact_correct": false,
+        "public_guard_rule_ids": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "public_input_sha256": "82ac3e7063bd54b72055706abd5e5695077bd27f8284f4a630de3d21f6f8f6dc",
+        "raw_Qwen_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "raw_Qwen_output_sha256": "ef320ed57e0387db62fac38a8b3c39b3476550a6dcdcfd901dd53f81f77111b1"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "ALL_REMAINING_WORK_BLOCKED",
+          "status": "BLOCKED",
+          "work_id": "NONE"
+        },
+        "frozen_reference": {
+          "reason_code": "ALL_REMAINING_WORK_BLOCKED",
+          "status": "BLOCKED",
+          "work_id": "NONE"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": true,
+        "hybrid_actual_decision": {
+          "reason_code": "ALL_REMAINING_WORK_BLOCKED",
+          "status": "BLOCKED",
+          "work_id": "NONE"
+        },
+        "hybrid_correct": true,
+        "id": "N207",
+        "llm_exact_correct": false,
+        "public_guard_rule_ids": [
+          "EXECUTION_WORK_NOT_ACTIONABLE"
+        ],
+        "public_input_sha256": "a32118d59a847b5fb13d715101085a60b4ae11abd1d35ed444909c18e638aa26",
+        "raw_Qwen_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "raw_Qwen_output_sha256": "f0ac17724549d73d09889040264b9a2fd27bbbca3bbf1d77da99098ca5580aa6"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "frozen_reference": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": true,
+        "hybrid_actual_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "hybrid_correct": true,
+        "id": "N208",
+        "llm_exact_correct": false,
+        "public_guard_rule_ids": [
+          "EXECUTION_WORK_NOT_ACTIONABLE"
+        ],
+        "public_input_sha256": "22aa03b7d6f66b037200db648ac77d3d7e564eda6ed38d71a11fd8d268e4b2db",
+        "raw_Qwen_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "raw_Qwen_output_sha256": "f0ac17724549d73d09889040264b9a2fd27bbbca3bbf1d77da99098ca5580aa6"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I04:repair"
+        },
+        "frozen_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I04:repair"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": true,
+        "hybrid_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I04:repair"
+        },
+        "hybrid_correct": true,
+        "id": "N209",
+        "llm_exact_correct": false,
+        "public_guard_rule_ids": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "public_input_sha256": "1062f2e49e2131abf3b3973e5c24bcfca5b24a3e87ad07fe02874ed4fa3a5b42",
+        "raw_Qwen_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "raw_Qwen_output_sha256": "ef320ed57e0387db62fac38a8b3c39b3476550a6dcdcfd901dd53f81f77111b1"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:prior-art"
+        },
+        "frozen_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:prior-art"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": true,
+        "hybrid_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:prior-art"
+        },
+        "hybrid_correct": true,
+        "id": "N210",
+        "llm_exact_correct": false,
+        "public_guard_rule_ids": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "public_input_sha256": "1e90eec16ee0c65c59faa2f77f4acae1df794142724533de3755d80b2e7bbdf5",
+        "raw_Qwen_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "raw_Qwen_output_sha256": "863dbe15bbf744d92e44c7c13405de5244267e24b1065044792fe15d200b2d1e"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "frozen_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": false,
+        "hybrid_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "hybrid_correct": true,
+        "id": "N211",
+        "llm_exact_correct": true,
+        "public_guard_rule_ids": [],
+        "public_input_sha256": "180c91eedf74ac792fe45e23cff351aa8f65803823b593b719e4e660dccac5c0",
+        "raw_Qwen_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "raw_Qwen_output_sha256": "f0ac17724549d73d09889040264b9a2fd27bbbca3bbf1d77da99098ca5580aa6"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "PRIOR_ART_GATE_PASS_REQUIRED",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "frozen_reference": {
+          "reason_code": "PRIOR_ART_GATE_PASS_REQUIRED",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": true,
+        "hybrid_actual_decision": {
+          "reason_code": "PRIOR_ART_GATE_PASS_REQUIRED",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "hybrid_correct": true,
+        "id": "N212",
+        "llm_exact_correct": false,
+        "public_guard_rule_ids": [
+          "BLOCKED_BUT_OPEN_ACTIONABLE_EXISTS",
+          "UNSATISFIED_PRIOR_ART_GATE"
+        ],
+        "public_input_sha256": "8b64585b84ffe05b254765f2c68262e6e767c70dae6bfcd59056eae6027722a0",
+        "raw_Qwen_decision": {
+          "reason_code": "ALL_REMAINING_WORK_BLOCKED",
+          "status": "BLOCKED",
+          "work_id": "NONE"
+        },
+        "raw_Qwen_output_sha256": "5ccc071fc131438c04abbb22aefe51dec0b1e47e0b20fd10266cf157b38fd064"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "EC_PLAN_AUTHORITY_INVALID",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "frozen_reference": {
+          "reason_code": "EC_PLAN_AUTHORITY_INVALID",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": true,
+        "hybrid_actual_decision": {
+          "reason_code": "EC_PLAN_AUTHORITY_INVALID",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "hybrid_correct": true,
+        "id": "N213",
+        "llm_exact_correct": false,
+        "public_guard_rule_ids": [
+          "INVALID_PLAN_AUTHORITY",
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "public_input_sha256": "d8bedc34b9724c220514bea5cce27fb849b6ce3e0f3ad7ddac31fbb9dfaf97cb",
+        "raw_Qwen_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "raw_Qwen_output_sha256": "ef320ed57e0387db62fac38a8b3c39b3476550a6dcdcfd901dd53f81f77111b1"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "WORK_CANNOT_BE_BOTH_COMPLETE_AND_BLOCKED",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "frozen_reference": {
+          "reason_code": "WORK_CANNOT_BE_BOTH_COMPLETE_AND_BLOCKED",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": true,
+        "hybrid_actual_decision": {
+          "reason_code": "WORK_CANNOT_BE_BOTH_COMPLETE_AND_BLOCKED",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "hybrid_correct": true,
+        "id": "N214",
+        "llm_exact_correct": false,
+        "public_guard_rule_ids": [
+          "INCONSISTENT_WORK_STATE",
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "public_input_sha256": "4f2ecdfd9fb98679efac505085c80434228950252343ed486992972a2dfa87e8",
+        "raw_Qwen_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "raw_Qwen_output_sha256": "dd53a4104816199a288354a140840e4e1986a8fd62d8f6ec89927aa25f004030"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "frozen_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": false,
+        "hybrid_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "hybrid_correct": false,
+        "id": "N215",
+        "llm_exact_correct": false,
+        "public_guard_rule_ids": [],
+        "public_input_sha256": "215541a7485445712042deed9f573594ecaf9aa4f9d4ceab140049481d64ce76",
+        "raw_Qwen_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "raw_Qwen_output_sha256": "e31db57957a3201aba8bdcaaeb7e2b2591b363de829c620e7dbeabb42e66676c"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "frozen_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": false,
+        "hybrid_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "hybrid_correct": false,
+        "id": "N216",
+        "llm_exact_correct": false,
+        "public_guard_rule_ids": [],
+        "public_input_sha256": "18df477db7d636f0ec6ca755588481a2bd7390c4a608101a89cfaec731fe2f5b",
+        "raw_Qwen_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "raw_Qwen_output_sha256": "f0ac17724549d73d09889040264b9a2fd27bbbca3bbf1d77da99098ca5580aa6"
+      },
+      {
+        "ec_exact_correct": true,
+        "ec_replay_prediction": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "frozen_reference": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "guard_policy_scope": "local invariants only, no dynamic dependency/urgency",
+        "guard_rejected": false,
+        "hybrid_actual_decision": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "hybrid_correct": true,
+        "id": "N217",
+        "llm_exact_correct": true,
+        "public_guard_rule_ids": [],
+        "public_input_sha256": "b153ee6eab403340a449f21d90eb6e9963ec8242abdab08ad1737261757a81f0",
+        "raw_Qwen_decision": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "raw_Qwen_output_sha256": "079d7ce54d788b241fd8d78c8b35ff1f939c3bc52e1381f85cab8c73b1a59638"
+      }
+    ],
+    "source_native_git_blob_sha1": "e1dc56646c3635ea79c2efebb92c3cbbbafe4e6b",
+    "terminal": "RETROSPECTIVE_PUBLIC_S3_INVARIANT_COVERAGE_DIAGNOSTIC_COMPLETE"
+  }
+}
