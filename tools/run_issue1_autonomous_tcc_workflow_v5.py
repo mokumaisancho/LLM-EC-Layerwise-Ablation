@@ -48,7 +48,7 @@ def contract()->dict:
          node("check_remaining_semantic_errors","gate",depends=("public_invariant_test",),
               reads=("base_invariant_count",),
               branches={"dynamic_residual":"run_public_dynamic_gate",
-                        "no_residual":"audit_external_independence"}),
+                        "no_residual":"blocked_no_residual_external_review"}),
          node("run_public_dynamic_gate","action",writes=("dynamic_residual",),
               failure="blocked_integrity"),
          node("branch_dynamic_residual","gate",depends=("run_public_dynamic_gate",),
@@ -60,6 +60,7 @@ def contract()->dict:
          node("machine_scoped_complete","terminal",terminal="SUCCESS",
               depends=("audit_external_independence",)),
          node("unresolved_semantic_assay_required","terminal",terminal="BLOCKED"),
+         node("blocked_no_residual_external_review","terminal",terminal="BLOCKED"),
          node("blocked_integrity","terminal",terminal="BLOCKED"),
        ],
     }
@@ -174,7 +175,8 @@ def run(tcc_root:Path,ec_root:Path,study_dir:Path|None=None)->dict:
         "audit_external_independence":external,
     })
     if outcome.get("result")!="TERMINAL" or outcome.get("terminal_id") not in (
-         "machine_scoped_complete","unresolved_semantic_assay_required","blocked_integrity"):
+         "machine_scoped_complete","unresolved_semantic_assay_required",
+         "blocked_no_residual_external_review","blocked_integrity"):
         raise ValueError("TCC_V5_RUNTIME_INVALID_TERMINAL")
     return {
       "protocol":PROTOCOL,"source_commit":revision,"pinned_TCC_generator":TCC_SOURCE,
