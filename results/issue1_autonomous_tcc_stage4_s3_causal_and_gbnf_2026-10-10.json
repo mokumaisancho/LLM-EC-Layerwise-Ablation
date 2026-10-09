@@ -1,0 +1,264 @@
+{
+  "protocol": "ISSUE1_MACHINE_ADAPTIVE_S3_STAGE4_20261010",
+  "passed_previous_tccv3": true,
+  "scoped_native_17_selection_oracle": true,
+  "real_model_gate_treatment_completed": true,
+  "test_count": 34,
+  "issue1_original_complete": false,
+  "trace": {
+    "S3_causal_oracle": {
+      "S3_oracle": 17,
+      "cases": 17,
+      "causal_gain": 0.9411764705882353,
+      "native_EC": 17,
+      "qwen": 1
+    },
+    "TCC_compiler_pin": "786d52c1efbc9271096f9311d768ef49bcd116e2",
+    "TCC_spec_hash": "sha256:0a517f38def3a91160dbad369a35c7d83877154fbe301ec2f2567864db7f18e1",
+    "background_chat_self_send": false,
+    "ecv4_evidence": {
+      "closure_authority": "ECv4",
+      "evidence": [
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "verify_prior_science",
+          "seq": 1
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "original-phase1-v2:INCOMPATIBLE",
+            "S4-actual-Qwen20:VERIFIED",
+            "ECV4-SUITE:PASS"
+          ],
+          "node_id": "verify_prior_science",
+          "seq": 2
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "verify_prior_science",
+          "seq": 3,
+          "state_hash": "sha256:6379ecb1598a9ef4818d5a394b1d9abdcbc7794f16856940aee1018473f07351",
+          "transition_seq": 1
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "verify_prior_science",
+          "seq": 4
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "run_s3_oracle_causal",
+          "seq": 5
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "S3-singleton-Oracle:real-model-1/17:native-17/17:oracle-17/17"
+          ],
+          "node_id": "run_s3_oracle_causal",
+          "seq": 6
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "run_s3_oracle_causal",
+          "seq": 7,
+          "state_hash": "sha256:046b419939ed2b81bb1716cb700e546231457d9fba1a075724cd5aec5846dec4",
+          "transition_seq": 2
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "run_s3_oracle_causal",
+          "seq": 8
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "gate",
+          "node_id": "oracle_gain_branch",
+          "seq": 9
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "S3-causal-gain:0.9411764705882353"
+          ],
+          "node_id": "oracle_gain_branch",
+          "seq": 10
+        },
+        {
+          "event": "GATE_SELECTED",
+          "node_id": "oracle_gain_branch",
+          "outcome": "material",
+          "seq": 11,
+          "target": "run_real_public_gbnf_probe"
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "run_real_public_gbnf_probe",
+          "seq": 12
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "real-Qwen17-gate-run:PASS",
+            "gain:0.058823529411764705"
+          ],
+          "node_id": "run_real_public_gbnf_probe",
+          "seq": 13
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "run_real_public_gbnf_probe",
+          "seq": 14,
+          "state_hash": "sha256:b4dee938a2b298227202fb51f3a40f876d78f663d43cc9a52f25fba622799c4f",
+          "transition_seq": 3
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "run_real_public_gbnf_probe",
+          "seq": 15
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "gate",
+          "node_id": "grammar_effect_branch",
+          "seq": 16
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "public-gate-single-factor-gain:0.058823529411764705"
+          ],
+          "node_id": "grammar_effect_branch",
+          "seq": 17
+        },
+        {
+          "event": "GATE_SELECTED",
+          "node_id": "grammar_effect_branch",
+          "outcome": "not_material",
+          "seq": 18,
+          "target": "diagnose_other_selection_semantics"
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "diagnose_other_selection_semantics",
+          "seq": 19
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "public-gate-insufficient:next-unseen-controls"
+          ],
+          "node_id": "diagnose_other_selection_semantics",
+          "seq": 20
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "diagnose_other_selection_semantics",
+          "seq": 21
+        },
+        {
+          "event": "TERMINAL_REACHED",
+          "node_id": "semantic_new_test_required",
+          "seq": 22,
+          "terminal_status": "BLOCKED"
+        }
+      ],
+      "runtime_result": "TERMINAL",
+      "schema": "tcc.ecv4-evidence.v0",
+      "spec_hash": "sha256:0a517f38def3a91160dbad369a35c7d83877154fbe301ec2f2567864db7f18e1",
+      "state_hash": "sha256:b4dee938a2b298227202fb51f3a40f876d78f663d43cc9a52f25fba622799c4f",
+      "state_transitions": [
+        {
+          "node_id": "verify_prior_science",
+          "seq": 1,
+          "state_hash": "sha256:6379ecb1598a9ef4818d5a394b1d9abdcbc7794f16856940aee1018473f07351",
+          "writes": {
+            "prior_verified": true
+          }
+        },
+        {
+          "node_id": "run_s3_oracle_causal",
+          "seq": 2,
+          "state_hash": "sha256:046b419939ed2b81bb1716cb700e546231457d9fba1a075724cd5aec5846dec4",
+          "writes": {
+            "s3_oracle_gain": 0.9411764705882353
+          }
+        },
+        {
+          "node_id": "run_real_public_gbnf_probe",
+          "seq": 3,
+          "state_hash": "sha256:b4dee938a2b298227202fb51f3a40f876d78f663d43cc9a52f25fba622799c4f",
+          "writes": {
+            "grammar_gain": 0.058823529411764705
+          }
+        }
+      ],
+      "tcc_id": "ISSUE1-CONTINUOUS-MACHINE-S3-CAUSAL-GBNF-V1",
+      "terminal_id": "semantic_new_test_required",
+      "terminal_status": "BLOCKED"
+    },
+    "failure": null,
+    "independent_gold_certified": false,
+    "machine_scoped_complete": true,
+    "new_scheduled_task": false,
+    "next_scientific_branch": "UNSEEN_S3_SEMANTIC-REASONING_ASSAY_AND_PROMPT-ROBUSTNESS_CONTROL",
+    "original_A_E_S1_S4_completed": false,
+    "original_issue_closure_authorized": false,
+    "previous_scientific_stage": {
+      "S4_gain": 0,
+      "terminal": "ALL_AVAILABLE_SCOPED_EXPERIMENTS_AUDITED_ORIGINAL_FULL_STUDY_STILL_OPEN"
+    },
+    "protocol": "ISSUE1_AUTONOMOUS_TCC_V4_ORACLE_AND_PUBLIC_GATE_V1",
+    "public_gate_real_model": {
+      "baseline_correct": 1,
+      "case_count": 17,
+      "gain": 0.058823529411764705,
+      "gate_active": 1,
+      "gate_inactive": 16,
+      "material_gain": false,
+      "materiality": 0.2,
+      "paired_changed_cases": [
+        "N201",
+        "N202",
+        "N203",
+        "N204",
+        "N205",
+        "N206",
+        "N207",
+        "N208",
+        "N209",
+        "N210",
+        "N211",
+        "N212",
+        "N213",
+        "N214",
+        "N215",
+        "N216"
+      ],
+      "real_model_calls": 17,
+      "real_model_stdout_sha_count": 17,
+      "scientific_scope": "17 pre-exposed cases, public gate only, historical prompt identical; no independent test",
+      "treated_correct": 2
+    },
+    "repo_commit": "ecae9644f8689a1bd13452ab6b351fe6cd4fd40a",
+    "tcc_graph_edges": 14,
+    "tcc_graph_nodes": 11,
+    "terminal": "semantic_new_test_required",
+    "terminal_status": "BLOCKED"
+  }
+}
