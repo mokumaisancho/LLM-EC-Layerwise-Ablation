@@ -1,0 +1,286 @@
+{
+  "protocol": "ISSUE1_TCC_UNATTENDED_SINGLE_RUN_VERIFIED_20261010_V1",
+  "source_commit": "47018dbe31451573a0359eb5c330f7fb3e4e313f",
+  "test_count": 92,
+  "tests_passed": true,
+  "github_actions_enabled": false,
+  "scheduled_automations_created": false,
+  "scope_of_automation": "In-process multi-step conditional TCC runner; no background thread continuation",
+  "tool_result": {
+    "actual_frozen_tcc_replay": {
+      "early_precheck_status": "PASS",
+      "gates": [
+        "P0_EARLY_PRECHECK",
+        "P1_FOUNDATION_GATE",
+        "P2_EC_ADAPTER_GATE"
+      ],
+      "performed": true,
+      "rc": 4,
+      "terminal": "EC_NATIVE_SCOPE_INCOMPATIBLE"
+    },
+    "creates_automations": false,
+    "ecv4_closure_authorized": false,
+    "ecv4_handoff": {
+      "closure_authority": "ECv4",
+      "evidence": [
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "verify_frozen_origin",
+          "seq": 1
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "original:real-TCC-replay:rc4:EC_NATIVE_SCOPE_INCOMPATIBLE",
+            "original:finite-bound:8/10:not-EC-accuracy"
+          ],
+          "node_id": "verify_frozen_origin",
+          "seq": 2
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "verify_frozen_origin",
+          "seq": 3,
+          "state_hash": "sha256:2a736299a5d3581be903a3975cc6d948b1c4f60a2231f876128ffba078353a99",
+          "transition_seq": 1
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "verify_frozen_origin",
+          "seq": 4
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "audit_suite_ecv4",
+          "seq": 5
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "method-audit:SUITE_PASS:ECV4_PASS"
+          ],
+          "node_id": "audit_suite_ecv4",
+          "seq": 6
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "audit_suite_ecv4",
+          "seq": 7,
+          "state_hash": "sha256:4dcaf8997c6cc0f2a6dbdecd1e4ccad341ef392d2396b48eb27425e3ef5d29a2",
+          "transition_seq": 2
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "audit_suite_ecv4",
+          "seq": 8
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "gate",
+          "node_id": "route_original_scope",
+          "seq": 9
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "route:incompatible"
+          ],
+          "node_id": "route_original_scope",
+          "seq": 10
+        },
+        {
+          "event": "GATE_SELECTED",
+          "node_id": "route_original_scope",
+          "outcome": "frozen_incompatible",
+          "seq": 11,
+          "target": "verify_scoped_successor"
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "verify_scoped_successor",
+          "seq": 12
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "successor:verified-limited-finite-typed-boundary",
+            "successor:raw-Qwen-actual-output-hash-pinned",
+            "no-false-original-AC-closure"
+          ],
+          "node_id": "verify_scoped_successor",
+          "seq": 13
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "verify_scoped_successor",
+          "seq": 14,
+          "state_hash": "sha256:6d042a8bba2356bf23e6d6c1065d45235e844a76f2d4927c59ffc5242bb2bd77",
+          "transition_seq": 3
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "verify_scoped_successor",
+          "seq": 15
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "check_blind_study",
+          "seq": 16
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "external-study:machine-structure:MISSING",
+            "external-study:independence-custody-actual-inference:UNVERIFIED"
+          ],
+          "node_id": "check_blind_study",
+          "seq": 17
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "check_blind_study",
+          "seq": 18,
+          "state_hash": "sha256:1ced87fa6368f1623efb22ddde62ef381c44ed62583df27cc5c638930021f89e",
+          "transition_seq": 4
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "check_blind_study",
+          "seq": 19
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "gate",
+          "node_id": "route_external_evidence",
+          "seq": 20
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "scientific-independence:NOT_PROVEN",
+            "original-five-arm:NOT_RUN"
+          ],
+          "node_id": "route_external_evidence",
+          "seq": 21
+        },
+        {
+          "event": "GATE_SELECTED",
+          "node_id": "route_external_evidence",
+          "outcome": "missing",
+          "seq": 22,
+          "target": "scoped_verified_external_missing"
+        },
+        {
+          "event": "TERMINAL_REACHED",
+          "node_id": "scoped_verified_external_missing",
+          "seq": 23,
+          "terminal_status": "BLOCKED"
+        }
+      ],
+      "runtime_result": "TERMINAL",
+      "schema": "tcc.ecv4-evidence.v0",
+      "spec_hash": "sha256:76999b3d5abedbfbcacb3844ea22fc5105daafed7d27ca9b96d85fcd21ee349e",
+      "state_hash": "sha256:1ced87fa6368f1623efb22ddde62ef381c44ed62583df27cc5c638930021f89e",
+      "state_transitions": [
+        {
+          "node_id": "verify_frozen_origin",
+          "seq": 1,
+          "state_hash": "sha256:2a736299a5d3581be903a3975cc6d948b1c4f60a2231f876128ffba078353a99",
+          "writes": {
+            "origin_verified": true,
+            "original_terminal": "EC_NATIVE_SCOPE_INCOMPATIBLE"
+          }
+        },
+        {
+          "node_id": "audit_suite_ecv4",
+          "seq": 2,
+          "state_hash": "sha256:4dcaf8997c6cc0f2a6dbdecd1e4ccad341ef392d2396b48eb27425e3ef5d29a2",
+          "writes": {
+            "methods_passed": true
+          }
+        },
+        {
+          "node_id": "verify_scoped_successor",
+          "seq": 3,
+          "state_hash": "sha256:6d042a8bba2356bf23e6d6c1065d45235e844a76f2d4927c59ffc5242bb2bd77",
+          "writes": {
+            "scoped_verified": true
+          }
+        },
+        {
+          "node_id": "check_blind_study",
+          "seq": 4,
+          "state_hash": "sha256:1ced87fa6368f1623efb22ddde62ef381c44ed62583df27cc5c638930021f89e",
+          "writes": {
+            "external_structural_ready": false
+          }
+        }
+      ],
+      "tcc_id": "ORIGIN-ISSUE1-SELF-ADVANCING-TRUTHFUL-EXIT-V1",
+      "terminal_id": "scoped_verified_external_missing",
+      "terminal_status": "BLOCKED"
+    },
+    "external_public_study_readiness": {
+      "blockers": [
+        "EXTERNAL_STUDY_DIR_MISSING"
+      ],
+      "external_gold_independence_verified": false,
+      "genuine_inference_verified": false,
+      "machine_structural_complete": false,
+      "provenance_custody_verified": false,
+      "quality_preservation_certified": false,
+      "scientific_four_arm_run": "NOT_ESTABLISHED",
+      "stage": "PUBLIC_CORPUS",
+      "stages": {}
+    },
+    "machine_steps_without_intermediate_user_prompts": true,
+    "method_audit": {
+      "ecv4_pass": true,
+      "pass": true,
+      "suite_pass": true,
+      "terminal": "ISSUE58_METHOD_CODE_PASS_REAL_FOUR_ARM_PENDING"
+    },
+    "next_execution_branch": "NEED_VERSIONED_COMPARABLE_EC_NATIVE_S1_S4_CONTRACT_AND_INDEPENDENT_REVIEW",
+    "original_five_arm_complete": false,
+    "original_issue": 1,
+    "protocol": "ISSUE1_SINGLE_TURN_AUTONOMOUS_TCC_EXECUTOR_V1",
+    "reason": "Original frozen EC S3/S4 interfaces incompatible; narrower successor audited. Independent external evidence cannot be self-generated or certified.",
+    "related_issues": [
+      57,
+      58
+    ],
+    "scientific_preservation_certified": false,
+    "scoped_successor": {
+      "source": "results/s1c_semantic_space_final_boundary_2026-10-08.json",
+      "status": "COMPLETE_FOR_CURRENT_MVP_BOUNDARY"
+    },
+    "source_commit": "47018dbe31451573a0359eb5c330f7fb3e4e313f",
+    "starts_background_process": false,
+    "stop_state": "SCOPED_SUCCESSOR_AUDITED_ORIGINAL_REQUIRES_NEW_VALID_STUDY",
+    "tcc_compiler_pin": "786d52c1efbc9271096f9311d768ef49bcd116e2",
+    "tcc_edge_count": 12,
+    "tcc_generated_spec_sha": "sha256:76999b3d5abedbfbcacb3844ea22fc5105daafed7d27ca9b96d85fcd21ee349e",
+    "tcc_node_count": 9,
+    "tcc_recipe": "suite.tcc-generation-recipe.v4",
+    "tcc_status": "BLOCKED",
+    "tcc_terminal_id": "scoped_verified_external_missing"
+  },
+  "original_task_status": "UNSATISFIED_FROZEN_EC_INTERFACE_MISMATCH",
+  "bounded_successor_status": "AUDITED_COMPLETE",
+  "external_dependency": "INDEPENDENT_STUDY_DIR_MISSING",
+  "current_terminal": "SCOPED_SUCCESSOR_AUDITED_ORIGINAL_REQUIRES_NEW_VALID_STUDY"
+}
