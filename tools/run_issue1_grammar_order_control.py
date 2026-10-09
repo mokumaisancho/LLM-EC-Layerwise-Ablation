@@ -9,7 +9,12 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import sys
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from tests.test_semantic_runtime_v5_grammar import make_field_task
 from tools.run_issue1_pinned_smollm_probe import (
