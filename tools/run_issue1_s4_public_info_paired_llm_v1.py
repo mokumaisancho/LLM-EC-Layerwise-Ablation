@@ -137,6 +137,8 @@ def predict_only(model:Path,binary:Path,source:Path,seconds:int)->dict:
 
 def run(model:Path,llama:Path,seconds:int)->dict:
     c=read_contract(model,llama)
+    if str(ROOT/"tools") not in sys.path:
+        sys.path.insert(0,str(ROOT/"tools"))
     from tools.generate_phase1_measurement_v2_canonical import SPECS,rebuild
     if [r["id"] for r in SPECS]!=c["dataset"]["cases"]:
         raise ValueError("FROZEN_CASE_ORDER_CHANGED")
