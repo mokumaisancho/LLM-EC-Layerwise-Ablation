@@ -1,0 +1,62 @@
+{
+  "protocol": "ISSUE1_NEXT_ACTION_S3_ORACLE_CAUSAL_INTERVENTION_V1",
+  "status": "FROZEN_BEFORE_EVALUATION",
+  "root_issue": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/1",
+  "purpose": "Localize selection-stage causal error within native EC next-action function by substituting only S3 selection oracle on 17 exact same frozen upstream states and unchanged deterministic action-application downstream.",
+  "novelty": "Versioned same-function partial causal oracle intervention, NOT original generic S3 multi-selection, NOT full original S1-S4 A-E or independent unseen gold.",
+  "scope": "Frozen historically exposed 17 controlled governed-remediation-plan cases and already-run pinned native ECv4.4 and Qwen2.5-1.5B",
+  "frozen_sources": {
+    "fixture_git_blob": "12faa9a4cacf0c91694d25f1ccce45e093d95e44",
+    "ec_actual_git_blob": "e1dc56646c3635ea79c2efebb92c3cbbbafe4e6b",
+    "qwen_actual_git_blob": "2d28b0f955be0980c9867d61a0974bcfb80df14b",
+    "ec_commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+    "model_sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+    "prior_v2_contract_git_blob": "af2b29c3fbd6318fc8083bfd8035eb053d3d8304"
+  },
+  "arms": {
+    "A": "Model-pinned Qwen actual cached S3 decision from restored historical same-case V2 prompt+grammar",
+    "B": "Exact native pinned ECv4.4 S3 next-action on same visible plan state",
+    "E": "do(S3=Oracle): replace ONLY A decision with frozen case oracle; same visible upstream state + same downstream transition application",
+    "negative_control": "do(S3=A): same cached Qwen decision passed through exactly same downstream evaluator; outputs must equal A"
+  },
+  "shared_upstream_allowlist": [
+    "plan",
+    "completed_work_ids",
+    "blocked_work",
+    "dynamic_spec"
+  ],
+  "protected_fields_excluded_from_downstream": [
+    "oracle",
+    "id",
+    "category",
+    "expected_status",
+    "reference_label"
+  ],
+  "upstream_binding": "Store SHA256 of all visible fields per case, equal across arms and intervention; no silent upstream regeneration.",
+  "downstream_rule": "Apply selected EXECUTE work ID only when it is listed in visible plan, not completed, not blocked. For no-work/block/reframe/fail closed retain state and record status. Identical downstream code for each arm. No oracle or label read in downstream.",
+  "primary_metric": "exact downstream final-state event success relative to pre-frozen oracle-selected final state under same upstream and deterministic executor",
+  "secondary": [
+    "exact status+work selection correctness",
+    "action_progressed_count",
+    "oracle substitution gain vs cached actual LLM",
+    "LLM_vs_EC selection divergence"
+  ],
+  "materiality_threshold": 0.2,
+  "precommitted_fail_closed": [
+    "frozen file blob mismatch",
+    "model source unverified",
+    "case order mismatch",
+    "upstream hash mismatch",
+    "oracle leakage",
+    "candidate work ID not in visible plan",
+    "downstream code differ across arms",
+    "counterfactual oracle missing",
+    "model result parsing conflict",
+    "normalization changes observed correctness",
+    "ambiguous source/case authority"
+  ],
+  "allowed_conclusion": "Causal effect of replacing S3 choice with oracle on exposed, already structured next-action function only, no general LLM replaceability claim.",
+  "scientific_exit_allowed": false,
+  "original_A_E_complete": false,
+  "no_background_tasks": true
+}
