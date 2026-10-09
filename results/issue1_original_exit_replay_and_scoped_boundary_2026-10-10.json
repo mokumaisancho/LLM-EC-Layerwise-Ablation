@@ -1,0 +1,95 @@
+{
+  "accepted_scoped_successor": "COMPLETE_FOR_CURRENT_MVP_BOUNDARY",
+  "automatically_closed_github_issues": false,
+  "computed_gate_result": {
+    "completed_scoped_successor": {
+      "ec_native_next_action_accuracy_on_17_frozen_fixtures": 1,
+      "next_action_is_separate_from_generic_S3_all_admissible_selection": true,
+      "s1c_limitations": [
+        "open-ended semantic-space creation",
+        "unrestricted ontology invention",
+        "world-knowledge acquisition",
+        "larger-model equivalence"
+      ],
+      "s1c_terminal": "V32_DETERMINISTIC_MATERIAL_ADVANTAGE",
+      "scope": "Finite 64-function explicit typed-space semantic partition under V3.2; not unrestricted natural-language semantic invention",
+      "scoped_study_status": "COMPLETE_FOR_CURRENT_MVP_BOUNDARY",
+      "source_report": "results/s1c_semantic_space_final_boundary_2026-10-08.json"
+    },
+    "frozen_tcc_replay": {
+      "early_precheck_status": "PASS",
+      "gates": [
+        "P0_EARLY_PRECHECK",
+        "P1_FOUNDATION_GATE",
+        "P2_EC_ADAPTER_GATE"
+      ],
+      "performed": true,
+      "rc": 4,
+      "terminal": "EC_NATIVE_SCOPE_INCOMPATIBLE"
+    },
+    "independent_original_LLM0_four_arm_quality": "NOT_RUN",
+    "issue1_auto_closure_authorized": false,
+    "issue57_scientific_certification": false,
+    "original_exit_pass": false,
+    "original_issue": 1,
+    "original_missing_condition": "A/B/C/D/E same-function comparability for native EC S3 selection and S4 closure",
+    "original_phase1_exit": "EC_NATIVE_SCOPE_INCOMPATIBLE",
+    "original_requested_five_arm_protocol": "UNREPORTABLE_BY_NATIVE_INTERFACE_MISMATCH",
+    "prohibited_overclaims": [
+      "Current S1C scoped success proves full original S1/S2/S3/S4 five-arm oracle study",
+      "8/10 S4 interface limit is measured EC decision accuracy",
+      "Closed superseded issue #20/#22/#23/#24 means original AC automatically passed",
+      "H01-H16 development fixture is independent human-adjudicated gold"
+    ],
+    "protocol": "ISSUE1_ORIGINAL_VS_SUCCESSOR_ACCEPTANCE_RECONCILIATION_V1",
+    "s3": {
+      "counterexample_fixtures": [
+        "M003",
+        "M009"
+      ],
+      "ec_native_selection_status": "NOT_APPLICABLE"
+    },
+    "s4": {
+      "input_aliasing_is_real": true,
+      "labels": {
+        "CLOSE": 8,
+        "CONTINUE": 2
+      },
+      "max_majority_correct": 8,
+      "not_ec_accuracy": true,
+      "structural_upper_bound": 0.8,
+      "unique_fixture_count": 10
+    },
+    "source_pins_sha256": {
+      "adapter": "0784461c1c22add8083403b497135b6f3f023e162586e567cb8d74e5c7c5d80f",
+      "frozen_actual": "6b63f73bf33cfc208acd7926a015a7ee3af97b8c9605cafe2a88a886a84b4e25",
+      "issue57_method": "a1f962034d2775405ce0a67fdb4d784a1c9742867f7d986513a673075ad7cf0a",
+      "next_action": "00b4fd14b0c623fded0c4cd968f6380993f2c208dc52d6143202e7dd6c3048b5",
+      "original_contract": "11ff5a87342e7e00b2393390beac597574a39d9480c6d3ee1cc8e4e968e345cf",
+      "s1c_actual": "52c9f11a83a5118a44a3da3206e38c839d03f6818047b3d4b05c41f2bafffc76",
+      "s1c_terminal": "f7ce069469e9b4fb3211a7a7fbedecdd2fd96b4a35a0867b5e18b0eb84ff1286",
+      "s4_identifiability": "73762b03b61ef79c0ce26cd15776aa372ecee0cdfdfe599d77443dd5fb9462c3",
+      "successor_boundary": "14976fa000dc175e8715568833ea394604932496cee803cc555c0dbceaa68d68",
+      "successor_contract": "aaceb8a68a8d5ab343d9d3f1911be1a74470fcb7836ddd0e02ed4385ae121963"
+    },
+    "strict_original_exit_gate": "BLOCKED_INTERFACE_SEMANTICS",
+    "terminal": "FROZEN_ORIGINAL_UNREPORTABLE_SCOPED_SUCCESSOR_AUDITED_COMPLETE",
+    "unresolved_external_evidence": [
+      "Independent previously unseen judged corpus+separate gold custody (#57)",
+      "Original LLM0 model identity and authentic same-case predictions (#57)",
+      "Owner-authorized matching V4 policy/execution (#57)"
+    ]
+  },
+  "created_at_jst": "2026-10-10T07:14:51.594510+09:00",
+  "independent_four_arm_scientific_study": "NOT_RUN",
+  "legitimate_frozen_protocol_exit": "EC_NATIVE_SCOPE_INCOMPATIBLE",
+  "manual_approval_avoided": true,
+  "parent_issue_original_satisfaction": false,
+  "protocol": "ISSUE1_ORIGINAL_EXIT_REPLAY_SEALED_20261010_V1",
+  "repository": "mokumaisancho/LLM-EC-Layerwise-Ablation",
+  "source_commit": "c0dd140a9258a0a2f7b89e122bc2ea1d02d5a5cb",
+  "suite_ecv4_audit": "PASS",
+  "terminal": "CANONICAL_RECONCILIATION_DONE_NO_FALSE_CLOSURE",
+  "unit_failure_count": 0,
+  "unit_regression_pass_count": 82
+}
