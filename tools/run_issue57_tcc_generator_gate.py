@@ -13,6 +13,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 TCC_SOURCE = "786d52c1efbc9271096f9311d768ef49bcd116e2"
 REQUIREMENTS = (
     ("gold", "Independent unseen public corpus and adjudicated precommitted private gold"),
@@ -149,7 +151,8 @@ def audit():
                         "terminal": value.get("terminal"),
                         "error_tail": proc.stderr[-300:]}
 
-def run(tcc_root: Path, source_commit: str):
+def run(tcc_root: Path, source_commit: str, *, study_dir: Path | None = None,
+        ollama_root: Path | None = None, ollama_model: str = "qwen2.5/1.5b"):
     head = subprocess.run(["git", "-C", str(tcc_root), "rev-parse", "HEAD"],
                           capture_output=True, text=True, timeout=10)
     if head.returncode != 0 or head.stdout.strip() != TCC_SOURCE:
@@ -174,6 +177,9 @@ def run(tcc_root: Path, source_commit: str):
         raise RuntimeError("TCC_GENERATOR_SEMANTIC_DRIFT")
     graph = compile_spec(material)
     method_pass, method_evidence = audit()
+    from tools.preflight_issue57_study_assets import inspect_study, inspect_ollama_model
+    study_readiness = inspect_study(study_dir)
+    candidate_asset = inspect_ollama_model(ollama_root, ollama_model)
     # External evidence requirements are deliberately NOT auto-certified.
     # No arbitrary local JSON can prove who adjudicated gold or whether it was unseen.
     evidence_available = {name: False for name, _ in REQUIREMENTS}
@@ -182,6 +188,11 @@ def run(tcc_root: Path, source_commit: str):
                "requirement": description}
         for name, description in REQUIREMENTS
     }
+    blockers["gold"]["machine_readiness"] = {
+        "stage": study_readiness["stage"],
+        "missing_or_unverified": study_readiness["blockers"],
+        "note": "Mechanical matches do not prove independence and cannot PASS this gate."}
+    blockers["original_llm"]["candidate_asset"] = candidate_asset
     def method_handler(_node, _state, _attempt):
         return {
             "status": "success" if method_pass else "failure",
@@ -220,6 +231,8 @@ def run(tcc_root: Path, source_commit: str):
         "generator_semantic_drift": False,
         "method_preflight": method_evidence,
         "method_pass": method_pass,
+        "gold_blind_study_asset_readiness": study_readiness,
+        "candidate_llm_asset": candidate_asset,
         "evidence_gate": {key: blockers[key] for key in blockers},
         "tcc_runtime": {"result": executed["result"],
                         "terminal_status": executed["terminal_status"],
@@ -238,9 +251,13 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--tcc-root", required=True, type=Path)
     parser.add_argument("--source-commit", required=True)
+    parser.add_argument("--study-dir", type=Path)
+    parser.add_argument("--ollama-root", type=Path)
+    parser.add_argument("--ollama-model", default="qwen2.5/1.5b")
     args = parser.parse_args()
     try:
-        result = run(args.tcc_root, args.source_commit)
+        result = run(args.tcc_root, args.source_commit, study_dir=args.study_dir,
+                     ollama_root=args.ollama_root, ollama_model=args.ollama_model)
     except Exception as exc:
         print(json.dumps({"protocol": "ISSUE57_TCC_GENERATOR_GATE_V1",
                           "stop_state": "TCC_FAIL_CLOSED", "error": str(exc)},
