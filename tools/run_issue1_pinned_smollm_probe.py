@@ -78,12 +78,17 @@ def run_one(llama: Path, model: Path, prompt: str, *, seconds: int):
     raw_stdout = proc.stdout
     if proc.returncode != 0:
         raise RuntimeError("MODEL_INFERENCE_FAILED:" + str(proc.returncode) + ":" + proc.stderr[-300:])
-    # llama-cli prints a banner, the supplied prompt after "> ", and a timing trailer.
-    marker = "> " + prompt + "\n\n"
-    if marker not in raw_stdout:
+    # The CLI deliberately truncates the *displayed* prompt near 512 chars.
+    # Never require verbatim echoed prompt for extraction; anchor to the
+    # actual input UI marker and the timing trailer instead.
+    marker = "\n\n> "
+    position = raw_stdout.rfind(marker)
+    if position < 0:
+        raise RuntimeError("MODEL_INPUT_MARKER_MISSING:" + digest(raw_stdout.encode()))
+    start = raw_stdout.find("\n\n", position + len(marker))
+    if start < 0:
         raise RuntimeError("MODEL_RESPONSE_DELIMITER_MISSING:" + digest(raw_stdout.encode()))
-    body = raw_stdout.split(marker, 1)[1]
-    body = re.split(r"\n\n\[ Prompt: ", body, maxsplit=1)[0].strip()
+    body = re.split(r"\n+\[ Prompt: ", raw_stdout[start + 2:], maxsplit=1)[0].strip()
     if len(body) > 512 or not body:
         raise RuntimeError("MODEL_RESPONSE_EMPTY_OR_TOO_LONG")
     return {"raw_response": body,
