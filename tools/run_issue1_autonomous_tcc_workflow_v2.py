@@ -73,7 +73,7 @@ def spec()->dict:
     }
 
 def checked_model_report(envelope:dict)->dict:
-    data=envelope.get("result",envelope)
+    data=envelope.get("run",envelope.get("result",envelope))
     if data.get("protocol")!="ISSUE1_NEXT_ACTION_QWEN_MAC_COMPAT_REAL_V3":
         raise ValueError("UNRECOGNIZED_LOCAL_LLM_REPORT")
     if data.get("qwen_model_sha256")!="1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370":
