@@ -86,7 +86,8 @@ class PublicGateGrammarSingleFactorTests(unittest.TestCase):
         end=source.index("\ndef treatment_grammar",start)
         function=source[start:end]
         self.assertNotIn('["oracle"]',function)
-        self.assertNotIn('["gold"]',function)\n        self.assertNotIn('["reference_label"]',function)
+        self.assertNotIn('["gold"]',function)
+        self.assertNotIn('["reference_label"]',function)
         self.assertNotIn("category",function.lower())
 
     def test_11_frozen_public_status_hypothesis_is_not_retroactive(self):
