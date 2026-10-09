@@ -1,0 +1,220 @@
+{
+  "TCC_parent_64_inference": "results/issue1_qwen25_two_factor_tcc_actual_2026-10-09.json",
+  "ecv4_closure_allowed": false,
+  "exact_model_inference_count": 16,
+  "limitations": {
+    "authorized_V4": false,
+    "fresh_holdout": false,
+    "generalization": false,
+    "human_external_review": false,
+    "independent_gold": false,
+    "scientific_full_four_arm": "NOT_RUN",
+    "semantic_correctness_certificate": false
+  },
+  "llm_expected_dev_actions_both_models": {
+    "jp_end": "CLOSE",
+    "jp_start": "OPEN",
+    "jp_unknown": "ABSTAIN",
+    "nonsense_ascii": "CLOSE"
+  },
+  "model_pins": {
+    "qwen25_0p5b": {
+      "filename": "Qwen2.5-0.5B-Instruct-Q4_K_M.gguf",
+      "repo": "bartowski/Qwen2.5-0.5B-Instruct-GGUF",
+      "revision": "41ba88dbac95fed2528c92514c131d73eb5a174b",
+      "sha256": "6eb923e7d26e9cea28811e1a8e852009b21242fb157b26149d3b188f3a8c8653",
+      "size_bytes": 397808192
+    },
+    "qwen25_1p5b": {
+      "filename": "Qwen2.5-1.5B-Instruct-Q4_K_M.gguf",
+      "repo": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
+      "revision": "9eadc66189c7641e1ddd226b8267a9119b2ce2d4",
+      "sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+      "size_bytes": 986048768
+    }
+  },
+  "observed_at_jst": "2026-10-09T18:30:48.918700+09:00",
+  "observed_localized_mechanism": "V1 ASCII lexical grounder conflates Japanese start/end/unknown/nonsense while both true model outputs separate Japanese start vs end vs unknown on this exposed case; meaningless ASCII still maps to CLOSE.",
+  "paired_contrasts": [
+    {
+      "actual_model_predictions": {
+        "qwen25_0p5b": {
+          "native_gbnf": {
+            "raw": "OPEN",
+            "stdout_sha256": "3be8697f89e703706cc0b5cf9f7fef8bda53569394500a4fb537a5d8dc40a175",
+            "strict_label": "OPEN"
+          },
+          "unconstrained": {
+            "raw": "OPEN",
+            "stdout_sha256": "28d6e504448817e69b50eab6d2c7171cb7e4f0a002478a1f0052db395c210fbf",
+            "strict_label": "OPEN"
+          }
+        },
+        "qwen25_1p5b": {
+          "native_gbnf": {
+            "raw": "OPEN",
+            "stdout_sha256": "efc256fb8f7d9b10f3a6d62d7603056d20d0d4b247203cefefc98d99c4a2da63",
+            "strict_label": "OPEN"
+          },
+          "unconstrained": {
+            "raw": "OPEN",
+            "stdout_sha256": "ae61dde8ee57440c96a1f429d00e28588c030a15f25889e680bae0fc09aaaae6",
+            "strict_label": "OPEN"
+          }
+        }
+      },
+      "contrast_id": "jp_start",
+      "deterministic_v1_abstention": null,
+      "deterministic_v1_assignment": {
+        "arguments": [
+          "E01"
+        ],
+        "example_id": "H07",
+        "modality": "ASSERTED",
+        "polarity": "POS",
+        "slot_id": "S01"
+      },
+      "input_sha256": "dc594efe2524002762f40c1505df37e741553a6833f43d2d9b33cf5dc6a35ab5",
+      "prompt_sha256": "b019eeb3d8789b7971a8ef1be8de49b3ba0c48e7367a9c00556711a697f23d35",
+      "raw_input": "Claim K を審査開始する"
+    },
+    {
+      "actual_model_predictions": {
+        "qwen25_0p5b": {
+          "native_gbnf": {
+            "raw": "CLOSE",
+            "stdout_sha256": "5b8484ed5a83a1e546aa0f6f663a93e483cc3733c1cfe5331dca5443de3a2d11",
+            "strict_label": "CLOSE"
+          },
+          "unconstrained": {
+            "raw": "CLOSE",
+            "stdout_sha256": "1c63285c841f36127e2084111ed061b02b0c29d48200d5b6047e95c28c195c60",
+            "strict_label": "CLOSE"
+          }
+        },
+        "qwen25_1p5b": {
+          "native_gbnf": {
+            "raw": "CLOSE",
+            "stdout_sha256": "80f6cfb2ddb83b9bd3e8ca757bf116067e37fbe2d6e29ab093dbfa6c72f29148",
+            "strict_label": "CLOSE"
+          },
+          "unconstrained": {
+            "raw": "CLOSE",
+            "stdout_sha256": "5e642f785a87fe8942df52ff50668ee297fd0141e3aaccf2819704cdc970fcaa",
+            "strict_label": "CLOSE"
+          }
+        }
+      },
+      "contrast_id": "jp_end",
+      "deterministic_v1_abstention": null,
+      "deterministic_v1_assignment": {
+        "arguments": [
+          "E01"
+        ],
+        "example_id": "H07",
+        "modality": "ASSERTED",
+        "polarity": "POS",
+        "slot_id": "S01"
+      },
+      "input_sha256": "61c4ba14dc1100be36e3f9d552f4c89ec9a2b2f22160310a9a87be5c5389289d",
+      "prompt_sha256": "f5fa9f1d55eb613f0f64fa3c9f75f1993801d61183f07234cb107a9b660ccfc4",
+      "raw_input": "Claim K を審査終了する"
+    },
+    {
+      "actual_model_predictions": {
+        "qwen25_0p5b": {
+          "native_gbnf": {
+            "raw": "ABSTAIN",
+            "stdout_sha256": "f4c0fc079112aec42b673abbb43286f7a12954d171e3ce28569605b45b477fa1",
+            "strict_label": "ABSTAIN"
+          },
+          "unconstrained": {
+            "raw": "ABSTAIN",
+            "stdout_sha256": "d5c2ff336205ada6c31383f2c835f1ec3d1790c04dd00e62e51b275d5edfb5bc",
+            "strict_label": "ABSTAIN"
+          }
+        },
+        "qwen25_1p5b": {
+          "native_gbnf": {
+            "raw": "ABSTAIN",
+            "stdout_sha256": "7a3973c13f8e3a751f32bcf4222ec4e32d7a289fe08fe515b8e5ac6c5a5cc2d4",
+            "strict_label": "ABSTAIN"
+          },
+          "unconstrained": {
+            "raw": "ABSTAIN",
+            "stdout_sha256": "a17e0f139d35cff21f53fd12c11a24140e03824577f2d5fce85647e4e7850975",
+            "strict_label": "ABSTAIN"
+          }
+        }
+      },
+      "contrast_id": "jp_unknown",
+      "deterministic_v1_abstention": null,
+      "deterministic_v1_assignment": {
+        "arguments": [
+          "E01"
+        ],
+        "example_id": "H07",
+        "modality": "ASSERTED",
+        "polarity": "POS",
+        "slot_id": "S01"
+      },
+      "input_sha256": "ce5d87a8ee0ce10c191524702823553bc107978f6582015b5397276fa7b37f8d",
+      "prompt_sha256": "b7a820a72eee99114f744a309e4b94436073f551f6f5f1e2b2d88314e7fee93e",
+      "raw_input": "Claim K よくわからない"
+    },
+    {
+      "actual_model_predictions": {
+        "qwen25_0p5b": {
+          "native_gbnf": {
+            "raw": "CLOSE",
+            "stdout_sha256": "cd264789d27962fe148607c2fe7a73455db593fefa4a02b7a4b070549afcae78",
+            "strict_label": "CLOSE"
+          },
+          "unconstrained": {
+            "raw": "CLOSE",
+            "stdout_sha256": "a5323d6a391d85f2a86013596db9381e92846a0e32a687af09e3fdcf4a850dff",
+            "strict_label": "CLOSE"
+          }
+        },
+        "qwen25_1p5b": {
+          "native_gbnf": {
+            "raw": "CLOSE",
+            "stdout_sha256": "3646cb74b2cf3a72ecf09c3ad673fdc14a8e0d6f96ac786b714fb30b3281669f",
+            "strict_label": "CLOSE"
+          },
+          "unconstrained": {
+            "raw": "CLOSE",
+            "stdout_sha256": "a9ca6e166e4757c9f0e90ea8a537f9c5ab61200b2084bc5c9f6d223c7c50dadb",
+            "strict_label": "CLOSE"
+          }
+        }
+      },
+      "contrast_id": "nonsense_ascii",
+      "deterministic_v1_abstention": null,
+      "deterministic_v1_assignment": {
+        "arguments": [
+          "E01"
+        ],
+        "example_id": "H07",
+        "modality": "ASSERTED",
+        "polarity": "POS",
+        "slot_id": "S01"
+      },
+      "input_sha256": "72afeaf473070e5785a9eb329f004ec7d0649744f07bcbf3cf68c2a332b3339a",
+      "prompt_sha256": "639b4e38c8e3b5d0f4eec9e9635ffaa68d13b8478655e08d4de7fb1651e97d4e",
+      "raw_input": "Claim K xyzqvblp"
+    }
+  ],
+  "protocol": "ISSUE57_JP_DEV_CONTRAST_QWEN_REAL_PINNED_V1",
+  "raw_runtime_file_sha256": "cda75f4454ae8311948db15b8bd4a914f89f8e15537a8d85be3a4519d3e73584",
+  "related_issues": [
+    57,
+    58
+  ],
+  "research_repo": "mokumaisancho/LLM-EC-Layerwise-Ablation",
+  "root_issue": 1,
+  "source_data": "EXPOSED_H07_HISTORICAL_DEV_COUNTERFACTUALS",
+  "source_head": "1456f9c8043b7e8c46a5c0f639a53ef0d533bdc6",
+  "terminal": "LOCALIZED_JAPANESE_SEMANTIC_COLLAPSE_DIAGNOSTIC_REPRODUCED_IN_REAL_MODELS_ONLY",
+  "v1_identical_slot_and_features_all_four": true
+}
