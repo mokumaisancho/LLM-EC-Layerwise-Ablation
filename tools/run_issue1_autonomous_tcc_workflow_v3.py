@@ -54,10 +54,13 @@ def spec():
                        "material_effect":"diagnose_representation_gain",
                        "invalid":"blocked_integrity"}),
         node("diagnose_model_information_use","action",writes=("diagnosis",),failure="blocked_integrity"),
-        node("diagnose_representation_gain","action",writes=("diagnosis",),failure="blocked_integrity"),
-        node("check_external_scientific_gate","action",
+        node("diagnose_representation_gain","action",failure="blocked_integrity"),
+        node("blocked_external_review","terminal",terminal="BLOCKED",
+             depends=("diagnose_representation_gain",)),
+        node("check_external_scientific_gate","action",depends=("diagnose_model_information_use",),
              writes=("external_readiness",),failure="blocked_integrity"),
-        node("accept_scoped_machine_terminal","terminal",terminal="SUCCESS"),
+        node("accept_scoped_machine_terminal","terminal",terminal="SUCCESS",
+             depends=("check_external_scientific_gate",)),
         node("blocked_integrity","terminal",terminal="BLOCKED"),
       ],
     }
@@ -213,8 +216,8 @@ def run(tcc_root:Path,ec_root:Path|None,*,study_dir:Path|None=None,
         state["inference"]={"mechanism":"PUBLIC_UPSTREAM_INFORMATION_MATTERS_FOR_THIS_FIXED_QWEN_ASSAY",
               "model_pairwise_label_changes":state["S4"]["actual_qwen_changed_decisions"],
               "next_scientific_target":"INDEPENDENT_HOLDOUT_MATCHED_S4_PLUS_S1_S2_S3_CAUSAL_INTERVENTIONS"}
-        return {"status":"success","writes":{"diagnosis":"MATERIAL_GAIN_EXPOSED"},
-                "evidence":["gain:scoped-feature-effect-only"]}
+        return {"status":"success",
+                "evidence":["gain:scoped-feature-effect-only:independent-review-required"]}
     def independent(_node,_state,_attempt):
         readiness=inspect_study(study_dir)
         if any(readiness.get(k) is not False for k in (
