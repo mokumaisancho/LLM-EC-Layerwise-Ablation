@@ -1,0 +1,524 @@
+{
+  "protocol": "ISSUE1_REAL_QWEN_PUBLIC_POLICY_RETROSPECTIVE_20261010_SEAL_V1",
+  "scope": "frozen 17 exposed cases, not independent, native EC fallback gains not model performance",
+  "source_terminal": "PUBLIC_DYNAMIC_S3_POLICY_GUARD_REPLAYED_RETROSPECTIVE",
+  "evidence": {
+    "cases": 17,
+    "contract_git_blob": "31b11db632a21e85ef0aaa35102c43e9b833acf2",
+    "extended_guard_detected_wrong": 15,
+    "extended_guard_false_rejected_correct": 0,
+    "extended_hybrid_correct_with_native_fallback": 17,
+    "extended_native_EC_fallback_count": 15,
+    "fixed_public_guard_detected_wrong": 13,
+    "frozen_17_actual_model_predictions": true,
+    "improvement_attributable_to_EC_invocations_not_model": true,
+    "independent_blind": false,
+    "new_dynamic_rule_trigger_counts": {
+      "DYNAMIC_DEPENDENCY_NOT_READY": 1,
+      "DYNAMIC_URGENCY_DOMINANCE": 1
+    },
+    "new_model_inferences": 0,
+    "original_full_A_E_completed": false,
+    "original_model_wrong": 15,
+    "protocol": "ISSUE1_NATIVE_NEXT_ACTION_PUBLIC_DYNAMIC_GUARD_V2",
+    "pure_model_correct": 2,
+    "pure_native_EC_correct": 17,
+    "reference_native_EC_reused_only_after_guard": true,
+    "remaining_uncaught_wrong_case_ids": [],
+    "rows": [
+      {
+        "dynamic_visible": false,
+        "frozen_oracle": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I20:repair"
+        },
+        "hybrid_correct": true,
+        "id": "N201",
+        "model_actual_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "model_correct": false,
+        "native_actual_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I20:repair"
+        },
+        "new_dynamic_rule_ids": [],
+        "new_public_dynamic_reasons": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "original_public_reasons": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "rejected": true
+      },
+      {
+        "dynamic_visible": false,
+        "frozen_oracle": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "hybrid_correct": true,
+        "id": "N202",
+        "model_actual_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "model_correct": false,
+        "native_actual_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "new_dynamic_rule_ids": [],
+        "new_public_dynamic_reasons": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "original_public_reasons": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "rejected": true
+      },
+      {
+        "dynamic_visible": false,
+        "frozen_oracle": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "hybrid_correct": true,
+        "id": "N203",
+        "model_actual_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "model_correct": false,
+        "native_actual_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "new_dynamic_rule_ids": [],
+        "new_public_dynamic_reasons": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "original_public_reasons": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "rejected": true
+      },
+      {
+        "dynamic_visible": false,
+        "frozen_oracle": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:regression"
+        },
+        "hybrid_correct": true,
+        "id": "N204",
+        "model_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "model_correct": false,
+        "native_actual_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:regression"
+        },
+        "new_dynamic_rule_ids": [],
+        "new_public_dynamic_reasons": [
+          "EXECUTION_WORK_NOT_ACTIONABLE"
+        ],
+        "original_public_reasons": [
+          "EXECUTION_WORK_NOT_ACTIONABLE"
+        ],
+        "rejected": true
+      },
+      {
+        "dynamic_visible": false,
+        "frozen_oracle": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:evidence"
+        },
+        "hybrid_correct": true,
+        "id": "N205",
+        "model_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "model_correct": false,
+        "native_actual_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:evidence"
+        },
+        "new_dynamic_rule_ids": [],
+        "new_public_dynamic_reasons": [
+          "EXECUTION_WORK_NOT_ACTIONABLE"
+        ],
+        "original_public_reasons": [
+          "EXECUTION_WORK_NOT_ACTIONABLE"
+        ],
+        "rejected": true
+      },
+      {
+        "dynamic_visible": false,
+        "frozen_oracle": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "hybrid_correct": true,
+        "id": "N206",
+        "model_actual_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "model_correct": false,
+        "native_actual_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "new_dynamic_rule_ids": [],
+        "new_public_dynamic_reasons": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "original_public_reasons": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "rejected": true
+      },
+      {
+        "dynamic_visible": false,
+        "frozen_oracle": {
+          "reason_code": "ALL_REMAINING_WORK_BLOCKED",
+          "status": "BLOCKED",
+          "work_id": "NONE"
+        },
+        "hybrid_correct": true,
+        "id": "N207",
+        "model_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "model_correct": false,
+        "native_actual_reference": {
+          "reason_code": "ALL_REMAINING_WORK_BLOCKED",
+          "status": "BLOCKED",
+          "work_id": "NONE"
+        },
+        "new_dynamic_rule_ids": [],
+        "new_public_dynamic_reasons": [
+          "EXECUTION_WORK_NOT_ACTIONABLE"
+        ],
+        "original_public_reasons": [
+          "EXECUTION_WORK_NOT_ACTIONABLE"
+        ],
+        "rejected": true
+      },
+      {
+        "dynamic_visible": false,
+        "frozen_oracle": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "hybrid_correct": true,
+        "id": "N208",
+        "model_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "model_correct": false,
+        "native_actual_reference": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "new_dynamic_rule_ids": [],
+        "new_public_dynamic_reasons": [
+          "EXECUTION_WORK_NOT_ACTIONABLE"
+        ],
+        "original_public_reasons": [
+          "EXECUTION_WORK_NOT_ACTIONABLE"
+        ],
+        "rejected": true
+      },
+      {
+        "dynamic_visible": false,
+        "frozen_oracle": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I04:repair"
+        },
+        "hybrid_correct": true,
+        "id": "N209",
+        "model_actual_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "model_correct": false,
+        "native_actual_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I04:repair"
+        },
+        "new_dynamic_rule_ids": [],
+        "new_public_dynamic_reasons": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "original_public_reasons": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "rejected": true
+      },
+      {
+        "dynamic_visible": false,
+        "frozen_oracle": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:prior-art"
+        },
+        "hybrid_correct": true,
+        "id": "N210",
+        "model_actual_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "model_correct": false,
+        "native_actual_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:prior-art"
+        },
+        "new_dynamic_rule_ids": [],
+        "new_public_dynamic_reasons": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "original_public_reasons": [
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "rejected": true
+      },
+      {
+        "dynamic_visible": false,
+        "frozen_oracle": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "hybrid_correct": true,
+        "id": "N211",
+        "model_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "model_correct": true,
+        "native_actual_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "new_dynamic_rule_ids": [],
+        "new_public_dynamic_reasons": [],
+        "original_public_reasons": [],
+        "rejected": false
+      },
+      {
+        "dynamic_visible": false,
+        "frozen_oracle": {
+          "reason_code": "PRIOR_ART_GATE_PASS_REQUIRED",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "hybrid_correct": true,
+        "id": "N212",
+        "model_actual_decision": {
+          "reason_code": "ALL_REMAINING_WORK_BLOCKED",
+          "status": "BLOCKED",
+          "work_id": "NONE"
+        },
+        "model_correct": false,
+        "native_actual_reference": {
+          "reason_code": "PRIOR_ART_GATE_PASS_REQUIRED",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "new_dynamic_rule_ids": [],
+        "new_public_dynamic_reasons": [
+          "BLOCKED_BUT_OPEN_ACTIONABLE_EXISTS",
+          "UNSATISFIED_PRIOR_ART_GATE"
+        ],
+        "original_public_reasons": [
+          "BLOCKED_BUT_OPEN_ACTIONABLE_EXISTS",
+          "UNSATISFIED_PRIOR_ART_GATE"
+        ],
+        "rejected": true
+      },
+      {
+        "dynamic_visible": false,
+        "frozen_oracle": {
+          "reason_code": "EC_PLAN_AUTHORITY_INVALID",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "hybrid_correct": true,
+        "id": "N213",
+        "model_actual_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "model_correct": false,
+        "native_actual_reference": {
+          "reason_code": "EC_PLAN_AUTHORITY_INVALID",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "new_dynamic_rule_ids": [],
+        "new_public_dynamic_reasons": [
+          "INVALID_PLAN_AUTHORITY",
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "original_public_reasons": [
+          "INVALID_PLAN_AUTHORITY",
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "rejected": true
+      },
+      {
+        "dynamic_visible": false,
+        "frozen_oracle": {
+          "reason_code": "WORK_CANNOT_BE_BOTH_COMPLETE_AND_BLOCKED",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "hybrid_correct": true,
+        "id": "N214",
+        "model_actual_decision": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "model_correct": false,
+        "native_actual_reference": {
+          "reason_code": "WORK_CANNOT_BE_BOTH_COMPLETE_AND_BLOCKED",
+          "status": "FAIL_CLOSED",
+          "work_id": "NONE"
+        },
+        "new_dynamic_rule_ids": [],
+        "new_public_dynamic_reasons": [
+          "INCONSISTENT_WORK_STATE",
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "original_public_reasons": [
+          "INCONSISTENT_WORK_STATE",
+          "OPEN_ACTIONABLE_WORK_EXISTS"
+        ],
+        "rejected": true
+      },
+      {
+        "dynamic_visible": true,
+        "frozen_oracle": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "hybrid_correct": true,
+        "id": "N215",
+        "model_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "model_correct": false,
+        "native_actual_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "new_dynamic_rule_ids": [
+          "DYNAMIC_DEPENDENCY_NOT_READY"
+        ],
+        "new_public_dynamic_reasons": [
+          "DYNAMIC_DEPENDENCY_NOT_READY"
+        ],
+        "original_public_reasons": [],
+        "rejected": true
+      },
+      {
+        "dynamic_visible": true,
+        "frozen_oracle": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "hybrid_correct": true,
+        "id": "N216",
+        "model_actual_decision": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "model_correct": false,
+        "native_actual_reference": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I02:repair"
+        },
+        "new_dynamic_rule_ids": [
+          "DYNAMIC_URGENCY_DOMINANCE"
+        ],
+        "new_public_dynamic_reasons": [
+          "DYNAMIC_URGENCY_DOMINANCE"
+        ],
+        "original_public_reasons": [],
+        "rejected": true
+      },
+      {
+        "dynamic_visible": false,
+        "frozen_oracle": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "hybrid_correct": true,
+        "id": "N217",
+        "model_actual_decision": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "model_correct": true,
+        "native_actual_reference": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "new_dynamic_rule_ids": [],
+        "new_public_dynamic_reasons": [],
+        "original_public_reasons": [],
+        "rejected": false
+      }
+    ],
+    "same_public_model_upstream_pinned": true,
+    "terminal": "PUBLIC_DYNAMIC_S3_POLICY_GUARD_REPLAYED_RETROSPECTIVE"
+  }
+}
