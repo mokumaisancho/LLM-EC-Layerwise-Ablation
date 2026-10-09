@@ -1,0 +1,246 @@
+{
+  "protocol": "ISSUE1_AUTONOMOUS_MACHINE_AVAILABLE_STAGES_2026_10_10_V2",
+  "research_head": "bea17ffe9f43764936b877cc303835181bf747b5",
+  "real_native_17_match": true,
+  "real_qwen_17_full": true,
+  "s4_information_positive_and_negative": true,
+  "unit_tests_passed": 134,
+  "suite_and_ecv4_passed": true,
+  "original_phase1_goal_complete": false,
+  "new_schedules_created": false,
+  "checked_result": {
+    "ecv4_handoff": {
+      "closure_authority": "ECv4",
+      "evidence": [
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "frozen_origin",
+          "seq": 1
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "original-v2-TCC-replay:PASS:EC_NATIVE_SCOPE_INCOMPATIBLE",
+            "SUITE-ECv4:PASS"
+          ],
+          "node_id": "frozen_origin",
+          "seq": 2
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "frozen_origin",
+          "seq": 3,
+          "state_hash": "sha256:8142742e63f232289e75b3219f24ed0b1edf9abb966e1e2419d638f58ce5432f",
+          "transition_seq": 1
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "frozen_origin",
+          "seq": 4
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "s4_public_info",
+          "seq": 5
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "S4:known-10:structural-upper-bound8/10:public-features10/10:controls-PASS"
+          ],
+          "node_id": "s4_public_info",
+          "seq": 6
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "s4_public_info",
+          "seq": 7,
+          "state_hash": "sha256:440fdfdb7f42ce4989818f6ce0532e94fff7ea14c0e4e7f5b653d77ba69a7a7b",
+          "transition_seq": 2
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "s4_public_info",
+          "seq": 8
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "ec_native17",
+          "seq": 9
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "native-EC17:real-rerun:17-decision-pass:17-reason-pass"
+          ],
+          "node_id": "ec_native17",
+          "seq": 10
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "ec_native17",
+          "seq": 11,
+          "state_hash": "sha256:0235e79e1167867a3bf9d939a0451d21176049565f27afad34d8f5d061b06812",
+          "transition_seq": 3
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "ec_native17",
+          "seq": 12
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "llm_pinned17",
+          "seq": 13
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "Qwen17:17-real-case-inferences-pinned:no-gold-certificate"
+          ],
+          "node_id": "llm_pinned17",
+          "seq": 14
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "llm_pinned17",
+          "seq": 15,
+          "state_hash": "sha256:f86983f8696ef4af05941639d1cd83cfddd771344d5265de51b7ed3888462d5c",
+          "transition_seq": 4
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "llm_pinned17",
+          "seq": 16
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "gate",
+          "node_id": "assess_machine_scope",
+          "seq": 17
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "scoped-machine-evidence:COMPLETE",
+            "original-S1S4-five-arm:NOT_RUN",
+            "independent-original-LLM0:NOT_PROVEN"
+          ],
+          "node_id": "assess_machine_scope",
+          "seq": 18
+        },
+        {
+          "event": "GATE_SELECTED",
+          "node_id": "assess_machine_scope",
+          "outcome": "all_available",
+          "seq": 19,
+          "target": "scoped_machine_evidence_qualified"
+        },
+        {
+          "event": "TERMINAL_REACHED",
+          "node_id": "scoped_machine_evidence_qualified",
+          "seq": 20,
+          "terminal_status": "SUCCESS"
+        }
+      ],
+      "runtime_result": "TERMINAL",
+      "schema": "tcc.ecv4-evidence.v0",
+      "spec_hash": "sha256:f6f4132945d5a63cb81dd4c69b32602217401bbccd80d3f54b58f6ef074f289d",
+      "state_hash": "sha256:f86983f8696ef4af05941639d1cd83cfddd771344d5265de51b7ed3888462d5c",
+      "state_transitions": [
+        {
+          "node_id": "frozen_origin",
+          "seq": 1,
+          "state_hash": "sha256:8142742e63f232289e75b3219f24ed0b1edf9abb966e1e2419d638f58ce5432f",
+          "writes": {
+            "origin_gate": "VERIFIED_BUT_ORIGINAL_P2_INCOMPATIBLE"
+          }
+        },
+        {
+          "node_id": "s4_public_info",
+          "seq": 2,
+          "state_hash": "sha256:440fdfdb7f42ce4989818f6ce0532e94fff7ea14c0e4e7f5b653d77ba69a7a7b",
+          "writes": {
+            "s4_diagnostic": "PASS_SCOPED_DIAGNOSTIC"
+          }
+        },
+        {
+          "node_id": "ec_native17",
+          "seq": 3,
+          "state_hash": "sha256:0235e79e1167867a3bf9d939a0451d21176049565f27afad34d8f5d061b06812",
+          "writes": {
+            "ec17": "ACTUAL_REPLAY_MATCH"
+          }
+        },
+        {
+          "node_id": "llm_pinned17",
+          "seq": 4,
+          "state_hash": "sha256:f86983f8696ef4af05941639d1cd83cfddd771344d5265de51b7ed3888462d5c",
+          "writes": {
+            "llm17": "ACTUAL_REAL_OUTPUT_RECORDED"
+          }
+        }
+      ],
+      "tcc_id": "ISSUE1-AUTONOMOUS-BEYOND-P2-S3S4-QWEN-REAL-V1",
+      "terminal_id": "scoped_machine_evidence_qualified",
+      "terminal_status": "SUCCESS"
+    },
+    "ecv4_issue_closure_authorized": false,
+    "employed_background_ui": false,
+    "error": null,
+    "external_independent_gold_qualified": false,
+    "generated_edge_count": 10,
+    "generated_node_count": 8,
+    "generated_spec_sha": "sha256:f6f4132945d5a63cb81dd4c69b32602217401bbccd80d3f54b58f6ef074f289d",
+    "native_ec_17": {
+      "cases": 17,
+      "raw_evidence_hash": "926b0d1388c62431989356c91346d305f0db747959260c80ceb8bed13d52423b",
+      "source_commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+      "status": "REPLAY_MATCH"
+    },
+    "original_issue_1_five_arm_complete": false,
+    "original_phase1_ec_native_contract_repaired": false,
+    "prior_tcc_verification": {
+      "source": "bea17ffe9f43764936b877cc303835181bf747b5",
+      "suite_ecv4": {
+        "ecv4_pass": true,
+        "pass": true,
+        "suite_pass": true,
+        "terminal": "ISSUE58_METHOD_CODE_PASS_REAL_FOUR_ARM_PENDING"
+      },
+      "terminal": "scoped_verified_external_missing"
+    },
+    "protocol": "ISSUE1_AUTONOMOUS_CONTINUATION_TCC_STAGE2_V1",
+    "real_qwen_17": {
+      "cases": 17,
+      "correct": 1,
+      "source_sha256": "d431f4020f06e809d310ee63923b08024da886ce6c3a3ba6456ea1c630a48d87",
+      "status": "REAL_PINNED_CASES_CACHED"
+    },
+    "registered_task_or_schedule": false,
+    "research_commit": "bea17ffe9f43764936b877cc303835181bf747b5",
+    "s4_public_information": {
+      "old_majority_upper_bound": 0.8,
+      "public_enriched_case_accuracy": 1,
+      "retrospective_count": 10,
+      "source_hash": "e3515302352a5dd9b7a6f19a5ea43804874a97381bdc6c73819de4a385958cb4",
+      "strict_scope": "retrospective_fixture_information_not_ec_accuracy"
+    },
+    "stop_state": "MACHINE_SCOPED_EVIDENCE_COMPLETE_ORIGINAL_SCIENCE_STILL_BLOCKED",
+    "subworkflow_machine_qualified": true,
+    "tcc_compiler_pin": "786d52c1efbc9271096f9311d768ef49bcd116e2"
+  }
+}
