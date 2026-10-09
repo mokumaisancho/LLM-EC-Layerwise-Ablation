@@ -1,0 +1,455 @@
+{
+  "protocol": "ISSUE1_MAC_LOCAL_QWEN_NEXT_ACTION_ACTUAL_20261010_V1",
+  "source_code_commit": "f98bbc43801f539855606773a683f402f0e83a72",
+  "unit_tests": 8,
+  "original_llm0_unverified": true,
+  "original_A_E_study_incomplete": true,
+  "run": {
+    "decode": {
+      "context": 2048,
+      "gpu_layers": 0,
+      "max_tokens": 64,
+      "seed": 0,
+      "temperature": 0,
+      "threads": 4
+    },
+    "ec_actual_replay": 17,
+    "ec_minus_llm_decision_accuracy": 0.9411764705882353,
+    "historical_llama_server_tag": "b11146",
+    "historical_original_server_output_reproduced": false,
+    "historical_runner_git_blob_sha1": "486863d076f49a9378a538e97739464849a044b1",
+    "independent_gold": false,
+    "llm": {
+      "decision_accuracy": 0.058823529411764705,
+      "decision_correct": 1,
+      "fail_closed_accuracy": 0.25,
+      "fail_closed_fixture_count": 4,
+      "fail_closed_status_correct": 1,
+      "fixture_count": 17,
+      "reason_accuracy": 0.058823529411764705,
+      "reason_correct": 1,
+      "rows": [
+        {
+          "category": "blocker_precedence",
+          "decision_correct": false,
+          "fixture_id": "N201",
+          "oracle": {
+            "reason_code": "NONE",
+            "status": "EXECUTE",
+            "work_id": "work:I20:repair"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  , \"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+          "reason_correct": false
+        },
+        {
+          "category": "priority_within_blockers",
+          "decision_correct": false,
+          "fixture_id": "N202",
+          "oracle": {
+            "reason_code": "NONE",
+            "status": "EXECUTE",
+            "work_id": "work:I02:repair"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  , \"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+          "reason_correct": false
+        },
+        {
+          "category": "stable_issue_id_tiebreak",
+          "decision_correct": false,
+          "fixture_id": "N203",
+          "oracle": {
+            "reason_code": "NONE",
+            "status": "EXECUTE",
+            "work_id": "work:I01:repair"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  , \"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+          "reason_correct": false
+        },
+        {
+          "category": "phase_progression_regression",
+          "decision_correct": false,
+          "fixture_id": "N204",
+          "oracle": {
+            "reason_code": "NONE",
+            "status": "EXECUTE",
+            "work_id": "work:I01:regression"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+          "reason_correct": false
+        },
+        {
+          "category": "phase_progression_evidence",
+          "decision_correct": false,
+          "fixture_id": "N205",
+          "oracle": {
+            "reason_code": "NONE",
+            "status": "EXECUTE",
+            "work_id": "work:I01:evidence"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+          "reason_correct": false
+        },
+        {
+          "category": "skip_blocked_current_work",
+          "decision_correct": false,
+          "fixture_id": "N206",
+          "oracle": {
+            "reason_code": "NONE",
+            "status": "EXECUTE",
+            "work_id": "work:I02:repair"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  , \"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+          "reason_correct": false
+        },
+        {
+          "category": "all_remaining_blocked",
+          "decision_correct": false,
+          "fixture_id": "N207",
+          "oracle": {
+            "reason_code": "ALL_REMAINING_WORK_BLOCKED",
+            "status": "BLOCKED",
+            "work_id": "NONE"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+          "reason_correct": false
+        },
+        {
+          "category": "no_open_work",
+          "decision_correct": false,
+          "fixture_id": "N208",
+          "oracle": {
+            "reason_code": "NO_OPEN_WORK",
+            "status": "NO_OPEN_WORK",
+            "work_id": "NONE"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+          "reason_correct": false
+        },
+        {
+          "category": "accepted_limitation_skip",
+          "decision_correct": false,
+          "fixture_id": "N209",
+          "oracle": {
+            "reason_code": "NONE",
+            "status": "EXECUTE",
+            "work_id": "work:I04:repair"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  ,\"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+          "reason_correct": false
+        },
+        {
+          "category": "prior_art_first",
+          "decision_correct": false,
+          "fixture_id": "N210",
+          "oracle": {
+            "reason_code": "NONE",
+            "status": "EXECUTE",
+            "work_id": "work:I01:prior-art"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+          "reason_correct": false
+        },
+        {
+          "category": "prior_art_gate_pass",
+          "decision_correct": false,
+          "fixture_id": "N211",
+          "oracle": {
+            "reason_code": "NONE",
+            "status": "EXECUTE",
+            "work_id": "work:I01:repair"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+          "reason_correct": false
+        },
+        {
+          "category": "prior_art_gate_fail_closed",
+          "decision_correct": false,
+          "fixture_id": "N212",
+          "oracle": {
+            "reason_code": "PRIOR_ART_GATE_PASS_REQUIRED",
+            "status": "FAIL_CLOSED",
+            "work_id": "NONE"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+          "reason_correct": false
+        },
+        {
+          "category": "invalid_plan_authority",
+          "decision_correct": false,
+          "fixture_id": "N213",
+          "oracle": {
+            "reason_code": "EC_PLAN_AUTHORITY_INVALID",
+            "status": "FAIL_CLOSED",
+            "work_id": "NONE"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  ,\"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+          "reason_correct": false
+        },
+        {
+          "category": "completed_and_blocked_conflict",
+          "decision_correct": false,
+          "fixture_id": "N214",
+          "oracle": {
+            "reason_code": "WORK_CANNOT_BE_BOTH_COMPLETE_AND_BLOCKED",
+            "status": "FAIL_CLOSED",
+            "work_id": "NONE"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  , \"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+          "reason_correct": false
+        },
+        {
+          "category": "dynamic_dependency_readiness",
+          "decision_correct": false,
+          "fixture_id": "N215",
+          "oracle": {
+            "reason_code": "NONE",
+            "status": "EXECUTE",
+            "work_id": "work:I02:repair"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  , \"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+          "reason_correct": false
+        },
+        {
+          "category": "dynamic_urgency_override",
+          "decision_correct": false,
+          "fixture_id": "N216",
+          "oracle": {
+            "reason_code": "NONE",
+            "status": "EXECUTE",
+            "work_id": "work:I02:repair"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+          "reason_correct": false
+        },
+        {
+          "category": "issue_definition_reframe",
+          "decision_correct": true,
+          "fixture_id": "N217",
+          "oracle": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "prediction": {
+            "reason_code": "ISSUE_DEFINITION_REFRAME",
+            "status": "REFRAME",
+            "work_id": "NONE"
+          },
+          "raw": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+          "reason_correct": true
+        }
+      ]
+    },
+    "llm_actual_inference_count": 17,
+    "local_binary_sha256": "023712cb97abef06769a544fe034a92cc57921bd60fd9fcd2c02e325839641c2",
+    "original_llm0_identity_established": false,
+    "prompt_and_grammar_logic": "bytewise from archived original V2 runner",
+    "protocol": "ISSUE1_NEXT_ACTION_QWEN_MAC_COMPAT_REAL_V3",
+    "qwen_model_sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+    "raw_inference": [
+      {
+        "grammar_sha256": "96ae8d3811e6c1addf1b3092aa82eabb9c3f1a38c6779a1f4b7487d816ea830c",
+        "prompt_sha256": "9149961013a8d9e6243c8d540457fba3cd1ed04f1c1c38e071a89af56c2037f4",
+        "raw_response": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  , \"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+        "stderr_sha256": "aaea15ec31c29768c00d73da07e0bdc2d1bfe81a8410aec17e320972bd62024b",
+        "stdout_sha256": "150eaea1417fd99937d3598074e5b337ca13992fa7f7cdce78ae9eb4af544444"
+      },
+      {
+        "grammar_sha256": "06acb03d77ba3d07947627e835a462e5082f181c52e53de114bd48cef016b225",
+        "prompt_sha256": "25ca563e055ef8154dcad81b17ffbc14c4b65b5d654926eb95a3ea27586219fd",
+        "raw_response": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  , \"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+        "stderr_sha256": "be116baa83394f01c1681d7f647194ea8c2a31065df7435dc356d0df169645f1",
+        "stdout_sha256": "fc3eb4a428fcd66df0c02397d7ac1f79a0f713ec2c40e6edc03c3f82abbe3b26"
+      },
+      {
+        "grammar_sha256": "06acb03d77ba3d07947627e835a462e5082f181c52e53de114bd48cef016b225",
+        "prompt_sha256": "261ecbf1cb96e9d7f3355090770ade91740811d217bb57de1f0fef67c891073b",
+        "raw_response": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  , \"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+        "stderr_sha256": "be116baa83394f01c1681d7f647194ea8c2a31065df7435dc356d0df169645f1",
+        "stdout_sha256": "602eba7798b055b5b2798bc2bbe3b981a73ab3e81dedbd444ebd9740d4a4a50c"
+      },
+      {
+        "grammar_sha256": "03692e5a008a668c0bec518ce939be8aa699c985d3a1f9b907681563b3090483",
+        "prompt_sha256": "5d0babb0e3a954a382d3d4b1a72959f28e7c2c9fa29c80fd4ae55587d0d5ee6c",
+        "raw_response": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+        "stderr_sha256": "be116baa83394f01c1681d7f647194ea8c2a31065df7435dc356d0df169645f1",
+        "stdout_sha256": "70b63d47fe701ef53f3c332d5d016cbc60e1fa638ed5372abb172e1f040ebb16"
+      },
+      {
+        "grammar_sha256": "03692e5a008a668c0bec518ce939be8aa699c985d3a1f9b907681563b3090483",
+        "prompt_sha256": "94490c913f29f7e6068551a8e58d7a92d6fb651da7de410777602fa168f856be",
+        "raw_response": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+        "stderr_sha256": "c8800e87bb4ca6df3d5c9355cc279972c2b8a1c157fecf49e3f559789d8c48d1",
+        "stdout_sha256": "7cf4e670f6f9fa9d6995b96204798bffba20aab3bec5e1627a29a1840a777348"
+      },
+      {
+        "grammar_sha256": "06acb03d77ba3d07947627e835a462e5082f181c52e53de114bd48cef016b225",
+        "prompt_sha256": "8b20fad5c2ba9ecf666fb77a7eff47ea172339a91d1b13debc1d3360915d7ebf",
+        "raw_response": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  , \"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+        "stderr_sha256": "be116baa83394f01c1681d7f647194ea8c2a31065df7435dc356d0df169645f1",
+        "stdout_sha256": "bd0be1b447ca15c2c1c2052eac008e79cb46af62f7caea1ecf79ce2257cf1fd3"
+      },
+      {
+        "grammar_sha256": "03692e5a008a668c0bec518ce939be8aa699c985d3a1f9b907681563b3090483",
+        "prompt_sha256": "512a046fc55becc8d2b5f02ffe88507225d4d25cea6b5b381d3c91c7dce3e92f",
+        "raw_response": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+        "stderr_sha256": "be116baa83394f01c1681d7f647194ea8c2a31065df7435dc356d0df169645f1",
+        "stdout_sha256": "9f04d7406c40d105d7c25fbf99dee2d0095ff5e784357b91147a6324d827b554"
+      },
+      {
+        "grammar_sha256": "03692e5a008a668c0bec518ce939be8aa699c985d3a1f9b907681563b3090483",
+        "prompt_sha256": "1013127e75f2b4ab98eb64a4c5dc2fc3e769bbb4ad3848c67b77a85a570ad8fd",
+        "raw_response": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+        "stderr_sha256": "be116baa83394f01c1681d7f647194ea8c2a31065df7435dc356d0df169645f1",
+        "stdout_sha256": "e24ebc78e7474223384d1828769c3c4b221d1d7a6dd54b7aea5b8e8f954e73fe"
+      },
+      {
+        "grammar_sha256": "ef206f548fbe6a0dd5354fc37aa117ce2e497e3447113bf7b67fe91e0714506e",
+        "prompt_sha256": "16b334120bf49aa1649f29397c4fc6c982f50e3ef74800a862cf05e7c1050a25",
+        "raw_response": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  ,\"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+        "stderr_sha256": "be116baa83394f01c1681d7f647194ea8c2a31065df7435dc356d0df169645f1",
+        "stdout_sha256": "e3bb784f4bed177afd2b32a81d4889894e80ff9da62f4fca7b6d29b9fff11fba"
+      },
+      {
+        "grammar_sha256": "ca41b5622f766243ed6704e7a6e6ec93b1a6f3fd0db94c3ff4275dfae9d5bedf",
+        "prompt_sha256": "108cef19e22ac91a482dd505d0c0f8d28da7bc49670b48362d581996b418987b",
+        "raw_response": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+        "stderr_sha256": "be116baa83394f01c1681d7f647194ea8c2a31065df7435dc356d0df169645f1",
+        "stdout_sha256": "9fea68f13ad7cec9c64215683d84f5579e67331b30624e9f94d818674dede1da"
+      },
+      {
+        "grammar_sha256": "ca41b5622f766243ed6704e7a6e6ec93b1a6f3fd0db94c3ff4275dfae9d5bedf",
+        "prompt_sha256": "06b30565bcb5fd168f9035aee8d838aead95f48fe359aa7d40625f50bb6b01e8",
+        "raw_response": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+        "stderr_sha256": "be116baa83394f01c1681d7f647194ea8c2a31065df7435dc356d0df169645f1",
+        "stdout_sha256": "01c26b0cb4a56bac84264682d796ff148dcb230709e0b7c1c281a386f4bf36f0"
+      },
+      {
+        "grammar_sha256": "ca41b5622f766243ed6704e7a6e6ec93b1a6f3fd0db94c3ff4275dfae9d5bedf",
+        "prompt_sha256": "41a6ecea5f1fb4f1f7acfcd14c326c40a9979d85dd60c50aec328db92950564d",
+        "raw_response": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+        "stderr_sha256": "be116baa83394f01c1681d7f647194ea8c2a31065df7435dc356d0df169645f1",
+        "stdout_sha256": "ac3364cd1eeb59ea48f6c9c4cd1a8a1c8440b7c850153403a3030379c69e99dc"
+      },
+      {
+        "grammar_sha256": "03692e5a008a668c0bec518ce939be8aa699c985d3a1f9b907681563b3090483",
+        "prompt_sha256": "de7c78744058e09ced4e489d4d93c2316119e5d04d86de9565d21427aa71b4ab",
+        "raw_response": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  ,\"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+        "stderr_sha256": "be116baa83394f01c1681d7f647194ea8c2a31065df7435dc356d0df169645f1",
+        "stdout_sha256": "698f39adf47c929d90e4f7be840ebe4a21a5abd2808534f7077ee02e89867b4b"
+      },
+      {
+        "grammar_sha256": "03692e5a008a668c0bec518ce939be8aa699c985d3a1f9b907681563b3090483",
+        "prompt_sha256": "c65485fbe47a879a6f1b0091c4587d246f33f18695885768473f3f0a30eccb44",
+        "raw_response": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  , \"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+        "stderr_sha256": "be116baa83394f01c1681d7f647194ea8c2a31065df7435dc356d0df169645f1",
+        "stdout_sha256": "55f97c4ced77e8e82d0822e882a9a20cdd1dcccde88b531969d45ac5e809a21e"
+      },
+      {
+        "grammar_sha256": "06acb03d77ba3d07947627e835a462e5082f181c52e53de114bd48cef016b225",
+        "prompt_sha256": "530da179683f664b51990e48e5a51da601d99ca3925a6907a6abed8d573c2fac",
+        "raw_response": "{\n  \"status\": \"REFRAME\",\n  \"work_id\": \"NONE\"\n  , \"reason_code\": \"ISSUE_DEFINITION_REFRAME\"\n}",
+        "stderr_sha256": "be116baa83394f01c1681d7f647194ea8c2a31065df7435dc356d0df169645f1",
+        "stdout_sha256": "8fbbc273c2e1bf7a9cb802ac57acb1da79977aaa2fbb05db7e311dddc5cfbe68"
+      },
+      {
+        "grammar_sha256": "06acb03d77ba3d07947627e835a462e5082f181c52e53de114bd48cef016b225",
+        "prompt_sha256": "79714e1ea20df74dfc05eabcdadcd04c55d233b19208672b7edac596463f929a",
+        "raw_response": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+        "stderr_sha256": "be116baa83394f01c1681d7f647194ea8c2a31065df7435dc356d0df169645f1",
+        "stdout_sha256": "932e9f231195f65eddf200bf2aaf485236e1df931caccf853230d70c3acd7476"
+      },
+      {
+        "grammar_sha256": "03692e5a008a668c0bec518ce939be8aa699c985d3a1f9b907681563b3090483",
+        "prompt_sha256": "508bf40d43482edf8d4148e6c0fafd456fe20465639dc4748a4a1f4a64a23474",
+        "raw_response": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+        "stderr_sha256": "e5898045401debbdcf61dcc99b6cd8936ca46c91fdb7da06bfa7a91a8f2a3698",
+        "stdout_sha256": "0acc0445466a0a5240642095e63035acf36f70a4217e92feb2dcc70c4ce8b3d3"
+      }
+    ],
+    "reference_scope": "17 pre-existing exposed V2 cases",
+    "scientific_phase1_a_e_completed": false,
+    "terminal": "SCOPED_REAL_LOCAL_MAC_QWEN_17_DIAGNOSTIC_COMPLETE",
+    "this_local_runtime": "llama-cli Mac tag newer, not the historical Ubuntu llama-server"
+  }
+}
