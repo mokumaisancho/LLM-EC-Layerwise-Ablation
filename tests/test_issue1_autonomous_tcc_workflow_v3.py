@@ -102,5 +102,38 @@ class Issue1Stage3MachineSelfDirectedTests(unittest.TestCase):
             self.assertFalse(out["ecv4_original_issue_closure_authorized"])
             self.assertIn("RAW_PARSE_OR_PREDICTION_TAMPERED",out["failure"])
 
+    @unittest.skipUnless(TCC_ROOT.is_dir() and EC_ROOT.is_dir(),"pinned read-only assets not installed")
+    def test_11_missing_real_report_causes_automatic_inference_then_atomic_seal(self):
+        # Mock is an already SEALED REAL output. Tests branching/atomic persistence
+        # only, not model competence. True 20-call model inference is separately
+        # recorded in results/issue1_s4_qwen20_paired_info_ablation_actual_2026-10-10.json.
+        with tempfile.TemporaryDirectory() as td:
+            target=Path(td)/"new-report.json"
+            with patch("tools.run_issue1_s4_public_info_paired_llm_v1.run",
+                       return_value=copy.deepcopy(self.real["result"])) as model_runner:
+                x=run(TCC_ROOT,EC_ROOT,report=target,
+                      model=Path("/verified-model"),llama=Path("/verified-llama"),seconds=65)
+            model_runner.assert_called_once()
+            self.assertEqual(x["tcc_terminal_id"],"accept_scoped_machine_terminal")
+            sealed=json.loads(target.read_text())
+            self.assertEqual(sealed["result"]["actual_inferences"],20)
+            self.assertEqual(sealed["source_verification"]["model_actual_calls"],20)
+            self.assertFalse(sealed["source_verification"]["original_A_E_completed"])
+            # Subsequent invocation must use only immutable cached output,
+            # not call inference again.
+            with patch("tools.run_issue1_s4_public_info_paired_llm_v1.run",
+                       side_effect=AssertionError("unexpected repeated inference")):
+                resumed=run(TCC_ROOT,EC_ROOT,report=target)
+            self.assertEqual(resumed["tcc_terminal_id"],"accept_scoped_machine_terminal")
+
+    @unittest.skipUnless(TCC_ROOT.is_dir() and EC_ROOT.is_dir(),"pinned read-only assets not installed")
+    def test_12_missing_real_report_without_model_is_blocked_not_false_complete(self):
+        with tempfile.TemporaryDirectory() as td:
+            missing=Path(td)/"absent.json"
+            out=run(TCC_ROOT,EC_ROOT,report=missing)
+            self.assertEqual(out["tcc_terminal_id"],"blocked_integrity")
+            self.assertIn("REAL_20_MODEL_RAW_REPORT_MISSING",out["failure"])
+            self.assertFalse(out["ecv4_original_issue_closure_authorized"])
+
 if __name__=="__main__":
     unittest.main()
