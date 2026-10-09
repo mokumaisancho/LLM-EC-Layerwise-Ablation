@@ -67,6 +67,8 @@ def spec():
 
 
 def audit_report(envelope:dict)->dict:
+    if str(ROOT/"tools") not in sys.path:
+        sys.path.insert(0,str(ROOT/"tools"))
     from tools.generate_phase1_measurement_v2_canonical import SPECS,rebuild
     from tools.run_issue1_s4_interface_information_diagnostic_v1 import (
         baseline_signature,canonical_hash as original_hash,predict,
