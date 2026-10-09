@@ -1,0 +1,624 @@
+{
+  "protocol": "ISSUE1_GBNF_REAL_MODEL_RESULT_V1",
+  "source_commit": "fe78f2fbe050fcd98d58adbb8c1e5b3c8826ed93",
+  "original_issue_complete": false,
+  "origin_scope": "Native governed plan next-action S3, exposed 17 cases, original S1-S4 not complete",
+  "model_run": {
+    "actual_model_calls": 17,
+    "actual_model_pin": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+    "all_Qwen_predictions_genuine_new_inference": true,
+    "baseline_decision_correct": 1,
+    "contract_git_blob": "0b2bf2420f43d688d01d68a52893cb7b5b153f76",
+    "gate_active_count": 1,
+    "gate_inactive_count": 16,
+    "gate_treatment_decision_correct": 2,
+    "independent_unseen_gold": false,
+    "material_effect_on_exposed_cases": false,
+    "materiality_threshold": 0.2,
+    "original_S1_S4_five_arm_complete": false,
+    "original_fixture_blob": "12faa9a4cacf0c91694d25f1ccce45e093d95e44",
+    "original_issue_closure_authorized": false,
+    "original_qwen_actual_blob": "2d28b0f955be0980c9867d61a0974bcfb80df14b",
+    "paired_accuracy_gain": 0.058823529411764705,
+    "paired_cases": [
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N201",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "89a24dc778e18e2ebc90911892a728b2c6fdbaa736cd48f8228fa6db4e41d373",
+          "case_id": "N201",
+          "historical_prompt_sha256": "9149961013a8d9e6243c8d540457fba3cd1ed04f1c1c38e071a89af56c2037f4",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "96ae8d3811e6c1addf1b3092aa82eabb9c3f1a38c6779a1f4b7487d816ea830c",
+          "public_gate_active": false,
+          "raw_response": "{\n  \"status\": \"NO_OPEN_WORK\"\n  , \"work_id\": \"NONE\"\n  , \"reason_code\": \"NO_OPEN_WORK\"\n}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "503f9f290677d12498451db242f162719fd700ef1b251143a20f71d2f4da851e",
+          "stdout_sha256": "8b37006fb4689c857ff72018f33f0fe3dca23042c9cebcf91558545b88979c86",
+          "treated_GBNF_sha256": "9089c10ce6c9fe1abd93802a5fccd0694e6524c90952887b07ff257a1784beb0"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "treatment_exact_decision_correct": false,
+        "treatment_reason_correct": false
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N202",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "6e7832c17aca5f93bd57685ff90c788e0b66ced105920b5a6cf87f89c4869f38",
+          "case_id": "N202",
+          "historical_prompt_sha256": "25ca563e055ef8154dcad81b17ffbc14c4b65b5d654926eb95a3ea27586219fd",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "06acb03d77ba3d07947627e835a462e5082f181c52e53de114bd48cef016b225",
+          "public_gate_active": false,
+          "raw_response": "{\n  \"status\": \"NO_OPEN_WORK\"\n  , \"work_id\": \"NONE\"\n  , \"reason_code\": \"NO_OPEN_WORK\"\n}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "cb98b00b02b84b903ea5567a3da199ffe10cb1c4d722bb8f661f87068c8781d3",
+          "stdout_sha256": "b4162259b434dc925ca48968ec58c76c0b1b303cf5d021fba52f0fed5b2d7293",
+          "treated_GBNF_sha256": "ba6f1b874ece564bbe39e5e9ae85b1a696e25944563f18fa8517bbea8e83e0c5"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "treatment_exact_decision_correct": false,
+        "treatment_reason_correct": false
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N203",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "ead661b4acdc062f83465722c8b6bc3bb058275d68eb810f75be19a7cfa09d6a",
+          "case_id": "N203",
+          "historical_prompt_sha256": "261ecbf1cb96e9d7f3355090770ade91740811d217bb57de1f0fef67c891073b",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "06acb03d77ba3d07947627e835a462e5082f181c52e53de114bd48cef016b225",
+          "public_gate_active": false,
+          "raw_response": "{\n  \"status\": \"NO_OPEN_WORK\"\n  , \"work_id\": \"NONE\"\n  , \"reason_code\": \"NO_OPEN_WORK\"\n}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "cba258983d42ac0865721d268fda7c156477b96388b531ff01a66c6e9c75f695",
+          "stdout_sha256": "b75e3c08a22461178aadc3d0731f5ca44656e10b7bec13db328559e939e77db2",
+          "treated_GBNF_sha256": "ba6f1b874ece564bbe39e5e9ae85b1a696e25944563f18fa8517bbea8e83e0c5"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "treatment_exact_decision_correct": false,
+        "treatment_reason_correct": false
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N204",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "8710709162456dd5b31e36a5cf04609e5ea81f64f44f0cfd6b575e3d759e6d4c",
+          "case_id": "N204",
+          "historical_prompt_sha256": "5d0babb0e3a954a382d3d4b1a72959f28e7c2c9fa29c80fd4ae55587d0d5ee6c",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "03692e5a008a668c0bec518ce939be8aa699c985d3a1f9b907681563b3090483",
+          "public_gate_active": false,
+          "raw_response": "{\"status\":\"EXECUTE\",\"work_id\":\"work:I01:repair\",\"reason_code\":\"NONE\"}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "cb98b00b02b84b903ea5567a3da199ffe10cb1c4d722bb8f661f87068c8781d3",
+          "stdout_sha256": "e7367c0dd4ef02d39301f1d0e8b666a08e7bd21d3fb4c1728994fd99618d0b97",
+          "treated_GBNF_sha256": "68cbb5fabec5d9a02de8d0c8ebb7e41690b64c97f8bf7f78b3c673ff9148cd7a"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "treatment_exact_decision_correct": false,
+        "treatment_reason_correct": true
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N205",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "d15bdd55eb5b77a2b92c9e4745b723bbb91936e032d64d97706b73cdaae5a9e4",
+          "case_id": "N205",
+          "historical_prompt_sha256": "94490c913f29f7e6068551a8e58d7a92d6fb651da7de410777602fa168f856be",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "03692e5a008a668c0bec518ce939be8aa699c985d3a1f9b907681563b3090483",
+          "public_gate_active": false,
+          "raw_response": "{\"status\":\"EXECUTE\",\"work_id\":\"work:I01:repair\",\"reason_code\":\"NONE\"}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "6225e12b5487c5c45afd4757372a00d4c3a9ce7b8c21fc91d0761ab75e01b99b",
+          "stdout_sha256": "0a324a529c8efab25f3be0b81b31b0b50c4ebb9220828d9768871b3f93fb00b0",
+          "treated_GBNF_sha256": "68cbb5fabec5d9a02de8d0c8ebb7e41690b64c97f8bf7f78b3c673ff9148cd7a"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "treatment_exact_decision_correct": false,
+        "treatment_reason_correct": true
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N206",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "82ac3e7063bd54b72055706abd5e5695077bd27f8284f4a630de3d21f6f8f6dc",
+          "case_id": "N206",
+          "historical_prompt_sha256": "8b20fad5c2ba9ecf666fb77a7eff47ea172339a91d1b13debc1d3360915d7ebf",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "06acb03d77ba3d07947627e835a462e5082f181c52e53de114bd48cef016b225",
+          "public_gate_active": false,
+          "raw_response": "{\n  \"status\": \"NO_OPEN_WORK\"\n  , \"work_id\": \"NONE\"\n  , \"reason_code\": \"NO_OPEN_WORK\"\n}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "2f1959e86195b5cf1a18095cb9a11ddd26c0cb6e8e1712373aa165420273905f",
+          "stdout_sha256": "3ffc7c1a2bb1b35dcb222878a0fc3354b4abd3b37807ff03bd77459e8c2b2d34",
+          "treated_GBNF_sha256": "ba6f1b874ece564bbe39e5e9ae85b1a696e25944563f18fa8517bbea8e83e0c5"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "treatment_exact_decision_correct": false,
+        "treatment_reason_correct": false
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N207",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "a32118d59a847b5fb13d715101085a60b4ae11abd1d35ed444909c18e638aa26",
+          "case_id": "N207",
+          "historical_prompt_sha256": "512a046fc55becc8d2b5f02ffe88507225d4d25cea6b5b381d3c91c7dce3e92f",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "03692e5a008a668c0bec518ce939be8aa699c985d3a1f9b907681563b3090483",
+          "public_gate_active": false,
+          "raw_response": "{\"status\":\"EXECUTE\",\"work_id\":\"work:I01:repair\",\"reason_code\":\"NONE\"}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "36c14f4bfaa9deadbb4743b69214630cded5af6efff4618dba45b73b8937bbd5",
+          "stdout_sha256": "fb81da4b4164d123baf2efb803e400cf0fe75eb6493ace5379b2f2b198d9df4b",
+          "treated_GBNF_sha256": "68cbb5fabec5d9a02de8d0c8ebb7e41690b64c97f8bf7f78b3c673ff9148cd7a"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "treatment_exact_decision_correct": false,
+        "treatment_reason_correct": false
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N208",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "22aa03b7d6f66b037200db648ac77d3d7e564eda6ed38d71a11fd8d268e4b2db",
+          "case_id": "N208",
+          "historical_prompt_sha256": "1013127e75f2b4ab98eb64a4c5dc2fc3e769bbb4ad3848c67b77a85a570ad8fd",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "03692e5a008a668c0bec518ce939be8aa699c985d3a1f9b907681563b3090483",
+          "public_gate_active": false,
+          "raw_response": "{\"status\":\"EXECUTE\",\"work_id\":\"work:I01:repair\",\"reason_code\":\"NONE\"}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "e7c6dab6aa8ee58493446dbc43298e9aff9b722a782bca6bb0de663d8a9fa710",
+          "stdout_sha256": "2e1ae87099a1d81de62259ca80f2fb04e778bd6a101f971914cc0eb0d4feb776",
+          "treated_GBNF_sha256": "68cbb5fabec5d9a02de8d0c8ebb7e41690b64c97f8bf7f78b3c673ff9148cd7a"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "treatment_exact_decision_correct": false,
+        "treatment_reason_correct": false
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N209",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "1062f2e49e2131abf3b3973e5c24bcfca5b24a3e87ad07fe02874ed4fa3a5b42",
+          "case_id": "N209",
+          "historical_prompt_sha256": "16b334120bf49aa1649f29397c4fc6c982f50e3ef74800a862cf05e7c1050a25",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "ef206f548fbe6a0dd5354fc37aa117ce2e497e3447113bf7b67fe91e0714506e",
+          "public_gate_active": false,
+          "raw_response": "{\n  \"status\": \"NO_OPEN_WORK\"\n  , \"work_id\": \"NONE\"\n  , \"reason_code\": \"NO_OPEN_WORK\"\n}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "6225e12b5487c5c45afd4757372a00d4c3a9ce7b8c21fc91d0761ab75e01b99b",
+          "stdout_sha256": "ac896234963c59322332dc1f9a598149e672917d1810447e32cfc1c654ccdd26",
+          "treated_GBNF_sha256": "37c4e151441569c564147fab29cf15f28e136a962f8c00d80607625509672cb9"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "treatment_exact_decision_correct": false,
+        "treatment_reason_correct": false
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N210",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "1e90eec16ee0c65c59faa2f77f4acae1df794142724533de3755d80b2e7bbdf5",
+          "case_id": "N210",
+          "historical_prompt_sha256": "108cef19e22ac91a482dd505d0c0f8d28da7bc49670b48362d581996b418987b",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "ca41b5622f766243ed6704e7a6e6ec93b1a6f3fd0db94c3ff4275dfae9d5bedf",
+          "public_gate_active": false,
+          "raw_response": "{\"status\":\"NO_OPEN_WORK\",\"work_id\":\"NONE\",\"reason_code\":\"NO_OPEN_WORK\"}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "2f1959e86195b5cf1a18095cb9a11ddd26c0cb6e8e1712373aa165420273905f",
+          "stdout_sha256": "2f9b6ae09f9aeac761c45ecdd395eccbdb6c7095ca9bf8e5967732a77866f61a",
+          "treated_GBNF_sha256": "81a8e3f477d326671e5f7cce0ce2f25e51e798773734095fe094e9c83e23ef40"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "treatment_exact_decision_correct": false,
+        "treatment_reason_correct": false
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N211",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "180c91eedf74ac792fe45e23cff351aa8f65803823b593b719e4e660dccac5c0",
+          "case_id": "N211",
+          "historical_prompt_sha256": "06b30565bcb5fd168f9035aee8d838aead95f48fe359aa7d40625f50bb6b01e8",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "ca41b5622f766243ed6704e7a6e6ec93b1a6f3fd0db94c3ff4275dfae9d5bedf",
+          "public_gate_active": false,
+          "raw_response": "{\"status\":\"EXECUTE\",\"work_id\":\"work:I01:repair\",\"reason_code\":\"NONE\"}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "cba258983d42ac0865721d268fda7c156477b96388b531ff01a66c6e9c75f695",
+          "stdout_sha256": "6b1165693c4f64f67329759899a06d5fe748b0bca76f2a196a7b73a4099d7d72",
+          "treated_GBNF_sha256": "81a8e3f477d326671e5f7cce0ce2f25e51e798773734095fe094e9c83e23ef40"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "treatment_exact_decision_correct": true,
+        "treatment_reason_correct": true
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N212",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "8b64585b84ffe05b254765f2c68262e6e767c70dae6bfcd59056eae6027722a0",
+          "case_id": "N212",
+          "historical_prompt_sha256": "41a6ecea5f1fb4f1f7acfcd14c326c40a9979d85dd60c50aec328db92950564d",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "ca41b5622f766243ed6704e7a6e6ec93b1a6f3fd0db94c3ff4275dfae9d5bedf",
+          "public_gate_active": false,
+          "raw_response": "{\"status\":\"BLOCKED\",\"work_id\":\"NONE\",\"reason_code\":\"ALL_REMAINING_WORK_BLOCKED\"}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "cb98b00b02b84b903ea5567a3da199ffe10cb1c4d722bb8f661f87068c8781d3",
+          "stdout_sha256": "991b59b0148dfb5ce4de99a782e5fe495d6b04a6320124fa6c608dd3077571cc",
+          "treated_GBNF_sha256": "81a8e3f477d326671e5f7cce0ce2f25e51e798773734095fe094e9c83e23ef40"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "ALL_REMAINING_WORK_BLOCKED",
+          "status": "BLOCKED",
+          "work_id": "NONE"
+        },
+        "treatment_exact_decision_correct": false,
+        "treatment_reason_correct": false
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N213",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "d8bedc34b9724c220514bea5cce27fb849b6ce3e0f3ad7ddac31fbb9dfaf97cb",
+          "case_id": "N213",
+          "historical_prompt_sha256": "de7c78744058e09ced4e489d4d93c2316119e5d04d86de9565d21427aa71b4ab",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "03692e5a008a668c0bec518ce939be8aa699c985d3a1f9b907681563b3090483",
+          "public_gate_active": false,
+          "raw_response": "{\n  \"status\": \"NO_OPEN_WORK\"\n  , \"work_id\": \"NONE\"\n  , \"reason_code\": \"NO_OPEN_WORK\"\n}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "e5898045401debbdcf61dcc99b6cd8936ca46c91fdb7da06bfa7a91a8f2a3698",
+          "stdout_sha256": "1416b5a5f5e78cc07c80a7cd844f8070e900ef22dc93512f8ffd729fd92a1a19",
+          "treated_GBNF_sha256": "68cbb5fabec5d9a02de8d0c8ebb7e41690b64c97f8bf7f78b3c673ff9148cd7a"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "treatment_exact_decision_correct": false,
+        "treatment_reason_correct": false
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N214",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "4f2ecdfd9fb98679efac505085c80434228950252343ed486992972a2dfa87e8",
+          "case_id": "N214",
+          "historical_prompt_sha256": "c65485fbe47a879a6f1b0091c4587d246f33f18695885768473f3f0a30eccb44",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "03692e5a008a668c0bec518ce939be8aa699c985d3a1f9b907681563b3090483",
+          "public_gate_active": false,
+          "raw_response": "{\n  \"status\": \"NO_OPEN_WORK\",\n  \"work_id\": \"NONE\"\n  , \"reason_code\": \"NO_OPEN_WORK\"\n}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "cb98b00b02b84b903ea5567a3da199ffe10cb1c4d722bb8f661f87068c8781d3",
+          "stdout_sha256": "1b011229284e0c7602b3c03cb8bda86d41eeb299f085697a71d93873ee244b9d",
+          "treated_GBNF_sha256": "68cbb5fabec5d9a02de8d0c8ebb7e41690b64c97f8bf7f78b3c673ff9148cd7a"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "NO_OPEN_WORK",
+          "status": "NO_OPEN_WORK",
+          "work_id": "NONE"
+        },
+        "treatment_exact_decision_correct": false,
+        "treatment_reason_correct": false
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N215",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "215541a7485445712042deed9f573594ecaf9aa4f9d4ceab140049481d64ce76",
+          "case_id": "N215",
+          "historical_prompt_sha256": "530da179683f664b51990e48e5a51da601d99ca3925a6907a6abed8d573c2fac",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "06acb03d77ba3d07947627e835a462e5082f181c52e53de114bd48cef016b225",
+          "public_gate_active": false,
+          "raw_response": "{\n  \"status\": \"EXECUTE\",\n  \"work_id\": \"work:I01:repair\"\n  ,\"reason_code\": \"NONE\"\n}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "e5898045401debbdcf61dcc99b6cd8936ca46c91fdb7da06bfa7a91a8f2a3698",
+          "stdout_sha256": "8a3ccccd58fd758877dd42db326b1fed4550f0321640647e7b5ee0fdaa6c337c",
+          "treated_GBNF_sha256": "ba6f1b874ece564bbe39e5e9ae85b1a696e25944563f18fa8517bbea8e83e0c5"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "treatment_exact_decision_correct": false,
+        "treatment_reason_correct": true
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": false,
+        "baseline_reason_correct": false,
+        "id": "N216",
+        "prompt_byte_identity": true,
+        "public_gate_active": false,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "18df477db7d636f0ec6ca755588481a2bd7390c4a608101a89cfaec731fe2f5b",
+          "case_id": "N216",
+          "historical_prompt_sha256": "79714e1ea20df74dfc05eabcdadcd04c55d233b19208672b7edac596463f929a",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "06acb03d77ba3d07947627e835a462e5082f181c52e53de114bd48cef016b225",
+          "public_gate_active": false,
+          "raw_response": "{\"status\":\"EXECUTE\",\"work_id\":\"work:I01:repair\",\"reason_code\":\"NONE\"}",
+          "root_choice": "root ::= execute | blocked | noopen | failclosed",
+          "stderr_sha256": "f8e1a376ec468ad7b4927d118c58db367c9c4f9880aaeae479afb54b40b478b9",
+          "stdout_sha256": "6ad486b24ab36de1027f5489c3080d4658d18b72e8bad33fa89301f174518495",
+          "treated_GBNF_sha256": "ba6f1b874ece564bbe39e5e9ae85b1a696e25944563f18fa8517bbea8e83e0c5"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | failclosed",
+        "treatment": {
+          "reason_code": "NONE",
+          "status": "EXECUTE",
+          "work_id": "work:I01:repair"
+        },
+        "treatment_exact_decision_correct": false,
+        "treatment_reason_correct": true
+      },
+      {
+        "baseline": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "baseline_GBNF_byte_identity": true,
+        "baseline_exact_decision_correct": true,
+        "baseline_reason_correct": true,
+        "id": "N217",
+        "prompt_byte_identity": true,
+        "public_gate_active": true,
+        "raw_real_inference": {
+          "all_hidden_reference_data_excluded": true,
+          "canonical_visible_sha256": "b153ee6eab403340a449f21d90eb6e9963ec8242abdab08ad1737261757a81f0",
+          "case_id": "N217",
+          "historical_prompt_sha256": "508bf40d43482edf8d4148e6c0fafd456fe20465639dc4748a4a1f4a64a23474",
+          "only_GBNF_root_modified": true,
+          "original_GBNF_sha256": "03692e5a008a668c0bec518ce939be8aa699c985d3a1f9b907681563b3090483",
+          "public_gate_active": true,
+          "raw_response": "{\"status\":\"REFRAME\",\"work_id\":\"NONE\",\"reason_code\":\"ISSUE_DEFINITION_REFRAME\"}",
+          "root_choice": "root ::= execute | blocked | noopen | reframe | failclosed",
+          "stderr_sha256": "cb98b00b02b84b903ea5567a3da199ffe10cb1c4d722bb8f661f87068c8781d3",
+          "stdout_sha256": "03010d9617f11ef45237c49c9f27d6aeb9e5ee74b9281b02276afa78fb40778c",
+          "treated_GBNF_sha256": "03692e5a008a668c0bec518ce939be8aa699c985d3a1f9b907681563b3090483"
+        },
+        "treated_GBNF_root": "root ::= execute | blocked | noopen | reframe | failclosed",
+        "treatment": {
+          "reason_code": "ISSUE_DEFINITION_REFRAME",
+          "status": "REFRAME",
+          "work_id": "NONE"
+        },
+        "treatment_exact_decision_correct": true,
+        "treatment_reason_correct": true
+      }
+    ],
+    "protocol": "ISSUE1_NEXT_ACTION_PUBLIC_GATE_GBNF_CAUSAL_V1",
+    "terminal": "ISSUE1_REAL_PINNED_QWEN_GBNF_ROOT_INTERVENTION_COMPLETE",
+    "treatment_REFRAME_count": 1
+  }
+}
