@@ -1,0 +1,49 @@
+{
+  "protocol": "ISSUE1_NEXT_ACTION_PUBLIC_GATE_GBNF_CAUSAL_V1",
+  "status": "FROZEN_BEFORE_PREDICTIONS",
+  "intent": "Test a single controlled semantic output constraint derived only from model-visible plan input: exclude REFRAME from output grammar if no issue has action_class or issue_contract. Do not change frozen original 17 cases, reference answers, model, model-visible public prompt, source control contract, decoding, other output alternatives or work IDs.",
+  "case_count": 17,
+  "fixture_git_blob": "12faa9a4cacf0c91694d25f1ccce45e093d95e44",
+  "archived_historical_runner_git_blob": "486863d076f49a9378a538e97739464849a044b1",
+  "frozen_model_sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+  "frozen_runtime_binary_sha256": "023712cb97abef06769a544fe034a92cc57921bd60fd9fcd2c02e325839641c2",
+  "existing_real_baseline_report_git_blob": "2d28b0f955be0980c9867d61a0974bcfb80df14b",
+  "ec_v44_source_commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+  "preregistered_intervention": {
+    "implementation": "only replace grammar root line in historical GBNF derived from frozen work_ids if and only if no issue_definition_gate activation fields are visible",
+    "gate_active_condition": "any issue has key action_class or issue_contract, regardless of oracle, category or known correct answer",
+    "gate_inactive_root": "root ::= execute | blocked | noopen | failclosed",
+    "gate_active_root": "root ::= execute | blocked | noopen | reframe | failclosed",
+    "all_other_GBNF_rules": "byte-identical original",
+    "prompt": "byte-identical original historical V2 prompt serialization",
+    "decoding": "temperature=0 seed=0 max_tokens=64 gpu=0 threads=4",
+    "single_changed_factor": "admissible REFRAME output token under an observable public activation gate",
+    "no_learning_or_reranking_from_test_answers": true
+  },
+  "frozen_analysis": {
+    "primary": "paired accuracy of exact status+work_id vs original actual historical baseline, 17 cases",
+    "secondary": [
+      "reason code correctness",
+      "fail-closed status",
+      "REFRAME frequency",
+      "paired raw response SHA",
+      "EC-native reference 17/17"
+    ],
+    "materiality_threshold": 0.2,
+    "expected_hypothesis": "If the model's former 16 false REFRAME choices were caused mainly by unconstrained status choice, public gate grammar may improve actual decisions; if not, more semantic-policy limits remain.",
+    "blocked_if": [
+      "any prompt changed",
+      "gold/category visible in prompt",
+      "historical raw output was edited",
+      "invalid model pin or binary hash",
+      "dynamic input hash mismatch",
+      "grammar changes unrelated to root alternative",
+      "case order mismatch",
+      "model inference missing for any case"
+    ],
+    "no_independence_claim": true,
+    "no_original_A_E_claim": true
+  },
+  "fails_closed": true,
+  "no_new_schedules": true
+}
