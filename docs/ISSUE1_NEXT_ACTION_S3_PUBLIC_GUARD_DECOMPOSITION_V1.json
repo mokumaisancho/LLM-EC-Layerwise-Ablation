@@ -1,0 +1,45 @@
+{
+  "protocol": "ISSUE1_NEXT_ACTION_S3_PUBLIC_GUARD_DECOMPOSITION_V1",
+  "status": "FIXED_RULES_BEFORE_GUARD_RUN_RETROSPECTIVE",
+  "fixture_blob": "12faa9a4cacf0c91694d25f1ccce45e093d95e44",
+  "frozen_actual_Qwen_gate_model_blob": "194029b43188663538452c3583950ec60c533aff",
+  "native_reference_ec_v44_replay_blob": "e1dc56646c3635ea79c2efebb92c3cbbbafe4e6b",
+  "exact_case_count": 17,
+  "scope": "Retrospective 17 exposed governed-remediation-plan cases; post-model invariant validation of real pinned Qwen status selection; not new model inference or independent performance.",
+  "allowlisted_public_inputs": [
+    "plan",
+    "completed_work_ids",
+    "blocked_work",
+    "dynamic_spec"
+  ],
+  "gate_sequence": [
+    "INVALID_PLAN_AUTHORITY: plan.authority must equal EC_REMEDIATION_PLANNER_PROPOSAL; on failure require FAIL_CLOSED.",
+    "INCONSISTENT_WORK_STATE: any completed_work_ids ∩ blocked_work implies require FAIL_CLOSED.",
+    "ISSUE_DEFINITION_GATE: REFRAME only allowed if at least one public issue.action_class/issue_contract key exists.",
+    "PRIOR_ART_GATE: after public prior-art work complete, prior_art_gate must PASS or require FAIL_CLOSED.",
+    "NONEXISTENT_EXECUTION: EXECUTE candidate must be in visible plan, not completed, not blocked.",
+    "NONEMPTY_OPEN_WORK: NO_OPEN_WORK invalid if pending unblocked work remains.",
+    "BLOCKED_CONTRADICTS_ACTIONABLE: BLOCKED invalid if pending unblocked work remains."
+  ],
+  "explicit_non_goals": [
+    "Do not solve dynamic dependency/urgency; leave outcomes with valid local format uncovered.",
+    "Do not call model/Oracle/EC inside validation guard.",
+    "Do not substitute EC output silently in baseline; EC fallback results shown separately.",
+    "No hidden reference, category or correct-label lookup in guard.",
+    "Do not call catch rate generalizable, independent or original S1-S4 Phase1 full A-E."
+  ],
+  "metric_definitions": {
+    "wrong_decisions_detected": "count(model exactly wrong vs frozen label AND at least one public guard fires)",
+    "correct_decisions_wrongly_rejected": "count(model exactly correct AND at least one public guard fires)",
+    "base_model_correct": "count(model exact status+work correct)",
+    "guarded_hybrid_correct": "count(model correct when guard allows, EC native correct when guard blocks); separate model and EC invocations",
+    "material_threshold": 0.2,
+    "native_policy_invocation_count": "number of guard-rejected decisions requiring actual EC fallback; never count as LLM model success",
+    "uncertain_cases": "wrong model outputs whose public guard does not reject; require further EC semantic priority/dynamic authority"
+  },
+  "expected_exit": "REPORT_RETROSPECTIVE_PUBLIC_GUARD_COVERAGE_AND_REMAINING_POLICY_DECOMPOSITION",
+  "preservation": "No alterations to frozen Phase1 V1/V2 fixtures, model raw output, selected status or EC source.",
+  "original_AC01_20_completed": false,
+  "independent_blind_qualified": false,
+  "new_schedules": false
+}
