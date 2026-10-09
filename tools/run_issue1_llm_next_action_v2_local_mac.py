@@ -18,6 +18,8 @@ import sys
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0,str(ROOT))
 PROTOCOL="ISSUE1_NEXT_ACTION_QWEN_MAC_COMPAT_REAL_V3"
 MODEL_SHA="1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370"
 MODEL_BYTES=986048768
@@ -79,7 +81,9 @@ def run_one_local(binary:Path,model:Path,prompt:str,grammar:str,seconds:int)->di
             "stdout_sha256":hashlib.sha256(raw.encode()).hexdigest(),
             "stderr_sha256":hashlib.sha256(proc.stderr.encode()).hexdigest()}
 
-def execute(model:Path,llama:Path,per_case_seconds:int=90)->dict:
+def execute(model:Path,llama:Path,ec_root:Path,per_case_seconds:int=90)->dict:
+    from tools.replay_issue1_ecv44_native_next_action_v2 import verify as verify_native
+    verify_native(ec_root,ROOT/"fixtures/function_boundary_next_action_v1.json",ROOT/"docs/NEXT_ACTION_V2_CONTRACT_2026-10-03.json")
     binary=verify(model,llama)
     archived=load_historical()
     fixture=ROOT/"fixtures/function_boundary_next_action_v1.json"
@@ -100,12 +104,12 @@ def execute(model:Path,llama:Path,per_case_seconds:int=90)->dict:
             # Derive exactly the original dynamic context from the model-visible
             # dynamic_spec, not from oracle/gold. Never forge the hidden state.
             import sys as _sys
-            from tools.replay_issue1_ecv44_native_next_action_v2 import public_fields
+            # Provenance of dynamic state is checked against pinned EC source above.
             # Dynamic context itself must be recomputed by pinned native tool
             # in a separate run, not inferred from a digest. Use the original
             # source's explicit documented reconstruction formula:
             s=f["dynamic_spec"];base=f["plan"];done=f.get("completed_work_ids") or [];blocked=f.get("blocked_work") or {}
-            src=Path("/private/tmp/llmec-ecv44-source-20261010/01_repo/src")
+            src=ec_root/"01_repo/src"
             if not (src/"v4/ec_dynamic_frontier.py").exists():
                 raise ValueError("PINNED_NATIVE_DYNAMIC_SOURCE_UNAVAILABLE")
             if str(src/"v4") not in _sys.path:_sys.path[:0]=[str(src/"v4"),str(src)]
@@ -155,9 +159,10 @@ def main()->int:
     p.add_argument("--model",type=Path,required=True)
     p.add_argument("--llama-cli",type=Path,required=True)
     p.add_argument("--seconds",type=int,default=90)
+    p.add_argument("--ec-root",type=Path,required=True)
     a=p.parse_args()
     try:
-        d=execute(a.model,a.llama_cli,a.seconds)
+        d=execute(a.model,a.llama_cli,a.ec_root,a.seconds)
         print(json.dumps(d,ensure_ascii=False,sort_keys=True,indent=2))
         return 0
     except Exception as ex:
