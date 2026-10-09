@@ -213,7 +213,7 @@ def run(tcc_root:Path,ec_root:Path|None,*,study_dir:Path|None=None,
                          prefix=".issue1_s4_pending_",suffix=".json",delete=False) as staging:
                         tmp_path=Path(staging.name)
                         json.dump(envelope_live,staging,ensure_ascii=False,sort_keys=True,indent=2)
-                        staging.write("\\n")
+                        staging.write("\n")
                         staging.flush()
                         os.fsync(staging.fileno())
                     # Atomic create only; never overwrite a competing evidence record.
