@@ -62,7 +62,7 @@ def spec() -> dict:
                  branches={"missing":"scoped_verified_external_missing",
                            "requires_review":"scoped_verified_external_review"}),
             node("scoped_verified_external_missing","terminal",terminal="BLOCKED"),
-            node("scoped_verified_external_review","terminal",terminal="BLOCKED"),
+            node("scoped_verified_external_review","terminal",terminal="SUCCESS"),
             node("blocked_integrity","terminal",terminal="BLOCKED"),
         ],
     }
@@ -176,11 +176,13 @@ def execute(tcc_root: Path, *, study_dir: Path | None = None,
         "check_blind_study":study_handler,
         "route_external_evidence":external_gate,
     })
-    if result.get("result")!="TERMINAL" or result.get("terminal_status")!="BLOCKED":
+    if result.get("result")!="TERMINAL" or result.get("terminal_status") not in ("BLOCKED","SUCCESS"):
         raise RuntimeError("UNEXPECTED_CLOSURE_OR_EXECUTION:"+str(result.get("result")))
     if result["terminal_id"] not in {
         "scoped_verified_external_missing","scoped_verified_external_review","blocked_integrity"}:
         raise RuntimeError("UNRECOGNIZED_TERMINAL")
+    if result["terminal_status"]=="SUCCESS" and result["terminal_id"]!="scoped_verified_external_review":
+        raise RuntimeError("UNAUTHORIZED_SUCCESS_TERMINAL")
     handoff=to_ecv4_evidence(graph,result)
     terminal=result["terminal_id"]
     return {
