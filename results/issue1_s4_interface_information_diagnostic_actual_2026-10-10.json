@@ -1,0 +1,293 @@
+{
+  "artifact": "ISSUE1_S4_PUBLIC_INFORMATION_SUCCESSOR_V1",
+  "engineering_source_commit": "a4c0b27cfce4d854eb11c99e27d5007ac4d585fe",
+  "model_run_type": "isolated Python predictor on public-only projection",
+  "tests_test_issue1_s4_interface_information_diagnostic_v1": 12,
+  "results": {
+    "case_results": [
+      {
+        "case_id": "M001",
+        "correct": true,
+        "prediction": {
+          "closure_class": "CLOSE",
+          "reason": "NO_EXPLICIT_BLOCKING_SIGNAL_IN_PUBLIC_PROJECTION"
+        },
+        "reference_label": "CLOSE",
+        "s2_public_sha256": "17f476d1b7feaa73edc0e789aeb736a3e85746ae48f0bb6ab8bb4d8df4fec42a",
+        "s3_public_sha256": "6fc5b0230d3c04e1bd79a2302851275542084b8d52dd2c7254e9564dc2621fec",
+        "sanitized_predictor_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+        "structural_signature_sha256": "314090f1ad29ae242bdb1b759c2d11192380a4ba28a8fabf73b36698b393662d",
+        "task_public_sha256": "9ae4a44877aca065735ad870abc5feb2c3cd24b6aadcda0720f8b1f7cf3c8f6e",
+        "visible_diagnostic_features": {
+          "protocol": "ISSUE1_S4_INTERFACE_INFORMATION_SUCCESSOR_DIAGNOSTIC_V1",
+          "reframe_required": false,
+          "rejected_count": 1,
+          "relation_groups": [],
+          "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+          "selected_count": 1,
+          "trigger_residual_types": []
+        }
+      },
+      {
+        "case_id": "M002",
+        "correct": true,
+        "prediction": {
+          "closure_class": "CLOSE",
+          "reason": "NO_EXPLICIT_BLOCKING_SIGNAL_IN_PUBLIC_PROJECTION"
+        },
+        "reference_label": "CLOSE",
+        "s2_public_sha256": "fe5ab1c384ae6093fd3c56cee488958ef8ccee0bbfccc5ccbd949dd30c147c3b",
+        "s3_public_sha256": "237bd20a2b96e7e1830d72b123ed930248fabd23c003e41d5734708a90ba9d67",
+        "sanitized_predictor_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+        "structural_signature_sha256": "314090f1ad29ae242bdb1b759c2d11192380a4ba28a8fabf73b36698b393662d",
+        "task_public_sha256": "f004eb58b6d9a136659e5c6494affdec09e2cbff5f5743a1969afa603fd8251e",
+        "visible_diagnostic_features": {
+          "protocol": "ISSUE1_S4_INTERFACE_INFORMATION_SUCCESSOR_DIAGNOSTIC_V1",
+          "reframe_required": false,
+          "rejected_count": 1,
+          "relation_groups": [],
+          "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+          "selected_count": 1,
+          "trigger_residual_types": []
+        }
+      },
+      {
+        "case_id": "M003",
+        "correct": true,
+        "prediction": {
+          "closure_class": "CONTINUE",
+          "reason": "COMPETING_ALTERNATIVES_OPEN"
+        },
+        "reference_label": "CONTINUE",
+        "s2_public_sha256": "64bb60598423c9aa81ce8b3dc27501c8c8c7ce2d77774f75159535c968f8996b",
+        "s3_public_sha256": "499706e02584da1013af26c7e370479f1345a70b397dac9d3ae360c9bac27c75",
+        "sanitized_predictor_sha256": "3196cd085dd9596f7893df372c2409c193453625ea56b94923115b0d6bd1548b",
+        "structural_signature_sha256": "79e9871632ba721d3994c824b00b8d131da25863e84583b3d1ed02bc180df4b6",
+        "task_public_sha256": "4a9fa71cd0a08cca0a15a7b88ee5fd7390a174dbeded1cad014f592fa43b0f69",
+        "visible_diagnostic_features": {
+          "protocol": "ISSUE1_S4_INTERFACE_INFORMATION_SUCCESSOR_DIAGNOSTIC_V1",
+          "reframe_required": false,
+          "rejected_count": 1,
+          "relation_groups": [
+            {
+              "relation_type": "COMPETING",
+              "selected_member_count": 2
+            }
+          ],
+          "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+          "selected_count": 2,
+          "trigger_residual_types": []
+        }
+      },
+      {
+        "case_id": "M004",
+        "correct": true,
+        "prediction": {
+          "closure_class": "CLOSE",
+          "reason": "NO_EXPLICIT_BLOCKING_SIGNAL_IN_PUBLIC_PROJECTION"
+        },
+        "reference_label": "CLOSE",
+        "s2_public_sha256": "7ba74f7ff9c5462ff801536eef4404155abbf51d27cef67e27a8d3d77f73eb75",
+        "s3_public_sha256": "f076541724ac7a315a4b448003871bee39cf7c2de3ba3059cfa35b70df5b013d",
+        "sanitized_predictor_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+        "structural_signature_sha256": "314090f1ad29ae242bdb1b759c2d11192380a4ba28a8fabf73b36698b393662d",
+        "task_public_sha256": "9eb348ce102be88a3faa84c3af4280a216108ab86ec6ac5d75ecfeb88081ce1d",
+        "visible_diagnostic_features": {
+          "protocol": "ISSUE1_S4_INTERFACE_INFORMATION_SUCCESSOR_DIAGNOSTIC_V1",
+          "reframe_required": false,
+          "rejected_count": 1,
+          "relation_groups": [],
+          "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+          "selected_count": 1,
+          "trigger_residual_types": []
+        }
+      },
+      {
+        "case_id": "M005",
+        "correct": true,
+        "prediction": {
+          "closure_class": "CLOSE",
+          "reason": "NO_EXPLICIT_BLOCKING_SIGNAL_IN_PUBLIC_PROJECTION"
+        },
+        "reference_label": "CLOSE",
+        "s2_public_sha256": "f3077bfcfc96415b127fa856fe59a2c30a5fefc04f74cee2b114a67819d1f66b",
+        "s3_public_sha256": "d9a7d6a5235472a6640a734f70bbad3e52deaff6512436df578b4e5484b0ad58",
+        "sanitized_predictor_sha256": "7ff3c39b6e8f5fdf3e3acd6f01c005969e69755174b0eb0c3e37923faf0f3d9f",
+        "structural_signature_sha256": "a33cc776b879e0465613a788fa92c91762246321a34b8a5b5acb16ed6f8093ac",
+        "task_public_sha256": "0dc7f766767e94dc1302ac940467435aa15881d7bb2d07fe3402a212b34287b1",
+        "visible_diagnostic_features": {
+          "protocol": "ISSUE1_S4_INTERFACE_INFORMATION_SUCCESSOR_DIAGNOSTIC_V1",
+          "reframe_required": true,
+          "rejected_count": 1,
+          "relation_groups": [],
+          "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+          "selected_count": 1,
+          "trigger_residual_types": [
+            "MODEL_CANNOT_REPRESENT_OBSERVATION"
+          ]
+        }
+      },
+      {
+        "case_id": "M006",
+        "correct": true,
+        "prediction": {
+          "closure_class": "CLOSE",
+          "reason": "NO_EXPLICIT_BLOCKING_SIGNAL_IN_PUBLIC_PROJECTION"
+        },
+        "reference_label": "CLOSE",
+        "s2_public_sha256": "3bcad4dbfdcd559b03e2a22a04f6646811ebd1cadde5d0c4d8ec106279931668",
+        "s3_public_sha256": "193fde3570a8a5dec9964733073283f2b59903f96f2da6e98d739c8eb10f1636",
+        "sanitized_predictor_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+        "structural_signature_sha256": "314090f1ad29ae242bdb1b759c2d11192380a4ba28a8fabf73b36698b393662d",
+        "task_public_sha256": "26dc83f859eecfc1c1bc7d75003ba9963340e821e625b6bc30a9d7d45b67144a",
+        "visible_diagnostic_features": {
+          "protocol": "ISSUE1_S4_INTERFACE_INFORMATION_SUCCESSOR_DIAGNOSTIC_V1",
+          "reframe_required": false,
+          "rejected_count": 1,
+          "relation_groups": [],
+          "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+          "selected_count": 1,
+          "trigger_residual_types": []
+        }
+      },
+      {
+        "case_id": "M007",
+        "correct": true,
+        "prediction": {
+          "closure_class": "CONTINUE",
+          "reason": "UNRESOLVED_REQUIRED_CONDITION"
+        },
+        "reference_label": "CONTINUE",
+        "s2_public_sha256": "6bdc96f1e1bb5037369f1f72fbeabc58de05c80f9ef1f0eb92799d15eda39644",
+        "s3_public_sha256": "a59699909b785b30e40733ecc87f96b3f0ba1a6e4b02cb7f032850530f3fe7c3",
+        "sanitized_predictor_sha256": "656b2eb0c2d96af30fda77f1b2c420f36701c05d26f3ad345cca20f965fbc7f7",
+        "structural_signature_sha256": "314090f1ad29ae242bdb1b759c2d11192380a4ba28a8fabf73b36698b393662d",
+        "task_public_sha256": "f176b6f125b7c5f2bf05a95293fe91dced5cd9489ddf8df3a225ac40832b1b22",
+        "visible_diagnostic_features": {
+          "protocol": "ISSUE1_S4_INTERFACE_INFORMATION_SUCCESSOR_DIAGNOSTIC_V1",
+          "reframe_required": false,
+          "rejected_count": 1,
+          "relation_groups": [],
+          "required_condition_state": "UNRESOLVED",
+          "selected_count": 1,
+          "trigger_residual_types": []
+        }
+      },
+      {
+        "case_id": "M008",
+        "correct": true,
+        "prediction": {
+          "closure_class": "CLOSE",
+          "reason": "NO_EXPLICIT_BLOCKING_SIGNAL_IN_PUBLIC_PROJECTION"
+        },
+        "reference_label": "CLOSE",
+        "s2_public_sha256": "f7189db5c573ff736843b0f9c348db4388b793941cdec02b1414356c13c6c51b",
+        "s3_public_sha256": "537afb1113f461a8f1897a753e1d8511fdc4d00bfc6ed2c150ff01daffffb1d1",
+        "sanitized_predictor_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+        "structural_signature_sha256": "314090f1ad29ae242bdb1b759c2d11192380a4ba28a8fabf73b36698b393662d",
+        "task_public_sha256": "550b3d0cbe278f531bdbc51a725f3fd6f393058016a15fbf7c9882f183b270b5",
+        "visible_diagnostic_features": {
+          "protocol": "ISSUE1_S4_INTERFACE_INFORMATION_SUCCESSOR_DIAGNOSTIC_V1",
+          "reframe_required": false,
+          "rejected_count": 1,
+          "relation_groups": [],
+          "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+          "selected_count": 1,
+          "trigger_residual_types": []
+        }
+      },
+      {
+        "case_id": "M009",
+        "correct": true,
+        "prediction": {
+          "closure_class": "CLOSE",
+          "reason": "NO_EXPLICIT_BLOCKING_SIGNAL_IN_PUBLIC_PROJECTION"
+        },
+        "reference_label": "CLOSE",
+        "s2_public_sha256": "160dd47f00352f391e96d4ff8d8910e76df3a591f24994cb0e626c52884b0c33",
+        "s3_public_sha256": "d8ffb3b62e2cbdd19686cb2684601e4487487cfec58fba157ef76462954c1e52",
+        "sanitized_predictor_sha256": "78fb6a97cbc8753a6cc717dbb3faffcf7a7a8ecee81f5102c351f9405512502e",
+        "structural_signature_sha256": "79e9871632ba721d3994c824b00b8d131da25863e84583b3d1ed02bc180df4b6",
+        "task_public_sha256": "d85ce40ea70cf6ca028983585f1c0f6388fab72ffa787de5013b48f48287ba50",
+        "visible_diagnostic_features": {
+          "protocol": "ISSUE1_S4_INTERFACE_INFORMATION_SUCCESSOR_DIAGNOSTIC_V1",
+          "reframe_required": false,
+          "rejected_count": 1,
+          "relation_groups": [
+            {
+              "relation_type": "EQUIVALENT",
+              "selected_member_count": 2
+            }
+          ],
+          "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+          "selected_count": 2,
+          "trigger_residual_types": []
+        }
+      },
+      {
+        "case_id": "M010",
+        "correct": true,
+        "prediction": {
+          "closure_class": "CLOSE",
+          "reason": "NO_EXPLICIT_BLOCKING_SIGNAL_IN_PUBLIC_PROJECTION"
+        },
+        "reference_label": "CLOSE",
+        "s2_public_sha256": "0f52ae4ebc1f0cc922ec7fc63ea546b1d1e33f92242afd54c443d6b1ed4ed3b3",
+        "s3_public_sha256": "da852532756469f017fefc6ee21cec36f887052aa1b55df71c4c0299c62c7aae",
+        "sanitized_predictor_sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+        "structural_signature_sha256": "314090f1ad29ae242bdb1b759c2d11192380a4ba28a8fabf73b36698b393662d",
+        "task_public_sha256": "6809fa2be8111dc626d0dd02d1e856a62838407fc77c6b4c42f9cc6a80f0c5d2",
+        "visible_diagnostic_features": {
+          "protocol": "ISSUE1_S4_INTERFACE_INFORMATION_SUCCESSOR_DIAGNOSTIC_V1",
+          "reframe_required": false,
+          "rejected_count": 1,
+          "relation_groups": [],
+          "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+          "selected_count": 1,
+          "trigger_residual_types": []
+        }
+      }
+    ],
+    "enhanced_correct": 10,
+    "enhanced_public_interface_known_fixture_accuracy": 1,
+    "feature_ablation_controls": {
+      "M003": {
+        "baseline": {
+          "closure_class": "CONTINUE",
+          "reason": "COMPETING_ALTERNATIVES_OPEN"
+        },
+        "causal_public_feature_treatment": true,
+        "masked_feature": "relation_groups",
+        "negative_control_prediction": {
+          "closure_class": "CLOSE",
+          "reason": "NO_EXPLICIT_BLOCKING_SIGNAL_IN_PUBLIC_PROJECTION"
+        }
+      },
+      "M007": {
+        "baseline": {
+          "closure_class": "CONTINUE",
+          "reason": "UNRESOLVED_REQUIRED_CONDITION"
+        },
+        "causal_public_feature_treatment": true,
+        "masked_feature": "required_condition_state",
+        "negative_control_prediction": {
+          "closure_class": "CLOSE",
+          "reason": "NO_EXPLICIT_BLOCKING_SIGNAL_IN_PUBLIC_PROJECTION"
+        }
+      }
+    },
+    "fixture_count": 10,
+    "full_five_arm_run": false,
+    "independent_study_certified": false,
+    "native_ec_closure_measured": false,
+    "observed_accuracy_difference_not_generalization": 0.2,
+    "original_issue_one_qualified": false,
+    "original_structural_interface_majority_upper_bound": 0.8,
+    "protocol": "ISSUE1_S4_INTERFACE_INFORMATION_SUCCESSOR_DIAGNOSTIC_V1",
+    "scientific_takeaway": "S4 structural signatures alias at least two distinct closure labels. Restoring public relation type and pending-required-condition signals separates all known frozen fixture groups. Does not establish general closure correctness.",
+    "scope": "10 retrospective author-visible Phase1 v2 fixtures; NOT heldout, NOT EC-native accuracy",
+    "source": "tools/generate_phase1_measurement_v2_canonical.py",
+    "terminal": "RETROSPECTIVE_INTERFACE_INFORMATION_DIAGNOSTIC_COMPLETE",
+    "version_reason": "New separate diagnostic; frozen original Phase1 unchanged"
+  }
+}
