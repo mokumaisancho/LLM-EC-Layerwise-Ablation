@@ -111,7 +111,17 @@ class Issue1W4ActualNativeSourceTCCv7Tests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError,"VERSIONED_W4_DEPENDENCY_CONTRACT_CHANGED"):
                     run(TCC,EC44,NATIVE)
 
-    def test_12_no_schedules_ui_automations_or_false_root_claim(self):
+    def test_12_native_engine_changed_between_input_and_output_fails_closed(self):
+        # The engine module is pinned before and after the nested science;
+        # this mocked second pin represents a mid-run source mutation.
+        with patch("tools.run_issue1_root_ac_w4_tcc_v7.pin_native_source",
+                   side_effect=[None,ValueError("SIMULATED_NATIVE_MUTATION")]):
+            out=run(TCC,EC44,NATIVE)
+        self.assertEqual(out["TCC_terminal"],"blocked_integrity")
+        self.assertFalse(out["original_scientifically_complete"])
+        self.assertTrue(out["evidence_integrity_failures"])
+
+    def test_13_no_schedules_ui_automations_or_false_root_claim(self):
         src=(ROOT/"tools/run_issue1_root_ac_w4_tcc_v7.py").read_text()
         for bad in ("automations.create(","chatgpt.com/","crontab","launchctl"):
             self.assertNotIn(bad,src)
