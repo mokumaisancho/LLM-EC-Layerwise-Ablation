@@ -220,11 +220,27 @@ def run(tcc_root:Path, native_successor:Path|None=None,
          ("root_science_verified","blocked_native","blocked_AE","blocked_integrity"),
          "G1_TCC_TERMINAL_UNKNOWN")
     must(graph_output["terminal_id"]!="root_science_verified","G11_FALSE_ROOT_18_AC_COMPLETION")
+    frozen=json.loads((ROOT/"docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json").read_text())
+    original_ac=record["original"]["original_AC20_status"]
+    dependencies={}
+    for name in record["original"]["original_AC20_topological_order"]:
+        parents=frozen["ac_dependencies"][name]
+        dependencies[name]={
+            "state":original_ac[name],
+            "depends_on":parents,
+            "unmet_AC_parents":[p for p in parents if p in original_ac and original_ac[p]!="PASS"],
+            "original_required_at_MVP":name in AC18,
+        }
+    must(len(dependencies)==20 and
+         sum(dependencies[a]["state"]=="PASS" for a in AC18)==2,
+         "G11_AC_DEPENDENCY_LEDGER_INCONSISTENT")
     return {
        "protocol":PROTOCOL,"TCC_compiler":TCC_SOURCE,"TCC_nodes":len(graph["nodes"]),
        "TCC_edges":len(graph["edges"]),"TCC_terminal":graph_output["terminal_id"],
        "ECv4_handoff":to_ecv4_evidence(graph,graph_output),
        "original_root_pass":2,"original_root_required":18,
+       "original_AC20_dependency_ledger":dependencies,
+       "original_AC20_topological_order":record["original"]["original_AC20_topological_order"],
        "original_source_git_blobs":pre,"work_state":record["work"],
        "original_native_witness":record.get("original",{}).get("S4_signature_ceiling"),
        "successor_source_git_blobs":record.get("successor_source_git_blobs"),
