@@ -26,6 +26,7 @@ from tools.run_issue1_root_ac_w4b_tcc_v8 import (
 )
 from tools.issue1_ac_dependency_planner_v9 import schedule,check_normative,NORMATIVE
 from tools.preflight_issue57_study_assets import inspect_study
+from tools.verify_issue1_s4_bounded_safety_v1 import run as verify_bounded_s4
 
 PROTOCOL="ISSUE1_ROOT_AC_FIXED_POINT_TCC_V9"
 DATA_COUNT=48
@@ -38,6 +39,7 @@ CODE_SOURCES=[
   "tools/issue1_ac_dependency_planner_v9.py",
   "tools/run_issue1_root_ac_w4b_tcc_v8.py",
   "tools/preflight_issue57_study_assets.py",
+  "tools/verify_issue1_s4_bounded_safety_v1.py",
 ]
 def must(ok,why):
     if not ok:raise ValueError(why)
@@ -141,12 +143,13 @@ def manifest():
           "Original 20 AC and 18 MVP AC and frozen materiality independent of narrower 4/17/48 case studies",
           "Execute real nested v8 root science and pinned old/new EC source studies in same invocation",
           "Verify 48 separately generated public typed cases and adversarial hidden unknown source/SHA",
+          "Prove bounded 936-state native S4 safety, five-condition MC/DC witnesses and kill 5 real source mutations without promoting full C03",
           "Never silently self-certify independent semantic admissibility or S4 inventory",
           "Optionally check newly supplied external blind study if present; never assert independent proof from files alone",
           "Compute and traverse original AC20 and W0-W7 prerequisite DAG and strict 18/18 exit",
           "Protect research code, both normative contracts, real frozen model evidence, native source and casewise hashes before after tests",
       ],
-      "state_keys":["norm","v8","additional","external","ac"],
+      "state_keys":["norm","v8","additional","s4formal","external","ac"],
       "immutable_state_keys":[],
       "entry_nodes":["verify_original_normative_AC"],
       "nodes":[
@@ -156,14 +159,17 @@ def manifest():
           node("run_typed_metamorphic_negative_controls","action",
                depends=("execute_original_all_machine_branches",),writes=("additional",),
                failure="blocked_integrity"),
+          node("verify_bounded_native_S4_formal_properties","action",
+               depends=("run_typed_metamorphic_negative_controls",),writes=("s4formal",),
+               failure="blocked_integrity"),
           node("check_external_study_if_present","action",
-               depends=("run_typed_metamorphic_negative_controls",),writes=("external",),
+               depends=("verify_bounded_native_S4_formal_properties",),writes=("external",),
                failure="blocked_integrity"),
           node("recompute_AC_and_W4_W5_prerequisites","action",
                depends=("check_external_study_if_present",),writes=("ac",),failure="blocked_integrity"),
           node("true_original_scientific_exit","gate",
                depends=("recompute_AC_and_W4_W5_prerequisites",),
-               reads=("norm","v8","additional","external","ac"),
+               reads=("norm","v8","additional","s4formal","external","ac"),
                branches={"actual_root_18AC_complete":"root_science_verified",
                          "independent_semantics_or_S4_missing":"blocked_external_science",
                          "original_full_AE_missing":"blocked_AE"}),
@@ -248,6 +254,31 @@ def execute(tcc_root:Path,original_ec_root:Path,w4a_root:Path,w4b_root:Path,
                             "48_S4_UNVERIFIED_CLOSURES_DENIED",
                             "UNKNOWN_FACT_AND_DOCUMENT_HASH_FAIL_CLOSED"]}
 
+    def s4formal(_n,_s,_a):
+        try:
+            result=verify_bounded_s4(w4b_root)
+            bound=result["bounded_state_space"]
+            mcdc=result["MC_DC_BOUNDED"]
+            mutants=result["actual_native_source_mutation"]
+            must(bound["states_checked"]==936 and
+                 bound["reference_decision_exact_matches"]==936 and
+                 bound["unattested_states_refused"]==468 and
+                 bound["unsafe_close_within_typed_bounded_reference"]==0 and
+                 mcdc["pair_count"]==5 and
+                 mutants["killed"]==mutants["total"]==5 and
+                 result["original_AC_C03_qualified"] is False and
+                 result["independent_obligation_inventory_certified"] is False,
+                 "C03_BOUNDED_FORMAL_PROOF_CANNOT_SUBSTITUTE_EXTERNAL_INVENTORY")
+            observations["s4formal"]=result
+            check_seals()
+        except Exception as exc:
+            observations["errors"].append("S4_FORMAL:"+str(exc)[:180])
+            return {"status":"failure","evidence":["C03_BOUNDED_S4_COUNTEREXAMPLE_OR_PROVENANCE_FAIL"]}
+        return {"status":"success","writes":{"s4formal":True},
+                "evidence":["C03_936_BOUNDED_TYPED_STATES_PASS",
+                            "C03_5_CONDITION_PAIRS_AND_5_MUTANTS_PASS",
+                            "EXTERNAL_S4_INVENTORY_STILL_NOT_CERTIFIED"]}
+
     def study(_n,_s,_a):
         try:
             x=inspect_study(external_study)
@@ -267,6 +298,8 @@ def execute(tcc_root:Path,original_ec_root:Path,w4a_root:Path,w4b_root:Path,
 
     def audit(_n,_s,_a):
         try:
+            must(observations["s4formal"]["original_AC_C03_qualified"] is False,
+                 "G11_FALSE_C03_PROOF_PROMOTION")
             decision=schedule(observations["v8"],norm,observations["external"])
             must(decision["AC"]["original_mvp_pass_count"]==2 and
                  not decision["root_ac_complete"] and
@@ -283,7 +316,7 @@ def execute(tcc_root:Path,original_ec_root:Path,w4a_root:Path,w4b_root:Path,
                             "NEXT_CRITICAL_PATH_W4B_W4C_THEN_W5_ALL_AE"]}
 
     def final(_n,state,_attempt):
-        if not all(state.get(x) is True for x in ("norm","v8","additional","external","ac")):
+        if not all(state.get(x) is True for x in ("norm","v8","additional","s4formal","external","ac")):
             return {"outcome":"original_full_AE_missing","evidence":["AC_DEPENDENCY_STATE_INCOMPLETE"]}
         plan=observations["planner"]
         if plan["AC"]["original_mvp_pass_count"]==18 and plan["original_phase1_AE_completed"]:
@@ -295,6 +328,7 @@ def execute(tcc_root:Path,original_ec_root:Path,w4a_root:Path,w4b_root:Path,
        "verify_original_normative_AC":v_normal,
        "execute_original_all_machine_branches":run_old,
        "run_typed_metamorphic_negative_controls":extra,
+       "verify_bounded_native_S4_formal_properties":s4formal,
        "check_external_study_if_present":study,
        "recompute_AC_and_W4_W5_prerequisites":audit,
        "true_original_scientific_exit":final,
@@ -311,6 +345,7 @@ def execute(tcc_root:Path,original_ec_root:Path,w4a_root:Path,w4b_root:Path,
        "original_AC_pass_count":observations.get("planner",{}).get("AC",{}).get("original_mvp_pass_count"),
        "dependency_ordered_AC_and_work":observations.get("planner"),
        "actual_metamorphic_typed_evidence":observations.get("metamorphic"),
+       "C03_bounded_native_S4_formal_proof":observations.get("s4formal"),
        "external_blind_study_preflight":observations.get("external"),
        "all_seals_same":all([
           before["raw"]==immutable_evidence_seal(),
