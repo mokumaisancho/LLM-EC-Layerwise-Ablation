@@ -117,6 +117,9 @@ def run(tcc_root:Path, native_successor:Path|None=None,
         must(code_seals()==pre,"G7_SOURCE_CHANGED_DURING_EXPERIMENT")
         must(immutable_input_seals([p for p in (arms,gold) if p is not None])==inputs,
              "G7_RAW_OR_GOLD_CHANGED_DURING_EXPERIMENT")
+        if native_successor is not None and "successor_source_git_blobs" in record:
+            must(experimental_pin(native_successor)==record["successor_source_git_blobs"],
+                 "G3_G7_NATIVE_SUCCESSOR_SOURCE_CHANGED_DURING_EXPERIMENT")
     def done(k):
         return {"status":"success","writes":{k:True},"evidence":[k.upper()+"_SOURCE_BOUND"]}
     def source(_n,_s,_a):
