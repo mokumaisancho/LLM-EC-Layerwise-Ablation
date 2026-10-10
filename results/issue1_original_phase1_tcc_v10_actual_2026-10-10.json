@@ -1,0 +1,563 @@
+{
+  "schema": "ISSUE1_ORIGINAL_PHASE1_TCC_V10_ACTUAL_2026_10_10",
+  "scope": "ORIGINAL_PHASE1_S1_TO_S4_ONLY",
+  "research_native_source_actual": true,
+  "regressions_332_of_332_pass": true,
+  "SUITE_method_audit_pass": true,
+  "ECv4_method_audit_pass": true,
+  "standalone_sandbox_AE_tests_26_of_26_pass": true,
+  "original_root_completed": false,
+  "scientifically_valid_original_AC": 2,
+  "required_original_AC": 18,
+  "actual": {
+    "ECv4_handoff": {
+      "closure_authority": "ECv4",
+      "evidence": [
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "freeze_original_source",
+          "seq": 1
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "SOURCES_SOURCE_BOUND"
+          ],
+          "node_id": "freeze_original_source",
+          "seq": 2
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "freeze_original_source",
+          "seq": 3,
+          "state_hash": "sha256:3df658e352d1dcf983008c23c8570c6f19398519ac84b46cf4982c4fd29dce5f",
+          "transition_seq": 1
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "freeze_original_source",
+          "seq": 4
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "verify_original_AC20_MVP18",
+          "seq": 5
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "AC_SOURCE_BOUND"
+          ],
+          "node_id": "verify_original_AC20_MVP18",
+          "seq": 6
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "verify_original_AC20_MVP18",
+          "seq": 7,
+          "state_hash": "sha256:b8cf1a876d16c2d891625bd4fc49c7320902182e5602151aed806695fc4bc1cd",
+          "transition_seq": 2
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "verify_original_AC20_MVP18",
+          "seq": 8
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "probe_original_native_S3_S4",
+          "seq": 9
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "NATIVE_SOURCE_BOUND"
+          ],
+          "node_id": "probe_original_native_S3_S4",
+          "seq": 10
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "probe_original_native_S3_S4",
+          "seq": 11,
+          "state_hash": "sha256:b36348d3c1f4491c8ddef9b6cdb7c884464e37b1db25ab0de4d3714f076bb707",
+          "transition_seq": 3
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "probe_original_native_S3_S4",
+          "seq": 12
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "check_versioned_native_successor",
+          "seq": 13
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "SUCCESSOR_SOURCE_BOUND"
+          ],
+          "node_id": "check_versioned_native_successor",
+          "seq": 14
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "check_versioned_native_successor",
+          "seq": 15,
+          "state_hash": "sha256:606f5d61050285f61897d14cbc851e1f8b254817b41423d5555b393e924086fa",
+          "transition_seq": 4
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "check_versioned_native_successor",
+          "seq": 16
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "replay_matched_AE_evidence_if_supplied",
+          "seq": 17
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "AE_SOURCE_BOUND"
+          ],
+          "node_id": "replay_matched_AE_evidence_if_supplied",
+          "seq": 18
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "replay_matched_AE_evidence_if_supplied",
+          "seq": 19,
+          "state_hash": "sha256:b393dc4868ea5bab7c4732d9937a7fee4da723b1e4877c4620c9b7fc60b13143",
+          "transition_seq": 5
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "replay_matched_AE_evidence_if_supplied",
+          "seq": 20
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "evaluate_original_layer_gains_and_AC_exit",
+          "seq": 21
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "SCORE_SOURCE_BOUND"
+          ],
+          "node_id": "evaluate_original_layer_gains_and_AC_exit",
+          "seq": 22
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "evaluate_original_layer_gains_and_AC_exit",
+          "seq": 23,
+          "state_hash": "sha256:c46528c515f53292d4f3475aac4b954f3d4e6e52f6be3b6295433b58976fa6c4",
+          "transition_seq": 6
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "evaluate_original_layer_gains_and_AC_exit",
+          "seq": 24
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "gate",
+          "node_id": "strict_original_phase1_exit",
+          "seq": 25
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "PINNED_ECV44_S3_SINGLETON_S4_INFORMATION_DEFICIT",
+            "NO_EXPERIMENTAL_TYPED_SOURCE_UPGRADE_TO_ORIGINAL_AC"
+          ],
+          "node_id": "strict_original_phase1_exit",
+          "seq": 26
+        },
+        {
+          "event": "GATE_SELECTED",
+          "node_id": "strict_original_phase1_exit",
+          "outcome": "native_source_incompatible",
+          "seq": 27,
+          "target": "blocked_native"
+        },
+        {
+          "event": "TERMINAL_REACHED",
+          "node_id": "blocked_native",
+          "seq": 28,
+          "terminal_status": "BLOCKED"
+        }
+      ],
+      "runtime_result": "TERMINAL",
+      "schema": "tcc.ecv4-evidence.v0",
+      "spec_hash": "sha256:32bd2324630446873225098f2f4d9e517584c5a0e0bf80aa10428e3400c358bc",
+      "state_hash": "sha256:c46528c515f53292d4f3475aac4b954f3d4e6e52f6be3b6295433b58976fa6c4",
+      "state_transitions": [
+        {
+          "node_id": "freeze_original_source",
+          "seq": 1,
+          "state_hash": "sha256:3df658e352d1dcf983008c23c8570c6f19398519ac84b46cf4982c4fd29dce5f",
+          "writes": {
+            "sources": true
+          }
+        },
+        {
+          "node_id": "verify_original_AC20_MVP18",
+          "seq": 2,
+          "state_hash": "sha256:b8cf1a876d16c2d891625bd4fc49c7320902182e5602151aed806695fc4bc1cd",
+          "writes": {
+            "ac": true
+          }
+        },
+        {
+          "node_id": "probe_original_native_S3_S4",
+          "seq": 3,
+          "state_hash": "sha256:b36348d3c1f4491c8ddef9b6cdb7c884464e37b1db25ab0de4d3714f076bb707",
+          "writes": {
+            "native": true
+          }
+        },
+        {
+          "node_id": "check_versioned_native_successor",
+          "seq": 4,
+          "state_hash": "sha256:606f5d61050285f61897d14cbc851e1f8b254817b41423d5555b393e924086fa",
+          "writes": {
+            "successor": true
+          }
+        },
+        {
+          "node_id": "replay_matched_AE_evidence_if_supplied",
+          "seq": 5,
+          "state_hash": "sha256:b393dc4868ea5bab7c4732d9937a7fee4da723b1e4877c4620c9b7fc60b13143",
+          "writes": {
+            "ae": true
+          }
+        },
+        {
+          "node_id": "evaluate_original_layer_gains_and_AC_exit",
+          "seq": 6,
+          "state_hash": "sha256:c46528c515f53292d4f3475aac4b954f3d4e6e52f6be3b6295433b58976fa6c4",
+          "writes": {
+            "score": true
+          }
+        }
+      ],
+      "tcc_id": "ISSUE1-ORIGINAL-S1-S4-AC18-V10",
+      "terminal_id": "blocked_native",
+      "terminal_status": "BLOCKED"
+    },
+    "TCC_compiler": "786d52c1efbc9271096f9311d768ef49bcd116e2",
+    "TCC_edges": 15,
+    "TCC_nodes": 11,
+    "TCC_terminal": "blocked_native",
+    "errors": [],
+    "no_13_AC_or_120_documents_as_original_MVP_gates": true,
+    "original_AC20_dependency_ledger": {
+      "AC-01": {
+        "depends_on": [
+          "AC-02"
+        ],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": [
+          "AC-02"
+        ]
+      },
+      "AC-02": {
+        "depends_on": [
+          "AC-19"
+        ],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": []
+      },
+      "AC-03": {
+        "depends_on": [
+          "AC-02",
+          "AC-19",
+          "ISSUE-22"
+        ],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": [
+          "AC-02"
+        ]
+      },
+      "AC-04": {
+        "depends_on": [
+          "AC-02",
+          "AC-03"
+        ],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": [
+          "AC-02",
+          "AC-03"
+        ]
+      },
+      "AC-05": {
+        "depends_on": [
+          "AC-01",
+          "AC-03",
+          "AC-04",
+          "AC-07",
+          "AC-17",
+          "ISSUE-22"
+        ],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": [
+          "AC-01",
+          "AC-03",
+          "AC-04",
+          "AC-07",
+          "AC-17"
+        ]
+      },
+      "AC-06": {
+        "depends_on": [
+          "AC-04",
+          "AC-05",
+          "AC-11",
+          "AC-12",
+          "AC-16",
+          "AC-17"
+        ],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": [
+          "AC-04",
+          "AC-05",
+          "AC-11",
+          "AC-12",
+          "AC-16",
+          "AC-17"
+        ]
+      },
+      "AC-07": {
+        "depends_on": [
+          "AC-01"
+        ],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": [
+          "AC-01"
+        ]
+      },
+      "AC-08": {
+        "depends_on": [
+          "AC-05",
+          "AC-06",
+          "ISSUE-21"
+        ],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": [
+          "AC-05",
+          "AC-06"
+        ]
+      },
+      "AC-09": {
+        "depends_on": [
+          "AC-05",
+          "AC-08",
+          "ISSUE-21"
+        ],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": [
+          "AC-05",
+          "AC-08"
+        ]
+      },
+      "AC-10": {
+        "depends_on": [
+          "AC-08",
+          "AC-09",
+          "AC-19"
+        ],
+        "original_required_at_MVP": false,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": [
+          "AC-08",
+          "AC-09"
+        ]
+      },
+      "AC-11": {
+        "depends_on": [
+          "ISSUE-23",
+          "ISSUE-20"
+        ],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": []
+      },
+      "AC-12": {
+        "depends_on": [
+          "AC-04",
+          "AC-11"
+        ],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": [
+          "AC-04",
+          "AC-11"
+        ]
+      },
+      "AC-13": {
+        "depends_on": [
+          "ISSUE-12",
+          "ISSUE-22"
+        ],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": []
+      },
+      "AC-14": {
+        "depends_on": [
+          "AC-01",
+          "AC-13"
+        ],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": [
+          "AC-01",
+          "AC-13"
+        ]
+      },
+      "AC-15": {
+        "depends_on": [],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": []
+      },
+      "AC-16": {
+        "depends_on": [
+          "AC-17"
+        ],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": [
+          "AC-17"
+        ]
+      },
+      "AC-17": {
+        "depends_on": [
+          "AC-07"
+        ],
+        "original_required_at_MVP": true,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": [
+          "AC-07"
+        ]
+      },
+      "AC-18": {
+        "depends_on": [
+          "AC-03",
+          "AC-06",
+          "AC-08",
+          "AC-10_IF_NEEDED"
+        ],
+        "original_required_at_MVP": false,
+        "state": "NOT_PROVEN",
+        "unmet_AC_parents": [
+          "AC-03",
+          "AC-06",
+          "AC-08"
+        ]
+      },
+      "AC-19": {
+        "depends_on": [],
+        "original_required_at_MVP": true,
+        "state": "PASS",
+        "unmet_AC_parents": []
+      },
+      "AC-20": {
+        "depends_on": [],
+        "original_required_at_MVP": true,
+        "state": "PASS",
+        "unmet_AC_parents": []
+      }
+    },
+    "original_AC20_topological_order": [
+      "AC-11",
+      "AC-13",
+      "AC-15",
+      "AC-19",
+      "AC-20",
+      "AC-02",
+      "AC-01",
+      "AC-03",
+      "AC-04",
+      "AC-07",
+      "AC-14",
+      "AC-12",
+      "AC-17",
+      "AC-05",
+      "AC-16",
+      "AC-06",
+      "AC-08",
+      "AC-09",
+      "AC-18",
+      "AC-10"
+    ],
+    "original_native_witness": {
+      "bound_only_not_EC_accuracy": true,
+      "correct": 8,
+      "total": 10
+    },
+    "original_root_pass": 2,
+    "original_root_required": 18,
+    "original_science_complete": false,
+    "original_source_git_blobs": {
+      "ACCEPTANCE_CRITERIA.md": "40e4d41914fb17ee5c7deb0cfd32276a41c9a1fc",
+      "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+      "results/ec_native_adapter_qualification.json": "8693c5be282b1e8407a0c1358e18eab2ad78905c",
+      "results/phase1_s4_identifiability_audit_2026-10-03.json": "624616a1f4b0dc4a2330cbcd0a6a03b94a475ce8",
+      "tools/audit_issue1_original_phase1_scope_v1.py": "c268ad2d23761de86e55508727a0e06d2f2c1904",
+      "tools/issue1_phase1_ae_gate_v1.py": "a64fc1fc318c67ecafd69de4af55bb69f6636ebe",
+      "tools/run_issue1_original_phase1_tcc_v10.py": "395bebc65a0df11fc579802ca8324d89386a11cf"
+    },
+    "protocol": "ISSUE1_ORIGINAL_PHASE1_TCC_V10",
+    "raw_AE_structural_replay": null,
+    "scientifically_qualified_native_successor": false,
+    "source_and_input_seals_stable": true,
+    "successor_source_git_blobs": {
+      "01_repo/src/v4/ec_layerwise_admissible_set_closure_v1.py": "c12e4743c89221a9b81a2f2fa98c4df9d61d72b2",
+      "01_repo/src/v4/ec_layerwise_typed_evidence_authority_v1.py": "a3efa53f81004a17127c83e195f4281bd3fb645a",
+      "01_repo/tests/test_ec_layerwise_typed_evidence_authority_v1.py": "2f19334a01f4fb2cdeeac85c77c2188d65bc28ca"
+    },
+    "terminal": "SOURCE_PROVEN_ORIGINAL_NATIVE_INCOMPATIBLE_VERSIONED_S3_S4_REQUIRED",
+    "work_state": {
+      "ac": "2_OF_18_CURRENTLY_PROVEN",
+      "ae": "RAW_AE_NOT_PROVIDED",
+      "old_native": "SOURCE_QUALIFIED_INCOMPATIBLE",
+      "score": "FROZEN_MATERIALITY_0P20_ORIGINAL_ROOT_OPEN",
+      "source": "VERIFIED",
+      "successor": "EXPERIMENTAL_TYPED_SOURCE_NOT_INDEPENDENT_SEMANTICS"
+    }
+  }
+}
