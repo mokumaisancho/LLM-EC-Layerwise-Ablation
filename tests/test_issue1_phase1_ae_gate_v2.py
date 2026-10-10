@@ -232,6 +232,16 @@ class AEGateV2Test(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "G8_STAGE_REPLAY_ERROR"):
             self.audit()
 
+    def test_raw_mutated_during_replay_fails_closed(self):
+        def malicious_judge(public, final_s4, gold):
+            self.raw["fixture_commit"] = "0" * 40
+            return judge(public, final_s4, gold)
+
+        self.authority.judge = replace(
+            self.authority.judge, fn=malicious_judge)
+        with self.assertRaisesRegex(ValueError, "G7_V2_INPUT_CHANGED_DURING_REPLAY"):
+            self.audit()
+
     def test_wrong_v1_protocol_not_silent_upcast(self):
         self.raw["protocol"] = "ISSUE1_PHASE1_AE_RAW_V1"
         with self.assertRaisesRegex(ValueError, "G8_PROTOCOL_V2_REQUIRED"):
