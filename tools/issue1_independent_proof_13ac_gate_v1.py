@@ -82,6 +82,13 @@ def score_frozen_c03(c03:dict)->dict:
 
 def inspect(c03:dict, *,root:Path=ROOT)->dict:
     plan=verify_plan(root)
+    # Recheck dependency order even when a caller replaces the plan loader.
+    # Unverified handoff sources must not bypass the canonical DAG gate.
+    seen=set()
+    for item in plan["acceptance_criteria"]:
+        require(set(item["depends"]).issubset(seen),
+                "P01_PROOF_DAG_INVALID_AFTER_LOAD:"+item["id"])
+        seen.add(item["id"])
     formal=score_frozen_c03(c03)
     status={}
     ready=[]
