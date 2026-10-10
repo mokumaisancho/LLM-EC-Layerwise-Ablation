@@ -167,7 +167,7 @@ def scientific_source_seal(root: Path = ROOT) -> dict:
         "tools/run_issue1_autonomous_tcc_workflow_v2.py",
         "tools/run_issue1_autonomous_tcc_workflow.py",
         "tools/audit_issue1_original_exit_and_scoped_successor.py",
-        "tools/run_issue1_ecv44_native_next_action_v2.py",
+        "tools/replay_issue1_ecv44_native_next_action_v2.py",
         "tools/run_issue1_llm_next_action_v2_local_mac.py",
         "tools/run_issue1_s4_public_info_paired_llm_v1.py",
         "tools/run_issue1_s3_native_next_action_oracle_causal_v1.py",
