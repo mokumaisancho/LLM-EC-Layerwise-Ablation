@@ -1,0 +1,463 @@
+{
+  "schema": "issue1-independent-proof.ac.v1",
+  "status": "SPECIFICATION_ONLY_NOT_EXECUTED",
+  "root_issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/1",
+  "blocks_issue_urls": [
+    "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/59",
+    "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/60"
+  ],
+  "normative_contract": {
+    "path": "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+    "git_blob_sha1": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+    "original_required_AC": 18,
+    "original_total_AC": 20,
+    "original_materiality_abs": 0.2
+  },
+  "proof_package_mvp": {
+    "definition": "All P01,P02,B01-B04,C01-C05 passed with independently sourced/blind evidence, before X01 true original A-E and X02 original MVP exit.",
+    "AC_count": 11,
+    "distinction": "Proof-package prerequisite is not original 18-AC Phase1 MVP."
+  },
+  "scope_statement": "Bounded S4 requirements specification plus empirical validity of independent gold; no absolute proof of nonexistence of unknown obligations or unrestricted free-language semantics.",
+  "proposed_design_values_not_original_requirements": {
+    "independent_blind_documents_min": 120,
+    "two_annotators_min": 2,
+    "adjudicator_min": 1,
+    "Krippendorff_alpha_target": 0.8,
+    "unsafe_close_opportunities_min": 300,
+    "observed_false_close_max": 0,
+    "legitimate_close_cases_min": 100,
+    "legitimate_close_correct_min": 0.95,
+    "binomial_upper_one_sided_confidence": 0.95,
+    "confidence_intervals_reported": true,
+    "note": "These are proposed operational AC thresholds, not values prescribed by cited papers or the frozen original scientific contract. 0/300 implies ~0.995% one-sided binomial upper rate only if independent Bernoulli sampling assumptions hold."
+  },
+  "evidence_classes": [
+    "external_corpus_manifest",
+    "independent_annotation_raw",
+    "adjudicated_gold",
+    "requirements_baseline",
+    "bidirectional_trace",
+    "formal_model_checker_report",
+    "bounded_mutation_test",
+    "blind_native_llm_oracle_raw",
+    "original_AC_validation"
+  ],
+  "phase_gates": {
+    "integrity": [
+      "G01_VERSION_AND_ORIGINAL_AC_PIN",
+      "G02_SOURCE_PROVENANCE",
+      "G03_DEVELOPMENT_HOLDOUT_DISJOINT",
+      "G04_PREDICTOR_BLINDNESS",
+      "G05_GOLD_CUSTODY_AND_IMMUTABILITY",
+      "G06_CODE_AND_EVALUATOR_HASH_BEFORE_AFTER",
+      "G07_ALL_CASES_UNIQUE_NO_DOUBLE_SCORING",
+      "G08_NO_POSTHOC_THRESHOLD_TUNING",
+      "G09_NATIVE_SAME_FUNCTION_SOURCE_QUALIFICATION",
+      "G10_UNKNOWN_OR_UNMODELED_S4_MUST_ABSTAIN",
+      "G11_ORIGINAL_18AC_STRICT_EXIT"
+    ],
+    "science": [
+      "S01_LABEL_RELIABILITY",
+      "S02_BLIND_S3_COMPARISON",
+      "S03_REQUIREMENT_TRACE_COMPLETENESS",
+      "S04_FINITE_STATE_MCDC_AND_MUTATION",
+      "S05_INDEPENDENT_S4_UNSAFE_AND_SAFE",
+      "S06_FULL_FOUR_LAYER_A_E"
+    ]
+  },
+  "branches": {
+    "source_documents_absent": "BLOCK_EXTERNAL_SOURCE_NOT_INVENT_CLAIMS",
+    "annotator_disagreement_or_alpha_below_target": "PAUSE_INDEPENDENT_HOLDOUT_REJECT;REVISE_CODEBOOK_ON_SEPARATE_DEV_SET;DRAW_FRESH_HOLDOUT",
+    "adjudication_or_custody_missing": "BLOCK_GOLD_CUSTODY",
+    "duplicate_or_development_contamination": "INVALIDATE_CONTAMINATED_HOLDOUT_AND_RECOLLECT",
+    "S4_unknown_obligation_or_scope_incomplete": "ABSTAIN_OR_CONTINUE_NEVER_CLOSE",
+    "formal_counterexample_or_mutant_survives": "BLOCK_AND_REPAIR_S4_WITH_VERSIONED_CONTRACT",
+    "adverse_false_close_detected": "BLOCK_RELEASE_AND_CREATE_NEW_NONOVERLAPPING_HOLDOUT_AFTER_FIX",
+    "legitimate_close_fails": "BLOCK_TO_AVOID_ALWAYS_ABSTAIN_SYSTEM",
+    "W4B_W4C_both_pass": "EXECUTE_REAL_ORIGINAL_S1_S4_A_B_C_D_E",
+    "A_E_complete_and_all_original_AC18_pass": "ORIGINAL_MVP_VERIFIED",
+    "otherwise": "KEEP_ROOT_OPEN_RECORD_EXACT_FALLING_GATE"
+  },
+  "literature": [
+    {
+      "title": "Artstein & Poesio 2008 Inter-Coder Agreement for Computational Linguistics",
+      "url": "https://aclanthology.org/J08-4004/",
+      "supports": [
+        "B02",
+        "B03"
+      ]
+    },
+    {
+      "title": "van der Goot 2021 We Need to Talk About train-dev-test Splits",
+      "url": "https://aclanthology.org/2021.emnlp-main.368/",
+      "supports": [
+        "P02",
+        "B04"
+      ]
+    },
+    {
+      "title": "Søgaard et al. 2021 We Need To Talk About Random Splits",
+      "url": "https://aclanthology.org/2021.eacl-main.156/",
+      "supports": [
+        "P02",
+        "B04"
+      ]
+    },
+    {
+      "title": "Gebru et al. 2021 Datasheets for Datasets",
+      "url": "https://doi.org/10.1145/3458723",
+      "supports": [
+        "P02",
+        "B03"
+      ]
+    },
+    {
+      "title": "NASA 6.2 Requirements Management / bidirectional traceability",
+      "url": "https://www.nasa.gov/reference/6-2-requirements-management/",
+      "supports": [
+        "C01",
+        "C02"
+      ]
+    },
+    {
+      "title": "Lamport Specifying Systems TLA+",
+      "url": "https://lamport.org/tla/book.html",
+      "supports": [
+        "C03"
+      ]
+    },
+    {
+      "title": "NASA SWE-219 Modified Condition Decision Coverage",
+      "url": "https://swehb.nasa.gov/spaces/SWEHBVD/pages/105709626/SWE-219%2B-%2BCode%2BCoverage%2Bfor%2BSafety%2BCritical%2BSoftware",
+      "supports": [
+        "C03"
+      ]
+    },
+    {
+      "title": "Chen et al. 2018 Metamorphic Testing review",
+      "url": "https://doi.org/10.1145/3143561",
+      "supports": [
+        "C05"
+      ]
+    }
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "P01",
+      "title": "証明対象・評価契約の凍結",
+      "parent": [
+        "AC-02",
+        "AC-03",
+        "AC-19"
+      ],
+      "depends": [],
+      "owner": "research_owner",
+      "evidence": [
+        "versioned_scope",
+        "task_ontology",
+        "S1_S4_schema",
+        "precommitted_metrics",
+        "source_hashes"
+      ],
+      "pass": "元のPhase1・18 AC・0.20閾値を変更せず、一般自由文の全能性と限定ドメインの主張を分離。原文・候補・競合・reframe・終了・棄権の評価単位と失敗分類を測定前に固定",
+      "fail": "VERSION_OR_SCOPE_DRIFT"
+    },
+    {
+      "id": "P02",
+      "title": "独立コーパスの収集・隔離",
+      "parent": [
+        "AC-01",
+        "AC-07",
+        "AC-13",
+        "AC-19"
+      ],
+      "depends": [
+        "P01"
+      ],
+      "owner": "independent_data_curator",
+      "evidence": [
+        "source_provenance_manifest",
+        "dataset_datasheet",
+        "document_family_split",
+        "holdout_seal_sha256",
+        "duplicate_review"
+      ],
+      "pass": "開発者/評価対象モデルの生成・選別によらない新しい実文書を>=120件確保。資料の出所・利用条件・収集時刻を記録。開発/調整/最終評価を文書系列単位で完全分離し、完全一致・近似重複を監査。holdout内容をモデル実装者から隔離",
+      "fail": "PROVENANCE_OR_SPLIT_CONTAMINATED"
+    },
+    {
+      "id": "B01",
+      "title": "W4B独立判定のラベル仕様",
+      "parent": [
+        "AC-02",
+        "AC-04",
+        "AC-11"
+      ],
+      "depends": [
+        "P01"
+      ],
+      "owner": "independent_annotation_lead",
+      "evidence": [
+        "codebook_commit",
+        "annotation_schema",
+        "ambiguity_rules",
+        "training_pilot_excluded"
+      ],
+      "pass": "S1意味表現・S2候補ID・S3許容集合・各候補の根拠・競合/等価・reframeを定義。判断不能=UNDETERMINEDを明示。独立ラベル作成前にガイドラインと評価単位を固定",
+      "fail": "UNSPECIFIED_OR_POSTHOC_LABEL_SCHEMA"
+    },
+    {
+      "id": "B02",
+      "title": "盲検・複数判定の一致度",
+      "parent": [
+        "AC-03",
+        "AC-04",
+        "AC-11"
+      ],
+      "depends": [
+        "P02",
+        "B01"
+      ],
+      "owner": "two_independent_domain_annotators",
+      "evidence": [
+        "two_timestamped_independent_annotations",
+        "raw_disagreement_matrix",
+        "agreement_alpha_per_core_label",
+        "prevalence_report"
+      ],
+      "pass": "同一holdoutを実装/LLM/EC出力非閲覧の別々の2名が判定。主要ラベルでKrippendorff α >= 0.80を事前設定の品質ゲートとする。算出不能/低一致は一時停止し原因・ラベル仕様を開発データで改訂、新しい未使用holdoutで再収集。既存holdoutの繰り返し調整は禁止",
+      "fail": "INTERANNOTATOR_QUALITY_NOT_ESTABLISHED"
+    },
+    {
+      "id": "B03",
+      "title": "第三者裁定とgoldの封印",
+      "parent": [
+        "AC-07",
+        "AC-13",
+        "AC-17"
+      ],
+      "depends": [
+        "B02"
+      ],
+      "owner": "independent_adjudicator_and_custodian",
+      "evidence": [
+        "third_party_adjudication",
+        "source_to_gold_trace",
+        "signed_or_access_controlled_gold_manifest",
+        "immutable_gold_sha256",
+        "custody_and_access_log"
+      ],
+      "pass": "不一致100%をモデル出力非閲覧の独立裁定者が文書根拠付きで解決。UNDETERMINEDは残してよいが自動PASS対象から除外・割合を報告。goldの版・SHA256・アクセス履歴を予測提出前に封印し、実験者による再採点前変更を不許可",
+      "fail": "NO_INDEPENDENT_GOLD_CUSTODY"
+    },
+    {
+      "id": "B04",
+      "title": "W4Bの新規盲検比較",
+      "parent": [
+        "AC-01",
+        "AC-03",
+        "AC-04",
+        "AC-05",
+        "AC-17"
+      ],
+      "depends": [
+        "B03"
+      ],
+      "owner": "independent_evaluator",
+      "evidence": [
+        "pinned_raw_llm_ec_predictions",
+        "same_S1_S2_upstream_sha_per_arm",
+        "candidate_precision_recall",
+        "exact_admissible_set_match",
+        "reframe_confusion",
+        "paired_effect_CI",
+        "holdout_one_time_audit"
+      ],
+      "pass": "新規120以上の対象で少なくともCOMPETING/EQUIVALENT/REFRAME/UNRESOLVED各30の事例を含める（重複層は別記）。同一凍結S1/S2からLLM・真のnative EC・Oracleを別々に実行。集合一致・recall・selection・棄権率・理由整合性・95%区間を公開。原規定の効果量0.20を維持し、PASSには事前に宣言した層別・非劣性条件も満たす",
+      "fail": "BLIND_CAUSAL_COMPARISON_MISSING_OR_FAILED"
+    },
+    {
+      "id": "C01",
+      "title": "S4の有限証明範囲と要件台帳",
+      "parent": [
+        "AC-02",
+        "AC-11",
+        "AC-12"
+      ],
+      "depends": [
+        "P01"
+      ],
+      "owner": "requirements_domain_owner",
+      "evidence": [
+        "authoritative_requirements_baseline",
+        "obligation_registry",
+        "scope_and_version",
+        "applicability_rules",
+        "unmodeled_condition_policy"
+      ],
+      "pass": "扱う文書・操作・時点・完了定義・義務の発生/解除/例外/受容条件とUNKNOWN時の停止を先に明文化。無制限の全世界での条件欠落不存在は主張せず、限定された規範集合のみを形式検証対象とする",
+      "fail": "S4_SCOPE_UNBOUNDED"
+    },
+    {
+      "id": "C02",
+      "title": "独立の双方向要件トレーサビリティ",
+      "parent": [
+        "AC-11",
+        "AC-12",
+        "AC-17"
+      ],
+      "depends": [
+        "C01",
+        "P02"
+      ],
+      "owner": "independent_requirements_reviewer",
+      "evidence": [
+        "source_clause_to_obligation_matrix",
+        "obligation_to_source_reverse_map",
+        "independent_completeness_signoff",
+        "zero_obligation_positive_proof",
+        "change_impact_log"
+      ],
+      "pass": "定義済み範囲の規範条項すべてを双方向トレース（100%）。各義務の成立・未成立・受容例外を独立レビューし未割当条項0・根拠なし義務0を確認。空台帳は独立した『義務なし』の肯定証拠がなければ拒否",
+      "fail": "MISSING_OR_UNGROUNDED_OBLIGATION"
+    },
+    {
+      "id": "C03",
+      "title": "S4状態遷移の形式的安全性",
+      "parent": [
+        "AC-11",
+        "AC-12",
+        "AC-17"
+      ],
+      "depends": [
+        "C02"
+      ],
+      "owner": "formal_verification_owner",
+      "evidence": [
+        "finite_state_specification",
+        "machine_check_log",
+        "counterexample_archive",
+        "decision_MCDC_coverage",
+        "mutation_results"
+      ],
+      "pass": "有限状態の全到達状態で CLOSE => (全必須条件SATISFIEDまたは権限あるACCEPTED_LIMITATION) かつ競合未解決なし、reframe未解決なし、UNKNOWNなしをモデル検査。終了判定の各独立条件MC/DC=100%を要求し、条件を1つ欠落/反転させた変異体を必ず検出。反例があればFAIL_CLOSED",
+      "fail": "UNSAFE_REACHABLE_CLOSURE_OR_VACUOUS_PROOF"
+    },
+    {
+      "id": "C04",
+      "title": "独立S4逆境事例と正当終了",
+      "parent": [
+        "AC-12",
+        "AC-13",
+        "AC-19"
+      ],
+      "depends": [
+        "C02",
+        "B03"
+      ],
+      "owner": "independent_adversarial_evaluator",
+      "evidence": [
+        "300_distinct_unsafe_close_opportunities",
+        "100_distinct_legitimate_closures",
+        "independent_S4_labels_and_custody",
+        "predeclared_sampling_distribution"
+      ],
+      "pass": "開発ケースと分離した独立S4テストを作成。未解決義務・競合選択・未解決reframe・期限/遷移・条件欠落を含む『不正CLOSE機会』>=300、正当なCLOSE>=100を用意し、文書系列・要件系統の重複を分離。モデル挙動を見る前に参照結果とSHAを封印",
+      "fail": "S4_BLIND_STRESS_CORPUS_NOT_INDEPENDENT"
+    },
+    {
+      "id": "C05",
+      "title": "S4 false closure率と棄権バランス",
+      "parent": [
+        "AC-11",
+        "AC-12",
+        "AC-17"
+      ],
+      "depends": [
+        "C03",
+        "C04"
+      ],
+      "owner": "independent_evaluator",
+      "evidence": [
+        "casewise_closure_confusion",
+        "false_closure_rate",
+        "legitimate_close_recall",
+        "exact_binomial_interval",
+        "metamorphic_counterexamples"
+      ],
+      "pass": "危険なCLOSE機会300以上でfalse CLOSE=0（300独立試行なら片側95%上限約0.995%：対象母集団への一般化は不可）。正当CLOSE100以上で正答率>=95%を別途満たす。未解決義務/競合/reframeを追加してもCLOSEしない、同値な言い換えでは結果不変。どれか違反なら停止",
+      "fail": "FALSE_CLOSURE_OR_ALWAYS_ABSTAIN"
+    },
+    {
+      "id": "X01",
+      "title": "原課題S1〜S4 A–E介入と証明",
+      "parent": [
+        "AC-01",
+        "AC-03",
+        "AC-05",
+        "AC-06",
+        "AC-07",
+        "AC-08",
+        "AC-09",
+        "AC-16",
+        "AC-17"
+      ],
+      "depends": [
+        "B04",
+        "C05"
+      ],
+      "owner": "research_operator_and_independent_reviewer",
+      "evidence": [
+        "all_five_arms_four_layers_raw",
+        "one_layer_oracle_substitutions",
+        "upstream_byte_identity",
+        "source_native_qualification",
+        "materiality_delta_and_CI",
+        "layerwise_attribution"
+      ],
+      "pass": "元の層ごとにA/B/C/D/Eを実際に実行し、変更したのが対象層のみとSHA単位で確認。元の0.20効果閾値と全層指標を同条件で採点。後から成功した形式制約テストを元のnative同等性に読み替えない",
+      "fail": "ORIGINAL_A_E_NOT_REAL_OR_NOT_CAUSAL"
+    },
+    {
+      "id": "X02",
+      "title": "原課題MVP終了ゲート",
+      "parent": [
+        "AC-01",
+        "AC-02",
+        "AC-03",
+        "AC-04",
+        "AC-05",
+        "AC-06",
+        "AC-07",
+        "AC-08",
+        "AC-09",
+        "AC-11",
+        "AC-12",
+        "AC-13",
+        "AC-14",
+        "AC-15",
+        "AC-16",
+        "AC-17",
+        "AC-19",
+        "AC-20"
+      ],
+      "depends": [
+        "X01"
+      ],
+      "owner": "independent_release_gate",
+      "evidence": [
+        "18_required_AC_source_verified_PASS",
+        "dependency_graph_all_pass",
+        "all_artifact_hashes_stable",
+        "no_failed_integrity_gates",
+        "release_audit"
+      ],
+      "pass": "オリジナル18必須ACすべてに実データ・真正性証拠があり先行ACがPASS、異常ゲート失敗0、開発・最終評価混入0、署名済み検証証拠で最終判定。過去TCCのscoped terminal=PASSでは閉じられない",
+      "fail": "ORIGINAL_ROOT_STILL_OPEN"
+    }
+  ],
+  "original_root_status_on_creation": "OPEN",
+  "independent_evidence_obtained_on_creation": false,
+  "external_review_assignments_authorized": false
+}
