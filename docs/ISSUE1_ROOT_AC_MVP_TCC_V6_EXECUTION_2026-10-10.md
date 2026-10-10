@@ -40,7 +40,7 @@ Branch rules: source/AC graph/raw/oracle/threshold mutation ⇒ **`INTEGRITY_FAI
 
 ### Result-overturning error gates
 
-- **G0/G7**: original AC markdown, normative contract, EC adapter and S4 identifiability Git blobs match predeclared pins; the v6 plan itself has a predeclared Git blob; original 0.20 threshold cannot silently change. No GitHub Actions.
+- **G0/G7**: original AC markdown, normative contract, EC adapter and S4 identifiability Git blobs match predeclared pins; the v6 plan itself has a predeclared Git blob; **13 Python scientific execution modules must match tracked HEAD Git blobs before execution, after experiments and before final AC scoring**. Uncommitted or runtime-modified scientific code invalidates the result. Original 0.20 threshold cannot silently change. No GitHub Actions.
 - **G1/G2**: exact normative AC20/MVP18, issue and task dependency DAG acyclic and no unknown parent, every AC PASS requires prerequisite PASS.
 - **G3**: actual native adapter authority and S3+S4 counterexamples; incompatible native APIs are recorded as factual capability gaps rather than hidden adapters.
 - **G4/G5/G10**: 17 cases are unique and same-case aligned; real Qwen and EC raw source reports have fixed *historical external Git blob* pins; identical upstream SHA, raw response == scored prediction, immutable Oracle after inference, model/EC source identities, original item + aggregated scores recomputed. No duplicated or silent reclassification.
