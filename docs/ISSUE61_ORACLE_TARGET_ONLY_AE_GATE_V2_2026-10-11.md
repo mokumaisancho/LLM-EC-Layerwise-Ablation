@@ -43,12 +43,12 @@ PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v \
   tests.test_issue1_phase1_ae_gate_v2
 \`\`\`
 
-The tests cover a clean matched eight-arm replay and hostile cases with
+The 16 tests cover a clean matched eight-arm replay and hostile cases with
 extra E_S1→S2, E_S2→S3, E_S3→S4 substitutions after internally consistent
 SHA rehashing. They also reject forged engine identifiers and fingerprints,
 missing receipts, source code pin mismatch, callback code from another file,
 missing authority, forged final outcome, altered public input, duplicate arm,
-corrupted upstream hash, and a stage callback that attempts to receive
+corrupted upstream hash, mid-replay raw mutation, and a stage callback that attempts to receive
 Oracle gold as an extra parameter.
 
 ## Authority limits; no silent science promotion
@@ -88,3 +88,23 @@ introduced into this Phase1 MVP.
 independently qualify a real immutable inference source, real stage receipts,
 Oracle custody and non-target engine identity; then run v2 on all real A–E
 cases without gold available to any non-target model.
+
+## TCC v11 executable successor
+
+The separate `tools/run_issue1_original_phase1_tcc_v11.py` compiles a
+new 9-node/12-edge TCC graph. It executes the unchanged v10 baseline,
+runs all 16 v2 adversarial tests as an automatic regression gate,
+conditionally audits an in-process pretrusted A–E trace, checks pinned
+Git blobs before/after and returns `blocked_native` for #59/#60.
+Invalid E extra interventions through an actual replay authority route to
+`blocked_integrity` rather than silently assigning PASS. Calling it via
+CLI without a verifier-provisioned trusted authority never upgrades A–E.
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 tools/run_issue1_original_phase1_tcc_v11.py \
+  --tcc-root /private/tmp/llmec-tcc-generator-reference-20261009 \
+  --native-successor /private/tmp/issue1-ec-native-layerwise-20261010
+```
+
+The pinned paths above are local test checkout examples, not dependencies
+that should be substituted with synthetic source claims.
