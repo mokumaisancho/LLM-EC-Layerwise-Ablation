@@ -1,0 +1,188 @@
+{
+  "schema": "issue1.ac-orchestration.v6",
+  "root_issue": 1,
+  "original_ac_source": "ACCEPTANCE_CRITERIA.md",
+  "frozen_normative_contract": "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+  "source_git_blobs": {
+    "ACCEPTANCE_CRITERIA.md": "40e4d41914fb17ee5c7deb0cfd32276a41c9a1fc",
+    "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+    "results/ec_native_adapter_qualification.json": "8693c5be282b1e8407a0c1358e18eab2ad78905c",
+    "results/phase1_s4_identifiability_audit_2026-10-03.json": "624616a1f4b0dc4a2330cbcd0a6a03b94a475ce8"
+  },
+  "scientific_protocol": "PHASE1_MVP_TCC_V1",
+  "frozen_materiality": 0.2,
+  "tcc_generator_source": "786d52c1efbc9271096f9311d768ef49bcd116e2",
+  "mvp_name": "ORIGINAL_ROOT_COARSE_4_LAYER_CAUSAL_LOCALIZATION",
+  "mvp_definition": "ALL original 18 required AC PASS with qualified same-function LLM/Oracle S1,S2 and native EC S3,S4, same frozen upstream A/B/C/D/E, one-layer Oracle gains, independently replayable raw evidence and source-qualified reasons; result is localization, NOT general capability conservation.",
+  "root_exit_definition": "All 18 original MVP AC PASS AND native interface compatible AND A/B/C/D/E across S1-S4 actually run AND cross-layer gains scored AND causal attribution backed by single-variable intervention AND no result-overturning gate failure.",
+  "source_path_contract": {
+    "S3": "Original generic S3 may require ALL admissible selected candidates; EC-native selects singleton next action. No adapter may invent absent native multi-selection while claiming EC-native.",
+    "S4": "Original generic S3 signature aliases CLOSE and CONTINUE (majority bound 8/10); EC-native not qualified for closure. Enriching with public S2 facts creates VERSIONED successor, not repair of immutable historical experiment."
+  },
+  "work_items": [
+    {
+      "id": "W0_SOURCE_LOCK",
+      "depends_on": [],
+      "priority": "P0",
+      "action": "Validate original AC source and frozen normative and controlled inputs by Git blob; verify no Actions, threshold 0.20, direct provenance.",
+      "target_ac": [
+        "AC-19",
+        "AC-20"
+      ],
+      "completion": "all provenance and schema gates PASS"
+    },
+    {
+      "id": "W1_DEPENDENCY_GRAPH",
+      "depends_on": [
+        "W0_SOURCE_LOCK"
+      ],
+      "priority": "P0",
+      "action": "Check all 20 AC and 18 MVP dependencies are closed, topologically ordered, issue references tracked; no PASS may precede dependency PASS.",
+      "target_ac": [
+        "AC-02",
+        "AC-03",
+        "AC-05",
+        "AC-07",
+        "AC-17"
+      ],
+      "completion": "no cycles, unresolved IDs, phantom approvals"
+    },
+    {
+      "id": "W2_NATIVE_CONTRACT_QUALIFICATION",
+      "depends_on": [
+        "W1_DEPENDENCY_GRAPH"
+      ],
+      "priority": "P0",
+      "action": "Replay original qualification; compare real native singleton S3 versus generic multi-selection and test S4 closure identifiability, then route qualified/incompatible.",
+      "target_ac": [
+        "AC-01",
+        "AC-03",
+        "AC-11",
+        "AC-12"
+      ],
+      "completion": "EC S3/S4 same-function qualified OR exact gap+counterexample provenance recorded"
+    },
+    {
+      "id": "W3_LOCAL_ACTUAL_EXPERIMENTS",
+      "depends_on": [
+        "W1_DEPENDENCY_GRAPH"
+      ],
+      "priority": "P0",
+      "action": "Independently execute and audit available pinned EC17, real Qwen17/Qwen20, S3 Oracle and public/dynamic gates; preserve their SCOPED_ONLY classification.",
+      "target_ac": [
+        "AC-13",
+        "AC-14",
+        "AC-15",
+        "AC-16",
+        "AC-17"
+      ],
+      "completion": "real casewise model/EC evidence and provenance revalidated; no full-AC promotion"
+    },
+    {
+      "id": "W4_VERSIONED_NATIVE_REPAIR_PLAN",
+      "depends_on": [
+        "W2_NATIVE_CONTRACT_QUALIFICATION",
+        "W3_LOCAL_ACTUAL_EXPERIMENTS"
+      ],
+      "priority": "P0",
+      "action": "If native incompatible, derive the minimal changes required for semantically matched S3/S4 and versioned successor without rewriting original contract; validate that the pinned EC API cannot provide missing info.",
+      "target_ac": [
+        "AC-03",
+        "AC-04",
+        "AC-11",
+        "AC-12"
+      ],
+      "completion": "actionable versioned interface + precise source-capability blocker, never false adapter"
+    },
+    {
+      "id": "W5_FOUR_LAYER_ACTUAL_AE",
+      "depends_on": [
+        "W4_VERSIONED_NATIVE_REPAIR_PLAN"
+      ],
+      "priority": "P0",
+      "action": "Run A/B/C/D/E same-function S1-S4 with pinned real compatible implementations, frozen upstream and one-layer Oracle interventions ONLY IF qualified.",
+      "target_ac": [
+        "AC-01",
+        "AC-03",
+        "AC-04",
+        "AC-05",
+        "AC-06",
+        "AC-07",
+        "AC-11",
+        "AC-12",
+        "AC-16",
+        "AC-17"
+      ],
+      "completion": "all 4 layers × required arms casewise authenticated and scored; source-compatible; no oracle leakage"
+    },
+    {
+      "id": "W6_LOCALIZE_MVP",
+      "depends_on": [
+        "W5_FOUR_LAYER_ACTUAL_AE"
+      ],
+      "priority": "P0",
+      "action": "Recompute gains, thresholds and dominant layer; never infer layer from end-to-end difference alone.",
+      "target_ac": [
+        "AC-08",
+        "AC-09"
+      ],
+      "completion": "all required AC PASS, root MVP result reproducible"
+    },
+    {
+      "id": "W7_INDEPENDENT_REVIEW",
+      "depends_on": [
+        "W6_LOCALIZE_MVP"
+      ],
+      "priority": "P1",
+      "action": "For separate #57/#58 capability-conservation certification, independently adjudicated unseen gold custody, original LLM0 and authorized V4 real matched model outputs.",
+      "target_ac": [
+        "AC-10",
+        "AC-18"
+      ],
+      "completion": "independent evidence qualified; no developer fixture reused as blind"
+    }
+  ],
+  "fail_closed_gate_ids": [
+    "G0_FROZEN_SOURCE_BLOB",
+    "G1_AC_DAG_CYCLE_AND_UNKNOWN_DEP",
+    "G2_MVP_18_OF_18_NO_LEAP",
+    "G3_NATIVE_FUNCTIONAL_COMPATIBILITY",
+    "G4_CASEWISE_SAME_UPSTREAM_SHA",
+    "G5_RAW_MODEL_PIN_AND_ORACLE_BLIND",
+    "G6_NO_DATA_REUSE_AS_UNSEEN",
+    "G7_NO_FROZEN_PROTOCOL_OR_THRESHOLD_CHANGE",
+    "G8_SUITECV4_METHOD",
+    "G9_NO_FALSE_EC_FALLBACK_AS_LLM",
+    "G10_NO_DUPLICATE_OR_DOUBLE_SCORING",
+    "G11_ORIGINAL_EXIT_STRICT"
+  ],
+  "auto_branch_rules": {
+    "source_tampered": "INTEGRITY_FAIL_CLOSED",
+    "ac_dependency_invalid": "AC_GRAPH_FAIL_CLOSED",
+    "native_semantics_incompatible": "RUN_ALL_COMPATIBLE_SCOPED_EVIDENCE_THEN_GENERATE_VERSIONED_SOURCE_REPAIR_BOUNDARY",
+    "native_semantics_compatible": "RUN_TRUE_FOUR_LAYER_A_E_WITH_REAL_NATIVE_EC",
+    "real_evidence_missing_and_model_available": "REINFER_WITH_FROZEN_PINNED_MODEL",
+    "real_evidence_cached_valid": "REPLAY_CACHE_AND_VERIFY_SHA",
+    "raw_model_output_tampered": "RAW_OUTPUT_FAIL_CLOSED",
+    "external_unseen_data_absent": "EXTERNAL_INDEPENDENCE_BLOCKER_ONLY_AFTER_MACHINE_BRANCHES",
+    "all_required_AC_pass": "ROOT_MVP_VERIFIED_ONLY_WITH_ALL_ARM_CROSS_LAYER_EVIDENCE"
+  },
+  "terminal_states": [
+    "ROOT_MVP_VERIFIED",
+    "NATIVE_SOURCE_CAPABILITY_GAP",
+    "EXTERNAL_INDEPENDENCE_MISSING",
+    "INTEGRITY_FAIL_CLOSED",
+    "AC_GRAPH_FAIL_CLOSED",
+    "MISSING_REQUIRED_MODEL_ASSET"
+  ],
+  "provenance_rules": {
+    "original_contract_mutation": "FORBIDDEN",
+    "original_mvp_redefinition": "FORBIDDEN",
+    "scoped_native_success_as_root_exit": "FORBIDDEN",
+    "closed_issue_as_scientific_PASS": "FORBIDDEN",
+    "stage4_tcc_scoped_success_as_root_exit": "FORBIDDEN",
+    "oracle_label_in_predictor": "FORBIDDEN",
+    "insufficient_grounding": "FAIL_CLOSED",
+    "new_scheduled_task": false
+  }
+}
