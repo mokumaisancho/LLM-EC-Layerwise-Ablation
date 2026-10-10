@@ -26,6 +26,7 @@ from tools.run_issue1_autonomous_tcc_workflow_v5 import run as run_stage5
 
 PROTOCOL = "ISSUE1_ORIGINAL_AC_DEPENDENCY_DRIVEN_TCC_V6"
 CFG = ROOT / "docs/ISSUE1_ROOT_AC_MVP_DEPENDENCY_ORCHESTRATION_V6.json"
+CONFIG_FROZEN_BLOB = "858c93bb2d0b7e2bed73f1bf29cb4fa55e19f605"
 SCOPED_RAW = [
     "fixtures/function_boundary_next_action_v1.json",
     "docs/NEXT_ACTION_V2_CONTRACT_2026-10-03.json",
@@ -164,6 +165,73 @@ def immutable_evidence_seal(root: Path = ROOT) -> dict:
         require(len(raw) < 9_000_000, "G4_RAW_EVIDENCE_SIZE_ABNORMAL:" + name)
         locks[name] = hashlib.sha256(raw).hexdigest()
     return locks
+
+
+def verify_casewise_evidence(root: Path = ROOT) -> dict:
+    """G4/G5/G6/G10: proactively check actual real source pins, all 17 cases,
+    raw-to-parsed identity and truthful label custody before running any TCC action.
+    Explicit historical Oracle labels are scorer-side only; never unseen gold.
+    """
+    pins = json.loads((root / "docs/ISSUE1_S3_NATIVE_NEXT_ACTION_ORACLE_INTERVENTION_V1.json").read_text())["frozen_sources"]
+    cases_path = root / "fixtures/function_boundary_next_action_v1.json"
+    qwen_path = root / "results/issue1_qwen_next_action_v2_mac_actual_2026-10-10.json"
+    ec_path = root / "results/issue1_ecv44_native_next_action_v2_local_replay_2026-10-10.json"
+    for p, key in ((cases_path, "fixture_git_blob"), (qwen_path, "qwen_actual_git_blob"),
+                   (ec_path, "ec_actual_git_blob")):
+        require(p.is_file() and not p.is_symlink() and git_blob(p.read_bytes()) == pins[key],
+                "G4_G5_HISTORICAL_SOURCE_PIN_MISMATCH:" + p.name)
+    cases = json.loads(cases_path.read_text())["fixtures"]
+    qwen = json.loads(qwen_path.read_text())["run"]
+    ec = json.loads(ec_path.read_text())["result"]
+    require(qwen.get("independent_gold") is False and
+            qwen.get("original_llm0_identity_established") is False and
+            qwen.get("scientific_phase1_a_e_completed") is False,
+            "G6_DEVELOPMENT_FIXTURES_MISLABELED_INDEPENDENT")
+    require(qwen["qwen_model_sha256"] == pins["model_sha256"] and
+            ec["source_ec_commit"] == pins["ec_commit"],
+            "G5_EC_LLM_MODEL_SOURCE_MISMATCH")
+    require(len(cases) == len(qwen["llm"]["rows"]) == len(qwen["raw_inference"]) ==
+            len(ec["rows"]) == qwen["llm_actual_inference_count"] == 17,
+            "G10_WRONG_CASE_COUNT")
+    seen = set()
+    model_correct = native_correct = 0
+    for case, qr, raw, er in zip(cases, qwen["llm"]["rows"], qwen["raw_inference"], ec["rows"]):
+        name = case["id"]
+        require(name not in seen and name == qr["fixture_id"] == er["case_id"],
+                "G10_DUPLICATE_OR_MISALIGNED_CASE:" + name)
+        seen.add(name)
+        visible = {k: case[k] for k in
+                   ("plan", "completed_work_ids", "blocked_work", "dynamic_spec") if k in case}
+        require(not any(k in visible for k in ("oracle", "hidden", "gold", "category")),
+                "G5_ORACLE_FIELD_VISIBLE_TO_PREDICTOR")
+        require(er["public_input_sha256"] == sha(visible) and
+                er["raw_prediction_sha256"] == sha(er["prediction"]),
+                "G4_UPSTREAM_OR_EC_PREDICTION_SHA_MISMATCH:" + name)
+        require(qr["raw"] == raw["raw_response"] and
+                json.loads(qr["raw"]) == qr["prediction"],
+                "G5_RAW_MODEL_OUTPUT_NOT_EQUAL_SCORED_PREDICTION:" + name)
+        require(qr["oracle"] == case["oracle"] == er["frozen_gold"],
+                "G5_FROZEN_ORACLE_CHANGED_AFTER_INFERENCE:" + name)
+        for key in ("stdout_sha256", "prompt_sha256", "grammar_sha256", "stderr_sha256"):
+            require(isinstance(raw.get(key), str) and len(raw[key]) == 64 and
+                    set(raw[key]).issubset("0123456789abcdef"),
+                    "G5_RAW_MODEL_HASH_MISSING:" + name + ":" + key)
+        qok = (qr["prediction"]["status"] == case["oracle"]["status"] and
+               qr["prediction"]["work_id"] == case["oracle"]["work_id"])
+        eok = (er["prediction"]["status"] == case["oracle"]["status"] and
+               er["prediction"]["work_id"] == case["oracle"]["work_id"])
+        require(qok == qr["decision_correct"] and eok == er["decision_correct"],
+                "G10_DOUBLE_OR_INCONSISTENT_SCORING:" + name)
+        model_correct += int(qok)
+        native_correct += int(eok)
+    require(model_correct == qwen["llm"]["decision_correct"] == 1 and
+            native_correct == ec["ec_decision_correct"] == 17,
+            "G10_AGGREGATE_DOES_NOT_MATCH_REAL_CASE_SCORES")
+    return {"actual_case_count": 17, "unique_case_ids": len(seen),
+            "pinned_actual_Qwen_correct": model_correct,
+            "pinned_actual_native_EC_correct": native_correct,
+            "historical_development_not_unseen": True,
+            "strict_casewise_upstream_same_and_scoring_verified": True}
 
 
 def scope_witness(root: Path = ROOT) -> dict:
@@ -338,6 +406,8 @@ def run(tcc_root: Path, ec_root: Path, *, model: Path | None = None,
     require(git_head(tcc_root) == TCC_SOURCE, "G0_PINNED_TCC_GENERATOR_SOURCE_CHANGED")
     require(config_path.is_file() and not config_path.is_symlink(),
             "G0_VERSIONED_ORCHESTRATION_CONTRACT_MISSING")
+    require(git_blob(config_path.read_bytes()) == CONFIG_FROZEN_BLOB,
+            "G0_TCC_V6_AC_ORCHESTRATION_CONFIG_CHANGED")
     config = json.loads(config_path.read_text())
     require(config["tcc_generator_source"] == TCC_SOURCE, "G0_ORCHESTRATOR_COMPILER_PIN_DRIFT")
     if str(tcc_root) not in sys.path:
@@ -402,6 +472,7 @@ def run(tcc_root: Path, ec_root: Path, *, model: Path | None = None,
     def raw(_n, _s, _a):
         try:
             observed["pre_seal"] = immutable_evidence_seal(source_root)
+            observed["casewise"] = verify_casewise_evidence(source_root)
         except Exception as ex:
             observed["errors"].append("G4:" + type(ex).__name__ + ":" + str(ex)[:150])
             return {"status": "failure", "evidence": ["RAW_EVIDENCE_PRESEAL_FAIL"]}
@@ -517,6 +588,7 @@ def run(tcc_root: Path, ec_root: Path, *, model: Path | None = None,
         "raw_evidence_pre_seal": observed.get("pre_seal"),
         "raw_evidence_post_seal": observed.get("post_seal"),
         "original_frozen_replay": observed.get("origin"),
+        "G4_G5_G6_G10_casewise_gate": observed.get("casewise"),
         "blocking_integrity_errors": observed["errors"],
         "original_issue_1_completed": bool(root_complete),
         "AC_MVP_validated": bool(root_complete),
