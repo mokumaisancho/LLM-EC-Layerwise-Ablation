@@ -1,0 +1,101 @@
+{
+  "archive_protocol": "ISSUE1_C03_TCCV9_VERIFIED_2026_10_10",
+  "full_research_regression_tests_passed": 298,
+  "SUITE_method_gate_passed": true,
+  "ECv4_method_gate_passed": true,
+  "independent_scientific_C03_certified": false,
+  "original_root_closed": false,
+  "verified_result": {
+    "MC_DC_BOUNDED": {
+      "conditions": [
+        "inventory_attested",
+        "pending_reframe",
+        "unresolved_obligation",
+        "competing_selected",
+        "at_least_one_selected"
+      ],
+      "independent_pairs": {
+        "at_least_one_selected": [
+          "CLOSE",
+          "BLOCKED"
+        ],
+        "competing_selected": [
+          "CLOSE",
+          "CONTINUE"
+        ],
+        "inventory_attested": [
+          "CLOSE",
+          "REJECT_INVENTORY"
+        ],
+        "pending_reframe": [
+          "CLOSE",
+          "REFRAME"
+        ],
+        "unresolved_obligation": [
+          "CLOSE",
+          "CONTINUE"
+        ]
+      },
+      "pair_count": 5
+    },
+    "actual_native_source_mutation": {
+      "killed": 5,
+      "mutants": {
+        "drop_competing_selected": {
+          "killed": true,
+          "mutated_source_sha256": "360d98d3d86ebf7b162c9700b3d423b07ad553b926355ff697d3848d27e3a097"
+        },
+        "drop_inventory_gate": {
+          "killed": true,
+          "mutated_source_sha256": "44a7c3922147c41ee8d9dcf71d258a5e931b80892bdeeca2a25fa9ac189fedf6"
+        },
+        "drop_nonempty_selection": {
+          "killed": true,
+          "mutated_source_sha256": "3453cdfe2584da8f876286090598aaa5a8554768acad00b222c155bfe45528f2"
+        },
+        "drop_pending_reframe": {
+          "killed": true,
+          "mutated_source_sha256": "f6001003fe758aa814f67b92d37757d7b4c6b4ce374d700269ffadad18322f3f"
+        },
+        "drop_unresolved_obligation": {
+          "killed": true,
+          "mutated_source_sha256": "9262ee83596a711692aa464f72998ddfbd95dd7b96522c055d8bebf9d4a68aa7"
+        }
+      },
+      "total": 5
+    },
+    "bounded_state_space": {
+      "candidates": 2,
+      "inventory_attestation_states": 2,
+      "legitimate_typed_closures": 112,
+      "obligation_statuses": [
+        "SATISFIED",
+        "UNRESOLVED",
+        "ACCEPTED_LIMITATION"
+      ],
+      "obligations_count_domain": [
+        0,
+        1,
+        2
+      ],
+      "reference_decision_exact_matches": 936,
+      "relations": [
+        "NONE",
+        "COMPETING",
+        "EQUIVALENT"
+      ],
+      "states_checked": 936,
+      "unattested_states_refused": 468,
+      "unsafe_close_within_typed_bounded_reference": 0,
+      "valid_framing_states": 3
+    },
+    "ec_native_source_commit": "ae4b02bca34147d549abda85fad9cdc793ca054f",
+    "ec_native_source_git_blob": "c12e4743c89221a9b81a2f2fa98c4df9d61d72b2",
+    "finite_state_mechanics_verified": true,
+    "independent_natural_language_semantics_certified": false,
+    "independent_obligation_inventory_certified": false,
+    "original_AC_C03_qualified": false,
+    "protocol": "ISSUE1_C03_BOUNDED_S4_MODEL_CHECK_V1",
+    "qualification_limit": "PROVES_ONLY_EXPLICIT_TYPED_FINITE_DOMAIN_FOR_PINNED_NATIVE_DECISION"
+  }
+}
