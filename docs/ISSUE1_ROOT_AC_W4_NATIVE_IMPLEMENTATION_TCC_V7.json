@@ -1,0 +1,81 @@
+{
+  "schema": "issue1.root-ac-w4-source.tcc.v7",
+  "root_issue": 1,
+  "original_required_ac_unchanged": 18,
+  "parent_protocol": "ISSUE1_ORIGINAL_AC_DEPENDENCY_DRIVEN_TCC_V6",
+  "native_new_source_commit": "24fe3a665b21ad90a79095eb8d5818dda5447d62",
+  "native_module": "01_repo/src/v4/ec_layerwise_admissible_set_closure_v1.py",
+  "native_module_git_blob": "c12e4743c89221a9b81a2f2fa98c4df9d61d72b2",
+  "native_unittest_git_blob": "3821477df059ccf0fc72deef59d852e09cce4ba9",
+  "native_unittest_count": 14,
+  "original_frozen_ec_commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+  "mvp": "18 original AC + full four-layer native-vs-LLM A/B/C/D/E matched upstream, layerwise Oracle, source-pinned scoring, no evidence-overturning gate FAIL",
+  "w4": {
+    "W4A_native_all_admissible_and_closure_engine": {
+      "depends": [
+        "W0_SOURCE_LOCK",
+        "W1_DEPENDENCY_GRAPH",
+        "W2_NATIVE_CONTRACT_QUALIFICATION",
+        "W3_LOCAL_ACTUAL_EXPERIMENTS"
+      ],
+      "evidence": "verified pinned new source at EC repo HEAD + 14 negative tests + four public input native subprocess cases",
+      "allow": "SOURCE_IMPLEMENTED_EXPERIMENTAL_ONLY"
+    },
+    "W4B_independent_semantic_adjudicator": {
+      "depends": [
+        "W4A_native_all_admissible_and_closure_engine"
+      ],
+      "evidence": "provenance authenticated independently, no test oracle or authored development labels, true admissibility reasons from semantic inference",
+      "currently": "NOT_IMPLEMENTED_OR_QUALIFIED",
+      "gate": "G_W4_NO_FAKE_INDEPENDENCE"
+    },
+    "W4C_complete_obligation_inventory": {
+      "depends": [
+        "W4A_native_all_admissible_and_closure_engine"
+      ],
+      "evidence": "attested full S4 obligation inventory and independent provenance beyond experimental author completeness",
+      "currently": "NOT_IMPLEMENTED_OR_QUALIFIED",
+      "gate": "G_W4_NO_UNATTESTED_S4_CLOSE"
+    },
+    "W5_full_four_layer_arms": {
+      "depends": [
+        "W4B_independent_semantic_adjudicator",
+        "W4C_complete_obligation_inventory"
+      ],
+      "evidence": "new declared versioned A/B/C/D/E layerwise raw compatible run, not historical frozen mismatch",
+      "currently": "NOT_EXECUTED",
+      "gate": "G11_REAL_ROOT_EXIT"
+    },
+    "W6_coarse_localization": {
+      "depends": [
+        "W5_full_four_layer_arms"
+      ],
+      "evidence": "materiality 0.20, independent layer gain, source/frozen AC18/18",
+      "currently": "BLOCKED",
+      "gate": "G11_ALL18_PASS"
+    }
+  },
+  "source_gates": [
+    "NEW_NATIVE_COMMIT_AND_BLOB_PIN",
+    "NATIVE_14_TESTS",
+    "SOURCE_CODE_TRACKED_PRE_AND_POST",
+    "ORACLE_BLIND_CHILD",
+    "CASEWISE_4_DISTINCT_EXPOSED",
+    "NO_AUTHOR_FIXTURE_AS_INDEPENDENT",
+    "NO_UNATTESTED_SEMANTIC_CLAIM",
+    "NO_UNATTESTED_S4_INVENTORY",
+    "ORIGINAL_V6_AC18_UNCHANGED",
+    "NO_MODEL_CREDIT_FOR_NATIVE",
+    "REAL_W5_REQUIRED_FOR_ROOT_SUCCESS"
+  ],
+  "branch": {
+    "new_source_missing": "BLOCK_INTEGRITY",
+    "test_failure": "BLOCK_INTEGRITY",
+    "native_source_executable": "CONTINUE_DEPENDENCY_AND_AC_RECHECK",
+    "semantic_attestor_unqualified": "STOP_SPECIFIC_EXTERNAL_PROVENANCE_GAP",
+    "semantic_attestor_qualified": "REQUIRE_ACTUAL_W5_S1S4_A_E_STUDY_BEFORE_EXIT",
+    "original_ac18_full_pass_with_real_AE": "ROOT_MVP_VERIFIED"
+  },
+  "output_root_scientific_completion": false,
+  "auto_start_scheduled_task": false
+}
