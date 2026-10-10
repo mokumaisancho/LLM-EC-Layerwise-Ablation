@@ -27,12 +27,14 @@ from tools.run_issue1_root_ac_w4b_tcc_v8 import (
 from tools.issue1_ac_dependency_planner_v9 import schedule,check_normative,NORMATIVE
 from tools.preflight_issue57_study_assets import inspect_study
 from tools.verify_issue1_s4_bounded_safety_v1 import run as verify_bounded_s4
+from tools.issue1_independent_proof_13ac_gate_v1 import inspect as inspect_proof_package
 
 PROTOCOL="ISSUE1_ROOT_AC_FIXED_POINT_TCC_V9"
 DATA_COUNT=48
 READ_ONLY_INPUTS=[
   "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
   "docs/ISSUE1_W4B_W4C_TYPED_EVIDENCE_CONTRACT_V1.json",
+  "docs/ISSUE1_W4B_W4C_INDEPENDENT_PROOF_AC_V1.json",
 ]
 CODE_SOURCES=[
   "tools/run_issue1_root_ac_continuation_tcc_v9.py",
@@ -40,6 +42,7 @@ CODE_SOURCES=[
   "tools/run_issue1_root_ac_w4b_tcc_v8.py",
   "tools/preflight_issue57_study_assets.py",
   "tools/verify_issue1_s4_bounded_safety_v1.py",
+  "tools/issue1_independent_proof_13ac_gate_v1.py",
 ]
 def must(ok,why):
     if not ok:raise ValueError(why)
@@ -144,12 +147,13 @@ def manifest():
           "Execute real nested v8 root science and pinned old/new EC source studies in same invocation",
           "Verify 48 separately generated public typed cases and adversarial hidden unknown source/SHA",
           "Prove bounded 936-state native S4 safety, five-condition MC/DC witnesses and kill 5 real source mutations without promoting full C03",
+          "Audit original 13 preregistered W4B/W4C proof ACs; credit C03 only bounded mechanical subproof and emit true evidence requirements",
           "Never silently self-certify independent semantic admissibility or S4 inventory",
           "Optionally check newly supplied external blind study if present; never assert independent proof from files alone",
           "Compute and traverse original AC20 and W0-W7 prerequisite DAG and strict 18/18 exit",
           "Protect research code, both normative contracts, real frozen model evidence, native source and casewise hashes before after tests",
       ],
-      "state_keys":["norm","v8","additional","s4formal","external","ac"],
+      "state_keys":["norm","v8","additional","s4formal","external","ac","proof"],
       "immutable_state_keys":[],
       "entry_nodes":["verify_original_normative_AC"],
       "nodes":[
@@ -167,9 +171,12 @@ def manifest():
                failure="blocked_integrity"),
           node("recompute_AC_and_W4_W5_prerequisites","action",
                depends=("check_external_study_if_present",),writes=("ac",),failure="blocked_integrity"),
-          node("true_original_scientific_exit","gate",
+          node("audit_13_independent_proof_ACs","action",
                depends=("recompute_AC_and_W4_W5_prerequisites",),
-               reads=("norm","v8","additional","s4formal","external","ac"),
+               writes=("proof",),failure="blocked_integrity"),
+          node("true_original_scientific_exit","gate",
+               depends=("audit_13_independent_proof_ACs",),
+               reads=("norm","v8","additional","s4formal","external","ac","proof"),
                branches={"actual_root_18AC_complete":"root_science_verified",
                          "independent_semantics_or_S4_missing":"blocked_external_science",
                          "original_full_AE_missing":"blocked_AE"}),
@@ -315,8 +322,27 @@ def execute(tcc_root:Path,original_ec_root:Path,w4a_root:Path,w4b_root:Path,
                 "evidence":["ORIGINAL_18AC_PASS2_UNMET16_NO_SCOPED_UPGRADE",
                             "NEXT_CRITICAL_PATH_W4B_W4C_THEN_W5_ALL_AE"]}
 
+    def audit_proof(_n,_s,_a):
+        try:
+            ledger=inspect_proof_package(observations["s4formal"])
+            must(ledger["proof_AC_total"]==13 and
+                 ledger["proof_package_mvp_required"]==11 and
+                 ledger["proof_package_mvp_pass"]==0 and
+                 ledger["status_by_AC"]["C03"]["state"]=="PARTIAL_BOUNDED_MECHANICS_ONLY" and
+                 ledger["original_MVP_completed"] is False,
+                 "G11_FALSE_INDEPENDENT_PROOF_AC_ACCEPTANCE")
+            observations["proof_ledger"]=ledger
+            check_seals()
+        except Exception as exc:
+            observations["errors"].append("PROOF13:"+str(exc)[:180])
+            return {"status":"failure","evidence":["INDEPENDENT_GOLD_OR_PROOF13_SOURCE_NOT_QUALIFIED"]}
+        return {"status":"success","writes":{"proof":True},
+                "evidence":["PROOF_AC13_DAG_VALID_0OF11_INDEPENDENT_GATE_PASS",
+                            "C03_PARTIAL_BOUNDED_MECHANICS_ONLY",
+                            "ORIGINAL_AC18_STILL_2OF18"]}
+
     def final(_n,state,_attempt):
-        if not all(state.get(x) is True for x in ("norm","v8","additional","s4formal","external","ac")):
+        if not all(state.get(x) is True for x in ("norm","v8","additional","s4formal","external","ac","proof")):
             return {"outcome":"original_full_AE_missing","evidence":["AC_DEPENDENCY_STATE_INCOMPLETE"]}
         plan=observations["planner"]
         if plan["AC"]["original_mvp_pass_count"]==18 and plan["original_phase1_AE_completed"]:
@@ -331,6 +357,7 @@ def execute(tcc_root:Path,original_ec_root:Path,w4a_root:Path,w4b_root:Path,
        "verify_bounded_native_S4_formal_properties":s4formal,
        "check_external_study_if_present":study,
        "recompute_AC_and_W4_W5_prerequisites":audit,
+       "audit_13_independent_proof_ACs":audit_proof,
        "true_original_scientific_exit":final,
     })
     must(runtime.get("result")=="TERMINAL" and runtime["terminal_id"] in
@@ -346,6 +373,7 @@ def execute(tcc_root:Path,original_ec_root:Path,w4a_root:Path,w4b_root:Path,
        "dependency_ordered_AC_and_work":observations.get("planner"),
        "actual_metamorphic_typed_evidence":observations.get("metamorphic"),
        "C03_bounded_native_S4_formal_proof":observations.get("s4formal"),
+       "W4B_W4C_independent_13AC_proof_ledger":observations.get("proof_ledger"),
        "external_blind_study_preflight":observations.get("external"),
        "all_seals_same":all([
           before["raw"]==immutable_evidence_seal(),
