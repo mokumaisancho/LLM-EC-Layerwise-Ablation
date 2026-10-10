@@ -62,7 +62,7 @@ def manifest():
         "goal": "Run unchanged original Phase1 v10 TCC, independent target-only E replay adversarial gate, optional trusted replay, and fail-closed original AC decision.",
         "acceptance": [
             "Preserve original 18 mandatory AC, 0.20 threshold and frozen v1/v10.",
-            "Run independent source-bound downstream replay for all E layers; hostile rehahsed multilayer interventions must be rejected.",
+            "Run independent source-bound downstream replay for all E layers; hostile rehashed multilayer interventions must be rejected.",
             "Never promote toy replay or authored raw receipts to original Phase1 scientific evidence.",
             "Report #59 S3 and #60 S4 and #61 real authority as blockers.",
         ],
@@ -117,7 +117,7 @@ def run(tcc_root: Path, native_successor: Path | None = None,
     ctx = context_for(spec, original_head)
     ctx.update(
         selected_issue_id="ISSUE-1",
-        actionable_issue_ids=["ISSUE-1", "ISSUE-61"],
+        actionable_issue_ids=["ISSUE-1"],
         blocked_issue_ids=[],
         snapshot_id="ISSUE1-V11:" + original_head[:12],
         source_fingerprint="sha256:" + hashlib.sha256(
