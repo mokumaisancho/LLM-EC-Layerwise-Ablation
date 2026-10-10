@@ -22,7 +22,8 @@ from tools.run_issue1_root_ac_orchestrator_v6 import (
     run as run_root_ac_v6,git_head,git_blob,immutable_evidence_seal
 )
 from tools.run_issue1_ec_native_layerwise_source_probe_v1 import (
-    run as run_native_probe,EC_COMMIT,EC_MODULE_BLOB,PROTOCOL as NATIVE_PROTOCOL
+    run as run_native_probe,pin as pin_native_source,EC_COMMIT,EC_MODULE_BLOB,
+    PROTOCOL as NATIVE_PROTOCOL,MODULE as NATIVE_MODULE,TESTS as NATIVE_TESTS
 )
 
 PROTOCOL="ISSUE1_ROOT_W4_EC_NATIVE_AC_TCC_V7"
@@ -185,6 +186,10 @@ def run(tcc_root:Path,ec_v44_root:Path,new_native_root:Path)->dict:
             checks[rel]=expect.stdout.strip()
         return checks
     code_pre=code_seal()
+    pin_native_source(new_native_root)
+    new_native_sources_before={
+        p:git_blob((new_native_root/p).read_bytes()) for p in (NATIVE_MODULE,NATIVE_TESTS)
+    }
     config_pre=hashlib.sha256(CFG.read_bytes()).hexdigest()
 
     def origin(_node,_state,_attempt):
@@ -234,6 +239,11 @@ def run(tcc_root:Path,ec_v44_root:Path,new_native_root:Path)->dict:
                    "W4_RESULT_OVERTURNING_RAW_EVIDENCE_CHANGED")
             demand(code_pre==code_seal(),
                    "W4_RESULT_OVERTURNING_SCIENTIFIC_CODE_CHANGED")
+            pin_native_source(new_native_root)
+            demand(new_native_sources_before=={
+                p:git_blob((new_native_root/p).read_bytes()) for p in
+                (NATIVE_MODULE,NATIVE_TESTS)},
+                "W4_RESULT_OVERTURNING_NATIVE_ENGINE_CODE_CHANGED")
             demand(config_pre==hashlib.sha256(CFG.read_bytes()).hexdigest(),
                    "W4_RESULT_OVERTURNING_MVP_CONTRACT_CHANGED")
             evidence["matrix"]=matrix
@@ -291,6 +301,11 @@ def run(tcc_root:Path,ec_v44_root:Path,new_native_root:Path)->dict:
       "W4_to_original_MVP_dependency_matrix":evidence.get("matrix"),
       "evidence_integrity_failures":evidence["errors"],
       "scientific_code_git_blobs":code_pre,
+      "new_native_source_pre_post_same":(
+          new_native_sources_before=={
+            p:git_blob((new_native_root/p).read_bytes()) for p in
+            (NATIVE_MODULE,NATIVE_TESTS)}),
+      "new_native_git_source_blobs":new_native_sources_before,
       "source_code_pre_post_same":code_pre==code_seal(),
       "raw_evidence_pre_post_same":raw_pre==immutable_evidence_seal(),
       "original_scientifically_complete":bool(verified),
