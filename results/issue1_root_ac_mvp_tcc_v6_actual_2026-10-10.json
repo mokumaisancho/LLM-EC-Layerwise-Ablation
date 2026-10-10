@@ -1,6 +1,6 @@
 {
   "protocol": "ISSUE1_ROOT_AC18_TCC6_ACTUAL_VERIFIED_2026_10_10",
-  "regression_tests_passed": 233,
+  "regression_tests_passed": 236,
   "SUITE_methodology_pass": true,
   "ECv4_methodology_pass": true,
   "root_issue_scientifically_complete": false,
@@ -980,6 +980,21 @@
       "results/issue1_s4_qwen20_paired_info_ablation_actual_2026-10-10.json": "8123844533134a0dced0215955301b94adabc6928f95090e24ce7cb376d6e45b",
       "results/phase1_mvp_tcc_v2_actual_2026-10-03.json": "6b63f73bf33cfc208acd7926a015a7ee3af97b8c9605cafe2a88a886a84b4e25"
     },
+    "scientific_source_code_git_blob_pins": {
+      "tools/audit_issue1_original_exit_and_scoped_successor.py": "2e3619d8b8f0040d7b319f7ef2aba18cd80c09f3",
+      "tools/replay_issue1_ecv44_native_next_action_v2.py": "60e7a76ac3dd963a9cd0392f31aaa9d819b8c0e6",
+      "tools/run_issue1_autonomous_tcc_workflow.py": "98baae3e770e958e7656a4af4158455223bbfe28",
+      "tools/run_issue1_autonomous_tcc_workflow_v2.py": "2f88a0005a1407222f92d8e8795318011b97773e",
+      "tools/run_issue1_autonomous_tcc_workflow_v3.py": "46f9e543003f39895ed54ccb6528e43b20f6acb7",
+      "tools/run_issue1_autonomous_tcc_workflow_v4.py": "adae78b0aed893ec677d727bf889677f032ce74f",
+      "tools/run_issue1_autonomous_tcc_workflow_v5.py": "d1ab5a6e5231d37c8951157af1ef49b4df349006",
+      "tools/run_issue1_llm_next_action_v2_local_mac.py": "bf838246c669a6997863024b1e0af32a032418ab",
+      "tools/run_issue1_public_gate_gbnf_ablation_v1.py": "4431ad15ba1d49d6df928af02740b2d7ca19b016",
+      "tools/run_issue1_root_ac_orchestrator_v6.py": "4257cf8cb08f2d2de75dc596bd2cb408f639a788",
+      "tools/run_issue1_s3_native_next_action_oracle_causal_v1.py": "43802be19676dc93595280872e5acc1c9f756655",
+      "tools/run_issue1_s3_public_dynamic_guard_v2.py": "f0b594595f77a1d1b490ff2a4d6d6c18848f2ffa",
+      "tools/run_issue1_s4_public_info_paired_llm_v1.py": "ac4d5b7c95b6726803fad13d42f75bcd37851be7"
+    },
     "scoped_actual_experiment": {
       "actual_tcc_evidence": {
         "closure_authority": "ECv4",
@@ -1196,11 +1211,11 @@
       "hybrid_correct": 17,
       "native_ec_fallbacks": 15,
       "original_AC_qualified": false,
-      "source_commit": "2e51b7366e82664b720b1b747154ec5938847db6",
+      "source_commit": "6de90df6da7c728a3cf09723e7c608b1c203e67a",
       "state": "VERIFIED_PUBLIC_S3_FULL_ERROR_DETECTION_REQUIRES_NATIVE_EC_FALLBACK_EXTERNAL_SCIENCE_OPEN"
     },
     "source_code_mutated_during_run": false,
-    "source_commit": "2e51b7366e82664b720b1b747154ec5938847db6",
+    "source_commit": "6de90df6da7c728a3cf09723e7c608b1c203e67a",
     "source_git_blob_pins": {
       "ACCEPTANCE_CRITERIA.md": "40e4d41914fb17ee5c7deb0cfd32276a41c9a1fc",
       "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
