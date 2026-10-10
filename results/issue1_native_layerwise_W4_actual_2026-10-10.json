@@ -1,0 +1,86 @@
+{
+  "protocol": "ISSUE1_W4_SOURCE_AND_TCC7_FINAL_2026_10_10",
+  "real_native_upstream_tests_passed": 14,
+  "all_repository_related_tests_passed": 260,
+  "no_new_scheduler": true,
+  "original_issue_completion": false,
+  "result": {
+    "S3_selected_two_for_M003_and_M009": true,
+    "S4_competing_CONTINUE_equivalent_CLOSE_unresolved_CONTINUE": true,
+    "casewise_S3_development_matches": 4,
+    "casewise_S4_development_matches": 4,
+    "external_complete_inventory_certified": false,
+    "external_semantic_adjudicator_certified": false,
+    "four_author_exposed_fixtures": 4,
+    "genuine_native_selection_and_closure_code_exists": true,
+    "independent_unseen_gold": false,
+    "native_additive_source_git_commit": "24fe3a665b21ad90a79095eb8d5818dda5447d62",
+    "native_module_actual_python_process_executed": true,
+    "native_module_git_blob": "c12e4743c89221a9b81a2f2fa98c4df9d61d72b2",
+    "native_negative_tests_passed": 14,
+    "original_four_layer_AE_completed": false,
+    "original_frozen_ec_v44_adapter_qualified": false,
+    "protocol": "ISSUE1_NATIVE_S3_SET_S4_CLOSURE_VERSIONED_SOURCE_PROBE_V1",
+    "rows": [
+      {
+        "S3_semantic_independence_qualified": false,
+        "S4_complete_obligation_inventory_independently_qualified": false,
+        "case_id": "M003",
+        "closure_class": "CONTINUE",
+        "closure_match_author_visible_fixture": true,
+        "native_source_git_commit": "24fe3a665b21ad90a79095eb8d5818dda5447d62",
+        "public_input_sha256": "3a0f560f7583ceb32b9fcd4d7361231c33c8e4764f5e0add76231d886f0ae8b2",
+        "selected_candidate_ids": [
+          "v1",
+          "v2"
+        ],
+        "selected_count": 2,
+        "selection_match_author_visible_fixture": true
+      },
+      {
+        "S3_semantic_independence_qualified": false,
+        "S4_complete_obligation_inventory_independently_qualified": false,
+        "case_id": "M007",
+        "closure_class": "CONTINUE",
+        "closure_match_author_visible_fixture": true,
+        "native_source_git_commit": "24fe3a665b21ad90a79095eb8d5818dda5447d62",
+        "public_input_sha256": "4a47f958b793ad7e5028727f3566a47c899cdce70fc54e421df411d87416c772",
+        "selected_candidate_ids": [
+          "v1"
+        ],
+        "selected_count": 1,
+        "selection_match_author_visible_fixture": true
+      },
+      {
+        "S3_semantic_independence_qualified": false,
+        "S4_complete_obligation_inventory_independently_qualified": false,
+        "case_id": "M008",
+        "closure_class": "CLOSE",
+        "closure_match_author_visible_fixture": true,
+        "native_source_git_commit": "24fe3a665b21ad90a79095eb8d5818dda5447d62",
+        "public_input_sha256": "c6a417f43f4fa5fc5d78c2a334a8ab72a0f2a733c75722ca3cb1a756ea29e267",
+        "selected_candidate_ids": [
+          "v1"
+        ],
+        "selected_count": 1,
+        "selection_match_author_visible_fixture": true
+      },
+      {
+        "S3_semantic_independence_qualified": false,
+        "S4_complete_obligation_inventory_independently_qualified": false,
+        "case_id": "M009",
+        "closure_class": "CLOSE",
+        "closure_match_author_visible_fixture": true,
+        "native_source_git_commit": "24fe3a665b21ad90a79095eb8d5818dda5447d62",
+        "public_input_sha256": "650573fe50145394b98a610338af5ab1a815ae8af0e31b40d1e0fc20a9eda397",
+        "selected_candidate_ids": [
+          "v1",
+          "v2"
+        ],
+        "selected_count": 2,
+        "selection_match_author_visible_fixture": true
+      }
+    ],
+    "terminal": "W4_NATIVE_EXPERIMENTAL_SOURCE_COMPILED_AND_EXECUTED_SEMANTIC_AUTHORITY_STILL_UNQUALIFIED"
+  }
+}
