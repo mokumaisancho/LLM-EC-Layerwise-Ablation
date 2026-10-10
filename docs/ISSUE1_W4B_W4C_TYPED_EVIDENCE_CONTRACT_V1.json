@@ -1,0 +1,47 @@
+{
+  "protocol": "ISSUE1_W4B_W4C_TYPED_EVIDENCE_DETERMINISTIC_V1",
+  "status": "SPEC_FROZEN_BEFORE_EXPERIMENT",
+  "root_issue": "mokumaisancho/LLM-EC-Layerwise-Ablation#1",
+  "original_normative_mvp_ac": 18,
+  "old_native_commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+  "new_experimental_native_commit": "24fe3a665b21ad90a79095eb8d5818dda5447d62",
+  "method": "strictly typed structured facts and proven candidate prerequisite IDs; no extraction of unstated natural-language facts",
+  "inputs": {
+    "facts_schema": "fact_id, known true/false, bound document_sha256",
+    "candidate_dependency_syntax": "fact:<id> or not:fact:<id>",
+    "obligations": "required obligation ids from explicit scope document; must explicitly prove scope inventory complete, do not equate zero length with completeness"
+  },
+  "non_goals": [
+    "DO NOT claim semantic inference on free-form natural language",
+    "DO NOT read authored fixture oracle/hidden in runtime",
+    "DO NOT certify external adjudication from authored structured input",
+    "DO NOT call generated synthetic eval independent unseen expert gold",
+    "DO NOT change original frozen S3/S4 adapters or original 18 AC"
+  ],
+  "branch_policy": {
+    "typed_input_fully_proven": "GENERATE_SOURCE_BOUND_ADJUDICATIONS_AND_OBLIGATIONS_THEN_RUN_NATIVE_S3_S4",
+    "unknown_fact_or_unbound_scope": "FAIL_CLOSED_ABSTAIN",
+    "source_hash_inconsistent": "INTEGRITY_FAIL_CLOSED",
+    "typed_same_case_success": "SCOPED_FORMAL_SOUNDNESS_ONLY",
+    "external_semantics_absent": "CONTINUE_W4B_UNQUALIFIED_AND_W5_BLOCKED",
+    "independent_authority_present": "REQUIRE_INDEPENDENT_PROVENANCE_AND_FULL_ALL_LAYER_A_E"
+  },
+  "gates": [
+    "SHA_BOUND_INPUT",
+    "ALL_FACT_REFERENCES_RESOLVED",
+    "NO_UNDECLARED_FEATURES",
+    "ZERO_OBLIGATIONS_NEEDS_EXPLICIT_EXHAUSTIVE_PROOF",
+    "NEGATION_VS_POSITIVE_DIFFERENCE",
+    "REUSE_INDEPENDENT_OF_ORACLE",
+    "MUTATION_AND_COVERAGE",
+    "ORIGINAL_MVP_AC18_GATE"
+  ],
+  "planned_actual_tests": {
+    "typed_s3_allowed": "multiple qualified candidates",
+    "typed_s3_negative": "false precondition rejects",
+    "typed_s3_unknown": "abstain not guess",
+    "typed_s4_unresolved": "CONTINUE",
+    "typed_s4_full_complete": "CLOSE with explicit scope",
+    "typed_s4_unknown_inventory": "BLOCKED no silent closure"
+  }
+}
