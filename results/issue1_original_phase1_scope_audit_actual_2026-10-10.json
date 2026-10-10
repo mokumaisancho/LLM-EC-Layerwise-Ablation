@@ -1,0 +1,94 @@
+{
+  "protocol": "ISSUE1_ORIGINAL_PHASE1_SCOPE_AUDIT_ACTUAL_2026_10_10",
+  "original_source_blobs": {
+    "ACCEPTANCE_CRITERIA": "40e4d41914fb17ee5c7deb0cfd32276a41c9a1fc",
+    "phase1_normative": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+    "pinned_native_adapter": "8693c5be282b1e8407a0c1358e18eab2ad78905c",
+    "S4_identifiability": "624616a1f4b0dc4a2330cbcd0a6a03b94a475ce8"
+  },
+  "actual_git_root_source_tests_passed": 12,
+  "related_portable_sandbox_contract_tests_passed": 20,
+  "source_lock_failures": 0,
+  "original_phase1_science_finished": false,
+  "proof13_and_120_documents_not_original_hard_requirement": true,
+  "validated": {
+    "S4_signature_ceiling": {
+      "bound_only_not_EC_accuracy": true,
+      "correct": 8,
+      "total": 10
+    },
+    "actual_blocker": "FROZEN_NATIVE_S3_S4_SAME_FUNCTION_INCOMPATIBLE",
+    "critical_path": [
+      "QUALIFY_VERSIONED_S3_S4_NATIVE_INTERFACE",
+      "RUN_ACTUAL_ALL_LAYER_A_TO_E_INTERVENTIONS",
+      "VERIFY_ALL_18_ORIGINAL_AC"
+    ],
+    "genuine_A_B_C_D_E_four_layer_evidence": false,
+    "native_S3_multi_selection_counterexamples": [
+      "M003",
+      "M009"
+    ],
+    "next_valid_action": "VERSIONED_S3_S4_EC_SUCCESSOR_THEN_REAL_MATCHED_A_TO_E",
+    "optional_studies_not_frozen_root_gates": [
+      "13_ADDITIONAL_PROOF_AC",
+      "120_EXTERNALLY_SOURCED_HOLDOUT_DOCUMENTS",
+      "C1_TO_C6_GLOBAL_INTERNAL_MECHANISM_STUDY"
+    ],
+    "original_AC20_status": {
+      "AC-01": "NOT_PROVEN",
+      "AC-02": "NOT_PROVEN",
+      "AC-03": "NOT_PROVEN",
+      "AC-04": "NOT_PROVEN",
+      "AC-05": "NOT_PROVEN",
+      "AC-06": "NOT_PROVEN",
+      "AC-07": "NOT_PROVEN",
+      "AC-08": "NOT_PROVEN",
+      "AC-09": "NOT_PROVEN",
+      "AC-10": "NOT_PROVEN",
+      "AC-11": "NOT_PROVEN",
+      "AC-12": "NOT_PROVEN",
+      "AC-13": "NOT_PROVEN",
+      "AC-14": "NOT_PROVEN",
+      "AC-15": "NOT_PROVEN",
+      "AC-16": "NOT_PROVEN",
+      "AC-17": "NOT_PROVEN",
+      "AC-18": "NOT_PROVEN",
+      "AC-19": "PASS",
+      "AC-20": "PASS"
+    },
+    "original_AC20_topological_order": [
+      "AC-11",
+      "AC-13",
+      "AC-15",
+      "AC-19",
+      "AC-20",
+      "AC-02",
+      "AC-01",
+      "AC-03",
+      "AC-04",
+      "AC-07",
+      "AC-14",
+      "AC-12",
+      "AC-17",
+      "AC-05",
+      "AC-16",
+      "AC-06",
+      "AC-08",
+      "AC-09",
+      "AC-18",
+      "AC-10"
+    ],
+    "original_issue": 1,
+    "original_mvp_AC_pass": 2,
+    "original_mvp_AC_total": 18,
+    "original_mvp_complete": false,
+    "original_pinned_EC_compatible": false,
+    "post_MVP": [
+      "AC-10",
+      "AC-18"
+    ],
+    "protocol": "ISSUE1_ORIGINAL_PHASE1_SCOPE_ADMISSION_V1",
+    "scope": "ORIGINAL_PHASE1_S1_TO_S4_ONLY",
+    "terminal": "FROZEN_ORIGINAL_NATIVE_INCOMPATIBLE_VERSIONED_SUCCESSOR_REQUIRED"
+  }
+}
