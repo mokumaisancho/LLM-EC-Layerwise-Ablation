@@ -1,7 +1,9 @@
 {
   "protocol": "ISSUE1_W4_SOURCE_AND_TCC7_FINAL_2026_10_10",
   "real_native_upstream_tests_passed": 14,
-  "all_repository_related_tests_passed": 260,
+  "all_repository_related_tests_passed": 261,
+  "SUITE_gate_passed": true,
+  "ECv4_methodology_gate_passed": true,
   "no_new_scheduler": true,
   "original_issue_completion": false,
   "result": {
@@ -308,6 +310,11 @@
       ],
       "terminal": "W4_NATIVE_EXPERIMENTAL_SOURCE_COMPILED_AND_EXECUTED_SEMANTIC_AUTHORITY_STILL_UNQUALIFIED"
     },
+    "new_native_git_source_blobs": {
+      "01_repo/src/v4/ec_layerwise_admissible_set_closure_v1.py": "c12e4743c89221a9b81a2f2fa98c4df9d61d72b2",
+      "01_repo/tests/test_ec_layerwise_admissible_set_closure_v1.py": "3821477df059ccf0fc72deef59d852e09cce4ba9"
+    },
+    "new_native_source_pre_post_same": true,
     "original_MVP_required_AC": 18,
     "original_issue_ac_total": 20,
     "original_scientifically_complete": false,
@@ -339,12 +346,12 @@
     },
     "protocol": "ISSUE1_ROOT_W4_EC_NATIVE_AC_TCC_V7",
     "raw_evidence_pre_post_same": true,
-    "research_commit": "52047148d6d45c2ee63a7709bd4ac69df5ace3ff",
+    "research_commit": "6c8934f4e9cdc0a839fe66222a61de3c8e21182f",
     "scheduled_tasks_created": false,
     "scientific_code_git_blobs": {
       "tools/run_issue1_ec_native_layerwise_source_probe_v1.py": "cfdc107ec6faca92c6acf84d938823307ac7eaaa",
       "tools/run_issue1_root_ac_orchestrator_v6.py": "4257cf8cb08f2d2de75dc596bd2cb408f639a788",
-      "tools/run_issue1_root_ac_w4_tcc_v7.py": "2eec58f19c15b2f3a7b8ce74d1d36f56d37411d1"
+      "tools/run_issue1_root_ac_w4_tcc_v7.py": "70b4d42048f821ee5224da2888522c95b4470ab6"
     },
     "source_code_pre_post_same": true,
     "terminal": "W4_NATIVE_EXECUTED_INDEPENDENT_SEMANTIC_AUTHORITY_REQUIRED"
