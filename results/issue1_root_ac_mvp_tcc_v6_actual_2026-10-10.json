@@ -1,0 +1,1212 @@
+{
+  "protocol": "ISSUE1_ROOT_AC18_TCC6_ACTUAL_VERIFIED_2026_10_10",
+  "regression_tests_passed": 233,
+  "SUITE_methodology_pass": true,
+  "ECv4_methodology_pass": true,
+  "root_issue_scientifically_complete": false,
+  "actual_result": {
+    "AC_MVP_validated": false,
+    "ECv4_handoff": {
+      "closure_authority": "ECv4",
+      "evidence": [
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "pin_source",
+          "seq": 1
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "G0+G7:FROZEN_PROTOCOL_SOURCE_SHA_PASS"
+          ],
+          "node_id": "pin_source",
+          "seq": 2
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "pin_source",
+          "seq": 3,
+          "state_hash": "sha256:88faf39712aea70445b7f8e3de1ddd0de9d63d493915c155c7723f2c991a6abc",
+          "transition_seq": 1
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "pin_source",
+          "seq": 4
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "verify_ac_dependencies",
+          "seq": 5
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "G1+G2:ORIGINAL_AC20_MVP18_TOPOLOGICAL_PASS"
+          ],
+          "node_id": "verify_ac_dependencies",
+          "seq": 6
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "verify_ac_dependencies",
+          "seq": 7,
+          "state_hash": "sha256:4693f50fe84fb588a57d28337ebcccc6a322dd6de0a3d1040e25e7b3e411ec4c",
+          "transition_seq": 2
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "verify_ac_dependencies",
+          "seq": 8
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "frozen_origin_replay",
+          "seq": 9
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "G3:ORIGINAL_V2_P0P1_PASS_P2_NATIVE_INCOMPATIBLE"
+          ],
+          "node_id": "frozen_origin_replay",
+          "seq": 10
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "frozen_origin_replay",
+          "seq": 11,
+          "state_hash": "sha256:2b98a2ad4c763bf2581da56f184cc457db3a0c7098520190311803d21d0d0f8f",
+          "transition_seq": 3
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "frozen_origin_replay",
+          "seq": 12
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "raw_evidence_preflight",
+          "seq": 13
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "G4+G5+G10:REAL_SCOPED_RAW_PINNED_PRESEAL_PASS"
+          ],
+          "node_id": "raw_evidence_preflight",
+          "seq": 14
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "raw_evidence_preflight",
+          "seq": 15,
+          "state_hash": "sha256:2a8eae52c9196b0215760d03d10ca58dcc011ee551c912c00ef990cea777419e",
+          "transition_seq": 4
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "raw_evidence_preflight",
+          "seq": 16
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "run_scoped_machine_experiments",
+          "seq": 17
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "G8+G9:REAL_SCOPED_EC17_QWEN17_QWEN20_S3_ORACLE_GBNF_DYNAMIC_PASS",
+            "G4+G5+G7+G10:PRE_POST_SHA_STABLE"
+          ],
+          "node_id": "run_scoped_machine_experiments",
+          "seq": 18
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "run_scoped_machine_experiments",
+          "seq": 19,
+          "state_hash": "sha256:dcf3da671832354072ee60652ce8fcdda1e9d6dd729c8e083d99167418b940d5",
+          "transition_seq": 5
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "run_scoped_machine_experiments",
+          "seq": 20
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "prove_native_interface_feasibility",
+          "seq": 21
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "G3:GENUINE_NATIVE_S3_MULTISELECT_S4_UNIDENTIFIABLE_PROVEN"
+          ],
+          "node_id": "prove_native_interface_feasibility",
+          "seq": 22
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "prove_native_interface_feasibility",
+          "seq": 23,
+          "state_hash": "sha256:5b7be8fc6a5b4a1f4c412a6fd59eb29770ee8e1eddc10c9913ec7feece8dbddc",
+          "transition_seq": 6
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "prove_native_interface_feasibility",
+          "seq": 24
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "audit_root_ac_dependencies",
+          "seq": 25
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "G2+G11:ALL18_ROOT_MVP_NOT_FAKELY_PROMOTED",
+            "W0_TO_W7_DEPENDENCY_REMEDIATION_DERIVED"
+          ],
+          "node_id": "audit_root_ac_dependencies",
+          "seq": 26
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "audit_root_ac_dependencies",
+          "seq": 27,
+          "state_hash": "sha256:9df4fbd2369e9a8b616deb33018054071cbaffeb661a8bee7b3ee61d2d508ea5",
+          "transition_seq": 7
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "audit_root_ac_dependencies",
+          "seq": 28
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "gate",
+          "node_id": "root_ac_exit_gate",
+          "seq": 29
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "NATIVE_SOURCE_GAP:S3_M003_M009:S4_COLLISION_8OF10"
+          ],
+          "node_id": "root_ac_exit_gate",
+          "seq": 30
+        },
+        {
+          "event": "GATE_SELECTED",
+          "node_id": "root_ac_exit_gate",
+          "outcome": "native_source_gap",
+          "seq": 31,
+          "target": "blocked_native_semantics"
+        },
+        {
+          "event": "TERMINAL_REACHED",
+          "node_id": "blocked_native_semantics",
+          "seq": 32,
+          "terminal_status": "BLOCKED"
+        }
+      ],
+      "runtime_result": "TERMINAL",
+      "schema": "tcc.ecv4-evidence.v0",
+      "spec_hash": "sha256:53097890dad51ea74015c5fe6a01cd9badced47ff2799e4d5d027e3ac9aed85f",
+      "state_hash": "sha256:9df4fbd2369e9a8b616deb33018054071cbaffeb661a8bee7b3ee61d2d508ea5",
+      "state_transitions": [
+        {
+          "node_id": "pin_source",
+          "seq": 1,
+          "state_hash": "sha256:88faf39712aea70445b7f8e3de1ddd0de9d63d493915c155c7723f2c991a6abc",
+          "writes": {
+            "source": true
+          }
+        },
+        {
+          "node_id": "verify_ac_dependencies",
+          "seq": 2,
+          "state_hash": "sha256:4693f50fe84fb588a57d28337ebcccc6a322dd6de0a3d1040e25e7b3e411ec4c",
+          "writes": {
+            "acgraph": true
+          }
+        },
+        {
+          "node_id": "frozen_origin_replay",
+          "seq": 3,
+          "state_hash": "sha256:2b98a2ad4c763bf2581da56f184cc457db3a0c7098520190311803d21d0d0f8f",
+          "writes": {
+            "origin": true
+          }
+        },
+        {
+          "node_id": "raw_evidence_preflight",
+          "seq": 4,
+          "state_hash": "sha256:2a8eae52c9196b0215760d03d10ca58dcc011ee551c912c00ef990cea777419e",
+          "writes": {
+            "raw": true
+          }
+        },
+        {
+          "node_id": "run_scoped_machine_experiments",
+          "seq": 5,
+          "state_hash": "sha256:dcf3da671832354072ee60652ce8fcdda1e9d6dd729c8e083d99167418b940d5",
+          "writes": {
+            "scoped": true
+          }
+        },
+        {
+          "node_id": "prove_native_interface_feasibility",
+          "seq": 6,
+          "state_hash": "sha256:5b7be8fc6a5b4a1f4c412a6fd59eb29770ee8e1eddc10c9913ec7feece8dbddc",
+          "writes": {
+            "witness": true
+          }
+        },
+        {
+          "node_id": "audit_root_ac_dependencies",
+          "seq": 7,
+          "state_hash": "sha256:9df4fbd2369e9a8b616deb33018054071cbaffeb661a8bee7b3ee61d2d508ea5",
+          "writes": {
+            "acstatus": true
+          }
+        }
+      ],
+      "tcc_id": "ISSUE1-ROOT-AC-MVP-DEPENDENCY-PREFLIGHT-V6",
+      "terminal_id": "blocked_native_semantics",
+      "terminal_status": "BLOCKED"
+    },
+    "G4_G5_G6_G10_casewise_gate": {
+      "actual_case_count": 17,
+      "historical_development_not_unseen": true,
+      "pinned_actual_Qwen_correct": 1,
+      "pinned_actual_native_EC_correct": 17,
+      "strict_casewise_upstream_same_and_scoring_verified": true,
+      "unique_case_ids": 17
+    },
+    "MVP_18_required_AC_status": {
+      "AC": {
+        "AC-01": {
+          "normative_issue_deps": [],
+          "state": "BLOCKED_DEPENDENCY",
+          "unmet_AC_dependencies": [
+            "AC-02"
+          ],
+          "why": "no valid original same-function A/B/C/D/E layer-wide raw measurements"
+        },
+        "AC-02": {
+          "normative_issue_deps": [],
+          "state": "NOT_DEMONSTRATED",
+          "unmet_AC_dependencies": [],
+          "why": "no valid original same-function A/B/C/D/E layer-wide raw measurements"
+        },
+        "AC-03": {
+          "normative_issue_deps": [
+            "ISSUE-22"
+          ],
+          "state": "BLOCKED_NATIVE_SOURCE",
+          "unmet_AC_dependencies": [
+            "AC-02"
+          ],
+          "why": "EC native cannot perform original generic S3 multi-selection / generic S4"
+        },
+        "AC-04": {
+          "normative_issue_deps": [],
+          "state": "BLOCKED_DEPENDENCY",
+          "unmet_AC_dependencies": [
+            "AC-02",
+            "AC-03"
+          ],
+          "why": "no valid original same-function A/B/C/D/E layer-wide raw measurements"
+        },
+        "AC-05": {
+          "normative_issue_deps": [
+            "ISSUE-22"
+          ],
+          "state": "BLOCKED_DEPENDENCY",
+          "unmet_AC_dependencies": [
+            "AC-01",
+            "AC-03",
+            "AC-04",
+            "AC-07",
+            "AC-17"
+          ],
+          "why": "no valid original same-function A/B/C/D/E layer-wide raw measurements"
+        },
+        "AC-06": {
+          "normative_issue_deps": [],
+          "state": "BLOCKED_DEPENDENCY",
+          "unmet_AC_dependencies": [
+            "AC-04",
+            "AC-05",
+            "AC-11",
+            "AC-12",
+            "AC-16",
+            "AC-17"
+          ],
+          "why": "no valid original same-function A/B/C/D/E layer-wide raw measurements"
+        },
+        "AC-07": {
+          "normative_issue_deps": [],
+          "state": "BLOCKED_DEPENDENCY",
+          "unmet_AC_dependencies": [
+            "AC-01"
+          ],
+          "why": "no valid original same-function A/B/C/D/E layer-wide raw measurements"
+        },
+        "AC-08": {
+          "normative_issue_deps": [
+            "ISSUE-21"
+          ],
+          "state": "BLOCKED_DEPENDENCY",
+          "unmet_AC_dependencies": [
+            "AC-05",
+            "AC-06"
+          ],
+          "why": "no valid original same-function A/B/C/D/E layer-wide raw measurements"
+        },
+        "AC-09": {
+          "normative_issue_deps": [
+            "ISSUE-21"
+          ],
+          "state": "BLOCKED_DEPENDENCY",
+          "unmet_AC_dependencies": [
+            "AC-05",
+            "AC-08"
+          ],
+          "why": "no valid original same-function A/B/C/D/E layer-wide raw measurements"
+        },
+        "AC-10": {
+          "normative_issue_deps": [],
+          "state": "BLOCKED_DEPENDENCY",
+          "unmet_AC_dependencies": [
+            "AC-08",
+            "AC-09"
+          ],
+          "why": "no valid original same-function A/B/C/D/E layer-wide raw measurements"
+        },
+        "AC-11": {
+          "normative_issue_deps": [
+            "ISSUE-23",
+            "ISSUE-20"
+          ],
+          "state": "BLOCKED_NATIVE_SOURCE",
+          "unmet_AC_dependencies": [],
+          "why": "EC native cannot perform original generic S3 multi-selection / generic S4"
+        },
+        "AC-12": {
+          "normative_issue_deps": [],
+          "state": "BLOCKED_NATIVE_SOURCE",
+          "unmet_AC_dependencies": [
+            "AC-04",
+            "AC-11"
+          ],
+          "why": "EC native cannot perform original generic S3 multi-selection / generic S4"
+        },
+        "AC-13": {
+          "normative_issue_deps": [
+            "ISSUE-12",
+            "ISSUE-22"
+          ],
+          "state": "SCOPED_ONLY",
+          "unmet_AC_dependencies": [],
+          "why": "pinned bounded real Qwen/EC evidence is NOT full four-layer A-E"
+        },
+        "AC-14": {
+          "normative_issue_deps": [],
+          "state": "BLOCKED_DEPENDENCY",
+          "unmet_AC_dependencies": [
+            "AC-01",
+            "AC-13"
+          ],
+          "why": "pinned bounded real Qwen/EC evidence is NOT full four-layer A-E"
+        },
+        "AC-15": {
+          "normative_issue_deps": [],
+          "state": "SCOPED_ONLY",
+          "unmet_AC_dependencies": [],
+          "why": "pinned bounded real Qwen/EC evidence is NOT full four-layer A-E"
+        },
+        "AC-16": {
+          "normative_issue_deps": [],
+          "state": "BLOCKED_DEPENDENCY",
+          "unmet_AC_dependencies": [
+            "AC-17"
+          ],
+          "why": "single selected-action S3 causal intervention; all-layer Oracle still absent"
+        },
+        "AC-17": {
+          "normative_issue_deps": [],
+          "state": "BLOCKED_DEPENDENCY",
+          "unmet_AC_dependencies": [
+            "AC-07"
+          ],
+          "why": "single selected-action S3 causal intervention; all-layer Oracle still absent"
+        },
+        "AC-18": {
+          "normative_issue_deps": [],
+          "state": "BLOCKED_DEPENDENCY",
+          "unmet_AC_dependencies": [
+            "AC-03",
+            "AC-06",
+            "AC-08"
+          ],
+          "why": "no valid original same-function A/B/C/D/E layer-wide raw measurements"
+        },
+        "AC-19": {
+          "normative_issue_deps": [],
+          "state": "PASS",
+          "unmet_AC_dependencies": [],
+          "why": "versioned frozen V1/V2 schema and sources verified"
+        },
+        "AC-20": {
+          "normative_issue_deps": [],
+          "state": "PASS",
+          "unmet_AC_dependencies": [],
+          "why": "no auto-enabled Actions; original preflight verifies absent workflows"
+        }
+      },
+      "mvp_pass": [
+        "AC-19",
+        "AC-20"
+      ],
+      "mvp_required": [
+        "AC-01",
+        "AC-02",
+        "AC-03",
+        "AC-04",
+        "AC-05",
+        "AC-06",
+        "AC-07",
+        "AC-08",
+        "AC-09",
+        "AC-11",
+        "AC-12",
+        "AC-13",
+        "AC-14",
+        "AC-15",
+        "AC-16",
+        "AC-17",
+        "AC-19",
+        "AC-20"
+      ],
+      "mvp_unmet": [
+        "AC-01",
+        "AC-02",
+        "AC-03",
+        "AC-04",
+        "AC-05",
+        "AC-06",
+        "AC-07",
+        "AC-08",
+        "AC-09",
+        "AC-11",
+        "AC-12",
+        "AC-13",
+        "AC-14",
+        "AC-15",
+        "AC-16",
+        "AC-17"
+      ],
+      "required_count": 18,
+      "required_pass_count": 2,
+      "root_mvp_complete": false
+    },
+    "TCC_edges": 17,
+    "TCC_nodes": 12,
+    "TCC_source_commit": "786d52c1efbc9271096f9311d768ef49bcd116e2",
+    "TCC_spec_hash": "sha256:53097890dad51ea74015c5fe6a01cd9badced47ff2799e4d5d027e3ac9aed85f",
+    "TCC_terminal_id": "blocked_native_semantics",
+    "TCC_terminal_status": "BLOCKED",
+    "blocking_integrity_errors": [],
+    "dependency_ordered_execution_plan": {
+      "all_machine_available_scoped_work_executed": true,
+      "external_validation_path": [
+        "acquire independently judged unseen precommitted corpus, independent gold custody",
+        "resolve genuine original LLM0 identity + authorized V4 with same-case raw output",
+        "evaluate four arms under pinned no-leak metrics without development/test crossover"
+      ],
+      "next_executable_source_authority": "genuine native EC source extension required; no existing oracle-blind adapter qualifies",
+      "root_critical_path": [
+        "implement and prove genuinely native equivalent S3 multi-selection and S4 closure",
+        "preregister a successor contract explicitly; preserve original frozen failure",
+        "run all four-layer original A/B/C/D/E with same upstream and Oracle interventions",
+        "recompute candidate recall, selection, false closure, missed reframe and layer gains",
+        "confirm all 18 MVP AC in dependency order and original scientific exit"
+      ],
+      "work_items": [
+        {
+          "action": "Validate original AC source and frozen normative and controlled inputs by Git blob; verify no Actions, threshold 0.20, direct provenance.",
+          "completion": "all provenance and schema gates PASS",
+          "depends_on": [],
+          "depends_on_state": {},
+          "id": "W0_SOURCE_LOCK",
+          "priority": "P0",
+          "state": "DONE",
+          "target_ac": [
+            "AC-19",
+            "AC-20"
+          ]
+        },
+        {
+          "action": "Check all 20 AC and 18 MVP dependencies are closed, topologically ordered, issue references tracked; no PASS may precede dependency PASS.",
+          "completion": "no cycles, unresolved IDs, phantom approvals",
+          "depends_on": [
+            "W0_SOURCE_LOCK"
+          ],
+          "depends_on_state": {
+            "W0_SOURCE_LOCK": "DONE"
+          },
+          "id": "W1_DEPENDENCY_GRAPH",
+          "priority": "P0",
+          "state": "DONE",
+          "target_ac": [
+            "AC-02",
+            "AC-03",
+            "AC-05",
+            "AC-07",
+            "AC-17"
+          ]
+        },
+        {
+          "action": "Replay original qualification; compare real native singleton S3 versus generic multi-selection and test S4 closure identifiability, then route qualified/incompatible.",
+          "completion": "EC S3/S4 same-function qualified OR exact gap+counterexample provenance recorded",
+          "depends_on": [
+            "W1_DEPENDENCY_GRAPH"
+          ],
+          "depends_on_state": {
+            "W1_DEPENDENCY_GRAPH": "DONE"
+          },
+          "id": "W2_NATIVE_CONTRACT_QUALIFICATION",
+          "priority": "P0",
+          "state": "DONE_WITH_NEGATIVE_NATIVE_WITNESS",
+          "target_ac": [
+            "AC-01",
+            "AC-03",
+            "AC-11",
+            "AC-12"
+          ]
+        },
+        {
+          "action": "Independently execute and audit available pinned EC17, real Qwen17/Qwen20, S3 Oracle and public/dynamic gates; preserve their SCOPED_ONLY classification.",
+          "completion": "real casewise model/EC evidence and provenance revalidated; no full-AC promotion",
+          "depends_on": [
+            "W1_DEPENDENCY_GRAPH"
+          ],
+          "depends_on_state": {
+            "W1_DEPENDENCY_GRAPH": "DONE"
+          },
+          "id": "W3_LOCAL_ACTUAL_EXPERIMENTS",
+          "priority": "P0",
+          "state": "DONE_SCOPED_ONLY",
+          "target_ac": [
+            "AC-13",
+            "AC-14",
+            "AC-15",
+            "AC-16",
+            "AC-17"
+          ]
+        },
+        {
+          "action": "If native incompatible, derive the minimal changes required for semantically matched S3/S4 and versioned successor without rewriting original contract; validate that the pinned EC API cannot provide missing info.",
+          "completion": "actionable versioned interface + precise source-capability blocker, never false adapter",
+          "depends_on": [
+            "W2_NATIVE_CONTRACT_QUALIFICATION",
+            "W3_LOCAL_ACTUAL_EXPERIMENTS"
+          ],
+          "depends_on_state": {
+            "W2_NATIVE_CONTRACT_QUALIFICATION": "DONE_WITH_NEGATIVE_NATIVE_WITNESS",
+            "W3_LOCAL_ACTUAL_EXPERIMENTS": "DONE_SCOPED_ONLY"
+          },
+          "id": "W4_VERSIONED_NATIVE_REPAIR_PLAN",
+          "priority": "P0",
+          "state": "SPECIFIED_NOT_IMPLEMENTED",
+          "target_ac": [
+            "AC-03",
+            "AC-04",
+            "AC-11",
+            "AC-12"
+          ]
+        },
+        {
+          "action": "Run A/B/C/D/E same-function S1-S4 with pinned real compatible implementations, frozen upstream and one-layer Oracle interventions ONLY IF qualified.",
+          "completion": "all 4 layers × required arms casewise authenticated and scored; source-compatible; no oracle leakage",
+          "depends_on": [
+            "W4_VERSIONED_NATIVE_REPAIR_PLAN"
+          ],
+          "depends_on_state": {
+            "W4_VERSIONED_NATIVE_REPAIR_PLAN": "SPECIFIED_NOT_IMPLEMENTED"
+          },
+          "id": "W5_FOUR_LAYER_ACTUAL_AE",
+          "priority": "P0",
+          "state": "BLOCKED_GENUINE_EC_S3_S4_SOURCE",
+          "target_ac": [
+            "AC-01",
+            "AC-03",
+            "AC-04",
+            "AC-05",
+            "AC-06",
+            "AC-07",
+            "AC-11",
+            "AC-12",
+            "AC-16",
+            "AC-17"
+          ]
+        },
+        {
+          "action": "Recompute gains, thresholds and dominant layer; never infer layer from end-to-end difference alone.",
+          "completion": "all required AC PASS, root MVP result reproducible",
+          "depends_on": [
+            "W5_FOUR_LAYER_ACTUAL_AE"
+          ],
+          "depends_on_state": {
+            "W5_FOUR_LAYER_ACTUAL_AE": "BLOCKED_GENUINE_EC_S3_S4_SOURCE"
+          },
+          "id": "W6_LOCALIZE_MVP",
+          "priority": "P0",
+          "state": "BLOCKED_W5_AND_AC",
+          "target_ac": [
+            "AC-08",
+            "AC-09"
+          ]
+        },
+        {
+          "action": "For separate #57/#58 capability-conservation certification, independently adjudicated unseen gold custody, original LLM0 and authorized V4 real matched model outputs.",
+          "completion": "independent evidence qualified; no developer fixture reused as blind",
+          "depends_on": [
+            "W6_LOCALIZE_MVP"
+          ],
+          "depends_on_state": {
+            "W6_LOCALIZE_MVP": "BLOCKED_W5_AND_AC"
+          },
+          "id": "W7_INDEPENDENT_REVIEW",
+          "priority": "P1",
+          "state": "BLOCKED_UNSEEN_GOLD_AND_ORIGINAL_LLM0_AND_AUTHORIZED_V4",
+          "target_ac": [
+            "AC-10",
+            "AC-18"
+          ]
+        }
+      ]
+    },
+    "independent_gold_qualified": false,
+    "new_scheduled_tasks": false,
+    "original_AC20_topological": {
+      "AC_dependencies": {
+        "AC-01": [
+          "AC-02"
+        ],
+        "AC-02": [
+          "AC-19"
+        ],
+        "AC-03": [
+          "AC-02",
+          "AC-19"
+        ],
+        "AC-04": [
+          "AC-02",
+          "AC-03"
+        ],
+        "AC-05": [
+          "AC-01",
+          "AC-03",
+          "AC-04",
+          "AC-07",
+          "AC-17"
+        ],
+        "AC-06": [
+          "AC-04",
+          "AC-05",
+          "AC-11",
+          "AC-12",
+          "AC-16",
+          "AC-17"
+        ],
+        "AC-07": [
+          "AC-01"
+        ],
+        "AC-08": [
+          "AC-05",
+          "AC-06"
+        ],
+        "AC-09": [
+          "AC-05",
+          "AC-08"
+        ],
+        "AC-10": [
+          "AC-08",
+          "AC-09",
+          "AC-19"
+        ],
+        "AC-11": [],
+        "AC-12": [
+          "AC-04",
+          "AC-11"
+        ],
+        "AC-13": [],
+        "AC-14": [
+          "AC-01",
+          "AC-13"
+        ],
+        "AC-15": [],
+        "AC-16": [
+          "AC-17"
+        ],
+        "AC-17": [
+          "AC-07"
+        ],
+        "AC-18": [
+          "AC-03",
+          "AC-06",
+          "AC-08"
+        ],
+        "AC-19": [],
+        "AC-20": []
+      },
+      "issue_dependencies": {
+        "AC-01": [],
+        "AC-02": [],
+        "AC-03": [
+          "ISSUE-22"
+        ],
+        "AC-04": [],
+        "AC-05": [
+          "ISSUE-22"
+        ],
+        "AC-06": [],
+        "AC-07": [],
+        "AC-08": [
+          "ISSUE-21"
+        ],
+        "AC-09": [
+          "ISSUE-21"
+        ],
+        "AC-10": [],
+        "AC-11": [
+          "ISSUE-23",
+          "ISSUE-20"
+        ],
+        "AC-12": [],
+        "AC-13": [
+          "ISSUE-12",
+          "ISSUE-22"
+        ],
+        "AC-14": [],
+        "AC-15": [],
+        "AC-16": [],
+        "AC-17": [],
+        "AC-18": [],
+        "AC-19": [],
+        "AC-20": []
+      },
+      "original_threshold": 0.2,
+      "post_mvp": [
+        "AC-10",
+        "AC-18"
+      ],
+      "required": [
+        "AC-01",
+        "AC-02",
+        "AC-03",
+        "AC-04",
+        "AC-05",
+        "AC-06",
+        "AC-07",
+        "AC-08",
+        "AC-09",
+        "AC-11",
+        "AC-12",
+        "AC-13",
+        "AC-14",
+        "AC-15",
+        "AC-16",
+        "AC-17",
+        "AC-19",
+        "AC-20"
+      ],
+      "root_issue_depends_on": [
+        "ISSUE-9",
+        "ISSUE-21",
+        "ISSUE-22",
+        "ARMS_A_B_C_D_E",
+        "SCORE_AND_GAIN"
+      ],
+      "topological_order": [
+        "AC-11",
+        "AC-13",
+        "AC-15",
+        "AC-19",
+        "AC-20",
+        "AC-02",
+        "AC-01",
+        "AC-03",
+        "AC-04",
+        "AC-07",
+        "AC-14",
+        "AC-12",
+        "AC-17",
+        "AC-05",
+        "AC-16",
+        "AC-06",
+        "AC-08",
+        "AC-09",
+        "AC-18",
+        "AC-10"
+      ]
+    },
+    "original_frozen_replay": {
+      "exit": "EC_NATIVE_SCOPE_INCOMPATIBLE",
+      "source_pin_hashes": {
+        "adapter": "0784461c1c22add8083403b497135b6f3f023e162586e567cb8d74e5c7c5d80f",
+        "frozen_actual": "6b63f73bf33cfc208acd7926a015a7ee3af97b8c9605cafe2a88a886a84b4e25",
+        "issue57_method": "a1f962034d2775405ce0a67fdb4d784a1c9742867f7d986513a673075ad7cf0a",
+        "next_action": "00b4fd14b0c623fded0c4cd968f6380993f2c208dc52d6143202e7dd6c3048b5",
+        "original_contract": "11ff5a87342e7e00b2393390beac597574a39d9480c6d3ee1cc8e4e968e345cf",
+        "s1c_actual": "52c9f11a83a5118a44a3da3206e38c839d03f6818047b3d4b05c41f2bafffc76",
+        "s1c_terminal": "f7ce069469e9b4fb3211a7a7fbedecdd2fd96b4a35a0867b5e18b0eb84ff1286",
+        "s4_identifiability": "73762b03b61ef79c0ce26cd15776aa372ecee0cdfdfe599d77443dd5fb9462c3",
+        "successor_boundary": "14976fa000dc175e8715568833ea394604932496cee803cc555c0dbceaa68d68",
+        "successor_contract": "aaceb8a68a8d5ab343d9d3f1911be1a74470fcb7836ddd0e02ed4385ae121963"
+      }
+    },
+    "original_issue_1_completed": false,
+    "original_native_interface_proof": {
+      "S3_counterexample_cases": [
+        "M003",
+        "M009"
+      ],
+      "S3_native_mismatch": "native single action cannot represent original all-admissible selected set",
+      "S4_best_identifiable": "8/10",
+      "S4_collision_proofs": [
+        {
+          "close_cases": [
+            "M001",
+            "M002",
+            "M004",
+            "M006",
+            "M008",
+            "M010"
+          ],
+          "continue_cases": [
+            "M007"
+          ],
+          "signature": {
+            "reframe_required": false,
+            "rejected": 1,
+            "selected": 1,
+            "trigger_residual_types": []
+          }
+        },
+        {
+          "close_cases": [
+            "M009"
+          ],
+          "continue_cases": [
+            "M003"
+          ],
+          "signature": {
+            "reframe_required": false,
+            "rejected": 1,
+            "selected": 2,
+            "trigger_residual_types": []
+          }
+        }
+      ],
+      "S4_native_mismatch": "S3 structural state is nonidentifying for downstream CLOSE vs CONTINUE",
+      "adapter_suggested_minimum": {
+        "S3": [
+          "all admissible selected candidate IDs",
+          "accept/reject and alternatives semantics",
+          "native EC source implementation and explicit source-code provenance"
+        ],
+        "S4": [
+          "relation of chosen candidates including COMPETING/EQUIVALENT",
+          "unresolved mandatory conditions / outstanding obligations",
+          "explicit native closure semantics and independent reason codes"
+        ],
+        "control": [
+          "versioned NEW scientific contract",
+          "same upstream hash per arm",
+          "no wrapper-only/harness-local rule mislabeled as native EC",
+          "freeze preregistration before new model inference",
+          "single-layer Oracle interventions for each coarse layer"
+        ]
+      },
+      "same_function_native_qualified": false,
+      "status": "NATIVE_SOURCE_CAPABILITY_GAP"
+    },
+    "protocol": "ISSUE1_ORIGINAL_AC_DEPENDENCY_DRIVEN_TCC_V6",
+    "raw_evidence_post_seal": {
+      "docs/NEXT_ACTION_V2_CONTRACT_2026-10-03.json": "1032b9557a5d8ff423fb7ce140a63d4ca38921533e790d4b07a4f6f02309f125",
+      "fixtures/function_boundary_next_action_v1.json": "7bb4bcb67011e32fbbf49b2f4d0ba0a0bb1b6b11b07cca48fb9486d9977c874f",
+      "results/issue1_ecv44_native_next_action_v2_local_replay_2026-10-10.json": "90c266447ce9380e41ea4e8fb53b63d6ab902ca67a69a91bacc506033f03094c",
+      "results/issue1_public_gate_gbnf_qwen17_actual_2026-10-10.json": "9232b62a8ee05b53bf9f482acd2541c7747e2f726556ac0b374ee8835c0eccfa",
+      "results/issue1_qwen_next_action_v2_mac_actual_2026-10-10.json": "e6d31359cf64f370c9e9ffb1db322ee71f908bac60bb9c7f07589e06b768f036",
+      "results/issue1_s4_qwen20_paired_info_ablation_actual_2026-10-10.json": "8123844533134a0dced0215955301b94adabc6928f95090e24ce7cb376d6e45b",
+      "results/phase1_mvp_tcc_v2_actual_2026-10-03.json": "6b63f73bf33cfc208acd7926a015a7ee3af97b8c9605cafe2a88a886a84b4e25"
+    },
+    "raw_evidence_pre_seal": {
+      "docs/NEXT_ACTION_V2_CONTRACT_2026-10-03.json": "1032b9557a5d8ff423fb7ce140a63d4ca38921533e790d4b07a4f6f02309f125",
+      "fixtures/function_boundary_next_action_v1.json": "7bb4bcb67011e32fbbf49b2f4d0ba0a0bb1b6b11b07cca48fb9486d9977c874f",
+      "results/issue1_ecv44_native_next_action_v2_local_replay_2026-10-10.json": "90c266447ce9380e41ea4e8fb53b63d6ab902ca67a69a91bacc506033f03094c",
+      "results/issue1_public_gate_gbnf_qwen17_actual_2026-10-10.json": "9232b62a8ee05b53bf9f482acd2541c7747e2f726556ac0b374ee8835c0eccfa",
+      "results/issue1_qwen_next_action_v2_mac_actual_2026-10-10.json": "e6d31359cf64f370c9e9ffb1db322ee71f908bac60bb9c7f07589e06b768f036",
+      "results/issue1_s4_qwen20_paired_info_ablation_actual_2026-10-10.json": "8123844533134a0dced0215955301b94adabc6928f95090e24ce7cb376d6e45b",
+      "results/phase1_mvp_tcc_v2_actual_2026-10-03.json": "6b63f73bf33cfc208acd7926a015a7ee3af97b8c9605cafe2a88a886a84b4e25"
+    },
+    "scoped_actual_experiment": {
+      "actual_tcc_evidence": {
+        "closure_authority": "ECv4",
+        "evidence": [
+          {
+            "attempt": 1,
+            "event": "NODE_START",
+            "kind": "action",
+            "node_id": "verify_previous_machine_science",
+            "seq": 1
+          },
+          {
+            "event": "HANDLER_EVIDENCE",
+            "items": [
+              "previous-original-TCC-to-stage4:ACTUAL_VERIFIED",
+              "Qwen17-real-gate-experiment:PASS",
+              "S3-Oracle-do-intervention:PASS"
+            ],
+            "node_id": "verify_previous_machine_science",
+            "seq": 2
+          },
+          {
+            "event": "STATE_WRITE",
+            "node_id": "verify_previous_machine_science",
+            "seq": 3,
+            "state_hash": "sha256:6379ecb1598a9ef4818d5a394b1d9abdcbc7794f16856940aee1018473f07351",
+            "transition_seq": 1
+          },
+          {
+            "attempt": 1,
+            "event": "NODE_SUCCESS",
+            "node_id": "verify_previous_machine_science",
+            "seq": 4
+          },
+          {
+            "attempt": 1,
+            "event": "NODE_START",
+            "kind": "action",
+            "node_id": "public_invariant_test",
+            "seq": 5
+          },
+          {
+            "event": "HANDLER_EVIDENCE",
+            "items": [
+              "public-guard:real-Qwen17:13of15-wrong-detected:no-false-reject"
+            ],
+            "node_id": "public_invariant_test",
+            "seq": 6
+          },
+          {
+            "event": "STATE_WRITE",
+            "node_id": "public_invariant_test",
+            "seq": 7,
+            "state_hash": "sha256:850e2e84adcd5ffe6bcf1fba0da06114a8d43d2245d8461f8866ac9e8d4ec2f6",
+            "transition_seq": 2
+          },
+          {
+            "attempt": 1,
+            "event": "NODE_SUCCESS",
+            "node_id": "public_invariant_test",
+            "seq": 8
+          },
+          {
+            "attempt": 1,
+            "event": "NODE_START",
+            "kind": "gate",
+            "node_id": "check_remaining_semantic_errors",
+            "seq": 9
+          },
+          {
+            "event": "HANDLER_EVIDENCE",
+            "items": [
+              "uncaught-after-public:2"
+            ],
+            "node_id": "check_remaining_semantic_errors",
+            "seq": 10
+          },
+          {
+            "event": "GATE_SELECTED",
+            "node_id": "check_remaining_semantic_errors",
+            "outcome": "dynamic_residual",
+            "seq": 11,
+            "target": "run_public_dynamic_gate"
+          },
+          {
+            "attempt": 1,
+            "event": "NODE_START",
+            "kind": "action",
+            "node_id": "run_public_dynamic_gate",
+            "seq": 12
+          },
+          {
+            "event": "HANDLER_EVIDENCE",
+            "items": [
+              "native-source-scoped-dynamic-rule-test:PASS",
+              "Qwen-correct:2/17:EC-fallback:15/17:hybrid:17/17"
+            ],
+            "node_id": "run_public_dynamic_gate",
+            "seq": 13
+          },
+          {
+            "event": "STATE_WRITE",
+            "node_id": "run_public_dynamic_gate",
+            "seq": 14,
+            "state_hash": "sha256:7970bf181f977fb65e79bba6cee33d663d5af76b31293a04bc9bcb7140957fa7",
+            "transition_seq": 3
+          },
+          {
+            "attempt": 1,
+            "event": "NODE_SUCCESS",
+            "node_id": "run_public_dynamic_gate",
+            "seq": 15
+          },
+          {
+            "attempt": 1,
+            "event": "NODE_START",
+            "kind": "gate",
+            "node_id": "branch_dynamic_residual",
+            "seq": 16
+          },
+          {
+            "event": "HANDLER_EVIDENCE",
+            "items": [
+              "after-public-dynamic-guard:0"
+            ],
+            "node_id": "branch_dynamic_residual",
+            "seq": 17
+          },
+          {
+            "event": "GATE_SELECTED",
+            "node_id": "branch_dynamic_residual",
+            "outcome": "all_detected",
+            "seq": 18,
+            "target": "audit_external_independence"
+          },
+          {
+            "attempt": 1,
+            "event": "NODE_START",
+            "kind": "action",
+            "node_id": "audit_external_independence",
+            "seq": 19
+          },
+          {
+            "event": "HANDLER_EVIDENCE",
+            "items": [
+              "all-machine-local-scoped-policy-studies:COMPLETE",
+              "independent-scientific-original-AE:NOT_PROVEN"
+            ],
+            "node_id": "audit_external_independence",
+            "seq": 20
+          },
+          {
+            "event": "STATE_WRITE",
+            "node_id": "audit_external_independence",
+            "seq": 21,
+            "state_hash": "sha256:54992173c7cc50755d2c5dcfd6cff06b8b9e2dc6361030bdfbf32e35b0ac333b",
+            "transition_seq": 4
+          },
+          {
+            "attempt": 1,
+            "event": "NODE_SUCCESS",
+            "node_id": "audit_external_independence",
+            "seq": 22
+          },
+          {
+            "event": "TERMINAL_REACHED",
+            "node_id": "machine_scoped_complete",
+            "seq": 23,
+            "terminal_status": "SUCCESS"
+          }
+        ],
+        "runtime_result": "TERMINAL",
+        "schema": "tcc.ecv4-evidence.v0",
+        "spec_hash": "sha256:b0f3834d952c9918d797aab7d2db8ce461794fb6382c3fc263f01266c1fab528",
+        "state_hash": "sha256:54992173c7cc50755d2c5dcfd6cff06b8b9e2dc6361030bdfbf32e35b0ac333b",
+        "state_transitions": [
+          {
+            "node_id": "verify_previous_machine_science",
+            "seq": 1,
+            "state_hash": "sha256:6379ecb1598a9ef4818d5a394b1d9abdcbc7794f16856940aee1018473f07351",
+            "writes": {
+              "prior_verified": true
+            }
+          },
+          {
+            "node_id": "public_invariant_test",
+            "seq": 2,
+            "state_hash": "sha256:850e2e84adcd5ffe6bcf1fba0da06114a8d43d2245d8461f8866ac9e8d4ec2f6",
+            "writes": {
+              "base_invariant_count": 2
+            }
+          },
+          {
+            "node_id": "run_public_dynamic_gate",
+            "seq": 3,
+            "state_hash": "sha256:7970bf181f977fb65e79bba6cee33d663d5af76b31293a04bc9bcb7140957fa7",
+            "writes": {
+              "dynamic_residual": 0
+            }
+          },
+          {
+            "node_id": "audit_external_independence",
+            "seq": 4,
+            "state_hash": "sha256:54992173c7cc50755d2c5dcfd6cff06b8b9e2dc6361030bdfbf32e35b0ac333b",
+            "writes": {
+              "external_state": "UNVERIFIED"
+            }
+          }
+        ],
+        "tcc_id": "ISSUE1-CONTINUE-P0-S3-DYNAMIC-POLICY-AND-EXTERNAL-TRUTH-V1",
+        "terminal_id": "machine_scoped_complete",
+        "terminal_status": "SUCCESS"
+      },
+      "hybrid_correct": 17,
+      "native_ec_fallbacks": 15,
+      "original_AC_qualified": false,
+      "source_commit": "2e51b7366e82664b720b1b747154ec5938847db6",
+      "state": "VERIFIED_PUBLIC_S3_FULL_ERROR_DETECTION_REQUIRES_NATIVE_EC_FALLBACK_EXTERNAL_SCIENCE_OPEN"
+    },
+    "source_code_mutated_during_run": false,
+    "source_commit": "2e51b7366e82664b720b1b747154ec5938847db6",
+    "source_git_blob_pins": {
+      "ACCEPTANCE_CRITERIA.md": "40e4d41914fb17ee5c7deb0cfd32276a41c9a1fc",
+      "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+      "results/ec_native_adapter_qualification.json": "8693c5be282b1e8407a0c1358e18eab2ad78905c",
+      "results/phase1_s4_identifiability_audit_2026-10-03.json": "624616a1f4b0dc4a2330cbcd0a6a03b94a475ce8"
+    },
+    "terminal": "NATIVE_SOURCE_CAPABILITY_GAP"
+  }
+}
