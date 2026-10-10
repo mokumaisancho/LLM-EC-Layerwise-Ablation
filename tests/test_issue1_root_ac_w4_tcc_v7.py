@@ -16,7 +16,7 @@ from tools.run_issue1_ec_native_layerwise_source_probe_v1 import run as native_p
 
 TCC=Path("/private/tmp/llmec-tcc-generator-reference-20261009")
 EC44=Path("/private/tmp/llmec-ecv44-source-20261010")
-NATIVE=Path("/private/tmp/issue1-ec-native-layerwise-20261010")
+NATIVE=Path("/private/tmp/issue1-ec-w4a-frozen-20261010")
 
 @unittest.skipUnless(TCC.is_dir() and EC44.is_dir() and NATIVE.is_dir(),
                      "Pinned original TCC and new EC source checkouts absent")
