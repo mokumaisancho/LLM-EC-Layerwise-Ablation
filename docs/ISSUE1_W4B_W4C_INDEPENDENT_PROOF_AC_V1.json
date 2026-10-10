@@ -30,7 +30,11 @@
     "legitimate_close_correct_min": 0.95,
     "binomial_upper_one_sided_confidence": 0.95,
     "confidence_intervals_reported": true,
-    "note": "These are proposed operational AC thresholds, not values prescribed by cited papers or the frozen original scientific contract. 0/300 implies ~0.995% one-sided binomial upper rate only if independent Bernoulli sampling assumptions hold."
+    "note": "These are proposed operational AC thresholds, not values prescribed by cited papers or the frozen original scientific contract. 0/300 implies ~0.995% one-sided binomial upper rate only if independent Bernoulli sampling assumptions hold.",
+    "paired_power_min": 0.8,
+    "paired_alpha_two_sided": 0.05,
+    "power_sample_sizing_rule": "N_final >= max(120, preregistered paired-comparison power-analysis N for absolute 0.20 under pilot-only discordance; development pilot excluded)",
+    "independent_sampling_caveat": "N=300 binomial upper CI assumes independent Bernoulli opportunities; correlated variants count only by independent source clusters or require cluster-robust uncertainty; no claim of real-world false-closure <1% from adversarial stratified cases."
   },
   "evidence_classes": [
     "external_corpus_manifest",
@@ -274,7 +278,7 @@
         "paired_effect_CI",
         "holdout_one_time_audit"
       ],
-      "pass": "新規120以上の対象で少なくともCOMPETING/EQUIVALENT/REFRAME/UNRESOLVED各30の事例を含める（重複層は別記）。同一凍結S1/S2からLLM・真のnative EC・Oracleを別々に実行。集合一致・recall・selection・棄権率・理由整合性・95%区間を公開。原規定の効果量0.20を維持し、PASSには事前に宣言した層別・非劣性条件も満たす",
+      "pass": "新規120以上の対象で少なくともCOMPETING/EQUIVALENT/REFRAME/UNRESOLVED各30の事例を含める（重複層は別記）。同一凍結S1/S2からLLM・真のnative EC・Oracleを別々に実行。集合一致・recall・selection・棄権率・理由整合性・95%区間を公開。原規定の効果量0.20を維持し、PASSには事前に宣言した層別・非劣性条件も満たす。採用件数は事前pilotで推定した対応比較の不一致率に基づく検出力>=80%、両側有意水準5%、目標絶対差0.20に対する事前算出Nと120の大きい方。pilotは最終holdoutに含めない",
       "fail": "BLIND_CAUSAL_COMPARISON_MISSING_OR_FAILED"
     },
     {
@@ -363,7 +367,7 @@
         "independent_S4_labels_and_custody",
         "predeclared_sampling_distribution"
       ],
-      "pass": "開発ケースと分離した独立S4テストを作成。未解決義務・競合選択・未解決reframe・期限/遷移・条件欠落を含む『不正CLOSE機会』>=300、正当なCLOSE>=100を用意し、文書系列・要件系統の重複を分離。モデル挙動を見る前に参照結果とSHAを封印",
+      "pass": "開発ケースと分離した独立S4テストを作成。未解決義務・競合選択・未解決reframe・期限/遷移・条件欠落を含む『不正CLOSE機会』>=300、正当なCLOSE>=100を用意し、文書系列・要件系統の重複を分離。モデル挙動を見る前に参照結果とSHAを封印。300試行は原則独立した文書系列/仕様系列から採り、派生変異体を独立試行数として水増ししない。系列依存がある場合はクラスタ単位で評価し、単純二項CIを使用しない",
       "fail": "S4_BLIND_STRESS_CORPUS_NOT_INDEPENDENT"
     },
     {
@@ -386,7 +390,7 @@
         "exact_binomial_interval",
         "metamorphic_counterexamples"
       ],
-      "pass": "危険なCLOSE機会300以上でfalse CLOSE=0（300独立試行なら片側95%上限約0.995%：対象母集団への一般化は不可）。正当CLOSE100以上で正答率>=95%を別途満たす。未解決義務/競合/reframeを追加してもCLOSEしない、同値な言い換えでは結果不変。どれか違反なら停止",
+      "pass": "危険なCLOSE機会300以上でfalse CLOSE=0（300独立試行なら片側95%上限約0.995%：対象母集団への一般化は不可）。正当CLOSE100以上で正答率>=95%を別途満たす。未解決義務/競合/reframeを追加してもCLOSEしない、同値な言い換えでは結果不変。どれか違反なら停止。母集団推定として片側95%上限を使う場合、独立同分布のサンプリング仮定と母集団を明示し、満たせなければ事例内の実測率としてのみ報告",
       "fail": "FALSE_CLOSURE_OR_ALWAYS_ABSTAIN"
     },
     {
