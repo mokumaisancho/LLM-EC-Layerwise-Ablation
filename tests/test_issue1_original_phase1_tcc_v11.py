@@ -35,7 +35,7 @@ class OriginalPhase1TCCV11Test(unittest.TestCase):
         self.assertEqual(result["original_TCC_v10_terminal"], "blocked_native")
         self.assertEqual(result["original_root_pass"], 2)
         self.assertEqual(result["original_root_required"], 18)
-        self.assertEqual(result["replay_v2_negative_test_count"], 16
+        self.assertEqual(result["replay_v2_negative_test_count"], 16)
         self.assertTrue(result["source_seals_stable"])
         self.assertEqual(result["errors"], [])
         self.assertFalse(result["original_science_complete"])
