@@ -29,7 +29,7 @@ def gate(ok,reason):
 
 
 def blob(raw):
-    return hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\\0"+raw).hexdigest()
+    return hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
 
 
 def topological(contract):
@@ -153,7 +153,7 @@ def main():
     v=arg.parse_args()
     try:
         report=run(v.root)
-        result=json.dumps(report,sort_keys=True,ensure_ascii=False,indent=2)+"\\n"
+        result=json.dumps(report,sort_keys=True,ensure_ascii=False,indent=2)+"\n"
         if v.out:
             gate(not v.out.is_symlink(),"OUTPUT_SYMLINK")
             v.out.write_text(result,encoding="utf-8")
