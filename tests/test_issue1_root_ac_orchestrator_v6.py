@@ -216,7 +216,31 @@ class RootACDependencyOrchestratorV6Tests(unittest.TestCase):
         with self.assertRaisesRegex(Abort,"G0_PINNED_TCC_GENERATOR_SOURCE_CHANGED"):
             run(EC,TCC)
 
-    def test_21_no_scheduled_tasks_no_ui_and_no_forged_science(self):
+    def test_21_tracked_scientific_code_matches_repository_git_head(self):
+        from tools.run_issue1_root_ac_orchestrator_v6 import scientific_source_seal
+        pins=scientific_source_seal()
+        self.assertGreaterEqual(len(pins),12)
+        self.assertIn("tools/run_issue1_root_ac_orchestrator_v6.py",pins)
+
+    def test_22_patched_executable_code_is_rejected_even_with_clean_data(self):
+        from tools.run_issue1_root_ac_orchestrator_v6 import scientific_source_seal
+        with patch("tools.run_issue1_root_ac_orchestrator_v6.git_blob",return_value="0"*40):
+            with self.assertRaisesRegex(Abort,"G0_UNCOMMITTED_OR_TAMPERED_SCIENTIFIC_CODE"):
+                scientific_source_seal()
+
+    @unittest.skipUnless(TCC.is_dir() and EC.is_dir(),"Required pinned TCC/EC checkouts absent")
+    def test_23_executable_code_changed_during_run_invalidates_result(self):
+        from tools.run_issue1_root_ac_orchestrator_v6 import scientific_source_seal
+        real=scientific_source_seal()
+        altered=dict(real);altered["tools/run_issue1_root_ac_orchestrator_v6.py"]="0"*40
+        with patch("tools.run_issue1_root_ac_orchestrator_v6.scientific_source_seal",
+                   side_effect=[real,altered]):
+            output=run(TCC,EC)
+        self.assertEqual(output["TCC_terminal_id"],"blocked_integrity")
+        self.assertFalse(output["original_issue_1_completed"])
+        self.assertIn("G0_G7_EXECUTABLE_CODE_CHANGED",output["blocking_integrity_errors"][0])
+
+    def test_24_no_scheduled_tasks_no_ui_and_no_forged_science(self):
         runner=(ROOT/"tools/run_issue1_root_ac_orchestrator_v6.py").read_text()
         for disallowed in ("automations.create(","crontab","launchctl","chatgpt.com/","openai.com/v1/responses"):
             self.assertNotIn(disallowed,runner)
