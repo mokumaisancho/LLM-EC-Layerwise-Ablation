@@ -155,6 +155,40 @@ def check_work_graph(config: dict) -> list[str]:
     return keys
 
 
+def scientific_source_seal(root: Path = ROOT) -> dict:
+    """G0/G7: all executable scientific source must match tracked HEAD blobs,
+    rejecting dirty/uncommitted code that would silently invalidate validation.
+    """
+    names = [
+        "tools/run_issue1_root_ac_orchestrator_v6.py",
+        "tools/run_issue1_autonomous_tcc_workflow_v5.py",
+        "tools/run_issue1_autonomous_tcc_workflow_v4.py",
+        "tools/run_issue1_autonomous_tcc_workflow_v3.py",
+        "tools/run_issue1_autonomous_tcc_workflow_v2.py",
+        "tools/run_issue1_autonomous_tcc_workflow.py",
+        "tools/audit_issue1_original_exit_and_scoped_successor.py",
+        "tools/run_issue1_ecv44_native_next_action_v2.py",
+        "tools/run_issue1_llm_next_action_v2_local_mac.py",
+        "tools/run_issue1_s4_public_info_paired_llm_v1.py",
+        "tools/run_issue1_s3_native_next_action_oracle_causal_v1.py",
+        "tools/run_issue1_public_gate_gbnf_ablation_v1.py",
+        "tools/run_issue1_s3_public_dynamic_guard_v2.py",
+    ]
+    # Paths use tracked Git file identities; executing a dirty Python module
+    # is invalid even if raw datasets are byte-exact.
+    hashes = {}
+    for name in names:
+        p = root / name
+        require(p.is_file() and not p.is_symlink(), "G0_SOURCE_CODE_MISSING:" + name)
+        expected = subprocess.run(["git", "-C", str(root), "rev-parse", "HEAD:" + name],
+                                  capture_output=True, text=True, timeout=12)
+        require(expected.returncode == 0 and
+                git_blob(p.read_bytes()) == expected.stdout.strip(),
+                "G0_UNCOMMITTED_OR_TAMPERED_SCIENTIFIC_CODE:" + name)
+        hashes[name] = expected.stdout.strip()
+    return hashes
+
+
 def immutable_evidence_seal(root: Path = ROOT) -> dict:
     """Pre- and post-run raw read seals. No single digest is itself 'independent custody'."""
     locks = {}
@@ -427,13 +461,15 @@ def run(tcc_root: Path, ec_root: Path, *, model: Path | None = None,
     require(gen.get("result") == "tcc.spec.v3" and not validate_spec(gen["spec"]) and
             gen["spec"] == normalize_spec(contract), "G1_TCC_GRAPH_SEMANTIC_COMPILE_DRIFT")
     dag = compile_spec(gen["spec"])
-    observed: dict = {"errors": [], "sources": {}, "pre_seal": {}, "post_seal": {}}
+    observed: dict = {"errors": [], "sources": {}, "pre_seal": {}, "post_seal": {},
+                      "pre_code": {}, "post_code": {}}
     norm = json.loads((source_root / config["frozen_normative_contract"]).read_text())
     work_ids = check_work_graph(config)
 
     def pin(_n, _s, _a):
         try:
             observed["sources"] = frozen_sources(config, source_root)
+            observed["pre_code"] = scientific_source_seal(source_root)
             require(not (source_root / ".github/workflows").exists() or
                     not any((source_root / ".github/workflows").iterdir()),
                     "G0_GITHUB_ACTIONS_ENABLED")
@@ -493,6 +529,9 @@ def run(tcc_root: Path, ec_root: Path, *, model: Path | None = None,
                     v["public_dynamic_subgate"]["attribution"] == "EC-fallback, not model competence",
                     "G9_MODEL_EC_CREDIT_CONTAMINATION")
             observed["post_seal"] = immutable_evidence_seal(source_root)
+            observed["post_code"] = scientific_source_seal(source_root)
+            require(observed["post_code"] == observed["pre_code"],
+                    "G0_G7_EXECUTABLE_CODE_CHANGED_DURING_RUN")
             require(observed["post_seal"] == observed["pre_seal"],
                     "G4_G5_RESULT_OVERTURNING_EVIDENCE_MUTATED_DURING_RUN")
             require(observed["config_sha256"] == hashlib.sha256(config_path.read_bytes()).hexdigest(),
@@ -534,6 +573,8 @@ def run(tcc_root: Path, ec_root: Path, *, model: Path | None = None,
                             "G2_PASS_WITH_UNMET_AC_DEPENDENCY:" + ac)
             require(observed["post_seal"] == immutable_evidence_seal(source_root),
                     "G4_EVIDENCE_MUTATED_AFTER_EXPERIMENT")
+            require(observed["post_code"] == scientific_source_seal(source_root),
+                    "G0_G7_CODE_MUTATED_AFTER_EXPERIMENT")
         except Exception as ex:
             observed["errors"].append("G2:G11:" + type(ex).__name__ + ":" + str(ex)[:150])
             return {"status": "failure", "evidence": ["ROOT_AC_ASSESSMENT_FAIL"]}
@@ -594,7 +635,8 @@ def run(tcc_root: Path, ec_root: Path, *, model: Path | None = None,
         "AC_MVP_validated": bool(root_complete),
         "independent_gold_qualified": False,
         "new_scheduled_tasks": False,
-        "source_code_mutated_during_run": False,
+        "source_code_mutated_during_run": observed.get("pre_code") != observed.get("post_code"),
+        "scientific_source_code_git_blob_pins": observed.get("post_code"),
         "terminal": terminal,
     }
 
