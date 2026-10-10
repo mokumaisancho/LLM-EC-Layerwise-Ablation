@@ -28,6 +28,7 @@ from tools.issue1_ac_dependency_planner_v9 import schedule,check_normative,NORMA
 from tools.preflight_issue57_study_assets import inspect_study
 from tools.verify_issue1_s4_bounded_safety_v1 import run as verify_bounded_s4
 from tools.issue1_independent_proof_13ac_gate_v1 import inspect as inspect_proof_package
+from tools.issue1_proof13_portable_preflight_v1 import run as run_portable_proof, sha256 as sha_file
 
 PROTOCOL="ISSUE1_ROOT_AC_FIXED_POINT_TCC_V9"
 DATA_COUNT=48
@@ -43,6 +44,7 @@ CODE_SOURCES=[
   "tools/preflight_issue57_study_assets.py",
   "tools/verify_issue1_s4_bounded_safety_v1.py",
   "tools/issue1_independent_proof_13ac_gate_v1.py",
+  "tools/issue1_proof13_portable_preflight_v1.py",
 ]
 def must(ok,why):
     if not ok:raise ValueError(why)
@@ -188,8 +190,12 @@ def manifest():
     }
 
 def execute(tcc_root:Path,original_ec_root:Path,w4a_root:Path,w4b_root:Path,
-            external_study:Path|None=None)->dict:
+            external_study:Path|None=None,
+            proof_bundle_root:Path|None=None,
+            proof_submission:Path|None=None)->dict:
     must(git_head(tcc_root)==TCC_SOURCE,"G0_TCC_GENERATOR_SOURCE_CHANGED")
+    must(proof_submission is None or proof_bundle_root is not None,
+         "P02_PROOF_SUBMISSION_WITHOUT_BUNDLE_ROOT")
     if str(tcc_root) not in sys.path:sys.path.insert(0,str(tcc_root))
     from tcc.core_v3 import validate_spec,normalize_spec,compile_spec
     from tcc.recipe_builder_v3 import generate_tcc_from_context
@@ -332,6 +338,22 @@ def execute(tcc_root:Path,original_ec_root:Path,w4a_root:Path,w4b_root:Path,
                  ledger["original_MVP_completed"] is False,
                  "G11_FALSE_INDEPENDENT_PROOF_AC_ACCEPTANCE")
             observations["proof_ledger"]=ledger
+            # This portable stage runs with no Mac-specific runtime. A provided
+            # external bundle is validated structurally, never certified as
+            # independent third-party gold merely because its hashes match.
+            prior_sha = sha_file(proof_submission) if proof_submission else None
+            evidence = run_portable_proof(
+                ROOT/"docs/ISSUE1_W4B_W4C_INDEPENDENT_PROOF_AC_V1.json",
+                proof_bundle_root or ROOT, proof_submission)
+            must(evidence["original_root_complete"] is False and
+                 evidence["independent_proof_AC_pass"]==0 and
+                 evidence["original_MVP_required"]==18 and
+                 evidence["proof13_total"]==13,
+                 "G11_PORTABLE_EVIDENCE_SELF_CERTIFICATION_FORBIDDEN")
+            if proof_submission:
+                must(sha_file(proof_submission)==prior_sha,
+                     "G06_PROOF_SUBMISSION_CHANGED_DURING_VALIDATION")
+            observations["proof_evidence_structural_gate"]=evidence
             check_seals()
         except Exception as exc:
             observations["errors"].append("PROOF13:"+str(exc)[:180])
@@ -374,6 +396,7 @@ def execute(tcc_root:Path,original_ec_root:Path,w4a_root:Path,w4b_root:Path,
        "actual_metamorphic_typed_evidence":observations.get("metamorphic"),
        "C03_bounded_native_S4_formal_proof":observations.get("s4formal"),
        "W4B_W4C_independent_13AC_proof_ledger":observations.get("proof_ledger"),
+       "W4B_W4C_portable_evidence_structural_preflight":observations.get("proof_evidence_structural_gate"),
        "external_blind_study_preflight":observations.get("external"),
        "all_seals_same":all([
           before["raw"]==immutable_evidence_seal(),
@@ -395,10 +418,13 @@ def main():
     a.add_argument("--v7-native-root",required=True,type=Path)
     a.add_argument("--new-native-root",required=True,type=Path)
     a.add_argument("--external-study-dir",type=Path)
+    a.add_argument("--proof-bundle-root",type=Path)
+    a.add_argument("--proof-submission",type=Path)
     a.add_argument("--out",type=Path)
     v=a.parse_args()
     try:
-        r=execute(v.tcc_root,v.ec_root,v.v7_native_root,v.new_native_root,v.external_study_dir)
+        r=execute(v.tcc_root,v.ec_root,v.v7_native_root,v.new_native_root,
+                  v.external_study_dir,v.proof_bundle_root,v.proof_submission)
         txt=json.dumps(r,sort_keys=True,ensure_ascii=False,indent=2)+"\n"
         if v.out:
             must(not v.out.is_symlink(),"OUTPUT_SYMLINK_FORBIDDEN")
