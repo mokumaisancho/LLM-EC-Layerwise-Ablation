@@ -11,7 +11,7 @@ from tools.run_issue1_ec_native_layerwise_source_probe_v1 import (
     ROOT, PROTOCOL, EC_COMMIT, EC_MODULE_BLOB, MODULE, CASES,
     pin,load,prepare,predict_only,run,
 )
-NATIVE=Path("/private/tmp/issue1-ec-native-layerwise-20261010")
+NATIVE=Path("/private/tmp/issue1-ec-w4a-frozen-20261010")
 
 @unittest.skipUnless(NATIVE.is_dir(),"Pinned new EC-native source checkout unavailable")
 class OriginalIssueW4NativeExperimentalTests(unittest.TestCase):
