@@ -95,7 +95,7 @@ class OriginalACRealTCCv9(unittest.TestCase):
 
     def test_code_and_frozen_normative_preflight(self):
         self.assertGreaterEqual(len(tracked_code_seal()),5)
-        self.assertEqual(len(frozen_input_seal()),2)
+        self.assertEqual(len(frozen_input_seal()),3)
 
     def test_full_one_invocation_AC_and_bounded_C03(self):
         v=execute(TCC,EC,OLD,NATIVE)
