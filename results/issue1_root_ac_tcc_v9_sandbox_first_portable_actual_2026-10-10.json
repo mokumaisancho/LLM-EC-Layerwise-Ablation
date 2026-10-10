@@ -1,0 +1,1720 @@
+{
+  "schema": "issue1.sandbox-first-portable-and-native-boundary.actual.2026-10-10",
+  "sandbox_portable_unit_tests_passed": 13,
+  "sandbox_source_git_blob": "3eaf5b890ae38e445a3a0925059ca925c8073443",
+  "sandbox_test_git_blob": "831a45c75f7d0b739d519c05861dd8fbc302b08b",
+  "mac_used_only_for_native_tcc_integration": true,
+  "original_root_completed": false,
+  "qualified_external_independence": false,
+  "result": {
+    "C03_bounded_native_S4_formal_proof": {
+      "MC_DC_BOUNDED": {
+        "conditions": [
+          "inventory_attested",
+          "pending_reframe",
+          "unresolved_obligation",
+          "competing_selected",
+          "at_least_one_selected"
+        ],
+        "independent_pairs": {
+          "at_least_one_selected": [
+            "CLOSE",
+            "BLOCKED"
+          ],
+          "competing_selected": [
+            "CLOSE",
+            "CONTINUE"
+          ],
+          "inventory_attested": [
+            "CLOSE",
+            "REJECT_INVENTORY"
+          ],
+          "pending_reframe": [
+            "CLOSE",
+            "REFRAME"
+          ],
+          "unresolved_obligation": [
+            "CLOSE",
+            "CONTINUE"
+          ]
+        },
+        "pair_count": 5
+      },
+      "actual_native_source_mutation": {
+        "killed": 5,
+        "mutants": {
+          "drop_competing_selected": {
+            "killed": true,
+            "mutated_source_sha256": "360d98d3d86ebf7b162c9700b3d423b07ad553b926355ff697d3848d27e3a097"
+          },
+          "drop_inventory_gate": {
+            "killed": true,
+            "mutated_source_sha256": "44a7c3922147c41ee8d9dcf71d258a5e931b80892bdeeca2a25fa9ac189fedf6"
+          },
+          "drop_nonempty_selection": {
+            "killed": true,
+            "mutated_source_sha256": "3453cdfe2584da8f876286090598aaa5a8554768acad00b222c155bfe45528f2"
+          },
+          "drop_pending_reframe": {
+            "killed": true,
+            "mutated_source_sha256": "f6001003fe758aa814f67b92d37757d7b4c6b4ce374d700269ffadad18322f3f"
+          },
+          "drop_unresolved_obligation": {
+            "killed": true,
+            "mutated_source_sha256": "9262ee83596a711692aa464f72998ddfbd95dd7b96522c055d8bebf9d4a68aa7"
+          }
+        },
+        "total": 5
+      },
+      "bounded_state_space": {
+        "candidates": 2,
+        "inventory_attestation_states": 2,
+        "legitimate_typed_closures": 112,
+        "obligation_statuses": [
+          "SATISFIED",
+          "UNRESOLVED",
+          "ACCEPTED_LIMITATION"
+        ],
+        "obligations_count_domain": [
+          0,
+          1,
+          2
+        ],
+        "reference_decision_exact_matches": 936,
+        "relations": [
+          "NONE",
+          "COMPETING",
+          "EQUIVALENT"
+        ],
+        "states_checked": 936,
+        "unattested_states_refused": 468,
+        "unsafe_close_within_typed_bounded_reference": 0,
+        "valid_framing_states": 3
+      },
+      "ec_native_source_commit": "ae4b02bca34147d549abda85fad9cdc793ca054f",
+      "ec_native_source_git_blob": "c12e4743c89221a9b81a2f2fa98c4df9d61d72b2",
+      "finite_state_mechanics_verified": true,
+      "independent_natural_language_semantics_certified": false,
+      "independent_obligation_inventory_certified": false,
+      "original_AC_C03_qualified": false,
+      "protocol": "ISSUE1_C03_BOUNDED_S4_MODEL_CHECK_V1",
+      "qualification_limit": "PROVES_ONLY_EXPLICIT_TYPED_FINITE_DOMAIN_FOR_PINNED_NATIVE_DECISION"
+    },
+    "ECv4_handoff": {
+      "closure_authority": "ECv4",
+      "evidence": [
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "verify_original_normative_AC",
+          "seq": 1
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "ORIGINAL_AC20_MVP18_DEPENDENCIES_VALID"
+          ],
+          "node_id": "verify_original_normative_AC",
+          "seq": 2
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "verify_original_normative_AC",
+          "seq": 3,
+          "state_hash": "sha256:21f02f385c4cf83fe5be6e9bcc722e4ef97077d98f3452f8095003a0e32036a5",
+          "transition_seq": 1
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "verify_original_normative_AC",
+          "seq": 4
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "execute_original_all_machine_branches",
+          "seq": 5
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "REAL_NESTED_V8_ALL_MACHINE_BRANCHES_VERIFIED"
+          ],
+          "node_id": "execute_original_all_machine_branches",
+          "seq": 6
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "execute_original_all_machine_branches",
+          "seq": 7,
+          "state_hash": "sha256:46ee2469bfd04ec0d1a292598b14632e8be4ca18bc3146df2d3ebb8b0402b0de",
+          "transition_seq": 2
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "execute_original_all_machine_branches",
+          "seq": 8
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "run_typed_metamorphic_negative_controls",
+          "seq": 9
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "48_NONEXPOSED_STRUCTURED_METAMORPHIC_PASS",
+            "48_S4_UNVERIFIED_CLOSURES_DENIED",
+            "UNKNOWN_FACT_AND_DOCUMENT_HASH_FAIL_CLOSED"
+          ],
+          "node_id": "run_typed_metamorphic_negative_controls",
+          "seq": 10
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "run_typed_metamorphic_negative_controls",
+          "seq": 11,
+          "state_hash": "sha256:a4d086ca403bafd61df9281e0a83d2aea55971588f5736565e08c7f4d4c7b601",
+          "transition_seq": 3
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "run_typed_metamorphic_negative_controls",
+          "seq": 12
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "verify_bounded_native_S4_formal_properties",
+          "seq": 13
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "C03_936_BOUNDED_TYPED_STATES_PASS",
+            "C03_5_CONDITION_PAIRS_AND_5_MUTANTS_PASS",
+            "EXTERNAL_S4_INVENTORY_STILL_NOT_CERTIFIED"
+          ],
+          "node_id": "verify_bounded_native_S4_formal_properties",
+          "seq": 14
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "verify_bounded_native_S4_formal_properties",
+          "seq": 15,
+          "state_hash": "sha256:98bae543db43794c034c5232275ef73516f2faa55276f1f5fb3271db28b256bf",
+          "transition_seq": 4
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "verify_bounded_native_S4_formal_properties",
+          "seq": 16
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "check_external_study_if_present",
+          "seq": 17
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "GOLD_BLIND_EXTERNAL_PROVENANCE_PREFLIGHT_NOT_CERTIFIED"
+          ],
+          "node_id": "check_external_study_if_present",
+          "seq": 18
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "check_external_study_if_present",
+          "seq": 19,
+          "state_hash": "sha256:faa87266d1c30a49f6a9c7edd65b4d07fcfbf6e0b0a36e0d54c23e7782bea1c0",
+          "transition_seq": 5
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "check_external_study_if_present",
+          "seq": 20
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "recompute_AC_and_W4_W5_prerequisites",
+          "seq": 21
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "ORIGINAL_18AC_PASS2_UNMET16_NO_SCOPED_UPGRADE",
+            "NEXT_CRITICAL_PATH_W4B_W4C_THEN_W5_ALL_AE"
+          ],
+          "node_id": "recompute_AC_and_W4_W5_prerequisites",
+          "seq": 22
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "recompute_AC_and_W4_W5_prerequisites",
+          "seq": 23,
+          "state_hash": "sha256:62b014278d6bab2a503e86dbc22a16e463a8ab40fb107ffd80efa34f99678300",
+          "transition_seq": 6
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "recompute_AC_and_W4_W5_prerequisites",
+          "seq": 24
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "audit_13_independent_proof_ACs",
+          "seq": 25
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "PROOF_AC13_DAG_VALID_0OF11_INDEPENDENT_GATE_PASS",
+            "C03_PARTIAL_BOUNDED_MECHANICS_ONLY",
+            "ORIGINAL_AC18_STILL_2OF18"
+          ],
+          "node_id": "audit_13_independent_proof_ACs",
+          "seq": 26
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "audit_13_independent_proof_ACs",
+          "seq": 27,
+          "state_hash": "sha256:74a74db4ca05061c7084f1474c2312422fac2ccd9e96bfcce8658340ede4a717",
+          "transition_seq": 7
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "audit_13_independent_proof_ACs",
+          "seq": 28
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "gate",
+          "node_id": "true_original_scientific_exit",
+          "seq": 29
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "W4B_W4C_SOURCE_AUTHORITY_REQUIRED_BEFORE_W5"
+          ],
+          "node_id": "true_original_scientific_exit",
+          "seq": 30
+        },
+        {
+          "event": "GATE_SELECTED",
+          "node_id": "true_original_scientific_exit",
+          "outcome": "independent_semantics_or_S4_missing",
+          "seq": 31,
+          "target": "blocked_external_science"
+        },
+        {
+          "event": "TERMINAL_REACHED",
+          "node_id": "blocked_external_science",
+          "seq": 32,
+          "terminal_status": "BLOCKED"
+        }
+      ],
+      "runtime_result": "TERMINAL",
+      "schema": "tcc.ecv4-evidence.v0",
+      "spec_hash": "sha256:72d0e503a776006cd974b900abbbac662b15698f2399c1cfc6c84720918174ce",
+      "state_hash": "sha256:74a74db4ca05061c7084f1474c2312422fac2ccd9e96bfcce8658340ede4a717",
+      "state_transitions": [
+        {
+          "node_id": "verify_original_normative_AC",
+          "seq": 1,
+          "state_hash": "sha256:21f02f385c4cf83fe5be6e9bcc722e4ef97077d98f3452f8095003a0e32036a5",
+          "writes": {
+            "norm": true
+          }
+        },
+        {
+          "node_id": "execute_original_all_machine_branches",
+          "seq": 2,
+          "state_hash": "sha256:46ee2469bfd04ec0d1a292598b14632e8be4ca18bc3146df2d3ebb8b0402b0de",
+          "writes": {
+            "v8": true
+          }
+        },
+        {
+          "node_id": "run_typed_metamorphic_negative_controls",
+          "seq": 3,
+          "state_hash": "sha256:a4d086ca403bafd61df9281e0a83d2aea55971588f5736565e08c7f4d4c7b601",
+          "writes": {
+            "additional": true
+          }
+        },
+        {
+          "node_id": "verify_bounded_native_S4_formal_properties",
+          "seq": 4,
+          "state_hash": "sha256:98bae543db43794c034c5232275ef73516f2faa55276f1f5fb3271db28b256bf",
+          "writes": {
+            "s4formal": true
+          }
+        },
+        {
+          "node_id": "check_external_study_if_present",
+          "seq": 5,
+          "state_hash": "sha256:faa87266d1c30a49f6a9c7edd65b4d07fcfbf6e0b0a36e0d54c23e7782bea1c0",
+          "writes": {
+            "external": true
+          }
+        },
+        {
+          "node_id": "recompute_AC_and_W4_W5_prerequisites",
+          "seq": 6,
+          "state_hash": "sha256:62b014278d6bab2a503e86dbc22a16e463a8ab40fb107ffd80efa34f99678300",
+          "writes": {
+            "ac": true
+          }
+        },
+        {
+          "node_id": "audit_13_independent_proof_ACs",
+          "seq": 7,
+          "state_hash": "sha256:74a74db4ca05061c7084f1474c2312422fac2ccd9e96bfcce8658340ede4a717",
+          "writes": {
+            "proof": true
+          }
+        }
+      ],
+      "tcc_id": "ISSUE1-ROOT-AC-ONECALL-FIXEDPOINT-V9",
+      "terminal_id": "blocked_external_science",
+      "terminal_status": "BLOCKED"
+    },
+    "TCC_compiler": "786d52c1efbc9271096f9311d768ef49bcd116e2",
+    "TCC_edges": 17,
+    "TCC_nodes": 12,
+    "TCC_terminal_id": "blocked_external_science",
+    "W4B_W4C_independent_13AC_proof_ledger": {
+      "AC_topological_order": [
+        "P01",
+        "P02",
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "C01",
+        "C02",
+        "C03",
+        "C04",
+        "C05",
+        "X01",
+        "X02"
+      ],
+      "C03_actual_bounded_subproof": {
+        "MC_DC_pair_witnesses": 5,
+        "missing": [
+          "C01 authoritative finite scope",
+          "C02 independent bidirectional source trace",
+          "C03 full requirements coverage validation"
+        ],
+        "mutants_killed": 5,
+        "states": 936,
+        "status": "BOUNDED_MECHANICS_VERIFIED_NOT_FULL_C03",
+        "unsafe_close_within_bounded_reference": 0
+      },
+      "explicit_stop_reason": "AUTHORITATIVE_SCOPE_AND_EXTERNAL_INDEPENDENT_ANNOTATION_AND_S4_TRACE_NOT_PRESENT",
+      "independent_evidence_ready_for_action": [
+        "P01"
+      ],
+      "original_MVP_AC_required": 18,
+      "original_MVP_completed": false,
+      "plan_git_blob": "c3a27b518ba42cc8bf41c91bacaf78baf5efcaef",
+      "proof_AC_total": 13,
+      "proof_package_mvp_complete": false,
+      "proof_package_mvp_pass": 0,
+      "proof_package_mvp_required": 11,
+      "protocol": "ISSUE1_W4B_W4C_PROOF_13AC_GATE_V1",
+      "remaining_proof_dependency_targets": [
+        "P01",
+        "P02",
+        "B01",
+        "C01",
+        "B02",
+        "B03",
+        "B04",
+        "C02",
+        "C04",
+        "C05",
+        "X01",
+        "X02"
+      ],
+      "scientific_external_custody_verified": false,
+      "status_by_AC": {
+        "B01": {
+          "depends_on": [
+            "P01"
+          ],
+          "failure_code": "UNSPECIFIED_OR_POSTHOC_LABEL_SCHEMA",
+          "missing_prerequisite_AC": [
+            "P01"
+          ],
+          "owner_role": "independent_annotation_lead",
+          "parent_original_AC": [
+            "AC-02",
+            "AC-04",
+            "AC-11"
+          ],
+          "reason": "One or more prerequisite proof AC are not independently proven",
+          "required_evidence": [
+            "codebook_commit",
+            "annotation_schema",
+            "ambiguity_rules",
+            "training_pilot_excluded"
+          ],
+          "state": "BLOCKED_ON_PRECEDING_PROOF_AC"
+        },
+        "B02": {
+          "depends_on": [
+            "P02",
+            "B01"
+          ],
+          "failure_code": "INTERANNOTATOR_QUALITY_NOT_ESTABLISHED",
+          "missing_prerequisite_AC": [
+            "P02",
+            "B01"
+          ],
+          "owner_role": "two_independent_domain_annotators",
+          "parent_original_AC": [
+            "AC-03",
+            "AC-04",
+            "AC-11"
+          ],
+          "reason": "One or more prerequisite proof AC are not independently proven",
+          "required_evidence": [
+            "two_timestamped_independent_annotations",
+            "raw_disagreement_matrix",
+            "agreement_alpha_per_core_label",
+            "prevalence_report"
+          ],
+          "state": "BLOCKED_ON_PRECEDING_PROOF_AC"
+        },
+        "B03": {
+          "depends_on": [
+            "B02"
+          ],
+          "failure_code": "NO_INDEPENDENT_GOLD_CUSTODY",
+          "missing_prerequisite_AC": [
+            "B02"
+          ],
+          "owner_role": "independent_adjudicator_and_custodian",
+          "parent_original_AC": [
+            "AC-07",
+            "AC-13",
+            "AC-17"
+          ],
+          "reason": "One or more prerequisite proof AC are not independently proven",
+          "required_evidence": [
+            "third_party_adjudication",
+            "source_to_gold_trace",
+            "signed_or_access_controlled_gold_manifest",
+            "immutable_gold_sha256",
+            "custody_and_access_log"
+          ],
+          "state": "BLOCKED_ON_PRECEDING_PROOF_AC"
+        },
+        "B04": {
+          "depends_on": [
+            "B03"
+          ],
+          "failure_code": "BLIND_CAUSAL_COMPARISON_MISSING_OR_FAILED",
+          "missing_prerequisite_AC": [
+            "B03"
+          ],
+          "owner_role": "independent_evaluator",
+          "parent_original_AC": [
+            "AC-01",
+            "AC-03",
+            "AC-04",
+            "AC-05",
+            "AC-17"
+          ],
+          "reason": "One or more prerequisite proof AC are not independently proven",
+          "required_evidence": [
+            "pinned_raw_llm_ec_predictions",
+            "same_S1_S2_upstream_sha_per_arm",
+            "candidate_precision_recall",
+            "exact_admissible_set_match",
+            "reframe_confusion",
+            "paired_effect_CI",
+            "holdout_one_time_audit"
+          ],
+          "state": "BLOCKED_ON_PRECEDING_PROOF_AC"
+        },
+        "C01": {
+          "depends_on": [
+            "P01"
+          ],
+          "failure_code": "S4_SCOPE_UNBOUNDED",
+          "missing_prerequisite_AC": [
+            "P01"
+          ],
+          "owner_role": "requirements_domain_owner",
+          "parent_original_AC": [
+            "AC-02",
+            "AC-11",
+            "AC-12"
+          ],
+          "reason": "One or more prerequisite proof AC are not independently proven",
+          "required_evidence": [
+            "authoritative_requirements_baseline",
+            "obligation_registry",
+            "scope_and_version",
+            "applicability_rules",
+            "unmodeled_condition_policy"
+          ],
+          "state": "BLOCKED_ON_PRECEDING_PROOF_AC"
+        },
+        "C02": {
+          "depends_on": [
+            "C01",
+            "P02"
+          ],
+          "failure_code": "MISSING_OR_UNGROUNDED_OBLIGATION",
+          "missing_prerequisite_AC": [
+            "C01",
+            "P02"
+          ],
+          "owner_role": "independent_requirements_reviewer",
+          "parent_original_AC": [
+            "AC-11",
+            "AC-12",
+            "AC-17"
+          ],
+          "reason": "One or more prerequisite proof AC are not independently proven",
+          "required_evidence": [
+            "source_clause_to_obligation_matrix",
+            "obligation_to_source_reverse_map",
+            "independent_completeness_signoff",
+            "zero_obligation_positive_proof",
+            "change_impact_log"
+          ],
+          "state": "BLOCKED_ON_PRECEDING_PROOF_AC"
+        },
+        "C03": {
+          "depends_on": [
+            "C02"
+          ],
+          "failure_code": "UNSAFE_REACHABLE_CLOSURE_OR_VACUOUS_PROOF",
+          "missing_prerequisite_AC": [
+            "C02"
+          ],
+          "owner_role": "formal_verification_owner",
+          "parent_original_AC": [
+            "AC-11",
+            "AC-12",
+            "AC-17"
+          ],
+          "reason": "Actual native formal evidence exists, but C02 independent requirements completeness is unqualified",
+          "required_evidence": [
+            "finite_state_specification",
+            "machine_check_log",
+            "counterexample_archive",
+            "decision_MCDC_coverage",
+            "mutation_results"
+          ],
+          "state": "PARTIAL_BOUNDED_MECHANICS_ONLY"
+        },
+        "C04": {
+          "depends_on": [
+            "C02",
+            "B03"
+          ],
+          "failure_code": "S4_BLIND_STRESS_CORPUS_NOT_INDEPENDENT",
+          "missing_prerequisite_AC": [
+            "C02",
+            "B03"
+          ],
+          "owner_role": "independent_adversarial_evaluator",
+          "parent_original_AC": [
+            "AC-12",
+            "AC-13",
+            "AC-19"
+          ],
+          "reason": "One or more prerequisite proof AC are not independently proven",
+          "required_evidence": [
+            "300_distinct_unsafe_close_opportunities",
+            "100_distinct_legitimate_closures",
+            "independent_S4_labels_and_custody",
+            "predeclared_sampling_distribution"
+          ],
+          "state": "BLOCKED_ON_PRECEDING_PROOF_AC"
+        },
+        "C05": {
+          "depends_on": [
+            "C03",
+            "C04"
+          ],
+          "failure_code": "FALSE_CLOSURE_OR_ALWAYS_ABSTAIN",
+          "missing_prerequisite_AC": [
+            "C03",
+            "C04"
+          ],
+          "owner_role": "independent_evaluator",
+          "parent_original_AC": [
+            "AC-11",
+            "AC-12",
+            "AC-17"
+          ],
+          "reason": "One or more prerequisite proof AC are not independently proven",
+          "required_evidence": [
+            "casewise_closure_confusion",
+            "false_closure_rate",
+            "legitimate_close_recall",
+            "exact_binomial_interval",
+            "metamorphic_counterexamples"
+          ],
+          "state": "BLOCKED_ON_PRECEDING_PROOF_AC"
+        },
+        "P01": {
+          "depends_on": [],
+          "failure_code": "VERSION_OR_SCOPE_DRIFT",
+          "missing_prerequisite_AC": [],
+          "owner_role": "research_owner",
+          "parent_original_AC": [
+            "AC-02",
+            "AC-03",
+            "AC-19"
+          ],
+          "reason": "P01 original scope freeze and independent authorization unverified",
+          "required_evidence": [
+            "versioned_scope",
+            "task_ontology",
+            "S1_S4_schema",
+            "precommitted_metrics",
+            "source_hashes"
+          ],
+          "state": "EVIDENCE_OR_AUTHORIZATION_MISSING"
+        },
+        "P02": {
+          "depends_on": [
+            "P01"
+          ],
+          "failure_code": "PROVENANCE_OR_SPLIT_CONTAMINATED",
+          "missing_prerequisite_AC": [
+            "P01"
+          ],
+          "owner_role": "independent_data_curator",
+          "parent_original_AC": [
+            "AC-01",
+            "AC-07",
+            "AC-13",
+            "AC-19"
+          ],
+          "reason": "One or more prerequisite proof AC are not independently proven",
+          "required_evidence": [
+            "source_provenance_manifest",
+            "dataset_datasheet",
+            "document_family_split",
+            "holdout_seal_sha256",
+            "duplicate_review"
+          ],
+          "state": "BLOCKED_ON_PRECEDING_PROOF_AC"
+        },
+        "X01": {
+          "depends_on": [
+            "B04",
+            "C05"
+          ],
+          "failure_code": "ORIGINAL_A_E_NOT_REAL_OR_NOT_CAUSAL",
+          "missing_prerequisite_AC": [
+            "B04",
+            "C05"
+          ],
+          "owner_role": "research_operator_and_independent_reviewer",
+          "parent_original_AC": [
+            "AC-01",
+            "AC-03",
+            "AC-05",
+            "AC-06",
+            "AC-07",
+            "AC-08",
+            "AC-09",
+            "AC-16",
+            "AC-17"
+          ],
+          "reason": "One or more prerequisite proof AC are not independently proven",
+          "required_evidence": [
+            "all_five_arms_four_layers_raw",
+            "one_layer_oracle_substitutions",
+            "upstream_byte_identity",
+            "source_native_qualification",
+            "materiality_delta_and_CI",
+            "layerwise_attribution"
+          ],
+          "state": "BLOCKED_ON_PRECEDING_PROOF_AC"
+        },
+        "X02": {
+          "depends_on": [
+            "X01"
+          ],
+          "failure_code": "ORIGINAL_ROOT_STILL_OPEN",
+          "missing_prerequisite_AC": [
+            "X01"
+          ],
+          "owner_role": "independent_release_gate",
+          "parent_original_AC": [
+            "AC-01",
+            "AC-02",
+            "AC-03",
+            "AC-04",
+            "AC-05",
+            "AC-06",
+            "AC-07",
+            "AC-08",
+            "AC-09",
+            "AC-11",
+            "AC-12",
+            "AC-13",
+            "AC-14",
+            "AC-15",
+            "AC-16",
+            "AC-17",
+            "AC-19",
+            "AC-20"
+          ],
+          "reason": "One or more prerequisite proof AC are not independently proven",
+          "required_evidence": [
+            "18_required_AC_source_verified_PASS",
+            "dependency_graph_all_pass",
+            "all_artifact_hashes_stable",
+            "no_failed_integrity_gates",
+            "release_audit"
+          ],
+          "state": "BLOCKED_ON_PRECEDING_PROOF_AC"
+        }
+      }
+    },
+    "W4B_W4C_portable_evidence_structural_preflight": {
+      "artifact_sha256_verified": [],
+      "errors": [],
+      "independent_proof_AC_pass": 0,
+      "missing_first_prerequisite": [
+        "P01",
+        "P02",
+        "B01",
+        "C01"
+      ],
+      "original_MVP_required": 18,
+      "original_root_AC_pass": null,
+      "original_root_complete": false,
+      "proof13_total": 13,
+      "proof_package_required": 11,
+      "protocol": "issue1.proof13.portable-preflight.v1",
+      "required_evidence": {
+        "B01": [
+          "codebook_commit",
+          "annotation_schema",
+          "ambiguity_rules",
+          "training_pilot_excluded"
+        ],
+        "B02": [
+          "two_timestamped_independent_annotations",
+          "raw_disagreement_matrix",
+          "agreement_alpha_per_core_label",
+          "prevalence_report"
+        ],
+        "B03": [
+          "third_party_adjudication",
+          "source_to_gold_trace",
+          "signed_or_access_controlled_gold_manifest",
+          "immutable_gold_sha256",
+          "custody_and_access_log"
+        ],
+        "B04": [
+          "pinned_raw_llm_ec_predictions",
+          "same_S1_S2_upstream_sha_per_arm",
+          "candidate_precision_recall",
+          "exact_admissible_set_match",
+          "reframe_confusion",
+          "paired_effect_CI",
+          "holdout_one_time_audit"
+        ],
+        "C01": [
+          "authoritative_requirements_baseline",
+          "obligation_registry",
+          "scope_and_version",
+          "applicability_rules",
+          "unmodeled_condition_policy"
+        ],
+        "C02": [
+          "source_clause_to_obligation_matrix",
+          "obligation_to_source_reverse_map",
+          "independent_completeness_signoff",
+          "zero_obligation_positive_proof",
+          "change_impact_log"
+        ],
+        "C03": [
+          "finite_state_specification",
+          "machine_check_log",
+          "counterexample_archive",
+          "decision_MCDC_coverage",
+          "mutation_results"
+        ],
+        "C04": [
+          "300_distinct_unsafe_close_opportunities",
+          "100_distinct_legitimate_closures",
+          "independent_S4_labels_and_custody",
+          "predeclared_sampling_distribution"
+        ],
+        "C05": [
+          "casewise_closure_confusion",
+          "false_closure_rate",
+          "legitimate_close_recall",
+          "exact_binomial_interval",
+          "metamorphic_counterexamples"
+        ],
+        "P01": [
+          "versioned_scope",
+          "task_ontology",
+          "S1_S4_schema",
+          "precommitted_metrics",
+          "source_hashes"
+        ],
+        "P02": [
+          "source_provenance_manifest",
+          "dataset_datasheet",
+          "document_family_split",
+          "holdout_seal_sha256",
+          "duplicate_review"
+        ],
+        "X01": [
+          "all_five_arms_four_layers_raw",
+          "one_layer_oracle_substitutions",
+          "upstream_byte_identity",
+          "source_native_qualification",
+          "materiality_delta_and_CI",
+          "layerwise_attribution"
+        ],
+        "X02": [
+          "18_required_AC_source_verified_PASS",
+          "dependency_graph_all_pass",
+          "all_artifact_hashes_stable",
+          "no_failed_integrity_gates",
+          "release_audit"
+        ]
+      },
+      "status": "BLOCKED_EXTERNAL_EVIDENCE",
+      "structural_preflight": {}
+    },
+    "actual_metamorphic_typed_evidence": {
+      "S4_false_closure_prevented": 48,
+      "all_formal_typed_cases_passed": 48,
+      "case_count": 48,
+      "casewise": [
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 200,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "2999642cc913b77b725c35b4f2f21ae995a115abd0e91fefb8ddb18297cf2fe7",
+          "selected": 0
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 201,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "13f227d9d4e412a519a89fd5da2a6a795e7c9212d0efbda7c9ff37133abb2e56",
+          "selected": 2
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 202,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "c37b58dd5b4bdbaf04eabe3c2d7a1c4341439040f38fac5b25b8ff48f040cd8d",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 203,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "df71d190f783e134add36fc3c29739f04efc067f1ac87adc18192f92505a140c",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 204,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "b2c031899bf65a47fca6094f1ee5920bc92b1e3be9f0498023e60ac929af64cc",
+          "selected": 2
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 205,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "0b00c3e5506a1c50d3d68325f0efd87ac06445029326d537e61fea68801be517",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 206,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "719b7259f5a8bc62cd53068d78e1888d349219910eed8e8fc56c960d563fa326",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 207,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "96707a5e5b3dd2c3a926646c5ae9b8f78f2157c4bd20c14d7cc297e7667cad48",
+          "selected": 2
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 208,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "1cf4ce4cc0ee8e83cada51174a940c4594b3444cfa6bf2f996d7d55682f88fdb",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 209,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "f8b0b75f06af95809325f29f219d53d3086097b6d46a396b260d63f82b0393fd",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 210,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "c263a492db7185c07f22ea267106954c57a2213e3bd3c5af3a8bfb5608b8f2dc",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 211,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "2cb4b3c5fed76f656b76afaefed23203928ff1b65ac1b5cd8c0cb6e791dfb488",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 212,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "76e9e01713290e69e7259a40ec0af7b5e64c953697e75944a1cb51da706b242d",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 213,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "405cf9438aedb10c2c676b67b8da91df6f8669e02ee1a75c8d76c214305e751e",
+          "selected": 2
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 214,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "9da38d6c1a545f23f1f6de2a795457f2e6ed9d739a570aebb0f68593e25bd3e8",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 215,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "b44025fbbaa23215f11b6187e66a09daa50409b8b02a37cdff697238c2ef8cf9",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 216,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "f12bda58eed4f92b4b3e57516f0d90c4a20147ab897ee25646fcde298f656981",
+          "selected": 2
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 217,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "681a92972e6524cf7bc1bce6776544b134a79cb0a08061d9fc5c6e30afeb9ebb",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 218,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "99cc091f3a110ef4a855ff3109593993b14a0de3923e22aa8de221060af30d6d",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 219,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "87f4e2b52f2b9b9542aa700438e8c7bd80afa50e76aeec218e3783beabf02b0f",
+          "selected": 2
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 220,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "c7c036e6e28a40891c40d09bd6ec4e20d846cd2375d71e2e2c67e135c63a936e",
+          "selected": 0
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 221,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "632bbc2b79fb579c69fa015287b9c3d645c74fc08ff536ec3e62b49c18bd34b6",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 222,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "913e81811a0ff2d4beb54a18d23b7d5eed2f871cafeac67cdc8d23819a4ad98c",
+          "selected": 2
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 223,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "ce2e7814680311b8251db1fb572e9781f2e57f5133fbaf7160aa549af6f9041d",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 224,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "5b3d53786b7bd36322084bc45752705daae97918085859ad7dc875ddb49e644d",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 225,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "e924d2f6d8efd0ce5d1946fd1bb10ba7225ed1850c3c6a958b0ba5af56d16e63",
+          "selected": 2
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 226,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "d9d615240a8f36176f693850e6d62ac56e389a6743c38884934659418e02a1c9",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 227,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "cca6529f0ccd8546a838b0889cac1c832014f994adfaddff9585605a1ca48aee",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 228,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "e64584ea502dbe628e0904e2554cb500d373c5462d675ad54548fc4fd011fcf3",
+          "selected": 2
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 229,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "e80117fcd55de5d4d88d276560d83ff206f885aa903d2c9ee5c6fbc76ac66ff5",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 230,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "aa60643e7b27d4178c53e67b25df75923aa90bb6eba27cee2c4c06bfc422cc58",
+          "selected": 0
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 231,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "f75be43c3cd68735c8fa785b411131ba71d22c4f716be75a5ddeefd8310f0765",
+          "selected": 2
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 232,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "8367bdc363c06ee540a11947e35e4d07e407d1e22f2edba5a77b56a94af2ca53",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 233,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "c9e4aa403ca568aba1849a51f9fdbd25bbdc1eec7089a38bc08fac2b5e720aa8",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 234,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "d6cf0fcd3af15c5b458b2ff17c7330ac6a48cdcd7e7bcdb997deb7a043b8a0c8",
+          "selected": 2
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 235,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "b946d8d86933f6fc7167561281702616ca9ce39865ce15b9736ef9714badcf97",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 236,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "7fa453b14dd0ee3c7f387b22246b4b9922f32371d14739ff83bd8937698fcc7d",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 237,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "41811e249ccc3452f07e42f03b359b81f9786f0cf1ee0147bc73600b2085b026",
+          "selected": 2
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 238,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "0cfbdfa891d704ed5f0a57494dbb8cef4debc27d4c9bbd89cd4de3f745a93c06",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 239,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "bb5eaf15a667e53ecc9e51e53543c5538d6d81a0e2f4f32c08780f9d52a37815",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 240,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "8a75f28e751d7be17f1f496c3d9f0477575ca496c317da80ae56f9ca17338ef2",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 241,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "18fef36f6dd54ef69bb2475ebfd7cd9da6b36c2ee2508f58a9bf9d8ac833fa9a",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 242,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "b7846756ceef2fc9cc19658fdb1de6d770475938d7352db9bfa021145d435974",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 243,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "71be7d5f9e93ef85df0e95e63d41b433757156c08e1fe796bb00563c899597ed",
+          "selected": 2
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 244,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "4feb490caa2feded5c7e47bd989eb2ef3ebdca42a66fd8e81d24e209fd197718",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 245,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "24d2888e58152909df469cb4674d46cb0b22c9df11938b0db615c15d238a4ae4",
+          "selected": 1
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 246,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "7ef7b46dd12259e437abb1465d5cc451489e1745fe4227d3f661ecaf0a21ff59",
+          "selected": 2
+        },
+        {
+          "S4_unverified_closure_refused": true,
+          "case_index": 247,
+          "is_independent_natural_language_eval": false,
+          "public_SHA256": "1c43e7dc8ba79ed0e0b117c3c56aee38daae75185e6adfde4ef983f39a37a76b",
+          "selected": 1
+        }
+      ],
+      "independent_natural_language_science_not_established": true,
+      "source_SHA_pin_count": 3,
+      "tampered_document_rejected": true,
+      "unknown_fact_abstention_verified": true
+    },
+    "all_seals_same": true,
+    "dependency_ordered_AC_and_work": {
+      "AC": {
+        "ac20": {
+          "AC-01": {
+            "AC_dependencies": [
+              "AC-02"
+            ],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": [
+              "AC-02"
+            ]
+          },
+          "AC-02": {
+            "AC_dependencies": [
+              "AC-19"
+            ],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": []
+          },
+          "AC-03": {
+            "AC_dependencies": [
+              "AC-02",
+              "AC-19"
+            ],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": [
+              "AC-02"
+            ]
+          },
+          "AC-04": {
+            "AC_dependencies": [
+              "AC-02",
+              "AC-03"
+            ],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": [
+              "AC-02",
+              "AC-03"
+            ]
+          },
+          "AC-05": {
+            "AC_dependencies": [
+              "AC-01",
+              "AC-03",
+              "AC-04",
+              "AC-07",
+              "AC-17"
+            ],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": [
+              "AC-01",
+              "AC-03",
+              "AC-04",
+              "AC-07",
+              "AC-17"
+            ]
+          },
+          "AC-06": {
+            "AC_dependencies": [
+              "AC-04",
+              "AC-05",
+              "AC-11",
+              "AC-12",
+              "AC-16",
+              "AC-17"
+            ],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": [
+              "AC-04",
+              "AC-05",
+              "AC-11",
+              "AC-12",
+              "AC-16",
+              "AC-17"
+            ]
+          },
+          "AC-07": {
+            "AC_dependencies": [
+              "AC-01"
+            ],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": [
+              "AC-01"
+            ]
+          },
+          "AC-08": {
+            "AC_dependencies": [
+              "AC-05",
+              "AC-06"
+            ],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": [
+              "AC-05",
+              "AC-06"
+            ]
+          },
+          "AC-09": {
+            "AC_dependencies": [
+              "AC-05",
+              "AC-08"
+            ],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": [
+              "AC-05",
+              "AC-08"
+            ]
+          },
+          "AC-10": {
+            "AC_dependencies": [
+              "AC-08",
+              "AC-09",
+              "AC-19"
+            ],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": [
+              "AC-08",
+              "AC-09"
+            ]
+          },
+          "AC-11": {
+            "AC_dependencies": [],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": []
+          },
+          "AC-12": {
+            "AC_dependencies": [
+              "AC-04",
+              "AC-11"
+            ],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": [
+              "AC-04",
+              "AC-11"
+            ]
+          },
+          "AC-13": {
+            "AC_dependencies": [],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": []
+          },
+          "AC-14": {
+            "AC_dependencies": [
+              "AC-01",
+              "AC-13"
+            ],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": [
+              "AC-01",
+              "AC-13"
+            ]
+          },
+          "AC-15": {
+            "AC_dependencies": [],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": []
+          },
+          "AC-16": {
+            "AC_dependencies": [
+              "AC-17"
+            ],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": [
+              "AC-17"
+            ]
+          },
+          "AC-17": {
+            "AC_dependencies": [
+              "AC-07"
+            ],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": [
+              "AC-07"
+            ]
+          },
+          "AC-18": {
+            "AC_dependencies": [
+              "AC-03",
+              "AC-06",
+              "AC-08"
+            ],
+            "proof": "no registered scientific original-layer validator",
+            "status": "NOT_PROVEN",
+            "unmet_AC_dependencies": [
+              "AC-03",
+              "AC-06",
+              "AC-08"
+            ]
+          },
+          "AC-19": {
+            "AC_dependencies": [],
+            "proof": "original v8 re-execution source-sealed",
+            "status": "PASS",
+            "unmet_AC_dependencies": []
+          },
+          "AC-20": {
+            "AC_dependencies": [],
+            "proof": "original v8 re-execution source-sealed",
+            "status": "PASS",
+            "unmet_AC_dependencies": []
+          }
+        },
+        "original_mvp_complete": false,
+        "original_mvp_pass_count": 2,
+        "original_mvp_required_ac": [
+          "AC-01",
+          "AC-02",
+          "AC-03",
+          "AC-04",
+          "AC-05",
+          "AC-06",
+          "AC-07",
+          "AC-08",
+          "AC-09",
+          "AC-11",
+          "AC-12",
+          "AC-13",
+          "AC-14",
+          "AC-15",
+          "AC-16",
+          "AC-17",
+          "AC-19",
+          "AC-20"
+        ],
+        "original_mvp_unmet": [
+          "AC-01",
+          "AC-02",
+          "AC-03",
+          "AC-04",
+          "AC-05",
+          "AC-06",
+          "AC-07",
+          "AC-08",
+          "AC-09",
+          "AC-11",
+          "AC-12",
+          "AC-13",
+          "AC-14",
+          "AC-15",
+          "AC-16",
+          "AC-17"
+        ]
+      },
+      "MVP_definition": "18 original mandatory AC and genuine S1-S4 A/B/C/D/E source-pinned individual Oracle causal study",
+      "W0_W7_dependency_state": {
+        "ROOT_FROZEN_AC_SOURCE": {
+          "depends_on": [],
+          "reason": "Source-bound typed formal evidence, not independent semantics",
+          "required_AC": [
+            "AC-19",
+            "AC-20"
+          ],
+          "state": "LOCAL_SCOPED_VERIFIED",
+          "unmet_work_dependencies": []
+        },
+        "W4A_NATIVE_SET_CLOSURE": {
+          "depends_on": [
+            "ROOT_FROZEN_AC_SOURCE"
+          ],
+          "reason": "Source-bound typed formal evidence, not independent semantics",
+          "required_AC": [
+            "AC-03",
+            "AC-11"
+          ],
+          "state": "LOCAL_SCOPED_VERIFIED",
+          "unmet_work_dependencies": []
+        },
+        "W4B_INDEPENDENT_SEMANTICS": {
+          "depends_on": [
+            "W4B_TYPED_SOURCE_RULES"
+          ],
+          "reason": "No independently source-authenticated natural-language candidate admissibility and reasons; typed input is not independent evidence.",
+          "required_AC": [
+            "AC-03",
+            "AC-05",
+            "AC-17"
+          ],
+          "state": "EXTERNAL_EVIDENCE_UNQUALIFIED",
+          "unmet_work_dependencies": []
+        },
+        "W4B_TYPED_SOURCE_RULES": {
+          "depends_on": [
+            "W4A_NATIVE_SET_CLOSURE"
+          ],
+          "reason": "Source-bound typed formal evidence, not independent semantics",
+          "required_AC": [
+            "AC-03",
+            "AC-14"
+          ],
+          "state": "LOCAL_SCOPED_VERIFIED",
+          "unmet_work_dependencies": []
+        },
+        "W4C_INDEPENDENT_COMPLETENESS": {
+          "depends_on": [
+            "W4C_PREVENT_FALSE_CLOSE"
+          ],
+          "reason": "No independently authenticated proof of the exhaustive required S4 obligation inventory and negative absence claims.",
+          "required_AC": [
+            "AC-11",
+            "AC-12",
+            "AC-17"
+          ],
+          "state": "EXTERNAL_EVIDENCE_UNQUALIFIED",
+          "unmet_work_dependencies": []
+        },
+        "W4C_PREVENT_FALSE_CLOSE": {
+          "depends_on": [
+            "W4B_TYPED_SOURCE_RULES"
+          ],
+          "reason": "Source-bound typed formal evidence, not independent semantics",
+          "required_AC": [
+            "AC-11",
+            "AC-12"
+          ],
+          "state": "LOCAL_SCOPED_VERIFIED",
+          "unmet_work_dependencies": []
+        },
+        "W5_ORIGINAL_A_TO_E": {
+          "depends_on": [
+            "W4B_INDEPENDENT_SEMANTICS",
+            "W4C_INDEPENDENT_COMPLETENESS"
+          ],
+          "reason": "Genuine same-function original S1-S4 A/B/C/D/E source-measured experiments not performed.",
+          "required_AC": [
+            "AC-05",
+            "AC-06",
+            "AC-16",
+            "AC-17"
+          ],
+          "state": "BLOCKED_DEPENDENCY",
+          "unmet_work_dependencies": [
+            "W4B_INDEPENDENT_SEMANTICS",
+            "W4C_INDEPENDENT_COMPLETENESS"
+          ]
+        },
+        "W6_ORIGINAL_ROOT_MVP": {
+          "depends_on": [
+            "W5_ORIGINAL_A_TO_E"
+          ],
+          "reason": "Original 18/18 AC source-qualified and genuine four-layer one-variable Oracle attribution not satisfied.",
+          "required_AC": [
+            "AC-01",
+            "AC-02",
+            "AC-03",
+            "AC-04",
+            "AC-05",
+            "AC-06",
+            "AC-07",
+            "AC-08",
+            "AC-09",
+            "AC-11",
+            "AC-12",
+            "AC-13",
+            "AC-14",
+            "AC-15",
+            "AC-16",
+            "AC-17",
+            "AC-19",
+            "AC-20"
+          ],
+          "state": "BLOCKED_DEPENDENCY",
+          "unmet_work_dependencies": [
+            "W5_ORIGINAL_A_TO_E"
+          ]
+        },
+        "W7_EXTERNAL_CAPABILITY_RETENTION": {
+          "depends_on": [
+            "W6_ORIGINAL_ROOT_MVP"
+          ],
+          "reason": "Independent unseen gold custody, original LLM0 identity and owner-authorized V4 not qualified.",
+          "required_AC": [
+            "AC-10",
+            "AC-18"
+          ],
+          "state": "BLOCKED_DEPENDENCY",
+          "unmet_work_dependencies": [
+            "W6_ORIGINAL_ROOT_MVP"
+          ]
+        }
+      },
+      "external_study_preflight": {
+        "blockers": [
+          "EXTERNAL_STUDY_DIR_MISSING"
+        ],
+        "external_gold_independence_verified": false,
+        "genuine_inference_verified": false,
+        "machine_structural_complete": false,
+        "provenance_custody_verified": false,
+        "quality_preservation_certified": false,
+        "scientific_four_arm_run": "NOT_ESTABLISHED",
+        "stage": "PUBLIC_CORPUS",
+        "stages": {}
+      },
+      "first_unmet_independence": [
+        "W4B_INDEPENDENT_SEMANTICS",
+        "W4C_INDEPENDENT_COMPLETENESS"
+      ],
+      "no_completion_from_scoped_semantic_evidence": true,
+      "original_phase1_AE_completed": false,
+      "protocol": "ISSUE1_ROOT_AC_DEPENDENCY_PLANNER_V9",
+      "root_ac_complete": false,
+      "stop_classification": "IRREDUCIBLE_INDEPENDENT_SEMANTIC_AUTHORITY_AND_S4_COMPLETENESS_REQUIRED",
+      "work_order": [
+        "ROOT_FROZEN_AC_SOURCE",
+        "W4A_NATIVE_SET_CLOSURE",
+        "W4B_TYPED_SOURCE_RULES",
+        "W4C_PREVENT_FALSE_CLOSE",
+        "W4B_INDEPENDENT_SEMANTICS",
+        "W4C_INDEPENDENT_COMPLETENESS",
+        "W5_ORIGINAL_A_TO_E",
+        "W6_ORIGINAL_ROOT_MVP",
+        "W7_EXTERNAL_CAPABILITY_RETENTION"
+      ]
+    },
+    "errors": [],
+    "external_blind_study_preflight": {
+      "blockers": [
+        "EXTERNAL_STUDY_DIR_MISSING"
+      ],
+      "external_gold_independence_verified": false,
+      "genuine_inference_verified": false,
+      "machine_structural_complete": false,
+      "provenance_custody_verified": false,
+      "quality_preservation_certified": false,
+      "scientific_four_arm_run": "NOT_ESTABLISHED",
+      "stage": "PUBLIC_CORPUS",
+      "stages": {}
+    },
+    "new_scheduled_tasks": false,
+    "original_AC_pass_count": 2,
+    "original_issue_completed": false,
+    "original_required_AC": 18,
+    "protocol": "ISSUE1_ROOT_AC_FIXED_POINT_TCC_V9",
+    "research_commit": "a6614cf844b0e7064385db8ce56befe52590b64f",
+    "terminal": "ALL_MACHINE_BRANCHES_VERIFIED_EXTERNAL_INDEPENDENT_S3_S4_AND_FULL_AE_REQUIRED"
+  }
+}
