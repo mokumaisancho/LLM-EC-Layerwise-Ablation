@@ -103,5 +103,29 @@ class TCCV10Policy(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"G6_HALF_PROVIDED_AE_EVIDENCE"):
             run(TCC,EC,Path("/tmp/missing-arm"))
 
+
+    @unittest.skipUnless(TCC.is_dir() and EC.is_dir(),"Pinned TCC/native checkouts absent")
+    def test_actual_complete_AC20_work_dependency_ledger(self):
+        result=run(TCC,EC)
+        self.assertEqual(len(result["original_AC20_dependency_ledger"]),20)
+        self.assertEqual(len(result["original_AC20_topological_order"]),20)
+        self.assertEqual([k for k,v in result["original_AC20_dependency_ledger"].items()
+                          if v["state"]=="PASS"],["AC-19","AC-20"])
+        self.assertEqual(result["TCC_terminal"],"blocked_native")
+
+    @unittest.skipUnless(TCC.is_dir() and EC.is_dir(),"Pinned TCC/native checkouts absent")
+    def test_optional_complete_AE_raw_structural_branch_does_not_fake_root(self):
+        raw,gold=setup_ae()
+        with tempfile.TemporaryDirectory() as td:
+            a=Path(td)/"arms.json";b=Path(td)/"gold.json"
+            a.write_text(json.dumps(raw));b.write_text(json.dumps(gold))
+            result=run(TCC,EC,a,b)
+        self.assertEqual(result["raw_AE_structural_replay"]["cases"],1)
+        self.assertEqual(result["raw_AE_structural_replay"]["oracle_gains"]["S3"],1.)
+        self.assertFalse(result["raw_AE_structural_replay"]["native_source_independently_qualified"])
+        self.assertEqual(result["original_root_pass"],2)
+        self.assertEqual(result["TCC_terminal"],"blocked_native")
+
+
 if __name__=="__main__":
     unittest.main()
