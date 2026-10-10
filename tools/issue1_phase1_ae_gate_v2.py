@@ -185,6 +185,7 @@ def verify(raw: dict, hidden: dict, public_inputs: Mapping[str, object],
          "G8_PUBLIC_INPUT_HASH_MISMATCH")
 
     before = trusted_replay.seals()
+    input_seals = (h(raw), h(hidden), h(public_inputs))
     observed_stages = 0
     for row in raw["cases"]:
         cid = row["case_id"]
@@ -209,6 +210,8 @@ def verify(raw: dict, hidden: dict, public_inputs: Mapping[str, object],
                  "G8_FINAL_SUCCESS_REPLAY_MISMATCH:" + cid + ":" + name)
     must(trusted_replay.seals() == before,
          "G8_REPLAY_ENGINE_CHANGED_DURING_VALIDATION")
+    must((h(raw), h(hidden), h(public_inputs)) == input_seals,
+         "G7_V2_INPUT_CHANGED_DURING_REPLAY")
 
     return {
         "protocol": AUDIT_PROTOCOL,
