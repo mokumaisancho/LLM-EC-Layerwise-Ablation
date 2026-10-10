@@ -1,0 +1,352 @@
+{
+  "protocol": "ISSUE1_W4_SOURCE_AND_TCC7_FINAL_2026_10_10",
+  "real_native_upstream_tests_passed": 14,
+  "all_repository_related_tests_passed": 260,
+  "no_new_scheduler": true,
+  "original_issue_completion": false,
+  "result": {
+    "ECv4_evidence": {
+      "closure_authority": "ECv4",
+      "evidence": [
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "execute_root_original_v6",
+          "seq": 1
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "original-root-v6:real-18AC-source-and-data-gates:PASS:2of18-not-root-complete"
+          ],
+          "node_id": "execute_root_original_v6",
+          "seq": 2
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "execute_root_original_v6",
+          "seq": 3,
+          "state_hash": "sha256:b42edd91ee3f9e7d389a5bfb183ed4246716e07c4dc72ae7ed9594f11fd36fdc",
+          "transition_seq": 1
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "execute_root_original_v6",
+          "seq": 4
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "run_new_source_native_s3s4",
+          "seq": 5
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "new-real-EC-native-commit:24fe3a665b21:14-tests:4-exposed-cases-PASS"
+          ],
+          "node_id": "run_new_source_native_s3s4",
+          "seq": 6
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "run_new_source_native_s3s4",
+          "seq": 7,
+          "state_hash": "sha256:be0f89b10d5869e44c78788bebe6ded55ba49af8c6a3f6123e240062dd5edc0e",
+          "transition_seq": 2
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "run_new_source_native_s3s4",
+          "seq": 8
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "action",
+          "node_id": "audit_w4_and_root_AC_dependencies",
+          "seq": 9
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "W4A:REAL_NATIVE_IMPLEMENTATION_VERIFIED",
+            "W4B+W4C:INDEPENDENT_PROVENANCE_UNQUALIFIED",
+            "W5:FULL_ORIGINAL_AE_NOT_RUN",
+            "ROOT_AC_MVP:2OF18"
+          ],
+          "node_id": "audit_w4_and_root_AC_dependencies",
+          "seq": 10
+        },
+        {
+          "event": "STATE_WRITE",
+          "node_id": "audit_w4_and_root_AC_dependencies",
+          "seq": 11,
+          "state_hash": "sha256:eb30d916f7b48096de7c405cb8b727e3080b201daa775685870bed30dcba4ad5",
+          "transition_seq": 3
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_SUCCESS",
+          "node_id": "audit_w4_and_root_AC_dependencies",
+          "seq": 12
+        },
+        {
+          "attempt": 1,
+          "event": "NODE_START",
+          "kind": "gate",
+          "node_id": "scientific_root_completion_gate",
+          "seq": 13
+        },
+        {
+          "event": "HANDLER_EVIDENCE",
+          "items": [
+            "EC_SOURCE_WRITTEN_BUT_SEMANTIC_PROOF_NOT_INDEPENDENT"
+          ],
+          "node_id": "scientific_root_completion_gate",
+          "seq": 14
+        },
+        {
+          "event": "GATE_SELECTED",
+          "node_id": "scientific_root_completion_gate",
+          "outcome": "semantic_custody_missing",
+          "seq": 15,
+          "target": "blocked_W4_semantic_authority"
+        },
+        {
+          "event": "TERMINAL_REACHED",
+          "node_id": "blocked_W4_semantic_authority",
+          "seq": 16,
+          "terminal_status": "BLOCKED"
+        }
+      ],
+      "runtime_result": "TERMINAL",
+      "schema": "tcc.ecv4-evidence.v0",
+      "spec_hash": "sha256:5b5e5b3c7a73eba44b56f1aa16e4beef0e803f9d4061eceb1edd21f24ce9b256",
+      "state_hash": "sha256:eb30d916f7b48096de7c405cb8b727e3080b201daa775685870bed30dcba4ad5",
+      "state_transitions": [
+        {
+          "node_id": "execute_root_original_v6",
+          "seq": 1,
+          "state_hash": "sha256:b42edd91ee3f9e7d389a5bfb183ed4246716e07c4dc72ae7ed9594f11fd36fdc",
+          "writes": {
+            "root_ac_v6": true
+          }
+        },
+        {
+          "node_id": "run_new_source_native_s3s4",
+          "seq": 2,
+          "state_hash": "sha256:be0f89b10d5869e44c78788bebe6ded55ba49af8c6a3f6123e240062dd5edc0e",
+          "writes": {
+            "new_native_ec_source": true
+          }
+        },
+        {
+          "node_id": "audit_w4_and_root_AC_dependencies",
+          "seq": 3,
+          "state_hash": "sha256:eb30d916f7b48096de7c405cb8b727e3080b201daa775685870bed30dcba4ad5",
+          "writes": {
+            "semantic_custody": "NOT_INDEPENDENT"
+          }
+        }
+      ],
+      "tcc_id": "ISSUE1-ORIGINAL-AC-W4-ACTUAL-NATIVE-SOURCE-V7",
+      "terminal_id": "blocked_W4_semantic_authority",
+      "terminal_status": "BLOCKED"
+    },
+    "TCC_edges": 9,
+    "TCC_nodes": 8,
+    "TCC_source": "786d52c1efbc9271096f9311d768ef49bcd116e2",
+    "TCC_spec_hash": "sha256:5b5e5b3c7a73eba44b56f1aa16e4beef0e803f9d4061eceb1edd21f24ce9b256",
+    "TCC_terminal": "blocked_W4_semantic_authority",
+    "W4_to_original_MVP_dependency_matrix": {
+      "MVP_required": 18,
+      "MVP_scientifically_passed": 2,
+      "all_4_layer_oracle_A_to_E_run": false,
+      "complete_S4_obligation_inventory_independently_qualified": false,
+      "independent_semantic_adjudicator_qualified": false,
+      "native_source_experimental_engine_implemented": true,
+      "next_executable_task": "W4B independently authenticated semantic inference authority + W4C complete S4 inventory; then W5 genuine A-E",
+      "original_AC_pass_only": [
+        "AC-19",
+        "AC-20"
+      ],
+      "original_AC_total": 20,
+      "original_issue_mvp_complete": false,
+      "work_dependencies": {
+        "W0_TO_W3_ORIGINAL_SOURCE_AND_SCOPED_RUN": {
+          "depends_on": [],
+          "source": "original frozen V2 + v5 actual EC/Qwen/scoped evidence",
+          "status": "DONE_BY_REAL_V6"
+        },
+        "W4A_NATIVE_CANDIDATE_SET_AND_CLOSURE_ENGINE": {
+          "depends_on": [
+            "W0_TO_W3_ORIGINAL_SOURCE_AND_SCOPED_RUN"
+          ],
+          "source": "24fe3a665b21ad90a79095eb8d5818dda5447d62",
+          "status": "IMPLEMENTED_EXPERIMENTAL_VERIFIED"
+        },
+        "W4B_INDEPENDENT_SEMANTIC_ADJUDICATOR": {
+          "depends_on": [
+            "W4A_NATIVE_CANDIDATE_SET_AND_CLOSURE_ENGINE"
+          ],
+          "must_supply": "independent original-language->candidate admissibility provenance, no development gold",
+          "status": "BLOCKED_AUTHENTICATED_SEMANTIC_REASON_AUTHORITY_NOT_PRESENT"
+        },
+        "W4C_COMPLETE_S4_OBLIGATION_PROOF": {
+          "depends_on": [
+            "W4A_NATIVE_CANDIDATE_SET_AND_CLOSURE_ENGINE"
+          ],
+          "must_supply": "attested mandatory condition inventory incl absence claims; no implicit empty inventory",
+          "status": "BLOCKED_COMPLETENESS_INVENTORY_NOT_INDEPENDENTLY_PROVEN"
+        },
+        "W5_ORIGINAL_S1_S4_A_B_C_D_E": {
+          "depends_on": [
+            "W4B_INDEPENDENT_SEMANTIC_ADJUDICATOR",
+            "W4C_COMPLETE_S4_OBLIGATION_PROOF"
+          ],
+          "must_supply": "all four layer real model+native EC same-function interventions; frozen original cannot be reclassified",
+          "status": "NOT_RUN_DEPENDENCY_BLOCKED"
+        },
+        "W6_ROOT_18AC_MVP_AND_CAUSAL_LOCALIZATION": {
+          "depends_on": [
+            "W5_ORIGINAL_S1_S4_A_B_C_D_E"
+          ],
+          "status": "NOT_RUN_UNTIL_18_AC_PASS_AND_CONTROLLED_A_E"
+        },
+        "W7_UNSEEN_LLM0_V4_INDEPENDENT_HOLDOUT": {
+          "depends_on": [
+            "W6_ROOT_18AC_MVP_AND_CAUSAL_LOCALIZATION"
+          ],
+          "must_supply": "heldout gold custody, genuine original LLM0 + authorized V4",
+          "status": "BLOCKED_EXTERNAL_INDEPENDENT_EVIDENCE"
+        }
+      }
+    },
+    "evidence_integrity_failures": [],
+    "external_semantics_credentialed": false,
+    "new_W4_native_source_test": {
+      "S3_selected_two_for_M003_and_M009": true,
+      "S4_competing_CONTINUE_equivalent_CLOSE_unresolved_CONTINUE": true,
+      "casewise_S3_development_matches": 4,
+      "casewise_S4_development_matches": 4,
+      "external_complete_inventory_certified": false,
+      "external_semantic_adjudicator_certified": false,
+      "four_author_exposed_fixtures": 4,
+      "genuine_native_selection_and_closure_code_exists": true,
+      "independent_unseen_gold": false,
+      "native_additive_source_git_commit": "24fe3a665b21ad90a79095eb8d5818dda5447d62",
+      "native_module_actual_python_process_executed": true,
+      "native_module_git_blob": "c12e4743c89221a9b81a2f2fa98c4df9d61d72b2",
+      "native_negative_tests_passed": 14,
+      "original_four_layer_AE_completed": false,
+      "original_frozen_ec_v44_adapter_qualified": false,
+      "protocol": "ISSUE1_NATIVE_S3_SET_S4_CLOSURE_VERSIONED_SOURCE_PROBE_V1",
+      "rows": [
+        {
+          "S3_semantic_independence_qualified": false,
+          "S4_complete_obligation_inventory_independently_qualified": false,
+          "case_id": "M003",
+          "closure_class": "CONTINUE",
+          "closure_match_author_visible_fixture": true,
+          "native_source_git_commit": "24fe3a665b21ad90a79095eb8d5818dda5447d62",
+          "public_input_sha256": "3a0f560f7583ceb32b9fcd4d7361231c33c8e4764f5e0add76231d886f0ae8b2",
+          "selected_candidate_ids": [
+            "v1",
+            "v2"
+          ],
+          "selected_count": 2,
+          "selection_match_author_visible_fixture": true
+        },
+        {
+          "S3_semantic_independence_qualified": false,
+          "S4_complete_obligation_inventory_independently_qualified": false,
+          "case_id": "M007",
+          "closure_class": "CONTINUE",
+          "closure_match_author_visible_fixture": true,
+          "native_source_git_commit": "24fe3a665b21ad90a79095eb8d5818dda5447d62",
+          "public_input_sha256": "4a47f958b793ad7e5028727f3566a47c899cdce70fc54e421df411d87416c772",
+          "selected_candidate_ids": [
+            "v1"
+          ],
+          "selected_count": 1,
+          "selection_match_author_visible_fixture": true
+        },
+        {
+          "S3_semantic_independence_qualified": false,
+          "S4_complete_obligation_inventory_independently_qualified": false,
+          "case_id": "M008",
+          "closure_class": "CLOSE",
+          "closure_match_author_visible_fixture": true,
+          "native_source_git_commit": "24fe3a665b21ad90a79095eb8d5818dda5447d62",
+          "public_input_sha256": "c6a417f43f4fa5fc5d78c2a334a8ab72a0f2a733c75722ca3cb1a756ea29e267",
+          "selected_candidate_ids": [
+            "v1"
+          ],
+          "selected_count": 1,
+          "selection_match_author_visible_fixture": true
+        },
+        {
+          "S3_semantic_independence_qualified": false,
+          "S4_complete_obligation_inventory_independently_qualified": false,
+          "case_id": "M009",
+          "closure_class": "CLOSE",
+          "closure_match_author_visible_fixture": true,
+          "native_source_git_commit": "24fe3a665b21ad90a79095eb8d5818dda5447d62",
+          "public_input_sha256": "650573fe50145394b98a610338af5ab1a815ae8af0e31b40d1e0fc20a9eda397",
+          "selected_candidate_ids": [
+            "v1",
+            "v2"
+          ],
+          "selected_count": 2,
+          "selection_match_author_visible_fixture": true
+        }
+      ],
+      "terminal": "W4_NATIVE_EXPERIMENTAL_SOURCE_COMPILED_AND_EXECUTED_SEMANTIC_AUTHORITY_STILL_UNQUALIFIED"
+    },
+    "original_MVP_required_AC": 18,
+    "original_issue_ac_total": 20,
+    "original_scientifically_complete": false,
+    "prior_original_AC_results": {
+      "AC_unmet": [
+        "AC-01",
+        "AC-02",
+        "AC-03",
+        "AC-04",
+        "AC-05",
+        "AC-06",
+        "AC-07",
+        "AC-08",
+        "AC-09",
+        "AC-11",
+        "AC-12",
+        "AC-13",
+        "AC-14",
+        "AC-15",
+        "AC-16",
+        "AC-17"
+      ],
+      "passed_AC": [
+        "AC-19",
+        "AC-20"
+      ],
+      "source_code_seal_count": 13,
+      "terminal": "NATIVE_SOURCE_CAPABILITY_GAP"
+    },
+    "protocol": "ISSUE1_ROOT_W4_EC_NATIVE_AC_TCC_V7",
+    "raw_evidence_pre_post_same": true,
+    "research_commit": "52047148d6d45c2ee63a7709bd4ac69df5ace3ff",
+    "scheduled_tasks_created": false,
+    "scientific_code_git_blobs": {
+      "tools/run_issue1_ec_native_layerwise_source_probe_v1.py": "cfdc107ec6faca92c6acf84d938823307ac7eaaa",
+      "tools/run_issue1_root_ac_orchestrator_v6.py": "4257cf8cb08f2d2de75dc596bd2cb408f639a788",
+      "tools/run_issue1_root_ac_w4_tcc_v7.py": "2eec58f19c15b2f3a7b8ce74d1d36f56d37411d1"
+    },
+    "source_code_pre_post_same": true,
+    "terminal": "W4_NATIVE_EXECUTED_INDEPENDENT_SEMANTIC_AUTHORITY_REQUIRED"
+  }
+}
