@@ -32,6 +32,7 @@ ADDED_SOURCES = (
     "tools/issue1_phase1_ae_gate_v2.py",
     "tools/run_issue1_original_phase1_tcc_v11.py",
     "tests/test_issue1_phase1_ae_gate_v2.py",
+    "tests/test_issue1_original_phase1_tcc_v11.py",
 )
 
 
@@ -170,10 +171,10 @@ def run(tcc_root: Path, native_successor: Path | None = None,
                 "tests.test_issue1_phase1_ae_gate_v2")
             out = unittest.TextTestRunner(
                 stream=io.StringIO(), verbosity=0).run(suite)
-            must(out.wasSuccessful() and out.testsRun == 15,
+            must(out.wasSuccessful() and out.testsRun == 16,
                  "G8_TARGET_ONLY_NEGATIVE_TESTS_FAILED")
             state["dev_tests"] = out.testsRun
-            return done("replay_regression", "V2_DEV_ADVERSARIAL_15_PASS")
+            return done("replay_regression", "V2_DEV_ADVERSARIAL_16_PASS")
         return capture("REGRESSION", action)
 
     def real(_n, _s, _a):
