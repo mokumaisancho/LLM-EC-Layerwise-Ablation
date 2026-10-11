@@ -16,7 +16,7 @@ SOURCES = {
 def file_blob(path):
     data = path.read_bytes()
     return hashlib.sha1(b"blob " + str(len(data)).encode() +
-                        b"\\0" + data).hexdigest()
+                        b"\0" + data).hexdigest()
 
 def check_source(root):
     result = subprocess.run(["git", "-C", str(root), "rev-parse", "HEAD"],
