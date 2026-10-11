@@ -1,0 +1,17 @@
+{
+  "protocol": "ISSUE1_ORIGINAL_PHASE1_TCC_V12_FINAL_REGRESSION",
+  "observed_at_utc": "2026-10-11T00:33:42Z",
+  "research_checkout_commit": "bb51808f6e9dbf757e95a8cc626086222b49d70e",
+  "native_policy_checkout_commit": "3f435ad4365d846d96264458540efb4848ce3541",
+  "command": "PYTHONDONTWRITEBYTECODE=1 nice -n 12 python3 -m unittest discover -s tests -q",
+  "status": "PASS",
+  "exit_code": 0,
+  "test_count": 441,
+  "failures": 0,
+  "errors": 0,
+  "elapsed_seconds": 97.516,
+  "log_sha256": "372e1cf7e9ef1adabd82b17fd9a5af3e2c41c332643d2d5cac62d369e9b7fe73",
+  "time_guard_seconds": 185,
+  "code_and_evidence_source": "Original Phase1 TCC v12 and pinned EC policy PR #34 at native commit",
+  "scientific_phase1_qualification": "BLOCKED_EXTERNAL_SEMANTICS; original 2/18 AC"
+}
