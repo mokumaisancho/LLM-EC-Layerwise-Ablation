@@ -61,7 +61,7 @@ def run(fetch=get):
                            "independent_validator_selected":sum(got),
                            "all_candidates_agree":valid==got,
                            "S4_complete_only_under_JSON_SCHEMA_validity":
-                               all(valid==got),
+                               valid==got,
                            "not_real_task_termination":True})
     if matched!=total or total!=46 or len(source)!=11 or mixed<7:
         raise ValueError("INDEPENDENT_SOURCE_VALIDATOR_DISAGREEMENT")
