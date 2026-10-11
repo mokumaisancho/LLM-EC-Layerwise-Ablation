@@ -159,6 +159,44 @@ class Phase1OneCallTCCV13Test(unittest.TestCase):
         self.assertEqual(result["original_mvp"]["pass"], 2)
 
     @unittest.skipUnless(HAS_NATIVE, "Pinned TCC/native checkout absent")
+    def test_original_AC_child_never_passes_unmet_parent(self):
+        result = run(TCC, ORIGINAL_NATIVE, POLICY_NATIVE)
+        ledger = result["AC20_dependency_ledger"]
+        self.assertIn("AC-02", ledger["AC-01"]["unmet_AC_parents"])
+        self.assertIn("AC-05", ledger["AC-08"]["unmet_AC_parents"])
+        self.assertIn("W04_CHECK_S3_SEMANTICS",
+                      ledger["AC-11"]["unqualified_work"])
+        self.assertIn("W05_CHECK_S4_COMPLETENESS",
+                      ledger["AC-11"]["unqualified_work"])
+        self.assertEqual(ledger["AC-19"]["state"], "PASS")
+        self.assertEqual(ledger["AC-20"]["state"], "PASS")
+        self.assertEqual(ledger["AC-09"]["state"], "NOT_PROVEN")
+
+    @unittest.skipUnless(HAS_NATIVE, "Pinned TCC/native checkout absent")
+    def test_result_overturning_gold_mutation_after_replay_fails_closed(self):
+        raw, hidden, public, trusted = make_fixture()
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            a, g, p = td / "arms.json", td / "gold.json", td / "public.json"
+            a.write_text(json.dumps(raw))
+            g.write_text(json.dumps(hidden))
+            p.write_text(json.dumps(public))
+            from tools.issue1_phase1_ae_gate_v2 import verify as real_replay
+            def valid_then_corrupt(*args):
+                response = real_replay(*args)
+                g.write_text(g.read_text() + " ")
+                return response
+            with patch(
+                    "tools.run_issue1_original_phase1_tcc_v13.replay_v2",
+                    side_effect=valid_then_corrupt):
+                result = run(TCC, ORIGINAL_NATIVE, POLICY_NATIVE,
+                             arms=a, gold=g, public=p, trusted_replay=trusted)
+        self.assertEqual(result["TCC_terminal"], "blocked_integrity")
+        self.assertTrue(any("G7_RAW_GOLD_PUBLIC_CHANGED_DURING_TRIAL" in x
+                            for x in result["errors"]))
+        self.assertFalse(result["scientific_phase1_complete"])
+
+    @unittest.skipUnless(HAS_NATIVE, "Pinned TCC/native checkout absent")
     def test_extra_E_layer_oracle_fails_the_entire_tcc(self):
         raw, hidden, public, trusted = make_fixture()
         row = raw["cases"][0]
