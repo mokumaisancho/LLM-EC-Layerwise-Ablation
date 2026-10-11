@@ -66,7 +66,7 @@ def normalize(text:str)->str:
     text=re.sub(r"<[^>]*>"," ",text)
     text=re.sub(r"&nbsp;|&#160;"," ",text,flags=re.I)
     text=re.sub("[^a-z0-9]+"," ",text.lower()).strip()
-    return " "+re.sub(r"\\s+"," ",text)+" "
+    return " "+re.sub(r"\s+"," ",text)+" "
 
 def literal_public_only_predict(case):
     if set(case)!={"question_id","passage","question","options"}:
