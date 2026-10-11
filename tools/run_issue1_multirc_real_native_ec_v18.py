@@ -134,8 +134,7 @@ def run_one(ec_root:Path,case):
     return {
         "question_id":case["question_id"],
         "input_sha256":sha(canonical(case)),
-        "native_policy_sha256":actual["S4_derived_required_conditions"] and
-                               policy_lib.digest(policy),
+        "native_policy_sha256":policy_lib.digest(policy),
         "selected_candidate_ids":actual["s3_selected"],
         "s4_formal_diagnostic":actual["s4_diagnostic"],
         "s4_policy_condition_inventory":list(actual["s4_policy_obligations"]),
