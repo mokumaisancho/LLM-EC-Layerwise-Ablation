@@ -88,6 +88,16 @@ class FiniteExitV14Tests(unittest.TestCase):
                 ValueError,"G0_FROZEN_EVIDENCE_DRIFT"):
                 run(Path(temp))
 
+    def test_local_source_pin_detects_current_execution_code_tamper(self):
+        from tools.run_issue1_finite_exit_preflight_v14 import (
+            local_source_pins,
+        )
+        with patch("tools.run_issue1_finite_exit_preflight_v14.blob",
+                   return_value="0"*40):
+            with self.assertRaisesRegex(
+                ValueError, "G0_LOCAL_EXECUTION_SOURCE_DRIFT"):
+                local_source_pins(REPO)
+
     def test_plan_must_not_enable_frozen_ec_success_or_expand_mvp(self):
         actual=run(REPO)
         self.assertEqual(actual["original_frozen_native_EC_status"],
