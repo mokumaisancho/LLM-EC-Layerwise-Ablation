@@ -1,0 +1,20 @@
+{
+  "protocol": "ISSUE1_ORIGINAL_PHASE1_TCC_V13_FINAL_FULL_REGRESSION",
+  "observed_at_utc": "2026-10-11T01:53:34Z",
+  "research_checkout_commit": "f19614b819042cd2625e848f71de9b2699613c23",
+  "native_policy_checkout_commit": "3f435ad4365d846d96264458540efb4848ce3541",
+  "command": "PYTHONDONTWRITEBYTECODE=1 nice -n 12 python3 -m unittest discover -s tests -q",
+  "status": "PASS",
+  "exit_code": 0,
+  "test_count": 455,
+  "failures": 0,
+  "errors": 0,
+  "elapsed_seconds": 136.842,
+  "log_sha256": "6e42d7a922422e59ff751ab87632279d70a06366937676ee154c8b21829307a7",
+  "time_guard_seconds": 240,
+  "test_suite_includes": "all prior Phase1 regression, all 14 v13 one-call AC20/asset/target-only/gold-tamper tests",
+  "original_root_AC": "2/18; 16 NOT_PROVEN",
+  "tcc_terminal": "blocked_semantics",
+  "scientific_independence": "NOT_PROVEN; true external S3/S4 and real A-E needed",
+  "source_trust_note": "The Git commit and log digest bind the executed development suite but do not certify independent model or Oracle correctness."
+}
