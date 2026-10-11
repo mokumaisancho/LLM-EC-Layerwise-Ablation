@@ -102,9 +102,22 @@ def run(root:Path=ROOT,ec_root:Path|None=None,
                            capture_output=True,text=True,timeout=12)
         gate(cmd.returncode==0 and cmd.stdout.strip()==EC_COMMIT,
              "G0_SUCCESSOR_NATIVE_SOURCE_COMMIT_MISMATCH")
+        git_pinned_source(root,"tools/issue1_ecv4_local_plugin_v1.py")
+        git_pinned_source(root,"tests/test_issue1_ecv4_local_plugin_v1.py")
+        from tools.issue1_ecv4_local_plugin_v1 import diagnostic_probe
+        proof=diagnostic_probe(ec_root)
+        gate(proof["status"]=="REAL_EC_MODULE_PLUGIN_MECHANICS_VERIFIED"
+             and proof["case_count"]==3
+             and proof["S3_S4_formal_capabilities_available"] is True
+             and proof["original_18AC_scientific_PASSED"] is False
+             and proof["frozen_original_ECv4_4_source_modified"] is False,
+             "G3_PLUGIN_MECHANICS_UNQUALIFIED")
         successor_ec["ec_checkout_verified"]=True
+        successor_ec["research_local_plugin"]=proof
+        successor_ec["mechanical_EC_dependency_resolved"]=True
     else:
         successor_ec["ec_checkout_verified"]=False
+        successor_ec["mechanical_EC_dependency_resolved"]=False
     f1={
         "status":"NOT_EVALUABLE_INDEPENDENT_SEMANTIC_AND_OBLIGATION_AUTHORITY",
         "S3_independent_source_custody":False,
@@ -168,6 +181,11 @@ def run(root:Path=ROOT,ec_root:Path|None=None,
     if include_official_pilot:
         git_pinned_source(root,"tools/run_issue1_external_official_typed_pilot_v15.py")
         git_pinned_source(root,"tests/test_issue1_external_official_typed_pilot_v15.py")
+    if ec_root is not None:
+        git_pinned_source(root,"tools/issue1_ecv4_local_plugin_v1.py")
+        git_pinned_source(root,"tests/test_issue1_ecv4_local_plugin_v1.py")
+        from tools.issue1_ecv4_local_plugin_v1 import check_source
+        check_source(ec_root)
     root_result={
         "protocol":CONTRACT,
         "original_scope":"FROZEN_ECV4_4_NATIVE",
@@ -188,6 +206,9 @@ def run(root:Path=ROOT,ec_root:Path|None=None,
             "repeated_model_reinference":False,
             "repeat_old_455_regression":False,
             "successor_natural_semantics_verified":False,
+            "EC_formal_S3_S4_plugin_executed":
+                 successor_ec["mechanical_EC_dependency_resolved"],
+            "EC_original_core_modified":False,
             "full_AE_executed":False},
         "closure_decision":{
             "research_under_original_frozen_ECv4_4":
