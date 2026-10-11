@@ -1,0 +1,34 @@
+{
+  "schema": "ISSUE1_EXTERNAL_NL_V16_PYTHON_VERIFICATION_RECEIPT",
+  "date": "2026-10-11",
+  "source_pins": {
+    "tools/run_issue1_external_nl_source_audit_v16.py": "66e37deb55c10d16eac7e2458f04152a3f44ead0",
+    "tests/test_issue1_external_nl_source_audit_v16.py": "7f8e81740e76c736a2e41cbb5b45546996a78758",
+    "results/issue1_external_human_nl_diagnostic_v16_actual_2026-10-11.json": "fb6ed9e9088d06280bd2b3b894fc17a136bc1cec"
+  },
+  "observed_execution": {
+    "isolated_authorized_Mac_python_memory_only": true,
+    "filesystem_files_written_by_test_script": 0,
+    "remote_persisted_daemon": false,
+    "test_cases_discovered": 6,
+    "test_cases_run": 6,
+    "passing": 6,
+    "failures": 0,
+    "errors": 0,
+    "python_test_runner": "unittest.TextTestRunner",
+    "actual_audit_result": {
+      "natural_language_question_count": 10,
+      "published_example_answer_correct": 8,
+      "publisher_gold_decomposition_steps": 34,
+      "verbatim_identical_decompositions": 0
+    },
+    "limited_test_scope": "official published sample integrity and gold-free public model input only; not original multi-admissible S3 or real task S4"
+  },
+  "validation": {
+    "scoring_publisher_content_git_blobs_pinned": true,
+    "predictions_are_official_examples_not_model_inference": true,
+    "science_root_AC_added": 0,
+    "scientific_root_status": "2/18",
+    "independent_blind_heldout_proven": false
+  }
+}
