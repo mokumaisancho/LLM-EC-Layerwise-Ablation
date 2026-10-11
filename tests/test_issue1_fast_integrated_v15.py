@@ -79,6 +79,29 @@ class Issue1IntegratedV15Tests(unittest.TestCase):
                     ValueError, "G0_SUCCESSOR_NATIVE_SOURCE_COMMIT_MISMATCH"):
                 run(ROOT,ec_root=Path(tmp))
 
+    def test_research_local_plugin_really_runs_before_full_ae(self):
+        native_root=Path("/private/tmp/issue59-60-policy-v2")
+        if not native_root.is_dir():
+            self.skipTest("pinned EC native checkout not present")
+        actual=run(ROOT,ec_root=native_root)
+        f0=actual["stage_evidence"][PATHS[0]]["successor_native"]
+        proof=f0["research_local_plugin"]
+        self.assertTrue(f0["mechanical_EC_dependency_resolved"])
+        self.assertEqual(proof["status"],
+                         "REAL_EC_MODULE_PLUGIN_MECHANICS_VERIFIED")
+        self.assertEqual(proof["case_count"],3)
+        self.assertEqual([x["closure_diagnostic"]
+                          for x in proof["formal_cases"]],
+                         ["CONTINUE","CLOSE","CONTINUE"])
+        self.assertFalse(proof["original_18AC_scientific_PASSED"])
+        self.assertFalse(proof["frozen_original_ECv4_4_source_modified"])
+        self.assertTrue(actual["actual_progress"][
+                        "EC_formal_S3_S4_plugin_executed"])
+        self.assertFalse(actual["original_science_complete"])
+        self.assertEqual(actual["original_ac_pass"],2)
+        self.assertEqual(actual["separate_versioned_successor_terminal"],
+                         "SUCCESSOR_EXTERNAL_AUTHORITY_NOT_EVALUABLE")
+
     def test_existing_model_asset_cannot_be_unreported_capacity_failure(self):
         result=run(ROOT)
         cap=result["stage_evidence"][PATHS[2]]
