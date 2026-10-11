@@ -1,0 +1,15 @@
+{
+  "protocol": "ISSUE1_PHASE1_TCC_V11_FULL_REGRESSION_V17",
+  "observed_at_utc": "2026-10-11T00:07:09Z",
+  "tested_checkout_commit": "b92097b2739b7c0b91ac1d79fd7b522779914d20",
+  "command": "PYTHONDONTWRITEBYTECODE=1 nice -n 10 python3 -m unittest discover -s tests -q",
+  "test_count": 436,
+  "failures": 0,
+  "errors": 0,
+  "status": "PASS",
+  "exit_code": 0,
+  "elapsed_seconds": 92.842,
+  "log_sha256": "d32af0c97a8ec9ebbec52eb6bd916a2e63532b0e5221b14797746538f132a1dc",
+  "resource_note": "nice priority 10; 75 CPU-second limit; no bytecode writes",
+  "scientific_conclusion": "none; original Phase1 root remains 2/18 and blocked_native"
+}

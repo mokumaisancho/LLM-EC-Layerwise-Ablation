@@ -1,0 +1,213 @@
+{
+  "ECv4_handoff": {
+    "closure_authority": "ECv4",
+    "evidence": [
+      {
+        "attempt": 1,
+        "event": "NODE_START",
+        "kind": "action",
+        "node_id": "pin_additional_sources",
+        "seq": 1
+      },
+      {
+        "event": "HANDLER_EVIDENCE",
+        "items": [
+          "G0_ADDITIONAL_V11_SOURCES_PINNED"
+        ],
+        "node_id": "pin_additional_sources",
+        "seq": 2
+      },
+      {
+        "event": "STATE_WRITE",
+        "node_id": "pin_additional_sources",
+        "seq": 3,
+        "state_hash": "sha256:c558d50f5b21f1a3e7949293fc2c059d18418873ca1f6ac4022aac45117c06b8",
+        "transition_seq": 1
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_SUCCESS",
+        "node_id": "pin_additional_sources",
+        "seq": 4
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_START",
+        "kind": "action",
+        "node_id": "run_existing_original_v10_TCC",
+        "seq": 5
+      },
+      {
+        "event": "HANDLER_EVIDENCE",
+        "items": [
+          "V10_NATIVE_BLOCKER_PRESERVED"
+        ],
+        "node_id": "run_existing_original_v10_TCC",
+        "seq": 6
+      },
+      {
+        "event": "STATE_WRITE",
+        "node_id": "run_existing_original_v10_TCC",
+        "seq": 7,
+        "state_hash": "sha256:d7024c6fffe2383551d69ec2264c253609cc7a9fab456abe4edb2225c23d61ed",
+        "transition_seq": 2
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_SUCCESS",
+        "node_id": "run_existing_original_v10_TCC",
+        "seq": 8
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_START",
+        "kind": "action",
+        "node_id": "test_target_only_replay_v2",
+        "seq": 9
+      },
+      {
+        "event": "HANDLER_EVIDENCE",
+        "items": [
+          "V2_DEV_ADVERSARIAL_16_PASS"
+        ],
+        "node_id": "test_target_only_replay_v2",
+        "seq": 10
+      },
+      {
+        "event": "STATE_WRITE",
+        "node_id": "test_target_only_replay_v2",
+        "seq": 11,
+        "state_hash": "sha256:bcd28166c3a087d99cd49adf8db1377a6ad4d80ab1281a2ec9e52987fb2545b9",
+        "transition_seq": 3
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_SUCCESS",
+        "node_id": "test_target_only_replay_v2",
+        "seq": 12
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_START",
+        "kind": "action",
+        "node_id": "replay_external_AE_if_trusted",
+        "seq": 13
+      },
+      {
+        "event": "HANDLER_EVIDENCE",
+        "items": [
+          "NO_SCIENTIFIC_AE_AUTHORITY_CLAIM"
+        ],
+        "node_id": "replay_external_AE_if_trusted",
+        "seq": 14
+      },
+      {
+        "event": "STATE_WRITE",
+        "node_id": "replay_external_AE_if_trusted",
+        "seq": 15,
+        "state_hash": "sha256:d8e717094e2616809e2f2f9bee083c7d42deeb9d6e16d0e6e1961e66b5105093",
+        "transition_seq": 4
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_SUCCESS",
+        "node_id": "replay_external_AE_if_trusted",
+        "seq": 16
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_START",
+        "kind": "gate",
+        "node_id": "strict_original_18AC_gate",
+        "seq": 17
+      },
+      {
+        "event": "HANDLER_EVIDENCE",
+        "items": [
+          "ISSUE59_ISSUE60_NATIVE_SEMANTICS_UNQUALIFIED",
+          "ISSUE61_REAL_CAUSAL_AUTHORITY_NOT_ATTESTED"
+        ],
+        "node_id": "strict_original_18AC_gate",
+        "seq": 18
+      },
+      {
+        "event": "GATE_SELECTED",
+        "node_id": "strict_original_18AC_gate",
+        "outcome": "native_semantics_unqualified",
+        "seq": 19,
+        "target": "blocked_native"
+      },
+      {
+        "event": "TERMINAL_REACHED",
+        "node_id": "blocked_native",
+        "seq": 20,
+        "terminal_status": "BLOCKED"
+      }
+    ],
+    "runtime_result": "TERMINAL",
+    "schema": "tcc.ecv4-evidence.v0",
+    "spec_hash": "sha256:cd8fa9e2287903da48da762fb7dd043d3667e3bac9a767c5e363b452b264b289",
+    "state_hash": "sha256:d8e717094e2616809e2f2f9bee083c7d42deeb9d6e16d0e6e1961e66b5105093",
+    "state_transitions": [
+      {
+        "node_id": "pin_additional_sources",
+        "seq": 1,
+        "state_hash": "sha256:c558d50f5b21f1a3e7949293fc2c059d18418873ca1f6ac4022aac45117c06b8",
+        "writes": {
+          "source_v11": true
+        }
+      },
+      {
+        "node_id": "run_existing_original_v10_TCC",
+        "seq": 2,
+        "state_hash": "sha256:d7024c6fffe2383551d69ec2264c253609cc7a9fab456abe4edb2225c23d61ed",
+        "writes": {
+          "original_v10": true
+        }
+      },
+      {
+        "node_id": "test_target_only_replay_v2",
+        "seq": 3,
+        "state_hash": "sha256:bcd28166c3a087d99cd49adf8db1377a6ad4d80ab1281a2ec9e52987fb2545b9",
+        "writes": {
+          "replay_regression": true
+        }
+      },
+      {
+        "node_id": "replay_external_AE_if_trusted",
+        "seq": 4,
+        "state_hash": "sha256:d8e717094e2616809e2f2f9bee083c7d42deeb9d6e16d0e6e1961e66b5105093",
+        "writes": {
+          "real_trace": true
+        }
+      }
+    ],
+    "tcc_id": "ISSUE1-ORIGINAL-S1-S4-AC18-V11-ISSUE61",
+    "terminal_id": "blocked_native",
+    "terminal_status": "BLOCKED"
+  },
+  "TCC_edges": 12,
+  "TCC_nodes": 9,
+  "TCC_terminal": "blocked_native",
+  "errors": [],
+  "open_blockers": [
+    59,
+    60,
+    61
+  ],
+  "original_TCC_v10_terminal": "blocked_native",
+  "original_root_pass": 2,
+  "original_root_required": 18,
+  "original_science_complete": false,
+  "protocol": "ISSUE1_ORIGINAL_PHASE1_TCC_V11",
+  "replay_v2_negative_test_count": 16,
+  "replay_v2_real_evidence": "NOT_PROVIDED",
+  "replay_v2_stages": null,
+  "source_git_blobs": {
+    "tests/test_issue1_original_phase1_tcc_v11.py": "8d9d0b9152461b2da63ef2f217b1a830b0ed3a38",
+    "tests/test_issue1_phase1_ae_gate_v2.py": "52e4676d51710854378697a7d2dae334a838ce88",
+    "tools/issue1_phase1_ae_gate_v2.py": "23bf67820a9b50b2a7420c7c4c4c0f3439271586",
+    "tools/run_issue1_original_phase1_tcc_v11.py": "fd1e8bf7e69c01652e8ae8b38421f1e2f3142987"
+  },
+  "source_seals_stable": true
+}
