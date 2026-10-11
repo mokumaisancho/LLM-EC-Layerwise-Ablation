@@ -195,12 +195,12 @@ class Phase1OneCallTCCV13Test(unittest.TestCase):
             with patch(
                     "tools.run_issue1_original_phase1_tcc_v13.replay_v2",
                     side_effect=valid_then_corrupt):
-                result = run(TCC, ORIGINAL_NATIVE, POLICY_NATIVE,
-                             arms=a, gold=g, public=p, trusted_replay=trusted)
-        self.assertEqual(result["TCC_terminal"], "blocked_integrity")
-        self.assertTrue(any("G7_RAW_GOLD_PUBLIC_CHANGED_DURING_TRIAL" in x
-                            for x in result["errors"]))
-        self.assertFalse(result["scientific_phase1_complete"])
+                # A result-overturning post-replay gold mutation must abort
+                # the entire result, not return a plausible scored ledger.
+                with self.assertRaisesRegex(
+                        ValueError, "G7_RAW_GOLD_PUBLIC_CHANGED_DURING_TRIAL"):
+                    run(TCC, ORIGINAL_NATIVE, POLICY_NATIVE,
+                        arms=a, gold=g, public=p, trusted_replay=trusted)
 
     @unittest.skipUnless(HAS_NATIVE, "Pinned TCC/native checkout absent")
     def test_extra_E_layer_oracle_fails_the_entire_tcc(self):
