@@ -29,7 +29,7 @@ trace must never count as a single-layer causal intervention.
   to equal A**; their changed inputs can legitimately change results.
 - Every replayed stage is checked against the submitted output, upstream
   SHA and execution receipt, including actual engine fingerprint,
-  source-file digest, model, seed and parameters. The trusted judge
+  source-file digest, model, seed, parameters and actual callback symbol/source fingerprint. The trusted judge
   independently recomputes final_success. Public input SHA binds cases.
 - Source identity is checked before and after the full replay; v1 legacy
   gates remain additive (not removed). Output is always
@@ -43,10 +43,10 @@ PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v \
   tests.test_issue1_phase1_ae_gate_v2
 \`\`\`
 
-The 16 tests cover a clean matched eight-arm replay and hostile cases with
+The 17 tests cover a clean matched eight-arm replay and hostile cases with
 extra E_S1→S2, E_S2→S3, E_S3→S4 substitutions after internally consistent
 SHA rehashing. They also reject forged engine identifiers and fingerprints,
-missing receipts, source code pin mismatch, callback code from another file,
+missing receipts, source code pin mismatch, callback code from another file or swapped within the same file,
 missing authority, forged final outcome, altered public input, duplicate arm,
 corrupted upstream hash, mid-replay raw mutation, and a stage callback that attempts to receive
 Oracle gold as an extra parameter.
@@ -93,7 +93,7 @@ cases without gold available to any non-target model.
 
 The separate `tools/run_issue1_original_phase1_tcc_v11.py` compiles a
 new 9-node/12-edge TCC graph. It executes the unchanged v10 baseline,
-runs all 16 v2 adversarial tests as an automatic regression gate,
+runs all 17 v2 adversarial tests as an automatic regression gate,
 conditionally audits an in-process pretrusted A–E trace, checks pinned
 Git blobs before/after and returns `blocked_native` for #59/#60.
 Invalid E extra interventions through an actual replay authority route to
