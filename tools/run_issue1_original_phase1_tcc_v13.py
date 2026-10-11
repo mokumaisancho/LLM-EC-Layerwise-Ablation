@@ -495,9 +495,9 @@ def run(tcc_root: Path, old_native_root: Path, policy_native_root: Path,
                     "unmet_AC_parents": missing_ac,
                     "work_gate_dependencies": work,
                     "unqualified_work": [
-                        gate for gate in work if not
-                        state["work"].get(gate, "").startswith(
-                            ("PASS_", "MODEL_ASSET_VERIFIED"))
+                        gate for gate in work
+                        if gate in STEPS[3:9]  # Model asset != measured inference.
+                        or not state["work"].get(gate, "").startswith("PASS_")
                     ],
                     "MVP_required": ident in
                                     plan["original_mvp_required"],
