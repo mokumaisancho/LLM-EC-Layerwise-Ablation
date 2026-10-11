@@ -63,7 +63,7 @@
 - **A–E**：全4層で固定上流、8 arm（A/B/C/D/E_S1..4）、独立gold、LLM/native双方の同条件が揃わない→`blocked_ae`/適切な前提ブロッカー。
 - **指標**：Candidate Recall、Selection Accuracy、False Closure、Missed Reframe、Residual Recall、Reframing Recovery、Oracle gain等を独立再計算。得点差だけで因果層を推定しない。閾値変更や観測後フィクスチャ変更はversioned後継が必須。
 - **改ざんG0/G7**：計画、元AC、v12/v13、Oracle v2、テストのGit HEAD blob、外部raw/gold/public SHAを開始/各工程後/終了で再照合。0.5BモデルはストリーミングSHAを最初と最後に照合。実行中の証拠変更はfail closed。
-- **依存G1/G2/G11**：AC20／W11の欠落・未知親・循環・MVP範囲逸脱・未達親の子AC PASS・本物でない18/18成功を拒否。Actions自動実行は行わない。
+- **依存G1/G2/G11**：AC20／11工程（W00～W10）の欠落・未知親・循環・MVP範囲逸脱・未達親の子AC PASS・本物でない18/18成功を拒否。Actions自動実行は行わない。
 - **検証器**：v13は旧v10～v12を改変せず利用。原研究の凍結資料は上書きしない。TCC本体のノードが成功しても、それは「チェック作業の実行成功」であり、MVP科学的PASSとは別の状態値。
 
 ## 1回の再実行
