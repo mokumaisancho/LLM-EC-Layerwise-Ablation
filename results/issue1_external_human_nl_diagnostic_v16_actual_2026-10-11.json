@@ -1,0 +1,121 @@
+{
+  "schema": "ISSUE1_PUBLISHED_HUMAN_NL_DIAGNOSTIC_V16",
+  "as_of": "2026-10-11",
+  "data_source": {
+    "repo": "allenai/strategyqa-evaluator",
+    "commit": "49b88ed2b2f1b57385c13e8a0699dee1d227f83e",
+    "source_git_blobs": {
+      "gold_small.json": "31a98479a79d44d2a94ca0684e876411566ee21d",
+      "predictions_small.json": "7464a3d0e685a7679c7dfc6d58e8629c2a691426"
+    },
+    "source_url": "https://github.com/allenai/strategyqa-evaluator",
+    "prior_creation_distinct_from_research": true,
+    "data_scope": "OFFICIAL_REPRESENTATIVE_10_CASE_STRATEGYQA_EVALUATOR_SAMPLE",
+    "gold_is_public": true,
+    "pretrained_model_unseen_proven": false
+  },
+  "audit": {
+    "observed_case_count": 10,
+    "published_gold_question_decomposition_steps": 34,
+    "published_example_prediction_steps": 20,
+    "published_example_final_answer_agreement": 8,
+    "published_example_final_answer_total": 10,
+    "verbatim_exact_question_decomposition_matches": 0,
+    "verbatim_mismatch_not_semantic_failure": true,
+    "publisher_sample_predictions_are_not_real_LLM_inference": true,
+    "predictor_public_input_schema": [
+      "qid",
+      "question"
+    ],
+    "gold_score_isolated_in_checker": true,
+    "source_pins_match": true,
+    "negative_controls_rejected": 4,
+    "per_case": [
+      {
+        "qid": "e0044a7b4d146d611e73",
+        "publisher_gold_substeps": 5,
+        "publisher_example_substeps": 2,
+        "answer_agrees": true,
+        "verbatim_decomposition_match": false
+      },
+      {
+        "qid": "c69397b4341b65ed080f",
+        "publisher_gold_substeps": 2,
+        "publisher_example_substeps": 2,
+        "answer_agrees": true,
+        "verbatim_decomposition_match": false
+      },
+      {
+        "qid": "be5c9933987f046b476e",
+        "publisher_gold_substeps": 5,
+        "publisher_example_substeps": 2,
+        "answer_agrees": true,
+        "verbatim_decomposition_match": false
+      },
+      {
+        "qid": "1932e05f10680ece229f",
+        "publisher_gold_substeps": 3,
+        "publisher_example_substeps": 2,
+        "answer_agrees": true,
+        "verbatim_decomposition_match": false
+      },
+      {
+        "qid": "fb8b656051c742f5bd27",
+        "publisher_gold_substeps": 4,
+        "publisher_example_substeps": 2,
+        "answer_agrees": true,
+        "verbatim_decomposition_match": false
+      },
+      {
+        "qid": "c91eafafed5a8f80bb5a",
+        "publisher_gold_substeps": 3,
+        "publisher_example_substeps": 2,
+        "answer_agrees": false,
+        "verbatim_decomposition_match": false
+      },
+      {
+        "qid": "2047c0c34383f8014820",
+        "publisher_gold_substeps": 3,
+        "publisher_example_substeps": 2,
+        "answer_agrees": true,
+        "verbatim_decomposition_match": false
+      },
+      {
+        "qid": "7702ee1e9f757ebffdf1",
+        "publisher_gold_substeps": 3,
+        "publisher_example_substeps": 2,
+        "answer_agrees": true,
+        "verbatim_decomposition_match": false
+      },
+      {
+        "qid": "11d009721f27a60f9cff",
+        "publisher_gold_substeps": 3,
+        "publisher_example_substeps": 2,
+        "answer_agrees": false,
+        "verbatim_decomposition_match": false
+      },
+      {
+        "qid": "2a90188d5b82d12c036d",
+        "publisher_gold_substeps": 3,
+        "publisher_example_substeps": 2,
+        "answer_agrees": true,
+        "verbatim_decomposition_match": false
+      }
+    ]
+  },
+  "scientific_boundary": {
+    "D04": "EXTERNAL_PUBLISHED_NATURAL_LANGUAGE_ANNOTATIONS_PRESENT_BUT_NOT_QUALIFIED_FULL_S3_ADMISSIBLE_SET_OR_HELDOUT_BLIND",
+    "D05": "PUBLISHED_FINITE_QUESTION_DECOMPOSITIONS_PRESENT_BUT_NOT_S4_REAL_TASK_COMPLETE_OBLIGATIONS",
+    "S3_true_candidatewise_admissibility_proven": false,
+    "S4_real_world_closure_safety_proven": false,
+    "AE_true_target_only_real_runner_run": false,
+    "original_AC_promoted": false,
+    "original_science_AC_pass": 2
+  },
+  "execution": {
+    "mode": "GITHUB_CONNECTOR_SOURCE_READ_AND_IN_MEMORY_CHECK",
+    "local_Mac_or_DC_used": false,
+    "raw_question_text_redistributed": false,
+    "python_validation_script_added_but_not_run_due_sandbox_network": false
+  }
+}
