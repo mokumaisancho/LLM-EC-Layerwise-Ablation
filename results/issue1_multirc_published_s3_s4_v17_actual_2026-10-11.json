@@ -1,0 +1,63 @@
+{
+  "schema": "ISSUE1_MULTIRC_PUBLISHED_S3_S4_DIAGNOSTIC_V17",
+  "date": "2026-10-11",
+  "source": {
+    "original_publisher": "CogComp/multirc",
+    "git_mirror": "soujanyarbhat/aNswER_multirc",
+    "pinned_mirror_commit": "41d06bd291026f42fc3a44cbd021cc6f6f84d9bd",
+    "git_blob_sha": "847cbabd9de66ab7f37a3e7a2a1849ef51c9b1e5",
+    "source_path": "dataset/devData.json",
+    "mirror_not_original_authority": true,
+    "public_development_labels": true,
+    "raw_question_and_candidate_text_republished": false
+  },
+  "actual_data": {
+    "paragraphs": 83,
+    "natural_language_question_groups": 953,
+    "candidate_options": 4848,
+    "gold_correct_candidates": 2075,
+    "groups_with_2plus_correct": 653,
+    "groups_with_1_correct": 297,
+    "groups_with_0_correct": 3
+  },
+  "actual_lexical_diagnostic": {
+    "predictor": "PREDECLARED_PUBLIC_ONLY_CONTIGUOUS_NORMALIZED_LITERAL_CHECK_NOT_LLM_OR_EC",
+    "source_public_only_passage_question_candidate_text": true,
+    "labels_not_passed_as_predictor_input": true,
+    "private_blind_heldout_claim": false,
+    "TP": 838,
+    "FP": 796,
+    "FN": 1237,
+    "TN": 1977,
+    "exact_question_candidate_set_matches": 89,
+    "question_exact_set_rate": 0.09338929695697797,
+    "option_micro_precision": 0.5128518971848225,
+    "option_micro_recall": 0.403855421686747,
+    "option_micro_F1": 0.45187382043677543
+  },
+  "S4_bounded_question_submission": {
+    "all_953_question_option_partitions_complete": true,
+    "all_candidates_explicitly_decided": 4848,
+    "formal_closed_world_submission_cases": 953,
+    "real_world_task_closure_authorized": false,
+    "not_original_S4_false_closure_measure": true,
+    "explicit_negative_s4_controls_rejected": 4,
+    "private_gold_leakage_controls_rejected": 2
+  },
+  "integrity": {
+    "source_git_blob_matches": true,
+    "actual_numbers_independently_recomputed_in_connector_JS": true,
+    "all_6_adversarial_controls_rejected": 6,
+    "local_mac_or_DC_used": false,
+    "python_repo_implementation_written_but_not_executed": true
+  },
+  "science": {
+    "D04_external_multi_admissible_true_public_labels_exist": true,
+    "D04_independent_blinded_heldout_unseen_qualified": false,
+    "D05_complete_closed_world_candidate_partition_qualified": true,
+    "D05_full_real_world_task_obligation_inventory_qualified": false,
+    "original_S3_S4_scientific_AC_proven": false,
+    "real_LLMAE_experiment_run": false,
+    "root_original_AC_pass": 2
+  }
+}
