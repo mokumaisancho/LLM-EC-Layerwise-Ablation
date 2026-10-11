@@ -77,11 +77,15 @@ def load_1p5(root:Path):
     return d
 
 def run(root:Path=ROOT,ec_root:Path|None=None,
-        independent_provenance:Path|None=None):
+        independent_provenance:Path|None=None,
+        include_official_pilot:bool=False):
     source_files=[*BLOBS,ONEP5]
     before={x:blob(root/x) for x in source_files}
     git_pinned_source(root,"tools/run_issue1_fast_integrated_v15.py")
     git_pinned_source(root,"tests/test_issue1_fast_integrated_v15.py")
+    if include_official_pilot:
+        git_pinned_source(root,"tools/run_issue1_external_official_typed_pilot_v15.py")
+        git_pinned_source(root,"tests/test_issue1_external_official_typed_pilot_v15.py")
     f0=original_feasibility(root)
     gate(f0["terminal"]=="INFEASIBLE_UNDER_FROZEN_ECV4_4_INTERFACE" and
          f0["scientific_root_AC_pass"]==2 and
@@ -118,6 +122,20 @@ def run(root:Path=ROOT,ec_root:Path|None=None,
              "G6_EXTERNAL_DOCUMENT_INVALID")
         f1["provided_source_sha256"]=sha(independent_provenance)
         f1["status"]="UNVERIFIED_DOCUMENT_PRESENT_EXTERNAL_CUSTODY_REQUIRED"
+    if include_official_pilot:
+        from tools.run_issue1_external_official_typed_pilot_v15 import run as official_pilot
+        independent_public=official_pilot()
+        gate(independent_public["official_source_tests"]==46
+             and independent_public["published_expected_labels_matched"]==46
+             and not independent_public["original_MVP18_pass_raised"]
+             and not independent_public["S4_real_world_task_complete_inventory_certified"]
+             and not independent_public["S3_arbitrary_natural_language_semantics_certified"],
+             "G8_THIRD_PARTY_TYPED_PILOT_WRONGLY_PROMOTED_TO_ROOT")
+        f1["official_third_party_typed_pilot"]={
+            "status":independent_public["status"],
+            "official_published_cases":46,"verified_expected_labels":46,
+            "real_world_task_S4_authority":False,
+            "natural_language_general_semantics_authority":False}
     recorded=load_1p5(root)
     f2={
         "status":"COMPLETED_USING_PRIOR_REAL_EXPERIMENT_NOT_NEW_INFERENCE",
@@ -147,6 +165,9 @@ def run(root:Path=ROOT,ec_root:Path|None=None,
     gate(before==after,"G7_FROZEN_MODEL_EVIDENCE_MUTATED_MIDRUN")
     git_pinned_source(root,"tools/run_issue1_fast_integrated_v15.py")
     git_pinned_source(root,"tests/test_issue1_fast_integrated_v15.py")
+    if include_official_pilot:
+        git_pinned_source(root,"tools/run_issue1_external_official_typed_pilot_v15.py")
+        git_pinned_source(root,"tests/test_issue1_external_official_typed_pilot_v15.py")
     root_result={
         "protocol":CONTRACT,
         "original_scope":"FROZEN_ECV4_4_NATIVE",
@@ -196,10 +217,11 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument("--ec-root",type=Path)
     parser.add_argument("--independent-provenance",type=Path)
+    parser.add_argument("--include-official-pilot",action="store_true")
     parser.add_argument("--out",type=Path)
     a=parser.parse_args()
     try:
-        d=run(ROOT,a.ec_root,a.independent_provenance)
+        d=run(ROOT,a.ec_root,a.independent_provenance,a.include_official_pilot)
         if a.out:
             gate(not a.out.is_symlink(),"G7_OUTPUT_SYMLINK_FORBIDDEN")
             a.out.write_text(json.dumps(d,ensure_ascii=False,sort_keys=True,indent=2)+"\n")
