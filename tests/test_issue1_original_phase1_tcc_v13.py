@@ -171,6 +171,12 @@ class Phase1OneCallTCCV13Test(unittest.TestCase):
         self.assertEqual(ledger["AC-19"]["state"], "PASS")
         self.assertEqual(ledger["AC-20"]["state"], "PASS")
         self.assertEqual(ledger["AC-09"]["state"], "NOT_PROVEN")
+        self.assertIn("W03_CHECK_LLM_CAPACITY",
+                      ledger["AC-13"]["unqualified_work"])
+        self.assertIn("W03_CHECK_LLM_CAPACITY",
+                      ledger["AC-14"]["unqualified_work"])
+        self.assertIn("W03_CHECK_LLM_CAPACITY",
+                      ledger["AC-15"]["unqualified_work"])
 
     @unittest.skipUnless(HAS_NATIVE, "Pinned TCC/native checkout absent")
     def test_result_overturning_gold_mutation_after_replay_fails_closed(self):
