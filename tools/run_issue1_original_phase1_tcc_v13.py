@@ -502,12 +502,9 @@ def run(tcc_root: Path, old_native_root: Path, policy_native_root: Path,
                     "MVP_required": ident in
                                     plan["original_mvp_required"],
                 }
-            require(len(ledger) == 20 and
-                    [k for k, v in ledger.items() if v["state"] == "PASS"]
-                    == ["AC-19", "AC-20"]
-                    or (len(ledger) == 20
-                        and {k for k, v in ledger.items()
-                             if v["state"] == "PASS"} == {"AC-19", "AC-20"}),
+            require(len(ledger) == 20
+                    and {k for k, v in ledger.items()
+                         if v["state"] == "PASS"} == {"AC-19", "AC-20"},
                     "G11_MVP_AC_UNSUPPORTED_PROMOTION")
             # A machine gate may run and PASS operationally, but AC cannot
             # pass until independent, true causal experiment is validated.
@@ -515,7 +512,7 @@ def run(tcc_root: Path, old_native_root: Path, policy_native_root: Path,
             state["audits"]["AC_pass"] = 2
             state["audits"]["AC_unproven"] = [
                 key for key in plan["original_mvp_required"]
-                if ledger[key]["state"] != "PASS"]
+                if ledger[key]["state"] != "PASS"
             ]
             require(len(state["audits"]["AC_unproven"]) == 16,
                     "G11_UNSUPPORTED_AC_COUNT")
