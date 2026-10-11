@@ -24,7 +24,7 @@ from tools.run_issue1_original_phase1_tcc_v11 import (
 from tools.run_issue57_tcc_generator_gate import context_for, node
 
 PROTOCOL = "ISSUE1_ORIGINAL_PHASE1_SOURCE_POLICY_TCC_V12"
-NATIVE_COMMIT = "b5eb0c7d57ce819194e7ca840628007bd582274b"
+NATIVE_COMMIT = "3f435ad4365d846d96264458540efb4848ce3541"
 NATIVE_PIN = {
     "01_repo/src/v4/ec_layerwise_source_policy_authority_v2.py":
         "7da0cd8d876505cafdd5a9811132427e2f441a14",
