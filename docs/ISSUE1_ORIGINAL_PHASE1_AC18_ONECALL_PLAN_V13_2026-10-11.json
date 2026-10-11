@@ -1,0 +1,411 @@
+{
+  "protocol": "ISSUE1_ORIGINAL_PHASE1_AC18_ONECALL_PLAN_V13",
+  "parent_issue": 1,
+  "authoritative_AC_document": "ACCEPTANCE_CRITERIA.md",
+  "frozen_contract": "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+  "frozen_contract_git_blob": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+  "original_mvp_required": [
+    "AC-01",
+    "AC-02",
+    "AC-03",
+    "AC-04",
+    "AC-05",
+    "AC-06",
+    "AC-07",
+    "AC-08",
+    "AC-09",
+    "AC-11",
+    "AC-12",
+    "AC-13",
+    "AC-14",
+    "AC-15",
+    "AC-16",
+    "AC-17",
+    "AC-19",
+    "AC-20"
+  ],
+  "post_mvp": [
+    "AC-10",
+    "AC-18"
+  ],
+  "original_ac_dependencies": {
+    "AC-19": [],
+    "AC-02": [
+      "AC-19"
+    ],
+    "AC-01": [
+      "AC-02"
+    ],
+    "AC-07": [
+      "AC-01"
+    ],
+    "AC-17": [
+      "AC-07"
+    ],
+    "AC-16": [
+      "AC-17"
+    ],
+    "AC-03": [
+      "AC-02",
+      "AC-19",
+      "ISSUE-22"
+    ],
+    "AC-04": [
+      "AC-02",
+      "AC-03"
+    ],
+    "AC-11": [
+      "ISSUE-23",
+      "ISSUE-20"
+    ],
+    "AC-12": [
+      "AC-04",
+      "AC-11"
+    ],
+    "AC-13": [
+      "ISSUE-12",
+      "ISSUE-22"
+    ],
+    "AC-14": [
+      "AC-01",
+      "AC-13"
+    ],
+    "AC-15": [],
+    "AC-05": [
+      "AC-01",
+      "AC-03",
+      "AC-04",
+      "AC-07",
+      "AC-17",
+      "ISSUE-22"
+    ],
+    "AC-06": [
+      "AC-04",
+      "AC-05",
+      "AC-11",
+      "AC-12",
+      "AC-16",
+      "AC-17"
+    ],
+    "AC-08": [
+      "AC-05",
+      "AC-06",
+      "ISSUE-21"
+    ],
+    "AC-09": [
+      "AC-05",
+      "AC-08",
+      "ISSUE-21"
+    ],
+    "AC-10": [
+      "AC-08",
+      "AC-09",
+      "AC-19"
+    ],
+    "AC-18": [
+      "AC-03",
+      "AC-06",
+      "AC-08",
+      "AC-10_IF_NEEDED"
+    ],
+    "AC-20": []
+  },
+  "ac_work_gates": {
+    "AC-01": [
+      "W07_RUN_MATCHED_AE"
+    ],
+    "AC-02": [
+      "W07_RUN_MATCHED_AE"
+    ],
+    "AC-03": [
+      "W04_CHECK_S3_SEMANTICS",
+      "W05_CHECK_S4_COMPLETENESS",
+      "W07_RUN_MATCHED_AE"
+    ],
+    "AC-04": [
+      "W08_SCORE_CAUSAL_METRICS"
+    ],
+    "AC-05": [
+      "W06_VERIFY_REAL_RUNNER",
+      "W07_RUN_MATCHED_AE",
+      "W08_SCORE_CAUSAL_METRICS"
+    ],
+    "AC-06": [
+      "W08_SCORE_CAUSAL_METRICS"
+    ],
+    "AC-07": [
+      "W06_VERIFY_REAL_RUNNER",
+      "W07_RUN_MATCHED_AE"
+    ],
+    "AC-08": [
+      "W08_SCORE_CAUSAL_METRICS",
+      "W09_AC20_SCORE"
+    ],
+    "AC-09": [
+      "W08_SCORE_CAUSAL_METRICS",
+      "W09_AC20_SCORE"
+    ],
+    "AC-10": [
+      "W09_AC20_SCORE"
+    ],
+    "AC-11": [
+      "W04_CHECK_S3_SEMANTICS",
+      "W05_CHECK_S4_COMPLETENESS"
+    ],
+    "AC-12": [
+      "W05_CHECK_S4_COMPLETENESS",
+      "W08_SCORE_CAUSAL_METRICS"
+    ],
+    "AC-13": [
+      "W03_CHECK_LLM_CAPACITY",
+      "W07_RUN_MATCHED_AE"
+    ],
+    "AC-14": [
+      "W03_CHECK_LLM_CAPACITY",
+      "W07_RUN_MATCHED_AE"
+    ],
+    "AC-15": [
+      "W03_CHECK_LLM_CAPACITY",
+      "W07_RUN_MATCHED_AE"
+    ],
+    "AC-16": [
+      "W06_VERIFY_REAL_RUNNER",
+      "W08_SCORE_CAUSAL_METRICS"
+    ],
+    "AC-17": [
+      "W04_CHECK_S3_SEMANTICS",
+      "W05_CHECK_S4_COMPLETENESS",
+      "W06_VERIFY_REAL_RUNNER"
+    ],
+    "AC-18": [
+      "W09_AC20_SCORE"
+    ],
+    "AC-19": [
+      "W00_SOURCE_AND_CONTRACT"
+    ],
+    "AC-20": [
+      "W00_SOURCE_AND_CONTRACT"
+    ]
+  },
+  "work_gates": {
+    "W00_SOURCE_AND_CONTRACT": {
+      "needs": [],
+      "issues": [],
+      "outputs": [
+        "frozen AC20+MVP18",
+        "threshold 0.20",
+        "base source seals",
+        "external input SHA pins"
+      ],
+      "branch_pass": "W01_EXECUTE_V12",
+      "branch_fail": "INTEGRITY_FAILED"
+    },
+    "W01_EXECUTE_V12": {
+      "needs": [
+        "W00_SOURCE_AND_CONTRACT"
+      ],
+      "issues": [
+        1
+      ],
+      "outputs": [
+        "v10→v11→v12 compiled TCC",
+        "17 E adversarial controls",
+        "46 S3/S4 source tests",
+        "original 2/18 ledger"
+      ],
+      "branch_pass": "W02_REBUILD_AC_DAG",
+      "branch_fail": "INTEGRITY_FAILED"
+    },
+    "W02_REBUILD_AC_DAG": {
+      "needs": [
+        "W01_EXECUTE_V12"
+      ],
+      "issues": [
+        1
+      ],
+      "outputs": [
+        "20 AC topological DAG",
+        "18 MVP statuses",
+        "post-MVP 10/18 excluded",
+        "issue snapshot"
+      ],
+      "branch_pass": "W03_CHECK_LLM_CAPACITY",
+      "branch_fail": "INTEGRITY_FAILED"
+    },
+    "W03_CHECK_LLM_CAPACITY": {
+      "needs": [
+        "W02_REBUILD_AC_DAG"
+      ],
+      "issues": [
+        14
+      ],
+      "outputs": [
+        "verified lightweight LLM source/cache/model receipts or explicit blocker"
+      ],
+      "branch_pass": "W06_VERIFY_REAL_RUNNER",
+      "branch_fail": "BLOCKED_MODEL_PROVENANCE"
+    },
+    "W04_CHECK_S3_SEMANTICS": {
+      "needs": [
+        "W02_REBUILD_AC_DAG"
+      ],
+      "issues": [
+        59
+      ],
+      "outputs": [
+        "source-custodied independently blind S3 judgments or explicit blocker"
+      ],
+      "branch_pass": "W06_VERIFY_REAL_RUNNER",
+      "branch_fail": "BLOCKED_EXTERNAL_SEMANTICS"
+    },
+    "W05_CHECK_S4_COMPLETENESS": {
+      "needs": [
+        "W02_REBUILD_AC_DAG"
+      ],
+      "issues": [
+        60
+      ],
+      "outputs": [
+        "independently complete S4 obligations incl positive empty proof or explicit blocker"
+      ],
+      "branch_pass": "W06_VERIFY_REAL_RUNNER",
+      "branch_fail": "BLOCKED_EXTERNAL_SEMANTICS"
+    },
+    "W06_VERIFY_REAL_RUNNER": {
+      "needs": [
+        "W03_CHECK_LLM_CAPACITY",
+        "W04_CHECK_S3_SEMANTICS",
+        "W05_CHECK_S4_COMPLETENESS"
+      ],
+      "issues": [
+        61
+      ],
+      "outputs": [
+        "trusted actual source-pinned target-only E replay / abstain"
+      ],
+      "branch_pass": "W07_RUN_MATCHED_AE",
+      "branch_fail": "BLOCKED_RUNTIME_ATTESTATION"
+    },
+    "W07_RUN_MATCHED_AE": {
+      "needs": [
+        "W06_VERIFY_REAL_RUNNER"
+      ],
+      "issues": [
+        9
+      ],
+      "outputs": [
+        "A/B/C/D/E_S1..S4 all matched; genuine model+EC+Oracle traces / abstain"
+      ],
+      "branch_pass": "W08_SCORE_CAUSAL_METRICS",
+      "branch_fail": "BLOCKED_FULL_AE"
+    },
+    "W08_SCORE_CAUSAL_METRICS": {
+      "needs": [
+        "W07_RUN_MATCHED_AE"
+      ],
+      "issues": [
+        1
+      ],
+      "outputs": [
+        "candidate recall",
+        "selection accuracy",
+        "false closure",
+        "missed reframe",
+        "oracle gain per layer",
+        "latency/cost"
+      ],
+      "branch_pass": "W09_AC20_SCORE",
+      "branch_fail": "BLOCKED_FULL_AE"
+    },
+    "W09_AC20_SCORE": {
+      "needs": [
+        "W08_SCORE_CAUSAL_METRICS"
+      ],
+      "issues": [
+        1
+      ],
+      "outputs": [
+        "no AC PASS with failed prerequisite",
+        "fixed 0.20",
+        "dominant layer/tie/no gain"
+      ],
+      "branch_pass": "W10_STRICT_EXIT",
+      "branch_fail": "BLOCKED_AC_EVIDENCE"
+    },
+    "W10_STRICT_EXIT": {
+      "needs": [
+        "W09_AC20_SCORE"
+      ],
+      "issues": [
+        1
+      ],
+      "outputs": [
+        "18/18 scientific PASS, else evidence-specific blocker"
+      ],
+      "branch_pass": "ROOT_MVP_VERIFIED",
+      "branch_fail": "BLOCKED_AC_EVIDENCE"
+    }
+  },
+  "frozen_materiality_abs": 0.2,
+  "frozen_tie_abs": 0.1,
+  "issue_state_snapshot": {
+    "observed_date_jst": "2026-10-11",
+    "states": {
+      "ISSUE-1": "OPEN",
+      "ISSUE-9": "OPEN",
+      "ISSUE-12": "CLOSED",
+      "ISSUE-14": "OPEN",
+      "ISSUE-20": "CLOSED",
+      "ISSUE-21": "CLOSED",
+      "ISSUE-22": "CLOSED",
+      "ISSUE-23": "CLOSED",
+      "ISSUE-59": "OPEN",
+      "ISSUE-60": "OPEN",
+      "ISSUE-61": "OPEN"
+    },
+    "warning": "GitHub issue open/closed is planning metadata only, never semantic or scientific AC evidence; offline snapshots do not prove live state."
+  },
+  "pathways": {
+    "native_s3_and_s4": "#59 AND #60 independent authority; only formal policy proof => BLOCKED_EXTERNAL_SEMANTICS",
+    "llm_capacity": "#14 original lightweight model or frozen protocol capacity fallback; no 4B automatic escalation",
+    "oracle": "#61 independently trusted actual target-only runner, no author-claimed receipt or self-signed authority",
+    "candidate_fixed_set": "#9 matched A/B and C/D upstream invariant",
+    "full_experiment": "W03 AND W04 AND W05 AND W06 AND W07",
+    "final": "W08 AND W09 AND 18 independent scientific PASS => ROOT_MVP_VERIFIED",
+    "insufficient_or_changed_evidence": "INTEGRITY_FAILED without credit",
+    "optional_input_absent": "run all machine gates in one call and finish at explicit blocker; no human prompt loops"
+  },
+  "forbidden": [
+    "promote finite typed policy to natural-language semantic authority",
+    "promote unsigned execution receipt to true Oracle provenance",
+    "promote cached llm label without measured hash",
+    "alter v1/v10/v11/v12 frozen evidence in place",
+    "auto close any original AC without independent real A-E",
+    "turn optional proof13 or 120 documents into original MVP gates",
+    "auto enable Github Actions"
+  ],
+  "stop_states": [
+    "ROOT_MVP_VERIFIED",
+    "BLOCKED_EXTERNAL_SEMANTICS",
+    "BLOCKED_MODEL_PROVENANCE",
+    "BLOCKED_RUNTIME_ATTESTATION",
+    "BLOCKED_FULL_AE",
+    "BLOCKED_AC_EVIDENCE",
+    "INTEGRITY_FAILED"
+  ],
+  "invariants": [
+    "G0_BLOB_PRE_POST",
+    "G1_DAG_NO_CYCLE",
+    "G2_NO_AC_CHILD_PASS_WITH_FAILED_PARENT",
+    "G3_NATIVE_AUTHORITY_NOT_SELF_ASSUMED",
+    "G4_SAME_UPSTREAM_AND_NO_SILENT_REGEN",
+    "G5_E_TARGET_ONLY_PINNED_REPLAY",
+    "G6_NO_GOLD_MODEL_ACCESS",
+    "G7_RAW_GOLD_CONFIG_STABLE",
+    "G8_EXTERNAL_PROOF_NOT_SELF_CERTIFIED",
+    "G9_ORIGINAL_MATERIALITY_UNCHANGED",
+    "G10_NO_DUPLICATE_CASE_OR_ARM",
+    "G11_ONLY_18_SCOPED_SCIENTIFIC_PASS_ROOT_SUCCESS",
+    "G12_NO_FAKE_ENGINE_OR_LLM_FALLBACK"
+  ]
+}
