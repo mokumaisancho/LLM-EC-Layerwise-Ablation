@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import urllib.request
+from importlib.metadata import version as package_version
 
 UPSTREAM_REPO="json-schema-org/JSON-Schema-Test-Suite"
 UPSTREAM_COMMIT="7de0e6a06031ede80028583dd45d0cd41105ae5b"
@@ -72,7 +73,7 @@ def run(fetch=get):
         "official_source_tests":total,"published_expected_labels_matched":matched,
         "all_admissible_groups":len(source),"mixed_admissibility_groups":mixed,
         "gold_valid":num_true,"gold_invalid":num_false,
-        "validator_library":"jsonschema","validator_version":getattr(jsonschema,"__version__","unknown"),
+        "validator_library":"jsonschema","validator_version":package_version("jsonschema"),
         "upstream_publishers_distinct_from_this_research_project":True,
         "source_custody_is_externally_published_not_expert_double_adjudication":True,
         "gold_visible_to_current_scoring_script":True,
