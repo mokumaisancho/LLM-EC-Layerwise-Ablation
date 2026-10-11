@@ -171,10 +171,10 @@ def run(tcc_root: Path, native_successor: Path | None = None,
                 "tests.test_issue1_phase1_ae_gate_v2")
             out = unittest.TextTestRunner(
                 stream=io.StringIO(), verbosity=0).run(suite)
-            must(out.wasSuccessful() and out.testsRun == 16,
+            must(out.wasSuccessful() and out.testsRun == 17,
                  "G8_TARGET_ONLY_NEGATIVE_TESTS_FAILED")
             state["dev_tests"] = out.testsRun
-            return done("replay_regression", "V2_DEV_ADVERSARIAL_16_PASS")
+            return done("replay_regression", "V2_DEV_ADVERSARIAL_17_PASS")
         return capture("REGRESSION", action)
 
     def real(_n, _s, _a):
