@@ -6,7 +6,7 @@ Frozen original S1–S4, 18 MVP AC and materiality 0.20 remain unchanged. No opt
 
 1. Seal new v12 source blobs before execution.
 2. Execute original v11 TCC (includes v10, old native mismatch, 17 issue #61 adversarial controls) and require original **2/18**.
-3. Pin new EC source-policy v2 commit `b5eb0c7d57ce819194e7ca840628007bd582274b`, native module and tests by Git blob digest.
+3. Pin new EC source-policy v2 commit `3f435ad4365d846d96264458540efb4848ce3541`, native module and tests by Git blob digest.
 4. Run new and old EC policy/native source tests, **46 tests PASS** with 24 distinct formal public-input cases.
 5. Recheck all source blobs; never upgrade author-visible finite formal semantics to independently validated natural-language semantics or real-world obligation completeness.
 6. If source, tests or executor integrity fails, return `blocked_integrity`; if checks pass but independent semantic custody is missing, return `blocked_external_semantics`. Original 18AC completion is forbidden until real A/B/C/D/E all-layer model/native/Oracle evidence.
