@@ -1,0 +1,255 @@
+{
+  "ECv4_handoff": {
+    "closure_authority": "ECv4",
+    "evidence": [
+      {
+        "attempt": 1,
+        "event": "NODE_START",
+        "kind": "action",
+        "node_id": "freeze_new_tcc_v12",
+        "seq": 1
+      },
+      {
+        "event": "HANDLER_EVIDENCE",
+        "items": [
+          "V12_SOURCE_REPO_BLOBS_PINNED"
+        ],
+        "node_id": "freeze_new_tcc_v12",
+        "seq": 2
+      },
+      {
+        "event": "STATE_WRITE",
+        "node_id": "freeze_new_tcc_v12",
+        "seq": 3,
+        "state_hash": "sha256:00838e67bcc32b05007e93c82b0e6ede17ffd37beaa245601560778531845a43",
+        "transition_seq": 1
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_SUCCESS",
+        "node_id": "freeze_new_tcc_v12",
+        "seq": 4
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_START",
+        "kind": "action",
+        "node_id": "replay_original_tcc_v11",
+        "seq": 5
+      },
+      {
+        "event": "HANDLER_EVIDENCE",
+        "items": [
+          "ORIGINAL_18AC_V11_CAUSAL_GATE_VALID"
+        ],
+        "node_id": "replay_original_tcc_v11",
+        "seq": 6
+      },
+      {
+        "event": "STATE_WRITE",
+        "node_id": "replay_original_tcc_v11",
+        "seq": 7,
+        "state_hash": "sha256:1431e69bbfb96691c7b95fdbaef072864d82a062cdb4ebf2255e6b3fc94e217a",
+        "transition_seq": 2
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_SUCCESS",
+        "node_id": "replay_original_tcc_v11",
+        "seq": 8
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_START",
+        "kind": "action",
+        "node_id": "pin_new_source_policy_engine",
+        "seq": 9
+      },
+      {
+        "event": "HANDLER_EVIDENCE",
+        "items": [
+          "W4B_W4C_NATIVE_POLICY_V2_SOURCE_AND_TEST_SEALED"
+        ],
+        "node_id": "pin_new_source_policy_engine",
+        "seq": 10
+      },
+      {
+        "event": "STATE_WRITE",
+        "node_id": "pin_new_source_policy_engine",
+        "seq": 11,
+        "state_hash": "sha256:8727399528c67c6b920b6cec92c9d9ce0d8e8aeba5ab7a9c3f3c38629306759d",
+        "transition_seq": 3
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_SUCCESS",
+        "node_id": "pin_new_source_policy_engine",
+        "seq": 12
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_START",
+        "kind": "action",
+        "node_id": "run_W4B_S3_W4C_S4_policy_tests",
+        "seq": 13
+      },
+      {
+        "event": "HANDLER_EVIDENCE",
+        "items": [
+          "W4B_W4C_46_NEGATIVE_TESTS_24_DISJOINT_FORMAL_CASES_PASS"
+        ],
+        "node_id": "run_W4B_S3_W4C_S4_policy_tests",
+        "seq": 14
+      },
+      {
+        "event": "STATE_WRITE",
+        "node_id": "run_W4B_S3_W4C_S4_policy_tests",
+        "seq": 15,
+        "state_hash": "sha256:127b04f566944350bfe1b63c65162c0b28299eb17fdf527f133384ca183df2aa",
+        "transition_seq": 4
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_SUCCESS",
+        "node_id": "run_W4B_S3_W4C_S4_policy_tests",
+        "seq": 16
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_START",
+        "kind": "action",
+        "node_id": "verify_scientific_authority_scope",
+        "seq": 17
+      },
+      {
+        "event": "HANDLER_EVIDENCE",
+        "items": [
+          "FORMAL_POLICY_ONLY_INDEPENDENT_NL_UNKNOWN"
+        ],
+        "node_id": "verify_scientific_authority_scope",
+        "seq": 18
+      },
+      {
+        "event": "STATE_WRITE",
+        "node_id": "verify_scientific_authority_scope",
+        "seq": 19,
+        "state_hash": "sha256:2889f38106f94b739465717f345bcc152944e18ed6832c2c760e692cf0bf4ed7",
+        "transition_seq": 5
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_SUCCESS",
+        "node_id": "verify_scientific_authority_scope",
+        "seq": 20
+      },
+      {
+        "attempt": 1,
+        "event": "NODE_START",
+        "kind": "gate",
+        "node_id": "strict_original_18AC_exit",
+        "seq": 21
+      },
+      {
+        "event": "HANDLER_EVIDENCE",
+        "items": [
+          "ISSUE59_NATURAL_SEMANTIC_AUTHORITY_UNPROVEN",
+          "ISSUE60_REAL_WORLD_OBLIGATION_COMPLETENESS_UNPROVEN",
+          "ISSUE61_REAL_AE_RUNNER_UNATTESTED"
+        ],
+        "node_id": "strict_original_18AC_exit",
+        "seq": 22
+      },
+      {
+        "event": "GATE_SELECTED",
+        "node_id": "strict_original_18AC_exit",
+        "outcome": "independent_semantics_missing",
+        "seq": 23,
+        "target": "blocked_external_semantics"
+      },
+      {
+        "event": "TERMINAL_REACHED",
+        "node_id": "blocked_external_semantics",
+        "seq": 24,
+        "terminal_status": "BLOCKED"
+      }
+    ],
+    "runtime_result": "TERMINAL",
+    "schema": "tcc.ecv4-evidence.v0",
+    "spec_hash": "sha256:46ef7fd5daadfcd66189d3ea06c95d3e972acc0f76560ff217dc18733d9f0843",
+    "state_hash": "sha256:2889f38106f94b739465717f345bcc152944e18ed6832c2c760e692cf0bf4ed7",
+    "state_transitions": [
+      {
+        "node_id": "freeze_new_tcc_v12",
+        "seq": 1,
+        "state_hash": "sha256:00838e67bcc32b05007e93c82b0e6ede17ffd37beaa245601560778531845a43",
+        "writes": {
+          "new_sources": true
+        }
+      },
+      {
+        "node_id": "replay_original_tcc_v11",
+        "seq": 2,
+        "state_hash": "sha256:1431e69bbfb96691c7b95fdbaef072864d82a062cdb4ebf2255e6b3fc94e217a",
+        "writes": {
+          "original_v11": true
+        }
+      },
+      {
+        "node_id": "pin_new_source_policy_engine",
+        "seq": 3,
+        "state_hash": "sha256:8727399528c67c6b920b6cec92c9d9ce0d8e8aeba5ab7a9c3f3c38629306759d",
+        "writes": {
+          "native_pin": true
+        }
+      },
+      {
+        "node_id": "run_W4B_S3_W4C_S4_policy_tests",
+        "seq": 4,
+        "state_hash": "sha256:127b04f566944350bfe1b63c65162c0b28299eb17fdf527f133384ca183df2aa",
+        "writes": {
+          "public_policy_tests": true
+        }
+      },
+      {
+        "node_id": "verify_scientific_authority_scope",
+        "seq": 5,
+        "state_hash": "sha256:2889f38106f94b739465717f345bcc152944e18ed6832c2c760e692cf0bf4ed7",
+        "writes": {
+          "scope_gate": true
+        }
+      }
+    ],
+    "tcc_id": "ISSUE1-ORIGINAL-S1-S4-AC18-V12-W4BC",
+    "terminal_id": "blocked_external_semantics",
+    "terminal_status": "BLOCKED"
+  },
+  "TCC_edges": 13,
+  "TCC_nodes": 10,
+  "TCC_terminal": "blocked_external_semantics",
+  "errors": [],
+  "independent_natural_semantics_proven": false,
+  "independently_complete_real_world_obligations": false,
+  "native_git_commit": "b5eb0c7d57ce819194e7ca840628007bd582274b",
+  "new_formal_disjoint_cases": 24,
+  "new_native_pinned_blobs": {
+    "01_repo/src/v4/ec_layerwise_source_policy_authority_v2.py": "7da0cd8d876505cafdd5a9811132427e2f441a14",
+    "01_repo/tests/test_ec_layerwise_source_policy_authority_v2.py": "4b3325d418874be139b71cb7c715040fd9586821"
+  },
+  "new_native_policy_tests": 46,
+  "open_blockers": [
+    59,
+    60,
+    61
+  ],
+  "original_root_pass": 2,
+  "original_root_required": 18,
+  "original_science_complete": false,
+  "prior_original_v11": {
+    "replay_adversarial_tests": 17,
+    "source_and_input_seals": true,
+    "terminal": "blocked_native"
+  },
+  "protocol": "ISSUE1_ORIGINAL_PHASE1_SOURCE_POLICY_TCC_V12",
+  "real_matched_AE_validated": false,
+  "source_seals_stable": true
+}
