@@ -66,3 +66,94 @@ def evaluate(ec_root, public_s2, task, policy, policy_sha, framing):
         "real_world_close_authorized": False,
         "original_MVP_AC_pass_from_plugin": False,
     }
+
+
+def diagnostic_probe(ec_root):
+    """Actual native module smoke; authored formal cases, NOT independent gold."""
+    root = Path(ec_root)
+    check_source(root)
+    policy_module = module(root / SOURCES["policy"][0], "phase1_probe_policy")
+    policy = {
+        "schema": "EC_PUBLIC_POLICY_V2",
+        "policy_id": "issue1-research-plugin-smoke-formal-only",
+        "policy_evidence_ref": "policy:phase1-plugin:dev",
+        "operation_rules": {
+            "opA": ["fact:a"], "opB": ["fact:b"], "opX": ["fact:x"],
+        },
+        "obligation_rules": {
+            "approval": {
+                "when": ["fact:approval_required"],
+                "done_when": ["fact:approval_done"],
+            },
+        },
+    }
+    records = []
+    for name, relation, approval in (
+        ("competing", "COMPETING", False),
+        ("equivalent", "EQUIVALENT", False),
+        ("unresolved_approval", "EQUIVALENT", True),
+    ):
+        task = {
+            "schema": "EC_FORMAL_FACTS_V2",
+            "source_ref": "task:phase1-plugin:dev",
+            "facts": {
+                "a": True, "b": True, "x": False,
+                "approval_required": approval,
+                "approval_done": False,
+            },
+        }
+        s2 = {
+            "candidates": [
+                {
+                    "candidate_id": cid,
+                    "semantic_transition": {"operation": "op" + cid},
+                    "claims": [], "dependencies": [],
+                    "evidence_refs": [policy["policy_evidence_ref"]],
+                }
+                for cid in ("A", "B", "X")
+            ],
+            "relation_groups": [{
+                "group_id": "relation:phase1-plugin:dev",
+                "relation_type": relation,
+                "candidate_ids": ["A", "B"],
+            }],
+            "semantic_ir_hash": policy_module.digest(task),
+            "source_refs": [policy["policy_evidence_ref"], task["source_ref"]],
+        }
+        actual = evaluate(
+            root, s2, task, policy, policy_module.digest(policy),
+            {"reframe_required": False, "reframe_resolved": False},
+        )
+        expected = "CONTINUE" if name != "equivalent" else "CLOSE"
+        if (actual["s3_selected"] != ["A", "B"]
+                or actual["s3_rejected"] != ["X"]
+                or actual["s4_diagnostic"] != expected
+                or actual["real_world_close_authorized"] is not False
+                or actual["original_MVP_AC_pass_from_plugin"] is not False):
+            raise ValueError("PLUGIN_FORMAL_S3_S4_SMOKE_FAILURE:" + name)
+        if approval and actual["s4_unresolved"] != ["approval"]:
+            raise ValueError("PLUGIN_S4_MISSING_OBLIGATION")
+        if not approval and actual["s4_unresolved"]:
+            raise ValueError("PLUGIN_S4_SPURIOUS_OBLIGATION")
+        records.append({
+            "name": name,
+            "selected": actual["s3_selected"],
+            "closure_diagnostic": actual["s4_diagnostic"],
+            "required_condition_count": len(actual["s4_policy_obligations"]),
+            "unresolved_count": len(actual["s4_unresolved"]),
+        })
+    check_source(root)
+    return {
+        "protocol": PROTOCOL,
+        "status": "REAL_EC_MODULE_PLUGIN_MECHANICS_VERIFIED",
+        "native_EC_commit": COMMIT,
+        "source_git_blobs": {alias: pair[1] for alias, pair in SOURCES.items()},
+        "case_count": len(records),
+        "formal_cases": records,
+        "plugin_location": "RESEARCH_REPO_ONLY",
+        "frozen_original_ECv4_4_source_modified": False,
+        "S3_S4_formal_capabilities_available": True,
+        "independent_natural_language_semantics": False,
+        "independent_real_world_task_S4_obligations": False,
+        "original_18AC_scientific_PASSED": False,
+    }
