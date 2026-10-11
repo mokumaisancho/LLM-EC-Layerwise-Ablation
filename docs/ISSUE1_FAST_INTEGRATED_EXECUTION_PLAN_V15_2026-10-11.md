@@ -47,3 +47,16 @@ exit 2：必要な実験材料の欠損を含む**有効な科学的終了判定
 ## 最短で残る不可欠な依存
 
 実装者がいくら検証器を増やしても代替できない条件は、**第三者が出典と採点基準を確定した自然言語S3全候補判定と実タスクS4義務全件の独立gold、および同条件での本物の実装・Oracle実行のsource-pinned receipt**。この2系統が無ければv15は`SUCCESSOR_EXTERNAL_AUTHORITY_NOT_EVALUABLE`を終端として確定し、同じ指示の再投入や疑似ゴールド生成を要求しない。獲得後のみF3/F4を実行する。
+
+## EC依存を実際に解決した構成（同一研究リポ内のoptional plugin）
+
+**実行順**を `F0a core source pin → F0b research-local plugin → F1 independent authority → F2 reuse 0.5/1.5B → F3 genuine A–E → F4 blinded scorer` に更新。F0bは未実装の将来計画ではなく、実動作コードに接続済み。
+
+- `tools/issue1_ecv4_local_plugin_v1.py` はこの研究リポだけで使う任意プラグイン。EC本体は**一切改変しない**。EC後継PR #34の既存2モジュールを固定コミット `3f435ad` および個別Git blobで読み込む。研究リポ外へ機能を横展開しない。
+- `tools/run_issue1_ecv4_local_plugin_v1.py` は汎用の公開タスク/policy/S2を用いたCLI。公式TCC `tools/run_issue1_fast_integrated_v15.py --ec-root <native-path>` では独立した3例の**実際のモジュール実行**をF0に内蔵。
+- **実動作PoC**：選択可能候補A/Bが2件、Xが拒否。COMPETINGならS4 CONTINUE、EQUIVALENTならS4の**有限形式的診断**CLOSE、義務approval未解決ならCONTINUE。有限ルール範囲での欠けたEC機能はプラグインにより解決。
+- **ここからは別依存**：自然言語S3を解釈する意味判断、S4必須義務のタスク全体の網羅性、第三者goldの真正なblind保管、真正A/B/C/D/E target-only receiptはプラグインでは生成できない。従って原研究18/18、自然言語汎化能力の非劣化、実タスク安全終了をこのPoCで主張しない。
+- 旧ECv4.4の単独native結果と**プラグイン付き実装は別experimental arm/version**で明示する。機能的な依存不足が解消されたことと、科学的な同等性の証明を混同しない。
+- **G0/G3/G11**：元EC commit・blob不一致、ポリシー無許可変更、gold漏洩、義務欠落、終了結果の権威昇格を拒否。各工程後に同一ソースを再確認。プラグイン未設置・native source不在なら黙って通常EC比較に戻らない。
+
+**実際の停止条件**：プラグイン実証後、独立gold真正性をF1で確認できなければ`SUCCESSOR_EXTERNAL_AUTHORITY_NOT_EVALUABLE`が終端。新規科学証拠が無い限り同じTCCの自動再実行は禁止。GitHub Actions、常駐DC、定期監視は使用しない。
