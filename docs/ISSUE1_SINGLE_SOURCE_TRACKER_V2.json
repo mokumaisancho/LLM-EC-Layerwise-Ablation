@@ -1,0 +1,612 @@
+{
+  "schema": "ISSUE1_SINGLE_SOURCE_TRACKER_V2",
+  "as_of": "2026-10-11",
+  "project": {
+    "repo": "mokumaisancho/LLM-EC-Layerwise-Ablation",
+    "root_issue": 1,
+    "original_intent": "Empirically localize coarse S1 semantic understanding, S2 candidate generation, S3 selection/reframing, S4 execution/closure where an LLM remains necessary vs deterministic EC without material degradation; preserve LLM generalized semantic ability, require actual held-upstream-constant target-only causal interventions.",
+    "scope_layers": [
+      "S1",
+      "S2",
+      "S3",
+      "S4"
+    ],
+    "arms": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E_S1",
+      "E_S2",
+      "E_S3",
+      "E_S4"
+    ],
+    "avoid_other_projects": true
+  },
+  "authority_priority": [
+    "ACCEPTANCE_CRITERIA.md",
+    "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+    "docs/ISSUE1_SINGLE_SOURCE_TRACKER_V2.json",
+    "source_pinned_execution_evidence"
+  ],
+  "frozen_normative": {
+    "path": "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+    "git_blob": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+    "AC_path": "ACCEPTANCE_CRITERIA.md",
+    "AC_git_blob": "40e4d41914fb17ee5c7deb0cfd32276a41c9a1fc",
+    "MVP_required": [
+      "AC-01",
+      "AC-02",
+      "AC-03",
+      "AC-04",
+      "AC-05",
+      "AC-06",
+      "AC-07",
+      "AC-08",
+      "AC-09",
+      "AC-11",
+      "AC-12",
+      "AC-13",
+      "AC-14",
+      "AC-15",
+      "AC-16",
+      "AC-17",
+      "AC-19",
+      "AC-20"
+    ],
+    "post_MVP": [
+      "AC-10",
+      "AC-18"
+    ],
+    "original_comparison_scope": {
+      "S1": [
+        "LLM",
+        "ORACLE"
+      ],
+      "S2": [
+        "LLM",
+        "ORACLE"
+      ],
+      "S3": [
+        "LLM",
+        "ECV4_4_NATIVE_VIA_QUALIFIED_ADAPTER",
+        "ORACLE"
+      ],
+      "S4": [
+        "LLM",
+        "ECV4_4_NATIVE_VIA_QUALIFIED_ADAPTER",
+        "ORACLE"
+      ]
+    },
+    "unchanged_materiality_and_capacity": {
+      "purpose": "operational MVP decision rule, not statistical significance",
+      "oracle_substitution_gain_material_abs": 0.2,
+      "llm_vs_ec_joint_layer_difference_material_abs": 0.2,
+      "single_fixture_delta_non_material": 0.1,
+      "dominant_tie_max_difference": 0.1,
+      "capacity_collapse": {
+        "oracle_unique_classes_min": 2,
+        "model_mode_share_min": 0.9,
+        "family_accuracy_max": 0.6,
+        "action": "RUN_1P5B_ONCE"
+      },
+      "max_capacity_auto_escalation": "~1.5B",
+      "auto_escalate_to_4b": false
+    },
+    "AC20_status_and_dependencies": {
+      "AC-19": {
+        "status": "PASS",
+        "is_mvp": true,
+        "depends_on": []
+      },
+      "AC-02": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": [
+          "AC-19"
+        ]
+      },
+      "AC-01": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": [
+          "AC-02"
+        ]
+      },
+      "AC-07": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": [
+          "AC-01"
+        ]
+      },
+      "AC-17": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": [
+          "AC-07"
+        ]
+      },
+      "AC-16": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": [
+          "AC-17"
+        ]
+      },
+      "AC-03": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": [
+          "AC-02",
+          "AC-19",
+          "ISSUE-22"
+        ]
+      },
+      "AC-04": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": [
+          "AC-02",
+          "AC-03"
+        ]
+      },
+      "AC-11": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": [
+          "ISSUE-23",
+          "ISSUE-20"
+        ]
+      },
+      "AC-12": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": [
+          "AC-04",
+          "AC-11"
+        ]
+      },
+      "AC-13": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": [
+          "ISSUE-12",
+          "ISSUE-22"
+        ]
+      },
+      "AC-14": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": [
+          "AC-01",
+          "AC-13"
+        ]
+      },
+      "AC-15": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": []
+      },
+      "AC-05": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": [
+          "AC-01",
+          "AC-03",
+          "AC-04",
+          "AC-07",
+          "AC-17",
+          "ISSUE-22"
+        ]
+      },
+      "AC-06": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": [
+          "AC-04",
+          "AC-05",
+          "AC-11",
+          "AC-12",
+          "AC-16",
+          "AC-17"
+        ]
+      },
+      "AC-08": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": [
+          "AC-05",
+          "AC-06",
+          "ISSUE-21"
+        ]
+      },
+      "AC-09": {
+        "status": "NOT_PROVEN",
+        "is_mvp": true,
+        "depends_on": [
+          "AC-05",
+          "AC-08",
+          "ISSUE-21"
+        ]
+      },
+      "AC-10": {
+        "status": "NOT_PROVEN",
+        "is_mvp": false,
+        "depends_on": [
+          "AC-08",
+          "AC-09",
+          "AC-19"
+        ]
+      },
+      "AC-18": {
+        "status": "NOT_PROVEN",
+        "is_mvp": false,
+        "depends_on": [
+          "AC-03",
+          "AC-06",
+          "AC-08",
+          "AC-10_IF_NEEDED"
+        ]
+      },
+      "AC-20": {
+        "status": "PASS",
+        "is_mvp": true,
+        "depends_on": []
+      }
+    }
+  },
+  "current_outcome": {
+    "root_original_AC_PASSED": 2,
+    "root_original_AC_REQUIRED": 18,
+    "scientific_root_complete": false,
+    "original_frozen_ECv4_4_terminal": "ROOT_FROZEN_PROTOCOL_INFEASIBLE",
+    "successor_terminal": "SUCCESSOR_EXTERNAL_AUTHORITY_NOT_EVALUABLE",
+    "original_ECv4_4_core_modified": false,
+    "versioned_research_plugin_mechanics": true,
+    "external_natural_language_S3_qualified": false,
+    "independently_complete_real_task_S4_qualified": false,
+    "genuine_four_layer_AE_run": false
+  },
+  "issue_register": [
+    {
+      "id": "ISSUE-1",
+      "status": "OPEN_BLOCKED",
+      "github_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/1"
+    },
+    {
+      "id": "ISSUE-9",
+      "status": "OPEN_BLOCKED",
+      "github_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/9"
+    },
+    {
+      "id": "ISSUE-14",
+      "status": "CLOSED_COMPLETED",
+      "github_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/14"
+    },
+    {
+      "id": "ISSUE-59",
+      "status": "OPEN_NOT_SCIENTIFICALLY_QUALIFIED",
+      "github_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/59"
+    },
+    {
+      "id": "ISSUE-60",
+      "status": "OPEN_NOT_SCIENTIFICALLY_QUALIFIED",
+      "github_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/60"
+    },
+    {
+      "id": "ISSUE-61",
+      "status": "OPEN_NOT_SCIENTIFICALLY_QUALIFIED",
+      "github_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/61"
+    }
+  ],
+  "dependency_execution_order": [
+    "D00",
+    [
+      "D01",
+      "D02",
+      "D03"
+    ],
+    [
+      "D04",
+      "D05"
+    ],
+    "D06",
+    "D07",
+    "D08",
+    "D09"
+  ],
+  "critical_path": [
+    "D04",
+    "D05",
+    "D06",
+    "D07",
+    "D08",
+    "D09"
+  ],
+  "tasks": [
+    {
+      "id": "D00",
+      "task": "lock_original_AC20_MVP18_scope",
+      "needs": [],
+      "status": "COMPLETE",
+      "done_when": "frozen contract & AC graph SHA-bound",
+      "stop_if_missing_evidence": "PRESERVE_BLOCKER_AND_STOP_NO_SAME_DATA_RERUN"
+    },
+    {
+      "id": "D01",
+      "task": "research_local_EC_S3_S4_plugin",
+      "needs": [
+        "D00"
+      ],
+      "status": "COMPLETE_FORMAL_ONLY",
+      "done_when": "3 real native-module formal cases PASS; frozen core unchanged; no blind NL/S4 proof",
+      "issue": "ISSUE-59",
+      "stop_if_missing_evidence": "PRESERVE_BLOCKER_AND_STOP_NO_SAME_DATA_RERUN"
+    },
+    {
+      "id": "D02",
+      "task": "lightweight_LLM_capacity_existing_experiments",
+      "needs": [
+        "D00"
+      ],
+      "status": "COMPLETE",
+      "done_when": "0.5B actual 1/10 and 1.5B actual 9/10, same S3 assay, no rerun",
+      "issue": "ISSUE-14",
+      "stop_if_missing_evidence": "PRESERVE_BLOCKER_AND_STOP_NO_SAME_DATA_RERUN"
+    },
+    {
+      "id": "D03",
+      "task": "official_external_typed_public_source_pilot",
+      "needs": [
+        "D00"
+      ],
+      "status": "COMPLETE_DIAGNOSTIC_ONLY",
+      "done_when": "46/46 public JSON Schema official cases, not blind task gold",
+      "stop_if_missing_evidence": "PRESERVE_BLOCKER_AND_STOP_NO_SAME_DATA_RERUN"
+    },
+    {
+      "id": "D04",
+      "task": "independent_source_adjudicated_natural_language_S3",
+      "needs": [
+        "D00",
+        "D01"
+      ],
+      "status": "BLOCKED_EXTERNAL",
+      "done_when": "full per-candidate admissibility, independent true source, held-out blind custody",
+      "issue": "ISSUE-59",
+      "stop_if_missing_evidence": "BLOCK_ON_INDEPENDENT_BLIND_GOLD_AND_REAL_TASK_SCOPE_NOT_ABSENCE_OF_ANY_NL_SOURCE",
+      "scoped_public_source_evidence": "results/issue1_external_human_nl_diagnostic_v16_actual_2026-10-11.json",
+      "evidence_snapshot": "THIRD_PARTY_PUBLISHED_NL_GOLD_PRESENT_NOT_QUALIFIED_FOR_FULL_ORIGINAL_AC"
+    },
+    {
+      "id": "D05",
+      "task": "independently_complete_real_task_S4_obligations",
+      "needs": [
+        "D00",
+        "D01"
+      ],
+      "status": "BLOCKED_EXTERNAL",
+      "done_when": "all mandatory obligations and positive zero-inventory proof, independent custody",
+      "issue": "ISSUE-60",
+      "stop_if_missing_evidence": "BLOCK_ON_INDEPENDENT_BLIND_GOLD_AND_REAL_TASK_SCOPE_NOT_ABSENCE_OF_ANY_NL_SOURCE",
+      "scoped_public_source_evidence": "results/issue1_external_human_nl_diagnostic_v16_actual_2026-10-11.json",
+      "evidence_snapshot": "THIRD_PARTY_PUBLISHED_NL_GOLD_PRESENT_NOT_QUALIFIED_FOR_FULL_ORIGINAL_AC"
+    },
+    {
+      "id": "D06",
+      "task": "real_target_only_Oracle_E_runtime",
+      "needs": [
+        "D01",
+        "D02",
+        "D04",
+        "D05"
+      ],
+      "status": "BLOCKED_UPSTREAM",
+      "done_when": "trusted actual per-layer LLM/EC/Oracle execution receipts, E non-target engine unchanged",
+      "issue": "ISSUE-61",
+      "stop_if_missing_evidence": "PRESERVE_BLOCKER_AND_STOP_NO_SAME_DATA_RERUN"
+    },
+    {
+      "id": "D07",
+      "task": "run_real_all_four_layer_A_B_C_D_E_S1_E_S2_E_S3_E_S4",
+      "needs": [
+        "D04",
+        "D05",
+        "D06"
+      ],
+      "status": "BLOCKED_UPSTREAM",
+      "done_when": "real matched arms and identical frozen inputs across original S1-S4",
+      "issue": "ISSUE-9",
+      "stop_if_missing_evidence": "PRESERVE_BLOCKER_AND_STOP_NO_SAME_DATA_RERUN"
+    },
+    {
+      "id": "D08",
+      "task": "independently_score_metrics_and_original_AC20",
+      "needs": [
+        "D07"
+      ],
+      "status": "BLOCKED_UPSTREAM",
+      "done_when": "controlled per-layer attribution, gain0.20, false closure, missed reframe, root AC ledger",
+      "issue": "ISSUE-1",
+      "stop_if_missing_evidence": "PRESERVE_BLOCKER_AND_STOP_NO_SAME_DATA_RERUN"
+    },
+    {
+      "id": "D09",
+      "task": "root_scientific_exit",
+      "needs": [
+        "D08"
+      ],
+      "status": "BLOCKED_UPSTREAM",
+      "done_when": "18/18 science proof or explicit versioned-science terminal; never test-count success",
+      "issue": "ISSUE-1",
+      "stop_if_missing_evidence": "PRESERVE_BLOCKER_AND_STOP_NO_SAME_DATA_RERUN"
+    }
+  ],
+  "needed_external_evidence": {
+    "D04": [
+      "independent_source_author_identity",
+      "source_document_and_version",
+      "per_candidate_gold_and_reasons",
+      "frozen_S1_S2_SHA",
+      "blind_heldout_preattestation",
+      "no_model_or_EC_prediction_access_to_gold",
+      "multi_admissible_competing_equivalent_labels_on_same_heldout_semantic_state"
+    ],
+    "D05": [
+      "external_authoritative_task_scope",
+      "all_mandatory_obligations_inventory",
+      "accepted_limits_and_residuals",
+      "explicit_proof_if_no_obligations",
+      "source_bound_upstream_SHA",
+      "independent_blind_custody",
+      "scope_complete_real_task_obligation_inventory_not_just_question_decomposition"
+    ],
+    "D06": [
+      "real_runner_source_and_model_fingerprints",
+      "actual_per_layer_input_output_receipts",
+      "identical_AB_CD_upstream",
+      "E_target_only_non_target_actual_replays",
+      "no_gold_leakage",
+      "negative_tamper_tests"
+    ],
+    "D07": [
+      "all_8_arms_x_4_layers_actual_source_pinned_traces"
+    ],
+    "D08": [
+      "independent_scored_metrics_and_AC_parent_dependencies"
+    ],
+    "D09": [
+      "authentic_root_18_of_18_or_evidence_scoped_terminal"
+    ]
+  },
+  "evidence": {
+    "frozen_contract": {
+      "path": "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+      "git_blob": "08407bec73278aeda8ddd2d4d6efc810dadf46f9"
+    },
+    "final_real_run": {
+      "path": "results/issue1_ecv4_plugin_integrated_v15_actual_2026-10-11.json",
+      "git_blob": "822840c60c6e2c8ff56695743f059d46a5572134",
+      "protocol": "ISSUE1_FAST_COMPLETE_DEPENDENCY_RUN_V15",
+      "source_fingerprint": "b3923cb134f7a1fda597f37ac34ae8fe8e5231f15450593edb55b8049f467a75",
+      "formally_verified_plugin_cases": 3,
+      "focus_regression_tests_pass": 26,
+      "scientific_root_AC_pass": 2
+    },
+    "plugin": {
+      "path": "tools/issue1_ecv4_local_plugin_v1.py",
+      "native_EC_repository": "mokumaisancho/GPT-EC-Closure-Engine",
+      "native_source_commit": "3f435ad4365d846d96264458540efb4848ce3541",
+      "status": "VERSIONED_PLUGIN_FINITE_POLICY_MECHANICS_ONLY"
+    },
+    "LLM_0p5b": {
+      "path": "results/phase1_qwen25_0p5b_reframe_actual_2026-10-03.json",
+      "actual_accuracy": 0.1,
+      "correct": 1,
+      "total": 10
+    },
+    "LLM_1p5b": {
+      "path": "results/phase1_qwen25_1p5b_reframe_actual_2026-10-03.json",
+      "actual_accuracy": 0.9,
+      "correct": 9,
+      "total": 10,
+      "model_sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370"
+    },
+    "typed_public_external_pilot": {
+      "publisher": "json-schema-org/JSON-Schema-Test-Suite",
+      "commit": "7de0e6a06031ede80028583dd45d0cd41105ae5b",
+      "public_cases": 46,
+      "matching_public_labels": 46,
+      "not_hidden_natural_language_gold": true
+    },
+    "third_party_human_nl_strategyqa": {
+      "repo": "allenai/strategyqa-evaluator",
+      "git_commit": "49b88ed2b2f1b57385c13e8a0699dee1d227f83e",
+      "gold_git_blob": "31a98479a79d44d2a94ca0684e876411566ee21d",
+      "publisher_prediction_git_blob": "7464a3d0e685a7679c7dfc6d58e8629c2a691426",
+      "audit_path": "results/issue1_external_human_nl_diagnostic_v16_actual_2026-10-11.json",
+      "audit_git_blob": "fb6ed9e9088d06280bd2b3b894fc17a136bc1cec",
+      "published_natural_language_cases": 10,
+      "publisher_gold_decomposition_steps": 34,
+      "publisher_example_final_answers_agree": 8,
+      "example_predictions_are_not_model_inference": true,
+      "exact_text_decomposition_matches": 0,
+      "exact_text_mismatch_not_semantic_error": true,
+      "heldout_training_noncontamination_unproven": true,
+      "scoped_only_not_original_S3_S4_AC": true
+    }
+  },
+  "gate_rules": [
+    "G0_FROZEN_SOURCE_SHA_MUST_MATCH",
+    "G1_EXACT_ORIGINAL_AC20_AND_MVP18_DEPENDENCIES",
+    "G2_PARENT_UNKNOWN_CANNOT_PASS_CHILD",
+    "G3_RESEARCH_PLUGIN_CANNOT_BE_RELABELED_ORIGINAL_FROZEN_ECV4_4",
+    "G4_FORMAL_PLUGIN_TEST_NOT_INDEPENDENT_NL_OR_REAL_S4",
+    "G5_NO_ORACLE_GOLD_PREDICTOR_ACCESS",
+    "G6_E_ONLY_TARGET_LAYER_REPLACED",
+    "G7_PRE_POST_RAW_GOLD_SOURCE_HASH_STABLE",
+    "G8_NO_DOUBLE_EVAL_OR_RETUNE_HELDOUT",
+    "G9_ORIGINAL_MATERIALITY_ABS_0P20_UNCHANGED",
+    "G10_NO_TEST_PASS_COUNT_AS_SCIENTIFIC_AC",
+    "G11_NO_MODEL_4B_AUTO_ESCALATION",
+    "G12_NO_REPEAT_SAME_EVIDENCE_OR_PERSISTENT_DC_OR_ACTIONS",
+    "G13_OFFICIAL_HUMAN_NL_PUBLISHED_GOLD_IS_PUBLIC_NOT_HIDDEN"
+  ],
+  "immediate_next_step": "Source-qualify D04 from independent human annotated NL examples with blinded gold/no contamination and all-candidate admissibility; independently source D05 exhaustive task obligations. Reuse public 10-case publisher demo only as provenance diagnostic.",
+  "allowed_terminals": [
+    "ROOT_18_18_VERIFIED",
+    "ROOT_FROZEN_PROTOCOL_INFEASIBLE",
+    "SUCCESSOR_EXTERNAL_AUTHORITY_NOT_EVALUABLE",
+    "INVALID_SOURCE_OR_GOLD",
+    "INVALID_NON_TARGET_ORACLE_CHANGE",
+    "INVALID_REAL_AE",
+    "NO_MATERIAL_DIFFERENCE",
+    "AMBIGUOUS_DOMINANT_LAYER",
+    "LOCALIZED_DOMINANT_LAYER"
+  ],
+  "update_policy": {
+    "immutable_original_requirement": true,
+    "immutable_frozen_AC": true,
+    "immutable_this_snapshot": true,
+    "successor_only": "docs/ISSUE1_SINGLE_SOURCE_TRACKER_V3.json",
+    "mandatory_change_fields": [
+      "previous_tracker_git_blob",
+      "changed_evidence_github_blob",
+      "why_change_needed",
+      "old_and_new_dependency_nodes",
+      "AC20_recomputed_states"
+    ],
+    "same_input_unchanged": "return terminal, never rerun",
+    "no_new_evidence": "do not create a replacement master or new planner",
+    "predecessor_git_blob": "7a41ed10791ebd7f33318c47b1752ac436f5556b",
+    "previous_tracker_path": "docs/ISSUE1_SINGLE_SOURCE_TRACKER_V1.json",
+    "publication_reason": "NEW_OFFICIAL_PUBLISHER_HUMAN_NL_SOURCE_AND_ACTUAL_SCOPED_AUDIT",
+    "new_evidence_path": "results/issue1_external_human_nl_diagnostic_v16_actual_2026-10-11.json",
+    "new_evidence_git_blob": "fb6ed9e9088d06280bd2b3b894fc17a136bc1cec",
+    "changed_fields": [
+      "schema",
+      "authority_priority",
+      "evidence.third_party_human_nl_strategyqa",
+      "tasks.D04",
+      "tasks.D05",
+      "needed_external_evidence.D04",
+      "needed_external_evidence.D05",
+      "immediate_next_step",
+      "update_policy"
+    ],
+    "unchanged": [
+      "project",
+      "frozen_normative",
+      "current_outcome",
+      "all_AC_statuses"
+    ],
+    "correction": "Prior blanket assertion of no independent natural-language source was overbroad: official externally published NL QA annotations now located. Public 10-case sample does not qualify blind holdout, full candidatewise S3, or exhaustive real-task S4."
+  },
+  "resources": {
+    "DC_use": "only_one_final_validation_if_essential;not_for_tracking",
+    "local_continuous_process": false,
+    "github_actions_enabled": false,
+    "large_model_auto_escalation": false
+  }
+}
