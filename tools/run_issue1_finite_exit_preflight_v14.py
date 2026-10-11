@@ -23,6 +23,11 @@ BLOBS={
     "results/phase1_qwen25_0p5b_reframe_actual_2026-10-03.json":"8b6e8ab07c4604a1c07ed106d864aaf07dccc8e2",
     "docs/ISSUE1_ORIGINAL_PHASE1_AC18_ONECALL_PLAN_V13_2026-10-11.json":"5c4fda72c73ea9d2211f571027984421882a829e",
 }
+LOCAL_SOURCE_FILES=(
+    "tools/run_issue1_finite_exit_preflight_v14.py",
+    "tests/test_issue1_finite_exit_preflight_v14.py",
+    "docs/ISSUE1_FINITE_TERMINATION_PLAN_V14_2026-10-11.md",
+)
 MVP=[f"AC-{i:02d}" for i in (*range(1,10),*range(11,18),19,20)]
 POST=["AC-10","AC-18"]
 TERMINAL_ORIGINAL="INFEASIBLE_UNDER_FROZEN_ECV4_4_INTERFACE"
@@ -40,6 +45,18 @@ def blob(path):
     data=path.read_bytes()
     return hashlib.sha1(b"blob "+str(len(data)).encode()+b"\0"+data).hexdigest()
 
+def local_source_pins(root):
+    result={}
+    for name in LOCAL_SOURCE_FILES:
+        f=root/name
+        p=subprocess.run(["git","-C",str(root),"rev-parse","HEAD:"+name],
+                         text=True,capture_output=True,timeout=12)
+        gate(f.is_file() and not f.is_symlink() and
+             p.returncode==0 and p.stdout.strip()==blob(f),
+             "G0_LOCAL_EXECUTION_SOURCE_DRIFT:"+name)
+        result[name]=p.stdout.strip()
+    return result
+
 def pinned(root):
     data={}
     for name,wanted in BLOBS.items():
@@ -51,6 +68,7 @@ def pinned(root):
 
 def run(root=ROOT):
     before={name:blob(root/name) for name in BLOBS}
+    own_before=local_source_pins(root) if (root/".git").exists() else None
     data=pinned(root)
     norm=data["docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json"]
     adapter=data["results/ec_native_adapter_qualification.json"]
@@ -88,6 +106,9 @@ def run(root=ROOT):
          "G12_FROZEN_REAL_0P5B_RESULT_CORRUPTED")
     after={name:blob(root/name) for name in BLOBS}
     gate(before==after,"G7_FROZEN_SOURCE_CHANGED_DURING_PREFLIGHT")
+    if own_before is not None:
+        gate(local_source_pins(root)==own_before,
+             "G7_LOCAL_EXECUTION_CODE_CHANGED_DURING_PREFLIGHT")
     fingerprint=hashlib.sha256(json.dumps(before,sort_keys=True).encode()).hexdigest()
     return {
         "protocol":"ISSUE1_FINITE_CAUSAL_RESEARCH_EXIT_PREFLIGHT_V14",
