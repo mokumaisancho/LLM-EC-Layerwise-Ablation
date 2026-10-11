@@ -19,7 +19,7 @@ SAMPLE_COUNT=32
 CORPUS_URL=("https://raw.githubusercontent.com/soujanyarbhat/aNswER_multirc/"
             "41d06bd291026f42fc3a44cbd021cc6f6f84d9bd/dataset/devData.json")
 CORPUS_SHA="847cbabd9de66ab7f37a3e7a2a1849ef51c9b1e5"
-PLUGIN_BLOB="2bf1390506449a1e6f5df24750121991ce681018"
+PLUGIN_BLOB="ee17492c71ba28ca8d1681edd8e5a56fb3e33db1"
 S2_INPUT_SCHEMA=frozenset({"question_id","passage","question","options"})
 EC_SOURCE_COMMIT="3f435ad4365d846d96264458540efb4848ce3541"
 
