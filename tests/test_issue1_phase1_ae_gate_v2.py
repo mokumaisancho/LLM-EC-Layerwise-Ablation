@@ -26,6 +26,10 @@ def llm_s2(public, prior, seed, model_id, params):
     return {"stage": "S2", "input": prior, "model": model_id}
 
 
+def llm_s2_same_output_different_callback(public, prior, seed, model_id, params):
+    return {"stage": "S2", "input": prior, "model": model_id}
+
+
 def llm_s3(public, prior, seed, model_id, params):
     return {"stage": "S3", "input": prior, "model": model_id}
 
@@ -197,6 +201,13 @@ class AEGateV2Test(unittest.TestCase):
             self.authority.engines["llm_s2"], fn=json.dumps)
         with self.assertRaisesRegex(
             (ValueError, TypeError), "G8_ENGINE_CALLBACK_NOT_FROM_PINNED_FILE"):
+            self.audit()
+
+    def test_same_file_callback_swap_even_same_output_rejected(self):
+        self.authority.engines["llm_s2"] = replace(
+            self.authority.engines["llm_s2"],
+            fn=llm_s2_same_output_different_callback)
+        with self.assertRaisesRegex(ValueError, "G8_RECEIPT_REPLAY_MISMATCH"):
             self.audit()
 
     def test_missing_trusted_runner_rejected(self):
