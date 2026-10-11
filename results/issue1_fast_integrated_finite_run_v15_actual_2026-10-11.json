@@ -1,0 +1,129 @@
+{
+  "actual_progress": {
+    "full_AE_executed": false,
+    "preexisting_1p5b_capacity": "FOUND_COMPLETED_NOT_RERUN",
+    "repeat_old_455_regression": false,
+    "repeated_model_reinference": false,
+    "successor_natural_semantics_verified": false
+  },
+  "all_AC_and_MVP_fixed": true,
+  "all_source_hashes_preserved": true,
+  "closure_decision": {
+    "no_further_same_input_automatic_TCC_RERUN": true,
+    "not_scientific_18AC_success": true,
+    "reopen_condition": "NEW_INDEPENDENT_EXPERT_SOURCE_CUSTODIED_S3_AND_S4_GOLD_AND_TRUSTED_RUNTIME",
+    "research_under_original_frozen_ECv4_4": "INFEASIBLE: UNREPRESENTABLE_FULL_SET_S3_AND_S4",
+    "research_under_versioned_successor": "NOT_EVALUABLE: INDEPENDENT_REAL_TASK_S3_S4_GOLD_UNAVAILABLE"
+  },
+  "error_overturning_gates": [
+    "FROZEN_AC_OR_THRESHOLD_CHANGED",
+    "EC_VERSION_DISGUISED_AS_ECV4_4",
+    "UNKNOWN_S3_OR_S4_SOURCE_CUSTODY",
+    "GOLD_AVAILABLE_TO_PREDICTOR",
+    "HELDOUT_REUSED_FOR_TUNING",
+    "NON_TARGET_E_ORACLE_INJECTION",
+    "FALSE_ECV4_COMPATIBILITY",
+    "UNQUALIFIED_AE_AS_ROOT_SCIENCE",
+    "CHANGED_MODEL_OUTPUT_RAW_OR_HASH",
+    "DUPLICATED_OR_MISSING_CASE_OR_ARM",
+    "SCORES_INFERRED_FROM_END_TO_END_ONLY"
+  ],
+  "errors": [],
+  "evidence_replay_fingerprint": "b3923cb134f7a1fda597f37ac34ae8fe8e5231f15450593edb55b8049f467a75",
+  "onecall_stages": [
+    "F0_original_native_feasibility_and_successor_ec",
+    "F1_external_independent_S3_S4_authority",
+    "F2_0p5b_and_1p5b_actual_assay_reuse",
+    "F3_matched_four_layer_target_only_AE",
+    "F4_blind_scoring_AC18_decision"
+  ],
+  "original_ac_pass": 2,
+  "original_mvp_AC": 18,
+  "original_protocol_terminal": "ROOT_FROZEN_PROTOCOL_INFEASIBLE",
+  "original_science_complete": false,
+  "original_scope": "FROZEN_ECV4_4_NATIVE",
+  "protocol": "ISSUE1_FAST_COMPLETE_DEPENDENCY_RUN_V15",
+  "separate_versioned_successor_terminal": "SUCCESSOR_EXTERNAL_AUTHORITY_NOT_EVALUABLE",
+  "stage_evidence": {
+    "F0_original_native_feasibility_and_successor_ec": {
+      "frozen_S3_counterexamples": [
+        "M003",
+        "M009"
+      ],
+      "frozen_S4_signature_accuracy_ceiling_not_empirical": "8/10",
+      "original_frozen_feasibility": "STRUCTURALLY_INFEASIBLE",
+      "successor_native": {
+        "can_close_original_frozen_AC": false,
+        "commit": "3f435ad4365d846d96264458540efb4848ce3541",
+        "ec_checkout_verified": true,
+        "implemented": "VERSIONED_FINITE_POLICY_S3_S4",
+        "independent_S4_completeness": false,
+        "natural_semantic_qualification": false,
+        "original_ECv4_4_same_function": false,
+        "repository": "mokumaisancho/GPT-EC-Closure-Engine"
+      }
+    },
+    "F1_external_independent_S3_S4_authority": {
+      "S3_independent_source_custody": false,
+      "S4_independently_complete_real_task_inventory": false,
+      "genuine_unseen_heldout_authenticated": false,
+      "model_gold_separation_authenticated": false,
+      "official_third_party_typed_pilot": {
+        "natural_language_general_semantics_authority": false,
+        "official_published_cases": 46,
+        "real_world_task_S4_authority": false,
+        "status": "EXTERNAL_PUBLIC_TYPED_SEMANTIC_PILOT_COMPLETE_NOT_ORIGINAL_SCIENCE",
+        "verified_expected_labels": 46
+      },
+      "source": "No independently authenticated protocol + expert/adjudicator source custodian in the supplied frozen research inputs",
+      "status": "NOT_EVALUABLE_INDEPENDENT_SEMANTIC_AND_OBLIGATION_AUTHORITY"
+    },
+    "F2_0p5b_and_1p5b_actual_assay_reuse": {
+      "0p5b_correct": "1/10",
+      "1p5b_capacity_collapse": false,
+      "1p5b_correct": "9/10",
+      "1p5b_llm_S3_reframe_accuracy_diagnostic": 0.9,
+      "1p5b_model_sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370",
+      "absolute_improvement": 0.8,
+      "ecv4_4_S3_reframe_accuracy_diagnostic": 0.9,
+      "further_4b_escalation": false,
+      "not_full_S3_selection_or_S4_causal_study": true,
+      "paired_assay": "PHASE1_V2_S3_REFRAME_FIXED_STATE_V1",
+      "run_again": false,
+      "status": "COMPLETED_USING_PRIOR_REAL_EXPERIMENT_NOT_NEW_INFERENCE"
+    },
+    "F3_matched_four_layer_target_only_AE": {
+      "original_four_layers": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "reason": [
+        "NO_INDEPENDENT_GOLD_S3",
+        "NO_COMPLETE_S4_AUTHORITY",
+        "NO_TRUSTED_LLM_EC_ORACLE_RUNTIME_ATTESTATION"
+      ],
+      "required_arms": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E_S1",
+        "E_S2",
+        "E_S3",
+        "E_S4"
+      ],
+      "status": "NOT_EXECUTED_UNQUALIFIED_INPUTS",
+      "target_only_runtime_verified": false
+    },
+    "F4_blind_scoring_AC18_decision": {
+      "dominant_layer": null,
+      "frozen_materiality_abs": 0.2,
+      "observed_effect": null,
+      "scoring_qualified": false,
+      "status": "NOT_RUN_NO_INDEPENDENT_AE"
+    }
+  },
+  "unsafe_autonomous_implementation": false
+}
