@@ -55,6 +55,11 @@ class Binding:
         must(path.is_file() and not path.is_symlink(), "G8_ENGINE_SOURCE_UNAVAILABLE")
         must(Path(inspect.getfile(self.fn)).resolve() == path.resolve(),
              "G8_ENGINE_CALLBACK_NOT_FROM_PINNED_FILE")
+        try:
+            function_source = inspect.getsource(self.fn)
+            entrypoint = self.fn.__module__ + ":" + self.fn.__qualname__
+        except (AttributeError, TypeError, OSError) as exc:
+            raise ValueError("G8_EXECUTED_CALLBACK_SOURCE_UNATTESTED") from exc
         actual = sha_bytes(path.read_bytes())
         must(actual == self.pinned_sha256 and len(actual) == 64,
              "G8_ENGINE_SOURCE_PIN_MISMATCH:" + self.engine_id)
@@ -65,6 +70,8 @@ class Binding:
             "engine_id": self.engine_id, "kind": self.kind,
             "source_sha256": actual, "model_id": self.model_id,
             "seed": self.seed, "parameters": dict(self.parameters),
+            "callable_entrypoint": entrypoint,
+            "callable_source_sha256": sha_bytes(function_source.encode()),
         }
 
 
