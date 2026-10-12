@@ -1,0 +1,151 @@
+{
+  "schema": "ISSUE1_TCC_V19_SOURCE_GATES_EXECUTION_RECEIPT",
+  "as_of": "2026-10-13",
+  "normative_source": {
+    "original_AC_blob": "40e4d41914fb17ee5c7deb0cfd32276a41c9a1fc",
+    "original_MVP_dependency_blob": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+    "prior_tracker_blob": "a2ec32c8e2747a819e2faba50c49806cfb0cacc6",
+    "latest_tracker_blob": "56bd5ac25d47e1dd9e8ea9da6193679656b661f5"
+  },
+  "execution": {
+    "mode": "CONNECTED_GITHUB_REPLAY_AND_IN_MEMORY_DAG_GATE",
+    "all_10_nodes_analyzed": true,
+    "dependent_engine_calls_skipped_if_parent_external_unqualified": true,
+    "actual_llm_model_runs": 0,
+    "actual_oracle_model_runs": 0,
+    "actual_new_EC_native_calls": 0,
+    "DC_calls": 0,
+    "github_actions_enabled": false,
+    "mac_file_writes": 0,
+    "repeated_cached_trials": 0,
+    "eval_audit_external_sources_checked": true,
+    "read_only_TCC_gate_checks_pass": 104
+  },
+  "node_decisions": [
+    {
+      "id": "D00",
+      "previous_status": "COMPLETE",
+      "dependencies": [],
+      "all_parent_mechanical_steps_completed": true,
+      "decision": "REUSE_VERIFIED_EXISTING_RESULT"
+    },
+    {
+      "id": "D01",
+      "previous_status": "COMPLETE_FORMAL_ONLY",
+      "dependencies": [
+        "D00"
+      ],
+      "all_parent_mechanical_steps_completed": true,
+      "decision": "REUSE_VERIFIED_EXISTING_RESULT"
+    },
+    {
+      "id": "D02",
+      "previous_status": "COMPLETE",
+      "dependencies": [
+        "D00"
+      ],
+      "all_parent_mechanical_steps_completed": true,
+      "decision": "REUSE_VERIFIED_EXISTING_RESULT"
+    },
+    {
+      "id": "D03",
+      "previous_status": "COMPLETE_DIAGNOSTIC_ONLY",
+      "dependencies": [
+        "D00"
+      ],
+      "all_parent_mechanical_steps_completed": true,
+      "decision": "REUSE_VERIFIED_EXISTING_RESULT"
+    },
+    {
+      "id": "D04",
+      "previous_status": "BLOCKED_EXTERNAL",
+      "dependencies": [
+        "D00",
+        "D01"
+      ],
+      "all_parent_mechanical_steps_completed": true,
+      "decision": "BLOCKED_EXTERNAL_SOURCE_AUTHORITY"
+    },
+    {
+      "id": "D05",
+      "previous_status": "BLOCKED_EXTERNAL",
+      "dependencies": [
+        "D00",
+        "D01"
+      ],
+      "all_parent_mechanical_steps_completed": true,
+      "decision": "BLOCKED_EXTERNAL_SOURCE_AUTHORITY"
+    },
+    {
+      "id": "D06",
+      "previous_status": "BLOCKED_UPSTREAM",
+      "dependencies": [
+        "D01",
+        "D02",
+        "D04",
+        "D05"
+      ],
+      "all_parent_mechanical_steps_completed": false,
+      "decision": "BLOCKED_DEPENDENCY"
+    },
+    {
+      "id": "D07",
+      "previous_status": "BLOCKED_UPSTREAM",
+      "dependencies": [
+        "D04",
+        "D05",
+        "D06"
+      ],
+      "all_parent_mechanical_steps_completed": false,
+      "decision": "BLOCKED_DEPENDENCY"
+    },
+    {
+      "id": "D08",
+      "previous_status": "BLOCKED_UPSTREAM",
+      "dependencies": [
+        "D07"
+      ],
+      "all_parent_mechanical_steps_completed": false,
+      "decision": "BLOCKED_DEPENDENCY"
+    },
+    {
+      "id": "D09",
+      "previous_status": "BLOCKED_UPSTREAM",
+      "dependencies": [
+        "D08"
+      ],
+      "all_parent_mechanical_steps_completed": false,
+      "decision": "BLOCKED_DEPENDENCY"
+    }
+  ],
+  "critical_path": [
+    "D04",
+    "D05",
+    "D06",
+    "D07",
+    "D08",
+    "D09"
+  ],
+  "external_source_outcome": {
+    "published_external_source": "amazon-agi/tau2-bench-verified",
+    "human_verified_task_count": 164,
+    "declared_unscored_NL_task_count": 58,
+    "high_risk_no_other_measurable_condition_count": 7,
+    "required_missing_assertion_certification": "S4_MANDATORY_NL_ASSERTION_REWARD_UNCOVERED"
+  },
+  "scientific": {
+    "original_mvp_qualified_ac_pass": 2,
+    "original_mvp_required_ac": 18,
+    "original_science_complete": false,
+    "full_target_only_AE_executed": false,
+    "independent_semantic_S3_gold_qualified": false,
+    "independent_complete_S4_obligations_qualified": false,
+    "terminal": "SUCCESSOR_EXTERNAL_AUTHORITY_NOT_EVALUABLE",
+    "blocked_by": [
+      "D04_INDEPENDENT_SEMANTIC_BLIND_GOLD",
+      "D05_POLICY_COMPLETENESS_AND_NL_ASSERTIONS_NOT_IN_REWARD",
+      "D06_TRUE_LLM_EC_ORACLE_RUNTIME_NOT_QUALIFIED"
+    ]
+  },
+  "next_on_new_evidence": "ONLY_IF_NEW_EXTERNAL_GOLD_AND_INDEPENDENT_COMPLETE_S4_AUTHORITY: FROZEN_SOURCE_VALIDATE -> QUALIFY_D04_D05 -> REAL_D06 -> MATCHED_D07 -> D08_SCORE -> D09_EXIT"
+}
