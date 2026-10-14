@@ -76,7 +76,26 @@
       "to": "Mac existing launchd receiver and pinned tcc-compiler",
       "artifact": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/queue/INIT-ISSUE1-TCC-OF22/3b8c518a813fb750a5bc0cdb.json",
       "operation": "decode source, verify SHA-1, run actual native TCC Generator/Validator/Runtime offline; signed receipt requires fixed proof hash",
-      "status": "ACTIVATED_GITHUB_QUEUE",
+      "status": "REAL_HOST_SOURCE_VERIFIED_NATIVE_GENERATOR_STARTED_BUT_CANONICAL_COMPARE_BUG",
+      "scientific_AC_promoted": 0
+    },
+    {
+      "stage": "R8",
+      "from": "real Mac offline runner v22",
+      "to": "native TCC v3 generated spec canonicalization",
+      "artifact": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/receipts/INIT-ISSUE1-TCC-OF22/3b8c518a813fb750a5bc0cdb.json",
+      "operation": "Real host verified embedded runner source Git blob, executed native generator; local runner falsely compared normalized generated Spec against raw nonnormalized Spec, producing GENERATED_SPEC_DRIFT. Timeout eventually produced signed FAILED receipt; no proof created.",
+      "status": "RCA_CONFIRMED",
+      "scientific_AC_promoted": 0
+    },
+    {
+      "stage": "R9",
+      "from": "pinned prior isolated Mac source and signed evidence",
+      "to": "native normalized source and execution",
+      "artifact": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/blob/feat/issue1-independent-s4-authority-audit-v19/scripts/issue1_native_offline_runner_v23.py",
+      "operation": "Deterministic two-line exact source correction only: import normalize_spec; compare generated spec to normalize_spec(original); verified new Git blob f91505ddbfaa2a47533d1dbf02f02211a6d81a5e before execution, no network",
+      "status": "QUEUED_V23",
+      "run_id": "e3ff583acbadc79386a4b5da",
       "scientific_AC_promoted": 0
     }
   ],
@@ -154,5 +173,25 @@
     "native_runtime_invoked": false,
     "original_science_ac_passed": 2,
     "receipt": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/receipts/INIT-ISSUE1-TCC-V22/2590c053e8798c66f0bbd905.json"
+  },
+  "offline_attempt2": {
+    "run_id": "3b8c518a813fb750a5bc0cdb",
+    "signed_receipt": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/receipts/INIT-ISSUE1-TCC-OF22/3b8c518a813fb750a5bc0cdb.json",
+    "receipt_outcome": "FAILED",
+    "runner_observation": "GENERATOR_SPEC_RAW_VS_NORMALIZED_COMPARE_MISMATCH",
+    "runner_source_hash_pass": true,
+    "real_native_generator_started": true,
+    "native_runtime_reached": false,
+    "proof_created": false
+  },
+  "normalization_repair": {
+    "repo_source_blob": "f91505ddbfaa2a47533d1dbf02f02211a6d81a5e",
+    "explanation": "tcc.core_v3.normalize_spec sorts nodes by ID, acceptance, reads, writes; generated spec is normalized, so raw canonical JSON is not an equivalent comparison",
+    "source_line_fix_count": 2,
+    "not_a_relaxed_gate": true,
+    "third_initiative": "INIT-ISSUE1-TCC-OF23",
+    "third_run_id": "e3ff583acbadc79386a4b5da",
+    "third_status_last_checked": "QUEUED",
+    "mac_receipt_verified": false
   }
 }
