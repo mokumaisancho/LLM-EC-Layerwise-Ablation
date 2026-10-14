@@ -24,7 +24,8 @@
       "to": "GitHub initiative-dispatcher queue",
       "artifact": "initiatives/INIT-ISSUE1-TCC-V22.json;state/INIT-ISSUE1-TCC-V22.json;queue/INIT-ISSUE1-TCC-V22/<run-id>.json",
       "operation": "register separate integration-control AC; activate via CAS-compatible state last",
-      "status": "PREPARING"
+      "status": "ACTIVATED_GITHUB_QUEUE",
+      "receipt": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/queue/INIT-ISSUE1-TCC-V22/2590c053e8798c66f0bbd905.json"
     },
     {
       "stage": "R2",
@@ -32,7 +33,7 @@
       "to": "Mac host",
       "artifact": "existing com.local.initiative-dispatcher LaunchAgent",
       "operation": "read one immutable queue receipt, dispatch one Codex CLI workspace-write job",
-      "status": "HISTORICALLY_VERIFIED_ONLY_FOR_OTHER_INITIATIVES"
+      "status": "HOST_QUEUED_LIVE_RECEIPT_PENDING"
     },
     {
       "stage": "R3",
@@ -103,5 +104,17 @@
     "no_authorized_science_closure": true
   },
   "audit_policy": "GitHub transport AC may PASS for real control-plane only; never transfer its PASS to the 18 original research AC. Preserve signed per-run receipt and public resolution route to avoid thread drift.",
-  "next_decision": "Check GitHub receipt for concrete new initiative and read native result; if absent report transport evidence pending rather than claim success"
+  "next_decision": "Check GitHub receipt for concrete new initiative and read native result; if absent report transport evidence pending rather than claim success",
+  "command_activation": {
+    "initiative_id": "INIT-ISSUE1-TCC-V22",
+    "run_id": "2590c053e8798c66f0bbd905",
+    "fingerprint": "d2879861a4c27aa64adf8ca88f409cc833319b0828f4b92b0ecc891ddbf7ebfd",
+    "initiative_git_commit": "9babb857f0b8f3a02d18cbaf41f712e245e46da6",
+    "queue_git_commit": "43256a932dcfc795ffdf0235a3825e8c8ce48094",
+    "activation_git_commit": "c65dcbdbfde14b526985aaa883e54b958c311203",
+    "queue_status_last_verified": "QUEUED",
+    "mac_receipt_verified": false,
+    "actions_intentionally_skipped": true,
+    "expected_sandbox_proof_sha256": "cffaba91bde600659561bec17bd6c934edbe8a68342835d0daf431611bd55e11"
+  }
 }
