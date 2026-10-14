@@ -33,7 +33,8 @@
       "to": "Mac host",
       "artifact": "existing com.local.initiative-dispatcher LaunchAgent",
       "operation": "read one immutable queue receipt, dispatch one Codex CLI workspace-write job",
-      "status": "HOST_QUEUED_LIVE_RECEIPT_PENDING"
+      "status": "LIVE_MAC_RECEIVER_PROVED_RUN_2590C",
+      "receipt": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/receipts/INIT-ISSUE1-TCC-V22/2590c053e8798c66f0bbd905.json"
     },
     {
       "stage": "R3",
@@ -41,7 +42,7 @@
       "to": "pinned local TCC",
       "artifact": "scripts/issue1_native_host_receipt_v22.py",
       "operation": "verify pinned source, invoke native generate_tcc_from_context + validate_spec + compile_spec + execute_graph",
-      "status": "NOT_YET_EXECUTED_FOR_ISSUE1"
+      "status": "FIRST_RUN_BLOCKED_NO_GH_NETWORK_IN_CODEX_SANDBOX"
     },
     {
       "stage": "R4",
@@ -57,7 +58,26 @@
       "to": "GitHub initiative-dispatcher receipts",
       "artifact": "receipts/INIT-ISSUE1-TCC-V22/<run-id>.json",
       "operation": "verify fixed proof.txt SHA, exact ownership and result evidence; root science remains open",
-      "status": "AWAITING_MAC_EXECUTION"
+      "status": "FIRST_RUN_SIGNED_VERIFICATION_FAILED_PROOF_ABSENT"
+    },
+    {
+      "stage": "R6",
+      "from": "first real Mac signed VERIFICATION_FAILED receipt",
+      "to": "immutable offline source package",
+      "artifact": "scripts/issue1_native_offline_runner_v22.py",
+      "operation": "Root-cause: Codex workspace cannot reach api.github.com; fix by encoding pinned Python source into GitHub COMMAND, no API/network calls inside child",
+      "status": "COMMITTED_AND_SOURCE_PINNED",
+      "first_run": "2590c053e8798c66f0bbd905",
+      "scientific_AC_promoted": 0
+    },
+    {
+      "stage": "R7",
+      "from": "GitHub encoded immutable COMMAND",
+      "to": "Mac existing launchd receiver and pinned tcc-compiler",
+      "artifact": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/queue/INIT-ISSUE1-TCC-OF22/3b8c518a813fb750a5bc0cdb.json",
+      "operation": "decode source, verify SHA-1, run actual native TCC Generator/Validator/Runtime offline; signed receipt requires fixed proof hash",
+      "status": "ACTIVATED_GITHUB_QUEUE",
+      "scientific_AC_promoted": 0
     }
   ],
   "authority": {
@@ -116,5 +136,23 @@
     "mac_receipt_verified": false,
     "actions_intentionally_skipped": true,
     "expected_sandbox_proof_sha256": "cffaba91bde600659561bec17bd6c934edbe8a68342835d0daf431611bd55e11"
+  },
+  "offline_fallback": {
+    "initiative_id": "INIT-ISSUE1-TCC-OF22",
+    "run_id": "3b8c518a813fb750a5bc0cdb",
+    "queue_git_commit": "eb252db2a39673e26b8d86b92fe41262a227d41c",
+    "state_git_commit": "a7d482dcf0c37dd424221cf0d0cd8fdd58c98d4d",
+    "payload_git_blob": "7678b9cc618744a8415b0583a070b52d8a277769",
+    "proof_sha256": "b02f2c320b270fc98ef40d6742feddc6fc2a463be156fac80f76500140d6dac8",
+    "mac_receipt_verified": false
+  },
+  "first_live_result": {
+    "outcome": "VERIFICATION_FAILED",
+    "error_class": "CODEX_WORKSPACE_NETWORK_TO_GITHUB_BLOCKED",
+    "proof_absent": true,
+    "native_generator_invoked": false,
+    "native_runtime_invoked": false,
+    "original_science_ac_passed": 2,
+    "receipt": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/receipts/INIT-ISSUE1-TCC-V22/2590c053e8798c66f0bbd905.json"
   }
 }
