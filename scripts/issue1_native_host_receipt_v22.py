@@ -26,7 +26,7 @@ PINS = {
     "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
     "docs/ISSUE1_SINGLE_SOURCE_TRACKER_V5.json": "56bd5ac25d47e1dd9e8ea9da6193679656b661f5",
     "docs/ISSUE1_S4_SOURCE_BOUND_OBLIGATION_POINTERS_V20.json": "a78df93af631f07b284dc3c8c74594f6989fbb6b",
-    "docs/ISSUE1_TCC_NATIVE_CONTRACT_V22.json": "__V22_BLOB__",
+    "docs/ISSUE1_TCC_NATIVE_CONTRACT_V22.json": "597871767951bbcce950860546a04a1ecbc8f966",
 }
 RESULT_FILE = Path("native-control-result.json")
 PROOF_FILE = Path("proof.txt")
