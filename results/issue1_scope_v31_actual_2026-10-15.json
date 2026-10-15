@@ -1,0 +1,70 @@
+{
+  "schema": "ISSUE1_SOURCE_SCOPE_LIVE_V31",
+  "date": "2026-10-15",
+  "test_count": 10,
+  "checks": [
+    {
+      "name": "full_source_scope_real_publisher",
+      "pass": true,
+      "received": "PASS"
+    },
+    {
+      "name": "policy_source_forger",
+      "pass": true,
+      "received": "Error: SOURCE_BLOB_DRIFT_airline"
+    },
+    {
+      "name": "policy_line_omission",
+      "pass": true,
+      "received": "Error: SOURCE_LINE_COUNT_airline"
+    },
+    {
+      "name": "policy_line_duplicate",
+      "pass": true,
+      "received": "Error: INVALID_OR_DUPLICATE_POLICY_LINE_airline"
+    },
+    {
+      "name": "task_omission",
+      "pass": true,
+      "received": "Error: TASK_COUNT_retail"
+    },
+    {
+      "name": "case_duplicate",
+      "pass": true,
+      "received": "Error: TASK_DUPLICATE_retail"
+    },
+    {
+      "name": "task_pin_forgery",
+      "pass": true,
+      "received": "Error: TASK_UNPINNED_airline"
+    },
+    {
+      "name": "fake_empty_complete_claim",
+      "pass": true,
+      "received": "Error: PER_CASE_POLICY_REVIEW_NOT_COMPLETE"
+    },
+    {
+      "name": "self_attested_full_false_qualification",
+      "pass": true,
+      "received": "Error: NO_INDEPENDENT_CRYPTOGRAPHIC_WITNESS_PINNED"
+    },
+    {
+      "name": "duplicate_forged_review_row",
+      "pass": true,
+      "received": "Error: DUPLICATE_REVIEW_CELL"
+    }
+  ],
+  "passed": 10,
+  "source_observations": {
+    "science": "BLOCKED_EXTERNAL",
+    "source_scope": "COMPLETE",
+    "policy_nonempty_lines": 197,
+    "original_tasks": 164,
+    "task_line_pairs": 14778,
+    "source_gate": "PASS",
+    "semantic_obligation_qualification": false
+  },
+  "native_node_cli_executed": false,
+  "source_path": "tools/issue1_source_scope_gate_v31.mjs",
+  "sci_ac_promoted": 0
+}
