@@ -1,0 +1,73 @@
+{
+  "schema": "ISSUE1_S3_S4_BOUNDARY_V43",
+  "as_of": "2026-10-16",
+  "original": {
+    "science_mvp": "2/18",
+    "promoted": 0,
+    "threshold": 0.2
+  },
+  "sources": {
+    "native_s3": "GPT-EC-Closure-Engine@d5ec423968f1c9242c590e5e77ccfd92d1f59eb2 / 01_repo/src/v4/ec_next_action_authority.py",
+    "ec_blob": "89806d27da266de9bb8a9541129fc47722dea36c",
+    "ec_reframe": "results/phase1_ecv44_reframe_actual_2026-10-03.json",
+    "llm_reframe": "results/phase1_qwen25_1p5b_reframe_actual_2026-10-03.json",
+    "actual_paired_score": "results/issue1_s3_reframe_paired_error_topology_v43_2026-10-16.json",
+    "predictor_input": "tools/issue1_s3_gold_contamination_preflight_v42.mjs",
+    "original_AC_blob": "40e4d41914fb17ee5c7deb0cfd32276a41c9a1fc"
+  },
+  "function_scope": [
+    {
+      "name": "S3_SEMANTIC_ALL_ADMISSIBLE_SET",
+      "native": "INCOMPATIBLE",
+      "reason": "Native select_next_action selects single remediation work from declared EC_REMEDIATION_PLAN_V1. It does NOT adjudicate rule-compatible candidate semantics and cannot preserve all M003/M009 alternatives.",
+      "condition_for_admission": "Qualify a source-grounded semantic adapter independently before making native EC-vs-LLM claims."
+    },
+    {
+      "name": "S3_REFRAME",
+      "native": "APPLICABLE",
+      "evidence": "Actual source EC 9/10 and real Qwen1.5B 9/10 on frozen 10 fixtures; EC false positive M004, LLM false negative M005",
+      "conditional": "Report class-conditional error rates. 1 positive / 9 negative is not enough for broad generalization or full Layer S3 replacement."
+    },
+    {
+      "name": "NEXT_REMEDIATION_ACTION",
+      "native": "APPLICABLE_SEPARATE_ASSAY",
+      "evidence": "EC 17/17 versus Qwen1.5B 1/17 on governed work protocol; not general semantic S3",
+      "source": "results/function_boundary_next_action_v2_actual_2026-10-03.json"
+    },
+    {
+      "name": "S4_REAL_TASK_CLOSURE",
+      "native": "NOT_IDENTIFIABLE_FROM_FROZEN_S3",
+      "condition_for_admission": "Policy/task obligations, source and execution provenance, pending conflicts/reframe and verifiable execution effects must exist independently of gold."
+    }
+  ],
+  "P01": {
+    "source_logic_tests": "15/15 passed (ten pinned source SPEC-equivalent cases and five mutational rejects)",
+    "test_cli": "tests/issue1_s3_blind_task_v43.test.mjs",
+    "native_python_cli_run": false,
+    "predictor_visible_fields": [
+      "task prompt",
+      "facts",
+      "domain rules",
+      "randomized opaque candidate IDs",
+      "semantic operations"
+    ],
+    "hide": [
+      "fixture ID",
+      "oracle constraints",
+      "gold",
+      "source v/x ID",
+      "authored validity claims",
+      "asymmetric evidence"
+    ],
+    "unseen_holdout": false
+  },
+  "gate": {
+    "reject_native_S3_semantic_selector_misuse": true,
+    "reject_S4_gold_copied_state": true,
+    "shared_bytes_and_frozen_gold_mandatory": true,
+    "real_EC_and_LLM_receipts_mandatory": true,
+    "target_only_intervention_mandatory": true,
+    "unmodified_original_science": "2/18"
+  },
+  "next": "Run actual Python-generated 10 fixtures through patched Node preflight and its integration test; then real comparable S3/EC/LLM target-scoped evaluation, followed by S4 source-grounded closure."
+}
