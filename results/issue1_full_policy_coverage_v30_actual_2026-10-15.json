@@ -1,0 +1,84 @@
+{
+  "schema": "ISSUE1_D05_FULL_SCOPE_NEGATIVE_CONTROLS_V30",
+  "as_of": "2026-10-15",
+  "original_ac": {
+    "passed": 2,
+    "required": 18,
+    "promoted": 0
+  },
+  "observations": {
+    "policy_nonempty_lines": 197,
+    "policy_all_lines": 304,
+    "task_count": 164,
+    "case_policy_line_review_cells": 14778,
+    "reviewed_cells": 0,
+    "scientific_ac_promoted": 0
+  },
+  "checks": [
+    {
+      "name": "real_publisher_164_cases_full_line_scope",
+      "pass": true,
+      "result": "SOURCE_SCOPE_INVENTORY_PASS_SCIENCE_BLOCKED"
+    },
+    {
+      "name": "missing_policy_line",
+      "pass": true,
+      "result": "Error: C_UNDERCOUNT"
+    },
+    {
+      "name": "duplicate_policy_line",
+      "pass": true,
+      "result": "Error: C_LINE_UNIVERSE"
+    },
+    {
+      "name": "deleted_case",
+      "pass": true,
+      "result": "Error: C_TASK_COUNT"
+    },
+    {
+      "name": "duplicate_case_id",
+      "pass": true,
+      "result": "Error: C_CASE_DUPLICATE"
+    },
+    {
+      "name": "forged_source_blob",
+      "pass": true,
+      "result": "Error: C_SOURCE_SHA"
+    },
+    {
+      "name": "fake_complete_zero_matrix",
+      "pass": true,
+      "result": "Error: C_INCOMPLETE_CASE_BY_CLAUSE"
+    },
+    {
+      "name": "self_claimed_issuer",
+      "pass": true,
+      "result": "Error: C_FORGED_ISSUER"
+    },
+    {
+      "name": "fake_full_matrix_but_missing_witness",
+      "pass": true,
+      "result": "Error: C_DUPLICATE_EVIDENCE"
+    }
+  ],
+  "checks_passed": 9,
+  "checks_total": 9,
+  "scientific_qualification": false,
+  "source_scope_complete": true,
+  "semantic_obligation_scope_complete": false,
+  "negative_test_conclusion": "All missing/duplicate/fake source coverage attempts rejected. Independent semantic relevance and authority cannot be synthesized.",
+  "origin": {
+    "repo": "amazon-agi/tau2-bench-verified",
+    "commit": "864350a8971a8f8ee9e7b8472e2edc380a806b0c",
+    "pins": {
+      "airline": {
+        "policy": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+        "tasks": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9"
+      },
+      "retail": {
+        "policy": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+        "tasks": "2c6373d7ab16cf1b9543043d31d87f0daf292d92"
+      }
+    }
+  }
+}
