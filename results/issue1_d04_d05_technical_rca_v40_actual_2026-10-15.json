@@ -1,0 +1,45 @@
+{
+  "schema": "ISSUE1_D04_D05_INCOMPATIBLE_ORIGINAL_S3_S4_VERIFIED_V40",
+  "source_pins": {
+    "results/phase1_mvp_tcc_v2_actual_2026-10-03.json": "4afdeafc4bda057b443a481cfec332926f7cdc39",
+    "results/phase1_ecv44_s3_native_interface_compatibility_2026-10-03.json": "b8e7a6d1708b8a30768fbbcb2475bebeb2dbafb3",
+    "results/phase1_s4_identifiability_audit_2026-10-03.json": "624616a1f4b0dc4a2330cbcd0a6a03b94a475ce8",
+    "docs/EC_LLM_FUNCTION_BOUNDARY_2026-10-03.md": "cca0caf5d933d1a52d7e2a211cab3b27e0b02865",
+    "docs/ISSUE1_ORIGINAL_SCIENCE_CRITICAL_PATH_V39.json": "f2a092fae861dec5fd087531f7127cb1ca4c643f"
+  },
+  "tests": [
+    {
+      "id": "actual_native_terminal_scope_proven",
+      "passed": true,
+      "observed": "PASS"
+    },
+    {
+      "id": "fake_EC_native_compatible",
+      "passed": true,
+      "observed": "Error: REJECT:FROZEN_EC_TERMINAL"
+    },
+    {
+      "id": "forget_multi_candidate_scope",
+      "passed": true,
+      "observed": "Error: REJECT:S3_SOURCE_INCOMPATIBLE"
+    },
+    {
+      "id": "fake_S4_identifiability",
+      "passed": true,
+      "observed": "Error: REJECT:S4_IDENTIFIABILITY_PROOF"
+    },
+    {
+      "id": "scope_successor_missing",
+      "passed": true,
+      "observed": "Error: REJECT:SUCCESSOR_CONTRACT"
+    },
+    {
+      "id": "old_wrong_DAG_not_preserved",
+      "passed": true,
+      "observed": "Error: REJECT:V39_OBSOLETE_DAG_NOT_IDENTIFIED"
+    }
+  ],
+  "passed": 6,
+  "total": 6,
+  "root_ac_promoted": 0
+}
