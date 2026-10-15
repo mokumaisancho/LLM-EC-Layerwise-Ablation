@@ -14,7 +14,7 @@ TCC_PIN = "786d52c1efbc9271096f9311d768ef49bcd116e2"
 V40_BLOB = "d4e5eeda1703445af42264eb150a17a3bda85786"
 S3_AUDIT_BLOB = "b8e7a6d1708b8a30768fbbcb2475bebeb2dbafb3"
 S4_AUDIT_BLOB = "624616a1f4b0dc4a2330cbcd0a6a03b94a475ce8"
-PROOF = b"issue1-v41-native-tcc-s3-s4-source-mechanics-verified-science-blocked\\n"
+PROOF = b"issue1-v41-native-tcc-s3-s4-source-mechanics-verified-science-blocked\n"
 OUT = Path("issue1-v41-tcc-receipt.json")
 S3 = Path("issue1-v41-s3-boundary.json")
 S4 = Path("issue1-v41-s4-bounded-proof.json")
@@ -22,13 +22,13 @@ GRAPH = Path("issue1-v41-generated-tcc-spec.json")
 H = "a"*64
 
 def gb(raw):
-    return hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\\0"+raw).hexdigest()
+    return hashlib.sha1(b"blob "+str(len(raw)).encode()+b"\0"+raw).hexdigest()
 
 def digest(raw):
     return hashlib.sha256(raw).hexdigest()
 
 def save(path, obj):
-    path.write_text(json.dumps(obj,sort_keys=True,indent=2,ensure_ascii=False)+"\\n",encoding="utf-8")
+    path.write_text(json.dumps(obj,sort_keys=True,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     return digest(path.read_bytes())
 
 def cmd(*args):
