@@ -15,7 +15,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),"..");
 const py=path.join(root,"tools/generate_phase1_measurement_v2.py");
 const canon=path.join(root,"tools/generate_phase1_measurement_v2_canonical.py");
 const tool=path.join(root,"tools/issue1_s3_gold_contamination_preflight_v42.mjs");
-const gitBlob=(b)=>crypto.createHash("sha1").update(Buffer.concat([Buffer.from("blob "+b.length+"\\0"),b])).digest("hex");
+const gitBlob=(b)=>crypto.createHash("sha1").update(Buffer.concat([Buffer.from("blob "+b.length+"\0"),b])).digest("hex");
 const expected=[["M001",2],["M002",2],["M003",3],["M004",2],["M005",2],["M006",2],["M007",2],["M008",2],["M009",3],["M010",2]];
 function run(exe,args,cwd){const r=spawnSync(exe,args,{cwd,encoding:"utf8",timeout:60000});assert.equal(r.status,0,`${exe} failed: ${r.stderr}`);return r.stdout}
 const temp=fs.mkdtempSync(path.join(os.tmpdir(),"issue1-s3-clean-"));
