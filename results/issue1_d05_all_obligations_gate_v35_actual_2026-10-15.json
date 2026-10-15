@@ -1,0 +1,112 @@
+{
+  "schema": "ISSUE1_D05_NL_AND_COMPLETE_POLICY_EVALUATION_V35",
+  "date": "2026-10-15",
+  "source_pins": {
+    "publisher_v20": "a78df93af631f07b284dc3c8c74594f6989fbb6b",
+    "publisher_all_policy_v30": "c918e3fccbcd9a563b6f0af594dd2e0b138f8ca1"
+  },
+  "source_data_cases": 164,
+  "original_publisher_assertions": 135,
+  "no_action_no_communication_but_NL": [
+    "airline/0",
+    "airline/10",
+    "airline/26",
+    "airline/28",
+    "airline/31",
+    "airline/34",
+    "airline/46"
+  ],
+  "verified_unit_tests": [
+    {
+      "name": "real_164_source_unqualified",
+      "pass": true,
+      "status": "BLOCKED_AUTHORITY_REQUIRED"
+    },
+    {
+      "name": "complete_synthetic_review_without_issuer",
+      "pass": true,
+      "status": "BLOCKED_INDEPENDENT_AUTHORITY"
+    },
+    {
+      "name": "unit_test_mock_authority_never_root",
+      "pass": true,
+      "status": "FORMAL_PROOF_STRUCTURALLY_COMPLETE"
+    },
+    {
+      "name": "missing_policy_line",
+      "pass": true,
+      "status": "Error: REJECT:POLICY_LINE_COVERAGE"
+    },
+    {
+      "name": "duplicate_policy_line",
+      "pass": true,
+      "status": "Error: REJECT:EXTRA_OR_DUPLICATE_LINE"
+    },
+    {
+      "name": "unreviewed_policy_line",
+      "pass": true,
+      "status": "BLOCKED_UNRESOLVED_POLICY"
+    },
+    {
+      "name": "missing_NL",
+      "pass": true,
+      "status": "Error: REJECT:NATURAL_LANGUAGE_JUDGMENT_MISSING"
+    },
+    {
+      "name": "negative_NL",
+      "pass": true,
+      "status": "FAIL_PUBLISHER_NL"
+    },
+    {
+      "name": "fabricated_NL_id",
+      "pass": true,
+      "status": "Error: REJECT:NATURAL_LANGUAGE_JUDGMENT_MISSING"
+    },
+    {
+      "name": "no_empty_proof",
+      "pass": true,
+      "status": "Error: REJECT:NO_POSITIVE_ZERO_PROOF"
+    },
+    {
+      "name": "unsigned_certification",
+      "pass": true,
+      "status": "BLOCKED_INDEPENDENT_AUTHORITY"
+    },
+    {
+      "name": "missing_case_source",
+      "pass": true,
+      "status": "Error: REJECT:CASE_SOURCE_DRIFT"
+    },
+    {
+      "name": "missing_upstream_trace",
+      "pass": true,
+      "status": "Error: REJECT:MISSING_EXECUTION_BINDING"
+    },
+    {
+      "name": "applicable_without_verdict",
+      "pass": true,
+      "status": "Error: REJECT:OBLIGATION_JUDGMENT_MISMATCH"
+    },
+    {
+      "name": "applicable_breached",
+      "pass": true,
+      "status": "FAIL_REQUIRED_OBLIGATION"
+    },
+    {
+      "name": "no_orphan_line",
+      "pass": true,
+      "status": "Error: REJECT:EXTRA_OR_DUPLICATE_LINE"
+    }
+  ],
+  "passed": 16,
+  "total": 16,
+  "scoped_experiment_with_publisher_actual_cases": true,
+  "all_164_independent_obligations_attested": false,
+  "test_synthetic_inputs_qualified": false,
+  "real_agent_scored": false,
+  "source_coverage_compiled": true,
+  "original_science_AC": 2,
+  "required": 18,
+  "promoted": 0,
+  "node_cli_executed": false
+}
