@@ -1,0 +1,109 @@
+{
+  "schema": "ISSUE1_SCIENTIFIC_TCC_AC_V42",
+  "date": "2026-10-15",
+  "original": {
+    "root": 1,
+    "MVP_ac_passed": 2,
+    "MVP_ac_required": 18,
+    "materiality": 0.2,
+    "old_frozen_terminal": "EC_NATIVE_SCOPE_INCOMPATIBLE",
+    "preserve_history": true
+  },
+  "scope": "VERSIONED_S3_NEXT_ACTION_AND_SET_SPLIT_PLUS_CLOSURE_SUFFICIENT_S4_SUCCESSOR_NOT_RETROACTIVE_ORIGINAL_PHASE1",
+  "source_pins": {
+    "original_ac": "40e4d41914fb17ee5c7deb0cfd32276a41c9a1fc",
+    "original_phase1": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+    "generator": "26bf4a57451769f0a1b617687abe216f773faa8f",
+    "canonical_generator": "e354884f20a534a3be429ffdcff5f72135472436c",
+    "ec_native_s3": "89806d27da266de9bb8a9541129fc47722dea36c",
+    "s4_identifiability": "624616a1f4b0dc4a2330cbcd0a6a03b94a475ce8",
+    "leak_test_git_file": "tools/issue1_s3_gold_contamination_preflight_v42.mjs"
+  },
+  "nodes": [
+    {
+      "id": "P00_PIN",
+      "needs": [],
+      "writes": "pins",
+      "ac": "Verify original frozen AC and source blobs; maintain original EC_NATIVE_SCOPE_INCOMPATIBLE"
+    },
+    {
+      "id": "P01_REMOVE_GOLD",
+      "needs": [
+        "P00_PIN"
+      ],
+      "writes": "clean_input",
+      "ac": "Actually generate S3 model-visible input with no v/x prefix, oracle_constraints, gold claims, asymmetric dependency/evidence hints or relation group leakage; SHA-seal before prediction"
+    },
+    {
+      "id": "P02_NATIVE_EC",
+      "needs": [
+        "P01_REMOVE_GOLD"
+      ],
+      "writes": "ec_real",
+      "ac": "Execute actual pinned native EC source, record module SHA, input, output, reasons, runtime, select single next-action only; never claim it is all-admissible-set selector"
+    },
+    {
+      "id": "P03_S4_SOURCE",
+      "needs": [
+        "P01_REMOVE_GOLD"
+      ],
+      "writes": "s4_real",
+      "ac": "Create closure-sufficient source-derived state with policy obligations, verified execution trace, unresolved conflicts, reframe and UNKNOWN; demonstrate actual M001/M007 M003/M009 discriminators not copied from hidden labels"
+    },
+    {
+      "id": "P04_LLM",
+      "needs": [
+        "P01_REMOVE_GOLD"
+      ],
+      "writes": "llm_real",
+      "ac": "Execute actual pinned lightweight LLM on identical task and compatible target interface; record real raw output, model ID, runtime, seed and cache; never simulate"
+    },
+    {
+      "id": "P05_ORACLE",
+      "needs": [
+        "P02_NATIVE_EC",
+        "P03_S4_SOURCE",
+        "P04_LLM"
+      ],
+      "writes": "target_oracle",
+      "ac": "Apply real Oracle intervention to target layer only: verify all non-target implementation IDs and upstream hashes unchanged; record non-identifiable S2 missing candidates"
+    },
+    {
+      "id": "P06_SCORE",
+      "needs": [
+        "P05_ORACLE"
+      ],
+      "writes": "score_real",
+      "ac": "Score after all actual model and EC receipts frozen against separate precommitted gold. Measure S3 recall/selection separately and S4 False Closure Rate, missed reframe rate, true-close recall, abstention and exact denominators, threshold 0.20 unchanged"
+    }
+  ],
+  "success_gate": {
+    "id": "G07_SCIENCE",
+    "needs": [
+      "P06_SCORE"
+    ],
+    "requires": [
+      "pins",
+      "clean_input",
+      "ec_real",
+      "s4_real",
+      "llm_real",
+      "target_oracle",
+      "score_real"
+    ],
+    "qualified": "SUCCESSOR_CAUSAL_EVIDENCE_VERIFIED",
+    "otherwise": "BLOCK_MISSING_EVIDENCE",
+    "read_actual_sources_not_just_boolean_flags": true
+  },
+  "terminal_scope": {
+    "success": "Source-limited successor only; frozen original 2/18 remains unchanged",
+    "failure": "State exact inaccessible or invalid source/engine/scorer evidence, no false closure"
+  },
+  "not_MVP_requirements": [
+    "third party human cryptographic signature",
+    "120 new human labeled documents",
+    "300 unsafe and 100 valid closure generalization certification",
+    "14778 full source matrix judgments"
+  ],
+  "known_prior_defect": "V41 GATE reads actual_engine_ok but no node writes it, hence no path to science success. Its self-authored S4 512-state model proof is not EC behavior."
+}
