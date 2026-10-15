@@ -1,6 +1,43 @@
 #!/bin/zsh
 set -euo pipefail
 
+# Canonical, self-refreshing single Mac COMMAND. Do not create versioned filenames.
+# Every later run consults the same GitHub file, verifies the Git blob checksum,
+# atomically replaces THIS file if changed, then re-executes once.
+if [[ "${INITIATIVE_COMMAND_SELF_UPDATED:-0}" != '1' ]]; then
+  python3 - "$0" <<'SELF_REFRESH_SAME_COMMAND'
+import base64, hashlib, json, os, pathlib, subprocess, sys, tempfile
+p = pathlib.Path(sys.argv[1]).expanduser()
+if p.name != "InitiativeDispatcher_RCA_V44_Repair.command" or p.is_symlink() or not p.is_file():
+    raise SystemExit("BLOCKED: refusing unexpected COMMAND path")
+api = ("repos/mokumaisancho/LLM-EC-Layerwise-Ablation/contents/"
+       "bootstrap/InitiativeDispatcher_RCA_V44_Repair.command"
+       "?ref=feat/issue1-independent-s4-authority-audit-v19")
+try:
+    obj = json.loads(subprocess.check_output(["gh", "api", api], timeout=20))
+    data = base64.b64decode(obj["content"])
+    expected = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\\0" + data).hexdigest()
+    if expected != obj["sha"] or not data.startswith(b"#!/bin/zsh\\nset -euo pipefail\\n"):
+        raise ValueError("REMOTE_COMMAND_BLOB_MISMATCH")
+    if p.read_bytes() != data:
+        fd, tmp = tempfile.mkstemp(prefix=".InitiativeDispatcher_RCA_V44_Repair.", dir=str(p.parent))
+        try:
+            with os.fdopen(fd, "wb") as dst:
+                dst.write(data)
+                dst.flush()
+                os.fsync(dst.fileno())
+            os.chmod(tmp, 0o700)
+            os.replace(tmp, p)
+            print("SAME_COMMAND_REFREShed_FROM_GITHUB")
+        finally:
+            if os.path.exists(tmp):
+                os.unlink(tmp)
+except Exception as exc:
+    raise SystemExit("BLOCKED: verified GitHub self-refresh failed: " + type(exc).__name__)
+SELF_REFRESH_SAME_COMMAND
+  exec env INITIATIVE_COMMAND_SELF_UPDATED=1 /bin/zsh "$0" "$@"
+fi
+
 # One-run, fail-closed recovery for the already-authorized InitiativeDispatcher Mac.
 # Tests in an isolated checkout before any existing LaunchAgent or queue is changed.
 REPO='mokumaisancho/initiative-dispatcher'
