@@ -1,0 +1,84 @@
+{
+  "schema": "ISSUE1_D04_D05_HOST_CAPACITY_REPAIR_V44_HANDOFF",
+  "date": "2026-10-16",
+  "root": {
+    "issue": 1,
+    "scientific_MVP": {
+      "proven": 2,
+      "required": 18,
+      "promoted": 0
+    },
+    "original_phase1_terminal": "EC_NATIVE_SCOPE_INCOMPATIBLE"
+  },
+  "blocker_source": "11 initiative files vs unconditional max 10 across three host and dispatcher paths; old Mac revision unconfirmed",
+  "source_solution": {
+    "repo": "mokumaisancho/initiative-dispatcher",
+    "branch": "fix/history-capacity-rca-v44-20261016",
+    "pinned_head": "87d054651b77ea8bc42f62c7b2e011953670bc57",
+    "pr": "https://github.com/mokumaisancho/initiative-dispatcher/pull/1",
+    "pr_state": "DRAFT_NOT_MERGED",
+    "changes": [
+      "256 bounded historical files; no cumulative 10-all fail",
+      "preserve max 3 simultaneous receiver workers",
+      "auditable SUPERSEDED state with required no active claim and history witness",
+      "host redacted deduplicated rolling diagnostics <= 256KiB per log with two backups",
+      "8 substantive Python regression cases in two new files"
+    ],
+    "source_checks": {
+      "executed_with_gitHub_source": 12,
+      "passed": 12,
+      "actual_python_unittest_executed": false,
+      "reason": "Mac Desktop Commander monthly usage quota reached; deliberately not retried"
+    }
+  },
+  "mac_delivery": {
+    "online": true,
+    "remote_shell_available": false,
+    "local_one_click_command_created": true,
+    "command_name": "InitiativeDispatcher_RCA_V44_Repair.command",
+    "command_verified": {
+      "shell_parse": "bash -n PASS (zsh cannot run in current Linux sandbox)",
+      "embedded_python_ast_parse": "3/3 PASS",
+      "source_pin": "GitHub branch PR head verified"
+    },
+    "actual_command_run": false,
+    "does_before_any_live_mutation": [
+      "clone exact pinned revision to fresh host staging",
+      "compile Python",
+      "run v44 regression tests",
+      "run full independent Python suite",
+      "verify no live host claims and V41 still unclaimed"
+    ],
+    "on_qualification": [
+      "merge GitHub PR",
+      "CAS supersede old V41 without altering original or signed receipts",
+      "update only per-user InitiativeDispatcher LaunchAgent to private source with bounded diagnostics",
+      "post local deployment receipt to GitHub PR"
+    ],
+    "abort_conditions": [
+      "source changed",
+      "tests failed",
+      "other active run detected",
+      "V41 not exactly QUEUED with no claim",
+      "GitHub CAS changed",
+      "plist not matching expected module",
+      "restart fails"
+    ],
+    "manual_event_required": "User runs the signed-source-pinned local .command once because remote direct execution is quota-blocked"
+  },
+  "v41_current_state": {
+    "status": "DONE",
+    "revision": 8,
+    "active_run": null,
+    "source_state_blob": "9a92af1a863d1537f89d43a7ccd525946d4c8d20",
+    "verified_signed_receipt": false
+  },
+  "next_scientific_path": [
+    "Mac capacity fix and signed control execution",
+    "gold-free S3 real native EC/LLM comparable shared-unit inputs",
+    "S4 closure-sufficient source task state and traces",
+    "target-only Oracle and separate scorer",
+    "18 original AC frozen and successor scoped results kept distinct"
+  ],
+  "root_science_exit": "BLOCKED_NOT_MERGED_NOT_RUN"
+}
