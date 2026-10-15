@@ -24,16 +24,49 @@ const enc=JSON.stringify(out);
 must(ids.every(id=>!enc.includes('"'+id+'"'))&&!/oracle_constraints|acceptable_candidate_ids|fixture_id|relation_groups|Domain-rule-compatible transition|rule-incompatible transition/.test(enc),"GOLD_LEAK_REMAINS");
 return out;
 };
+// Successor input contract: the predictor must see task facts/rules as well as
+// semantic operations. V42's option-only clean() cannot measure semantic S3.
+export const cleanTask=function cleanTask(task,s2,aliases,order=null){
+const must=(v,m)=>{if(!v)throw Error("REJECT:"+m)};
+must(task?.schema_version==="TASK_INPUT_V1" && typeof task.prompt==="string" && task.prompt.trim(),"SOURCE_TASK_INVALID");
+must(task.context && Array.isArray(task.context.facts) && Array.isArray(task.context.domain_rules),"TASK_CONTEXT_REQUIRED");
+must(task.context.facts.every(x=>typeof x==="string") && task.context.domain_rules.every(x=>typeof x==="string"),"UNSAFE_TASK_CONTEXT");
+must(task.context.domain_rules.length>0,"RULES_REQUIRED");
+must(task.fixture_id===s2.fixture_id,"CROSS_FIXTURE_UPSTREAM_MISMATCH");
+const stripped=clean(s2,aliases);
+const n=stripped.candidates.length;
+if(order===null){
+  order=[...Array(n).keys()];
+  for(let i=n-1;i>0;i--){let j=crypto.randomInt(i+1);[order[i],order[j]]=[order[j],order[i]]}
+}
+must(Array.isArray(order) && order.length===n && new Set(order).size===n
+  && order.every(x=>Number.isInteger(x)&&x>=0&&x<n),"ORDER_NOT_PERMUTATION");
+const out={
+schema:"S3_SEMANTIC_PREDICTOR_INPUT_GOLD_BLIND_V43",
+task:{prompt:task.prompt,facts:[...task.context.facts],domain_rules:[...task.context.domain_rules]},
+candidates:order.map(i=>stripped.candidates[i])
+};
+const visible=JSON.stringify(out);
+const forbidden=/oracle_constraints|acceptable_candidate_ids|acceptable_selected_candidate_ids|fixture_id|relation_groups|Domain-rule-compatible transition|rule-incompatible transition|measurement-author-defined/;
+must(!forbidden.test(visible),"REFERENCE_LABEL_VISIBLE");
+must(s2.candidates.every(c=>!visible.includes('"'+c.candidate_id+'"')),"ORIGINAL_ID_VISIBLE");
+must(out.candidates.length===n && out.candidates.every(c=>/^c_[a-f0-9]{32}$/.test(c.candidate_id)),"PREDICTOR_IDS_INVALID");
+return out;
+};
+
 const blob=(b)=>crypto.createHash("sha1").update(Buffer.concat([Buffer.from("blob "+b.length+"\0"),b])).digest("hex");
 if(process.argv[1]?.endsWith("issue1_s3_gold_contamination_preflight_v42.mjs")){
 try{
-if(process.argv.length!==5)throw Error("USAGE: node this.mjs generator.py canonical.py s2_input.json");
+if(process.argv.length!==6)throw Error("USAGE: node this.mjs generator.py canonical.py task.json s2_input.json");
 const b=process.argv.slice(2).map(x=>fs.readFileSync(x));
-if(blob(b[0])!=="26bf4a57451769f0a1b617687abe216f773faa8f"||blob(b[1])!=="e354884f20a534a3be429ffdcff5f72135472436")throw Error("SOURCE_BLOB_DRIFT");
-const original=JSON.parse(b[2]),aliases=Object.fromEntries(original.candidates.map(x=>[x.candidate_id,"c_"+crypto.randomBytes(16).toString("hex")]));
-const out=clean(original,aliases);
+if(blob(b[0])!=="26bf4a57451769f0a1b617687abe216f773faa8f"||blob(b[1])!=="e354884f20a534a3be429ffdcff5f72135472436c")throw Error("SOURCE_BLOB_DRIFT");
+const task=JSON.parse(b[2]),original=JSON.parse(b[3]);
+const aliases=Object.fromEntries(original.candidates.map(x=>[x.candidate_id,"c_"+crypto.randomBytes(16).toString("hex")]));
+const out=cleanTask(task,original,aliases);
+const source_sha256=crypto.createHash("sha256").update(b[3]).digest("hex");
+const task_sha256=crypto.createHash("sha256").update(b[2]).digest("hex");
 fs.writeFileSync("s3_predictor_visible_v42.json",JSON.stringify(out,null,2)+"\n",{flag:"wx",mode:0o600});
-fs.writeFileSync("s3_PRIVATE_alias_map_v42.json",JSON.stringify({aliases,source_sha256:crypto.createHash("sha256").update(b[2]).digest("hex")},null,2)+"\n",{flag:"wx",mode:0o600});
-console.log(JSON.stringify({audit:inspect(b[0].toString(),b[1].toString()),predictor_payload_sha256:crypto.createHash("sha256").update(fs.readFileSync("s3_predictor_visible_v42.json")).digest("hex"),actual_LLM_EC_run:false}));
+fs.writeFileSync("s3_PRIVATE_alias_map_v42.json",JSON.stringify({aliases,task_sha256,source_sha256},null,2)+"\n",{flag:"wx",mode:0o600});
+console.log(JSON.stringify({audit:inspect(b[0].toString(),b[1].toString()),predictor_payload_sha256:crypto.createHash("sha256").update(fs.readFileSync("s3_predictor_visible_v42.json")).digest("hex"),actual_LLM_EC_run:false,task_rules_present:true,source_candidate_position_randomized:true}));
 }catch(e){console.error(String(e));process.exitCode=3}
 }
