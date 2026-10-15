@@ -53,7 +53,14 @@
     "mcnemar_discordance": {
       "ec_only_wrong": 1,
       "llm_only_wrong": 1
-    }
+    },
+    "balanced_accuracy_ec": 0.9444444444444444,
+    "balanced_accuracy_llm": 0.5,
+    "balanced_accuracy_ec_minus_llm": 0.4444444444444444,
+    "baseline_always_NO_accuracy": 0.9,
+    "llm_matches_majority_baseline_on_all_cases": true,
+    "llm_positive_detection_qualified": false,
+    "minority_class_prevalence": 0.1
   },
   "cases": [
     {
@@ -167,6 +174,22 @@
     ],
     "actionable": "Report positive-class reframe recall and unnecessary-reframe FPR separately. Original gold is one positive and published, so both estimates are fragile and not unseen-generalization evidence.",
     "original_AC_promoted": 0,
-    "original_science_MVP": "2/18"
+    "original_science_MVP": "2/18",
+    "methodology_defect": "Actual Qwen1.5B always predicted NO and was 9/10 because 9 of 10 fixtures do not require reframing. Frozen overall accuracy-based capacity escalation passing at 90% DOES NOT prove positive-class semantic detection; balanced accuracy is 0.50 (majority baseline) vs EC 0.9444. This is retrospective diagnosis only; never change frozen 0.20 acceptance in place.",
+    "versioned_successor_recommendation": "Require minority-class recall and balanced accuracy alongside aggregate accuracy, and prospective additional positive tasks; do not label the historical 0.5B->1.5B escalation protocol an AC success at general reframe semantics."
+  },
+  "baselines": {
+    "always_NO": {
+      "TP": 0,
+      "FN": 1,
+      "TN": 9,
+      "FP": 0
+    },
+    "always_YES": {
+      "TP": 1,
+      "FN": 0,
+      "TN": 0,
+      "FP": 9
+    }
   }
 }
