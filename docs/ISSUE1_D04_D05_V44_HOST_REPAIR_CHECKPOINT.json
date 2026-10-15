@@ -16,7 +16,7 @@
     "branch": "fix/history-capacity-rca-v44-20261016",
     "pinned_head": "87d054651b77ea8bc42f62c7b2e011953670bc57",
     "pr": "https://github.com/mokumaisancho/initiative-dispatcher/pull/1",
-    "pr_state": "DRAFT_NOT_MERGED",
+    "pr_state": "DRAFT_OPEN_NOT_MERGED",
     "changes": [
       "256 bounded historical files; no cumulative 10-all fail",
       "preserve max 3 simultaneous receiver workers",
@@ -39,9 +39,12 @@
     "command_verified": {
       "shell_parse": "bash -n PASS (zsh cannot run in current Linux sandbox)",
       "embedded_python_ast_parse": "3/3 PASS",
-      "source_pin": "GitHub branch PR head verified"
+      "source_pin": "87d054651b77ea8bc42f62c7b2e011953670bc57",
+      "same_filename_reused": true,
+      "mac_rerun_required_for_v44": true,
+      "v41_done_non_destructive_path_added": true
     },
-    "actual_command_run": false,
+    "actual_command_run": "USER_REPORTED_COMPLETION_BUT_V44_MERGE_NOT_OBSERVED",
     "does_before_any_live_mutation": [
       "clone exact pinned revision to fresh host staging",
       "compile Python",
@@ -71,7 +74,10 @@
     "revision": 8,
     "active_run": null,
     "source_state_blob": "9a92af1a863d1537f89d43a7ccd525946d4c8d20",
-    "verified_signed_receipt": false
+    "verified_signed_receipt": true,
+    "receipt_blob": "cc6415b934720929c4c5f9aada7c5544c386dad7",
+    "receipt": "receipts/INIT-ISSUE1-S3S4-V41/d19ba6c294a0108df8afbf72.json",
+    "status_justification": "Signed immutable receipt shows TCC v41 PASS for control-only methods with bounded 512-state S4, science 2/18 unchanged."
   },
   "next_scientific_path": [
     "Mac capacity fix and signed control execution",
@@ -80,5 +86,5 @@
     "target-only Oracle and separate scorer",
     "18 original AC frozen and successor scoped results kept distinct"
   ],
-  "root_science_exit": "BLOCKED_NOT_MERGED_NOT_RUN"
+  "root_science_exit": "BLOCK_REAL_CAUSAL_SOURCE_ONLY_VALIDATED_NOT_ACTUAL_EC_LLM_ORACLE"
 }
