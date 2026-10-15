@@ -1,0 +1,172 @@
+{
+  "schema": "ISSUE1_S3_REFRAME_ERROR_TOPOLOGY_V43",
+  "date": "2026-10-16",
+  "science_scope": "fixed_10_fixture_reframe_only_not_original_full_A_E",
+  "sources": {
+    "results/phase1_ecv44_reframe_actual_2026-10-03.json": "f2a0d63385e947b26b3c401f28cbaf46a214c65b",
+    "results/phase1_qwen25_1p5b_reframe_actual_2026-10-03.json": "33b557c448d9f5ed6f5218cfd76b0f91675f9479",
+    "results/phase1_qwen25_0p5b_reframe_actual_2026-10-03.json": "8b6e8ab07c4604a1c07ed106d864aaf07dccc8e2"
+  },
+  "native_ec_api_blobs": {
+    "reframe_detector": "db2786573417348b243ca9d54f3a21d631427943",
+    "framing_search": "dfc4c56e9bfdeffb3bd1f4aa699d9172c78fa7d5"
+  },
+  "model": {
+    "name": "Qwen2.5-1.5B-Instruct Q4_K_M",
+    "sha256": "1adf0b11065d8ad2e8123ea110d1ec956dab4ab038eab665614adba04b6c3370"
+  },
+  "dataset": {
+    "case_count": 10,
+    "positive": 1,
+    "negative": 9,
+    "original_fixed_fixtures": true,
+    "genuinely_unseen_holdout": false,
+    "same_named_fixture_cases": true,
+    "actual_byte_identical_EC_and_LLM_upstream_not_proven_from_EC_result": true
+  },
+  "confusion": {
+    "ec": {
+      "TP": 1,
+      "FP": 1,
+      "TN": 8,
+      "FN": 0
+    },
+    "llm": {
+      "TP": 0,
+      "FP": 0,
+      "TN": 9,
+      "FN": 1
+    }
+  },
+  "metrics": {
+    "accuracy_ec": 0.9,
+    "accuracy_llm": 0.9,
+    "accuracy_difference": 0,
+    "absolute_threshold_frozen": 0.2,
+    "false_positive_rate_ec": 0.1111111111111111,
+    "false_positive_rate_llm": 0,
+    "false_negative_rate_ec": 0,
+    "false_negative_rate_llm": 1,
+    "positive_recall_denominator": 1,
+    "paired_error_disagreement_count": 2,
+    "paired_error_disagreement_fraction": 0.2,
+    "mcnemar_discordance": {
+      "ec_only_wrong": 1,
+      "llm_only_wrong": 1
+    }
+  },
+  "cases": [
+    {
+      "fixture_id": "M001",
+      "gold": false,
+      "ec_prediction": false,
+      "llm_prediction": false,
+      "ec_correct": true,
+      "llm_correct": true
+    },
+    {
+      "fixture_id": "M002",
+      "gold": false,
+      "ec_prediction": false,
+      "llm_prediction": false,
+      "ec_correct": true,
+      "llm_correct": true
+    },
+    {
+      "fixture_id": "M003",
+      "gold": false,
+      "ec_prediction": false,
+      "llm_prediction": false,
+      "ec_correct": true,
+      "llm_correct": true
+    },
+    {
+      "fixture_id": "M004",
+      "gold": false,
+      "ec_prediction": true,
+      "llm_prediction": false,
+      "ec_correct": false,
+      "llm_correct": true
+    },
+    {
+      "fixture_id": "M005",
+      "gold": true,
+      "ec_prediction": true,
+      "llm_prediction": false,
+      "ec_correct": true,
+      "llm_correct": false
+    },
+    {
+      "fixture_id": "M006",
+      "gold": false,
+      "ec_prediction": false,
+      "llm_prediction": false,
+      "ec_correct": true,
+      "llm_correct": true
+    },
+    {
+      "fixture_id": "M007",
+      "gold": false,
+      "ec_prediction": false,
+      "llm_prediction": false,
+      "ec_correct": true,
+      "llm_correct": true
+    },
+    {
+      "fixture_id": "M008",
+      "gold": false,
+      "ec_prediction": false,
+      "llm_prediction": false,
+      "ec_correct": true,
+      "llm_correct": true
+    },
+    {
+      "fixture_id": "M009",
+      "gold": false,
+      "ec_prediction": false,
+      "llm_prediction": false,
+      "ec_correct": true,
+      "llm_correct": true
+    },
+    {
+      "fixture_id": "M010",
+      "gold": false,
+      "ec_prediction": false,
+      "llm_prediction": false,
+      "ec_correct": true,
+      "llm_correct": true
+    }
+  ],
+  "negative_controls": [
+    {
+      "id": "flip_EC_M005_PREDICTION",
+      "rejected": true
+    },
+    {
+      "id": "flip_LLM_M005_GOLD",
+      "rejected": true
+    },
+    {
+      "id": "remove_model_case",
+      "rejected": true
+    }
+  ],
+  "logic_checks": {
+    "passed": 8,
+    "total": 8,
+    "engine_execution": "SOURCE_RESULT_REPLAY_ONLY",
+    "tests_direct_node_or_py": "NOT_EXECUTED"
+  },
+  "interpretation": {
+    "observable": "Equal 9/10 aggregate accuracy masks opposite failures: EC incorrectly reframes M004, LLM misses required reframe M005.",
+    "not_admissible": [
+      "9/10 proves architecture-wide noninferiority",
+      "no missed reframes because accuracy equal",
+      "confusion pairs prove native S3 set selection",
+      "this validates real S4 policy closure"
+    ],
+    "actionable": "Report positive-class reframe recall and unnecessary-reframe FPR separately. Original gold is one positive and published, so both estimates are fragile and not unseen-generalization evidence.",
+    "original_AC_promoted": 0,
+    "original_science_MVP": "2/18"
+  }
+}
