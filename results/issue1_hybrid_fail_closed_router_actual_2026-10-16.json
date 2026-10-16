@@ -1,0 +1,71 @@
+{
+  "schema": "ISSUE1_HYBRID_FAIL_CLOSED_ROUTER_ACTUAL_EXECUTION_V1",
+  "date": "2026-10-16",
+  "scope": "Smallest bounded deterministic replacement decision boundary for original scientific Issue1; not the four-layer A-E completion",
+  "environment": "OpenAI sandbox Python3 SymPy1.14",
+  "execution": "ACTUAL_LOCAL_PYTHON_UNITTEST_SUBPROCESSES",
+  "source": {
+    "tools/issue1_trust_bounded_hybrid_router.py": {
+      "git_blob": "f4d295a3c804e6dd99020d1fad96789ce8fcaa58",
+      "sha256": "2643bbbfdb904c8f9a4f4ad17e6b9eec640e8b940cc76dce371052a422149f6c"
+    },
+    "tests/test_issue1_trust_bounded_hybrid_router.py": {
+      "git_blob": "3b2a4242996cc8be2005fe18805752cdd1afbdee",
+      "sha256": "72be4f330fe2a9714527e003d7c16d7cfa7ef4e5bc962a74a5cce927d42b92ce"
+    },
+    "tools/issue1_independent_formal_policy_equivalence.py": {
+      "git_blob": "9c7fed1c0c531c28e995629b8c9b7d4fd8c8ec7e",
+      "sha256": "d156dc3cbcacbc18a1575412516ded3ff552b17e0d1d341081b692772b007c62"
+    }
+  },
+  "regression": {
+    "new_router": {
+      "tests": 20,
+      "passed": 20,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "previous_source_formal_handoff": {
+      "tests": 11,
+      "passed": 11,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "previous_SymPy_SAT_policy_equivalence": {
+      "tests": 17,
+      "passed": 17,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "total": {
+      "tests": 48,
+      "passed": 48,
+      "failed": 0
+    }
+  },
+  "behavior": {
+    "trusted_pinned_formal_reference_and_source_required": true,
+    "proposal_matched_to_frozen_reference_using_SymPy_SAT": true,
+    "logical_counterexample_on_omitted_or_negated_rule": true,
+    "no_reference_or_invalid_proposal_preserves_exact_LLM_decision": true,
+    "original_ten_gold_blind_fixture_inputs_missing_independent_reference": {
+      "fallback": 10,
+      "EC_authorized": 0
+    },
+    "safe_positive_case": "SYNTHETIC_ONLY_WITH_TEST_DOUBLE_EC_CALLBACK",
+    "no_native_real_world_task_CLOSE_authorized": true,
+    "no_Oracle_gold_exposure_to_predictor": true
+  },
+  "limitations": {
+    "external_trusted_reference_provenance": "NOT_AVAILABLE_FOR_ORIGINAL_10",
+    "full_native_EC_engine_invoked": false,
+    "new_real_LLM_inference": false,
+    "full_original_A_E_causal_study": false,
+    "generalization_non_degradation_proven": false,
+    "trusted_reference_configuration_security": "HOST_MUST_KEEP_REFERENCE_AND_ENGINE_OUTSIDE_UNTRUSTED_INPUT",
+    "meaningful_new_science_AC_promoted": 0,
+    "original_science_MVP": "2/18"
+  },
+  "local_artifact": "/mnt/data/issue1_source_e2e/ISSUE1_HYBRID_FAIL_CLOSED_ROUTER_RECEIPT_2026-10-16.json",
+  "next_dependent_experiment": "Externally freeze independent source policy and handoff input; insert native EC adapter; compare identical semantic task scope under A-E with separated heldout independent gold."
+}
