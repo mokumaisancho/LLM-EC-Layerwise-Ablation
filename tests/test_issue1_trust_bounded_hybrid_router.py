@@ -24,7 +24,7 @@ class RouteTests(unittest.TestCase):
         self.original = {'raw': 'KEEP THIS LLM DECISION', 'selected': ['unknown']}
         self.reference = copy.deepcopy(REFERENCE)
         self.proposal = copy.deepcopy(REFERENCE)
-        self.trusted = TrustedReference(digest(self.reference), SRC, 'formal_policy_s3')
+        self.trusted = TrustedReference(digest(self.reference), SRC, 'formal_policy_s3', digest({'work_id': 'repair:1'}))
         self.calls=[]
 
     def ec(self, *, ec_input, policy):
@@ -65,7 +65,7 @@ class RouteTests(unittest.TestCase):
         self.assert_fallback(self.invoke(observed_source_sha256='b'*64),'SOURCE_CUSTODY_HASH_MISMATCH')
 
     def test_wrong_trust_target(self):
-        self.assert_fallback(self.invoke(trusted=TrustedReference(self.trusted.policy_sha256, SRC, 'governed_next_action')),'TRUST_TARGET_SCOPE_MISMATCH')
+        self.assert_fallback(self.invoke(trusted=TrustedReference(self.trusted.policy_sha256, SRC, 'governed_next_action', digest({'work_id':'repair:1'}))),'TRUST_TARGET_SCOPE_MISMATCH')
 
     def test_out_of_scope_task_closure(self):
         self.assert_fallback(self.invoke(requested_target='real_world_task_closure'),'UNSUPPORTED_SEMANTIC_TARGET')
