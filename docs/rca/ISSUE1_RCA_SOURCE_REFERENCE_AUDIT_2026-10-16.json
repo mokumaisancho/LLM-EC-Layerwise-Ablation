@@ -1106,5 +1106,37 @@
     }
   ],
   "interpretation": "Missing research-branch path may be in EC sibling repo, old commit, external service or truly missing. Do not claim absent without checking stated provenance.",
-  "science_mvp_promoted": 0
+  "science_mvp_promoted": 0,
+  "resolutions": [
+    {
+      "issue": 27,
+      "reported": "tests/test_ec_next_action_authority.py",
+      "classification": "SIBLING_REPO",
+      "canonical": "mokumaisancho/GPT-EC-Closure-Engine@d5ec423968f1c9242c590e5e77ccfd92d1f59eb2:01_repo/tests/test_ec_next_action_authority.py",
+      "git_blob": "ceefeb551157c9f34ac7ae93c733f6e0ceddad0a"
+    },
+    {
+      "issue": 44,
+      "reported": "docs/S2B2_MVP_AC_DEPENDENCY_TCC_2026-10-04_V3.md/.json",
+      "classification": "ISSUE_SHORTHAND_FOR_TWO_LOCAL_FILES",
+      "canonical": [
+        "docs/S2B2_MVP_AC_DEPENDENCY_TCC_2026-10-04_V3.md",
+        "docs/S2B2_MVP_AC_DEPENDENCY_TCC_2026-10-04_V3.json"
+      ],
+      "git_blobs": [
+        "e56a72007a4f8bf670120a664be2ad147ce38210",
+        "2629bd48618f644a3c9e755c6a8d1bed68bd4a9f"
+      ]
+    },
+    {
+      "issue": 60,
+      "reported": "src/v4/ec_layerwise_admissible_set_closure_v1.py",
+      "classification": "SIBLING_REPO",
+      "canonical": "mokumaisancho/GPT-EC-Closure-Engine@3f435ad4365d846d96264458540efb4848ce3541:01_repo/src/v4/ec_layerwise_admissible_set_closure_v1.py",
+      "git_blob": "c12e4743c89221a9b81a2f2fa98c4df9d61d72b2"
+    }
+  ],
+  "unresolved_reference_count_after_cross_repo_and_shorthand_resolution": 0,
+  "research_branch_exact_path_checks_only": 70,
+  "causal_runtime_attestation_count_by_this_path_index": 0
 }
