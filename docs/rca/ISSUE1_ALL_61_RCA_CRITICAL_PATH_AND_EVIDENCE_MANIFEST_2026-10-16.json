@@ -1,0 +1,441 @@
+{
+  "schema": "ISSUE1_ALL_61_ISSUE_CAUSAL_RCA_MASTER_V1",
+  "date": "2026-10-16",
+  "repository": "mokumaisancho/LLM-EC-Layerwise-Ablation",
+  "root_issue": 1,
+  "original_goal": "Identify minimal LLM semantic reasoning region vs deterministic EC replaceable downstream via controlled A/B/C/D/E at S1 S2 S3 S4; no degradation and honest generalization limits.",
+  "frozen": {
+    "original_mvp_passed": 2,
+    "original_mvp_required": 18,
+    "materiality_abs": 0.2,
+    "baseline_terminal": "EC_NATIVE_SCOPE_INCOMPATIBLE",
+    "retrospective_promotion": 0,
+    "original_acceptance_blob": "40e4d41914fb17ee5c7deb0cfd32276a41c9a1fc",
+    "original_dependency_blob": "08407bec73278aeda8ddd2d4d6efc810dadf46f9"
+  },
+  "inventory": {
+    "issues": 61,
+    "open": 12,
+    "closed": 49,
+    "individual_rca_registers": [
+      "docs/rca/ISSUE1_RCA_REGISTER_001_036_2026-10-16.json",
+      "docs/rca/ISSUE1_RCA_REGISTER_037_061_2026-10-16.json"
+    ],
+    "individual_issue_originals": [
+      "docs/rca/ISSUE1_RCA_SOURCE_001_006_2026-10-16.json",
+      "docs/rca/ISSUE1_RCA_SOURCE_007_012_2026-10-16.json",
+      "docs/rca/ISSUE1_RCA_SOURCE_013_018_2026-10-16.json",
+      "docs/rca/ISSUE1_RCA_SOURCE_019_024_2026-10-16.json",
+      "docs/rca/ISSUE1_RCA_SOURCE_025_030_2026-10-16.json",
+      "docs/rca/ISSUE1_RCA_SOURCE_031_036_2026-10-16.json",
+      "docs/rca/ISSUE1_RCA_SOURCE_037_042_2026-10-16.json",
+      "docs/rca/ISSUE1_RCA_SOURCE_043_048_2026-10-16.json",
+      "docs/rca/ISSUE1_RCA_SOURCE_049_054_2026-10-16.json",
+      "docs/rca/ISSUE1_RCA_SOURCE_055_060_2026-10-16.json",
+      "docs/rca/ISSUE1_RCA_SOURCE_055_061_2026-10-16.json"
+    ],
+    "source_crosschecked_subset": [
+      1,
+      5,
+      9,
+      13,
+      20,
+      23,
+      26,
+      27,
+      28,
+      30,
+      37,
+      38,
+      39,
+      42,
+      43,
+      48,
+      50,
+      51,
+      52,
+      53,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61
+    ],
+    "source_crosschecked_count": 27,
+    "source_not_yet_rechecked_count": 34,
+    "coverage_assertion_pass": true
+  },
+  "root_cause_clusters": [
+    {
+      "id": "C0_SCOPED_GOAL_DRIFT",
+      "issue_ids": [
+        1,
+        9,
+        20,
+        22,
+        23,
+        24,
+        25,
+        27,
+        28,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        42,
+        43,
+        48,
+        59,
+        60
+      ],
+      "cause": "Coarse S3 admissibility and S4 generic real-world closure were not isomorphic to pinned EC-native remediations; successor subfunction experiments were at times treated as progress on original full A-E",
+      "evidence": [
+        "results/phase1_mvp_tcc_v2_actual_2026-10-03.json",
+        "results/phase1_ecv44_s3_native_interface_compatibility_2026-10-03.json",
+        "results/phase1_s4_identifiability_audit_2026-10-03.json",
+        "docs/ISSUE1_S3_S4_FUNCTION_BOUNDARY_V43.json"
+      ],
+      "verification": "SOURCE_SEMANTICS_AND_FROZEN_TERMINAL_VERIFIED; FULL_ORIGINAL_CAUSAL_STUDY_UNEXECUTED",
+      "resolution": "Preserve frozen incompatibility. Qualify versioned shared-function interfaces before any successor LLM/EC comparison. Do not coerce EC next-action into generic all-admissible S3 or declare fake closure."
+    },
+    {
+      "id": "C1_GOLD_AND_BENCHMARK_CONTAMINATION",
+      "issue_ids": [
+        2,
+        3,
+        4,
+        5,
+        7,
+        8,
+        12,
+        13,
+        26,
+        29,
+        30,
+        39,
+        42,
+        50,
+        51,
+        52,
+        53,
+        57,
+        58
+      ],
+      "cause": "Label-bearing v/x IDs, asymmetric hints, model output invalidity, class imbalance, reused or independent gold not sequestered and leaked scorer truth table created spurious scores or hidden model failure",
+      "evidence": [
+        "tools/generate_phase1_measurement_v2.py",
+        "tools/issue1_s3_gold_contamination_preflight_v42.mjs",
+        "results/issue1_s3_reframe_paired_error_topology_v43_2026-10-16.json",
+        "results/issue1_s1c_v32_frozen_raw_error_sensitivity_2026-10-16.json"
+      ],
+      "verification": "P01_15_SOURCE_EQUIVALENT_LOGIC_CHECKS; STILL_NO_FULL_NODE_PYTHON_INTEGRATION; ORIGINAL_MODEL_SCORES_PRESERVED",
+      "resolution": "P01 canonical Node/Python tests, freeze prediction-visible bytes; gold only independent scorer; use conditional misses and prospective holdout; no post hoc threshold rewriting."
+    },
+    {
+      "id": "C2_ORACLE_NON_TARGET_ENGINE_PROVENANCE",
+      "issue_ids": [
+        9,
+        22,
+        24,
+        61,
+        1
+      ],
+      "cause": "E only checked target gold and upstream or rehashable SHA but did not authenticate later non-target engine identity; v2 synthetic trusted replay fixes structure without real engine custody",
+      "evidence": [
+        "tools/issue1_phase1_ae_gate_v1.py",
+        "tools/issue1_phase1_ae_gate_v2.py",
+        "tests/test_issue1_phase1_ae_gate_v2.py",
+        "docs/ISSUE61_ORACLE_TARGET_ONLY_AE_GATE_V2_2026-10-11.md"
+      ],
+      "verification": "V1_ADVERSARIAL_BYPASS_DOCUMENTED;V2_SOURCE_AND_TOY_TESTS_PRESENT;REAL_MODEL_NATIVE_ORACLE_NOT_PROVEN",
+      "resolution": "Actual sealed A/B/C/D/E run with exactly unchanged non-target implementations, causal intervention target only, independent gold not accessible to any predictor, execution receipts tied to pinned external process and model."
+    },
+    {
+      "id": "C3_SOURCE_ADMISSIBILITY_AND_OBLIGATIONS",
+      "issue_ids": [
+        6,
+        7,
+        8,
+        23,
+        27,
+        28,
+        59,
+        60
+      ],
+      "cause": "V1 native set engine accepted author-supplied semantic adjudications and self-asserted S4 obligation completeness; newer V2 recomputes from pinned FORMAL policy but explicitly does not attest unspecified real-world obligations or independent NL grounding",
+      "evidence": [
+        "GPT-EC-Closure-Engine@3f435ad4365d846d96264458540efb4848ce3541:01_repo/src/v4/ec_layerwise_admissible_set_closure_v1.py",
+        "GPT-EC-Closure-Engine@3f435ad4365d846d96264458540efb4848ce3541:01_repo/src/v4/ec_layerwise_source_policy_authority_v2.py"
+      ],
+      "verification": "SOURCE_DIRECT_VERIFIED;EXTERNAL_NL_COMPLETENESS_NOT_PROVEN",
+      "resolution": "For original fixed-10 bounded source task provide source-grounded rule+obligation inventory, output UNKNOWN on unproven completeness; #59/#60 expanded external-blind 120/300/100 certification remains OPTIONAL separate tier, not root-mandatory."
+    },
+    {
+      "id": "C4_CAPABILITY_RETENTION_AND_PRODUCT",
+      "issue_ids": [
+        54,
+        55,
+        56,
+        57,
+        58
+      ],
+      "cause": "Product caller-trusted IR can bypass previously validated task binding; Japanese tokens stripped by ASCII-only tokenizer; historical V1/V4/V5 answered from development fixtures not matched independent model0 holdout",
+      "evidence": [
+        "semantic_runtime/runtime.py",
+        "semantic_runtime/discovery.py",
+        "tools/audit_issue57_question_answer_contamination.py",
+        "results/capability_retention_issue57_diagnostic_2026-10-08.json"
+      ],
+      "verification": "SOURCE_DIRECT_LEXICAL_COUNTEREXAMPLE;IR_CALL_PATH_STATIC_REVIEW;FULL_FOUR_ARM_BLOCKED",
+      "resolution": "Revalidate caller IR and bind task/IR/source hashes before execution, test Japanese semantically contrasting utterances + null/negation, evaluate genuinely new blind cases with original-LLM reference and V1/V4/V5. Do not call non-degrading without matched actual model."
+    },
+    {
+      "id": "C5_EXECUTION_AND_OBSERVABILITY_INFRA",
+      "issue_ids": [
+        10,
+        11,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        31,
+        32,
+        44,
+        45,
+        46,
+        47,
+        49
+      ],
+      "cause": "Ingress/plan compatibility, sandbox binary restrictions, external plan attachment, Render memory/service quota/start command, static compile and stdout evidence retrieval affected actual experiment execution",
+      "evidence": [
+        "results/phase1_qwen25_0p5b_reframe_actual_2026-10-03.json",
+        "results/phase1_qwen25_1p5b_reframe_actual_2026-10-03.json"
+      ],
+      "verification": "HISTORICAL_RUNTIME_RECEIPTS_EXIST;SOME_CLOUD_AND_PLAN_LIMITS_NOT_FRESHLY_VERIFIED",
+      "resolution": "Do not activate unused transport or new COMMAND; reuse already SHA-pinned real model cached receipts where scientifically comparable. Fresh external calls only if an original AC cannot otherwise advance."
+    }
+  ],
+  "critical_dependency_order": [
+    {
+      "rank": 0,
+      "issues": [
+        1,
+        20,
+        23,
+        27,
+        28
+      ],
+      "stage": "OBJECTIVE_AND_FUNCTION_SCOPE_LOCK",
+      "requires": [
+        "original frozen 18 AC",
+        "exact native EC function source pin",
+        "S3 cardinality and S4 identifiability counterexample"
+      ],
+      "collected": [
+        "original source",
+        "EC singleton source blob",
+        "S4 collision report"
+      ],
+      "terminal": "FROZEN_INCOMPATIBILITY_ACCEPTED_AND_VERSIONED_SUCCESSOR_REQUIRED",
+      "still_needed": [
+        "versioned semantic shared-function target interface"
+      ],
+      "no_false_closure": true
+    },
+    {
+      "rank": 1,
+      "issues": [
+        5,
+        13,
+        9
+      ],
+      "stage": "GOLD_BLIND_SHARED_UPSTREAM",
+      "requires": [
+        "canonical Python-generated task and S2 bytes",
+        "Node input scrubber CLI report",
+        "private alias map and independent gold",
+        "randomized candidate ordering",
+        "SHA-identical predictor input for two engines"
+      ],
+      "collected": [
+        "source generator blob 26bf4a...",
+        "canonical generator blob e35488...",
+        "cleanTask 15 source-equivalent logic tests"
+      ],
+      "still_needed": [
+        "actual Node+Python 10-fixture integration test",
+        "precommitted predictor input SHA list"
+      ],
+      "no_false_closure": true
+    },
+    {
+      "rank": 2,
+      "issues": [
+        9,
+        22,
+        23
+      ],
+      "stage": "ACTUAL_LLM_EC_S1_S2_S3_S4",
+      "requires": [
+        "real model ID/weights+runtime+cache and hash",
+        "genuine source-executable EC selection and S4",
+        "S1 S2 S3 S4 fixed public upstream bytes",
+        "S3 COMPETING/EQUIVALENT and S4 unresolved condition labels from source"
+      ],
+      "collected": [
+        "Qwen0.5/1.5 model pinned historical reframe receipts",
+        "EC reframe/native next-action historical functions"
+      ],
+      "still_needed": [
+        "native semantic all-admissible actual shared-function implementation or NOT_APPLICABLE terminal",
+        "closure-sufficient independently evidenced S4 state",
+        "real layerwise eight arms"
+      ],
+      "no_false_closure": true
+    },
+    {
+      "rank": 3,
+      "issues": [
+        61
+      ],
+      "stage": "ORACLE_TARGET_ONLY_CAUSAL_RECEIPT",
+      "requires": [
+        "real pinned stage-by-stage execution receipts for A/B/C/D/E",
+        "non-target source+model fingerprints",
+        "actual upstream hashes",
+        "independent gold sequestered until scoring"
+      ],
+      "collected": [
+        "v1 adversarial bypass",
+        "v2 toy trusted-replay implementation and 17 tests reported"
+      ],
+      "still_needed": [
+        "real execution and external custody/attestation",
+        "same engine downstream E re-execution and negative controls"
+      ],
+      "no_false_closure": true
+    },
+    {
+      "rank": 4,
+      "issues": [
+        1
+      ],
+      "stage": "INDEPENDENT_SCORING_AND_ROOT_EXIT",
+      "requires": [
+        "freeze all raw outputs",
+        "separate oracle",
+        "recompute layer causal gain and 0.20 threshold",
+        "semantic recall,candidate recall,selection,missed reframe,false closure,task success,model cost"
+      ],
+      "collected": [
+        "separate benchmark scoring examples and function-boundary diagnostics"
+      ],
+      "still_needed": [
+        "root five-arm same-fixture validated scores",
+        "layerwise causal localization or fail-closed incompatible terminal"
+      ],
+      "no_false_closure": true
+    }
+  ],
+  "parallel_not_original_hard_gate": [
+    {
+      "issues": [
+        55,
+        56
+      ],
+      "scope": "PRODUCT_SECURITY",
+      "data": "source-specific caller-IR authentication + Japanese lexicon counterfactual tests",
+      "relevance": "Do not misstate science, important for actual product execution."
+    },
+    {
+      "issues": [
+        57,
+        58
+      ],
+      "scope": "NONDEGRADATION_EVALUATION",
+      "data": "actual original LLM0+V1/V4/V5 matched independent holdout",
+      "relevance": "Needed for broad replacement nondegradation, distinct from original fixed 10 A-E."
+    },
+    {
+      "issues": [
+        59,
+        60
+      ],
+      "scope": "EXTENDED_EXTERNAL_GENERALIZATION",
+      "data": "independent adjudication/NL sources and exhaustive real-world obligation inventories",
+      "relevance": "Not mandatory 120/300/100 for original fixed 10 phase1; bounded source claims still need real public provenance."
+    },
+    {
+      "issues": [
+        11,
+        16,
+        17,
+        18,
+        19
+      ],
+      "scope": "OPTIONAL_INGRESS",
+      "data": "only inspect attachment/service state if it actually blocks chosen existing model source",
+      "relevance": "Do not spend critical research time on new sites/plugins while models have already run."
+    }
+  ],
+  "source_checks": {
+    "issue_58": {
+      "module": "semantic_runtime/discovery.py",
+      "git_blob": "99720c37b2416aa780ec380cfea1de08e1472867",
+      "tokenizer": "[a-z0-9<>]+",
+      "masked_japanese_start": "<claim>",
+      "masked_japanese_end": "<claim>",
+      "masked_japanese_unknown": "<claim>",
+      "verified_by_regex_counterfactual": true,
+      "limitation": "V8 equivalent regex probe and actual source, not new native Python invocation"
+    },
+    "issue_55": {
+      "module": "semantic_runtime/runtime.py",
+      "git_blob": "c8ddd1a0e39e0888e9c6a919eeb2adb39a28cdd4",
+      "function": "execute_validated_ir",
+      "IR_protocol_checked": true,
+      "validate_semantic_ir_invoked_within_function": false,
+      "github_issue_closed_but_body_says_open_blocker": true,
+      "mitigation_not_applied": true
+    },
+    "issue_61": {
+      "module": "tools/issue1_phase1_ae_gate_v2.py",
+      "git_blob": "a090eb92f6a47bad47bb8b5139cd9e3ae124e1fb",
+      "v2_development_unit_tests_reported": 17,
+      "real_engine_run_attested": false
+    },
+    "issue_59_60": {
+      "native_commit": "3f435ad4365d846d96264458540efb4848ce3541",
+      "native_v1_blob": "c12e4743c89221a9b81a2f2fa98c4df9d61d72b2",
+      "formal_v2_blob": "7da0cd8d876505cafdd5a9811132427e2f441a14",
+      "formal_v2_external_NL_semantics_proven": false,
+      "formal_v2_real_world_inventory_exhaustive": false
+    }
+  },
+  "data_quality_criteria": {
+    "integrity": "source commit and file Git SHA; actual byte SHA-256 from executed artifact; no self-reported hash-only shortcut",
+    "model": "real model ID, weight hash, runtime commit/tag and binary hash, seed/temp, raw output+hash, schema validity separately",
+    "independent_oracle": "gold frozen before test and inaccessible to all predictors; independent label authority; do not call retrospective 10 source-authored or published development cases independent holdout",
+    "causality": "exact same target input across A/B,C/D; only target engine replaced in E; all nontarget engines pin stable; changed downstream values are expected but engine source must not change",
+    "S3": "full-set recall and exact set separately, COMPETING and EQUIVALENT, no valid-first prefix, runtime semantics genuine",
+    "S4": "independently source-attested exhaustive bounded mandatory conditions incl positive proof none; real closure and execution proof; all false-close cases in denominator",
+    "negative_controls": "gold leakage, missing candidate, swapped engine, non-target Oracle, omitted obligations, changed hash, unsupported language/intent, skewed-class trivial predictor",
+    "confidence_levels": [
+      "PRIMARY_SOURCE_READ",
+      "NEGATIVE_CONTROL_REPRODUCED",
+      "ACTUAL_RUNTIME_SEALED",
+      "INDEPENDENT_REFERENCE_VERIFIED"
+    ],
+    "no_fake_completion": true
+  },
+  "verified_scope": "ALL_61_ISSUE_BODIES_INDEXED_AND_INITIAL_RCA_RECORDED; ORIGINAL_A-E_NOT_COMPLETED; NOT_ALL_61_CAUSES_EXPERIMENTALLY_VERIFIED",
+  "stop_condition": "Never close original if any real EC/LLM/Oracle source is missing; preserve scientific 2/18 while evidence unavailable. No new Mac COMMAND, no GitHub Actions."
+}
