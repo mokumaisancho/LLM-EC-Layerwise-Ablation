@@ -27,6 +27,7 @@ class TrustedReference:
     policy_sha256: str
     source_sha256: str
     target: str
+    ec_input_sha256: str | None = None
     # Source and reviewer custody MUST be established outside this module;
     # only a pre-approved reference object may enter the host adapter.
 
@@ -58,6 +59,15 @@ def route(*, llm_output: Any, proposed_policy: Mapping[str, Any] | None,
     if (not isinstance(observed_source_sha256, str) or
             observed_source_sha256 != trusted.source_sha256):
         return fallback('SOURCE_CUSTODY_HASH_MISMATCH')
+    # A policy digest authenticates the RULES, not the state/candidates used
+    # to obtain an EC decision. Inputs must be independently host-frozen too.
+    if not isinstance(trusted.ec_input_sha256, str) or len(trusted.ec_input_sha256) != 64:
+        return fallback('EC_INPUT_NOT_SOURCE_BOUND')
+    try:
+        if digest(ec_input) != trusted.ec_input_sha256:
+            return fallback('EC_INPUT_NOT_SOURCE_BOUND')
+    except (ValueError, TypeError):
+        return fallback('EC_INPUT_NOT_SOURCE_BOUND')
     if proposed_policy is None:
         return fallback('NO_PROPOSED_FORMAL_POLICY')
 
