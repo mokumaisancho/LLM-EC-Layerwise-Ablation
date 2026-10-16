@@ -1,0 +1,213 @@
+{
+  "schema": "ISSUE1_S4_INFORMATION_THEORETIC_IDENTIFIABILITY_V1",
+  "as_of": "2026-10-16",
+  "source": {
+    "path": "results/issue1_s4_qwen20_paired_info_ablation_actual_2026-10-10.json",
+    "git_blob": "57a8c0a14e88dc76947d70ea93a2102b341ec3bd",
+    "real_model_inferences": 20,
+    "paired_cases": 10,
+    "source_commit_at_run": "88a83f67fba82fb77ec18b471da055ebfe76386d"
+  },
+  "experiment_type": "RECOMPUTATION_OF_REAL_QWEN_OUTPUT_RECORDS_WITH_POSTHOC_LABEL_ONLY_INFORMATION_BOUNDS",
+  "results": {
+    "structural": {
+      "unique_states": 3,
+      "info_only_optimum_accuracy": 0.8,
+      "info_only_irreducible_errors": 2,
+      "model_accuracy": 0.7,
+      "model_errors": [
+        "M003",
+        "M005",
+        "M007"
+      ],
+      "groups": [
+        {
+          "sha256": "fbb7ec5d9a7e56f0165c9b92bc7d28107a2066f593b81a492a16e5c4cb98fffb",
+          "cases": [
+            "M001",
+            "M002",
+            "M004",
+            "M006",
+            "M007",
+            "M008",
+            "M010"
+          ],
+          "label_counts": {
+            "CLOSE": 6,
+            "CONTINUE": 1
+          },
+          "model_pred_counts": {
+            "CLOSE": 7,
+            "CONTINUE": 0
+          },
+          "majority_achievable": 6
+        },
+        {
+          "sha256": "50def6e35391c0cabe8233c66504bae994706c91219ab0a74012a6cc844051d9",
+          "cases": [
+            "M003",
+            "M009"
+          ],
+          "label_counts": {
+            "CLOSE": 1,
+            "CONTINUE": 1
+          },
+          "model_pred_counts": {
+            "CLOSE": 2,
+            "CONTINUE": 0
+          },
+          "majority_achievable": 1
+        },
+        {
+          "sha256": "eab281c4aaf8dbaf7bbc4ed8e9af85137e57c760620d03f0adbb811ca4e4738b",
+          "cases": [
+            "M005"
+          ],
+          "label_counts": {
+            "CLOSE": 1,
+            "CONTINUE": 0
+          },
+          "model_pred_counts": {
+            "CLOSE": 0,
+            "CONTINUE": 1
+          },
+          "majority_achievable": 1
+        }
+      ]
+    },
+    "enriched": {
+      "unique_states": 5,
+      "info_only_optimum_accuracy": 1,
+      "info_only_irreducible_errors": 0,
+      "model_accuracy": 0.7,
+      "model_errors": [
+        "M003",
+        "M005",
+        "M007"
+      ],
+      "groups": [
+        {
+          "sha256": "520acece95e6961fa82331ebaacfdafcd42299a2a09d307e97344402398cd9b8",
+          "cases": [
+            "M001",
+            "M002",
+            "M004",
+            "M006",
+            "M008",
+            "M010"
+          ],
+          "label_counts": {
+            "CLOSE": 6,
+            "CONTINUE": 0
+          },
+          "model_pred_counts": {
+            "CLOSE": 6,
+            "CONTINUE": 0
+          },
+          "majority_achievable": 6
+        },
+        {
+          "sha256": "3196cd085dd9596f7893df372c2409c193453625ea56b94923115b0d6bd1548b",
+          "cases": [
+            "M003"
+          ],
+          "label_counts": {
+            "CLOSE": 0,
+            "CONTINUE": 1
+          },
+          "model_pred_counts": {
+            "CLOSE": 1,
+            "CONTINUE": 0
+          },
+          "majority_achievable": 1
+        },
+        {
+          "sha256": "7ff3c39b6e8f5fdf3e3acd6f01c005969e69755174b0eb0c3e37923faf0f3d9f",
+          "cases": [
+            "M005"
+          ],
+          "label_counts": {
+            "CLOSE": 1,
+            "CONTINUE": 0
+          },
+          "model_pred_counts": {
+            "CLOSE": 0,
+            "CONTINUE": 1
+          },
+          "majority_achievable": 1
+        },
+        {
+          "sha256": "656b2eb0c2d96af30fda77f1b2c420f36701c05d26f3ad345cca20f965fbc7f7",
+          "cases": [
+            "M007"
+          ],
+          "label_counts": {
+            "CLOSE": 0,
+            "CONTINUE": 1
+          },
+          "model_pred_counts": {
+            "CLOSE": 1,
+            "CONTINUE": 0
+          },
+          "majority_achievable": 1
+        },
+        {
+          "sha256": "78fb6a97cbc8753a6cc717dbb3faffcf7a7a8ecee81f5102c351f9405512502e",
+          "cases": [
+            "M009"
+          ],
+          "label_counts": {
+            "CLOSE": 1,
+            "CONTINUE": 0
+          },
+          "model_pred_counts": {
+            "CLOSE": 1,
+            "CONTINUE": 0
+          },
+          "majority_achievable": 1
+        }
+      ]
+    },
+    "paired_prediction_changes": 0,
+    "actual_model_score_gain": 0,
+    "structural_unavoidable_in_sample_errors": 2,
+    "enriched_unavoidable_in_sample_errors": 0,
+    "enrichment_potential_upper_bound_delta": 0.2,
+    "actual_model_applied_enrichment": false
+  },
+  "negative_controls": [
+    {
+      "name": "remove_M007_conflict_by_changing_reference_ONLY",
+      "bound": 0.9,
+      "expected": 0.9,
+      "pass": true
+    },
+    {
+      "name": "remove_M003_conflict_by_changing_reference_ONLY",
+      "bound": 0.9,
+      "expected": 0.9,
+      "pass": true
+    },
+    {
+      "name": "remove_M003_M009_conflict_with_M009_to_CONTINUE",
+      "bound": 0.9,
+      "expected": 0.9,
+      "pass": true
+    },
+    {
+      "name": "drop_M007_enrichment_by_colliding_with_M001",
+      "bound": 0.9,
+      "expected": 0.9,
+      "pass": true
+    }
+  ],
+  "claims": {
+    "actual_model_evaluated": "YES_PERSISTED_PRIOR_QWEN20_ONLY_NOT_REINFERRED",
+    "native_EC_executed": "NO",
+    "real_original_A_E_executed": "NO",
+    "independent_gold": "NO_FROZEN_PUBLIC_DEVELOPMENT_GOLD",
+    "study_interpretation": "Structural projection collapses contradictory labels M001/M007 and M003/M009. In-sample best deterministic function of hashed visible bytes cannot exceed 8/10. Added public condition information makes labels separable within these ten samples, but Qwen responses remain unchanged 7/10. In-sample identifiability is not unseen generalization or proof of a realizable semantic EC mapping.",
+    "methodology": "majority count per exact SHA-256 of actually model-visible input; no model inference or post hoc fitting claimed deployable",
+    "original_AC_promoted": 0
+  }
+}
