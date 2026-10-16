@@ -691,5 +691,29 @@
     "scientific_non_degradation_proved": false,
     "original_AC_promoted": 0,
     "blocking_proof": "Independent references and observed source custody plus real EC adapter (verified code bytes) for same-function experiment; without those, full original A-E cannot be claimed."
+  },
+  "native_ec_real_execution_input_custody_20261016": {
+    "evidence": "results/issue1_real_native_ec_policy_v2_input_binding_2026-10-16.json",
+    "native_EC_repository": "mokumaisancho/GPT-EC-Closure-Engine",
+    "native_EC_commit": "3f435ad4365d846d96264458540efb4848ce3541",
+    "native_EC_source_git_blob": "7da0cd8d876505cafdd5a9811132427e2f441a14",
+    "actual_native_EC_executed": true,
+    "actual_tests": {
+      "python": 61,
+      "node": 11,
+      "pass": 72,
+      "fail": 0,
+      "real_native_integration_tests": 13
+    },
+    "root_cause": "Trusted policy hash does not authenticate incoming EC task/candidate/framing input. Changed task facts plus recomputed S2 hash previously permitted divergent native decision.",
+    "fix": "host-provided TrustedReference.ec_input_sha256 canonically binds complete ec_input before any EC execution",
+    "fix_verified": true,
+    "real_LLM_paired_inference": false,
+    "synthetic_test_only": true,
+    "independent_trust_root_proven": false,
+    "original_AC_before": "2/18",
+    "original_AC_after": "2/18",
+    "original_AC_promoted": 0,
+    "next_original_critical": "independently checked and protected semantic policy/task reference plus real matched LLM/EC S1..S4 A-E tests"
   }
 }
