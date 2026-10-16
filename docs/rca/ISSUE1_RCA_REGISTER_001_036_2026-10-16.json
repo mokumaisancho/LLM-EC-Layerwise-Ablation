@@ -167,10 +167,14 @@
       "primary_source_references": [],
       "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "ROOT_NOT_BLOCKED_HISTORICAL_SANDBOX_DNS",
+      "next_data_required": "Original binary redirects/log timestamps; current container DNS failure is only separate supporting observation.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Historical sandbox had DNS and external binary redirect constraints; no current Phase1 science asset requirement here.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 11,
@@ -183,10 +187,14 @@
       ],
       "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Affected software/service version, current test and failure log; check original AC criticality before work.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "OPEN_OPTIONAL_INGRESS_NAMESPACE",
+      "next_data_required": "Original Apps Script deployed function names and current CLI smoke if transport reused.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Apps Script helper name shadowed by YouTube functionality; documented but original Apps Script source not available.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 12,
@@ -234,10 +242,14 @@
       ],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "ACTUAL_05_CAPACITY_RESULT_READ",
+      "next_data_required": "Frozen raw model logs 10 matched cases; already materialized in source result, no new run needed.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Qwen0.5 1/10 all YES was a class-imbalance collapse, not generic semantics.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 15,
@@ -248,10 +260,14 @@
       "primary_source_references": [],
       "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "SMALL_TEXT_SHARD_TRANSPORT_PROVEN",
+      "next_data_required": "Actual 397MB shard upload/fetch benchmark only if reused instead of existing Render model route.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "4096-byte UTF-8 shard manifest published. Large model text-shard transport performance not tested here.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 16,
@@ -262,10 +278,14 @@
       "primary_source_references": [],
       "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Affected software/service version, current test and failure log; check original AC criticality before work.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "OPEN_OPTIONAL_PLUGIN_ATTACHMENT",
+      "next_data_required": "Current account plugin support, plugin tool enumeration and verified bounded artifact fetch if necessary; separate from original science.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "MCP server source available. Account-specific ChatGPT custom attachment and OAuth tool call unverified.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 17,
@@ -276,10 +296,14 @@
       "primary_source_references": [],
       "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Affected software/service version, current test and failure log; check original AC criticality before work.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "EXTERNAL_EVIDENCE_NOT_OBTAINED_OR_ACCIDENTAL",
+      "RCA_status": "OPEN_OPTIONAL_SITES_BRIDGE",
+      "next_data_required": "Site bridge publication ID, auth/test receipts only if model delivery route demands it.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Site bridge requested but no actual publish receipt or plugin tool calls attached to issue.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 18,
@@ -290,10 +314,14 @@
       "primary_source_references": [],
       "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Affected software/service version, current test and failure log; check original AC criticality before work.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "EXTERNAL_EVIDENCE_NOT_OBTAINED_OR_ACCIDENTAL",
+      "RCA_status": "OPEN_OPTIONAL_BRIDGE_SPEC_ONLY",
+      "next_data_required": "Published Site/plugin discovery and authenticated fetch receipt, only if chosen transport.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Bridge implementation prompt and schema written, not a running Site.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 19,
@@ -307,10 +335,14 @@
       ],
       "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Affected software/service version, current test and failure log; check original AC criticality before work.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "OPEN_OPTIONAL_INGRESS_PERFORMANCE_POC",
+      "next_data_required": "Actual timed ingress+model-run receipt only if reducing required original experiment latency.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "One-shot planned, no measured full-model MoE inference/throughput archived in issue.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 20,
@@ -485,10 +517,14 @@
       ],
       "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "RECOVERED_REMOTE_05_RUN",
+      "next_data_required": "No new data for root if exact original model sha already pinned.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Prior pre-inference 0.5B acquisition failed, but real 10-case result exists.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 30,
@@ -515,10 +551,14 @@
       "primary_source_references": [],
       "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "FREE_RENDER_LIMITATION_HISTORICAL",
+      "next_data_required": "Raw historical free service logs only if investigating infrastructure recurrence.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Free runtime previously restarted at LLAMA_START; 1.5B later ran on 2CPU/8GB Starter.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 32,
@@ -663,5 +703,24 @@
     "all_pass": true,
     "original_AC_promoted": 0,
     "actual_new_llm_run": false
+  },
+  "update_20261016_noncritical": {
+    "issues": [
+      10,
+      11,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      29,
+      31
+    ],
+    "source_report": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+    "source_check_total": 14,
+    "source_check_failed": 0,
+    "original_AC_promoted": 0,
+    "claim_scope": "source existence / historical recorded result only, real external attestation for apps/timeout not yet provided"
   }
 }
