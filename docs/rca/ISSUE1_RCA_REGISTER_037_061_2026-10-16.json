@@ -63,10 +63,14 @@
       ],
       "scope": "SUBFUNCTION_RESEARCH_HISTORY",
       "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
-      "next_data_required": "Before reusing as science proof, collect original run receipt, exact source pins and negative control; no evidence upgrade based only on closed status.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "VALIDATION_REPAIR_HISTORICAL_TESTS_PRESENT",
+      "next_data_required": "Re-run if regression introduced; no fresh run performed.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Validation recovery suite source exists; prior results explain balanced-benchmark caveats.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 41,
@@ -77,10 +81,14 @@
       "primary_source_references": [],
       "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
       "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
-      "next_data_required": "Before reusing as science proof, collect original run receipt, exact source pins and negative control; no evidence upgrade based only on closed status.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "EXTERNAL_EVIDENCE_NOT_OBTAINED_OR_ACCIDENTAL",
+      "RCA_status": "ACCIDENTAL_ISSUE",
+      "next_data_required": "No evidence needed; retain as audit/history.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Accidental connector issue creation, unrelated to scientific root.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 42,
@@ -131,10 +139,14 @@
       ],
       "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
       "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
-      "next_data_required": "Before reusing as science proof, collect original run receipt, exact source pins and negative control; no evidence upgrade based only on closed status.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "STATIC_COMPILE_GATE_REPAIRED_SOURCE",
+      "next_data_required": "Actual compile preflight run receipt if re-deploying B1/B2; no new compilation performed.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Static preflight now imports and calls py_compile; previous failure was a missing predeployment syntax gate.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 45,
@@ -145,10 +157,14 @@
       "primary_source_references": [],
       "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
       "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
-      "next_data_required": "Before reusing as science proof, collect original run receipt, exact source pins and negative control; no evidence upgrade based only on closed status.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "RENDER_QUOTA_HISTORICAL_RECOVERED",
+      "next_data_required": "No need to re-query service quota absent a new deploy request.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "25-service cap required reuse; actual B1 inference deploy ID and audited receipt present.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 46,
@@ -162,10 +178,14 @@
       ],
       "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
       "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
-      "next_data_required": "Before reusing as science proof, collect original run receipt, exact source pins and negative control; no evidence upgrade based only on closed status.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "RAW_EVIDENCE_PERSISTENCE_HISTORICAL_REPAIRED",
+      "next_data_required": "Independent raw-byte retrieval/provenance if reportable newer science claims depend on specific row.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "B1 raw cache digest and postrun audit present, without reinference.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 47,
@@ -178,10 +198,14 @@
       ],
       "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
       "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
-      "next_data_required": "Before reusing as science proof, collect original run receipt, exact source pins and negative control; no evidence upgrade based only on closed status.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "B2_REUSE_HISTORICAL_RECOVERED",
+      "next_data_required": "Current live service only if a new deployment is actually required.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "B2 infer+audit deploy receipts archived; service reuse shown.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 48,
@@ -206,10 +230,14 @@
       "primary_source_references": [],
       "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
       "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
-      "next_data_required": "Before reusing as science proof, collect original run receipt, exact source pins and negative control; no evidence upgrade based only on closed status.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "EXTERNAL_EVIDENCE_NOT_OBTAINED_OR_ACCIDENTAL",
+      "RCA_status": "S1C_V1_TIMEOUT_HISTORICAL_SUPERSEDED",
+      "next_data_required": "Historical V1 logs for precise timeout duration if reusing that branch; no runtime change now.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "S1C V1 timed out before paired output; versioned later V3.2 has audited receipt.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 50,
@@ -282,10 +310,14 @@
       ],
       "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
       "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
-      "next_data_required": "Before reusing as science proof, collect original run receipt, exact source pins and negative control; no evidence upgrade based only on closed status.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "PRODUCT_MVP_NARROW_SCOPE_55_BLOCKER",
+      "next_data_required": "Forged task-bound IR negative control and independent execution-binding authentication before production-readiness claim.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Product MVP closed-path tests reported complete, but #55 unvalidated caller IR gap remains in main source.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
     },
     {
       "issue": 55,
@@ -411,5 +443,22 @@
     "docs/rca/ISSUE1_RCA_SOURCE_043_048_2026-10-16.json",
     "docs/rca/ISSUE1_RCA_SOURCE_049_054_2026-10-16.json",
     "docs/rca/ISSUE1_RCA_SOURCE_055_061_2026-10-16.json"
-  ]
+  ],
+  "update_20261016_noncritical": {
+    "issues": [
+      40,
+      41,
+      44,
+      45,
+      46,
+      47,
+      49,
+      54
+    ],
+    "source_report": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+    "source_check_total": 14,
+    "source_check_failed": 0,
+    "original_AC_promoted": 0,
+    "claim_scope": "source existence / historical recorded result only, real external attestation for apps/timeout not yet provided"
+  }
 }
