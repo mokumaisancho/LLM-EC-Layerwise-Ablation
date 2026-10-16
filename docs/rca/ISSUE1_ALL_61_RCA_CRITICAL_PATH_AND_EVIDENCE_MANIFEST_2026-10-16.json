@@ -475,5 +475,24 @@
     ],
     "note": "Historical v13 considers #59/#60 external dependencies; 2026-10-15 V38 scope correction outranks it for extra 120/300/100 certification. Neither version proves actual S3/S4 or real A-E.",
     "actual_dominant_layer": null
+  },
+  "data_collection_further": {
+    "date": "2026-10-16",
+    "supplemental": "docs/rca/ISSUE1_RCA_NO_BODY_REF_EVIDENCE_LOOKUP_2026-10-16.json",
+    "supplemental_blob": "26cabc35215c2b826c7e7f2eafb7105f53da8438",
+    "source_reference_audit": "docs/rca/ISSUE1_RCA_SOURCE_REFERENCE_AUDIT_2026-10-16.json",
+    "issue_bodies_without_inline_paths": 24,
+    "pinned_source_candidates_found": 29,
+    "issue_bodies_with_recovered_candidate": 18,
+    "external_or_no_scientific_source_needed_cases": [
+      16,
+      17,
+      18,
+      41,
+      45,
+      49
+    ],
+    "directly_reexecuted_causal_tests_in_this_source_recovery": 0,
+    "meaning": "Additional source-address collection does not increase independently RCA-verified cases by itself."
   }
 }
