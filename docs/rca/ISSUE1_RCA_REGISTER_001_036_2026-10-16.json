@@ -1,0 +1,578 @@
+{
+  "schema": "ISSUE1_RCA_REGISTER_V1",
+  "as_of": "2026-10-16",
+  "issues": [
+    {
+      "issue": 1,
+      "title": "Phase 1: coarse layerwise ablation and causal localization",
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/1",
+      "root_cause_statement": "All A/B/C/D/E original-layer controlled execution and source-attested Oracle intervention absent, so dominant S1–S4 divergence cannot be localized.",
+      "primary_source_references": [],
+      "scope": "ORIGINAL_MVP_CRITICAL",
+      "root_original_relevance": "DIRECT",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "SOURCE_REVIEWED_CAUSAL_FIX_STILL_UNQUALIFIED_OR_SCOPED",
+      "next_data_required": "Real source-qualified A/B/C/D/E four-layer run, model caches, independent gold and target-only receipts.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 2,
+      "title": "Phase 1: freeze fixture, oracle, and layer artifact contracts",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/2",
+      "root_cause_statement": "Canonical fixture/oracle/schema contract initially unfrozen; comparing changing artifacts would invalidate inference.",
+      "primary_source_references": [
+        "docs/PHASE1_FIXTURE_ORACLE_CONTRACT.md"
+      ],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 3,
+      "title": "TCC finding: P1-003 multi-candidate oracle under-represents valid branches",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/3",
+      "root_cause_statement": "Multi-admissible oracle case P1-003 encoded only one valid candidate; candidate recall and selection gold undercounted.",
+      "primary_source_references": [],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 4,
+      "title": "TCC finding: generated artifact hashes become stale after upstream-hash linkage",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/4",
+      "root_cause_statement": "Artifact digest calculated before embedding upstream hash, producing stale child hashes and non-replayable source chain.",
+      "primary_source_references": [
+        "tools/generate_phase1_fixtures.py"
+      ],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 5,
+      "title": "Phase 1 blocker: measurement fixtures leak oracle scenario labels",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/5",
+      "root_cause_statement": "Task-visible fixture encoded scenario/gold class, leaking target labels into predictor.",
+      "primary_source_references": [
+        "tools/generate_phase1_fixtures.py"
+      ],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "SOURCE_REVIEWED_CAUSAL_FIX_STILL_UNQUALIFIED_OR_SCOPED",
+      "next_data_required": "Revalidate no gold in complete task+S2 predictor-visible input; random opaque IDs and order after canonical fixture source.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 6,
+      "title": "Phase 1 blocker: S3 upstream artifact lacks ECv4.4 framing state",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/6",
+      "root_cause_statement": "Frozen S3 artifact omitted the EC-native semantic/framing variables required for residual detection.",
+      "primary_source_references": [],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 7,
+      "title": "Phase 1 finding: semantic-equivalent candidates were incorrectly encoded as framing variables",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/7",
+      "root_cause_statement": "Equivalent candidate operations treated as duplicate framing variables, causing false residual.",
+      "primary_source_references": [],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 8,
+      "title": "Phase 1 blocker: S2 cannot distinguish competing vs semantically equivalent valid candidates",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/8",
+      "root_cause_statement": "S2 lacked COMPETING versus EQUIVALENT relations, leaving M003/M009 decision differences unidentifiable.",
+      "primary_source_references": [],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 9,
+      "title": "Phase 1 measurement: fixed-candidate LLM vs EC selection/control",
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/9",
+      "root_cause_statement": "Fixed-candidate C/D attempted a shared combined selection/reframing/closure function not isomorphic to native EC; paired provenance and actual scores missing.",
+      "primary_source_references": [],
+      "scope": "ORIGINAL_MVP_CRITICAL",
+      "root_original_relevance": "DIRECT",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "SOURCE_REVIEWED_CAUSAL_FIX_STILL_UNQUALIFIED_OR_SCOPED",
+      "next_data_required": "Same candidate-set SHA and S3 semantic-state SHA; both engines must implement the same admitted operation; actual C/D logs.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 10,
+      "title": "Sandbox model import RCA: binary safe-open/DNS boundary blocks GitHub/HF/PyPI direct download",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/10",
+      "root_cause_statement": "Sandbox binary/download APIs blocked network or direct binary import; model ingestion environment mismatch rather than model failure.",
+      "primary_source_references": [],
+      "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 11,
+      "title": "Ingress infra: version and isolate Apps Script binary-fetch namespace",
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/11",
+      "root_cause_statement": "Apps Script global function name overwritten by unrelated implementation; historical binary-part helper now points to wrong functionality.",
+      "primary_source_references": [
+        "docs/RCA_SANDBOX_LLM_INGRESS_2026-10-01.md"
+      ],
+      "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Affected software/service version, current test and failure log; check original AC criticality before work.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 12,
+      "title": "Ablation harness: separate output-contract compliance from semantic selection",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/12",
+      "root_cause_statement": "Free-form JSON compliance and semantic correctness conflated; nonreportable raw output was treated as semantic assay.",
+      "primary_source_references": [
+        "tools/run_llm_s3_s4_cache.py",
+        "tools/compare_s3_s4.py",
+        "tests/test_llm_output_contract.py"
+      ],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 13,
+      "title": "Phase 1 assay confounds: free-form JSON failure and candidate-label leakage",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/13",
+      "root_cause_statement": "Prompt/candidate IDs and validity tags leaked correct selection; formatting artifact confounded model selection accuracy.",
+      "primary_source_references": [],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "SOURCE_REVIEWED_CAUSAL_FIX_STILL_UNQUALIFIED_OR_SCOPED",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 14,
+      "title": "Phase 1 capacity sweep: repeat control-mirror assay with ~0.5B lightweight model",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/14",
+      "root_cause_statement": "0.5B outputs collapsed to majority class on severely imbalanced reframe assay (not enough evidence for architecture quality).",
+      "primary_source_references": [
+        "results/phase1_qwen25_0p5b_reframe_actual_2026-10-03.json"
+      ],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 15,
+      "title": "Ingress writer gap: external model fetch to GitHub text shards without Drive persistence",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/15",
+      "root_cause_statement": "External model fetch-to-GitHub text shards initially lacked a verified source writer; later transport qualification claimed in issue.",
+      "primary_source_references": [],
+      "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 16,
+      "title": "Product attachment blocker: connect Generic Binary Ingress MCP to ChatGPT from current plan",
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/16",
+      "root_cause_statement": "Remote binary ingress MCP transport qualified but current-account plugin attachment unverified; execution-path rather than causal research blocker.",
+      "primary_source_references": [],
+      "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Affected software/service version, current test and failure log; check original AC criticality before work.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 17,
+      "title": "Site bridge: expose Render Generic Binary Ingress through ChatGPT Sites plugin",
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/17",
+      "root_cause_statement": "Sites-based plugin bridge proposed without demonstrated Plus publishing/verified HTTPS proxy; no causal role while existing 1.5B inference receipts exist.",
+      "primary_source_references": [],
+      "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Affected software/service version, current test and failure log; check original AC criticality before work.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 18,
+      "title": "Site bridge implementation contract and one-shot @Sites build prompt",
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/18",
+      "root_cause_statement": "Build prompt and MCP tool contract written but Site publish/e2e invocation absent; specification is not implementation.",
+      "primary_source_references": [],
+      "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Affected software/service version, current test and failure log; check original AC criticality before work.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 19,
+      "title": "Fast sandbox ingress POC: raw file reference + MoE large-model execution",
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/19",
+      "root_cause_statement": "One-shot direct ingress/MoE benchmarking exploratory; no measured wall-clock or original Phase1 AC dependencies proven.",
+      "primary_source_references": [
+        "docs/TCC_ONE_SHOT_SANDBOX_LLM_PLAN_2026-10-02.md",
+        "docs/TCC_ONE_SHOT_SANDBOX_LLM_PLAN_2026-10-02.json"
+      ],
+      "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Affected software/service version, current test and failure log; check original AC criticality before work.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 20,
+      "title": "Phase1 v2 EC binding — resolved with scoped incompatibility terminal",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/20",
+      "root_cause_statement": "Native EC operates governed work/closure semantics rather than frozen generic S3 all-admissible set plus S4; original fixed interface incompatible.",
+      "primary_source_references": [
+        "results/phase1_ecv44_reframe_actual_2026-10-03.json",
+        "results/phase1_ecv44_s3_native_interface_compatibility_2026-10-03.json",
+        "results/phase1_s4_identifiability_audit_2026-10-03.json",
+        "results/ec_native_adapter_qualification.json",
+        "results/phase1_mvp_tcc_v2_actual_2026-10-03.json"
+      ],
+      "scope": "ORIGINAL_MVP_CRITICAL",
+      "root_original_relevance": "DIRECT",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "SOURCE_REVIEWED_CAUSAL_FIX_STILL_UNQUALIFIED_OR_SCOPED",
+      "next_data_required": "Prior native/successor semantic contract crosswalk; incompatibility is terminal for frozen Phase1.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 21,
+      "title": "Phase1 MVP: freeze materiality and capacity-ambiguity decision thresholds before measurement",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/21",
+      "root_cause_statement": "Unfrozen materiality and capacity escalations would allow post-result threshold cherry-picking; frozen 0.20 now authoritative.",
+      "primary_source_references": [
+        "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.md",
+        "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json"
+      ],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 22,
+      "title": "Phase1 S1/S2 + A/B/E runner — superseded by function-boundary successor",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/22",
+      "root_cause_statement": "Old S1/S2 A/B/E runner not executed because native EC S3/S4 early incompatible terminal; successor scoped tests are not original A-E.",
+      "primary_source_references": [
+        "docs/EC_LLM_FUNCTION_BOUNDARY_2026-10-03.md",
+        "results/ec_llm_function_boundary_2026-10-03.json",
+        "results/phase1_mvp_tcc_v2_actual_2026-10-03.json"
+      ],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 23,
+      "title": "Phase1 MVP: add oracle-blind EC-native S3/S4 adapter before claiming actual ECv4.4",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/23",
+      "root_cause_statement": "Adapter initial harness-local behavior would be misreported as EC-native; qualified adapter gate appropriately returns INCOMPATIBLE for full frozen contract.",
+      "primary_source_references": [],
+      "scope": "ORIGINAL_MVP_CRITICAL",
+      "root_original_relevance": "DIRECT",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "SOURCE_REVIEWED_CAUSAL_FIX_STILL_UNQUALIFIED_OR_SCOPED",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 24,
+      "title": "Phase1 Oracle intervention E arm — superseded by scoped function-boundary protocol",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/24",
+      "root_cause_statement": "E-arm target-only substitution lacks comparable shared-layer semantics in frozen coarse contract; successor work not A-E closure.",
+      "primary_source_references": [
+        "docs/EC_LLM_FUNCTION_BOUNDARY_2026-10-03.md",
+        "results/ec_llm_function_boundary_2026-10-03.json"
+      ],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 25,
+      "title": "Phase1 S1→S3 common adapter — implemented but no longer on frozen critical path",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/25",
+      "root_cause_statement": "S1→S3 adapter did not enforce original full causal qualification; useful upstream data encoder but no longer critical under fixed terminal.",
+      "primary_source_references": [
+        "tools/build_s3_state_from_s1.py"
+      ],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 26,
+      "title": "Phase1 ECv4.4 M004 reframe divergence — preserved as research result",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/26",
+      "root_cause_statement": "Real EC false positive on M004; real Qwen1.5B false negative on M005 despite equal aggregate 9/10 (majority-class Qwen baseline).",
+      "primary_source_references": [
+        "results/phase1_ecv44_reframe_actual_2026-10-03.json",
+        "results/ec_llm_function_boundary_2026-10-03.json",
+        "docs/EC_LLM_FUNCTION_BOUNDARY_2026-10-03.md"
+      ],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "SOURCE_REVIEWED_CAUSAL_FIX_STILL_UNQUALIFIED_OR_SCOPED",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 27,
+      "title": "Phase1 actual finding: EC next-action authority is singleton and not isomorphic to S3 admissible-set selection",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/27",
+      "root_cause_statement": "EC-native next-action selects one predefined remediation work ID, not all semantically valid candidate transitions M003/M009.",
+      "primary_source_references": [
+        "tests/test_ec_next_action_authority.py"
+      ],
+      "scope": "ORIGINAL_MVP_CRITICAL",
+      "root_original_relevance": "DIRECT",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "SOURCE_REVIEWED_CAUSAL_FIX_STILL_UNQUALIFIED_OR_SCOPED",
+      "next_data_required": "Semantic all-admissible-set adapter source or explicit NOT_APPLICABLE; single next action cannot substitute.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 28,
+      "title": "Phase1 actual finding: S4 closure is not identifiable from frozen S3 artifact",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/28",
+      "root_cause_statement": "S4 frozen S3 signature collides across CLOSE/CONTINUE cases (M001/M007 and M003/M009); closure not identifiable without added source state.",
+      "primary_source_references": [],
+      "scope": "ORIGINAL_MVP_CRITICAL",
+      "root_original_relevance": "DIRECT",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "SOURCE_REVIEWED_CAUSAL_FIX_STILL_UNQUALIFIED_OR_SCOPED",
+      "next_data_required": "Source-complete mandatory obligations/residuals/effects and actual S4 evidence, absent from old frozen S3.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 29,
+      "title": "Qwen 0.5B remote assay runner: pre-inference provenance/runtime acquisition failures",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/29",
+      "root_cause_statement": "Remote 0.5B runtime/provenance preflight initially failed; later actual 10-case inference recovered; model still all-YES collapsed.",
+      "primary_source_references": [
+        "results/phase1_qwen25_0p5b_reframe_actual_2026-10-03.json"
+      ],
+      "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 30,
+      "title": "1.5B capacity branch — resolved by valid 2CPU/8GB execution",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/30",
+      "root_cause_statement": "Qwen1.5B followup ran on 2CPU/8GB, but all-NO 9/10 result is majority baseline; it does not establish reframe-positive detection.",
+      "primary_source_references": [
+        "results/phase1_qwen25_1p5b_reframe_actual_2026-10-03.json"
+      ],
+      "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "SOURCE_REVIEWED_CAUSAL_FIX_STILL_UNQUALIFIED_OR_SCOPED",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 31,
+      "title": "Phase1 ~1.5B follow-up: free Render runtime restarts at LLAMA_START",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/31",
+      "root_cause_statement": "Free Render ~1.5B LLAMA_START restarted under resource pressure, not evidence model inference quality; later execution moved to adequate runtime.",
+      "primary_source_references": [],
+      "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 32,
+      "title": "TCC dependency defect: P0 requires Issue #22 before P2 can terminate EC_NATIVE_SCOPE_INCOMPATIBLE",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/32",
+      "root_cause_statement": "TCC DAG incorrectly forced Issue22 S1/S2 setup before native EC incompatibility preflight, causing unnecessary blocking.",
+      "primary_source_references": [
+        "tools/run_phase1_mvp_tcc.py"
+      ],
+      "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 33,
+      "title": "Function-boundary successor: build discriminative S1 and measure 1.5B S1→S2",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/33",
+      "root_cause_statement": "S1 task had copy-through oracle facts/rules, insufficient semantic discrimination; later successor tasks separated functions.",
+      "primary_source_references": [
+        "results/function_boundary_s1_qwen25_1p5b_actual_2026-10-03.json",
+        "results/function_boundary_s2_qwen25_1p5b_actual_2026-10-03.json"
+      ],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 34,
+      "title": "Function-boundary successor: paired LLM vs EC next-action authority assay — completed",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/34",
+      "root_cause_statement": "Generic next-action contract compares predetermined policy selection, not open-ended meaning, so 17/17 native EC result has narrower scope.",
+      "primary_source_references": [
+        "results/function_boundary_next_action_v1_diagnostic_nonreportable_2026-10-03.json",
+        "results/function_boundary_next_action_v2_actual_2026-10-03.json",
+        "results/ec_llm_function_boundary_2026-10-03.json"
+      ],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 35,
+      "title": "Function boundary: externalize S1 evidence authority/freshness/conflict control with existing EC — completed",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/35",
+      "root_cause_statement": "S1 evidence provenance/freshness/conflict control is separable external authority only for a typed/provenance-capable state.",
+      "primary_source_references": [
+        "results/function_boundary_s1b_ec_actual_2026-10-03.json"
+      ],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 36,
+      "title": "S2 split: deterministic ontology retrieval vs novelty residual",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/36",
+      "root_cause_statement": "Deterministic ontology retrieval from supplied typed dictionary cannot establish novel ontology invention from raw language.",
+      "primary_source_references": [
+        "results/function_boundary_s2a_deterministic_actual_2026-10-03.json"
+      ],
+      "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
+      "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
+      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
+      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
+      "scientific_ac_promoted": 0
+    }
+  ],
+  "original_science_2_of_18_preserved": true,
+  "source_snapshots": [
+    "docs/rca/ISSUE1_RCA_SOURCE_001_006_2026-10-16.json",
+    "docs/rca/ISSUE1_RCA_SOURCE_007_012_2026-10-16.json",
+    "docs/rca/ISSUE1_RCA_SOURCE_013_018_2026-10-16.json",
+    "docs/rca/ISSUE1_RCA_SOURCE_019_024_2026-10-16.json",
+    "docs/rca/ISSUE1_RCA_SOURCE_025_030_2026-10-16.json",
+    "docs/rca/ISSUE1_RCA_SOURCE_031_036_2026-10-16.json"
+  ],
+  "per_ticket_source_review_required_for_sci_claim": true
+}
