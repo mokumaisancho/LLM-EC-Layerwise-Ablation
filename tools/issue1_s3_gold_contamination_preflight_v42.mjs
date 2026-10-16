@@ -2,6 +2,7 @@
 // V42 fixes source-defined gold-leakage; cryptographic alias mapping MUST remain private to scorer.
 import fs from "node:fs";
 import crypto from "node:crypto";
+import path from "node:path";
 export const inspect=function inspect(g,c){
 const must=(v,m)=>{if(!v)throw Error("REJECT:"+m)};
 const ids=[...g.matchAll(/"id": "(M\d{3})", "category"/g)].map(z=>z[1]);
@@ -26,6 +27,13 @@ return out;
 };
 // Successor input contract: the predictor must see task facts/rules as well as
 // semantic operations. V42's option-only clean() cannot measure semantic S3.
+// Python generator canonical_hash equivalence (recursive lexical key ordering).
+export const canonicalHash=function canonicalHash(o){
+ const sort=(v)=>Array.isArray(v)?v.map(sort):(v&&typeof v==="object")?
+   Object.fromEntries(Object.keys(v).sort().map(k=>[k,sort(v[k])])):v;
+ const source={...o};delete source.content_hash;
+ return crypto.createHash("sha256").update(JSON.stringify(sort(source)),"utf8").digest("hex");
+};
 export const cleanTask=function cleanTask(task,s2,aliases,order=null){
 const must=(v,m)=>{if(!v)throw Error("REJECT:"+m)};
 must(task?.schema_version==="TASK_INPUT_V1" && typeof task.prompt==="string" && task.prompt.trim(),"SOURCE_TASK_INVALID");
@@ -33,6 +41,7 @@ must(task.context && Array.isArray(task.context.facts) && Array.isArray(task.con
 must(task.context.facts.every(x=>typeof x==="string") && task.context.domain_rules.every(x=>typeof x==="string"),"UNSAFE_TASK_CONTEXT");
 must(task.context.domain_rules.length>0,"RULES_REQUIRED");
 must(task.fixture_id===s2.fixture_id,"CROSS_FIXTURE_UPSTREAM_MISMATCH");
+must(typeof s2.content_hash==="string"&&s2.content_hash===canonicalHash(s2),"S2_CONTENT_HASH_MISMATCH");
 const stripped=clean(s2,aliases);
 const n=stripped.candidates.length;
 if(order===null){
@@ -61,6 +70,16 @@ if(process.argv.length!==6)throw Error("USAGE: node this.mjs generator.py canoni
 const b=process.argv.slice(2).map(x=>fs.readFileSync(x));
 if(blob(b[0])!=="26bf4a57451769f0a1b617687abe216f773faa8f"||blob(b[1])!=="e354884f20a534a3be429ffdcff5f72135472436")throw Error("SOURCE_BLOB_DRIFT");
 const task=JSON.parse(b[2]),original=JSON.parse(b[3]);
+const fixtureDir=path.dirname(path.dirname(process.argv[4]));
+const manifest=JSON.parse(fs.readFileSync(path.join(fixtureDir,"fixture_manifest.json"),"utf8"));
+const must=(v,reason)=>{if(!v)throw Error("REJECT:"+reason)};
+must(manifest.fixture_id===task.fixture_id && manifest.fixture_id===original.fixture_id,"FIXTURE_MANIFEST_ID_MISMATCH");
+must(manifest.hashes.task===canonicalHash(task),"TASK_MANIFEST_HASH_MISMATCH");
+must(manifest.hashes.s2_oracle===original.content_hash,"S2_MANIFEST_HASH_MISMATCH");
+must(original.content_hash===canonicalHash(original),"S2_CONTENT_HASH_MISMATCH");
+const s1=JSON.parse(fs.readFileSync(path.join(fixtureDir,"oracle/s1_domain_semantic_ir.json"),"utf8"));
+must(s1.fixture_id===task.fixture_id&&s1.content_hash===canonicalHash(s1),"S1_SOURCE_HASH_MISMATCH");
+must(original.semantic_ir_hash===s1.content_hash,"S2_S1_HASH_CHAIN_MISMATCH");
 const aliases=Object.fromEntries(original.candidates.map(x=>[x.candidate_id,"c_"+crypto.randomBytes(16).toString("hex")]));
 const out=cleanTask(task,original,aliases);
 const source_sha256=crypto.createHash("sha256").update(b[3]).digest("hex");
