@@ -59,7 +59,7 @@ if(process.argv[1]?.endsWith("issue1_s3_gold_contamination_preflight_v42.mjs")){
 try{
 if(process.argv.length!==6)throw Error("USAGE: node this.mjs generator.py canonical.py task.json s2_input.json");
 const b=process.argv.slice(2).map(x=>fs.readFileSync(x));
-if(blob(b[0])!=="26bf4a57451769f0a1b617687abe216f773faa8f"||blob(b[1])!=="e354884f20a534a3be429ffdcff5f72135472436c")throw Error("SOURCE_BLOB_DRIFT");
+if(blob(b[0])!=="26bf4a57451769f0a1b617687abe216f773faa8f"||blob(b[1])!=="e354884f20a534a3be429ffdcff5f72135472436")throw Error("SOURCE_BLOB_DRIFT");
 const task=JSON.parse(b[2]),original=JSON.parse(b[3]);
 const aliases=Object.fromEntries(original.candidates.map(x=>[x.candidate_id,"c_"+crypto.randomBytes(16).toString("hex")]));
 const out=cleanTask(task,original,aliases);
