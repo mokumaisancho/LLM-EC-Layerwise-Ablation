@@ -1,0 +1,74 @@
+{
+  "schema": "ISSUE1_NATIVE_EC_V2_REAL_EXECUTION_AND_INPUT_BINDING_RCA_V1",
+  "date": "2026-10-16",
+  "original_objective": "Nondegrading minimal deterministic replacement with LLM semantic competency retained; original full S1..S4 A-E study remains unproven",
+  "engine": {
+    "repository": "mokumaisancho/GPT-EC-Closure-Engine",
+    "commit": "3f435ad4365d846d96264458540efb4848ce3541",
+    "path": "01_repo/src/v4/ec_layerwise_source_policy_authority_v2.py",
+    "git_blob": "7da0cd8d876505cafdd5a9811132427e2f441a14",
+    "exact_python_source_bytes_verified": true
+  },
+  "integrated_source": {
+    "router": "tools/issue1_trust_bounded_hybrid_router.py",
+    "router_git_blob": "cd6dfbb704e5b8f9fd36bb54e3871c62965b97e8",
+    "native_tests": "tests/test_issue1_native_ec_v2_actual.py",
+    "native_tests_git_blob": "9d7ace7372c83f3bbc6a74118ef1e5518ab8be96",
+    "router_tests": "tests/test_issue1_trust_bounded_hybrid_router.py",
+    "router_tests_git_blob": "29e2bb48accc2aab5514058026b965b93a09bfeb",
+    "source_sha_verified_against_local_execution": true
+  },
+  "actual_execution": {
+    "environment": "OpenAI Linux sandbox, native Python EC source, Node 22",
+    "python_tests": 61,
+    "node_tests": 11,
+    "passed": 72,
+    "failed": 0,
+    "real_native_ec_case_tests": 13,
+    "real_model_inference": 0,
+    "commands": [
+      "python -m unittest discover -s tests -p 'test_*.py' -v",
+      "node --test tests/issue1_s3_blind_task_v43.test.mjs"
+    ],
+    "raw_python_log_sha256": null
+  },
+  "RCA": {
+    "pre_patch": "Router trusted only formal policy digest and caller-claimed observed source digest. Changing ec_input.task.facts and recomputing the S2 task digest changed actual native EC selection under identical reference.",
+    "actual_pre_patch_reproduced": true,
+    "example": "authorized=true => native selected c_pay; attacker sets authorized=false and updates s2.semantic_ir_hash => native selected none, yet EC route authorized before fix.",
+    "patch": "Require independently host-pinned SHA256 of canonical entire EC input (task, public S2 candidate set/relation groups, framing); mismatch returns identical original LLM decision and never executes native EC.",
+    "actual_after_patch": "EC_INPUT_NOT_SOURCE_BOUND, LLM_UNCHANGED, original object preserved",
+    "pre_patch_exploit_reproduced_with_exact_native_source": true,
+    "patch_regression_passed": true
+  },
+  "native_behavior": {
+    "formal_pay_close": "CLOSE_FORMAL_ONLY",
+    "missing_evidence": "CONTINUE",
+    "unresolved_fraud_review": "CONTINUE",
+    "competing_valid_candidates": "CONTINUE",
+    "equivalent_candidate_group": "CLOSE_FORMAL_ONLY",
+    "pending_reframe": "REFRAME",
+    "no_admissible_candidate": "BLOCKED",
+    "unbound_fact": "LLM_UNCHANGED",
+    "modified_formal_policy": "LLM_UNCHANGED",
+    "missing_trust": "LLM_UNCHANGED"
+  },
+  "trust_limitations": {
+    "reference_and_facts": "SYNTHETIC_AUTHOR_SUPPLIED_FOR_TESTS_ONLY",
+    "independent_reference_fidelity": "NOT_VERIFIED",
+    "source_custody": "HOST_MUST_AUTHENTICATE;DATACLASS_NOT_A_CRYPTOGRAPHIC_ATTESTATION",
+    "verified_EC_executable_source": true,
+    "real_LLM_predictions_in_same_function": "NOT_RUN",
+    "external_independent_holdout": "NOT_RUN",
+    "actual_non_degradation": "NOT_PROVEN",
+    "original_full_AE": "NOT_RUN",
+    "original_AC_before": "2/18",
+    "original_AC_after": "2/18",
+    "original_AC_promoted": 0
+  },
+  "full_local_receipt": {
+    "sha256": "d1bf628fdfa4284d5a5cdad38f1fc96424bc0c38787406e1843ea4a991bf05cc",
+    "path": "/mnt/data/issue1_source_e2e/ISSUE1_NATIVE_EC_INTEGRATION_RECEIPT_2026-10-16.json"
+  },
+  "next_scientific_gate": "Admit only source-custodied independently checked policy and task, run paired actual LLM/EC identical bounded semantics including unseen heldout and E target-only intervention. Do not mistake synthetic native execution for semantic non-degradation."
+}
