@@ -743,5 +743,32 @@
     "original_sci_AC_after": "2/18",
     "AC_promoted": 0,
     "critical_remaining": "Run *real* pinned LLM against exactly same frozen public input bytes; source-pinned raw responses, then independent scoring. Access to new model inference is not currently verified in available free tools. Formal holdout alone cannot verify NL competence or original S1-S4 A-E."
+  },
+  "adversarial_falsification_20261016": {
+    "state": "CONFIRMED_INVALIDATING_FAILURES",
+    "audit": "results/issue1_holdout48_adversarial_audit_reversal_2026-10-16.json",
+    "supersedes_scientific_reading_of": "results/issue1_formal_holdout48_real_ec_2026-10-16.json",
+    "scientific_caution": "48/48 remains a formal rule compliance count; it is INVALID as evidence of independent NL semantic gold, unseen generalization, LLM nondegradation, or original issue 1 science",
+    "verified_executed_counterexamples": [
+      "All 48 supposed private gold entries byte-equivalent regenerated from predictor public input + author authored source; private gold digest matches",
+      "python -O skips assert; edited public file is silently accepted by load()",
+      "python -O skips pinned native EC blob assert; unpinned fake EC module top level actually executes",
+      "Coordinated modification to public, private gold, and same-directory manifest passes ordinary load()"
+    ],
+    "direct_answer_leakage": {
+      "holdout48_public_only": "NO_LITERAL_ORACLE_FIELDS",
+      "holdout48_score": "FORMAL_REFERENCE_PUBLISHED_WITH_NATIVE_OUTPUT; MUST_NOT_BE_MODEL_VISIBLE",
+      "original10_raw": "TRIVIAL_ID_PREFIX_AND_CLAIM_EVIDENCE_GOLD_PROXIES",
+      "original10_projector": "REMOVES_EXPLICIT_MARKERS; LEXICAL_PROXY_NOT_INDEPENDENTLY_EXCLUDED",
+      "historical17_runner": "NO_LITERAL_ORACLE_IN_VISIBLE_PROMPT_PER_STATIC_SOURCE; actual raw prompt hashes not rereplayed"
+    },
+    "experimental_validity": {
+      "raw_numerical_EC_conformance": "48/48 as originally stored",
+      "independent_semantic_holdout": "0 qualified",
+      "actual_LLM_48_inference": 0,
+      "AC_promoted": 0,
+      "original_AC": "2/18"
+    },
+    "freeze_policy": "Do not silently patch frozen V1 retrospectively and restore original science claims. Version V2 and independently custodial freeze, unconditional source integrity and true independent semantic scoring are required before accepting scientific outcome."
   }
 }
