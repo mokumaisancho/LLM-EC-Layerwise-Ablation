@@ -666,5 +666,30 @@
     "scientific_mvp_before": "2/18",
     "scientific_mvp_after": "2/18",
     "promoted_original_AC": 0
+  },
+  "bounded_hybrid_router_20261016": {
+    "implementation": "tools/issue1_trust_bounded_hybrid_router.py",
+    "tests": "tests/test_issue1_trust_bounded_hybrid_router.py",
+    "evidence": "results/issue1_hybrid_fail_closed_router_actual_2026-10-16.json",
+    "tests_actual": {
+      "new_router": 20,
+      "previous_SAT": 17,
+      "previous_source_handoff": 11,
+      "total": 48,
+      "passed": 48,
+      "failed": 0
+    },
+    "target_scope": "already verified external formal EC policy only, otherwise identical original LLM output returned",
+    "raw_original_ten_cases": {
+      "unattested_reference": 10,
+      "route": "LLM_UNCHANGED",
+      "EC_authorized": 0
+    },
+    "trust_boundary": "TrustedReference must be independently provisioned by host. Class itself is NOT source attestation.",
+    "native_EC_actual_calls": 0,
+    "model_inference_actual_calls": 0,
+    "scientific_non_degradation_proved": false,
+    "original_AC_promoted": 0,
+    "blocking_proof": "Independent references and observed source custody plus real EC adapter (verified code bytes) for same-function experiment; without those, full original A-E cannot be claimed."
   }
 }
