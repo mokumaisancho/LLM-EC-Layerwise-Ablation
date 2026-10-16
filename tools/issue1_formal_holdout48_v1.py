@@ -10,11 +10,12 @@ import hashlib
 import importlib.util
 import itertools
 import json
+import os
 from pathlib import Path
 from sympy import And, Not, Symbol
 
 HERE=Path(__file__).resolve().parent
-EC=HERE/'ec_layerwise_source_policy_authority_v2.py'
+EC=Path(os.environ.get('EC_NATIVE_V2_PATH',str(HERE/'ec_layerwise_source_policy_authority_v2.py')))
 EC_BLOB='7da0cd8d876505cafdd5a9811132427e2f441a14'
 FLAGS=('authorized','fraud','docs','risk','reviewed')
 MODES=('NORMAL','COMPETING','EQUIVALENT','REFRAME')
