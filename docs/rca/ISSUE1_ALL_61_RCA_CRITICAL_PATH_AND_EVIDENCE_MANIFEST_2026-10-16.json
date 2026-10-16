@@ -634,5 +634,37 @@
     "new_real_model_execution": false,
     "new_native_ec_execution": false,
     "original_science_AC_promoted": 0
+  },
+  "reused_prior_art_validation_20261016": {
+    "artifact": "docs/rca/ISSUE1_PRIOR_ART_FORMAL_SEMANTIC_AUTHORITY_2026-10-16.json",
+    "code": "tools/issue1_independent_formal_policy_equivalence.py",
+    "test": "tests/test_issue1_independent_formal_policy_equivalence.py",
+    "adopted_existing_components": [
+      "SymPy SAT Boolean logical equivalence + witness",
+      "Original EC formal policy v2 grammar",
+      "OPA/Conftest testing methodology",
+      "FormalBench metamorphic semantic test philosophy"
+    ],
+    "deferred": [
+      "Attempto/APE controlled English requires SWI-Prolog and domain vocabulary authority",
+      "IBM/NL2LTL temporal logic differs from Boolean EC2 grammar"
+    ],
+    "actual_tests": {
+      "total": 17,
+      "pass": 17,
+      "fail": 0,
+      "actual_CLI_runs": 2,
+      "good_exit": 0,
+      "invalid_exit": 3
+    },
+    "source_matched_exact_git_blobs": {
+      "code": "9c7fed1c0c531c28e995629b8c9b7d4fd8c8ec7e",
+      "test": "e31a9c5dd2cf86ab267e7f941fb70b103aba4eae"
+    },
+    "can_now_prove": "formal propositional equivalence of proposed EC operation and obligation predicates to a separately pinned formal reference, with counterexample showing omitted/negated prerequisites",
+    "cannot_yet_prove": "that independent reference correctly expresses arbitrary natural-language requirements or original 10-fixture gold-independent semantic judgement; independently sourced reference still absent",
+    "scientific_mvp_before": "2/18",
+    "scientific_mvp_after": "2/18",
+    "promoted_original_AC": 0
   }
 }
