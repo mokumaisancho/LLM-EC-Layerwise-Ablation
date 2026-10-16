@@ -201,10 +201,13 @@
       ],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_AND_PINNED_RESULT_CROSSCHECKED",
+      "RCA_status": "FORMAT_SEMANTIC_SEPARATION_SOURCE_VERIFIED",
       "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Output-schema constrained mode distinguishes format-contract validity from reportable semantic metrics. Full A-E still not executed.",
+      "primary_source_pinned_analysis": "results/issue1_rca_sources_12_21_22_24_25_32_36_2026-10-16.json",
+      "original_AC_promoted": 0
     },
     {
       "issue": 13,
@@ -341,10 +344,13 @@
       ],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_AND_PINNED_RESULT_CROSSCHECKED",
+      "RCA_status": "THRESHOLD_AND_CAPACITY_FREEZE_SOURCE_VERIFIED",
       "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "0.20 materiality, ~1.5B max automatic escalation frozen; threshold unchanged.",
+      "primary_source_pinned_analysis": "results/issue1_rca_sources_12_21_22_24_25_32_36_2026-10-16.json",
+      "original_AC_promoted": 0
     },
     {
       "issue": 22,
@@ -359,10 +365,13 @@
       ],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_AND_PINNED_RESULT_CROSSCHECKED",
+      "RCA_status": "SCOPE_INCOMPATIBLE_NOT_SCIENTIFICALLY_CLOSED",
       "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Original full A/B/E not executed; termination source and v2 machine receipt confirm INCOMPATIBLE.",
+      "primary_source_pinned_analysis": "results/issue1_rca_sources_12_21_22_24_25_32_36_2026-10-16.json",
+      "original_AC_promoted": 0
     },
     {
       "issue": 23,
@@ -390,10 +399,13 @@
       ],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_AND_PINNED_RESULT_CROSSCHECKED",
+      "RCA_status": "ORIGINAL_E_NOT_RUN_BY_SCOPED_DESIGN",
       "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Older full E study does not exist as original valid causal experiment; native scope incompatible and new v2 trusted replay only synthetic.",
+      "primary_source_pinned_analysis": "results/issue1_rca_sources_12_21_22_24_25_32_36_2026-10-16.json",
+      "original_AC_promoted": 0
     },
     {
       "issue": 25,
@@ -406,10 +418,13 @@
       ],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_AND_PINNED_RESULT_CROSSCHECKED",
+      "RCA_status": "S1_S3_ADAPTER_GUARDS_PRESENT_SEMANTIC_AUTHORITY_UNVERIFIED",
       "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Adapter source checks S1 content hash/oracle forbiddance and emits source_S1 hash; actual task-semantic correctness not established.",
+      "primary_source_pinned_analysis": "results/issue1_rca_sources_12_21_22_24_25_32_36_2026-10-16.json",
+      "original_AC_promoted": 0
     },
     {
       "issue": 26,
@@ -516,10 +531,13 @@
       ],
       "scope": "NONCRITICAL_INFRA_OR_CAPACITY",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_AND_PINNED_RESULT_CROSSCHECKED",
+      "RCA_status": "TCC_DEPENDENCY_REORDERED_SOURCE_AND_RECEIPT",
       "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "P2 early incompatibility exits before downstream Issue22 checks; historical V1 preflight defect resolved.",
+      "primary_source_pinned_analysis": "results/issue1_rca_sources_12_21_22_24_25_32_36_2026-10-16.json",
+      "original_AC_promoted": 0
     },
     {
       "issue": 33,
@@ -533,10 +551,13 @@
       ],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_AND_PINNED_RESULT_CROSSCHECKED",
+      "RCA_status": "FROZEN_S1_S2_RESULTS_SOURCE_PINNED_NOT_ROOT_AE",
       "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Recorded real S1 36/50 and S2 8/20 vs 6/20 matched source+actual S1, but successor not original A-E.",
+      "primary_source_pinned_analysis": "results/issue1_rca_sources_12_21_22_24_25_32_36_2026-10-16.json",
+      "original_AC_promoted": 0
     },
     {
       "issue": 34,
@@ -551,10 +572,13 @@
       ],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_AND_PINNED_RESULT_CROSSCHECKED",
+      "RCA_status": "NEXT_ACTION_SCOPED_OUTCOME_PINNED",
       "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Recorded real native EC 17/17 vs Qwen 1/17 all REFRAME, only governed singleton action.",
+      "primary_source_pinned_analysis": "results/issue1_rca_sources_12_21_22_24_25_32_36_2026-10-16.json",
+      "original_AC_promoted": 0
     },
     {
       "issue": 35,
@@ -567,10 +591,13 @@
       ],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_AND_PINNED_RESULT_CROSSCHECKED",
+      "RCA_status": "EPISTEMIC_EC_SCOPED_OUTCOME_PINNED",
       "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Source-pinned S1b EC post-parse evidence authority 10/10; not unconstrained semantic interpretation.",
+      "primary_source_pinned_analysis": "results/issue1_rca_sources_12_21_22_24_25_32_36_2026-10-16.json",
+      "original_AC_promoted": 0
     },
     {
       "issue": 36,
@@ -583,10 +610,13 @@
       ],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_AND_PINNED_RESULT_CROSSCHECKED",
+      "RCA_status": "PAIRED_BUDGET_CONFOUND_HISTORICAL_CORRECTED",
       "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Historical k=3 vs variable Qwen not comparable; same-k k=2 recall .50 vs .25 and k=3 .75 vs .45 scoped evidence exists.",
+      "primary_source_pinned_analysis": "results/issue1_rca_sources_12_21_22_24_25_32_36_2026-10-16.json",
+      "original_AC_promoted": 0
     }
   ],
   "original_science_2_of_18_preserved": true,
@@ -614,5 +644,24 @@
     "expected_source_gates_fail": 5,
     "actual_model_EC_inference": false,
     "AC_promoted": 0
+  },
+  "update_20261016_second_batch": {
+    "newly_source_reviewed": [
+      12,
+      21,
+      22,
+      24,
+      25,
+      32,
+      33,
+      34,
+      35,
+      36
+    ],
+    "report": "results/issue1_rca_sources_12_21_22_24_25_32_36_2026-10-16.json",
+    "source_or_persisted_result_checks": 13,
+    "all_pass": true,
+    "original_AC_promoted": 0,
+    "actual_new_llm_run": false
   }
 }
