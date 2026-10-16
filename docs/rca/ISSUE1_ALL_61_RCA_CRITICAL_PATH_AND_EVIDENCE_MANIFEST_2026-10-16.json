@@ -613,5 +613,26 @@
       "EC-native compatible meaning to compare",
       "real Oracle target-only E original A-E"
     ]
+  },
+  "next_science_handoff_evidence_20261016": {
+    "source": "results/issue1_s3_native_formal_handoff_audit_2026-10-16.json",
+    "source_git_blob": "7da0cd8d876505cafdd5a9811132427e2f441a14",
+    "source_ec_contract": "EC_SOURCE_POLICY_S3_S4_V2",
+    "real_P01_blind_inputs": 10,
+    "positive_atomic_facts_translated_without_semantic_inference": 25,
+    "mechanical_conversion_source_tests": 11,
+    "pass": 11,
+    "fail": 0,
+    "fully_qualified_native_EC_inputs": 0,
+    "fail_closed_without_policy": 10,
+    "remaining_original_critical": [
+      "formal operation_rule semantic adjudication and independent policy custody",
+      "source-derived equivalent/competing semantics not oracle",
+      "closed-world bounded obligations and independently observed task execution",
+      "real A-E same-function and independent gold"
+    ],
+    "new_real_model_execution": false,
+    "new_native_ec_execution": false,
+    "original_science_AC_promoted": 0
   }
 }
