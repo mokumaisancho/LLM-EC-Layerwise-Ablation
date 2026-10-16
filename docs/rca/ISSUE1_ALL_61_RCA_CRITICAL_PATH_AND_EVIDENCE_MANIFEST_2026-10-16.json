@@ -436,5 +436,44 @@
     "no_fake_completion": true
   },
   "verified_scope": "ALL_61_ISSUE_BODIES_INDEXED_AND_INITIAL_RCA_RECORDED; ORIGINAL_A-E_NOT_COMPLETED; NOT_ALL_61_CAUSES_EXPERIMENTALLY_VERIFIED",
-  "stop_condition": "Never close original if any real EC/LLM/Oracle source is missing; preserve scientific 2/18 while evidence unavailable. No new Mac COMMAND, no GitHub Actions."
+  "stop_condition": "Never close original if any real EC/LLM/Oracle source is missing; preserve scientific 2/18 while evidence unavailable. No new Mac COMMAND, no GitHub Actions.",
+  "original_ac_work_frontier": {
+    "source_path": "results/issue1_original_phase1_ac18_onecall_tcc_v13_final_actual_2026-10-11.json",
+    "git_blob": "448ab324d46a940d557a55076f4e1c84517fda0e",
+    "original_mvp_passed": 2,
+    "required": 18,
+    "workstates": {
+      "W00_SOURCE_AND_CONTRACT": "PASS_FROZEN_PROTOCOL_ONLY",
+      "W01_EXECUTE_V12": "PASS_MACHINE_FEASIBLE_V12_ONLY",
+      "W02_REBUILD_AC_DAG": "PASS_AC20_TOPOLOGY_NO_AC_PROMOTION",
+      "W03_CHECK_LLM_CAPACITY": "MODEL_ASSET_VERIFIED_INFERENCE_NOT_YET_QUALIFIED",
+      "W04_CHECK_S3_SEMANTICS": "BLOCKED_INDEPENDENT_NATURAL_LANGUAGE_S3",
+      "W05_CHECK_S4_COMPLETENESS": "BLOCKED_INDEPENDENT_REAL_TASK_S4",
+      "W06_VERIFY_REAL_RUNNER": "BLOCKED_TRUE_RUNTIME_NOT_PROVIDED",
+      "W07_RUN_MATCHED_AE": "BLOCKED_REAL_MATCHED_A_B_C_D_E",
+      "W08_SCORE_CAUSAL_METRICS": "BLOCKED_NO_GENUINE_LAYERWISE_METRICS",
+      "W09_AC20_SCORE": "PASS_DAG_RECOMPUTED_2_OF_18_ONLY",
+      "W10_STRICT_EXIT": "BLOCKED_ORIGINAL_AC_2_OF_18"
+    },
+    "unproven_AC": [
+      "AC-01",
+      "AC-02",
+      "AC-03",
+      "AC-04",
+      "AC-05",
+      "AC-06",
+      "AC-07",
+      "AC-08",
+      "AC-09",
+      "AC-11",
+      "AC-12",
+      "AC-13",
+      "AC-14",
+      "AC-15",
+      "AC-16",
+      "AC-17"
+    ],
+    "note": "Historical v13 considers #59/#60 external dependencies; 2026-10-15 V38 scope correction outranks it for extra 120/300/100 certification. Neither version proves actual S3/S4 or real A-E.",
+    "actual_dominant_layer": null
+  }
 }
