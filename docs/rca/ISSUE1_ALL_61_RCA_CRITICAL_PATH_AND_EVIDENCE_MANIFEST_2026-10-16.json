@@ -715,5 +715,33 @@
     "original_AC_after": "2/18",
     "original_AC_promoted": 0,
     "next_original_critical": "independently checked and protected semantic policy/task reference plus real matched LLM/EC S1..S4 A-E tests"
+  },
+  "formal_holdout48_20261016": {
+    "results": "results/issue1_formal_holdout48_real_ec_2026-10-16.json",
+    "code": "tools/issue1_formal_holdout48_v1.py",
+    "code_git_blob": "2eb9b49bdfd8d0e42d497218ee4c9d66cd46e4a7",
+    "native_tests": "tests/test_issue1_formal_holdout48_v1.py",
+    "tests_git_blob": "a77a381d8c306d2e9ad74cec39ca5c6334e3928f",
+    "freeze_manifest": "fixtures/issue1_formal_holdout48_v1/manifest.json",
+    "public_canonical_sha256": "ab9e382a62f0722b27aa5161adefc8f1c6e3bb7dca68662de7184722c441b276",
+    "private_gold_canonical_sha256": "0a01e5781dc062ebb43fc055ac3b3550f3eeea3f816e9ec248ef26c64531484c",
+    "cases_balanced": {
+      "CLOSE": 12,
+      "CONTINUE": 12,
+      "REFRAME": 12,
+      "BLOCKED": 12
+    },
+    "real_native_ec_success": 48,
+    "real_native_ec_failed": 0,
+    "real_python_regression_tests_pass": 12,
+    "independent_logic_comparison": "SymPy propositional interpretation of declared Boolean policy, not independent natural-language semantic labels",
+    "model_new_inference": 0,
+    "native_domain_scope": "formal facts/candidates/obligations already authenticated; no NL S1/S2 requirement fulfilled",
+    "sampling_limitation": "12 per predicted source-label class, not a naturally distributed or truly independently curated holdout",
+    "actual_research_delta": "first source-bounded 48-case fresh native EC formal policy replay beyond historic 17-case plan selection. It does NOT demonstrate any LLM replacement nondegradation.",
+    "original_sci_AC_before": "2/18",
+    "original_sci_AC_after": "2/18",
+    "AC_promoted": 0,
+    "critical_remaining": "Run *real* pinned LLM against exactly same frozen public input bytes; source-pinned raw responses, then independent scoring. Access to new model inference is not currently verified in available free tools. Formal holdout alone cannot verify NL competence or original S1-S4 A-E."
   }
 }
