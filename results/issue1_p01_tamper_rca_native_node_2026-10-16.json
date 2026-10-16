@@ -1,0 +1,45 @@
+{
+  "schema": "ISSUE1_P01_TAMPER_RCA_NATIVE_NODE_V1",
+  "date": "2026-10-16",
+  "environment": "isolated sandbox; Python generator and Node v22.16.0 actually executed",
+  "repro": {
+    "prior_static_P01_tests": 8,
+    "original_tamper": "S2.candidates[0].semantic_transition.operation changed without content_hash update",
+    "actual_prepatch_result": "CLI EXIT_0 UNAUTHENTICATED_CANDIDATE_CHANGE_ACCEPTED",
+    "actual_postpatch_result": "CLI_REJECT:S2_CONTENT_HASH_MISMATCH"
+  },
+  "fix": {
+    "same_existing_sources": [
+      "tools/issue1_s3_gold_contamination_preflight_v42.mjs",
+      "tests/issue1_s3_blind_task_v43.test.mjs"
+    ],
+    "git_blobs": [
+      "bf74eb19bf12ffd94a42ccdb9f71c0a0a95d5325",
+      "cc5d4300d0e06e79608fc7541996f01fb949c373"
+    ],
+    "changes": [
+      "recursive canonical SHA-256 verification of source S2",
+      "manifest task hash and S2 hash binding",
+      "S1 content hash and S2→S1 reference chain",
+      "3 new tamper-negative regression tests"
+    ]
+  },
+  "actual_results": {
+    "command": "node --test tests/issue1_s3_blind_task_v43.test.mjs",
+    "passed": 11,
+    "failed": 0,
+    "canonical_python_generator_cases": 10,
+    "generated_files": 70,
+    "non_gold_visible_projection_validated": 10,
+    "postpatch_bad_S2_with_recomputed_hash_rejected_by_manifest": true
+  },
+  "limits": {
+    "independent_manifest_signature": false,
+    "manifest_and_artifacts_all_adversarially_replaced_tested": false,
+    "actual_new_native_EC_inference": false,
+    "actual_new_LLM_inference": false,
+    "original_A_E_sci_comparison": false,
+    "original_science_AC": "2/18",
+    "AC_promoted": 0
+  }
+}
