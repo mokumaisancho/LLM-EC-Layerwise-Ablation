@@ -80,6 +80,7 @@ must(original.content_hash===canonicalHash(original),"S2_CONTENT_HASH_MISMATCH")
 const s1=JSON.parse(fs.readFileSync(path.join(fixtureDir,"oracle/s1_domain_semantic_ir.json"),"utf8"));
 must(s1.fixture_id===task.fixture_id&&s1.content_hash===canonicalHash(s1),"S1_SOURCE_HASH_MISMATCH");
 must(original.semantic_ir_hash===s1.content_hash,"S2_S1_HASH_CHAIN_MISMATCH");
+
 const aliases=Object.fromEntries(original.candidates.map(x=>[x.candidate_id,"c_"+crypto.randomBytes(16).toString("hex")]));
 const out=cleanTask(task,original,aliases);
 const source_sha256=crypto.createHash("sha256").update(b[3]).digest("hex");
