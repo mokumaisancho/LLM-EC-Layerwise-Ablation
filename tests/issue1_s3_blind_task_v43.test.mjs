@@ -22,7 +22,7 @@ const temp=fs.mkdtempSync(path.join(os.tmpdir(),"issue1-s3-clean-"));
 test.after(()=>fs.rmSync(temp,{recursive:true,force:true}));
 test("P00 source pins",()=>{
  assert.equal(gitBlob(fs.readFileSync(py)),"26bf4a57451769f0a1b617687abe216f773faa8f");
- assert.equal(gitBlob(fs.readFileSync(canon)),"e354884f20a534a3be429ffdcff5f72135472436c");
+ assert.equal(gitBlob(fs.readFileSync(canon)),"e354884f20a534a3be429ffdcff5f72135472436");
 });
 test("P01 ten real canonical fixtures: task rules visible, gold isolated",()=>{
  const generated=path.join(temp,"generated");
