@@ -35,25 +35,55 @@
     ],
     "source_crosschecked_subset": [
       1,
+      2,
+      3,
+      4,
       5,
+      6,
+      7,
+      8,
       9,
+      10,
+      11,
+      12,
       13,
+      14,
+      15,
+      16,
+      19,
       20,
+      21,
+      22,
       23,
+      24,
+      25,
       26,
       27,
       28,
+      29,
       30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
       37,
       38,
       39,
+      40,
       42,
       43,
+      44,
+      45,
+      46,
+      47,
       48,
       50,
       51,
       52,
       53,
+      54,
       55,
       56,
       57,
@@ -62,9 +92,18 @@
       60,
       61
     ],
-    "source_crosschecked_count": 27,
-    "source_not_yet_rechecked_count": 34,
-    "coverage_assertion_pass": true
+    "source_crosschecked_count": 57,
+    "source_not_yet_rechecked_count": 4,
+    "coverage_assertion_pass": true,
+    "source_or_receipt_crosschecked_narrow": 57,
+    "historical_or_external_not_attested": [
+      17,
+      18,
+      41,
+      49
+    ],
+    "all_61_root_cause_statements_present": true,
+    "root_cause_scientifically_verified_all_61": false
   },
   "root_cause_clusters": [
     {
@@ -494,5 +533,47 @@
     ],
     "directly_reexecuted_causal_tests_in_this_source_recovery": 0,
     "meaning": "Additional source-address collection does not increase independently RCA-verified cases by itself."
+  },
+  "sequential_RCA_20261016": {
+    "first_core_batch": "results/issue1_rca_issues_2_3_4_6_7_8_source_checks_2026-10-16.json",
+    "second_function_batch": "results/issue1_rca_sources_12_21_22_24_25_32_36_2026-10-16.json",
+    "third_noncritical_batch": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+    "observed_source_checks": 39,
+    "expected_source_results": {
+      "PASS": 34,
+      "FAIL_EXPECTED_SOURCE_GAP": 5
+    },
+    "retested_actual_python_or_node_native_suite": false,
+    "new_real_model_or_EC_inference": false,
+    "promoted_original_AC": 0,
+    "newly_confirmed_science_relevant_gaps": [
+      {
+        "issue": 2,
+        "why": "Frozen v1 summary alone; canonical v2 generated ten individual task and Oracle bytes absent from research Git tree. Exact generated output still reconstructible from sources but not sealed in branch."
+      },
+      {
+        "issue": 6,
+        "why": "Historical S3 fixture-ID keyed manually authored framing; not source-derived from real S1/S2 model output."
+      },
+      {
+        "issue": 8,
+        "why": "Canonical S2 relation groups authored by M003/M009 special cases, while predictor-visible cleanTask removes relation information; cannot claim same independently sourced relation semantics."
+      }
+    ],
+    "historical_issues_resolved_by_scope_or_code_not_science": [
+      "#3 two accepted candidates in generator",
+      "#4 post-link hash order and validation",
+      "#7 M009 duplicate variable elimination",
+      "#12 output format and meaning separated",
+      "#21 frozen 0.20",
+      "#32 early EC incompatibility stop"
+    ],
+    "noncritical_unverified_external": [
+      "#17 Site publish missing",
+      "#18 bridge tool invocation missing",
+      "#41 accidental case no scientific proof required",
+      "#49 original V1 timeout original logs not retrieved"
+    ],
+    "disposition": "ALL_61_ISSUES_TRIAGED;PRIMARY_SCIENCE_2_OF_18_BLOCKED; NO_NEW_COMMAND"
   }
 }
