@@ -575,5 +575,43 @@
       "#49 original V1 timeout original logs not retrieved"
     ],
     "disposition": "ALL_61_ISSUES_TRIAGED;PRIMARY_SCIENCE_2_OF_18_BLOCKED; NO_NEW_COMMAND"
+  },
+  "new_verified_RCA_20261016_S4_information_bound": {
+    "source": "results/issue1_s4_qwen20_paired_info_ablation_actual_2026-10-10.json",
+    "replay": "results/issue1_s4_information_bound_from_real_qwen20_2026-10-16.json",
+    "structural_visible_input_unique": 3,
+    "enriched_visible_input_unique": 5,
+    "finite_frozen_optimal_accuracy": {
+      "structural": 0.8,
+      "enriched": 1
+    },
+    "model_actual_accuracy_from_frozen_output": {
+      "structural": 0.7,
+      "enriched": 0.7
+    },
+    "potential_structural_identifiability_gain": 0.2,
+    "real_model_information_gain": 0,
+    "structural_collision_counterexamples": [
+      [
+        "M001",
+        "M007"
+      ],
+      [
+        "M003",
+        "M009"
+      ]
+    ],
+    "false_close_cases": [
+      "M003",
+      "M007"
+    ],
+    "notes": "Exact visible input SHA collision proves structural information nonidentifiability in fixed corpus, independent of model sophistication; extra source-visible info resolves collision but actual 20 prior Qwen outputs show zero changed predictions. No new inference; 4 negative-controls pass; 100% upper bound is in-sample lookup possibility not deployable EC policy or independent unseen competence. Cannot infer original A-E or full real-world closed-world closure.",
+    "original_AC_promoted": 0,
+    "blockers_unchanged": [
+      "S3 valid candidate semantics and relational authority",
+      "S4 independently complete obligation source",
+      "EC-native compatible meaning to compare",
+      "real Oracle target-only E original A-E"
+    ]
   }
 }
