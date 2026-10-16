@@ -27,10 +27,14 @@
       ],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "FROZEN_SUMMARY_PLUS_GIT_TREE_INSPECTED",
+      "RCA_status": "SOURCE_CONTRACT_PRESENT_FROZEN_SUMMARY_ONLY",
+      "next_data_required": "Run pinned canonical generator to independent directory, verify 10*7 v2 bytes and artifact hashes, record output manifest and source blob before executing A-E.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Phase1 v1 freeze summary says 10 validated, but source branch tracks one literal v1 fixture. Phase1 v2 generator exists but none of the ten generated task files are committed.",
+      "primary_source_pinned_analysis": "results/issue1_rca_issues_2_3_4_6_7_8_source_checks_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "verified_primary_source_execution_in_this_RCA": false
     },
     {
       "issue": 3,
@@ -41,10 +45,14 @@
       "primary_source_references": [],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "GENERATOR_SOURCE_READ_HASH_PINNED",
+      "RCA_status": "GENERATOR_IMPLEMENTATION_REPAIRED_ACTUAL_ENGINE_NOT_VERIFIED",
+      "next_data_required": "Generate M003 with real Python source and assert both IDs survive gold-blind alias+all-admissible scoring without leaking correctness.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "valid_count==2 emits c-valid-2 and acceptable ids; canonical v2 M003 adds two distinct operation variants and COMPETING relation.",
+      "primary_source_pinned_analysis": "results/issue1_rca_issues_2_3_4_6_7_8_source_checks_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "verified_primary_source_execution_in_this_RCA": false
     },
     {
       "issue": 4,
@@ -57,10 +65,14 @@
       ],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "GENERATOR_AND_VALIDATOR_SOURCE_READ",
+      "RCA_status": "HASH_ORDER_AND_VALIDATOR_CODE_REPAIRED_PYTHON_E2E_UNRUN",
+      "next_data_required": "Execute actual hash-chain unit and mutation test (flip each edge and child content; all fail closed).",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "S1 hash preceding S2 ref/hash, S2 precedes S3, S3 precedes S4. Validator recomputes all four hashes and tests three upstream bindings.",
+      "primary_source_pinned_analysis": "results/issue1_rca_issues_2_3_4_6_7_8_source_checks_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "verified_primary_source_execution_in_this_RCA": false
     },
     {
       "issue": 5,
@@ -87,10 +99,14 @@
       "primary_source_references": [],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "S3_GENERATOR_AND_S1_ADAPTER_SOURCE_READ",
+      "RCA_status": "ORACLE_FRAME_STATE_AUTHOR_DEFINED_SOURCE_AUTHORITY_NOT_VERIFIED",
+      "next_data_required": "Run actual independently observable S1/S2 source→S3 adapter under identical A-E inputs; verify all framing variables/evidence source-bound, no fixture IDs and no Oracle.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Historical oracle S3 upstream state uses STAGES/STATES keyed by each fixture, not derived from measured S1/S2. Separate S1 adapter code does not establish semantic framing correctness.",
+      "primary_source_pinned_analysis": "results/issue1_rca_issues_2_3_4_6_7_8_source_checks_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "verified_primary_source_execution_in_this_RCA": false
     },
     {
       "issue": 7,
@@ -101,10 +117,14 @@
       "primary_source_references": [],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "S3_STATE_GENERATOR_SOURCE_READ",
+      "RCA_status": "AUTHORED_FRAME_REPRESENTATION_REPAIRED_SEMANTIC_RECOGNITION_NOT_PROVED",
+      "next_data_required": "Test source-grounded alternative descriptions and equivalent two-candidate relation; do not infer independent language semantics from hand-coded state.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "M009 has one equivalent_action_space variable, M005 retains unexplained authorization rejection. Fix prevents synthetic duplicate framing variable but is authored by fixture.",
+      "primary_source_pinned_analysis": "results/issue1_rca_issues_2_3_4_6_7_8_source_checks_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "verified_primary_source_execution_in_this_RCA": false
     },
     {
       "issue": 8,
@@ -115,10 +135,14 @@
       "primary_source_references": [],
       "scope": "RESEARCH_HISTORICAL_OR_SUPPORT",
       "root_original_relevance": "SUPPORT_OR_NO_LONGER_BLOCKING",
-      "rca_source_quality": "ISSUE_BODY_STATEMENT_NOT_INDEPENDENTLY_REPLAYED",
-      "RCA_status": "PROVISIONAL_SOURCE_COLLECTION",
-      "next_data_required": "Historic result source pin + negative control and actual execution receipt needed only before reopening or using as original AC proof.",
-      "scientific_ac_promoted": 0
+      "rca_source_quality": "CANONICAL_ORACLE_AND_PROJECTOR_SOURCE_READ",
+      "RCA_status": "ORACLE_RELATION_PRESENT_S3_PREDICTOR_RELATION_ABSENT",
+      "next_data_required": "Qualify authority-generated relation from task and candidate facts independent of hidden gold; seal it as a public upstream field and pass same bytes to EC and LLM or explicitly mark relation-unavailable.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "M003 COMPETING/M009 EQUIVALENT relation_groups in frozen canonical S2 Oracle. Current cleanTask predictor payload excludes relation_groups, and relation metadata was authored by fixture ID; both portability and independence unproved.",
+      "primary_source_pinned_analysis": "results/issue1_rca_issues_2_3_4_6_7_8_source_checks_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "verified_primary_source_execution_in_this_RCA": false
     },
     {
       "issue": 9,
@@ -574,5 +598,21 @@
     "docs/rca/ISSUE1_RCA_SOURCE_025_030_2026-10-16.json",
     "docs/rca/ISSUE1_RCA_SOURCE_031_036_2026-10-16.json"
   ],
-  "per_ticket_source_review_required_for_sci_claim": true
+  "per_ticket_source_review_required_for_sci_claim": true,
+  "update_20261016": {
+    "newly_source_reviewed": [
+      2,
+      3,
+      4,
+      6,
+      7,
+      8
+    ],
+    "source_pinned_report": "results/issue1_rca_issues_2_3_4_6_7_8_source_checks_2026-10-16.json",
+    "source_checks": 12,
+    "expected_source_gates_pass": 7,
+    "expected_source_gates_fail": 5,
+    "actual_model_EC_inference": false,
+    "AC_promoted": 0
+  }
 }
