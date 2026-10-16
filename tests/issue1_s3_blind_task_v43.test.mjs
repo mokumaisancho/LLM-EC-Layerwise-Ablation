@@ -9,7 +9,7 @@ import path from "node:path";
 import {spawnSync} from "node:child_process";
 import crypto from "node:crypto";
 import {fileURLToPath} from "node:url";
-import {cleanTask} from "../tools/issue1_s3_gold_contamination_preflight_v42.mjs";
+import {cleanTask,canonicalHash} from "../tools/issue1_s3_gold_contamination_preflight_v42.mjs";
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),"..");
 const py=path.join(root,"tools/generate_phase1_measurement_v2.py");
@@ -55,6 +55,7 @@ test("P01 ten real canonical fixtures: task rules visible, gold isolated",()=>{
 });
 const base={schema_version:"TASK_INPUT_V1",fixture_id:"M001",prompt:"Choose",context:{facts:["a"],domain_rules:["Require a"]}};
 const s2={schema_version:"S2_CANDIDATE_SET_V1",fixture_id:"M001",candidates:[{candidate_id:"v1",semantic_transition:{operation:"SAFE"}},{candidate_id:"x1",semantic_transition:{operation:"UNSAFE"}}]};
+s2.content_hash=canonicalHash(s2);
 const aliases={v1:"c_"+"1".repeat(32),x1:"c_"+"2".repeat(32)};
 const reject=(id,t,s,a,o)=>test(id,()=>assert.throws(()=>cleanTask(t,s,a,o),/REJECT:/));
 reject("P01 rejects unrelated task/S2", {...base,fixture_id:"M002"},s2,aliases,[1,0]);
@@ -66,4 +67,34 @@ test("P01 permutation removes authored valid-first position hint",()=>{
  const visible=cleanTask(base,s2,aliases,[1,0]);
  assert.equal(visible.candidates[0].semantic_operation,"UNSAFE");
  assert.equal(visible.candidates[1].semantic_operation,"SAFE");
+});
+
+test("P01 rejects candidate semantic tampering with old content_hash",()=>{
+ const altered=JSON.parse(JSON.stringify(s2));
+ altered.candidates[0].semantic_transition.operation="BYPASS_CONTROL";
+ assert.throws(()=>cleanTask(base,altered,aliases,[1,0]),/REJECT:S2_CONTENT_HASH_MISMATCH/);
+});
+test("P01 rejects an identical fixture id with modified s2 hash",()=>{
+ const altered=JSON.parse(JSON.stringify(s2));
+ altered.content_hash="0".repeat(64);
+ assert.throws(()=>cleanTask(base,altered,aliases,[1,0]),/REJECT:S2_CONTENT_HASH_MISMATCH/);
+});
+test("P01 CLI refuses even recomputed S2 mutation if sealed manifest unchanged",()=>{
+ const generated=path.join(temp,"generated");
+ const fid="M001";
+ const source=path.join(generated,fid);
+ const mutateDir=path.join(temp,"mutation-original");
+ fs.mkdirSync(path.join(mutateDir,"input"),{recursive:true});
+ fs.mkdirSync(path.join(mutateDir,"oracle"));
+ for(const f of ["input/task.json","oracle/s1_domain_semantic_ir.json","oracle/s2_candidate_set.json","fixture_manifest.json"]){fs.copyFileSync(path.join(source,f),path.join(mutateDir,f));}
+ const mutated=path.join(mutateDir,"oracle/s2_candidate_set.json");
+ const content=JSON.parse(fs.readFileSync(mutated));
+ content.candidates[0].semantic_transition.operation="BYPASS_CONTROL";
+ content.content_hash=canonicalHash(content);
+ fs.writeFileSync(mutated,JSON.stringify(content));
+ const work=path.join(temp,"mutation-work");fs.mkdirSync(work);
+ const r=spawnSync("node",[tool,py,canon,path.join(mutateDir,"input/task.json"),mutated],{cwd:work,encoding:"utf8",timeout:60000});
+ assert.equal(r.status,3,r.stdout+" / "+r.stderr);
+ assert.match(r.stderr,/REJECT:S2_MANIFEST_HASH_MISMATCH/);
+ assert.ok(!fs.existsSync(path.join(work,"s3_predictor_visible_v42.json")));
 });
