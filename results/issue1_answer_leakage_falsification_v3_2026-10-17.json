@@ -1,0 +1,98 @@
+{
+  "schema": "ISSUE1_ANSWER_LEAKAGE_FALSIFICATION_V3",
+  "date": "2026-10-17",
+  "research_root": "mokumaisancho/LLM-EC-Layerwise-Ablation",
+  "reference_branch": "feat/issue1-independent-s4-authority-audit-v19",
+  "scope": "Source-only rehydration and test-label contamination falsification, does not certify full NL semantics or original S1-S4 experimental result",
+  "sources": {
+    "v1_generator": {
+      "git_blob": "2eb9b49bdfd8d0e42d497218ee4c9d66cd46e4a7",
+      "bytes": 9117
+    },
+    "pinned_manifest": {
+      "git_blob": "74ee6317c96835a2abd9cb5e33bc968b3fa496fa",
+      "bytes": 657
+    },
+    "v2_rehydrate_tool": {
+      "git_blob": "a1a5513215e951f93ac204f03e0b3c12b48753bb",
+      "bytes": 11835
+    },
+    "v2_tests": {
+      "git_blob": "1f94b9e40ad5c6fd3a50f21665cc30d8621dbcd4",
+      "bytes": 9136
+    },
+    "v3_audit_tests": {
+      "git_blob": "c4304dea85bbcb4a1b1931883c0f29faa4284fc6",
+      "bytes": 8091
+    }
+  },
+  "rehydration": {
+    "public_cases": 48,
+    "public_canonical_sha256": "ab9e382a62f0722b27aa5161adefc8f1c6e3bb7dca68662de7184722c441b276",
+    "mechanical_gold_canonical_sha256": "0a01e5781dc062ebb43fc055ac3b3550f3eeea3f816e9ec248ef26c64531484c",
+    "require_raw_data_for_reconstruction": false,
+    "public_has_literal_gold_key": false,
+    "semantic_gold_independent": false
+  },
+  "falsification": {
+    "public_only_baseline_matches_private_reference": "48/48 without model, SymPy, EC or private data at prediction time",
+    "private_gold_directly_reconstructible_from_public_and_policy": true,
+    "case_sampling_uses_source_reference_class": true,
+    "key_only_public_free_rejects_gold_values_in_arbitrary_string_fields": false,
+    "value_smuggling_examples_accepted": [
+      "source_ref=answer=CLOSE",
+      "candidate_id=CORRECT_CLOSE",
+      "policy_id=truth:REFRAME"
+    ],
+    "does_genuine_frozen_public_contain_those_examples": false,
+    "full_pinned_rehydration_rejects_modified_public_through_canonical_digest": true,
+    "score_file_contains_gold_reference_per_case": true,
+    "score_file_was_not_in_model_visible_public": true,
+    "v1_python_optimize_makes_integrity_asserts_noops": true,
+    "v1_actual_unpinned_ec_module_executed_under_optimized_python": true,
+    "v2_optimized_python_rejects_modified_generator": true,
+    "v2_optimized_python_rejects_modified_manifest": true,
+    "v2_optimized_python_rejects_fake_native_before_import": true,
+    "manifest_independence": "Code and digest commitments reside in same trusted Git repository, not an externally controlled signed semantic reference",
+    "new_real_llm_inference": 0,
+    "external_natural_language_gold": false
+  },
+  "executed": {
+    "actual_local_v2_recovery_tests": {
+      "run": 21,
+      "pass": 21,
+      "fail": 0
+    },
+    "actual_local_v3_falsification_tests": {
+      "run": 14,
+      "pass": 14,
+      "fail": 0
+    },
+    "actual_fresh_git_only_combined_normal": {
+      "run": 35,
+      "pass": 33,
+      "skip": 2,
+      "fail": 0,
+      "stderr_sha256": "5570efaf4eba455c6d651b6276c1691b8c98f63fe129d8fa4904dbf7496e14fe"
+    },
+    "actual_fresh_git_only_combined_optimize": {
+      "run": 35,
+      "pass": 33,
+      "skip": 2,
+      "fail": 0,
+      "stderr_sha256": "30582f9dd30605347ea4e70d68e3cf055407bc0e8cc118ec64f10f341f485744"
+    },
+    "actual_original_saved_score_replay": {
+      "saved_48_matches": 48,
+      "independent_semantics_proven": false
+    }
+  },
+  "scientific_disposition": {
+    "valid": "Numerical 48/48 matches a declared formal policy; source-only rehydration is reproducible, code checks under -O in V2",
+    "invalid": "Independent natural-language reference, novel semantic generalization, LLM/EC nondegradation and native v1 security assurances",
+    "unknown": "Latent/indirect answer leakage in historical 10 semantic options and 17 constrained Qwen prompts cannot be ruled out from v3 source-only corpus; individual input replay needed",
+    "original_MVP_AC": "2/18",
+    "promoted_AC": 0
+  },
+  "next_required": "Keep raw scoring references out of all predictor contexts; use independent external adjudication and precommitted blind heldout tasks, plus actual same-input model/EC arm before scientific promotion."
+}
