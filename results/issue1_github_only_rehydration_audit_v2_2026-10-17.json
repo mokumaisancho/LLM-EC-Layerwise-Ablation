@@ -1,0 +1,67 @@
+{
+  "schema": "ISSUE1_GITHUB_ONLY_REHYDRATION_AUDIT_V2",
+  "date": "2026-10-17",
+  "environment": "fresh temp checkout with only 2 original pinned GitHub files + 2 new verification files; zero public/private raw JSON and zero native score files",
+  "sources": {
+    "tools/issue1_formal_holdout48_v1.py": "2eb9b49bdfd8d0e42d497218ee4c9d66cd46e4a7",
+    "fixtures/issue1_formal_holdout48_v1/manifest.json": "74ee6317c96835a2abd9cb5e33bc968b3fa496fa",
+    "tools/issue1_rehydrate_audit_v2.py": "a1a5513215e951f93ac204f03e0b3c12b48753bb",
+    "tests/test_issue1_rehydrate_audit_v2.py": "1f94b9e40ad5c6fd3a50f21665cc30d8621dbcd4"
+  },
+  "rehydration": {
+    "public_recovered": 48,
+    "public_sha256": "ab9e382a62f0722b27aa5161adefc8f1c6e3bb7dca68662de7184722c441b276",
+    "mechanical_gold_recovered": 48,
+    "mechanical_gold_sha256": "0a01e5781dc062ebb43fc055ac3b3550f3eeea3f816e9ec248ef26c64531484c",
+    "policy_sha256": "fd1703572172641287906613ad970d6104656128a5000cce76873c4502974b96",
+    "manifest_root_sha256": "4a0f5ffb84dc8370ac890bceddf8f88c405e4b65c8672ddedbd310abbab976be",
+    "no_raw_files_required": true
+  },
+  "regressions": {
+    "command": "python3 -m unittest discover -s tests -p test_issue1_rehydrate_audit_v2.py -v",
+    "pass": 21,
+    "fail": 0,
+    "clean_git_only_checkout": 21,
+    "python_optimized_no_assert_bypass": true,
+    "normal_and_optimized_result_equivalence": true,
+    "unittest_log_sha256": "5105ab17b99ac4b94b6c525f49866a6d61b5c97b62b07fe010b5c9c535178181",
+    "tamper_guards": [
+      "pinned original generator Git blob",
+      "pinned original manifest Git blob and external literal digest in verifier",
+      "duplicate JSON keys",
+      "native source wrong git blob under python and python -O",
+      "manifest and source tampering under python and python -O",
+      "modified historical score fails pinned file SHA",
+      "public gold-label key injection rejected",
+      "overwrite of model-visible output rejected"
+    ]
+  },
+  "historical_score_local_reaudit": {
+    "score_sha256": "ca9c934e26a347ad8bb816931da43626ace34c953e5a3defd070165a42604239",
+    "recorded_native_rows_checked": 48,
+    "reference_matches_reconstructed_gold": 48,
+    "actual_native_engine_invocations_this_turn": 0,
+    "historical_recorded_native_matching_rows": 48
+  },
+  "answer_leakage": {
+    "direct_reference_label_keys_in_48_model_visible_public": false,
+    "reference_outcome_strings_present_in_public": false,
+    "model_output_correctness_classified_by_algorithm_not_by_LLM": true,
+    "generated_gold_hidden_from_predictor_public_export": true,
+    "strong_independent_label_provenance": false,
+    "author_written_algorithm_can_reconstruct_all_48_labels": true,
+    "risk": "DO_NOT_GIVE_LLM_GENERATOR_SOURCE_OR_SCORE_RESULT; policy formula itself deterministically determines formal labels, legitimate in bounded formal conformance but invalid as independent NL judgment"
+  },
+  "limitations": {
+    "native_EC_source_pinned_git_blob": "7da0cd8d876505cafdd5a9811132427e2f441a14",
+    "actual_native_EC_replay_this_turn": false,
+    "native_48_replay_supported_when_pinned_source_supplied": true,
+    "new_real_LLM_inference": false,
+    "independent_natural_language_gold": false,
+    "original_science_AC": "2/18",
+    "new_AC_promoted": 0,
+    "repo_script_plus_constants_not_external_crypto_custody": true,
+    "original_48_frozen_v1_not_overwritten": true
+  },
+  "result": "REPRODUCIBILITY_PASS_ONLY_INDEPENDENT_SEMANTIC_SCIENCE_STILL_UNPROVEN"
+}
