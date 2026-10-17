@@ -14,6 +14,7 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import tempfile
 from pathlib import Path
 import sys
 from typing import Any
@@ -143,6 +144,37 @@ def check_saved_score(score_path: Path, public:dict, gold:dict, manifest:dict):
             'independently_recomputed_from_source':True,
             'native_ec_reexecuted_in_this_audit':False}
 
+def rerun_native(source:Path, native_source:Path, public:dict, private:dict, manifest:dict):
+    """Real native EC replay in a disposable directory, not stored raw data."""
+    require(blob(native_source)==EC_SOURCE_BLOB,'NATIVE_EC_SOURCE_GIT_BLOB_MISMATCH')
+    generator=load_pinned_generator(source)
+    generator.EC=native_source
+    with tempfile.TemporaryDirectory(prefix='issue1-native-replay-') as t:
+        work=Path(t)
+        for name,obj in [('public.json',public),('private_gold.json',private),
+                         ('manifest.json',manifest)]:
+            (work/name).write_bytes(json.dumps(obj,sort_keys=True,
+                ensure_ascii=False,indent=2).encode()+b'\n')
+        actual=generator.score(work)
+    require(actual.get('ec_git_blob')==EC_SOURCE_BLOB and
+            actual.get('n')==48 and actual.get('ec_exact_pass')==48 and
+            actual.get('ec_exact_fail')==0 and actual.get('fail_ids')==[],
+            'NATIVE_REPLAY_SCORE_MISMATCH')
+    require(actual.get('real_llm_calls')==0 and
+            actual.get('independent_nl_reference') is False and
+            actual.get('original_AC_promoted')==0, 'NATIVE_REPLAY_SCIENCE_OVERCLAIM')
+    require([r['id'] for r in actual['cases']]==[x['id'] for x in public['cases']],
+            'NATIVE_REPLAY_CASE_ID_MISMATCH')
+    for row,src,ref in zip(actual['cases'],public['cases'],private['labels']):
+        require(row['input_sha256']==sha(src['input']) and
+                row['formal_reference']==ref['reference'] and
+                row['native']==ref['reference'] and row['exact'] is True,
+                'NATIVE_REPLAY_CASE_MISMATCH:'+row['id'])
+    return {'native_reexecuted':True, 'native_calls':48,
+            'formal_only_native_correct':48,
+            'independent_natural_language_labels':False}
+
+
 def run(source:Path,manifest_path:Path,recorded_score:Path|None=None,public_output:Path|None=None,
         native_path:Path|None=None):
     public,private,manifest=rehydrate(source,manifest_path)
@@ -150,8 +182,9 @@ def run(source:Path,manifest_path:Path,recorded_score:Path|None=None,public_outp
     if recorded_score is not None:
         check=check_saved_score(recorded_score,public,private,manifest)
     ec_source_verified=False
+    native_replay=None
     if native_path is not None:
-        require(blob(native_path)==EC_SOURCE_BLOB,'NATIVE_EC_SOURCE_GIT_BLOB_MISMATCH')
+        native_replay=rerun_native(source,native_path,public,private,manifest)
         ec_source_verified=True
     if public_output is not None:
         require(not public_output.exists(),'REFUSE_TO_OVERWRITE_PUBLIC')
@@ -166,13 +199,14 @@ def run(source:Path,manifest_path:Path,recorded_score:Path|None=None,public_outp
             'manifest_root_sha256':sha(manifest),
             'source_generator_git_blob':SCRIPT_BLOB,
             'native_source_verified_this_run':ec_source_verified,
+            'native_replay':native_replay,
             'recorded_score_replay':check,
             'gold_generation_method':'SAME_AUTHORED_FORMAL_POLICY_SYMBOLIC_ALGORITHM',
             'llm_correctness_judged_by_llm':False,
             'semantic_gold_independent':False,
             'full_s1_s4_non_degradation_demonstrated':False,
             'new_real_llm_inference':0,
-            'new_native_ec_inference':0,
+            'new_native_ec_inference':native_replay['native_calls'] if native_replay else 0,
             'original_science_ac_promoted':0,
             'dataset_is_unseen_semantic_holdout':False,
             'result':'RECONSTRUCTABLE_BUT_NOT_INDEPENDENT_SEMANTIC_EVALUATION'}
