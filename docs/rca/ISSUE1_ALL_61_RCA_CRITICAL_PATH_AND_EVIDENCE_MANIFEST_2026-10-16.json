@@ -770,5 +770,46 @@
       "original_AC": "2/18"
     },
     "freeze_policy": "Do not silently patch frozen V1 retrospectively and restore original science claims. Version V2 and independently custodial freeze, unconditional source integrity and true independent semantic scoring are required before accepting scientific outcome."
+  },
+  "answer_leakage_redteam_v3_20261017": {
+    "evidence": "results/issue1_answer_leakage_falsification_v3_2026-10-17.json",
+    "code": "tests/test_issue1_leakage_falsification_v3.py",
+    "test_source_git_blob": "c4304dea85bbcb4a1b1931883c0f29faa4284fc6",
+    "github_only_no_raw_input": true,
+    "source_rehydration": "48/48 reproducible without raw data, public SHA and mechanical gold SHA pinned",
+    "algorithmic_classification": "YES, exactly 48/48 via simple public-policy interpreter with NO model, EC, SymPy, or private labels at prediction time",
+    "independent_semantic_truth": "NO; source published reference is algorithmically reconstructible, not independent business rule meaning",
+    "literal_gold_in_original_public": "NO",
+    "value_smuggling_negative_control": "Existing public_free checks forbidden KEY names only and ACCEPTS answer information in arbitrary string VALUES; exact frozen public hash rejects actual mutated payload",
+    "score_contains_gold": "YES; prevent raw score/formal_reference from reaching predictor",
+    "source_integrity": {
+      "legacy_v1_under_python_O": "BYPASS CONFIRMED and bogus native source executed in historical isolated test",
+      "v2_rehydration_under_python_O": "FAIL_CLOSED validated against changed generator, changed manifest, and bogus native source",
+      "trust_limit": "Git commit and locally embedded digests still same-party custody, NOT externally sourced reference"
+    },
+    "tests": {
+      "fresh_repo_only_normal": {
+        "run": 35,
+        "pass": 33,
+        "skipped": 2,
+        "failed": 0
+      },
+      "fresh_repo_only_optimized": {
+        "run": 35,
+        "pass": 33,
+        "skipped": 2,
+        "failed": 0
+      },
+      "local_saved_score_validation": "48 saved outcomes reconciled, not fresh native inference",
+      "source_refs": "Exact repo Git blob equal to independently tested rebased Github test file"
+    },
+    "original_science_AC_after": "2/18",
+    "AC_promoted": 0,
+    "required_next_steps": [
+      "Do not interpret synthetic 48/48 as LLM ability or nondegradation",
+      "Keep predictor-visible public channel physically isolated from scorer/gold and generation internals",
+      "Independent, externally sourced NL semantic references plus actual paired LLM/native-EC blind replay",
+      "Separate integrity of independently frozen manifest root from same-author source"
+    ]
   }
 }
