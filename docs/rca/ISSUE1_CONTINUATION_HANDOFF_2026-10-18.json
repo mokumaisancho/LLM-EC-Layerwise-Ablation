@@ -1,0 +1,101 @@
+{
+  "schema": "ISSUE1_CONTINUATION_HANDOFF_V1",
+  "as_of": "2026-10-18",
+  "source_shared_chat": "https://chatgpt.com/share/6ad3e624-df94-83e8-bb80-3d1cc13c8f17",
+  "root_issue": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/1",
+  "authority": {
+    "original": "ACCEPTANCE_CRITERIA.md",
+    "dependency": "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+    "rca": "docs/rca/ISSUE1_ALL_61_RCA_CRITICAL_PATH_AND_EVIDENCE_MANIFEST_2026-10-16.json",
+    "scope": "docs/ISSUE1_S3_S4_FUNCTION_BOUNDARY_V43.json"
+  },
+  "original_goal": "Find smallest semantically necessary LLM region versus deterministic EC replaceable region with fixed-upstream, target-only S1..S4 A..E causal interventions and nondegradation evaluation.",
+  "original_mvp": {
+    "passed": 2,
+    "required": 18,
+    "passed_AC": [
+      "AC-19",
+      "AC-20"
+    ],
+    "unchanged": true,
+    "materiality_abs": 0.2,
+    "terminal": "EC_NATIVE_SCOPE_INCOMPATIBLE",
+    "prohibit_promotion_from_successor": true
+  },
+  "confirmed_source_review": {
+    "formal48_rehydration": "RECORDED_PASS_FROM_GITHUB_ONLY: 21/21 v2 +14/14 falsification, 35 combined (33 pass/2 skip) both normal and python -O",
+    "rehydration": "48 public and mechanical gold reproducible from pinned generator and manifest without raw JSON",
+    "formal48_science": "INVALID_FOR_INDEPENDENT_NL_GENERALIZATION: same authored formal policy reconstructs all 48 labels, label-conditioned sample selection, zero actual LLM inference",
+    "historical17": "DEVELOPMENT_ONLY: native EC 17/17, Qwen2.5-1.5B 1/17 from historical receipts, no independent blinded NL policy, model predicted REFRAME all 17",
+    "historical17_gold_class_counts": {
+      "EXECUTE": 11,
+      "BLOCKED": 1,
+      "NO_OPEN_WORK": 1,
+      "FAIL_CLOSED": 3,
+      "REFRAME": 1
+    },
+    "historical17_majority_status_baseline": 0.6470588235294118,
+    "original10": "10 gold-blind projected tasks, observed source literals 25, native formal semantic handoff eligible 0/10, no independently sourced executable rules",
+    "source_integrity": "Old v1 assert bypass reproduced with python -O; v2 sidecar pins generator/manifest and rejects optimization-based bypass; does not prove exogenous semantic gold.",
+    "issue_states": {
+      "1": "OPEN",
+      "9": "OPEN",
+      "20": "CLOSED_SCOPE_INCOMPATIBLE",
+      "23": "CLOSED_SCOPE_INCOMPATIBLE",
+      "59": "OPEN_EXTENDED_ONLY",
+      "60": "OPEN_EXTENDED_ONLY",
+      "61": "OPEN_CAUSAL_PROVENANCE"
+    }
+  },
+  "essential_original_critical_path": [
+    {
+      "id": "CP0",
+      "priority": "P0",
+      "task": "LOCK_TARGET_FUNCTION_AND_SCOPE",
+      "status": "BLOCKED_ORIGINAL_INCOMPATIBLE",
+      "criterion": "Do not equate generic S3 all-admissible semantics with EC-native single governed work selection; preserve frozen failure and version successor."
+    },
+    {
+      "id": "CP1",
+      "priority": "P0",
+      "task": "EXTERNALLY_SOURCE_GROUNDED_S3_S4_GOLD",
+      "status": "NOT_PROVEN",
+      "criterion": "Original 10 require externally grounded bounded semantic operation rules, obligation inventory, and reference custody independent of predictor and author-written generator; no 120/300/100 auxiliary certification hard-gate."
+    },
+    {
+      "id": "CP2",
+      "priority": "P0",
+      "task": "ACTUAL_LLM_AND_NATIVE_EC_PAIRED_FUNCTION",
+      "status": "NOT_RUN_ON_BLINDED_SEMANTIC_HOLDOUT",
+      "criterion": "Persist one byte-identical predictor input per case, actual model outputs/hashes and native EC outputs; do not use formal48 as semantic blind holdout."
+    },
+    {
+      "id": "CP3",
+      "priority": "P1",
+      "task": "ISSUE61_TARGET_ONLY_ORACLE_REAL_ENGINE",
+      "status": "TOY_GATE_ONLY",
+      "criterion": "Prove all non-target layer outputs/engine identities frozen, including later layers and anti-tamper controls, on real A..E runs."
+    },
+    {
+      "id": "CP4",
+      "priority": "P1",
+      "task": "A_E_CAUSAL_SCORE_OR_VALID_FAIL_CLOSED_TERMINAL",
+      "status": "NOT_PROVEN",
+      "criterion": "Original 18 AC remain 2/18 unless full four-layer controlled evidence; successor may report only a scoped governed-work action with bounded accuracy, external test and retention."
+    }
+  ],
+  "noncritical": [
+    "Do not re-run 48 formal v2/v3 tests absent changed input or concrete fault.",
+    "Do not reopen closed #20/#23 merely to force old 18 AC.",
+    "Do not require #59/#60 expanded 120/300/100 certification as a Phase1 hard gate.",
+    "Do not create a new Mac .command, spend HF Jobs credits or invoke GitHub Actions as a model compute substitute.",
+    "Do not claim >2/18 until provenance and exact matched real engine receipts are independently checked."
+  ],
+  "next_executable_work_order": [
+    "Source independently authored benchmark/requirements AND freeze source SHA and heldout scorer corpus without label-conditioned sample selection.",
+    "Build versioned shared-function successor for governed next action, retaining S1/S2 via LLM and refusing EC for semantics not independently grounded.",
+    "Use existing model route (pinned local Qwen, if available) to collect raw LLM responses under exactly paired inputs; EC must run same authorized function, not native unrelated single-step function.",
+    "Run independent scoring and target-only Oracle counterfactuals, report layer conditional error rates, false closure and fallback; reject unchanged or unfair comparisons."
+  ],
+  "limitation": "This artifact is an evidence-linked handoff and a fresh 17-case distribution audit, NOT new paired model inference, NOT independent semantic gold, NOT new scientific MVP AC."
+}
