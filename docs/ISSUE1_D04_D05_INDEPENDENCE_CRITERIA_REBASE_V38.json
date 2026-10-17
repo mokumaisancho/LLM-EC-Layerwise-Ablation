@@ -1,0 +1,83 @@
+{
+  "schema": "ISSUE1_D04_D05_PHASE1_VS_EXTENDED_REBASE_V38",
+  "root": {
+    "original_ac_passed": 2,
+    "original_ac_total": 18,
+    "promoted": 0,
+    "original_data_source_fixed": true,
+    "third_party_signature_gate_for_fixed_fixture": false,
+    "original_threshold": 0.2
+  },
+  "scopes": {
+    "D04": {
+      "fixed_fixture_reference_oracle": "READY_FOR_ACTUAL_ARMS",
+      "external_blind_generalization": "SEPARATE_UNPROVEN_TIER",
+      "gold_separate_from_predictor": "REQUIRES_RUNTIME_VERIFICATION",
+      "competing_equivalent": "M003_M009_SOURCE_FIXTURES_NOT_INDEPENDENT_HELDOUT"
+    },
+    "D05": {
+      "bounded_fixture_obligations": "FROZEN_ORACLE_REPLAY_AVAILABLE",
+      "real_S4_close_accuracy": "REQUIRES_S4_EXECUTION_AND_INDEPENDENT_SCORING",
+      "full_task_policy_exhaustiveness": "UNPROVEN_FOR_TAU2",
+      "scope": "10-original-fixtures",
+      "mandatory_14778_pair_reviews": false
+    },
+    "next": {
+      "must_run": [
+        "ISSUE-23_QUALIFIED_EC_NATIVE_ADAPTER",
+        "ISSUE-20_ACTUAL_EC_BINDING",
+        "ISSUE-22_TRUE_LLM_S1_S2_AND_CACHED_OUTPUTS",
+        "ISSUE-9_ACTUAL_C_D_AND_E_TARGET_ONLY",
+        "ISSUE-61_TARGET_ONLY_ENGINE_PROVENANCE_FIX",
+        "ROOT_ISSUE1_REAL_SCORING"
+      ],
+      "optional_not_phase1": [
+        "ISSUE-59_EXTENDED_BLIND_S3",
+        "ISSUE-60_EXTENDED_FULL_POLICY_S4"
+      ],
+      "status": "ACTUAL_ENGINE_AND_CAUSAL_EVIDENCE_NOT_YET_QUALIFIED"
+    }
+  },
+  "source_criteria_priority": [
+    "2026-10-03_FROZEN_18_AC",
+    "2026-10-15_VERSIONED_REBASE",
+    "AUXILIARY_11AC_EXTENDED_ONLY"
+  ],
+  "exit_policy": "READY_FOR_REFERENCE_DOES_NOT_EQUAL_REAL_EC_LLM_AE_PASS",
+  "scope_recalibration_reasoning": [
+    {
+      "id": "AC-15",
+      "reason": "Ten fixed fixtures plus lightweight model, EC and oracle are sufficient to attempt Phase1; no unseen independent human panel required."
+    },
+    {
+      "id": "AC-17",
+      "reason": "Causal target-only change and actual executable engine/source provenance ARE mandatory, signature alone cannot prove this."
+    },
+    {
+      "id": "AC-12",
+      "reason": "False closure needs a valid finite scoring universe, true trajectory and residual/reframe metrics; not world-wide nonexistence."
+    },
+    {
+      "id": "AUX_P02_B02_B04",
+      "reason": "120+ unseen cases, 2 raters alpha>=.8 and matching strata are extended blind generalization study; not original frozen AC dependency."
+    },
+    {
+      "id": "AUX_C04_C05",
+      "reason": "300 negative/100 positive samples quantify low FCR as extended robustness certification, not minimum reproducible coarse ablation."
+    }
+  ],
+  "D04_D05_final_root_relationship": {
+    "D04": "REFERENCE_ORACLE_SCOPE_READY_NOT_GENERALIZATION_CERTIFIED",
+    "D05": "BOUNDED_REFERENCE_ORACLE_SCOPE_READY_NOT_ACTUAL_S4_VALIDATED",
+    "from_original_dependency_graph": [
+      "ISSUE-23",
+      "ISSUE-20",
+      "ISSUE-22",
+      "ISSUE-9",
+      "ISSUE-1"
+    ],
+    "issue59_60_additional_tier_not_in_frozen_graph": true,
+    "scientific_proven": 2,
+    "scientific_required": 18
+  }
+}

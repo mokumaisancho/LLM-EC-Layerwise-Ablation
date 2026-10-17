@@ -1,0 +1,112 @@
+{
+  "schema": "ISSUE1_PRIOR_ART_AND_FORMAL_SEMANTIC_AUTHORITY_RCA_V1",
+  "as_of": "2026-10-16",
+  "scope": "Original scientific Issue #1: preserve LLM generalization while identifying non-degrading deterministic EC replacements",
+  "question": "Can the NL→EC formal rule handoff be independently checked without requiring handwritten answer mappings?",
+  "evaluated_prior_art": [
+    {
+      "name": "Attempto Controlled English/APE",
+      "url": "https://github.com/Attempto/APE",
+      "method": "Controlled English grammar parsed to Discourse Representation Structures and formal outputs including FOL/RuleML",
+      "reuse": "Potential independently authored controlled requirement specification, requiring SWI-Prolog and language/domain vocabulary approval",
+      "decision": "NOT_INSTALLED_OR_RUN",
+      "does_not_prove": "Ordinary arbitrary English policy equivalence or independent custody by parsing itself"
+    },
+    {
+      "name": "IBM NL2LTL",
+      "url": "https://github.com/IBM/nl2ltl",
+      "method": "Natural language→LTL translation with model/intent engines and formula filter",
+      "reuse": "Possible later temporal obligation requirement formalization if protocol gains LTL",
+      "decision": "DEFER_NOT_FUNCTIONALLY_COMPATIBLE_WITH_BOOLEAN_EC_V2",
+      "does_not_prove": "NL intent fidelity or non-temporal current policy semantics"
+    },
+    {
+      "name": "Open Policy Agent / Conftest",
+      "url": "https://github.com/open-policy-agent/conftest",
+      "documentation": "https://www.openpolicyagent.org/docs/cli",
+      "method": "Regulated policy-as-code and repeatable tests with Rego data/policy separation",
+      "reuse": "Independent formal policy test corpus after EC Boolean rule admission, Rego cross-engine later if needed",
+      "decision": "ADOPT_TEST_GATE_DESIGN_NOT_RUN_OPA_BINARY",
+      "does_not_prove": "Correct translation of unstructured insurance wording"
+    },
+    {
+      "name": "SymPy SAT",
+      "url": "https://docs.sympy.org/latest/modules/logic.html",
+      "method": "Symbolic propositional expressions and satisfiable(Xor(reference, candidate)) counterexample",
+      "reuse": "DIRECTLY_INTEGRATED, no reimplementation of solver; exact EC v2 fact/not:fact AND grammar",
+      "decision": "IMPLEMENTED_REAL_UNIT_TESTS",
+      "does_not_prove": "Independent authority of reference formula or accuracy of NL→formal conversion"
+    },
+    {
+      "name": "FormalBench (ACL 2025)",
+      "url": "https://aclanthology.org/2025.acl-long.1068/",
+      "method": "Executability and semantics evaluated separately, metamorphic semantic-preserving controls",
+      "reuse": "Counterfactual negative controls and strict proof boundaries, no model weights imported",
+      "decision": "METHODOLOGY_REUSED",
+      "does_not_prove": "This benchmark's label authority or task transfer reliability"
+    },
+    {
+      "name": "Postcondition Formalization Benchmark (2026)",
+      "url": "https://arxiv.org/abs/2603.17193",
+      "method": "Automatically generated tests reveal incorrectly formalized postconditions; no evaluated LLM correct on every task",
+      "reuse": "Non-target test generator and counterexample-driven repair with independent reference",
+      "decision": "METHODOLOGY_REUSED",
+      "does_not_prove": "Generated tests alone are complete NL semantics certificates"
+    }
+  ],
+  "actual_implementation": {
+    "existing_EC_v2_contract": {
+      "repository": "mokumaisancho/GPT-EC-Closure-Engine",
+      "source_commit": "3f435ad4365d846d96264458540efb4848ce3541",
+      "file": "01_repo/src/v4/ec_layerwise_source_policy_authority_v2.py",
+      "git_blob": "7da0cd8d876505cafdd5a9811132427e2f441a14",
+      "rule_grammar": "AND lists of fact:key / not:fact:key"
+    },
+    "code_path": "tools/issue1_independent_formal_policy_equivalence.py",
+    "code_git_blob": "9c7fed1c0c531c28e995629b8c9b7d4fd8c8ec7e",
+    "test_path": "tests/test_issue1_independent_formal_policy_equivalence.py",
+    "test_git_blob": "e31a9c5dd2cf86ab267e7f941fb70b103aba4eae",
+    "environment": "Python SymPy 1.14.0",
+    "test_summary": {
+      "actual_unittest_total": 17,
+      "actual_unittest_pass": 17,
+      "actual_unittest_fail": 0,
+      "actual_cli_demo_runs": 2,
+      "actual_cli_equivalent_exit": 0,
+      "actual_cli_invalid_exit": 3
+    },
+    "CLI_counterexample": {
+      "path": "operation_rules.PAY",
+      "reference": "fact:authorized AND not:fact:fraud_flag",
+      "proposed": "not:fact:fraud_flag",
+      "satisfying_XOR_assignment": {
+        "authorized": false,
+        "fraud_flag": false
+      },
+      "pin_reference_sha256": "15bf4e190082133cac4a3c652afa0ac704e8ea22c74155a2ce11ae09e05b6679",
+      "reference_origin": "SYNTHETIC_DEMO_CREATED_FROM_TEST_SOURCE_NOT_AN_INDEPENDENT_REAL_POLICY"
+    },
+    "supported_checks": [
+      "unmodified or reordered AND rules prove equivalent",
+      "negation or omitted condition yield SAT witness",
+      "added/missing operation or obligation reject",
+      "required completion condition mismatch reject",
+      "duplicate JSON keys and private gold reject",
+      "source identity and source SHA pin checked",
+      "unknown observations never fabricated as false"
+    ],
+    "scientific_semantics_proven": false,
+    "external_reference_custody_proven": false,
+    "native_EC_engine_executed_on_10_original_cases": false,
+    "real_LLM_formal_policy_generation_executed": false,
+    "oracle_gold_independent": false,
+    "original_AC_promoted": 0
+  },
+  "root_cause_refinement": {
+    "before": "Formal operation_rules absent, human NL rule truth unavailable; P01 10/10 fails formal handoff.",
+    "after": "Independent *formal policy* equivalence and counterexamples solved with existing SAT library. NL interpretation→independently approved formal reference remains unresolved. Keeping exact structural scope avoids both oracle laundering and overspecifying a new model as necessary.",
+    "next_critical_dependency": "Obtain genuinely independently authored, source-custodied policy clauses + fact vocabulary for matched test tasks; freeze before model candidate; use this SAT oracle on proposals, then native EC v2 with S3/S4 same-function paired model; no false assumption 10 synthetic development cases are independent holdout."
+  },
+  "root_original_mvp": "2/18",
+  "scientific_exit": "NOT_YET_QUALIFIED"
+}

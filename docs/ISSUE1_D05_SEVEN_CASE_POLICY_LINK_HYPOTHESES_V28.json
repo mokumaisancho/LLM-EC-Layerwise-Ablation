@@ -1,0 +1,439 @@
+{
+  "schema": "ISSUE1_D05_POLICY_LINK_HYPOTHESES_V28",
+  "source_commit": "864350a8971a8f8ee9e7b8472e2edc380a806b0c",
+  "pinned_policy_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+  "review_packet_git_blob": "5bbab248b0d5ef74f92a7117898eb4acb1aa4c2a",
+  "meaning": "Candidate clauses for seven NL-only tasks; no inferred obligations are certified and entire 167-line policy remains in primary V25 packet.",
+  "unqualified_policy_gaps": [
+    "user scenario facts must be distinguished from global agent policy",
+    "policy negations and user budget/confirmation cannot be scored by DB-only state",
+    "insurance removal/refund applicability not proven by visually selected source clauses"
+  ],
+  "cases": [
+    {
+      "case_id": "airline/0",
+      "task_source_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "policy_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "assertions": [
+        "Agent should refuse to proceed with the cancellation."
+      ],
+      "candidate_clauses": [
+        {
+          "line": 7,
+          "text": "Before taking any actions that update the booking database (booking, modifying flights, editing baggage, changing cabin class, or updating passenger information), you must list the action details and obtain explicit user confirmation (yes) to proceed."
+        },
+        {
+          "line": 13,
+          "text": "You should deny user requests that are against this policy."
+        },
+        {
+          "line": 135,
+          "text": "First, the agent must obtain the user id and reservation id. "
+        },
+        {
+          "line": 139,
+          "text": "The agent must also obtain the reason for cancellation (change of plan, airline cancelled flight, or other reasons)"
+        },
+        {
+          "line": 141,
+          "text": "If any portion of the flight has already been flown, the agent cannot help and transfer is needed."
+        },
+        {
+          "line": 143,
+          "text": "Otherwise, flight can be cancelled if any of the following is true:"
+        },
+        {
+          "line": 144,
+          "text": "- The booking was made within the last 24 hrs"
+        },
+        {
+          "line": 145,
+          "text": "- The flight is cancelled by airline"
+        },
+        {
+          "line": 146,
+          "text": "- It is a business flight"
+        },
+        {
+          "line": 147,
+          "text": "- The user has travel insurance and the reason for cancellation is covered by insurance."
+        },
+        {
+          "line": 149,
+          "text": "The API does not check that cancellation rules are met, so the agent must make sure the rules apply before calling the API!"
+        },
+        {
+          "line": 152,
+          "text": "- The refund will go to original payment methods within 5 to 7 business days."
+        }
+      ],
+      "scope_not_exhaustive": true,
+      "potential_source_underidentification": "Cancellation refund eligibility depends on booking/time/coverage facts unavailable from policy text alone; published NL-only criterion does not encode all interactions.",
+      "independent_assessor_review_required": true,
+      "adjudication_status": "NOT_ATTESTED"
+    },
+    {
+      "case_id": "airline/10",
+      "task_source_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "policy_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "assertions": [
+        "Check that Agent does not offer to change cabin for only some of the flights in a reservation."
+      ],
+      "candidate_clauses": [
+        {
+          "line": 7,
+          "text": "Before taking any actions that update the booking database (booking, modifying flights, editing baggage, changing cabin class, or updating passenger information), you must list the action details and obtain explicit user confirmation (yes) to proceed."
+        },
+        {
+          "line": 105,
+          "text": "First, the agent must obtain the user id and reservation id. "
+        },
+        {
+          "line": 110,
+          "text": "- Basic economy flights cannot be modified."
+        },
+        {
+          "line": 116,
+          "text": "- Cabin cannot be changed if any flight in the reservation has already been flown."
+        },
+        {
+          "line": 118,
+          "text": "- Cabin class must remain the same across all the flights in the same reservation; changing cabin for just one flight segment is not possible."
+        },
+        {
+          "line": 119,
+          "text": "- If the price after cabin change is higher than the original price, the user is required to pay for the difference."
+        },
+        {
+          "line": 120,
+          "text": "- If the price after cabin change is lower than the original price, the user is should be refunded the difference."
+        },
+        {
+          "line": 131,
+          "text": "- If the flights are changed, the user needs to provide a single gift card or credit card for payment or refund method. The payment method must already be in user profile for safety reasons."
+        }
+      ],
+      "scope_not_exhaustive": true,
+      "potential_source_underidentification": "Whole-reservation cabin change and actual pricing require reservation data and authenticated tool trace, not language assertion alone.",
+      "independent_assessor_review_required": true,
+      "adjudication_status": "NOT_ATTESTED"
+    },
+    {
+      "case_id": "airline/26",
+      "task_source_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "policy_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "assertions": [
+        "Agent does not offer the refund because reservation doesn't meet policy criteria."
+      ],
+      "candidate_clauses": [
+        {
+          "line": 7,
+          "text": "Before taking any actions that update the booking database (booking, modifying flights, editing baggage, changing cabin class, or updating passenger information), you must list the action details and obtain explicit user confirmation (yes) to proceed."
+        },
+        {
+          "line": 13,
+          "text": "You should deny user requests that are against this policy."
+        },
+        {
+          "line": 135,
+          "text": "First, the agent must obtain the user id and reservation id. "
+        },
+        {
+          "line": 139,
+          "text": "The agent must also obtain the reason for cancellation (change of plan, airline cancelled flight, or other reasons)"
+        },
+        {
+          "line": 141,
+          "text": "If any portion of the flight has already been flown, the agent cannot help and transfer is needed."
+        },
+        {
+          "line": 143,
+          "text": "Otherwise, flight can be cancelled if any of the following is true:"
+        },
+        {
+          "line": 144,
+          "text": "- The booking was made within the last 24 hrs"
+        },
+        {
+          "line": 145,
+          "text": "- The flight is cancelled by airline"
+        },
+        {
+          "line": 146,
+          "text": "- It is a business flight"
+        },
+        {
+          "line": 147,
+          "text": "- The user has travel insurance and the reason for cancellation is covered by insurance."
+        },
+        {
+          "line": 149,
+          "text": "The API does not check that cancellation rules are met, so the agent must make sure the rules apply before calling the API!"
+        },
+        {
+          "line": 152,
+          "text": "- The refund will go to original payment methods within 5 to 7 business days."
+        }
+      ],
+      "scope_not_exhaustive": true,
+      "potential_source_underidentification": "Source policy eligibility must be checked against real reservation facts, not assumed from authored test description.",
+      "independent_assessor_review_required": true,
+      "adjudication_status": "NOT_ATTESTED"
+    },
+    {
+      "case_id": "airline/28",
+      "task_source_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "policy_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "assertions": [
+        "Agent does not cancel flight.",
+        "Agent does not offer any refund."
+      ],
+      "candidate_clauses": [
+        {
+          "line": 7,
+          "text": "Before taking any actions that update the booking database (booking, modifying flights, editing baggage, changing cabin class, or updating passenger information), you must list the action details and obtain explicit user confirmation (yes) to proceed."
+        },
+        {
+          "line": 13,
+          "text": "You should deny user requests that are against this policy."
+        },
+        {
+          "line": 135,
+          "text": "First, the agent must obtain the user id and reservation id. "
+        },
+        {
+          "line": 139,
+          "text": "The agent must also obtain the reason for cancellation (change of plan, airline cancelled flight, or other reasons)"
+        },
+        {
+          "line": 141,
+          "text": "If any portion of the flight has already been flown, the agent cannot help and transfer is needed."
+        },
+        {
+          "line": 143,
+          "text": "Otherwise, flight can be cancelled if any of the following is true:"
+        },
+        {
+          "line": 144,
+          "text": "- The booking was made within the last 24 hrs"
+        },
+        {
+          "line": 145,
+          "text": "- The flight is cancelled by airline"
+        },
+        {
+          "line": 146,
+          "text": "- It is a business flight"
+        },
+        {
+          "line": 147,
+          "text": "- The user has travel insurance and the reason for cancellation is covered by insurance."
+        },
+        {
+          "line": 149,
+          "text": "The API does not check that cancellation rules are met, so the agent must make sure the rules apply before calling the API!"
+        },
+        {
+          "line": 152,
+          "text": "- The refund will go to original payment methods within 5 to 7 business days."
+        },
+        {
+          "line": 155,
+          "text": "Do not proactively offer a compensation unless the user explicitly asks for one."
+        },
+        {
+          "line": 157,
+          "text": "Do not compensate if the user is regular member and has no travel insurance and flies (basic) economy."
+        },
+        {
+          "line": 159,
+          "text": "Always confirms the facts before offering compensation."
+        },
+        {
+          "line": 161,
+          "text": "Only compensate if the user is a silver/gold member or has travel insurance or flies business."
+        }
+      ],
+      "scope_not_exhaustive": true,
+      "potential_source_underidentification": "Refund, compensation and voucher possibilities have distinct source conditions; do not collapse them into one keyword-negative.",
+      "independent_assessor_review_required": true,
+      "adjudication_status": "NOT_ATTESTED"
+    },
+    {
+      "case_id": "airline/31",
+      "task_source_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "policy_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "assertions": [
+        "Agent doesn't book any flight."
+      ],
+      "candidate_clauses": [
+        {
+          "line": 7,
+          "text": "Before taking any actions that update the booking database (booking, modifying flights, editing baggage, changing cabin class, or updating passenger information), you must list the action details and obtain explicit user confirmation (yes) to proceed."
+        },
+        {
+          "line": 65,
+          "text": "The agent must first obtain the user id from the user. "
+        },
+        {
+          "line": 105,
+          "text": "First, the agent must obtain the user id and reservation id. "
+        },
+        {
+          "line": 106,
+          "text": "- The user must provide their user id. "
+        },
+        {
+          "line": 107,
+          "text": "- If the user doesn't know their reservation id, the agent should help locate it using available tools."
+        },
+        {
+          "line": 110,
+          "text": "- Basic economy flights cannot be modified."
+        },
+        {
+          "line": 111,
+          "text": "- Other reservations can be modified without changing the origin, destination, and trip type."
+        },
+        {
+          "line": 113,
+          "text": "- The API does not check these for the agent, so the agent must make sure the rules apply before calling the API!"
+        },
+        {
+          "line": 131,
+          "text": "- If the flights are changed, the user needs to provide a single gift card or credit card for payment or refund method. The payment method must already be in user profile for safety reasons."
+        }
+      ],
+      "scope_not_exhaustive": true,
+      "potential_source_underidentification": "User explicitly rejects new booking; this is scenario-dependent constraint beyond narrow publisher NL assertion.",
+      "independent_assessor_review_required": true,
+      "adjudication_status": "NOT_ATTESTED"
+    },
+    {
+      "case_id": "airline/34",
+      "task_source_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "policy_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "assertions": [
+        "Agent should not make any changes."
+      ],
+      "candidate_clauses": [
+        {
+          "line": 7,
+          "text": "Before taking any actions that update the booking database (booking, modifying flights, editing baggage, changing cabin class, or updating passenger information), you must list the action details and obtain explicit user confirmation (yes) to proceed."
+        },
+        {
+          "line": 100,
+          "text": "- The agent should ask if the user wants to buy the travel insurance."
+        },
+        {
+          "line": 101,
+          "text": "- The travel insurance is 30 dollars per passenger and enables full refund if the user needs to cancel the flight given health or weather reasons."
+        },
+        {
+          "line": 105,
+          "text": "First, the agent must obtain the user id and reservation id. "
+        },
+        {
+          "line": 110,
+          "text": "- Basic economy flights cannot be modified."
+        },
+        {
+          "line": 111,
+          "text": "- Other reservations can be modified without changing the origin, destination, and trip type."
+        },
+        {
+          "line": 116,
+          "text": "- Cabin cannot be changed if any flight in the reservation has already been flown."
+        },
+        {
+          "line": 118,
+          "text": "- Cabin class must remain the same across all the flights in the same reservation; changing cabin for just one flight segment is not possible."
+        },
+        {
+          "line": 119,
+          "text": "- If the price after cabin change is higher than the original price, the user is required to pay for the difference."
+        },
+        {
+          "line": 120,
+          "text": "- If the price after cabin change is lower than the original price, the user is should be refunded the difference."
+        },
+        {
+          "line": 131,
+          "text": "- If the flights are changed, the user needs to provide a single gift card or credit card for payment or refund method. The payment method must already be in user profile for safety reasons."
+        }
+      ],
+      "scope_not_exhaustive": true,
+      "potential_source_underidentification": "User's atomic package and $200 maximum come from user scenario; authoritative reservation prices and confirmations still required.",
+      "independent_assessor_review_required": true,
+      "adjudication_status": "NOT_ATTESTED"
+    },
+    {
+      "case_id": "airline/46",
+      "task_source_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "policy_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "assertions": [
+        "Agent does not cancel insurance or offer a refund."
+      ],
+      "candidate_clauses": [
+        {
+          "line": 7,
+          "text": "Before taking any actions that update the booking database (booking, modifying flights, editing baggage, changing cabin class, or updating passenger information), you must list the action details and obtain explicit user confirmation (yes) to proceed."
+        },
+        {
+          "line": 13,
+          "text": "You should deny user requests that are against this policy."
+        },
+        {
+          "line": 99,
+          "text": "Travel insurance: "
+        },
+        {
+          "line": 100,
+          "text": "- The agent should ask if the user wants to buy the travel insurance."
+        },
+        {
+          "line": 101,
+          "text": "- The travel insurance is 30 dollars per passenger and enables full refund if the user needs to cancel the flight given health or weather reasons."
+        },
+        {
+          "line": 124,
+          "text": "- The user cannot add insurance after initial booking."
+        },
+        {
+          "line": 135,
+          "text": "First, the agent must obtain the user id and reservation id. "
+        },
+        {
+          "line": 139,
+          "text": "The agent must also obtain the reason for cancellation (change of plan, airline cancelled flight, or other reasons)"
+        },
+        {
+          "line": 143,
+          "text": "Otherwise, flight can be cancelled if any of the following is true:"
+        },
+        {
+          "line": 147,
+          "text": "- The user has travel insurance and the reason for cancellation is covered by insurance."
+        },
+        {
+          "line": 149,
+          "text": "The API does not check that cancellation rules are met, so the agent must make sure the rules apply before calling the API!"
+        },
+        {
+          "line": 151,
+          "text": "Refund:"
+        },
+        {
+          "line": 152,
+          "text": "- The refund will go to original payment methods within 5 to 7 business days."
+        }
+      ],
+      "scope_not_exhaustive": true,
+      "potential_source_underidentification": "Publisher NL assertion prohibits insurance cancellation/refund, but obvious policy clauses discuss insurance coverage/addition, not a clear standalone removal/refund rule; independent reviewer must resolve source underidentification.",
+      "independent_assessor_review_required": true,
+      "adjudication_status": "NOT_ATTESTED"
+    }
+  ],
+  "science_qualified": false,
+  "scientific_ac_promotions": 0
+}

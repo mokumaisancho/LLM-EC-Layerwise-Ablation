@@ -1,0 +1,494 @@
+{
+  "source": {
+    "repo": "mokumaisancho/LLM-EC-Layerwise-Ablation",
+    "branch": "feat/issue1-independent-s4-authority-audit-v19",
+    "frozen_ac_blob": "40e4d41914fb17ee5c7deb0cfd32276a41c9a1fc",
+    "frozen_mvp_blob": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+    "tracker_blob": "56bd5ac25d47e1dd9e8ea9da6193679656b661f5",
+    "v20_inventory_blob": "a78df93af631f07b284dc3c8c74594f6989fbb6b",
+    "tcc_compiler_repo": "mokumaisancho/tcc-compiler",
+    "tcc_contract": "tcc.spec.v3",
+    "implementation_read_reference": "https://github.com/mokumaisancho/tcc-compiler/blob/main/tcc/generator_v3.py"
+  },
+  "previous_control_receipt": "docs/ISSUE1_TCC_ONE_SHOT_CONTRACT_AND_EXECUTION_V21.json",
+  "science_gate_state": {
+    "D04": {
+      "status": "BLOCKED_EXTERNAL",
+      "qualified": false,
+      "source": "docs/ISSUE1_SINGLE_SOURCE_TRACKER_V5.json",
+      "issue": 59
+    },
+    "D05": {
+      "status": "BLOCKED_EXTERNAL",
+      "qualified": false,
+      "source": "docs/ISSUE1_S4_SOURCE_BOUND_OBLIGATION_POINTERS_V20.json",
+      "issue": 60
+    }
+  },
+  "scope": {
+    "original_root": 1,
+    "original_MVP_required": 18,
+    "original_MVP_proven": 2,
+    "model_inference_authorized": false,
+    "actions_enabled": false,
+    "mac_execution_scope": "read-only GH source checks plus native Generator/Validator/Runtime; no inference, setup, or local global config modifications"
+  },
+  "spec": {
+    "schema": "tcc.spec.v3",
+    "tcc_id": "ISSUE1-TCC-D00-D09-V22",
+    "goal": "Native Generator v3 and Runtime v3 control; original science remains fail closed",
+    "acceptance": [
+      "frozen original 18 MVP AC remain unchanged",
+      "native_generator_and_runtime_receipts_required",
+      "D04 and D05 science custody gate before D06",
+      "D06-D09 never run without a separate real executor and qualification",
+      "no gold leakage, no false science closure",
+      "bounded terminal and no Mac global config changes"
+    ],
+    "state_keys": [
+      "source_ok",
+      "d04_qualified",
+      "d05_qualified",
+      "d06_real_receipt",
+      "d07_real_receipt",
+      "d08_score_receipt",
+      "mvp_18_pass"
+    ],
+    "immutable_state_keys": [],
+    "entry_nodes": [
+      "D00_PINNED_PREFLIGHT"
+    ],
+    "nodes": [
+      {
+        "id": "D00_PINNED_PREFLIGHT",
+        "kind": "action",
+        "depends_on": [],
+        "reads": [],
+        "writes": [
+          "source_ok"
+        ],
+        "branches": {},
+        "failure_target": "FAIL_D00",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "D04_INDEPENDENT_S3_GATE",
+        "kind": "action",
+        "depends_on": [
+          "D00_PINNED_PREFLIGHT"
+        ],
+        "reads": [
+          "source_ok"
+        ],
+        "writes": [
+          "d04_qualified"
+        ],
+        "branches": {},
+        "failure_target": "FAIL_D04",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "D05_INDEPENDENT_S4_GATE",
+        "kind": "action",
+        "depends_on": [
+          "D04_INDEPENDENT_S3_GATE"
+        ],
+        "reads": [
+          "source_ok"
+        ],
+        "writes": [
+          "d05_qualified"
+        ],
+        "branches": {},
+        "failure_target": "FAIL_D05",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "INDEPENDENT_AUTHORITY",
+        "kind": "gate",
+        "depends_on": [
+          "D05_INDEPENDENT_S4_GATE"
+        ],
+        "reads": [
+          "d04_qualified",
+          "d05_qualified"
+        ],
+        "writes": [],
+        "branches": {
+          "unqualified": "BLOCK_EXTERNAL",
+          "qualified": "D06_TARGET_ONLY_REAL"
+        },
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "D06_TARGET_ONLY_REAL",
+        "kind": "action",
+        "depends_on": [],
+        "reads": [
+          "d04_qualified",
+          "d05_qualified"
+        ],
+        "writes": [
+          "d06_real_receipt"
+        ],
+        "branches": {},
+        "failure_target": "FAIL_D06",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "D07_EIGHT_ARMS_REAL",
+        "kind": "action",
+        "depends_on": [
+          "D06_TARGET_ONLY_REAL"
+        ],
+        "reads": [
+          "d06_real_receipt"
+        ],
+        "writes": [
+          "d07_real_receipt"
+        ],
+        "branches": {},
+        "failure_target": "FAIL_D07",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "D08_AC_INDEPENDENT_SCORE",
+        "kind": "action",
+        "depends_on": [
+          "D07_EIGHT_ARMS_REAL"
+        ],
+        "reads": [
+          "d07_real_receipt"
+        ],
+        "writes": [
+          "d08_score_receipt"
+        ],
+        "branches": {},
+        "failure_target": "FAIL_D08",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "D09_SCIENCE_EXIT",
+        "kind": "action",
+        "depends_on": [
+          "D08_AC_INDEPENDENT_SCORE"
+        ],
+        "reads": [
+          "d08_score_receipt"
+        ],
+        "writes": [
+          "mvp_18_pass"
+        ],
+        "branches": {},
+        "failure_target": "FAIL_D09",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "PASS_MVP",
+        "kind": "terminal",
+        "depends_on": [
+          "D09_SCIENCE_EXIT"
+        ],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "SUCCESS",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "BLOCK_EXTERNAL",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "BLOCKED",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "FAIL_D00",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "FAIL_D04",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "FAIL_D05",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "FAIL_D06",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "FAIL_D07",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "FAIL_D08",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "FAIL_D09",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      }
+    ]
+  },
+  "static_prechecks": {
+    "pass": true,
+    "errors": []
+  },
+  "native_execution": {
+    "status": "NOT_YET_EXECUTED",
+    "native_generator": false,
+    "native_runtime": false
+  }
+}

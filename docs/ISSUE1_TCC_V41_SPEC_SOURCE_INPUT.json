@@ -1,0 +1,259 @@
+{
+  "spec": {
+    "schema": "tcc.spec.v3",
+    "tcc_id": "ISSUE1-S3S4-SUCCESSOR-V41",
+    "goal": "Regenerate corrected S3 authority split and S4 typed proof, then block any original or successor causal conclusion lacking real engine receipts",
+    "acceptance": [
+      "SOURCE PINS preserve Phase1-v2 incompatible terminal and original 2/18",
+      "S3 native singleton cannot masquerade as generic all-admissible set",
+      "S4 512 states and 12 controls pass as bounded mechanics only",
+      "No D06 or causal scientific success without true matched LLM EC Oracle execution",
+      "No third party signature or 120/300-sample extended research required for frozen fixed-fixture MVP"
+    ],
+    "state_keys": [
+      "source_ok",
+      "s3_ok",
+      "s4_ok",
+      "actual_engine_ok"
+    ],
+    "immutable_state_keys": [],
+    "entry_nodes": [
+      "P00_SOURCE"
+    ],
+    "nodes": [
+      {
+        "id": "P00_SOURCE",
+        "kind": "action",
+        "depends_on": [],
+        "reads": [],
+        "writes": [
+          "source_ok"
+        ],
+        "branches": {},
+        "failure_target": "ERR_SOURCE",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "P01_S3_SPLIT",
+        "kind": "action",
+        "depends_on": [
+          "P00_SOURCE"
+        ],
+        "reads": [
+          "source_ok"
+        ],
+        "writes": [
+          "s3_ok"
+        ],
+        "branches": {},
+        "failure_target": "ERR_S3",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "P02_S4_MODEL",
+        "kind": "action",
+        "depends_on": [
+          "P00_SOURCE"
+        ],
+        "reads": [
+          "source_ok"
+        ],
+        "writes": [
+          "s4_ok"
+        ],
+        "branches": {},
+        "failure_target": "ERR_S4",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "P03_CAUSAL_GATE",
+        "kind": "gate",
+        "depends_on": [
+          "P01_S3_SPLIT",
+          "P02_S4_MODEL"
+        ],
+        "reads": [
+          "s3_ok",
+          "s4_ok",
+          "actual_engine_ok"
+        ],
+        "writes": [],
+        "branches": {
+          "missing": "BLOCK_REAL_CAUSAL",
+          "verified": "PASS_CAUSAL"
+        },
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "PASS_CAUSAL",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "SUCCESS",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "BLOCK_REAL_CAUSAL",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "BLOCKED",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "ERR_SOURCE",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "ERR_S3",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "ERR_S4",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      }
+    ]
+  },
+  "verification": {
+    "declared_node_count": 9,
+    "reachable_node_count": 9,
+    "action_nodes": 3,
+    "gate_nodes": 1,
+    "terminal_nodes": 5,
+    "actual_native_tcc_generator_run": false,
+    "science_original_ac_promoted": 0,
+    "source_script_blob": "8c59d4035a8637c256a293c7d6a9dd9554ade933",
+    "status": "PENDING_NATIVE_TCC_GENERATOR_CONFIRMATION"
+  }
+}

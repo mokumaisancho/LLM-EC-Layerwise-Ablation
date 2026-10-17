@@ -1,0 +1,128 @@
+{
+  "schema": "ISSUE1_D04_D05_TCC_CORRECTED_SCOPED_WORK_PLAN_V41",
+  "date": "2026-10-15",
+  "source": {
+    "root_issue": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/1",
+    "original_AC_git_blob": "40e4d41914fb17ee5c7deb0cfd32276a41c9a1fc",
+    "original_protocol_git_blob": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+    "technical_rca_v40_blob": "d4e5eeda1703445af42264eb150a17a3bda85786",
+    "successor_runner_git_blob": "8c59d4035a8637c256a293c7d6a9dd9554ade933",
+    "native_generator_commit": "786d52c1efbc9271096f9311d768ef49bcd116e2"
+  },
+  "original_mvp": {
+    "passed": 2,
+    "required": 18,
+    "changed": false
+  },
+  "frozen_old_phase1": {
+    "terminal": "EC_NATIVE_SCOPE_INCOMPATIBLE",
+    "reopen_old_original_graph": false
+  },
+  "objective": "Convert D04/D05 circular external-custody wait into typed S3 separate-unit and S4 closure-state bounded mechanics, then expose exact real causal remaining dependencies.",
+  "nodes": [
+    {
+      "id": "P00_SOURCE",
+      "priority": "P0",
+      "depends_on": [],
+      "completion": "Verify pinned original runner and native TCC source git blobs",
+      "on_error": "ERR_SOURCE"
+    },
+    {
+      "id": "P01_S3_SPLIT",
+      "priority": "P0",
+      "depends_on": [
+        "P00_SOURCE"
+      ],
+      "completion": "Split exact-one native next-action from generic one-or-more candidate-set authority; no equivalence assertion; source cardinality 8+2",
+      "on_error": "ERR_S3"
+    },
+    {
+      "id": "P02_S4_MODEL",
+      "priority": "P0",
+      "depends_on": [
+        "P00_SOURCE"
+      ],
+      "completion": "Test typed closure contract over 512 bounded states plus 12 explicit controls, preserve M001/M007 and M003/M009 collision warning; no real-case holdout claimed",
+      "on_error": "ERR_S4"
+    },
+    {
+      "id": "P03_CAUSAL_GATE",
+      "priority": "P0",
+      "depends_on": [
+        "P01_S3_SPLIT",
+        "P02_S4_MODEL"
+      ],
+      "completion": "Check mechanical gate and actual source-pinned matched LLM, native EC and target-only Oracle execution receipts",
+      "on_true": "PASS_CAUSAL",
+      "on_missing": "BLOCK_REAL_CAUSAL"
+    },
+    {
+      "id": "PASS_CAUSAL",
+      "priority": "P1",
+      "depends_on": [
+        "P03_CAUSAL_GATE"
+      ],
+      "completion": "Only if independently verifiable real model/EC/Oracle receipts supplied; should not be reached in control-only v41",
+      "terminal": "SUCCESS"
+    },
+    {
+      "id": "BLOCK_REAL_CAUSAL",
+      "priority": "P1",
+      "depends_on": [
+        "P03_CAUSAL_GATE"
+      ],
+      "completion": "Preserve open science and list missing actual engine evidence; expected terminal for control-only v41",
+      "terminal": "BLOCKED"
+    }
+  ],
+  "excluded_from_mvp_gate": [
+    "independent_human_signature",
+    "120_new_holdout_docs",
+    "2_human_raters",
+    "300_unsafe_100_safe_workflow_trials",
+    "all_14778_case_policy_cells",
+    "self_attested_unbounded_obligations"
+  ],
+  "scientific_dependencies_after_v41": [
+    {
+      "priority": "P0",
+      "id": "ACTUAL_SHARED_NATIVE_S3_API",
+      "requires": [
+        "source-pinned executable EC engine",
+        "new explicitly typed singleton action contract",
+        "no set-selection relabel"
+      ]
+    },
+    {
+      "priority": "P0",
+      "id": "ACTUAL_S4_CASE_STATE_AND_EXECUTION_TRACE",
+      "requires": [
+        "source-grounded case-specific obligations from actual upstream",
+        "authenticated real execution receipts",
+        "open residual and accepted limitation boundary"
+      ]
+    },
+    {
+      "priority": "P1",
+      "id": "REAL_LLM_EC_INTERVENTION",
+      "requires": [
+        "real lightweight LLM cached inference",
+        "same upstream input hash",
+        "target-only Oracle counterfactual",
+        "nontarget engine code identity checked"
+      ]
+    },
+    {
+      "priority": "P1",
+      "id": "SUCCESSOR_REPORT",
+      "requires": [
+        "counterfactual real causal metric",
+        "0.20 materiality held",
+        "do not retroactively promote original 2/18"
+      ]
+    }
+  ],
+  "run_strategy": "One source-pinned native Mac launch via existing GitHub InitiativeDispatcher; no DC, no GitHub Actions, no remote new TCC install; fail closed.",
+  "stop_if": "native TCC source drifts, generated spec deviates, any bounded model check fails, actual real causal engine receipts missing",
+  "note": "This is a new successor method. The original frozen Phase1 cannot be made true by changing its acceptance criteria."
+}

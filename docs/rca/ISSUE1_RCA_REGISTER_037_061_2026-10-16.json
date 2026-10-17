@@ -1,0 +1,464 @@
+{
+  "schema": "ISSUE1_RCA_REGISTER_V1",
+  "as_of": "2026-10-16",
+  "issues": [
+    {
+      "issue": 37,
+      "title": "S2 residual successor: frozen symbolic-relation closure on commit-seeded holdout",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/37",
+      "root_cause_statement": "Symbolic relation closure was overfit/metadata-augmented; needed frozen genuine metadata-blind candidate-text assay.",
+      "primary_source_references": [
+        "results/function_boundary_s2b_metadata_blind_actual_2026-10-03.json"
+      ],
+      "scope": "SUBFUNCTION_RESEARCH_HISTORY",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
+      "next_data_required": "Before reusing as science proof, collect original run receipt, exact source pins and negative control; no evidence upgrade based only on closed status.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 38,
+      "title": "S1A split: deterministic graph grounding vs semantic interpretation residual",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/38",
+      "root_cause_statement": "S1A exact match and per-field semantic grounding were confounded by supplied dictionary and fixture reuse; required truly disjoint holdout.",
+      "primary_source_references": [],
+      "scope": "SUBFUNCTION_RESEARCH_HISTORY",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
+      "next_data_required": "Before reusing as science proof, collect original run receipt, exact source pins and negative control; no evidence upgrade based only on closed status.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 39,
+      "title": "Validation repair: independent S1A holdout, equal-budget S2A, metadata-blind S2B",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/39",
+      "root_cause_statement": "Prior S1A/S2A/S2B comparison had non-independent holdout, unequal decision budgets and explicit answer-bearing metadata, respectively.",
+      "primary_source_references": [
+        "results/function_boundary_s1a_disjoint_holdout_actual_2026-10-03.json",
+        "results/function_boundary_s2a_equal_budget_actual_2026-10-03.json",
+        "results/function_boundary_s2b_metadata_blind_actual_2026-10-03.json",
+        "tests/test_validation_repair.py"
+      ],
+      "scope": "SUBFUNCTION_RESEARCH_HISTORY",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
+      "next_data_required": "Before reusing as science proof, collect original run receipt, exact source pins and negative control; no evidence upgrade based only on closed status.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 40,
+      "title": "Validation repair implementation checkpoints",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/40",
+      "root_cause_statement": "Validation milestones initially tracked without all negative evidence gates, leaving source and result claims potentially overstated.",
+      "primary_source_references": [
+        "results/function_boundary_s2a_equal_budget_actual_2026-10-03.json",
+        "tests/test_validation_repair.py"
+      ],
+      "scope": "SUBFUNCTION_RESEARCH_HISTORY",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "VALIDATION_REPAIR_HISTORICAL_TESTS_PRESENT",
+      "next_data_required": "Re-run if regression introduced; no fresh run performed.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Validation recovery suite source exists; prior results explain balanced-benchmark caveats.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
+    },
+    {
+      "issue": 41,
+      "title": "TEMP (closed accidental)",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/41",
+      "root_cause_statement": "Accidental GitHub issue created through connector; it is not a research or software fault.",
+      "primary_source_references": [],
+      "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "EXTERNAL_EVIDENCE_NOT_OBTAINED_OR_ACCIDENTAL",
+      "RCA_status": "ACCIDENTAL_ISSUE",
+      "next_data_required": "No evidence needed; retain as audit/history.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Accidental connector issue creation, unrelated to scientific root.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
+    },
+    {
+      "issue": 42,
+      "title": "Prospective S1A hybrid: LLM fact selection + deterministic semantic grounding",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/42",
+      "root_cause_statement": "Unrouted single-model errors masked complementarity: Qwen chose primary fact better; deterministic grounded typed fields better, but hybrid <0.20 material improvement.",
+      "primary_source_references": [
+        "results/function_boundary_s1a_hybrid_successor_actual_2026-10-03.json"
+      ],
+      "scope": "SUBFUNCTION_RESEARCH_HISTORY",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
+      "next_data_required": "Before reusing as science proof, collect original run receipt, exact source pins and negative control; no evidence upgrade based only on closed status.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 43,
+      "title": "S2B2 split: missing-candidate construction vs genuine ontology invention",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/43",
+      "root_cause_statement": "S2B2 missing candidate generation was conflated with novel ontology invention; finite typed parameter/operator induction tests need separate provenance.",
+      "primary_source_references": [
+        "docs/S2B2_MVP_AC_DEPENDENCY_TCC_2026-10-04_V2.md",
+        "docs/S2B2_MVP_AC_DEPENDENCY_TCC_2026-10-04_V2.json",
+        "tools/validate_s2b2_tcc.py",
+        "results/function_boundary_s2b2a_qwen25_1p5b_raw_cache_2026-10-04.json",
+        "tools/audit_s2b2a_existing_result.py"
+      ],
+      "scope": "SUBFUNCTION_RESEARCH_HISTORY",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
+      "next_data_required": "Before reusing as science proof, collect original run receipt, exact source pins and negative control; no evidence upgrade based only on closed status.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 44,
+      "title": "TCC gate: pre-deploy static compile missing allowed Python typo to reach B1 preflight",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/44",
+      "root_cause_statement": "B1 pre-deploy gate lacked Python static compilation; syntax error reached runtime despite nominal preflight PASS.",
+      "primary_source_references": [
+        "tools/preflight_s2b2b1.py",
+        "docs/S2B2_MVP_AC_DEPENDENCY_TCC_2026-10-04_V3.md/.json",
+        "tools/preflight_s2b2_v3_static.py"
+      ],
+      "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "STATIC_COMPILE_GATE_REPAIRED_SOURCE",
+      "next_data_required": "Actual compile preflight run receipt if re-deploying B1/B2; no new compilation performed.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Static preflight now imports and calls py_compile; previous failure was a missing predeployment syntax gate.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
+    },
+    {
+      "issue": 45,
+      "title": "B1 execution infra: Render 25-service quota blocks new V3 service",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/45",
+      "root_cause_statement": "Render service cap 25 prevented new isolated B1 experiment; existing autoDeploy-off service with pinned commit deployment mitigated.",
+      "primary_source_references": [],
+      "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "RENDER_QUOTA_HISTORICAL_RECOVERED",
+      "next_data_required": "No need to re-query service quota absent a new deploy request.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "25-service cap required reuse; actual B1 inference deploy ID and audited receipt present.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
+    },
+    {
+      "issue": 46,
+      "title": "B1 evidence persistence: post-build legacy start command cannot serve frozen V3 result",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/46",
+      "root_cause_statement": "Render service legacy start command did not serve V3 frozen output, so measured evidence was inaccessible despite successful build/inference.",
+      "primary_source_references": [
+        "tools/audit_s2b2b1_raw_cache.py",
+        "tools/audit_s2b2b1_paired_v3.py"
+      ],
+      "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "RAW_EVIDENCE_PERSISTENCE_HISTORICAL_REPAIRED",
+      "next_data_required": "Independent raw-byte retrieval/provenance if reportable newer science claims depend on specific row.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "B1 raw cache digest and postrun audit present, without reinference.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
+    },
+    {
+      "issue": 47,
+      "title": "B2 execution infra: reuse existing autoDeploy-off Render temp service under 25-service quota",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/47",
+      "root_cause_statement": "Render quota and autoDeploy coupling could mutate frozen B2 runner; reusable service needed exact pin and explicit deploy guard.",
+      "primary_source_references": [
+        "tools/preflight_s2b2b2.py"
+      ],
+      "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "B2_REUSE_HISTORICAL_RECOVERED",
+      "next_data_required": "Current live service only if a new deployment is actually required.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "B2 infer+audit deploy receipts archived; service reuse shown.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
+    },
+    {
+      "issue": 48,
+      "title": "S1C semantic-space creation: raw language to typed semantic/operator IR",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/48",
+      "root_cause_statement": "S1C typed inventory formation benchmark had narrower finite-ontology semantics; opened the unsupplied-discovery boundary.",
+      "primary_source_references": [],
+      "scope": "SUBFUNCTION_RESEARCH_HISTORY",
+      "root_original_relevance": "RELEVANT_LIMITATION_BUT_MAY_NOT_BE_A_HARD_GATE",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
+      "next_data_required": "Source- and heldout-vocabulary independent S1 candidate semantics; distinguish 64-function typed synthetic from unrestricted novel ontology.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 49,
+      "title": "S1C MVP-V V1 runtime timeout before first paired result",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/49",
+      "root_cause_statement": "S1C V1 1.5B runtime HTTP timeout occurred before paired model result; this was transport/runtime, not evidence of semantic weakness.",
+      "primary_source_references": [],
+      "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "EXTERNAL_EVIDENCE_NOT_OBTAINED_OR_ACCIDENTAL",
+      "RCA_status": "S1C_V1_TIMEOUT_HISTORICAL_SUPERSEDED",
+      "next_data_required": "Historical V1 logs for precise timeout duration if reusing that branch; no runtime change now.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "S1C V1 timed out before paired output; versioned later V3.2 has audited receipt.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
+    },
+    {
+      "issue": 50,
+      "title": "S1C MVP-V V2 invalidated by result-overturning grammar and denotational assay defects",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/50",
+      "root_cause_statement": "S1C V2 grammar did not encode legal JSON IDs; mismatched oracle/sample, visible behavior fingerprints and insufficient postrun scorer invalidated result.",
+      "primary_source_references": [
+        "tools/run_s1c_v_paired_v2.py"
+      ],
+      "scope": "SUBFUNCTION_RESEARCH_HISTORY",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
+      "next_data_required": "Recompute original frozen V2 gold mismatch with validated independent scorer, not post hoc correction.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 51,
+      "title": "S1C V3 pre-inference invalidated: deterministic baseline reads scorer-only truth table",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/51",
+      "root_cause_statement": "S1C V3 baseline imported scorer-only truth tables; clear oracle/benchmark leakage into deterministic comparator.",
+      "primary_source_references": [
+        "tools/s1c_v3_deterministic_baseline.py"
+      ],
+      "scope": "SUBFUNCTION_RESEARCH_HISTORY",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
+      "next_data_required": "AST read-access and runtime information-flow trap proving no scorer-only truth table reaches model or deterministic baseline.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 52,
+      "title": "S1C V3.1 paired stopped: semantic-invalid output conflated with harness invalidity and raw evidence lost",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/52",
+      "root_cause_statement": "S1C V3.1 failed to distinguish semantic model invalidity from harness/runtime error and persisted no raw output when nonzero stop occurred.",
+      "primary_source_references": [],
+      "scope": "SUBFUNCTION_RESEARCH_HISTORY",
+      "root_original_relevance": "RELEVANT_LIMITATION_BUT_MAY_NOT_BE_A_HARD_GATE",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
+      "next_data_required": "Preserve raw model text+digest before fail closed; partition errors not counted as inference engine crash.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 53,
+      "title": "S1C V3.1 assay invalid: output schema did not enforce partition semantics",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/53",
+      "root_cause_statement": "S1C V3.1 output JSON schema checked syntax/enum but not partition exclusivity; invalid duplicated members passed structural validation.",
+      "primary_source_references": [],
+      "scope": "SUBFUNCTION_RESEARCH_HISTORY",
+      "root_original_relevance": "RELEVANT_LIMITATION_BUT_MAY_NOT_BE_A_HARD_GATE",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
+      "next_data_required": "Add semantic partition membership checks beyond JSON grammar; keep v3.1 frozen after observed result.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 54,
+      "title": "Productization: reusable deterministic semantic-space runtime",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/54",
+      "root_cause_statement": "Product-level deterministic runtime fixed-path works only after valid IR; broader input provenance/validation missing.",
+      "primary_source_references": [
+        "results/s1c_semantic_space_final_boundary_2026-10-08.json"
+      ],
+      "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "SOURCE_IMPLEMENTATION_OR_HISTORICAL_RECEIPT_CROSSCHECKED_NARROW",
+      "RCA_status": "PRODUCT_MVP_NARROW_SCOPE_55_BLOCKER",
+      "next_data_required": "Forged task-bound IR negative control and independent execution-binding authentication before production-readiness claim.",
+      "scientific_ac_promoted": 0,
+      "source_backed_observation": "Product MVP closed-path tests reported complete, but #55 unvalidated caller IR gap remains in main source.",
+      "primary_source_pinned_analysis": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+      "original_AC_promoted": 0,
+      "may_be_science_hard_gate": false
+    },
+    {
+      "issue": 55,
+      "title": "Product MVP acceptance gap: execute_validated_ir trusts unverified caller IR",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/55",
+      "root_cause_statement": "execute_validated_ir checks caller IR protocol then trusts assignment fields without binding them to validated source task/evidence; GitHub marked CLOSED although issue says blocker.",
+      "primary_source_references": [],
+      "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
+      "root_original_relevance": "RELEVANT_LIMITATION_BUT_MAY_NOT_BE_A_HARD_GATE",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "GITHUB_CLOSED_BUT_CURRENT_SOURCE_BUG_REMAINS",
+      "next_data_required": "Current runtime.py execute_validated_ir source has no task→IR binding; prove forged assignment rejected before solver.apply_schema, or mark unsafe.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 56,
+      "title": "Mac field-test limitation: lexical ambiguity phrasing can bypass abstention",
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/56",
+      "root_cause_statement": "Mac free-text ambiguity can match lexical approved phrase and bypass UNKNOWN; non-grammar utterance safety semantics unsupported.",
+      "primary_source_references": [
+        "results/issue55_mac_field_acceptance_2026-10-08.json"
+      ],
+      "scope": "PRODUCT_OR_HISTORICAL_INFRA_NOT_ROOT_CRITICAL",
+      "root_original_relevance": "NOT_ORIGINAL_ROOT_CRITICAL",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "CLOSED_RCA_SOURCE_FURTHER_CHECK_ONLY_IF_REUSED",
+      "next_data_required": "Before reusing as science proof, collect original run receipt, exact source pins and negative control; no evidence upgrade based only on closed status.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 57,
+      "title": "Origin #1: frozen capability-retention gate for deterministic replacement (LLM/V1/V4/V5)",
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/57",
+      "root_cause_statement": "Capability-retention evaluator exists but lacks matched, pinned, actual original LLM outputs + genuinely unseen independently adjudicated cases; no nondegradation proof.",
+      "primary_source_references": [],
+      "scope": "INDEPENDENT_CAPABILITY_RETENTION_GATE",
+      "root_original_relevance": "RELEVANT_LIMITATION_BUT_MAY_NOT_BE_A_HARD_GATE",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "OPEN_SOURCE_REVIEW",
+      "next_data_required": "Actual pinned original LLM0 raw outputs on same genuinely unseen independent holdout as V1/V4/V5, plus signed independent gold.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 58,
+      "title": "#57 blocking audit: H07 lexical false positive and shared test-fixture answer mapping contaminate capability retention",
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/58",
+      "root_cause_statement": "Japanese script removed by [a-z0-9<>]+ tokenizer; V1 H07 correct label was coincidental; historical answer-bearing training fixture mapped directly to known labels, contaminating four-arm evaluation.",
+      "primary_source_references": [
+        "tools/audit_issue57_question_answer_contamination.py",
+        "tests/test_semantic_runtime_v5_grammar.py",
+        "tools/run_capability_retention_historical_v1.py",
+        "evaluation/capability_retention_historical_labels_v1.json"
+      ],
+      "scope": "INDEPENDENT_CAPABILITY_RETENTION_GATE",
+      "root_original_relevance": "RELEVANT_LIMITATION_BUT_MAY_NOT_BE_A_HARD_GATE",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "STATIC_LEXICAL_BUG_SOURCE_CONFIRMED",
+      "next_data_required": "Japanese vs English intent/opposites and nonsense matched probes, independent blind sources and matched LLM0/V1/V4/V5 run.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 59,
+      "title": "W4B Extended: blind independent S3 semantic authority (not original Phase1 MVP gate)",
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/59",
+      "root_cause_statement": "Full S3 admissibility judgments are supplied by external authored adjudications instead of inferred from task semantics; extended blind generalization qualification still open.",
+      "primary_source_references": [
+        "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+        "docs/ISSUE1_D04_D05_INDEPENDENCE_CRITERIA_REBASE_V38.json",
+        "results/issue1_root_ac_mvp_tcc_v6_actual_2026-10-10.json",
+        "results/issue1_root_ac_tcc_v7_actual_2026-10-10.json"
+      ],
+      "scope": "EXTENDED_BLIND_VALIDATION_OPTIONAL_FOR_FIXED_10",
+      "root_original_relevance": "RELEVANT_LIMITATION_BUT_MAY_NOT_BE_A_HARD_GATE",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "OPEN_OPTIONAL_EXTENDED_VALIDATION",
+      "next_data_required": "For extended generalization only: independently judged unseen semantic candidates, source-to-candidate trace, no gold leakage; not frozen Phase1 hard gate.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 60,
+      "title": "W4C Extended: full-domain independently certified S4 obligations (not original Phase1 MVP gate)",
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/60",
+      "root_cause_statement": "S4 condition_inventory_complete can be caller-declared without independent source custody, enabling unjustified CLOSE when unknown obligations exist; extended certification open.",
+      "primary_source_references": [
+        "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+        "docs/ISSUE1_D04_D05_INDEPENDENCE_CRITERIA_REBASE_V38.json",
+        "src/v4/ec_layerwise_admissible_set_closure_v1.py",
+        "results/issue1_root_ac_tcc_v7_actual_2026-10-10.json"
+      ],
+      "scope": "EXTENDED_BLIND_VALIDATION_OPTIONAL_FOR_FIXED_10",
+      "root_original_relevance": "RELEVANT_LIMITATION_BUT_MAY_NOT_BE_A_HARD_GATE",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "OPEN_OPTIONAL_EXTENDED_VALIDATION",
+      "next_data_required": "For extended generalization only: independent complete obligations from public/task sources and positive proof of absence; not mandatory 300/100 for original ten.",
+      "scientific_ac_promoted": 0
+    },
+    {
+      "issue": 61,
+      "title": "W5 P0: A–E Oracle nontarget layer changes bypass target-only causal gate",
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/61",
+      "root_cause_statement": "Original E-arm v1 verified prior layers and SHA consistency only, allowing modification of later nontarget engines; v2 synthetic replay closes structural bypass but lacks externally attested real 4-layer runtime.",
+      "primary_source_references": [
+        "tools/issue1_phase1_ae_gate_v1.py"
+      ],
+      "scope": "ORIGINAL_AE_PROVENANCE_CRITICAL",
+      "root_original_relevance": "DIRECT",
+      "rca_source_quality": "SELECTED_SOURCE_OR_RESULT_CROSSCHECKED",
+      "RCA_status": "SOURCE_BUG_REPRODUCED_HISTORICALLY_V2_SYNTHETIC_ONLY",
+      "next_data_required": "Real A/B/C/D/E stage execution receipts with model binary/process proof, non-target engine identity, upstream hash, Oracle isolation, source custody and independent scorer.",
+      "scientific_ac_promoted": 0
+    }
+  ],
+  "original_science_2_of_18_preserved": true,
+  "source_snapshots": [
+    "docs/rca/ISSUE1_RCA_SOURCE_037_042_2026-10-16.json",
+    "docs/rca/ISSUE1_RCA_SOURCE_043_048_2026-10-16.json",
+    "docs/rca/ISSUE1_RCA_SOURCE_049_054_2026-10-16.json",
+    "docs/rca/ISSUE1_RCA_SOURCE_055_061_2026-10-16.json"
+  ],
+  "update_20261016_noncritical": {
+    "issues": [
+      40,
+      41,
+      44,
+      45,
+      46,
+      47,
+      49,
+      54
+    ],
+    "source_report": "results/issue1_rca_remaining_18_noncritical_dispositions_2026-10-16.json",
+    "source_check_total": 14,
+    "source_check_failed": 0,
+    "original_AC_promoted": 0,
+    "claim_scope": "source existence / historical recorded result only, real external attestation for apps/timeout not yet provided"
+  }
+}

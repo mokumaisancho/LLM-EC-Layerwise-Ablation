@@ -1,0 +1,162 @@
+{
+  "schema": "ISSUE1_RCA_SOURCE_CHECKS_12_21_22_24_25_32_36_V1",
+  "as_of": "2026-10-16",
+  "source": [
+    {
+      "path": "tools/run_llm_s3_s4_cache.py",
+      "git_blob": "ad328958bb220f63a610d718ef0af2712d8496c6"
+    },
+    {
+      "path": "tools/compare_s3_s4.py",
+      "git_blob": "839c36be3197229eb1dc5f08298e42eb5d3684d6"
+    },
+    {
+      "path": "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+      "git_blob": "08407bec73278aeda8ddd2d4d6efc810dadf46f9"
+    },
+    {
+      "path": "tools/run_phase1_mvp_tcc_v2.py",
+      "git_blob": "4015bdf83c65b9f5a3fbc5746dcfaadb84bbbd80"
+    },
+    {
+      "path": "tools/build_s3_state_from_s1.py",
+      "git_blob": "ada6802efd66893ba39b399ec0d0840ea21db3ca"
+    },
+    {
+      "path": "results/phase1_mvp_tcc_v2_actual_2026-10-03.json",
+      "git_blob": "4afdeafc4bda057b443a481cfec332926f7cdc39"
+    },
+    {
+      "path": "results/function_boundary_s1_qwen25_1p5b_actual_2026-10-03.json",
+      "git_blob": "5db7ea8720ad246256725d4fbb6698ad3fcabf48"
+    },
+    {
+      "path": "results/function_boundary_s2_qwen25_1p5b_actual_2026-10-03.json",
+      "git_blob": "2e745b6d14eadf5e67e68a76a8fded161da0faa9"
+    },
+    {
+      "path": "results/function_boundary_next_action_v2_actual_2026-10-03.json",
+      "git_blob": "3fc9d2cf63f410fdeabe72620fe6f627e3addd64"
+    },
+    {
+      "path": "results/function_boundary_s1b_ec_actual_2026-10-03.json",
+      "git_blob": "c3f5890269d8b0e7953ba9a96624aa1b0ae5d262"
+    },
+    {
+      "path": "results/function_boundary_s2a_deterministic_actual_2026-10-03.json",
+      "git_blob": "3f0b01b0129da76ce1d18eb77d4f9986efd37d47"
+    },
+    {
+      "path": "results/function_boundary_s2a_equal_budget_actual_2026-10-03.json",
+      "git_blob": "b6c0e052aa57f75e0b6da360b73e76f6de01634f"
+    }
+  ],
+  "checks": [
+    {
+      "issue": 12,
+      "id": "FORMAT_SEPARATE_FROM_SEMANTIC",
+      "result": "PASS",
+      "expected": "PASS",
+      "evidence": "cache stores format result distinct from semantic eligibility"
+    },
+    {
+      "issue": 12,
+      "id": "COMPARE_BLOCKS_UNQUALIFIED_OUTPUT",
+      "result": "PASS",
+      "expected": "PASS",
+      "evidence": "report gate requires schema-constrained+source hashes"
+    },
+    {
+      "issue": 21,
+      "id": "FROZEN_MATERIALITY_020",
+      "result": "PASS",
+      "expected": "PASS",
+      "evidence": "frozen contract source 0.20"
+    },
+    {
+      "issue": 21,
+      "id": "NO_AUTOMATIC_4B",
+      "result": "PASS",
+      "expected": "PASS",
+      "evidence": "contract maximum model capacity auto escalation ~1.5B"
+    },
+    {
+      "issue": 22,
+      "id": "TRUE_SCOPE_INCOMPATIBLE_TERMINAL",
+      "result": "PASS",
+      "expected": "PASS",
+      "evidence": "EC_NATIVE_SCOPE_INCOMPATIBLE"
+    },
+    {
+      "issue": 24,
+      "id": "ORACLE_E_ARM_NOT_ORIGINAL_COMPLETE",
+      "result": "PASS",
+      "expected": "PASS",
+      "evidence": "old coarse E not executed, frozen source preserved"
+    },
+    {
+      "issue": 25,
+      "id": "S1_TO_S3_VALIDATION_GUARDS",
+      "result": "PASS",
+      "expected": "PASS",
+      "evidence": "S1→S3 adapter rejects Oracle data, checks input content hash"
+    },
+    {
+      "issue": 32,
+      "id": "DOWNSTREAM_DEPENDENCY_AFTER_SCOPE",
+      "result": "PASS",
+      "expected": "PASS",
+      "evidence": "V2 exits incompatible before requiring Issue 22"
+    },
+    {
+      "issue": 33,
+      "id": "S1_72_PERCENT_FIELDS",
+      "result": "PASS",
+      "expected": "PASS",
+      "evidence": "frozen S1 Qwen actual result 36/50"
+    },
+    {
+      "issue": 33,
+      "id": "S2_SOURCE_RECALL_40_30",
+      "result": "PASS",
+      "expected": "PASS",
+      "evidence": "S2 genuine model outputs 8/20 source gold, 6/20 actual S1"
+    },
+    {
+      "issue": 34,
+      "id": "EC_17_VS_LLM_1",
+      "result": "PASS",
+      "expected": "PASS",
+      "evidence": "same function next-action frozen 17 cases"
+    },
+    {
+      "issue": 35,
+      "id": "S1B_10_OF_10",
+      "result": "PASS",
+      "expected": "PASS",
+      "evidence": "epistemic structured-source EC outcome"
+    },
+    {
+      "issue": 36,
+      "id": "EQUAL_BUDGET_CORRECTED",
+      "result": "PASS",
+      "expected": "PASS",
+      "evidence": "same-budget deterministic/LLM comparisons k=2,3"
+    }
+  ],
+  "status": "SOURCE_AND_RECORDED_RESULTS_RECONCILED_NO_MODEL_RERUN",
+  "science_original_mvp": "2/18",
+  "unproven": {
+    "12": "Cache+comparison guard exists; original A-E paired selection not executed.",
+    "21": "Frozen threshold maintained, not a statistical confidence interval.",
+    "22": "Original runner never executed A/B/E because native EC scope incompatible; successor evidence cannot silently close original.",
+    "24": "No reportable original target-only Oracle E intervention; v2 synthetic causal gate separate.",
+    "25": "Adapter constructs S3 state with S1 hash but does not qualify independently necessary domain-level framing semantics.",
+    "32": "TCC v2 dependency order corrected. This is a verified correct stop at incompatibility, not a science pass.",
+    "33": "S1/S2 10-case actual Qwen shows 0.40 S2 gold-first recall and 0.30 actual upstream recall. Not general 1.5B inability.",
+    "34": "17/17 governed next-action EC vs all-REFRAME Qwen 1/17 for frozen closed action policy, not semantic S3 set.",
+    "35": "10/10 typed epistemic postparse controls; no open-ended raw-language evidence.",
+    "36": "Earlier 30-vs-19 unequal-budget superiority invalid. k=1,2,3 same-budget results are valid scoped comparisons, not entire novel candidate invention."
+  },
+  "primary_focus": "The first original AC bottleneck remains shared native S3 semantic + S4 close source and real E-target-only provenance. No new Mac bridge/COMMAND."
+}

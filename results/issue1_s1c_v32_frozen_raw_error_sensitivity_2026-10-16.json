@@ -1,0 +1,127 @@
+{
+  "schema": "ISSUE1_S1C_V32_FROZEN_OUTPUT_DIAGNOSTIC_V1",
+  "scope": "POSTHOC_GOLD_ALIGNED_UPPER_BOUND_ONLY_NOT_PREDICTOR_PERFORMANCE",
+  "corpus": "PUBLIC_FINITE_64_FUNCTION_SYNTHETIC_TYPED_INVENTORY",
+  "original_mvp_promoted": 0,
+  "real_llm_reinference": false,
+  "raw_llm_prediction_edited": false,
+  "original_score_kept": "0/8 semantic validity; 0 performance by strict contract",
+  "source_blob": "c3f746dcec0a8ab150844f028e3b29a83bdffb99",
+  "summary": {
+    "task_count": 8,
+    "original_semantically_invalid": 8,
+    "wrong_slot_count": 4,
+    "gold_probe_denominator": 64,
+    "optimistic_typed_probe_matches": 12,
+    "optimistic_type_ignored_probe_matches": 20,
+    "optimistic_typed_accuracy": 0.1875,
+    "optimistic_type_ignored_accuracy": 0.3125,
+    "exact_slot_ref_vectors": 0
+  },
+  "rows": [
+    {
+      "task_id": "V311",
+      "model_slot_count": 2,
+      "reference_slot_count": 2,
+      "multiply_owned_training_members": 2,
+      "optimistic_typed_probe_matches": 0,
+      "optimistic_type_ignored_probe_matches": 3,
+      "probe_denominator": 8,
+      "exact_4_of_4_slot_ref_vectors": 0
+    },
+    {
+      "task_id": "V312",
+      "model_slot_count": 4,
+      "reference_slot_count": 2,
+      "multiply_owned_training_members": 4,
+      "optimistic_typed_probe_matches": 4,
+      "optimistic_type_ignored_probe_matches": 4,
+      "probe_denominator": 8,
+      "exact_4_of_4_slot_ref_vectors": 0
+    },
+    {
+      "task_id": "V313",
+      "model_slot_count": 2,
+      "reference_slot_count": 2,
+      "multiply_owned_training_members": 4,
+      "optimistic_typed_probe_matches": 0,
+      "optimistic_type_ignored_probe_matches": 2,
+      "probe_denominator": 8,
+      "exact_4_of_4_slot_ref_vectors": 0
+    },
+    {
+      "task_id": "V314",
+      "model_slot_count": 4,
+      "reference_slot_count": 2,
+      "multiply_owned_training_members": 4,
+      "optimistic_typed_probe_matches": 4,
+      "optimistic_type_ignored_probe_matches": 4,
+      "probe_denominator": 8,
+      "exact_4_of_4_slot_ref_vectors": 0
+    },
+    {
+      "task_id": "V315",
+      "model_slot_count": 2,
+      "reference_slot_count": 2,
+      "multiply_owned_training_members": 4,
+      "optimistic_typed_probe_matches": 0,
+      "optimistic_type_ignored_probe_matches": 2,
+      "probe_denominator": 8,
+      "exact_4_of_4_slot_ref_vectors": 0
+    },
+    {
+      "task_id": "V316",
+      "model_slot_count": 4,
+      "reference_slot_count": 2,
+      "multiply_owned_training_members": 4,
+      "optimistic_typed_probe_matches": 4,
+      "optimistic_type_ignored_probe_matches": 4,
+      "probe_denominator": 8,
+      "exact_4_of_4_slot_ref_vectors": 0
+    },
+    {
+      "task_id": "V317",
+      "model_slot_count": 2,
+      "reference_slot_count": 2,
+      "multiply_owned_training_members": 4,
+      "optimistic_typed_probe_matches": 0,
+      "optimistic_type_ignored_probe_matches": 1,
+      "probe_denominator": 8,
+      "exact_4_of_4_slot_ref_vectors": 0
+    },
+    {
+      "task_id": "V318",
+      "model_slot_count": 4,
+      "reference_slot_count": 2,
+      "multiply_owned_training_members": 4,
+      "optimistic_typed_probe_matches": 0,
+      "optimistic_type_ignored_probe_matches": 0,
+      "probe_denominator": 8,
+      "exact_4_of_4_slot_ref_vectors": 0
+    }
+  ],
+  "interpretation": "With all raw predictions frozen, removing duplicate-membership invalidity alone cannot supply the missing correct heldout probe vectors. Oracle-optimistic 12/64 with correct slot types, 20/64 ignoring types; not a deployable score or causal proof of LLM necessity.",
+  "scientific_status": "POSTHOC_DIAGNOSTIC_ONLY",
+  "real_source": {
+    "dataset_path": "results/s1c_v32_paired_actual_2026-10-08.json",
+    "dataset_blob": "c3f746dcec0a8ab150844f028e3b29a83bdffb99",
+    "scorer_path": "tools/score_s1c_v32_denotational.py",
+    "scorer_blob": "2a1bd54341e44b0896d57f1d7cccdec17e42db34",
+    "reproduction_script": "tools/issue1_s1c_v32_output_error_decompose_v1.mjs",
+    "reproduction_script_blob": "db8396f83f489e626da42a22d9f97d416c83f1f9"
+  },
+  "verification": {
+    "V8_scorer_logic": "PASS_9_OF_9",
+    "actual_node_cli_full_byte_hash_verification": "NOT_RUN",
+    "model_reinference": false,
+    "raw_prediction_sha256": "MATCH_AS_RECORDED_IN_SOURCE_USED_AS_V8_STUB_NOT_RECOMPUTED",
+    "case_count": 8
+  },
+  "limits": [
+    "Post hoc alignment accesses independent gold; no value may be reported as actual LLM accuracy or valid Oracle target-only A-E comparison",
+    "Optimistic probe match results apply to frozen model-emitted slots only; they are not a hard bound on performance after new inference or changed candidate predictions",
+    "This is a finite synthetic 64-function task; real-world semantic invention and larger model performance remain unknown",
+    "The original semantic contract correctly rejects all 8 Qwen outputs; this is a diagnostic decomposition, not repair of those outputs",
+    "Original 18 AC remains 2/18, no criteria promoted"
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "schema": "ISSUE1_SOURCE_ATTESTED_S3_TO_NATIVE_EC_HANDOFF_V1",
+  "date": "2026-10-16",
+  "original_issue": 1,
+  "root_AC_passed": 2,
+  "root_AC_required": 18,
+  "root_AC_promoted": 0,
+  "source_pins": {
+    "native_EC_v2": "mokumaisancho/GPT-EC-Closure-Engine@3f435ad4365d846d96264458540efb4848ce3541:01_repo/src/v4/ec_layerwise_source_policy_authority_v2.py",
+    "native_EC_blob": "7da0cd8d876505cafdd5a9811132427e2f441a14",
+    "actual_audit_script": "tools/issue1_s3_native_formal_handoff_audit.py",
+    "actual_audit_script_git_blob": "7690d0fc393b664d5f4583a396338ea4bff86cc1",
+    "actual_test_script": "tests/test_issue1_s3_native_formal_handoff_audit.py",
+    "actual_test_script_git_blob": "f626b54f9acc44672cff4234fb12616efa0550ec"
+  },
+  "actual_sandbox": {
+    "python_tests_pass": 11,
+    "python_tests_fail": 0,
+    "python_compileall": "PASS",
+    "actual_gold_blind_input_cases": 10,
+    "actual_observed_source_literals": 25,
+    "mechanical_true_fact_normalization": 25,
+    "native_formal_contract_fully_qualified": 0,
+    "fail_closed": 10,
+    "full_local_JSON_receipt_sha256": "323201be18668fe1a8aff86d3b36cb645625253a5cce2900a7d682bd86515c8c",
+    "source_path_local": "/mnt/data/issue1_source_e2e/S3_NATIVE_FORMAL_HANDOFF_AUDIT_2026-10-16.json",
+    "new_LLM_or_native_EC_inferences": 0
+  },
+  "individual_cases": [
+    {
+      "id": "M001",
+      "positive_source_atoms": 3,
+      "candidates": 2,
+      "source_blind_input_sha256": "9eebc6bf6fbc7609ffb68832803114aed565288413caa87b07fec25064268e13",
+      "contract_status": "ABSTAIN_NOT_QUALIFIED"
+    },
+    {
+      "id": "M002",
+      "positive_source_atoms": 2,
+      "candidates": 2,
+      "source_blind_input_sha256": "90b84360b3e5271b09a95ac432a9c8a114787a4583ed01250a7ef8417c093b0a",
+      "contract_status": "ABSTAIN_NOT_QUALIFIED"
+    },
+    {
+      "id": "M003",
+      "positive_source_atoms": 3,
+      "candidates": 3,
+      "source_blind_input_sha256": "8b92545b6266ed83ae983e7e06c553be6fac01f21516e59d2ddbcbbd78a11b0a",
+      "contract_status": "ABSTAIN_NOT_QUALIFIED"
+    },
+    {
+      "id": "M004",
+      "positive_source_atoms": 2,
+      "candidates": 2,
+      "source_blind_input_sha256": "a1ee06bbccd8aa904f4c1ba18399af5312a6d13a4661fab5039108a9cfb5bd6e",
+      "contract_status": "ABSTAIN_NOT_QUALIFIED"
+    },
+    {
+      "id": "M005",
+      "positive_source_atoms": 2,
+      "candidates": 2,
+      "source_blind_input_sha256": "bfc53ecc51a2c5a392e7184a5d42c1b42c80c2592b09154a279af8f21f0ee2b2",
+      "contract_status": "ABSTAIN_NOT_QUALIFIED"
+    },
+    {
+      "id": "M006",
+      "positive_source_atoms": 3,
+      "candidates": 2,
+      "source_blind_input_sha256": "282d8030d95eebccee60ff5b6c433312a76dae591e260b486ab03fc8440d5705",
+      "contract_status": "ABSTAIN_NOT_QUALIFIED"
+    },
+    {
+      "id": "M007",
+      "positive_source_atoms": 2,
+      "candidates": 2,
+      "source_blind_input_sha256": "39506541e87c1515152e6c58e75e6eb0a53ba73d89e56d1fbabedd591e09d38b",
+      "contract_status": "ABSTAIN_NOT_QUALIFIED"
+    },
+    {
+      "id": "M008",
+      "positive_source_atoms": 3,
+      "candidates": 2,
+      "source_blind_input_sha256": "4a294822800eb0b7faa4ba0f4419068019a4b000483a6938eb45d375b955598f",
+      "contract_status": "ABSTAIN_NOT_QUALIFIED"
+    },
+    {
+      "id": "M009",
+      "positive_source_atoms": 3,
+      "candidates": 3,
+      "source_blind_input_sha256": "50a7edc7ea704ffb77871ed3146db038c82618384e101938061821d480b2b74f",
+      "contract_status": "ABSTAIN_NOT_QUALIFIED"
+    },
+    {
+      "id": "M010",
+      "positive_source_atoms": 2,
+      "candidates": 2,
+      "source_blind_input_sha256": "e1b47acd6edcd4de68710695cf7bfdab18512af9b42134510a8e0c860055ea9f",
+      "contract_status": "ABSTAIN_NOT_QUALIFIED"
+    }
+  ],
+  "causal_boundary": {
+    "mechanical_part_qualified": "Pure structural source-preserving observed key=value literals mapped to positive EC_FORMAL_FACTS_V2 boolean atom keys; not asserting unobserved values FALSE or interpreting natural-language domain rules.",
+    "missing_not_solved": [
+      "Formal EC_PUBLIC_POLICY_V2 operation_rules verified as faithful to external natural-language rules",
+      "Independent policy custody and source authority",
+      "Independently established COMPETING/EQUIVALENT relation semantics",
+      "Independent real-world obligation completeness and effects"
+    ],
+    "why_old_EC_singleton_not_full_S3": "EC_NEXT_ACTION_V1 governed-plan work-selection is not the same function as arbitrary domain semantic all-admissible set.",
+    "validity_limit": "False/abstaining v2 handoff is correct on the current 10 benchmark cases; this is not LLM semantic nondegradation, EC semantic replacement or independent held-out causal A-E.",
+    "next_required": "Implement separately qualified source-to-formal-policy semantic mapping with independent adjudication, then pass same sealed typed facts/rules to LLM/EC; no generator-authored gold or private alias to predictor."
+  }
+}

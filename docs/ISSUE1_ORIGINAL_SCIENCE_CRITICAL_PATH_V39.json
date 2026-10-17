@@ -1,0 +1,89 @@
+{
+  "schema": "ISSUE1_ORIGINAL_PHASE1_CORRECTED_CRITICAL_PATH_V39",
+  "as_of": "2026-10-15",
+  "frozen_source": "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+  "current_scientific_state": {
+    "proven": 2,
+    "required": 18,
+    "promoted": 0
+  },
+  "historical_handoff": "docs/ISSUE1_HANDOFF_CRITICAL_PATH_V36.json",
+  "source_correction": "docs/ISSUE1_D04_D05_INDEPENDENCE_CRITERIA_REBASE_V38.json",
+  "baseline_reference_fixture": {
+    "original_10_oracle_replay": "PASS",
+    "source_publisher_fix_true": true,
+    "real_llm_EC_causes_not_yet_qualified": true
+  },
+  "real_critical_path": [
+    {
+      "issue": 23,
+      "stage": "QUALIFIED_ORACLE_BLIND_EC_NATIVE_ADAPTER",
+      "deps": [],
+      "evidence": "actual ECv4.4 source, semantics and source-bound adapter; fallback is not ECv4.4",
+      "current": "NOT_PROVEN_IN_PRESENT_AUDIT"
+    },
+    {
+      "issue": 20,
+      "stage": "ACTUAL_REPORTABLE_EC_S3_S4_BINDING",
+      "deps": [
+        23
+      ],
+      "evidence": "source pinned source-executed EC-S3/S4 adapter and technical compatibility",
+      "current": "NOT_PROVEN_IN_PRESENT_AUDIT"
+    },
+    {
+      "issue": 22,
+      "stage": "ACTUAL_LLM_S1_S2_AND_ORACLE_INTERVENTION_RUNNER",
+      "deps": [
+        12,
+        24
+      ],
+      "evidence": "real lightweight model raw output receipts, cache and source pinned oracle target-only trace",
+      "current": "NOT_PROVEN_IN_PRESENT_AUDIT"
+    },
+    {
+      "issue": 9,
+      "stage": "ACTUAL_COMPARABLE_C_D_AND_A_B_E",
+      "deps": [
+        20,
+        22,
+        14
+      ],
+      "evidence": "all A/B/C/D/E same-fixture and hash controlled, independently scored",
+      "current": "NOT_PROVEN_IN_PRESENT_AUDIT"
+    },
+    {
+      "issue": 61,
+      "stage": "E_TARGET_ONLY_NON_TARGET_ENGINE_INTEGRITY",
+      "deps": [
+        9
+      ],
+      "evidence": "all four layer engine provenance and unchanged nontarget engines",
+      "current": "REPRODUCED_FIX_REQUIRED"
+    },
+    {
+      "issue": 1,
+      "stage": "MEASURE_ORACLE_GAIN_AND_18AC_EXIT",
+      "deps": [
+        9,
+        61
+      ],
+      "evidence": "record raw metrics and 0.20 threshold; claim scoped to frozen fixture",
+      "current": "2_OF_18_AC_PROVEN"
+    }
+  ],
+  "extended_research_not_on_original_DAG": [
+    {
+      "issue": 59,
+      "task": "blinded120 plus two external raters multi-admissible S3 generalization",
+      "open": true
+    },
+    {
+      "issue": 60,
+      "task": "full external workflow S4 independent 300/100 extended robustness",
+      "open": true
+    }
+  ],
+  "safe_method": "Source-grounded bounded Oracle separate from predictor is acceptable for the fixed-fixture causal study; no false AC promotion; independent external unseen blind tier remains an optional separately reported scientific study.",
+  "stop_if": "real engines missing, incompatible EC-native semantics, target-only intervention alteration, SHA mismatch or unavoidable oracle leakage"
+}

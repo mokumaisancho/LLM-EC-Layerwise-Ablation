@@ -1,0 +1,111 @@
+{
+  "schema": "ISSUE1_D04_D05_CRITICAL_PATH_HANDOFF_V36",
+  "as_of": "2026-10-15",
+  "root": {
+    "url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/1",
+    "original_18_mvp": 18,
+    "scientific_AC_proven": 2,
+    "scientific_AC_promoted_this_round": 0,
+    "scope_unchanged": true
+  },
+  "evidence": [
+    {
+      "stage": "D04_S3",
+      "source_scoped_subresult": "PUBLISHED_GOLD_POSTHOC_DECISION_GATE_EXECUTED",
+      "url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/blob/feat/issue1-independent-s4-authority-audit-v19/results/issue1_s3_s4_posthoc_gold_gate_v34_actual_2026-10-15.json",
+      "source_result_sha": "79d57398b4c8c7fa26f67060f7e16d21ef9787dc",
+      "actual_EC_cases": 32,
+      "exact_gold_sets": 6,
+      "native_formal_close": 29,
+      "known_bad_source_gold_set_close_blocked": 23,
+      "source_publisher_public_development": true,
+      "heldout_blind_independent": false,
+      "semantic_reason_authority": false,
+      "root_mvp_promotion": 0
+    },
+    {
+      "stage": "D05_S4",
+      "source_scoped_subresult": "SOURCE_COMPLETE_POLICY_NL_JUDGMENT_GATE_IMPLEMENTED_WITH_SYNTHETIC_NEGATIVE_TESTS",
+      "url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/blob/feat/issue1-independent-s4-authority-audit-v19/results/issue1_d05_all_obligations_gate_v35_actual_2026-10-15.json",
+      "source_result_sha": "ac2dc0a40bd79a6fdd969053dfcf17e4a88166d8",
+      "publisher_tasks": 164,
+      "nl_assertions": 135,
+      "high_risk_zero_action_nl_only_cases": 7,
+      "independent_fully_qualified_real_cases": 0,
+      "real_agent_trace_scoring": false,
+      "all_authoritative_policy_lines_197_source_pinned": true,
+      "actual_node_cli_executed": false,
+      "root_mvp_promotion": 0
+    }
+  ],
+  "critical_path": [
+    {
+      "id": "D04",
+      "priority": "P0",
+      "current": "BLOCKED_EXTERNAL",
+      "blocked_by": [
+        "real unseen independent semantic candidates + all-admissible source truth",
+        "independent assessor and pre-inference custody",
+        "exact S1/S2 bound evidence and competing/equivalent labels"
+      ],
+      "next_dependency": "independent source owner signs held-out full set and custody; evaluate actual LLM/EC predictions without leakage"
+    },
+    {
+      "id": "D05",
+      "priority": "P0",
+      "current": "BLOCKED_EXTERNAL",
+      "blocked_by": [
+        "per-task actual policy applicability & independently qualified complete obligations",
+        "truthful positive proof for empty applicable duties",
+        "all 135 natural language assertions judged against real trajectory by independent scorer"
+      ],
+      "next_dependency": "independent source reviewer evaluates 7 high-risk cases using 197-source-line catalog, then 157 others, signs policy clause and trace adjudications"
+    },
+    {
+      "id": "D06",
+      "priority": "P1",
+      "current": "BLOCKED_BY_D04_AND_D05",
+      "blocked_by": [
+        "D04",
+        "D05"
+      ]
+    },
+    {
+      "id": "D07",
+      "priority": "P1",
+      "current": "BLOCKED_BY_D06",
+      "blocked_by": [
+        "D06"
+      ]
+    },
+    {
+      "id": "D08",
+      "priority": "P2",
+      "current": "BLOCKED_BY_D07",
+      "blocked_by": [
+        "D07"
+      ]
+    },
+    {
+      "id": "D09",
+      "priority": "P2",
+      "current": "BLOCKED_BY_D08",
+      "blocked_by": [
+        "D08"
+      ]
+    }
+  ],
+  "what_is_now_real": [
+    "source-pinned publisher task/source corpus and native EC decisions compared case-by-case",
+    "operational posthoc S3/S4 label-consistency gate with 23 known-wrong-formal-closure blocks",
+    "independent-scoring-required source/NL/obligation inventory gate with 16 structural branch+tamper controls"
+  ],
+  "still_not_real": [
+    "genuinely blind independent S3 semantic truth",
+    "independently attested complete S4 per-task obligations and actual real agent trajectory",
+    "signed authoritative evaluator with public key enrolled",
+    "causally held-constant 8-arm live experiment"
+  ],
+  "exit_policy": "TCC infrastructure COMPLETE from v27; DO NOT dispatch new TCC control run until genuinely new authority/actual model evidence. No scientific AC promotion for gate tests alone.",
+  "current_terminal": "BLOCKED_EXTERNAL"
+}

@@ -1,0 +1,138 @@
+{
+  "schema": "ISSUE1_FORMAL_EXTERNAL_AUTHORITY_OPTION_V33",
+  "created_at": "2026-10-15",
+  "purpose": "Solve source-of-truth circularity for bounded S3 authorization and S4 policy duties using independently implemented Cedar interpreter; never reinterpret original issue 18 AC.",
+  "third_party_code": {
+    "repo": "cedar-policy/cedar-examples",
+    "commit": "c251f7d1ad171bd12dee5d1d7a1cceaec994518f",
+    "root": "cedar-example-use-cases/document_cloud",
+    "sources": {
+      "policies.cedar": {
+        "blob": "c9a680bd2e22fd2eb451b64d9b33d4651c3ea929",
+        "path": "cedar-example-use-cases/document_cloud/policies.cedar"
+      },
+      "policies.cedarschema": {
+        "blob": "27e4c414ea9923e67c27566f25e7a81913028d46",
+        "path": "cedar-example-use-cases/document_cloud/policies.cedarschema"
+      },
+      "entities.json": {
+        "blob": "8aeae7b5ed1cf748260022267c7791ee60ad455c",
+        "path": "cedar-example-use-cases/document_cloud/entities.json"
+      },
+      "README.md": {
+        "blob": "7d34efb5bb78ddbfaccb547cb8b9c2f9246140ff",
+        "path": "cedar-example-use-cases/document_cloud/README.md"
+      }
+    }
+  },
+  "independently_authored_cases": [
+    {
+      "decision": "ALLOW",
+      "filename": "alice_create_authenticated.json",
+      "blob": "4a53cd2b6ceb136ac7dd7d7bfb8677a6a6946788",
+      "request": {
+        "principal": "User::\"alice\"",
+        "action": "Action::\"CreateDocument\"",
+        "resource": "Drive::\"drive\"",
+        "context": {
+          "is_authenticated": true
+        }
+      }
+    },
+    {
+      "decision": "ALLOW",
+      "filename": "alice_view_alice_public.json",
+      "blob": "5f0251ae8b27d498d87c8ae7c9db42a771f39321",
+      "request": {
+        "principal": "User::\"alice\"",
+        "action": "Action::\"ViewDocument\"",
+        "resource": "Document::\"alice_public\"",
+        "context": {
+          "is_authenticated": true
+        }
+      }
+    },
+    {
+      "decision": "ALLOW",
+      "filename": "charlie_view_alice_public.json",
+      "blob": "4a9298362eb125fa9f0fa196f9f6bee11b0804a7",
+      "request": {
+        "principal": "User::\"charlie\"",
+        "action": "Action::\"ViewDocument\"",
+        "resource": "Document::\"alice_public\"",
+        "context": {
+          "is_authenticated": true
+        }
+      }
+    },
+    {
+      "decision": "DENY",
+      "filename": "alice_create_unauthenticated.json",
+      "blob": "099b5311780b25ac6314d0d5895bef3f6acbe9b3",
+      "request": {
+        "principal": "User::\"alice\"",
+        "action": "Action::\"CreateDocument\"",
+        "resource": "Drive::\"drive\"",
+        "context": {
+          "is_authenticated": false
+        }
+      }
+    },
+    {
+      "decision": "DENY",
+      "filename": "bob_view_alice_public.json",
+      "blob": "e27317bc703fd80296f932ff965245881da08e8d",
+      "request": {
+        "principal": "User::\"bob\"",
+        "action": "Action::\"ViewDocument\"",
+        "resource": "Document::\"alice_public\"",
+        "context": {
+          "is_authenticated": true
+        }
+      }
+    }
+  ],
+  "source_test_runner": {
+    "path": "cedar-example-use-cases/run.sh",
+    "source_helper": "test_utils.sh",
+    "mechanism": "cedar validate + cedar authorize; engine returns deciding policy IDs",
+    "actual_run": "NOT_EXECUTED",
+    "install_status": "cedar CLI not available in current sandbox"
+  },
+  "can_independently_adjudicate": {
+    "S3": "Policy-level permit/forbid decisions and applicable determining rules for a bounded formal authorization domain",
+    "S4": "All authorization preconditions/forbids within a complete, explicit formal policy set; not natural-language communication or actual workflow completion outside those rules"
+  },
+  "temporal_holdout_required": {
+    "models_and_ec_pinned_before_case_generation": true,
+    "publisher_fixtures_not_blind": true,
+    "authoritative_new_cases_created_after_model_freeze": true,
+    "identity_and_new_cases_hash_sealed_before_prediction": true,
+    "separate_trusted_cedar_engine_runtime": true,
+    "prediction_only_visible_to_candidates": true,
+    "publisher_tests_never_count_as_independent_quality_score": true
+  },
+  "difficulties": [
+    "Real source publisher provides only public development tests; reusing five is not independently unseen",
+    "Cedar describes authorization semantics, not all speech/action residual obligations required by original S4",
+    "S1 natural-language interpretation must still be independently benchmarked on novel source-grounded paraphrases",
+    "Need installed/trusted Cedar implementation and separate scorer custody before original A-E run"
+  ],
+  "source_control_tests": {
+    "policy_example_count": 15,
+    "external_cases": 5,
+    "expected_ALLOW": 3,
+    "expected_DENY": 2,
+    "has_forbid": true,
+    "has_independent_policy_code": true,
+    "actual_cedar_authorizer_executed": false
+  },
+  "original_science": {
+    "MVP_proven": 2,
+    "MVP_required": 18,
+    "promoted": 0,
+    "issue59_qualified": false,
+    "issue60_qualified": false
+  },
+  "target_terminal": "EXTERNAL_FORMAL_ORACLE_IDENTIFIED_NOT_QUALIFIED"
+}

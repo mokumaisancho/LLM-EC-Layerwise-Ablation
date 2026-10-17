@@ -1,0 +1,1142 @@
+{
+  "schema": "ISSUE1_RCA_61_SOURCE_REFERENCE_AUDIT_V1",
+  "as_of": "2026-10-16",
+  "source_commit": "f3ad2408c2976a77a34ecfa0cb63f3408670097e",
+  "tree_total": 591,
+  "tree_truncated": false,
+  "source_index_blobs": 562,
+  "issues": 61,
+  "found_reference_count": 70,
+  "unresolved_reference_count": 3,
+  "no_body_reference_count": 24,
+  "issues_missing_research_branch_ref": [
+    27,
+    44,
+    60
+  ],
+  "issues_with_zero_source_ref": [
+    1,
+    3,
+    6,
+    7,
+    8,
+    9,
+    10,
+    13,
+    15,
+    16,
+    17,
+    18,
+    23,
+    28,
+    31,
+    38,
+    41,
+    45,
+    48,
+    49,
+    52,
+    53,
+    55,
+    57
+  ],
+  "cases": [
+    {
+      "issue": 1,
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/1",
+      "title": "Phase 1: coarse layerwise ablation and causal localization",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 2,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/2",
+      "title": "Phase 1: freeze fixture, oracle, and layer artifact contracts",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "docs/PHASE1_FIXTURE_ORACLE_CONTRACT.md",
+          "git_blob": "74b1babbd008c5500feabf131742e7576ccb8554",
+          "bytes": 4267
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 3,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/3",
+      "title": "TCC finding: P1-003 multi-candidate oracle under-represents valid branches",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 4,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/4",
+      "title": "TCC finding: generated artifact hashes become stale after upstream-hash linkage",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "tools/generate_phase1_fixtures.py",
+          "git_blob": "8bf95c86ff5f057e67d76ca71cc37ec41b33e81d",
+          "bytes": 11053
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 5,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/5",
+      "title": "Phase 1 blocker: measurement fixtures leak oracle scenario labels",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "tools/generate_phase1_fixtures.py",
+          "git_blob": "8bf95c86ff5f057e67d76ca71cc37ec41b33e81d",
+          "bytes": 11053
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 6,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/6",
+      "title": "Phase 1 blocker: S3 upstream artifact lacks ECv4.4 framing state",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 7,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/7",
+      "title": "Phase 1 finding: semantic-equivalent candidates were incorrectly encoded as framing variables",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 8,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/8",
+      "title": "Phase 1 blocker: S2 cannot distinguish competing vs semantically equivalent valid candidates",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 9,
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/9",
+      "title": "Phase 1 measurement: fixed-candidate LLM vs EC selection/control",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 10,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/10",
+      "title": "Sandbox model import RCA: binary safe-open/DNS boundary blocks GitHub/HF/PyPI direct download",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 11,
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/11",
+      "title": "Ingress infra: version and isolate Apps Script binary-fetch namespace",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "docs/RCA_SANDBOX_LLM_INGRESS_2026-10-01.md",
+          "git_blob": "093fcf0194608958e38f8f46533e145bd387122d",
+          "bytes": 3686
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 12,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/12",
+      "title": "Ablation harness: separate output-contract compliance from semantic selection",
+      "referenced_in_issue_body": 3,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "tools/run_llm_s3_s4_cache.py",
+          "git_blob": "ad328958bb220f63a610d718ef0af2712d8496c6",
+          "bytes": 11120
+        },
+        {
+          "path": "tools/compare_s3_s4.py",
+          "git_blob": "839c36be3197229eb1dc5f08298e42eb5d3684d6",
+          "bytes": 3654
+        },
+        {
+          "path": "tests/test_llm_output_contract.py",
+          "git_blob": "3bf129221461930c13459bc551a1634b35386737",
+          "bytes": 1971
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 13,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/13",
+      "title": "Phase 1 assay confounds: free-form JSON failure and candidate-label leakage",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 14,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/14",
+      "title": "Phase 1 capacity sweep: repeat control-mirror assay with ~0.5B lightweight model",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "results/phase1_qwen25_0p5b_reframe_actual_2026-10-03.json",
+          "git_blob": "8b6e8ab07c4604a1c07ed106d864aaf07dccc8e2",
+          "bytes": 3392
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 15,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/15",
+      "title": "Ingress writer gap: external model fetch to GitHub text shards without Drive persistence",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 16,
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/16",
+      "title": "Product attachment blocker: connect Generic Binary Ingress MCP to ChatGPT from current plan",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 17,
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/17",
+      "title": "Site bridge: expose Render Generic Binary Ingress through ChatGPT Sites plugin",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 18,
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/18",
+      "title": "Site bridge implementation contract and one-shot @Sites build prompt",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 19,
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/19",
+      "title": "Fast sandbox ingress POC: raw file reference + MoE large-model execution",
+      "referenced_in_issue_body": 2,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "docs/TCC_ONE_SHOT_SANDBOX_LLM_PLAN_2026-10-02.md",
+          "git_blob": "5f36a5b933050f4cc62181f94905060014e5b959",
+          "bytes": 8786
+        },
+        {
+          "path": "docs/TCC_ONE_SHOT_SANDBOX_LLM_PLAN_2026-10-02.json",
+          "git_blob": "9b22d3436b41d8e53e397771249f16be99c5a7dd",
+          "bytes": 5382
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 20,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/20",
+      "title": "Phase1 v2 EC binding — resolved with scoped incompatibility terminal",
+      "referenced_in_issue_body": 5,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "results/phase1_ecv44_reframe_actual_2026-10-03.json",
+          "git_blob": "f2a0d63385e947b26b3c401f28cbaf46a214c65b",
+          "bytes": 3115
+        },
+        {
+          "path": "results/phase1_ecv44_s3_native_interface_compatibility_2026-10-03.json",
+          "git_blob": "b8e7a6d1708b8a30768fbbcb2475bebeb2dbafb3",
+          "bytes": 1964
+        },
+        {
+          "path": "results/phase1_s4_identifiability_audit_2026-10-03.json",
+          "git_blob": "624616a1f4b0dc4a2330cbcd0a6a03b94a475ce8",
+          "bytes": 1931
+        },
+        {
+          "path": "results/ec_native_adapter_qualification.json",
+          "git_blob": "8693c5be282b1e8407a0c1358e18eab2ad78905c",
+          "bytes": 2183
+        },
+        {
+          "path": "results/phase1_mvp_tcc_v2_actual_2026-10-03.json",
+          "git_blob": "4afdeafc4bda057b443a481cfec332926f7cdc39",
+          "bytes": 1451
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 21,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/21",
+      "title": "Phase1 MVP: freeze materiality and capacity-ambiguity decision thresholds before measurement",
+      "referenced_in_issue_body": 2,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.md",
+          "git_blob": "e453e79dbeefb27425ea1380bd8b736730efa99d",
+          "bytes": 8767
+        },
+        {
+          "path": "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+          "git_blob": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+          "bytes": 7561
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 22,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/22",
+      "title": "Phase1 S1/S2 + A/B/E runner — superseded by function-boundary successor",
+      "referenced_in_issue_body": 3,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "docs/EC_LLM_FUNCTION_BOUNDARY_2026-10-03.md",
+          "git_blob": "cca0caf5d933d1a52d7e2a211cab3b27e0b02865",
+          "bytes": 5027
+        },
+        {
+          "path": "results/ec_llm_function_boundary_2026-10-03.json",
+          "git_blob": "86092dd12e7065fc3ccf88c8a277d2d3d0161237",
+          "bytes": 10639
+        },
+        {
+          "path": "results/phase1_mvp_tcc_v2_actual_2026-10-03.json",
+          "git_blob": "4afdeafc4bda057b443a481cfec332926f7cdc39",
+          "bytes": 1451
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 23,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/23",
+      "title": "Phase1 MVP: add oracle-blind EC-native S3/S4 adapter before claiming actual ECv4.4",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 24,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/24",
+      "title": "Phase1 Oracle intervention E arm — superseded by scoped function-boundary protocol",
+      "referenced_in_issue_body": 2,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "docs/EC_LLM_FUNCTION_BOUNDARY_2026-10-03.md",
+          "git_blob": "cca0caf5d933d1a52d7e2a211cab3b27e0b02865",
+          "bytes": 5027
+        },
+        {
+          "path": "results/ec_llm_function_boundary_2026-10-03.json",
+          "git_blob": "86092dd12e7065fc3ccf88c8a277d2d3d0161237",
+          "bytes": 10639
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 25,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/25",
+      "title": "Phase1 S1→S3 common adapter — implemented but no longer on frozen critical path",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "tools/build_s3_state_from_s1.py",
+          "git_blob": "ada6802efd66893ba39b399ec0d0840ea21db3ca",
+          "bytes": 6343
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 26,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/26",
+      "title": "Phase1 ECv4.4 M004 reframe divergence — preserved as research result",
+      "referenced_in_issue_body": 3,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "results/phase1_ecv44_reframe_actual_2026-10-03.json",
+          "git_blob": "f2a0d63385e947b26b3c401f28cbaf46a214c65b",
+          "bytes": 3115
+        },
+        {
+          "path": "results/ec_llm_function_boundary_2026-10-03.json",
+          "git_blob": "86092dd12e7065fc3ccf88c8a277d2d3d0161237",
+          "bytes": 10639
+        },
+        {
+          "path": "docs/EC_LLM_FUNCTION_BOUNDARY_2026-10-03.md",
+          "git_blob": "cca0caf5d933d1a52d7e2a211cab3b27e0b02865",
+          "bytes": 5027
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 27,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/27",
+      "title": "Phase1 actual finding: EC next-action authority is singleton and not isomorphic to S3 admissible-set selection",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [
+        "tests/test_ec_next_action_authority.py"
+      ],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 28,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/28",
+      "title": "Phase1 actual finding: S4 closure is not identifiable from frozen S3 artifact",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 29,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/29",
+      "title": "Qwen 0.5B remote assay runner: pre-inference provenance/runtime acquisition failures",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "results/phase1_qwen25_0p5b_reframe_actual_2026-10-03.json",
+          "git_blob": "8b6e8ab07c4604a1c07ed106d864aaf07dccc8e2",
+          "bytes": 3392
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 30,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/30",
+      "title": "1.5B capacity branch — resolved by valid 2CPU/8GB execution",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "results/phase1_qwen25_1p5b_reframe_actual_2026-10-03.json",
+          "git_blob": "33b557c448d9f5ed6f5218cfd76b0f91675f9479",
+          "bytes": 4292
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 31,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/31",
+      "title": "Phase1 ~1.5B follow-up: free Render runtime restarts at LLAMA_START",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 32,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/32",
+      "title": "TCC dependency defect: P0 requires Issue #22 before P2 can terminate EC_NATIVE_SCOPE_INCOMPATIBLE",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "tools/run_phase1_mvp_tcc.py",
+          "git_blob": "3d4125cd56f69684e05e26fbb8675b06fc360a3f",
+          "bytes": 8960
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 33,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/33",
+      "title": "Function-boundary successor: build discriminative S1 and measure 1.5B S1→S2",
+      "referenced_in_issue_body": 2,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "results/function_boundary_s1_qwen25_1p5b_actual_2026-10-03.json",
+          "git_blob": "5db7ea8720ad246256725d4fbb6698ad3fcabf48",
+          "bytes": 6105
+        },
+        {
+          "path": "results/function_boundary_s2_qwen25_1p5b_actual_2026-10-03.json",
+          "git_blob": "2e745b6d14eadf5e67e68a76a8fded161da0faa9",
+          "bytes": 4362
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 34,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/34",
+      "title": "Function-boundary successor: paired LLM vs EC next-action authority assay — completed",
+      "referenced_in_issue_body": 3,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "results/function_boundary_next_action_v1_diagnostic_nonreportable_2026-10-03.json",
+          "git_blob": "be7f36ed077d2136924a3d8c0e3b88ab171a6081",
+          "bytes": 1356
+        },
+        {
+          "path": "results/function_boundary_next_action_v2_actual_2026-10-03.json",
+          "git_blob": "3fc9d2cf63f410fdeabe72620fe6f627e3addd64",
+          "bytes": 2803
+        },
+        {
+          "path": "results/ec_llm_function_boundary_2026-10-03.json",
+          "git_blob": "86092dd12e7065fc3ccf88c8a277d2d3d0161237",
+          "bytes": 10639
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 35,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/35",
+      "title": "Function boundary: externalize S1 evidence authority/freshness/conflict control with existing EC — completed",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "results/function_boundary_s1b_ec_actual_2026-10-03.json",
+          "git_blob": "c3f5890269d8b0e7953ba9a96624aa1b0ae5d262",
+          "bytes": 2046
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 36,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/36",
+      "title": "S2 split: deterministic ontology retrieval vs novelty residual",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "results/function_boundary_s2a_deterministic_actual_2026-10-03.json",
+          "git_blob": "3f0b01b0129da76ce1d18eb77d4f9986efd37d47",
+          "bytes": 5307
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 37,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/37",
+      "title": "S2 residual successor: frozen symbolic-relation closure on commit-seeded holdout",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "results/function_boundary_s2b_metadata_blind_actual_2026-10-03.json",
+          "git_blob": "f0a8337827c7b2489760208af50b671f869e8ece",
+          "bytes": 2257
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 38,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/38",
+      "title": "S1A split: deterministic graph grounding vs semantic interpretation residual",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 39,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/39",
+      "title": "Validation repair: independent S1A holdout, equal-budget S2A, metadata-blind S2B",
+      "referenced_in_issue_body": 4,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "results/function_boundary_s1a_disjoint_holdout_actual_2026-10-03.json",
+          "git_blob": "76a572db97c53dcc2bc207e407a1b64eabb57d18",
+          "bytes": 2531
+        },
+        {
+          "path": "results/function_boundary_s2a_equal_budget_actual_2026-10-03.json",
+          "git_blob": "b6c0e052aa57f75e0b6da360b73e76f6de01634f",
+          "bytes": 3636
+        },
+        {
+          "path": "results/function_boundary_s2b_metadata_blind_actual_2026-10-03.json",
+          "git_blob": "f0a8337827c7b2489760208af50b671f869e8ece",
+          "bytes": 2257
+        },
+        {
+          "path": "tests/test_validation_repair.py",
+          "git_blob": "f386fbae5d40c36600fa2426704fe98c32328a09",
+          "bytes": 2525
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 40,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/40",
+      "title": "Validation repair implementation checkpoints",
+      "referenced_in_issue_body": 2,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "results/function_boundary_s2a_equal_budget_actual_2026-10-03.json",
+          "git_blob": "b6c0e052aa57f75e0b6da360b73e76f6de01634f",
+          "bytes": 3636
+        },
+        {
+          "path": "tests/test_validation_repair.py",
+          "git_blob": "f386fbae5d40c36600fa2426704fe98c32328a09",
+          "bytes": 2525
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 41,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/41",
+      "title": "TEMP (closed accidental)",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 42,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/42",
+      "title": "Prospective S1A hybrid: LLM fact selection + deterministic semantic grounding",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "results/function_boundary_s1a_hybrid_successor_actual_2026-10-03.json",
+          "git_blob": "8db40645d94e0c001b81cb944a381aebca7d9603",
+          "bytes": 3991
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 43,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/43",
+      "title": "S2B2 split: missing-candidate construction vs genuine ontology invention",
+      "referenced_in_issue_body": 5,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "docs/S2B2_MVP_AC_DEPENDENCY_TCC_2026-10-04_V2.md",
+          "git_blob": "f0b2872b5ec11f9710a53b679a4c9dce5c6e3238",
+          "bytes": 14230
+        },
+        {
+          "path": "docs/S2B2_MVP_AC_DEPENDENCY_TCC_2026-10-04_V2.json",
+          "git_blob": "1ded5068daa018bedbab86715fc765aa520d58a5",
+          "bytes": 5875
+        },
+        {
+          "path": "tools/validate_s2b2_tcc.py",
+          "git_blob": "96a085b42402f4ea22fc270528e3be14db2cbe72",
+          "bytes": 2517
+        },
+        {
+          "path": "results/function_boundary_s2b2a_qwen25_1p5b_raw_cache_2026-10-04.json",
+          "git_blob": "94df826c537acf309f98e1b83d10e385b4f13474",
+          "bytes": 6353
+        },
+        {
+          "path": "tools/audit_s2b2a_existing_result.py",
+          "git_blob": "714b1d06870ce4739f7310140239c7616a395b57",
+          "bytes": 7647
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 44,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/44",
+      "title": "TCC gate: pre-deploy static compile missing allowed Python typo to reach B1 preflight",
+      "referenced_in_issue_body": 3,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "tools/preflight_s2b2b1.py",
+          "git_blob": "190a5cab53922de581aab88c07d32cc78b86d8a0",
+          "bytes": 4008
+        },
+        {
+          "path": "tools/preflight_s2b2_v3_static.py",
+          "git_blob": "aa1b20d965419b40bf82c06cee2c8bf479face2c",
+          "bytes": 15543
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [
+        "docs/S2B2_MVP_AC_DEPENDENCY_TCC_2026-10-04_V3.md/.json"
+      ],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 45,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/45",
+      "title": "B1 execution infra: Render 25-service quota blocks new V3 service",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 46,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/46",
+      "title": "B1 evidence persistence: post-build legacy start command cannot serve frozen V3 result",
+      "referenced_in_issue_body": 2,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "tools/audit_s2b2b1_raw_cache.py",
+          "git_blob": "cec429ed139e40000e0b442c5dfa70564d9ceec3",
+          "bytes": 1420
+        },
+        {
+          "path": "tools/audit_s2b2b1_paired_v3.py",
+          "git_blob": "e1606128927900cc0ac4333c4fdf66e1d39d05d3",
+          "bytes": 9718
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 47,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/47",
+      "title": "B2 execution infra: reuse existing autoDeploy-off Render temp service under 25-service quota",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "tools/preflight_s2b2b2.py",
+          "git_blob": "bc462c8b6b63035f63cd91285c0ebc0535d80ff7",
+          "bytes": 7244
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 48,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/48",
+      "title": "S1C semantic-space creation: raw language to typed semantic/operator IR",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 49,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/49",
+      "title": "S1C MVP-V V1 runtime timeout before first paired result",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 50,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/50",
+      "title": "S1C MVP-V V2 invalidated by result-overturning grammar and denotational assay defects",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "tools/run_s1c_v_paired_v2.py",
+          "git_blob": "7a41e4ad3159d585fc698a8162ac89dd93ceab63",
+          "bytes": 14335
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 51,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/51",
+      "title": "S1C V3 pre-inference invalidated: deterministic baseline reads scorer-only truth table",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "tools/s1c_v3_deterministic_baseline.py",
+          "git_blob": "4bfcfba79be4be880e0a35bcc4bad42b0faebc62",
+          "bytes": 6254
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 52,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/52",
+      "title": "S1C V3.1 paired stopped: semantic-invalid output conflated with harness invalidity and raw evidence lost",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 53,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/53",
+      "title": "S1C V3.1 assay invalid: output schema did not enforce partition semantics",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 54,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/54",
+      "title": "Productization: reusable deterministic semantic-space runtime",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "results/s1c_semantic_space_final_boundary_2026-10-08.json",
+          "git_blob": "7fa2a9ffc564dd1e60b5b5a66515ecbe89c14664",
+          "bytes": 2001
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 55,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/55",
+      "title": "Product MVP acceptance gap: execute_validated_ir trusts unverified caller IR",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 56,
+      "github_status": "closed",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/56",
+      "title": "Mac field-test limitation: lexical ambiguity phrasing can bypass abstention",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "results/issue55_mac_field_acceptance_2026-10-08.json",
+          "git_blob": "7791dab8f28142cd9f171d55e6a5ca2db1a52083",
+          "bytes": 2548
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 57,
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/57",
+      "title": "Origin #1: frozen capability-retention gate for deterministic replacement (LLM/V1/V4/V5)",
+      "referenced_in_issue_body": 0,
+      "source_refs_with_exact_branch_blob": [],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": true,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 58,
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/58",
+      "title": "#57 blocking audit: H07 lexical false positive and shared test-fixture answer mapping contaminate capability retention",
+      "referenced_in_issue_body": 4,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "tools/audit_issue57_question_answer_contamination.py",
+          "git_blob": "0d21c391198c46bf912d0542e4d0c6f0a7fec7b9",
+          "bytes": 7324
+        },
+        {
+          "path": "tests/test_semantic_runtime_v5_grammar.py",
+          "git_blob": "5ed221e0227b8c270fa537bedf295f5ee1422032",
+          "bytes": 9455
+        },
+        {
+          "path": "tools/run_capability_retention_historical_v1.py",
+          "git_blob": "ea9c7fec40b038afc9831ac47563efbe38a0b253",
+          "bytes": 5228
+        },
+        {
+          "path": "evaluation/capability_retention_historical_labels_v1.json",
+          "git_blob": "8e69fa806d3443bd0b3bafe41d649d56c48b5629",
+          "bytes": 2844
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 59,
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/59",
+      "title": "W4B Extended: blind independent S3 semantic authority (not original Phase1 MVP gate)",
+      "referenced_in_issue_body": 4,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+          "git_blob": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+          "bytes": 7561
+        },
+        {
+          "path": "docs/ISSUE1_D04_D05_INDEPENDENCE_CRITERIA_REBASE_V38.json",
+          "git_blob": "e7141938a0163cd127816937a48fc5b20cea691c",
+          "bytes": 3066
+        },
+        {
+          "path": "results/issue1_root_ac_mvp_tcc_v6_actual_2026-10-10.json",
+          "git_blob": "98c57b18091ee21f33af8045b67736f7778fe354",
+          "bytes": 40333
+        },
+        {
+          "path": "results/issue1_root_ac_tcc_v7_actual_2026-10-10.json",
+          "git_blob": "6db0bde3401cf2cf4c510d04b854c248f1bbe3b2",
+          "bytes": 13362
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 60,
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/60",
+      "title": "W4C Extended: full-domain independently certified S4 obligations (not original Phase1 MVP gate)",
+      "referenced_in_issue_body": 4,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+          "git_blob": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+          "bytes": 7561
+        },
+        {
+          "path": "docs/ISSUE1_D04_D05_INDEPENDENCE_CRITERIA_REBASE_V38.json",
+          "git_blob": "e7141938a0163cd127816937a48fc5b20cea691c",
+          "bytes": 3066
+        },
+        {
+          "path": "results/issue1_root_ac_tcc_v7_actual_2026-10-10.json",
+          "git_blob": "6db0bde3401cf2cf4c510d04b854c248f1bbe3b2",
+          "bytes": 13362
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [
+        "src/v4/ec_layerwise_admissible_set_closure_v1.py"
+      ],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    },
+    {
+      "issue": 61,
+      "github_status": "open",
+      "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/61",
+      "title": "W5 P0: A–E Oracle nontarget layer changes bypass target-only causal gate",
+      "referenced_in_issue_body": 1,
+      "source_refs_with_exact_branch_blob": [
+        {
+          "path": "tools/issue1_phase1_ae_gate_v1.py",
+          "git_blob": "a64fc1fc318c67ecafd69de4af55bb69f6636ebe",
+          "bytes": 6035
+        }
+      ],
+      "source_refs_not_resolved_in_research_branch": [],
+      "zero_body_source_refs": false,
+      "verification_limit": "Path and Git blob presence only. This is NOT proof source ran, hidden gold isolated, test passed, or issue cause established."
+    }
+  ],
+  "interpretation": "Missing research-branch path may be in EC sibling repo, old commit, external service or truly missing. Do not claim absent without checking stated provenance.",
+  "science_mvp_promoted": 0,
+  "resolutions": [
+    {
+      "issue": 27,
+      "reported": "tests/test_ec_next_action_authority.py",
+      "classification": "SIBLING_REPO",
+      "canonical": "mokumaisancho/GPT-EC-Closure-Engine@d5ec423968f1c9242c590e5e77ccfd92d1f59eb2:01_repo/tests/test_ec_next_action_authority.py",
+      "git_blob": "ceefeb551157c9f34ac7ae93c733f6e0ceddad0a"
+    },
+    {
+      "issue": 44,
+      "reported": "docs/S2B2_MVP_AC_DEPENDENCY_TCC_2026-10-04_V3.md/.json",
+      "classification": "ISSUE_SHORTHAND_FOR_TWO_LOCAL_FILES",
+      "canonical": [
+        "docs/S2B2_MVP_AC_DEPENDENCY_TCC_2026-10-04_V3.md",
+        "docs/S2B2_MVP_AC_DEPENDENCY_TCC_2026-10-04_V3.json"
+      ],
+      "git_blobs": [
+        "e56a72007a4f8bf670120a664be2ad147ce38210",
+        "2629bd48618f644a3c9e755c6a8d1bed68bd4a9f"
+      ]
+    },
+    {
+      "issue": 60,
+      "reported": "src/v4/ec_layerwise_admissible_set_closure_v1.py",
+      "classification": "SIBLING_REPO",
+      "canonical": "mokumaisancho/GPT-EC-Closure-Engine@3f435ad4365d846d96264458540efb4848ce3541:01_repo/src/v4/ec_layerwise_admissible_set_closure_v1.py",
+      "git_blob": "c12e4743c89221a9b81a2f2fa98c4df9d61d72b2"
+    }
+  ],
+  "unresolved_reference_count_after_cross_repo_and_shorthand_resolution": 0,
+  "research_branch_exact_path_checks_only": 70,
+  "causal_runtime_attestation_count_by_this_path_index": 0
+}

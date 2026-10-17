@@ -1,0 +1,356 @@
+{
+  "schema": "ISSUE1_18_NONCRITICAL_ISSUES_DISPOSITION_V1",
+  "date": "2026-10-16",
+  "original_root_AC": "2/18",
+  "cases": [
+    {
+      "issue": 10,
+      "status": "ROOT_NOT_BLOCKED_HISTORICAL_SANDBOX_DNS",
+      "RCA_summary": "Historical sandbox had DNS and external binary redirect constraints; no current Phase1 science asset requirement here.",
+      "still_needed": "Original binary redirects/log timestamps; current container DNS failure is only separate supporting observation.",
+      "source_pins": [
+        {
+          "path": "docs/RCA_SANDBOX_LLM_INGRESS_2026-10-01.md",
+          "git_blob": "093fcf0194608958e38f8f46533e145bd387122d"
+        }
+      ],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 11,
+      "status": "OPEN_OPTIONAL_INGRESS_NAMESPACE",
+      "RCA_summary": "Apps Script helper name shadowed by YouTube functionality; documented but original Apps Script source not available.",
+      "still_needed": "Original Apps Script deployed function names and current CLI smoke if transport reused.",
+      "source_pins": [
+        {
+          "path": "docs/RCA_SANDBOX_LLM_INGRESS_2026-10-01.md",
+          "git_blob": "093fcf0194608958e38f8f46533e145bd387122d"
+        }
+      ],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 14,
+      "status": "ACTUAL_05_CAPACITY_RESULT_READ",
+      "RCA_summary": "Qwen0.5 1/10 all YES was a class-imbalance collapse, not generic semantics.",
+      "still_needed": "Frozen raw model logs 10 matched cases; already materialized in source result, no new run needed.",
+      "source_pins": [
+        {
+          "path": "results/phase1_qwen25_0p5b_reframe_actual_2026-10-03.json",
+          "git_blob": "8b6e8ab07c4604a1c07ed106d864aaf07dccc8e2"
+        }
+      ],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 15,
+      "status": "SMALL_TEXT_SHARD_TRANSPORT_PROVEN",
+      "RCA_summary": "4096-byte UTF-8 shard manifest published. Large model text-shard transport performance not tested here.",
+      "still_needed": "Actual 397MB shard upload/fetch benchmark only if reused instead of existing Render model route.",
+      "source_pins": [
+        {
+          "path": "docs/GITHUB_TEXT_SHARD_MODEL_INGRESS.md",
+          "git_blob": "e25aeacf23a10018d9cb0a5681702fea9993d220"
+        },
+        {
+          "path": "poc/github_text_shard_v2/manifest.json",
+          "git_blob": "0f80860c4b65beb5c6db34ed45e598b09463441c"
+        }
+      ],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 16,
+      "status": "OPEN_OPTIONAL_PLUGIN_ATTACHMENT",
+      "RCA_summary": "MCP server source available. Account-specific ChatGPT custom attachment and OAuth tool call unverified.",
+      "still_needed": "Current account plugin support, plugin tool enumeration and verified bounded artifact fetch if necessary; separate from original science.",
+      "source_pins": [
+        {
+          "path": "mcp/generic-binary-ingress/src/serverFactory.ts",
+          "git_blob": "19b4352c9e36e96493e44790abb6945942fd9d99"
+        }
+      ],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 17,
+      "status": "OPEN_OPTIONAL_SITES_BRIDGE",
+      "RCA_summary": "Site bridge requested but no actual publish receipt or plugin tool calls attached to issue.",
+      "still_needed": "Site bridge publication ID, auth/test receipts only if model delivery route demands it.",
+      "source_pins": [],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 18,
+      "status": "OPEN_OPTIONAL_BRIDGE_SPEC_ONLY",
+      "RCA_summary": "Bridge implementation prompt and schema written, not a running Site.",
+      "still_needed": "Published Site/plugin discovery and authenticated fetch receipt, only if chosen transport.",
+      "source_pins": [],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 19,
+      "status": "OPEN_OPTIONAL_INGRESS_PERFORMANCE_POC",
+      "RCA_summary": "One-shot planned, no measured full-model MoE inference/throughput archived in issue.",
+      "still_needed": "Actual timed ingress+model-run receipt only if reducing required original experiment latency.",
+      "source_pins": [
+        {
+          "path": "docs/TCC_ONE_SHOT_SANDBOX_LLM_PLAN_2026-10-02.json",
+          "git_blob": "9b22d3436b41d8e53e397771249f16be99c5a7dd"
+        }
+      ],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 29,
+      "status": "RECOVERED_REMOTE_05_RUN",
+      "RCA_summary": "Prior pre-inference 0.5B acquisition failed, but real 10-case result exists.",
+      "still_needed": "No new data for root if exact original model sha already pinned.",
+      "source_pins": [
+        {
+          "path": "results/phase1_qwen25_0p5b_reframe_actual_2026-10-03.json",
+          "git_blob": "8b6e8ab07c4604a1c07ed106d864aaf07dccc8e2"
+        }
+      ],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 31,
+      "status": "FREE_RENDER_LIMITATION_HISTORICAL",
+      "RCA_summary": "Free runtime previously restarted at LLAMA_START; 1.5B later ran on 2CPU/8GB Starter.",
+      "still_needed": "Raw historical free service logs only if investigating infrastructure recurrence.",
+      "source_pins": [
+        {
+          "path": "results/phase1_qwen25_1p5b_reframe_actual_2026-10-03.json",
+          "git_blob": "33b557c448d9f5ed6f5218cfd76b0f91675f9479"
+        }
+      ],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 40,
+      "status": "VALIDATION_REPAIR_HISTORICAL_TESTS_PRESENT",
+      "RCA_summary": "Validation recovery suite source exists; prior results explain balanced-benchmark caveats.",
+      "still_needed": "Re-run if regression introduced; no fresh run performed.",
+      "source_pins": [
+        {
+          "path": "tests/test_validation_repair.py",
+          "git_blob": "f386fbae5d40c36600fa2426704fe98c32328a09"
+        }
+      ],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 41,
+      "status": "ACCIDENTAL_ISSUE",
+      "RCA_summary": "Accidental connector issue creation, unrelated to scientific root.",
+      "still_needed": "No evidence needed; retain as audit/history.",
+      "source_pins": [],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 44,
+      "status": "STATIC_COMPILE_GATE_REPAIRED_SOURCE",
+      "RCA_summary": "Static preflight now imports and calls py_compile; previous failure was a missing predeployment syntax gate.",
+      "still_needed": "Actual compile preflight run receipt if re-deploying B1/B2; no new compilation performed.",
+      "source_pins": [
+        {
+          "path": "tools/preflight_s2b2_v3_static.py",
+          "git_blob": "aa1b20d965419b40bf82c06cee2c8bf479face2c"
+        }
+      ],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 45,
+      "status": "RENDER_QUOTA_HISTORICAL_RECOVERED",
+      "RCA_summary": "25-service cap required reuse; actual B1 inference deploy ID and audited receipt present.",
+      "still_needed": "No need to re-query service quota absent a new deploy request.",
+      "source_pins": [
+        {
+          "path": "results/function_boundary_s2b2_b1_audited_actual_2026-10-05.json",
+          "git_blob": "fb08eb3adc0559e6dda198728a83de136ad45e17"
+        }
+      ],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 46,
+      "status": "RAW_EVIDENCE_PERSISTENCE_HISTORICAL_REPAIRED",
+      "RCA_summary": "B1 raw cache digest and postrun audit present, without reinference.",
+      "still_needed": "Independent raw-byte retrieval/provenance if reportable newer science claims depend on specific row.",
+      "source_pins": [
+        {
+          "path": "results/function_boundary_s2b2_b1_audited_actual_2026-10-05.json",
+          "git_blob": "fb08eb3adc0559e6dda198728a83de136ad45e17"
+        }
+      ],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 47,
+      "status": "B2_REUSE_HISTORICAL_RECOVERED",
+      "RCA_summary": "B2 infer+audit deploy receipts archived; service reuse shown.",
+      "still_needed": "Current live service only if a new deployment is actually required.",
+      "source_pins": [
+        {
+          "path": "results/function_boundary_s2b2_b2_audited_actual_2026-10-06.json",
+          "git_blob": "6398a07477ff5358a3b9f0052cfd0ffc40e0d21f"
+        }
+      ],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 49,
+      "status": "S1C_V1_TIMEOUT_HISTORICAL_SUPERSEDED",
+      "RCA_summary": "S1C V1 timed out before paired output; versioned later V3.2 has audited receipt.",
+      "still_needed": "Historical V1 logs for precise timeout duration if reusing that branch; no runtime change now.",
+      "source_pins": [],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    },
+    {
+      "issue": 54,
+      "status": "PRODUCT_MVP_NARROW_SCOPE_55_BLOCKER",
+      "RCA_summary": "Product MVP closed-path tests reported complete, but #55 unvalidated caller IR gap remains in main source.",
+      "still_needed": "Forged task-bound IR negative control and independent execution-binding authentication before production-readiness claim.",
+      "source_pins": [
+        {
+          "path": "results/product_runtime_mvp_complete_2026-10-08.json",
+          "git_blob": "ba323c6fef00e272cfeb3e71d5d04b3c0850119b"
+        }
+      ],
+      "source_evidence_narrow_only": true,
+      "root_critical_now": false
+    }
+  ],
+  "source_static_and_prior_receipt_checks": [
+    {
+      "issue": 10,
+      "id": "DNS_SAFE_OPEN_DIAGNOSTIC_SOURCE",
+      "result": "PASS",
+      "expected": "PASS",
+      "reason": "RCA memo documents binary redirect and DNS class; external errors historically observed, current container DNS also failed."
+    },
+    {
+      "issue": 11,
+      "id": "COLLISION_REPORT_PRESENT",
+      "result": "PASS",
+      "expected": "PASS",
+      "reason": "Historical RCA observed Apps Script global function name shadowing; no Apps Script source or new function deployed."
+    },
+    {
+      "issue": 14,
+      "id": "QWEN05_ACTUAL_1_OF_10",
+      "result": "PASS",
+      "expected": "PASS",
+      "reason": "0.5B actual reframe receipt and class-skew collapse."
+    },
+    {
+      "issue": 15,
+      "id": "TEXT_SHARD_POC_4096",
+      "result": "PASS",
+      "expected": "PASS",
+      "reason": "Manifest and Part-000 exists; 4096-byte text-shard POC, not 397MB verified in this turn."
+    },
+    {
+      "issue": 16,
+      "id": "MCP_SERVER_IMPLEMENTED",
+      "result": "PASS",
+      "expected": "PASS",
+      "reason": "Server code supports fetch/info bounded chunk/delete. ChatGPT plugin attachment not verified."
+    },
+    {
+      "issue": 19,
+      "id": "ONE_SHOT_PLAN_PRESENT",
+      "result": "PASS",
+      "expected": "PASS",
+      "reason": "Plan exists; not an executed throughput benchmark."
+    },
+    {
+      "issue": 29,
+      "id": "QWEN05_RECOVERED",
+      "result": "PASS",
+      "expected": "PASS",
+      "reason": "Remote 0.5B run recovered; no present original Phase1 model ingress blocker."
+    },
+    {
+      "issue": 31,
+      "id": "QWEN15_ON_STARTER",
+      "result": "PASS",
+      "expected": "PASS",
+      "reason": "Later pinned 1.5B ran successfully; prior free host restart remains historical, not active root issue."
+    },
+    {
+      "issue": 40,
+      "id": "VALIDATION_TEST_SOURCE",
+      "result": "PASS",
+      "expected": "PASS",
+      "reason": "Validation repair Python test suite source exists; not executed again here."
+    },
+    {
+      "issue": 44,
+      "id": "STATIC_PY_COMPILE",
+      "result": "PASS",
+      "expected": "PASS",
+      "reason": "Predeployment static compile code implemented after historical missing compile gate."
+    },
+    {
+      "issue": 45,
+      "id": "B1_RENDER_COMPLETED",
+      "result": "PASS",
+      "expected": "PASS",
+      "reason": "Historical quota workaround succeeded via pinned Render B1 execution; quota live status not queried."
+    },
+    {
+      "issue": 46,
+      "id": "B1_EVIDENCE_PERSISTED",
+      "result": "PASS",
+      "expected": "PASS",
+      "reason": "B1 raw cache, semantic cache and postrun auditor claimed persistent and hash-backed."
+    },
+    {
+      "issue": 47,
+      "id": "B2_AUDIT_COMPLETED",
+      "result": "PASS",
+      "expected": "PASS",
+      "reason": "B2 distinct deploy and independent auditor completed using reused service."
+    },
+    {
+      "issue": 54,
+      "id": "PRODUCT_SCOPE_BOUND_PRODUCT55_CONFLICT",
+      "result": "PASS",
+      "expected": "PASS",
+      "reason": "Product MVP declared complete for tested closed-path; separate #55 found caller IR trust flaw."
+    }
+  ],
+  "checks_passed": 14,
+  "checks_failed": 0,
+  "external_unqualified": [
+    16,
+    17,
+    18,
+    19,
+    45,
+    49
+  ],
+  "scope": "Noncritical infrastructure and historical product workflow must NOT be moved onto original Phase1 causal path merely because GitHub status is OPEN.",
+  "actual_render_or_mac_new_execution": false,
+  "real_model_inference_new": false
+}

@@ -1,0 +1,223 @@
+{
+  "schema": "ISSUE1_HANDOFF_CRITICAL_PATH_V24",
+  "as_of": "2026-10-15 JST",
+  "conversation_reference": "https://chatgpt.com/share/6ad0b2c6-9d98-83ee-811f-a7301223f88b",
+  "root": {
+    "repo": "mokumaisancho/LLM-EC-Layerwise-Ablation",
+    "issue_url": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/1",
+    "objective": "Identify necessary LLM semantic/reasoning ability at S1/S2/S3/S4 via actual one-layer controlled LLM-vs-native-EC-vs-Oracle comparisons while preserving generalized semantics and avoiding leakage",
+    "scope": "original frozen Phase1; not TCC transport, not architecture reframe",
+    "arms": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E_S1",
+      "E_S2",
+      "E_S3",
+      "E_S4"
+    ],
+    "mvp": {
+      "required": 18,
+      "proven": 2,
+      "unproven": 16,
+      "AC_frozen_file": "ACCEPTANCE_CRITERIA.md",
+      "AC_graph": "docs/ISSUE1_SINGLE_SOURCE_TRACKER_V5.json",
+      "material_gain_min": 0.2,
+      "original_ac_promotions_this_round": 0
+    }
+  },
+  "latest_proofs": [
+    {
+      "type": "native_TCC_generator_validator_runtime",
+      "path": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/receipts/INIT-ISSUE1-TCC-OF23/e3ff583acbadc79386a4b5da.json",
+      "git_blob": "a876bafc4b1739571d286de664b4b8fc4263920f",
+      "host_result": "COMPLETE",
+      "proof_hash_verified": true,
+      "control": "PASS",
+      "science": "BLOCKED_EXTERNAL",
+      "native_runtime_terminal": "BLOCK_EXTERNAL",
+      "science_ac_promotion": 0
+    },
+    {
+      "type": "actual_164_case_D05_structural_preflight",
+      "path": "results/issue1_s4_scoring_integrity_v24_actual_2026-10-15.json",
+      "git_blob": "b5676db518b4f9fa1567d67d3e7d3e485ef5f9c6",
+      "control": "PASS",
+      "negative_tests": 10,
+      "negative_tests_total": 10,
+      "science": "BLOCKED_EXTERNAL"
+    },
+    {
+      "type": "replayable_offline_scoring_gate",
+      "path": "tools/issue1_s4_scoring_integrity_gate_v24.mjs",
+      "git_blob": "3f7213fd87344d0f8abda28acb2afdcad3ec1d04",
+      "code_mode_pure_audit_executed": true,
+      "node_cli_executed": false
+    }
+  ],
+  "dependency_DAG": [
+    {
+      "id": "D00",
+      "priority": "DONE",
+      "status": "FROZEN",
+      "depends_on": []
+    },
+    {
+      "id": "D01-D03",
+      "priority": "DONE",
+      "status": "DIAGNOSTIC_AND_NATIVE_MECHANICS",
+      "depends_on": [
+        "D00"
+      ]
+    },
+    {
+      "id": "D04",
+      "priority": "P0",
+      "issue": 59,
+      "status": "BLOCKED_EXTERNAL",
+      "depends_on": [
+        "D00",
+        "D01"
+      ],
+      "missing": [
+        "independently adjudicated genuinely unseen all-admissible per-candidate S3 source gold",
+        "pre-frozen provenance and S1/S2 SHA",
+        "separation of predictor and scorer",
+        "real LLM / native EC outputs"
+      ]
+    },
+    {
+      "id": "D05",
+      "priority": "P0",
+      "issue": 60,
+      "status": "BLOCKED_EXTERNAL",
+      "depends_on": [
+        "D00",
+        "D01"
+      ],
+      "progress": "policy source mechanically indexed and 164 publisher tasks checked with negative controls",
+      "missing": [
+        "task-by-task source policy clause applicability and exhaustive obligation set certified by independent authority",
+        "NL_ASSERTION reward inclusion and authenticated independent NL evaluator",
+        "positive absence proof for zero obligations",
+        "blind custody, real agent score receipts"
+      ]
+    },
+    {
+      "id": "D06",
+      "priority": "P1",
+      "issue": 61,
+      "status": "BLOCKED_BY_D04_D05",
+      "depends_on": [
+        "D01",
+        "D02",
+        "D04",
+        "D05"
+      ],
+      "missing": [
+        "source-bound target-only Oracle receipts with unmodified downstream engines"
+      ]
+    },
+    {
+      "id": "D07",
+      "priority": "P1",
+      "status": "BLOCKED_BY_D06",
+      "depends_on": [
+        "D04",
+        "D05",
+        "D06"
+      ],
+      "missing": [
+        "actual eight-arm matched per-layer execution"
+      ]
+    },
+    {
+      "id": "D08",
+      "priority": "P2",
+      "status": "BLOCKED_BY_D07",
+      "depends_on": [
+        "D07"
+      ],
+      "missing": [
+        "independent metric scoring, counterfactual gain and failure audit"
+      ]
+    },
+    {
+      "id": "D09",
+      "priority": "P2",
+      "status": "BLOCKED_BY_D08",
+      "depends_on": [
+        "D08"
+      ],
+      "missing": [
+        "18/18 independently verified original MVP"
+      ]
+    }
+  ],
+  "external_source_facts": {
+    "tasks": 164,
+    "explicit_nl_assertions": 135,
+    "nl_tasks": 58,
+    "nl_only_no_alternate_reward": 7,
+    "highest_priority_task_ids": [
+      "airline/0",
+      "airline/10",
+      "airline/26",
+      "airline/28",
+      "airline/31",
+      "airline/34",
+      "airline/46"
+    ],
+    "policy_mechanical_candidates": {
+      "airline": 45,
+      "retail": 29
+    },
+    "semantic_per_task_obligation_completeness_proven": false
+  },
+  "execution_queue": [
+    {
+      "order": 1,
+      "issue": 59,
+      "action": "Acquire independent blind source-qualified S3 gold and immutable before-prediction custody; no reuse of author-visible development fixtures",
+      "can_execute_now": "source discovery/review only; cannot self-attest blind adjudication"
+    },
+    {
+      "order": 2,
+      "issue": 60,
+      "action": "Have an independent authoritative assessor qualify policy-to-task clause applicability for 7 P0, then other 51 NL and 106 remaining; bind full S4 obligations and NL reward integration",
+      "can_execute_now": "source and scoring structural preflight completed; independent assessor and scorer still missing"
+    },
+    {
+      "order": 3,
+      "issue": 61,
+      "action": "Trusted real target-only model/EC/Oracle replay and tamper controls",
+      "only_if": "D04 and D05 independently certified"
+    },
+    {
+      "order": 4,
+      "issue": 1,
+      "action": "Execute exact A/B/C/D/E_S1..S4 and independently score frozen AC20, then scientific closure",
+      "only_if": "D06/D07/D08 scientific receipts verified"
+    }
+  ],
+  "noncritical_exclusions": [
+    "further GitHub/Mac/TCC transport fixes absent new regression",
+    "repeating previous tiny model trials or 164-task publisher static count",
+    "GitHub Actions, DC or macOS global hook changes",
+    "other research repos #19 infrastructure",
+    "claiming published benchmark labels are unseen holdout"
+  ],
+  "guards": [
+    "source integrity before any quality claim",
+    "only independent blinded gold",
+    "never use scorer/oracle labels in predictor",
+    "do not promote science AC from TCC control PASS",
+    "no synthetic receipts renamed as real",
+    "do not auto-dispatch D06 while D04 or D05 blocked",
+    "preserve prior trackers and sealed results"
+  ],
+  "terminal": "BLOCKED_EXTERNAL",
+  "root_issue_state": "OPEN",
+  "next_trigger": "Only genuinely new independent D04 and D05 certification can unblock A-E; if unavailable, persist this exact blocker and do not loop."
+}
