@@ -1,0 +1,185 @@
+{
+  "schema": "ISSUE1_D04_D05_UNVERIFIABLE_RCA_V43",
+  "date": "2026-10-16",
+  "root_issue": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/1",
+  "scope": "Why native TCC v41 not executed and why completed D04/D05 scientific verification is not established",
+  "observed": {
+    "initiative_count": 11,
+    "hard_cap_count": 10,
+    "current_v41_state": "QUEUED",
+    "v41_revision": 1,
+    "v41_signed_receipt": "ABSENT_404",
+    "v41_queue_registration": "2026-10-15T13:54:44Z",
+    "last_seen_GitHub_automation_commit_pre_v41": "2026-10-15T12:54:44Z",
+    "Mac_launchAgent_status": "NOT_OBSERVED_FROM_HOST",
+    "actual_Mac_exception_log": "NOT_OBTAINED",
+    "scientific_mvp_original": {
+      "verified": 2,
+      "required": 18,
+      "promoted_this_RCA": 0
+    }
+  },
+  "root_causes": [
+    {
+      "id": "RC-01",
+      "priority": "P0",
+      "verification": "CONFIRMED_SOURCE_AND_LIVE_INPUT_CONDITION_HOST_NOT_ATTESTED",
+      "kind": "OPERATIONS",
+      "cause": "11 registered initiatives exceed hard guard of >10. The guard is placed BEFORE per-initiative state filtering and before scheduling executable jobs in dispatch.scan(), receiver.once(), tcc_runner.HostHandlers.preflight().",
+      "effect": "GitHub control scanner fails; pinned Mac TCC host preflight returns BLOCKED; receiver could not transition new queued initiative to RUNNING. No signed receipt or proof can be created via that path.",
+      "evidence": [
+        "https://github.com/mokumaisancho/initiative-dispatcher/tree/main/initiatives",
+        "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/initiative_dispatcher/dispatch.py",
+        "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/initiative_dispatcher/receiver.py",
+        "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/initiative_dispatcher/tcc_runner.py",
+        "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/state/INIT-ISSUE1-S3S4-V41.json"
+      ]
+    },
+    {
+      "id": "RC-02",
+      "priority": "P0",
+      "verification": "CONFIRMED_INSTALLED_SCRIPT_CONFIGURATION_BUT_MAC_VERSION_UNVERIFIED",
+      "kind": "OBSERVABILITY",
+      "cause": "Installer routes both launchd StandardOutPath and StandardErrorPath to /dev/null. It launches tcc_runner --once every 60 seconds. GitHub record has no claimed run or signed receipt.",
+      "effect": "Host error path leaves no durable root-cause event/exception; QUEUED is ambiguous between offline host, exception, missing credentials, stale checkout, and permission failure.",
+      "evidence": [
+        "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/scripts/install_receiver.sh"
+      ]
+    },
+    {
+      "id": "RC-03",
+      "priority": "P0",
+      "verification": "CONFIRMED_GRAPH_TOPOLOGY",
+      "kind": "SCIENCE_CONTROL",
+      "cause": "V41 TCC Gate P03_CAUSAL_GATE reads actual_engine_ok; no upstream TCC action writes that state key; its actions only pin sources, split S3 contracts, and evaluate self-authored bounded S4.",
+      "effect": "Even if the capacity gate is repaired and native TCC v41 control runs, it has no valid execution path to real EC+LLM+Oracle causal evidence. BLOCK_REAL_CAUSAL is expected and not a scientific resolution.",
+      "evidence": [
+        "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/blob/feat/issue1-independent-s4-authority-audit-v19/docs/ISSUE1_TCC_V41_SPEC_SOURCE_INPUT.json"
+      ]
+    },
+    {
+      "id": "RC-04",
+      "priority": "P0",
+      "verification": "CONFIRMED_GENERATOR_SOURCE_AND_LIMITATION",
+      "kind": "SCIENCE_VALIDITY",
+      "cause": "Original 10-fixture author generator uses v* for correct options, x1 for invalid options, positive/negative judgment text, asymmetric dependencies, oracle_constraints and authored candidate relationships.",
+      "effect": "Source-defined label cues contaminate S3. Prefix-selection gives the known gold by construction on public fixed fixtures; 10/10 fixture Oracle replay is integrity, not independent semantic competence. New decontaminated predictor-visible input must be frozen before matched predictions.",
+      "evidence": [
+        "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/blob/feat/issue1-independent-s4-authority-audit-v19/results/issue1_s3_gold_contamination_audit_v42_actual_2026-10-15.json"
+      ]
+    },
+    {
+      "id": "RC-05",
+      "priority": "P0",
+      "verification": "CONFIRMED_HISTORICAL_CODE_AND_SCOPED_FIXTURE_RESULTS",
+      "kind": "SCIENTIFIC_IDENTIFIABILITY",
+      "cause": "EC-native S3 selects exactly one next action whereas original S3 specifies all admissible candidates for M003 and M009. Original S3 structural signature is insufficient to identify S4 closure for M001/M007 and M003/M009. Synthetic S4 512-state boolean testing uses unverified placeholder hashes and is not native EC S4.",
+      "effect": "Generating more TCC specifications cannot substitute for a separately declared common subfunction and a closure-sufficient source-grounded real execution state; original frozen EC_NATIVE_SCOPE_INCOMPATIBLE must be preserved.",
+      "evidence": [
+        "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/blob/feat/issue1-independent-s4-authority-audit-v19/docs/ISSUE1_D04_D05_CORRECTED_TECHNICAL_PATH_V40.json"
+      ]
+    },
+    {
+      "id": "RC-06",
+      "priority": "P1",
+      "verification": "CONFIRMED_SOURCE_ASSET_NOT_NATIVE_EXECUTION",
+      "kind": "DEPLOYMENT",
+      "cause": "V42 is a 17-node source-input specification and acceptance criteria, not a generated/evaluated runnable experiment. Attempt to register the native V42 runner was blocked by platform safety enforcement.",
+      "effect": "No native V42 generator result or actual EC/LLM scorer receipt exists; do not claim execution and do not reroute around blocked action.",
+      "evidence": [
+        "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/blob/feat/issue1-independent-s4-authority-audit-v19/docs/ISSUE1_NATIVE_TCC_SPEC_V42_INPUT.json"
+      ]
+    }
+  ],
+  "causal_chain": [
+    "new_11th_registration",
+    ">10_unconditional_global_guard_in_three_planes",
+    "controller_and_host_preflight_do_not_enter_work",
+    "state_remains_QUEUED_no_host_receipt",
+    "LaunchAgent_stderr_to_dev_null_prevents_direct_exception_trace",
+    "even_after_transport_repair_v41_cannot_prove_science",
+    "v42_needs_validated_actual_executors_with_gold_sanitization"
+  ],
+  "remediation_order": [
+    {
+      "step": 1,
+      "action": "Add a safe versioned capacity/retirement contract to all three scanning paths. Retain immutable completed initiative history; count bound on actual eligible queued/running jobs rather than cumulative files. Enforce max 3 concurrent jobs, bounded paging and one-at-a-time CAS ownership. No blind 10->100 constant tweak.",
+      "ac": [
+        "11 total initiatives including DONE and missing-state do NOT stall healthy queued job",
+        "11 simultaneously actionable jobs never exceed max 3 concurrent",
+        "tampered/missing state is quarantined, not treated as success",
+        "no duplicate run or stale claim"
+      ],
+      "execution": "NOT_YET_IMPLEMENTED"
+    },
+    {
+      "step": 2,
+      "action": "Before restarting receiver, explicitly retire or quarantine the obsolete V41 QUEUED initiative using a versioned, authenticated CAS lifecycle transition, leaving historical queue and previous receipts immutable; do not delete state or forge DONE.",
+      "ac": [
+        "V41 no new Codex invocation",
+        "V41 source and signed receipt history preserved",
+        "new scoped V42 job unambiguously identified"
+      ],
+      "execution": "NOT_YET_IMPLEMENTED"
+    },
+    {
+      "step": 3,
+      "action": "Replace launchd /dev/null routing with a bounded redacted structured diagnostic log, one event per unique failure stage, containing code SHA, initiative ID, stage, reason and last status. Then verify installed host code revision and LaunchAgent actual status.",
+      "ac": [
+        "observed host preflight exception or explicit healthy IDLE",
+        "error logs survive one cycle",
+        "no token or secret exposure",
+        "no repeated identical error spam"
+      ],
+      "execution": "NOT_YET_IMPLEMENTED"
+    },
+    {
+      "step": 4,
+      "action": "After verified host receiver preflight capacity repair, run one no-LLM control smoke; require authenticated receipt with byte SHA256 and correct state transitions. Do not spend additional Codex inference tokens on a known dead V41 science graph.",
+      "ac": [
+        "QUEUE -> RUNNING -> VERIFYING -> DONE or explicit bounded failure",
+        "one authenticated run receipt",
+        "no duplicate run",
+        "control PASS not confused with scientific AC"
+      ],
+      "execution": "NOT_YET_IMPLEMENTED"
+    },
+    {
+      "step": 5,
+      "action": "Implement V42 real gold-clean S3 projection, native EC and compatible LLM target-only experiments, closure-sufficient S4 task state, independent frozen-gold scoring with FCR and missed reframe denominators. Native TCC Generator only after actual handlers exist and method version is separate.",
+      "ac": [
+        "real pinned executable EC and lightweight LLM SHA receipts",
+        "S3 singleton and multi-candidate task results are not conflated",
+        "S4 actual policy/task obligations and execution evidence independently referenced",
+        "target-only Oracle non-target implementation unchanged",
+        "no scientific AC promotion until all root AC evidence exists"
+      ],
+      "execution": "NOT_YET_IMPLEMENTED"
+    }
+  ],
+  "excluded_remedies": [
+    "do not mark v41 DONE by editing GitHub state",
+    "do not delete older initiative history without explicitly controlled migration",
+    "do not repeatedly run old 16k-character Codex instruction",
+    "do not bypass platform safety checks on v42",
+    "do not claim TCC graph test success as D04/D05 semantic verification",
+    "do not impose nonnormative 120/300/blind human cryptographic signature prerequisites for original fixed-fixture MVP"
+  ],
+  "confidence": {
+    "RC01": "HIGH_CONDITIONAL_ON_HOST_EXECUTING_CURRENT_SOURCE",
+    "RC02": "HIGH_FOR_INSTALLER_CONFIG_MAC_ACTUAL_LOGGING_UNVERIFIED",
+    "RC03": "HIGH",
+    "RC04": "HIGH_ON_SOURCE_CONSTRUCTION",
+    "RC05": "HIGH_ON_FROZEN_PROVENANCE",
+    "RC06": "OBSERVED_BLOCK_NEEDS_NO_CIRCUMVENTION"
+  },
+  "currently_unverified": [
+    "Mac is awake and logged in",
+    "current installed macOS tcc_runner git commit equals GitHub HEAD",
+    "actual LaunchAgent running or restarting",
+    "actual traceback for >10 exception",
+    "native v41 source beyond static checks",
+    "native v42 generated or any real science run"
+  ],
+  "terminal": "RCA_SOURCE_VERIFIED_ROOT_SCIENTIFIC_MVP_STILL_2_OF_18"
+}

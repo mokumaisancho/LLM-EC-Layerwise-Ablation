@@ -1,0 +1,1846 @@
+{
+  "schema": "ISSUE1_S4_POLICY_SOURCE_LINE_POINTERS_V21",
+  "generated_as_of": "2026-10-14",
+  "scope": "Publisher-pinned domain policy line index linked to prior per-task assertions, mechanically extracted candidate lines only",
+  "root_issue": 1,
+  "blocking_issue": 60,
+  "source": {
+    "repository": "amazon-agi/tau2-bench-verified",
+    "commit": "864350a8971a8f8ee9e7b8472e2edc380a806b0c",
+    "v20_task_inventory_path": "docs/ISSUE1_S4_SOURCE_BOUND_OBLIGATION_POINTERS_V20.json",
+    "v20_task_blob": "a78df93af631f07b284dc3c8c74594f6989fbb6b"
+  },
+  "policy": {
+    "airline": {
+      "source_file": "data/tau2/domains/airline/policy.md",
+      "source_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "total_lines": 167,
+      "nonempty_lines": 120,
+      "sections": [
+        {
+          "line": 1,
+          "title": "# Airline Agent Policy"
+        },
+        {
+          "line": 17,
+          "title": "## Domain Basic"
+        },
+        {
+          "line": 19,
+          "title": "### User"
+        },
+        {
+          "line": 33,
+          "title": "### Flight"
+        },
+        {
+          "line": 49,
+          "title": "### Reservation"
+        },
+        {
+          "line": 63,
+          "title": "## Book flight"
+        },
+        {
+          "line": 103,
+          "title": "## Modify flight"
+        },
+        {
+          "line": 133,
+          "title": "## Cancel flight"
+        },
+        {
+          "line": 154,
+          "title": "## Refunds and Compensation"
+        }
+      ],
+      "mechanical_candidate_policy_lines": [
+        {
+          "line": 7,
+          "section": "# Airline Agent Policy",
+          "text": "Before taking any actions that update the booking database (booking, modifying flights, editing baggage, changing cabin class, or updating passenger information), you must list the action details and obtain explicit user confirmation (yes) to proceed."
+        },
+        {
+          "line": 9,
+          "section": "# Airline Agent Policy",
+          "text": "You should not provide any information, knowledge, or procedures not provided by the user or available tools, or give subjective recommendations or comments."
+        },
+        {
+          "line": 11,
+          "section": "# Airline Agent Policy",
+          "text": "You should only make one tool call at a time, and if you make a tool call, you should not respond to the user simultaneously. If you respond to the user, you should not make a tool call at the same time."
+        },
+        {
+          "line": 13,
+          "section": "# Airline Agent Policy",
+          "text": "You should deny user requests that are against this policy."
+        },
+        {
+          "line": 15,
+          "section": "# Airline Agent Policy",
+          "text": "You should transfer the user to a human agent if and only if the request cannot be handled within the scope of your actions. To transfer, first make a tool call to transfer_to_human_agents, and then send the message 'YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.' to the user."
+        },
+        {
+          "line": 42,
+          "section": "### Flight",
+          "text": "- If the status is **delayed** or **on time**, the flight has not taken off, cannot be booked."
+        },
+        {
+          "line": 43,
+          "section": "### Flight",
+          "text": "- If the status is **flying**, the flight has taken off but not landed, cannot be booked."
+        },
+        {
+          "line": 65,
+          "section": "## Book flight",
+          "text": "The agent must first obtain the user id from the user."
+        },
+        {
+          "line": 67,
+          "section": "## Book flight",
+          "text": "The agent should then ask for the trip type, origin, destination."
+        },
+        {
+          "line": 70,
+          "section": "## Book flight",
+          "text": "- Cabin class must be the same across all the flights in a reservation."
+        },
+        {
+          "line": 73,
+          "section": "## Book flight",
+          "text": "- Each reservation can have at most five passengers."
+        },
+        {
+          "line": 74,
+          "section": "## Book flight",
+          "text": "- The agent needs to collect the first name, last name, and date of birth for each passenger."
+        },
+        {
+          "line": 75,
+          "section": "## Book flight",
+          "text": "- All passengers must fly the same flights in the same cabin."
+        },
+        {
+          "line": 78,
+          "section": "## Book flight",
+          "text": "- Each reservation can use at most one travel certificate, at most one credit card, and at most three gift cards."
+        },
+        {
+          "line": 80,
+          "section": "## Book flight",
+          "text": "- All payment methods must already be in user profile for safety reasons."
+        },
+        {
+          "line": 97,
+          "section": "## Book flight",
+          "text": "Do not add checked bags that the user does not need."
+        },
+        {
+          "line": 100,
+          "section": "## Book flight",
+          "text": "- The agent should ask if the user wants to buy the travel insurance."
+        },
+        {
+          "line": 101,
+          "section": "## Book flight",
+          "text": "- The travel insurance is 30 dollars per passenger and enables full refund if the user needs to cancel the flight given health or weather reasons."
+        },
+        {
+          "line": 105,
+          "section": "## Modify flight",
+          "text": "First, the agent must obtain the user id and reservation id."
+        },
+        {
+          "line": 106,
+          "section": "## Modify flight",
+          "text": "- The user must provide their user id."
+        },
+        {
+          "line": 107,
+          "section": "## Modify flight",
+          "text": "- If the user doesn't know their reservation id, the agent should help locate it using available tools."
+        },
+        {
+          "line": 110,
+          "section": "## Modify flight",
+          "text": "- Basic economy flights cannot be modified."
+        },
+        {
+          "line": 112,
+          "section": "## Modify flight",
+          "text": "- Some flight segments can be kept, but their prices will not be updated based on the current price."
+        },
+        {
+          "line": 113,
+          "section": "## Modify flight",
+          "text": "- The API does not check these for the agent, so the agent must make sure the rules apply before calling the API!"
+        },
+        {
+          "line": 116,
+          "section": "## Modify flight",
+          "text": "- Cabin cannot be changed if any flight in the reservation has already been flown."
+        },
+        {
+          "line": 118,
+          "section": "## Modify flight",
+          "text": "- Cabin class must remain the same across all the flights in the same reservation; changing cabin for just one flight segment is not possible."
+        },
+        {
+          "line": 119,
+          "section": "## Modify flight",
+          "text": "- If the price after cabin change is higher than the original price, the user is required to pay for the difference."
+        },
+        {
+          "line": 120,
+          "section": "## Modify flight",
+          "text": "- If the price after cabin change is lower than the original price, the user is should be refunded the difference."
+        },
+        {
+          "line": 124,
+          "section": "## Modify flight",
+          "text": "- The user cannot add insurance after initial booking."
+        },
+        {
+          "line": 127,
+          "section": "## Modify flight",
+          "text": "- The user can modify passengers but cannot modify the number of passengers."
+        },
+        {
+          "line": 128,
+          "section": "## Modify flight",
+          "text": "- Even a human agent cannot modify the number of passengers."
+        },
+        {
+          "line": 131,
+          "section": "## Modify flight",
+          "text": "- If the flights are changed, the user needs to provide a single gift card or credit card for payment or refund method. The payment method must already be in user profile for safety reasons."
+        },
+        {
+          "line": 135,
+          "section": "## Cancel flight",
+          "text": "First, the agent must obtain the user id and reservation id."
+        },
+        {
+          "line": 136,
+          "section": "## Cancel flight",
+          "text": "- The user must provide their user id."
+        },
+        {
+          "line": 137,
+          "section": "## Cancel flight",
+          "text": "- If the user doesn't know their reservation id, the agent should help locate it using available tools."
+        },
+        {
+          "line": 139,
+          "section": "## Cancel flight",
+          "text": "The agent must also obtain the reason for cancellation (change of plan, airline cancelled flight, or other reasons)"
+        },
+        {
+          "line": 141,
+          "section": "## Cancel flight",
+          "text": "If any portion of the flight has already been flown, the agent cannot help and transfer is needed."
+        },
+        {
+          "line": 149,
+          "section": "## Cancel flight",
+          "text": "The API does not check that cancellation rules are met, so the agent must make sure the rules apply before calling the API!"
+        },
+        {
+          "line": 155,
+          "section": "## Refunds and Compensation",
+          "text": "Do not proactively offer a compensation unless the user explicitly asks for one."
+        },
+        {
+          "line": 157,
+          "section": "## Refunds and Compensation",
+          "text": "Do not compensate if the user is regular member and has no travel insurance and flies (basic) economy."
+        },
+        {
+          "line": 159,
+          "section": "## Refunds and Compensation",
+          "text": "Always confirms the facts before offering compensation."
+        },
+        {
+          "line": 161,
+          "section": "## Refunds and Compensation",
+          "text": "Only compensate if the user is a silver/gold member or has travel insurance or flies business."
+        },
+        {
+          "line": 163,
+          "section": "## Refunds and Compensation",
+          "text": "- If the user complains about cancelled flights in a reservation, the agent can offer a certificate as a gesture after confirming the facts, with the amount being $100 times the number of passengers."
+        },
+        {
+          "line": 165,
+          "section": "## Refunds and Compensation",
+          "text": "- If the user complains about delayed flights in a reservation and wants to change or cancel the reservation, the agent can offer a certificate as a gesture after confirming the facts and changing or cancelling the reservation, with the amount being $50 times the number of passengers."
+        },
+        {
+          "line": 167,
+          "section": "## Refunds and Compensation",
+          "text": "Do not offer compensation for any other reason than the ones listed above."
+        }
+      ],
+      "all_lines_preserved_at_pinned_source": true,
+      "semantically_complete_obligation_set": false
+    },
+    "retail": {
+      "source_file": "data/tau2/domains/retail/policy.md",
+      "source_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "total_lines": 137,
+      "nonempty_lines": 77,
+      "sections": [
+        {
+          "line": 1,
+          "title": "# Retail agent policy"
+        },
+        {
+          "line": 26,
+          "title": "## Domain basic"
+        },
+        {
+          "line": 30,
+          "title": "### User"
+        },
+        {
+          "line": 41,
+          "title": "### Product"
+        },
+        {
+          "line": 64,
+          "title": "### Order"
+        },
+        {
+          "line": 80,
+          "title": "## Generic action rules"
+        },
+        {
+          "line": 86,
+          "title": "## Cancel pending order"
+        },
+        {
+          "line": 94,
+          "title": "## Modify pending order"
+        },
+        {
+          "line": 100,
+          "title": "### Modify payment"
+        },
+        {
+          "line": 108,
+          "title": "### Modify items"
+        },
+        {
+          "line": 116,
+          "title": "## Return delivered order"
+        },
+        {
+          "line": 128,
+          "title": "## Exchange delivered order"
+        }
+      ],
+      "mechanical_candidate_policy_lines": [
+        {
+          "line": 10,
+          "section": "# Retail agent policy",
+          "text": "At the beginning of the conversation, you have to authenticate the user identity by locating their user id via email, or via name + zip code. This has to be done even when the user already provides the user id."
+        },
+        {
+          "line": 14,
+          "section": "# Retail agent policy",
+          "text": "You can only help one user per conversation (but you can handle multiple requests from the same user), and must deny any requests for tasks related to any other user."
+        },
+        {
+          "line": 16,
+          "section": "# Retail agent policy",
+          "text": "Before taking any action that updates the database (cancel, modify, return, exchange), you must list the action details and obtain explicit user confirmation (yes) to proceed."
+        },
+        {
+          "line": 18,
+          "section": "# Retail agent policy",
+          "text": "You should not make up any information or knowledge or procedures not provided by the user or the tools, or give subjective recommendations or comments."
+        },
+        {
+          "line": 20,
+          "section": "# Retail agent policy",
+          "text": "You should at most make one tool call at a time, and if you take a tool call, you should not respond to the user at the same time. If you respond to the user, you should not make a tool call at the same time."
+        },
+        {
+          "line": 22,
+          "section": "# Retail agent policy",
+          "text": "You should deny user requests that are against this policy."
+        },
+        {
+          "line": 24,
+          "section": "# Retail agent policy",
+          "text": "You should transfer the user to a human agent if and only if the request cannot be handled within the scope of your actions. To transfer, first make a tool call to transfer_to_human_agents, and then send the message 'YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.' to the user."
+        },
+        {
+          "line": 62,
+          "section": "### Product",
+          "text": "Note: Product ID and Item ID have no relations and should not be confused!"
+        },
+        {
+          "line": 82,
+          "section": "## Generic action rules",
+          "text": "Generally, you can only take action on pending or delivered orders."
+        },
+        {
+          "line": 84,
+          "section": "## Generic action rules",
+          "text": "Exchange or modify order tools can only be called once per order. Be sure that all items to be changed are collected into a list before making the tool call!!!"
+        },
+        {
+          "line": 88,
+          "section": "## Cancel pending order",
+          "text": "An order can only be cancelled if its status is 'pending', and you should check its status before taking the action."
+        },
+        {
+          "line": 90,
+          "section": "## Cancel pending order",
+          "text": "The user needs to confirm the order id and the reason (either 'no longer needed' or 'ordered by mistake') for cancellation. Other reasons are not acceptable."
+        },
+        {
+          "line": 92,
+          "section": "## Cancel pending order",
+          "text": "After user confirmation, the order status will be changed to 'cancelled', and the total will be refunded via the original payment method immediately if it is gift card, otherwise in 5 to 7 business days."
+        },
+        {
+          "line": 96,
+          "section": "## Modify pending order",
+          "text": "An order can only be modified if its status is 'pending', and you should check its status before taking the action."
+        },
+        {
+          "line": 102,
+          "section": "### Modify payment",
+          "text": "The user can only choose a single payment method different from the original payment method."
+        },
+        {
+          "line": 104,
+          "section": "### Modify payment",
+          "text": "If the user wants the modify the payment method to gift card, it must have enough balance to cover the total amount."
+        },
+        {
+          "line": 106,
+          "section": "### Modify payment",
+          "text": "After user confirmation, the order status will be kept as 'pending'. The original payment method will be refunded immediately if it is a gift card, otherwise it will be refunded within 5 to 7 business days."
+        },
+        {
+          "line": 110,
+          "section": "### Modify items",
+          "text": "This action can only be called once, and will change the order status to 'pending (items modifed)'. The agent will not be able to modify or cancel the order anymore. So you must confirm all the details are correct and be cautious before taking this action. In particular, remember to remind the customer to confirm they have provided all the items they want to modify."
+        },
+        {
+          "line": 112,
+          "section": "### Modify items",
+          "text": "For a pending order, each item can be modified to an available new item of the same product but of different product option. There cannot be any change of product types, e.g. modify shirt to shoe."
+        },
+        {
+          "line": 114,
+          "section": "### Modify items",
+          "text": "The user must provide a payment method to pay or receive refund of the price difference. If the user provides a gift card, it must have enough balance to cover the price difference."
+        },
+        {
+          "line": 118,
+          "section": "## Return delivered order",
+          "text": "An order can only be returned if its status is 'delivered', and you should check its status before taking the action."
+        },
+        {
+          "line": 120,
+          "section": "## Return delivered order",
+          "text": "The user needs to confirm the order id and the list of items to be returned."
+        },
+        {
+          "line": 122,
+          "section": "## Return delivered order",
+          "text": "The user needs to provide a payment method to receive the refund."
+        },
+        {
+          "line": 124,
+          "section": "## Return delivered order",
+          "text": "The refund must either go to the original payment method, or an existing gift card."
+        },
+        {
+          "line": 126,
+          "section": "## Return delivered order",
+          "text": "After user confirmation, the order status will be changed to 'return requested', and the user will receive an email regarding how to return items."
+        },
+        {
+          "line": 130,
+          "section": "## Exchange delivered order",
+          "text": "An order can only be exchanged if its status is 'delivered', and you should check its status before taking the action. In particular, remember to remind the customer to confirm they have provided all items to be exchanged."
+        },
+        {
+          "line": 132,
+          "section": "## Exchange delivered order",
+          "text": "For a delivered order, each item can be exchanged to an available new item of the same product but of different product option. There cannot be any change of product types, e.g. modify shirt to shoe."
+        },
+        {
+          "line": 134,
+          "section": "## Exchange delivered order",
+          "text": "The user must provide a payment method to pay or receive refund of the price difference. If the user provides a gift card, it must have enough balance to cover the price difference."
+        },
+        {
+          "line": 136,
+          "section": "## Exchange delivered order",
+          "text": "After user confirmation, the order status will be changed to 'exchange requested', and the user will receive an email regarding how to return items. There is no need to place a new order."
+        }
+      ],
+      "all_lines_preserved_at_pinned_source": true,
+      "semantically_complete_obligation_set": false
+    }
+  },
+  "policy_case_source_links": [
+    {
+      "case_id": "airline/0",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/1",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/2",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/3",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/4",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/5",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/6",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/7",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/8",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/9",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/10",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/11",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/12",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/13",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/14",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/15",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/16",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/17",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/18",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/19",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/20",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/21",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/22",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/23",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/24",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/25",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/26",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/27",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/28",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/29",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/30",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/31",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/32",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/33",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/34",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/35",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/36",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/37",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/38",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/39",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/40",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/41",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/42",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/43",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/44",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/45",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/46",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/47",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/48",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "airline/49",
+      "domain": "airline",
+      "policy_git_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "task_source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/0",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/1",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/2",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/3",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/4",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/5",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/6",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/7",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/8",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/9",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/10",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/11",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/12",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/13",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/14",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/15",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/16",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/17",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/18",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/19",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/20",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/21",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/22",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/23",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/24",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/25",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/26",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/27",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/28",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/29",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/30",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/31",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/32",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/33",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/34",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/35",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/36",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/37",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/38",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/39",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/40",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/41",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/42",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/43",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/44",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/45",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/46",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/47",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/48",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/49",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/50",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/51",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/52",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/53",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/54",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/55",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/56",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/57",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/58",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/59",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/60",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/61",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/62",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/63",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/64",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/65",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/66",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/67",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/68",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/69",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/70",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/71",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/72",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/73",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/74",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/75",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/76",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/77",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/78",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/79",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/80",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/81",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/82",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/83",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/84",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/85",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/86",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/87",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/88",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/89",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/90",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/91",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/92",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/93",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/94",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/95",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/96",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/97",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/98",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/99",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/100",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/101",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/102",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/103",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/104",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/105",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/106",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/107",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/108",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/109",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/110",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/111",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/112",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    },
+    {
+      "case_id": "retail/113",
+      "domain": "retail",
+      "policy_git_blob": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "task_source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "all_source_policy_clauses_semantically_bound": false,
+      "independently_exhaustive_policy_obligations": false
+    }
+  ],
+  "quality_gate": {
+    "checks": [
+      {
+        "check": "source_pins",
+        "pass": true
+      },
+      {
+        "check": "164_same_tasks",
+        "pass": true
+      },
+      {
+        "check": "each_publisher_policy_mapped",
+        "pass": true
+      },
+      {
+        "check": "candidate_line_numbers_unique",
+        "pass": true
+      },
+      {
+        "check": "no_semantic_completeness_promotion",
+        "pass": true
+      },
+      {
+        "check": "no_close_promotion",
+        "pass": true
+      }
+    ],
+    "passed": 6,
+    "failed": 0,
+    "real_s4_qualified": false,
+    "reasons": [
+      "policy clauses only mechanically indexed, not semantically exhaustively enumerated or task-matched",
+      "publisher tasks and policy share source but not independent real-world authorization",
+      "independent semantic NL judge, blind custody, positive proof of empty case obligations and live A/E interventions missing"
+    ],
+    "standalone_scientific_AC_promoted": 0,
+    "root_mvp_passed": 2,
+    "root_mvp_required": 18
+  }
+}

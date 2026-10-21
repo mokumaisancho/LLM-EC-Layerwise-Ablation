@@ -1,0 +1,167 @@
+{
+  "schema": "ISSUE1_RCA_ISSUES_2_3_4_6_7_8_V1",
+  "as_of": "2026-10-16",
+  "git_commit": "4036a1b9425b56f144ab72e2d55b1691c1439879",
+  "source_files": [
+    {
+      "path": "tools/generate_phase1_fixtures.py",
+      "git_blob": "8bf95c86ff5f057e67d76ca71cc37ec41b33e81d"
+    },
+    {
+      "path": "tools/validate_phase1_tcc.py",
+      "git_blob": "333c60cd089565499332495267109cc071fac0c1"
+    },
+    {
+      "path": "tools/generate_phase1_measurement_v2.py",
+      "git_blob": "26bf4a57451769f0a1b617687abe216f773faa8f"
+    },
+    {
+      "path": "tools/generate_phase1_measurement_v2_canonical.py",
+      "git_blob": "e354884f20a534a3be429ffdcff5f72135472436"
+    },
+    {
+      "path": "tools/generate_phase1_v2_s3_states.py",
+      "git_blob": "88d242d83e009d9ea27f883316bce7217b81eb85"
+    },
+    {
+      "path": "tools/build_s3_state_from_s1.py",
+      "git_blob": "ada6802efd66893ba39b399ec0d0840ea21db3ca"
+    },
+    {
+      "path": "tools/issue1_s3_gold_contamination_preflight_v42.mjs",
+      "git_blob": "dbb8fb93ba0717c077e606d8677e78139edcda07"
+    },
+    {
+      "path": "fixtures/phase1_v1/FREEZE_MANIFEST.json",
+      "git_blob": "33ee2f79567c3dedb0ac1038329d4ee6be3bd053"
+    },
+    {
+      "path": "fixtures/phase1_v1/README.md",
+      "git_blob": "73e2a81f5472569fff321c1372a1de64d2d56947"
+    },
+    {
+      "path": "results/phase1_v2_qualification_2026-10-03.json",
+      "git_blob": "7eca5217c608efb4982a15bd2969004a9d3f9537"
+    }
+  ],
+  "source_snapshot_coverage": {
+    "v1_raw_fixture_count": 1,
+    "v2_raw_fixture_count": 0,
+    "repo_tree_truncated": false
+  },
+  "evidence": [
+    {
+      "issue": 2,
+      "id": "V1_FROZEN_SUMMARY",
+      "observed": "PASS",
+      "source_evidence": "v1 freeze manifest status FROZEN",
+      "evidence_type": "SOURCE_INSPECTION",
+      "source_revision": "4036a1b9425b56f144ab72e2d55b1691c1439879"
+    },
+    {
+      "issue": 2,
+      "id": "V1_REPO_10_RAW_MATERIALIZATION",
+      "observed": "FAIL",
+      "source_evidence": "only 1 of 10 v1 individual task files are tracked",
+      "evidence_type": "SOURCE_INSPECTION",
+      "source_revision": "4036a1b9425b56f144ab72e2d55b1691c1439879"
+    },
+    {
+      "issue": 2,
+      "id": "V2_REPO_10_RAW_MATERIALIZATION",
+      "observed": "FAIL",
+      "source_evidence": "0 of 10 canonical phase1_v2 generated task files are tracked; generator and summary persisted",
+      "evidence_type": "SOURCE_INSPECTION",
+      "source_revision": "4036a1b9425b56f144ab72e2d55b1691c1439879"
+    },
+    {
+      "issue": 3,
+      "id": "V1_TWO_ADMISSIBLE_CONSTRUCTED",
+      "observed": "PASS",
+      "source_evidence": "v1 generator constructs c-valid-2 for 2-valid case and enumerates acceptable ids",
+      "evidence_type": "SOURCE_INSPECTION",
+      "source_revision": "4036a1b9425b56f144ab72e2d55b1691c1439879"
+    },
+    {
+      "issue": 3,
+      "id": "V2_CANONICAL_TWO_DISTINCT_M003",
+      "observed": "PASS",
+      "source_evidence": "v2 canonical generator explicitly enumerates competing A,B",
+      "evidence_type": "SOURCE_INSPECTION",
+      "source_revision": "4036a1b9425b56f144ab72e2d55b1691c1439879"
+    },
+    {
+      "issue": 4,
+      "id": "GENERATOR_CAUSAL_HASH_ORDER",
+      "observed": "PASS",
+      "source_evidence": "v1 source computes each downstream hash after source upstream link",
+      "evidence_type": "SOURCE_INSPECTION",
+      "source_revision": "4036a1b9425b56f144ab72e2d55b1691c1439879"
+    },
+    {
+      "issue": 4,
+      "id": "VALIDATOR_ALL_FOUR_AND_THREE_LINKS",
+      "observed": "PASS",
+      "source_evidence": "validator checks four content hashes and three upstream pointers",
+      "evidence_type": "SOURCE_INSPECTION",
+      "source_revision": "4036a1b9425b56f144ab72e2d55b1691c1439879"
+    },
+    {
+      "issue": 6,
+      "id": "S3_STATES_TASK_SOURCE_DERIVED",
+      "observed": "FAIL",
+      "source_evidence": "false: historical phase1_v2 S3 oracle upstream STAGES is fixture-ID-keyed STATES literal; later separate S1 adapter exists",
+      "evidence_type": "SOURCE_INSPECTION",
+      "source_revision": "4036a1b9425b56f144ab72e2d55b1691c1439879"
+    },
+    {
+      "issue": 7,
+      "id": "M009_SINGLE_FRAME_VARIABLE",
+      "observed": "PASS",
+      "source_evidence": "M009 now encodes one frame variable; M005 retains unexplained observation",
+      "evidence_type": "SOURCE_INSPECTION",
+      "source_revision": "4036a1b9425b56f144ab72e2d55b1691c1439879"
+    },
+    {
+      "issue": 8,
+      "id": "RELATION_PROVIDED_IN_CANONICAL_S2",
+      "observed": "PASS",
+      "source_evidence": "canonical S2 explicitly encodes both relation categories",
+      "evidence_type": "SOURCE_INSPECTION",
+      "source_revision": "4036a1b9425b56f144ab72e2d55b1691c1439879"
+    },
+    {
+      "issue": 8,
+      "id": "RELATION_AVAILABLE_TO_PREDICTOR",
+      "observed": "FAIL",
+      "source_evidence": "current P01 cleanTask() sends task and semantic_operation only; no relation_groups field; boundary ambiguous",
+      "evidence_type": "SOURCE_INSPECTION",
+      "source_revision": "4036a1b9425b56f144ab72e2d55b1691c1439879"
+    },
+    {
+      "issue": 8,
+      "id": "GENERATED_V2_INPUT_HAS_INDEPENDENT_VERIFIED_RELATIONS",
+      "observed": "FAIL",
+      "source_evidence": "fixture-ID keyed relation assignment is author-derived (M003/M009); no independently verified task-semantic relation inference yet",
+      "evidence_type": "LOGICAL_SOURCE_PROVENANCE",
+      "source_revision": "4036a1b9425b56f144ab72e2d55b1691c1439879"
+    }
+  ],
+  "source_checks": {
+    "pass": 7,
+    "fail": 5,
+    "total": 12,
+    "all_expected_pass_fail": true
+  },
+  "qualifications": {
+    "2": "Summary FREEZE exists and generator is tracked. Only 1 literal v1 fixture and 0 v2 generated task files in source tree; need materialization with per-file hash+source pin before real matched A-E.",
+    "3": "Causal defect repaired at deterministic generator source level. Not an actual engine recall experiment.",
+    "4": "Hash mutation order corrected and validator implemented; no execution of full Python fixture suite in this turn.",
+    "6": "Historical S3 frame oracle is manually keyed per M001-M010 rather than derived from actual S1/S2; later S1 adapter exists but is not proof of exact native semantic state.",
+    "7": "M009 false duplicate encoding corrected in authored oracle-framing state. Not a language-semantic recognition result.",
+    "8": "Canonical S2 relation_groups resolves M003/M009 in Oracle side; now P01 gold-blind model projection excludes relation_groups. This preserves blind independence but leaves explicit relation metadata unavailable for same-interface S3/S4 comparison. Independent semantic source authority unproven."
+  },
+  "root_AC_promoted": 0,
+  "model_ec_experiment_executed": false,
+  "tests_execution": "GitHub source strings and full tree inspected. These 12 source-level assertions were evaluated in V8; Python fixture+Node integration and actual EC/LLM not run."
+}

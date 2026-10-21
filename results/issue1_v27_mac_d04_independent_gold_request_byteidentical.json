@@ -1,0 +1,18 @@
+{
+  "independent_gold_rows": null,
+  "parent_issue": 59,
+  "required": [
+    "genuinely unseen case inputs with provenance and creation date",
+    "heldout frozen before evaluated models and EC see inputs",
+    "all-admissible candidate decisions and source-grounded rationales",
+    "S1/S2 per-case SHA binding",
+    "third-party assessor and custody attestation",
+    "no gold in predictor runtime",
+    "competing/equivalent counterfactual controls"
+  ],
+  "schema": "ISSUE1_D04_INDEPENDENT_HOLDOUT_REQUEST_V27",
+  "scientific_ac_promotion": 0,
+  "source_of_truth": "NOT_YET_QUALIFIED",
+  "status": "BLOCKED_EXTERNAL",
+  "third_party_attestation": null
+}

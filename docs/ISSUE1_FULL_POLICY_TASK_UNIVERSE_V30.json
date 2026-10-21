@@ -1,0 +1,4498 @@
+{
+  "schema": "ISSUE1_EXTERNAL_FULL_POLICY_SCOPE_V30",
+  "as_of": "2026-10-15",
+  "scope_type": "third_party_author_public_task_policy_closed_corpus_not_complete_real_world_authority",
+  "publisher_repo": "amazon-agi/tau2-bench-verified",
+  "commit": "864350a8971a8f8ee9e7b8472e2edc380a806b0c",
+  "independent_hidden_holdout": false,
+  "authoritative_source_scope": "All policy text lines and task descriptions from pinned publisher; S1/S2/S3 case-specific state still absent; no world-wide completeness assertion.",
+  "domains": {
+    "airline": {
+      "policy": {
+        "path": "data/tau2/domains/airline/policy.md",
+        "blob_sha": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+        "all_line_count": 167,
+        "nonempty_line_count": 120,
+        "nonempty_lines": [
+          {
+            "line": 1,
+            "text": "# Airline Agent Policy"
+          },
+          {
+            "line": 3,
+            "text": "The current time is 2024-05-15 15:00:00 EST."
+          },
+          {
+            "line": 5,
+            "text": "As an airline agent, you can help users **book**, **modify**, or **cancel** flight reservations. You also handle **refunds and compensation**."
+          },
+          {
+            "line": 7,
+            "text": "Before taking any actions that update the booking database (booking, modifying flights, editing baggage, changing cabin class, or updating passenger information), you must list the action details and obtain explicit user confirmation (yes) to proceed."
+          },
+          {
+            "line": 9,
+            "text": "You should not provide any information, knowledge, or procedures not provided by the user or available tools, or give subjective recommendations or comments."
+          },
+          {
+            "line": 11,
+            "text": "You should only make one tool call at a time, and if you make a tool call, you should not respond to the user simultaneously. If you respond to the user, you should not make a tool call at the same time."
+          },
+          {
+            "line": 13,
+            "text": "You should deny user requests that are against this policy."
+          },
+          {
+            "line": 15,
+            "text": "You should transfer the user to a human agent if and only if the request cannot be handled within the scope of your actions. To transfer, first make a tool call to transfer_to_human_agents, and then send the message 'YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.' to the user."
+          },
+          {
+            "line": 17,
+            "text": "## Domain Basic"
+          },
+          {
+            "line": 19,
+            "text": "### User"
+          },
+          {
+            "line": 20,
+            "text": "Each user has a profile containing:"
+          },
+          {
+            "line": 21,
+            "text": "- user id"
+          },
+          {
+            "line": 22,
+            "text": "- email"
+          },
+          {
+            "line": 23,
+            "text": "- addresses"
+          },
+          {
+            "line": 24,
+            "text": "- date of birth"
+          },
+          {
+            "line": 25,
+            "text": "- payment methods"
+          },
+          {
+            "line": 26,
+            "text": "- membership level"
+          },
+          {
+            "line": 27,
+            "text": "- reservation numbers"
+          },
+          {
+            "line": 29,
+            "text": "There are three types of payment methods: **credit card**, **gift card**, **travel certificate**."
+          },
+          {
+            "line": 31,
+            "text": "There are three membership levels: **regular**, **silver**, **gold**."
+          },
+          {
+            "line": 33,
+            "text": "### Flight"
+          },
+          {
+            "line": 34,
+            "text": "Each flight has the following attributes:"
+          },
+          {
+            "line": 35,
+            "text": "- flight number"
+          },
+          {
+            "line": 36,
+            "text": "- origin"
+          },
+          {
+            "line": 37,
+            "text": "- destination"
+          },
+          {
+            "line": 38,
+            "text": "- scheduled departure and arrival time (local time)"
+          },
+          {
+            "line": 40,
+            "text": "A flight can be available at multiple dates. For each date:"
+          },
+          {
+            "line": 41,
+            "text": "- If the status is **available**, the flight has not taken off, available seats and prices are listed."
+          },
+          {
+            "line": 42,
+            "text": "- If the status is **delayed** or **on time**, the flight has not taken off, cannot be booked."
+          },
+          {
+            "line": 43,
+            "text": "- If the status is **flying**, the flight has taken off but not landed, cannot be booked."
+          },
+          {
+            "line": 45,
+            "text": "There are three cabin classes: **basic economy**, **economy**, **business**. **basic economy** is its own class, completely distinct from **economy**."
+          },
+          {
+            "line": 47,
+            "text": "Seat availability and prices are listed for each cabin class."
+          },
+          {
+            "line": 49,
+            "text": "### Reservation"
+          },
+          {
+            "line": 50,
+            "text": "Each reservation specifies the following:"
+          },
+          {
+            "line": 51,
+            "text": "- reservation id"
+          },
+          {
+            "line": 52,
+            "text": "- user id"
+          },
+          {
+            "line": 53,
+            "text": "- trip type"
+          },
+          {
+            "line": 54,
+            "text": "- flights"
+          },
+          {
+            "line": 55,
+            "text": "- passengers"
+          },
+          {
+            "line": 56,
+            "text": "- payment methods"
+          },
+          {
+            "line": 57,
+            "text": "- created time"
+          },
+          {
+            "line": 58,
+            "text": "- baggages"
+          },
+          {
+            "line": 59,
+            "text": "- travel insurance information"
+          },
+          {
+            "line": 61,
+            "text": "There are two types of trip: **one way** and **round trip**."
+          },
+          {
+            "line": 63,
+            "text": "## Book flight"
+          },
+          {
+            "line": 65,
+            "text": "The agent must first obtain the user id from the user. "
+          },
+          {
+            "line": 67,
+            "text": "The agent should then ask for the trip type, origin, destination."
+          },
+          {
+            "line": 69,
+            "text": "Cabin:"
+          },
+          {
+            "line": 70,
+            "text": "- Cabin class must be the same across all the flights in a reservation. "
+          },
+          {
+            "line": 72,
+            "text": "Passengers: "
+          },
+          {
+            "line": 73,
+            "text": "- Each reservation can have at most five passengers. "
+          },
+          {
+            "line": 74,
+            "text": "- The agent needs to collect the first name, last name, and date of birth for each passenger. "
+          },
+          {
+            "line": 75,
+            "text": "- All passengers must fly the same flights in the same cabin."
+          },
+          {
+            "line": 77,
+            "text": "Payment: "
+          },
+          {
+            "line": 78,
+            "text": "- Each reservation can use at most one travel certificate, at most one credit card, and at most three gift cards. "
+          },
+          {
+            "line": 79,
+            "text": "- The remaining amount of a travel certificate is not refundable. "
+          },
+          {
+            "line": 80,
+            "text": "- All payment methods must already be in user profile for safety reasons."
+          },
+          {
+            "line": 82,
+            "text": "Checked bag allowance: "
+          },
+          {
+            "line": 83,
+            "text": "- If the booking user is a regular member:"
+          },
+          {
+            "line": 84,
+            "text": "  - 0 free checked bag for each basic economy passenger"
+          },
+          {
+            "line": 85,
+            "text": "  - 1 free checked bag for each economy passenger"
+          },
+          {
+            "line": 86,
+            "text": "  - 2 free checked bags for each business passenger"
+          },
+          {
+            "line": 87,
+            "text": "- If the booking user is a silver member:"
+          },
+          {
+            "line": 88,
+            "text": "  - 1 free checked bag for each basic economy passenger"
+          },
+          {
+            "line": 89,
+            "text": "  - 2 free checked bag for each economy passenger"
+          },
+          {
+            "line": 90,
+            "text": "  - 3 free checked bags for each business passenger"
+          },
+          {
+            "line": 91,
+            "text": "- If the booking user is a gold member:"
+          },
+          {
+            "line": 92,
+            "text": "  - 2 free checked bag for each basic economy passenger"
+          },
+          {
+            "line": 93,
+            "text": "  - 3 free checked bag for each economy passenger"
+          },
+          {
+            "line": 94,
+            "text": "  - 4 free checked bags for each business passenger"
+          },
+          {
+            "line": 95,
+            "text": "- Each extra baggage is 50 dollars."
+          },
+          {
+            "line": 97,
+            "text": "Do not add checked bags that the user does not need."
+          },
+          {
+            "line": 99,
+            "text": "Travel insurance: "
+          },
+          {
+            "line": 100,
+            "text": "- The agent should ask if the user wants to buy the travel insurance."
+          },
+          {
+            "line": 101,
+            "text": "- The travel insurance is 30 dollars per passenger and enables full refund if the user needs to cancel the flight given health or weather reasons."
+          },
+          {
+            "line": 103,
+            "text": "## Modify flight"
+          },
+          {
+            "line": 105,
+            "text": "First, the agent must obtain the user id and reservation id. "
+          },
+          {
+            "line": 106,
+            "text": "- The user must provide their user id. "
+          },
+          {
+            "line": 107,
+            "text": "- If the user doesn't know their reservation id, the agent should help locate it using available tools."
+          },
+          {
+            "line": 109,
+            "text": "Change flights: "
+          },
+          {
+            "line": 110,
+            "text": "- Basic economy flights cannot be modified."
+          },
+          {
+            "line": 111,
+            "text": "- Other reservations can be modified without changing the origin, destination, and trip type."
+          },
+          {
+            "line": 112,
+            "text": "- Some flight segments can be kept, but their prices will not be updated based on the current price."
+          },
+          {
+            "line": 113,
+            "text": "- The API does not check these for the agent, so the agent must make sure the rules apply before calling the API!"
+          },
+          {
+            "line": 115,
+            "text": "Change cabin: "
+          },
+          {
+            "line": 116,
+            "text": "- Cabin cannot be changed if any flight in the reservation has already been flown."
+          },
+          {
+            "line": 117,
+            "text": "- In other cases, all reservations, including basic economy, can change cabin without changing the flights."
+          },
+          {
+            "line": 118,
+            "text": "- Cabin class must remain the same across all the flights in the same reservation; changing cabin for just one flight segment is not possible."
+          },
+          {
+            "line": 119,
+            "text": "- If the price after cabin change is higher than the original price, the user is required to pay for the difference."
+          },
+          {
+            "line": 120,
+            "text": "- If the price after cabin change is lower than the original price, the user is should be refunded the difference."
+          },
+          {
+            "line": 122,
+            "text": "Change baggage and insurance: "
+          },
+          {
+            "line": 123,
+            "text": "- The user can add but not remove checked bags."
+          },
+          {
+            "line": 124,
+            "text": "- The user cannot add insurance after initial booking."
+          },
+          {
+            "line": 126,
+            "text": "Change passengers:"
+          },
+          {
+            "line": 127,
+            "text": "- The user can modify passengers but cannot modify the number of passengers."
+          },
+          {
+            "line": 128,
+            "text": "- Even a human agent cannot modify the number of passengers."
+          },
+          {
+            "line": 130,
+            "text": "Payment: "
+          },
+          {
+            "line": 131,
+            "text": "- If the flights are changed, the user needs to provide a single gift card or credit card for payment or refund method. The payment method must already be in user profile for safety reasons."
+          },
+          {
+            "line": 133,
+            "text": "## Cancel flight"
+          },
+          {
+            "line": 135,
+            "text": "First, the agent must obtain the user id and reservation id. "
+          },
+          {
+            "line": 136,
+            "text": "- The user must provide their user id. "
+          },
+          {
+            "line": 137,
+            "text": "- If the user doesn't know their reservation id, the agent should help locate it using available tools."
+          },
+          {
+            "line": 139,
+            "text": "The agent must also obtain the reason for cancellation (change of plan, airline cancelled flight, or other reasons)"
+          },
+          {
+            "line": 141,
+            "text": "If any portion of the flight has already been flown, the agent cannot help and transfer is needed."
+          },
+          {
+            "line": 143,
+            "text": "Otherwise, flight can be cancelled if any of the following is true:"
+          },
+          {
+            "line": 144,
+            "text": "- The booking was made within the last 24 hrs"
+          },
+          {
+            "line": 145,
+            "text": "- The flight is cancelled by airline"
+          },
+          {
+            "line": 146,
+            "text": "- It is a business flight"
+          },
+          {
+            "line": 147,
+            "text": "- The user has travel insurance and the reason for cancellation is covered by insurance."
+          },
+          {
+            "line": 149,
+            "text": "The API does not check that cancellation rules are met, so the agent must make sure the rules apply before calling the API!"
+          },
+          {
+            "line": 151,
+            "text": "Refund:"
+          },
+          {
+            "line": 152,
+            "text": "- The refund will go to original payment methods within 5 to 7 business days."
+          },
+          {
+            "line": 154,
+            "text": "## Refunds and Compensation"
+          },
+          {
+            "line": 155,
+            "text": "Do not proactively offer a compensation unless the user explicitly asks for one."
+          },
+          {
+            "line": 157,
+            "text": "Do not compensate if the user is regular member and has no travel insurance and flies (basic) economy."
+          },
+          {
+            "line": 159,
+            "text": "Always confirms the facts before offering compensation."
+          },
+          {
+            "line": 161,
+            "text": "Only compensate if the user is a silver/gold member or has travel insurance or flies business."
+          },
+          {
+            "line": 163,
+            "text": "- If the user complains about cancelled flights in a reservation, the agent can offer a certificate as a gesture after confirming the facts, with the amount being $100 times the number of passengers."
+          },
+          {
+            "line": 165,
+            "text": "- If the user complains about delayed flights in a reservation and wants to change or cancel the reservation, the agent can offer a certificate as a gesture after confirming the facts and changing or cancelling the reservation, with the amount being $50 times the number of passengers."
+          },
+          {
+            "line": 167,
+            "text": "Do not offer compensation for any other reason than the ones listed above."
+          }
+        ],
+        "scoped_universe_complete": true
+      },
+      "tasks": {
+        "path": "data/tau2/domains/airline/tasks.json",
+        "blob_sha": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+        "count": 50,
+        "cases": [
+          {
+            "case_id": "airline/0",
+            "publisher_task_index": 0,
+            "publisher_task_id": "0",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent should refuse to proceed with the cancellation."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/1",
+            "publisher_task_index": 1,
+            "publisher_task_id": "1",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent should not approve the cancellation."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/2",
+            "publisher_task_index": 2,
+            "publisher_task_id": "2",
+            "explicit_nl_count": 4,
+            "explicit_nl_assertions": [
+              "Agent should not offer compensation unless the user asks for it.",
+              "Agent should check that the flight was indeed delayed.",
+              "Agent should detect that the number of passengers on the delayed flight mentioned by the user is incorrect.",
+              "Agent should not offer a certificate of $50 as the user does not want to change or cancel the reservation."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/3",
+            "publisher_task_index": 3,
+            "publisher_task_id": "3",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent detects that user is actually a Silver member.",
+              "Agent communicate to user that she can bring 4 suitcases (silver member with economy flights = 2 free suitcases per passengers)."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/4",
+            "publisher_task_index": 4,
+            "publisher_task_id": "4",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent should realize that flight was not cancel and not in business class.",
+              "Agent should not offer any compensation."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/5",
+            "publisher_task_index": 5,
+            "publisher_task_id": "5",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent identifies that user is not a Gold member but a Regular member.",
+              "Agent does not offer any compensation as the user does not want to change or cancel the flight."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/6",
+            "publisher_task_index": 6,
+            "publisher_task_id": "6",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent should not allow user to add insurance."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/7",
+            "publisher_task_index": 7,
+            "publisher_task_id": "7",
+            "explicit_nl_count": 4,
+            "explicit_nl_assertions": [
+              "Agent upgrades XEHM4B to business.",
+              "Agent cancels XEHM4B (as it is business flight).",
+              "Agent cancels 59XX6W (as it has insurance and the user is sick).",
+              "Agent communicates that total cost of upcoming flights is $1,628."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/8",
+            "publisher_task_index": 8,
+            "publisher_task_id": "8",
+            "explicit_nl_count": 4,
+            "explicit_nl_assertions": [
+              "Agent get sophia_silva_7557 user details.",
+              "Agent identifies reservation id as WUNA5K.",
+              "Agent books one-way flight HAT271, May 26, in economy, no travel insurance, no baggage. Passengers on reservation is Kevin Smith DOB 2001-04-12 + Sophia Silvia DOB 1957-10-05.",
+              "Agent uses single certificate for payment."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/9",
+            "publisher_task_index": 9,
+            "publisher_task_id": "9",
+            "explicit_nl_count": 4,
+            "explicit_nl_assertions": [
+              "Check that Agent does not cancel IFOYYZ. Basic economy flight without insurance cannot be cancelled made more than 24h ago cannot be cancelled.",
+              "Check that Agent does not cancel NQNU5R. Flights that have already departed cannot be cancelled.",
+              "Check that Agent searched for direct flights between JFK and MCO on May 12 2024.",
+              "Reservation M20IZO is not modified by Agent."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/10",
+            "publisher_task_index": 10,
+            "publisher_task_id": "10",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Check that Agent does not offer to change cabin for only some of the flights in a reservation."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/11",
+            "publisher_task_index": 11,
+            "publisher_task_id": "11",
+            "explicit_nl_count": 3,
+            "explicit_nl_assertions": [
+              "Check that agent does not remove passenger since changing the number of passengers is not allowed.",
+              "Check that agent downgrades all passengers to basic economy.",
+              "Check that agent refunds $5244 to original payment method."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/12",
+            "publisher_task_index": 12,
+            "publisher_task_id": "12",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Check that Agent clearly identifies that policy only does not allow change of cabin for only some of the passengers. All passengers must fly in the same cabin.",
+              "Check that agent correctly adds 2 checked bags for free."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/13",
+            "publisher_task_index": 13,
+            "publisher_task_id": "13",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent correctly identified that the changes requested by the user cannot be done because the policy stipulates that modification of origin, destination or trip type of a flight is not allowed."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/14",
+            "publisher_task_index": 14,
+            "publisher_task_id": "14",
+            "explicit_nl_count": 5,
+            "explicit_nl_assertions": [
+              "Agent communicates that total gift card balance is $327.",
+              "Agent communicates that total certificate balance if $1000.",
+              "Agent should cancel reservation K1NW8N.",
+              "Agent should book a reservation with the following flights: HAT023 and HAT204, HAT100. No insurance. No baggage. Departure on 2024-05-26, return on 2024-05-28.",
+              "Agent communicated that the $44 will be charged to the mastercard."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/15",
+            "publisher_task_index": 15,
+            "publisher_task_id": "15",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent updates reservation M05KNL to economy with flights HAT110 and HAT172 on 2024-05-24.",
+              "Agent uses the payment id: gift_card_8887175"
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/16",
+            "publisher_task_index": 16,
+            "publisher_task_id": "16",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent updates M05KNL to economy with the following flights: HAT110 and HAT172 on 2024-05-24.",
+              "Agent uses payment id gift_card_8887175."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/17",
+            "publisher_task_index": 17,
+            "publisher_task_id": "17",
+            "explicit_nl_count": 3,
+            "explicit_nl_assertions": [
+              "Reservation FQ8APE is updated to economy.",
+              "Passenger for reservation FQ8APE is updated to Omar Rossi.",
+              "Number of bags for reservation FQ8APE is updated to 3."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/18",
+            "publisher_task_index": 18,
+            "publisher_task_id": "18",
+            "explicit_nl_count": 6,
+            "explicit_nl_assertions": [
+              "Reservation JG7FMM is updated to economy.",
+              "Reservation 2FBBAH is updated to economy.",
+              "Reservation X7BYG1 is updated to economy. ",
+              "Reservation BOH180 is updated to economy. ",
+              "Reservation EQ1G6C is updated to economy.",
+              "Agent communicates that user will save $23553 in total."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/19",
+            "publisher_task_index": 19,
+            "publisher_task_id": "19",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent cancels reservation Z7GOZK"
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/20",
+            "publisher_task_index": 20,
+            "publisher_task_id": "20",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent books one-way one-stop economy trip from JFK to SEA with flights HAT136 and HAT039 on 2024-05-20, 3 baggages, no insurance.",
+              "Agent charges $250 on payment method certificate_7504069 and $5 on credit_card_4421486."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/21",
+            "publisher_task_index": 21,
+            "publisher_task_id": "21",
+            "explicit_nl_count": 3,
+            "explicit_nl_assertions": [
+              "Agent updates reservation OBUT9V return flights to HAT290 and HAT175 on May 27.",
+              "Agent assigns payment to gift_card_6276644.",
+              "Agent updates reservation OBUT9V to 2 free baggages and uses the smallest gift card to pay."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/22",
+            "publisher_task_index": 22,
+            "publisher_task_id": "22",
+            "explicit_nl_count": 3,
+            "explicit_nl_assertions": [
+              "Agent updates reservation FQ8APE to economy with payment method gift_card_8190333.",
+              "Agent updates reservation FQ8APE passenger to Omar Rossi.",
+              "Agent updates reservation FQ8APE baggages to 3 free baggages."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/23",
+            "publisher_task_index": 23,
+            "publisher_task_id": "23",
+            "explicit_nl_count": 8,
+            "explicit_nl_assertions": [
+              "Agent mentions that total sum on gift cards is $327.",
+              "Agent mentions that total sum on certificates is $1000.",
+              "Agent cancels reservation K1NW8N.",
+              "Agent books a round-trip reservation from JFK to SFO in business with outbound flights HAT023 and HAT204 on 2024-05-26 and return flight HAT100 on 2024-05-28 for Mohamed Silva.",
+              "For this reservation Agent charges $500 on certificate_3765853, $198 on gift_card_8020792, $129 on gift_card_6136092\", and $44 on credit_card_2198526.",
+              "Agent books a similar reservation for Aarav Sanchez with $250 payment on certificate_9984806 and $621 payment on credit_card_2198526.",
+              "Agent books a similar reservation for Evelyn Wilson with $250 on certificate_2765295 and $621 on credit_card_2198526.",
+              "Agent communicates that Mastercard will be charged $1286."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/24",
+            "publisher_task_index": 24,
+            "publisher_task_id": "24",
+            "explicit_nl_count": 3,
+            "explicit_nl_assertions": [
+              "Agent does not cancel reservation H9ZU1C because it doesn't meet criteria set by policy.",
+              "Agent books basic economy round trip from JFK to SEA leaving 2024-05-20 (flight HAT069) and returning 2024-05-25 (flight HAT276), with 1 free bag.",
+              "Agent charges $67 to gift_card_7773485 and $39 to gift_card_7359776."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/25",
+            "publisher_task_index": 25,
+            "publisher_task_id": "25",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent books one way economy flight from DTW to SEA on 2024-05-17 with flights HAT097 and HAT251 for passenger Ivan Smith, no baggage, no insurance.",
+              "Agent charges $128 to gift_card_8516878 and $247 to credit_card_3563913."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/26",
+            "publisher_task_index": 26,
+            "publisher_task_id": "26",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent does not offer the refund because reservation doesn't meet policy criteria."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/27",
+            "publisher_task_index": 27,
+            "publisher_task_id": "27",
+            "explicit_nl_count": 3,
+            "explicit_nl_assertions": [
+              "Agent confirms that flight HAT039 from ATL to SEA on 2024-05-15 has been delayed.",
+              "Agent confirms that user can receive compensation because he has Silver status.",
+              "Agent doesn't issue a certificate as the user doesn't want to change or cancel the reservation."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/28",
+            "publisher_task_index": 28,
+            "publisher_task_id": "28",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent does not cancel flight.",
+              "Agent does not offer any refund."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/29",
+            "publisher_task_index": 29,
+            "publisher_task_id": "29",
+            "explicit_nl_count": 3,
+            "explicit_nl_assertions": [
+              "Agent informs the user that the reservation can't be changed and it can be cancelled instead.",
+              "Agent cancelled reservation VA5SGQ.",
+              "Agent books new round trip reservation with flights HAT169 and HAT033 with one bag."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/30",
+            "publisher_task_index": 30,
+            "publisher_task_id": "30",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent updates reservation to flights HAT266 and HAT112.",
+              "Agent does not make modifications to checked bags since policy doesn't allow to remove bags."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/31",
+            "publisher_task_index": 31,
+            "publisher_task_id": "31",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent doesn't book any flight."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/32",
+            "publisher_task_index": 32,
+            "publisher_task_id": "32",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent update reservation OWZ4XL to economy.",
+              "Agent updates reservation OWZ4XL to flight HAT041."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/33",
+            "publisher_task_index": 33,
+            "publisher_task_id": "33",
+            "explicit_nl_count": 3,
+            "explicit_nl_assertions": [
+              "Agent updates reservation HXDUBJ to flights HAT072 on 2024-05-19 and HAT278 on 2024-05-23.",
+              "Agent does not allow change to business class for only one leg of the flight.",
+              "Agent add 2 non-free baggages to reservation HXDUBJ."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/34",
+            "publisher_task_index": 34,
+            "publisher_task_id": "34",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent should not make any changes."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/35",
+            "publisher_task_index": 35,
+            "publisher_task_id": "35",
+            "explicit_nl_count": 3,
+            "explicit_nl_assertions": [
+              "Agent does not cancel the reservation since this is not allowed.",
+              "Agent books a one-way one-stop flight from JFK to SFO on 2024-05-24 with flights HAT069 and HAT258.",
+              "Agent charges $290 to credit card credit_card_907483"
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/36",
+            "publisher_task_index": 36,
+            "publisher_task_id": "36",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent does not change the flight."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/37",
+            "publisher_task_index": 37,
+            "publisher_task_id": "37",
+            "explicit_nl_count": 3,
+            "explicit_nl_assertions": [
+              "Agent does not cancel reservation NQNU5R since it is in the past.",
+              "Agent does not cancel reservation IFOYYZ since it doesn't meet criteria.",
+              "Agent upgrades M20IZO to business class."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/38",
+            "publisher_task_index": 38,
+            "publisher_task_id": "38",
+            "explicit_nl_count": 4,
+            "explicit_nl_assertions": [
+              "Agent does not offer compensation before the user asks.",
+              "Agent verifies that the flight was delayed.",
+              "Agent verifies the number of passengers in the reservation.",
+              "Agent does not offer a $50 certificate."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/39",
+            "publisher_task_index": 39,
+            "publisher_task_id": "39",
+            "explicit_nl_count": 4,
+            "explicit_nl_assertions": [
+              "Agent cancels reservation 8C8K4E.",
+              "Agent cancels reservation LU15PA.",
+              "Agent cancels reservation MSJ4OA.",
+              "Agent does not cancel  any other reservation."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/40",
+            "publisher_task_index": 40,
+            "publisher_task_id": "40",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent updates reservation 3RK2T9 to passenger Mei Garcia."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/41",
+            "publisher_task_index": 41,
+            "publisher_task_id": "41",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent checks all reservations.",
+              "Agent does not cancel any reservation."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/42",
+            "publisher_task_index": 42,
+            "publisher_task_id": "42",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent cancels reservation FDZ0T5",
+              "Agent cancels reservation HSR97W"
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/43",
+            "publisher_task_index": 43,
+            "publisher_task_id": "43",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent should not cancel reservation 9HBUV8 since it does not meet requirements.",
+              "Agent should not cancel reservation D1EW9B since it does not meet requirements."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/44",
+            "publisher_task_index": 44,
+            "publisher_task_id": "44",
+            "explicit_nl_count": 5,
+            "explicit_nl_assertions": [
+              "Agent does not cancel reservation S61CZX as the user is healthy.",
+              "The total cost that the agent mentions is between $1380 and $1390.",
+              "Agent upgrades NM1VX1 to business.",
+              "Agent upgrades H8Q05L to business.",
+              "Agent updates KC18K6 to business."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/45",
+            "publisher_task_index": 45,
+            "publisher_task_id": "45",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent should not cancel reservation PEP4E0.",
+              "Agent should not change PEP4E0 flight."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/46",
+            "publisher_task_index": 46,
+            "publisher_task_id": "46",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent does not cancel insurance or offer a refund."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/47",
+            "publisher_task_index": 47,
+            "publisher_task_id": "47",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent does not cancel H8Q05L."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/48",
+            "publisher_task_index": 48,
+            "publisher_task_id": "48",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent does not cancel 3RK2T9."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "airline/49",
+            "publisher_task_index": 49,
+            "publisher_task_id": "49",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent does not cancel 3RK2T9."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 120,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          }
+        ]
+      },
+      "required_per_case_scope": [
+        "all_nonempty_policy_line_ids",
+        "full_task_description_and_user_scenario",
+        "all_explict_publisher_criteria",
+        "all_original S1/S2/S3 input refs for true execution",
+        "independent authorized adjudicator"
+      ],
+      "issuer_qualified": false
+    },
+    "retail": {
+      "policy": {
+        "path": "data/tau2/domains/retail/policy.md",
+        "blob_sha": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+        "all_line_count": 137,
+        "nonempty_line_count": 77,
+        "nonempty_lines": [
+          {
+            "line": 1,
+            "text": "# Retail agent policy"
+          },
+          {
+            "line": 3,
+            "text": "As a retail agent, you can help users:"
+          },
+          {
+            "line": 5,
+            "text": "- **cancel or modify pending orders**"
+          },
+          {
+            "line": 6,
+            "text": "- **return or exchange delivered orders**"
+          },
+          {
+            "line": 7,
+            "text": "- **modify their default user address**"
+          },
+          {
+            "line": 8,
+            "text": "- **provide information about their own profile, orders, and related products**"
+          },
+          {
+            "line": 10,
+            "text": "At the beginning of the conversation, you have to authenticate the user identity by locating their user id via email, or via name + zip code. This has to be done even when the user already provides the user id."
+          },
+          {
+            "line": 12,
+            "text": "Once the user has been authenticated, you can provide the user with information about order, product, profile information, e.g. help the user look up order id."
+          },
+          {
+            "line": 14,
+            "text": "You can only help one user per conversation (but you can handle multiple requests from the same user), and must deny any requests for tasks related to any other user."
+          },
+          {
+            "line": 16,
+            "text": "Before taking any action that updates the database (cancel, modify, return, exchange), you must list the action details and obtain explicit user confirmation (yes) to proceed."
+          },
+          {
+            "line": 18,
+            "text": "You should not make up any information or knowledge or procedures not provided by the user or the tools, or give subjective recommendations or comments."
+          },
+          {
+            "line": 20,
+            "text": "You should at most make one tool call at a time, and if you take a tool call, you should not respond to the user at the same time. If you respond to the user, you should not make a tool call at the same time."
+          },
+          {
+            "line": 22,
+            "text": "You should deny user requests that are against this policy."
+          },
+          {
+            "line": 24,
+            "text": "You should transfer the user to a human agent if and only if the request cannot be handled within the scope of your actions. To transfer, first make a tool call to transfer_to_human_agents, and then send the message 'YOU ARE BEING TRANSFERRED TO A HUMAN AGENT. PLEASE HOLD ON.' to the user."
+          },
+          {
+            "line": 26,
+            "text": "## Domain basic"
+          },
+          {
+            "line": 28,
+            "text": "- All times in the database are EST and 24 hour based. For example \"02:30:00\" means 2:30 AM EST."
+          },
+          {
+            "line": 30,
+            "text": "### User"
+          },
+          {
+            "line": 32,
+            "text": "Each user has a profile containing:"
+          },
+          {
+            "line": 34,
+            "text": "- unique user id"
+          },
+          {
+            "line": 35,
+            "text": "- email"
+          },
+          {
+            "line": 36,
+            "text": "- default address"
+          },
+          {
+            "line": 37,
+            "text": "- payment methods."
+          },
+          {
+            "line": 39,
+            "text": "There are three types of payment methods: **gift card**, **paypal account**, **credit card**."
+          },
+          {
+            "line": 41,
+            "text": "### Product"
+          },
+          {
+            "line": 43,
+            "text": "Our retail store has 50 types of products."
+          },
+          {
+            "line": 45,
+            "text": "For each **type of product**, there are **variant items** of different **options**."
+          },
+          {
+            "line": 47,
+            "text": "For example, for a 't-shirt' product, there could be a variant item with option 'color blue size M', and another variant item with option 'color red size L'."
+          },
+          {
+            "line": 49,
+            "text": "Each product has the following attributes:"
+          },
+          {
+            "line": 51,
+            "text": "- unique product id"
+          },
+          {
+            "line": 52,
+            "text": "- name"
+          },
+          {
+            "line": 53,
+            "text": "- list of variants"
+          },
+          {
+            "line": 55,
+            "text": "Each variant item has the following attributes:"
+          },
+          {
+            "line": 57,
+            "text": "- unique item id"
+          },
+          {
+            "line": 58,
+            "text": "- information about the value of the product options for this item."
+          },
+          {
+            "line": 59,
+            "text": "- availability"
+          },
+          {
+            "line": 60,
+            "text": "- price"
+          },
+          {
+            "line": 62,
+            "text": "Note: Product ID and Item ID have no relations and should not be confused!"
+          },
+          {
+            "line": 64,
+            "text": "### Order"
+          },
+          {
+            "line": 66,
+            "text": "Each order has the following attributes:"
+          },
+          {
+            "line": 68,
+            "text": "- unique order id"
+          },
+          {
+            "line": 69,
+            "text": "- user id"
+          },
+          {
+            "line": 70,
+            "text": "- address"
+          },
+          {
+            "line": 71,
+            "text": "- items ordered"
+          },
+          {
+            "line": 72,
+            "text": "- status"
+          },
+          {
+            "line": 73,
+            "text": "- fullfilments info (tracking id and item ids)"
+          },
+          {
+            "line": 74,
+            "text": "- payment history"
+          },
+          {
+            "line": 76,
+            "text": "The status of an order can be: **pending**, **processed**, **delivered**, or **cancelled**."
+          },
+          {
+            "line": 78,
+            "text": "Orders can have other optional attributes based on the actions that have been taken (cancellation reason, which items have been exchanged, what was the exchane price difference etc)"
+          },
+          {
+            "line": 80,
+            "text": "## Generic action rules"
+          },
+          {
+            "line": 82,
+            "text": "Generally, you can only take action on pending or delivered orders."
+          },
+          {
+            "line": 84,
+            "text": "Exchange or modify order tools can only be called once per order. Be sure that all items to be changed are collected into a list before making the tool call!!!"
+          },
+          {
+            "line": 86,
+            "text": "## Cancel pending order"
+          },
+          {
+            "line": 88,
+            "text": "An order can only be cancelled if its status is 'pending', and you should check its status before taking the action."
+          },
+          {
+            "line": 90,
+            "text": "The user needs to confirm the order id and the reason (either 'no longer needed' or 'ordered by mistake') for cancellation. Other reasons are not acceptable."
+          },
+          {
+            "line": 92,
+            "text": "After user confirmation, the order status will be changed to 'cancelled', and the total will be refunded via the original payment method immediately if it is gift card, otherwise in 5 to 7 business days."
+          },
+          {
+            "line": 94,
+            "text": "## Modify pending order"
+          },
+          {
+            "line": 96,
+            "text": "An order can only be modified if its status is 'pending', and you should check its status before taking the action."
+          },
+          {
+            "line": 98,
+            "text": "For a pending order, you can take actions to modify its shipping address, payment method, or product item options, but nothing else."
+          },
+          {
+            "line": 100,
+            "text": "### Modify payment"
+          },
+          {
+            "line": 102,
+            "text": "The user can only choose a single payment method different from the original payment method."
+          },
+          {
+            "line": 104,
+            "text": "If the user wants the modify the payment method to gift card, it must have enough balance to cover the total amount."
+          },
+          {
+            "line": 106,
+            "text": "After user confirmation, the order status will be kept as 'pending'. The original payment method will be refunded immediately if it is a gift card, otherwise it will be refunded within 5 to 7 business days."
+          },
+          {
+            "line": 108,
+            "text": "### Modify items"
+          },
+          {
+            "line": 110,
+            "text": "This action can only be called once, and will change the order status to 'pending (items modifed)'. The agent will not be able to modify or cancel the order anymore. So you must confirm all the details are correct and be cautious before taking this action. In particular, remember to remind the customer to confirm they have provided all the items they want to modify."
+          },
+          {
+            "line": 112,
+            "text": "For a pending order, each item can be modified to an available new item of the same product but of different product option. There cannot be any change of product types, e.g. modify shirt to shoe."
+          },
+          {
+            "line": 114,
+            "text": "The user must provide a payment method to pay or receive refund of the price difference. If the user provides a gift card, it must have enough balance to cover the price difference."
+          },
+          {
+            "line": 116,
+            "text": "## Return delivered order"
+          },
+          {
+            "line": 118,
+            "text": "An order can only be returned if its status is 'delivered', and you should check its status before taking the action."
+          },
+          {
+            "line": 120,
+            "text": "The user needs to confirm the order id and the list of items to be returned."
+          },
+          {
+            "line": 122,
+            "text": "The user needs to provide a payment method to receive the refund."
+          },
+          {
+            "line": 124,
+            "text": "The refund must either go to the original payment method, or an existing gift card."
+          },
+          {
+            "line": 126,
+            "text": "After user confirmation, the order status will be changed to 'return requested', and the user will receive an email regarding how to return items."
+          },
+          {
+            "line": 128,
+            "text": "## Exchange delivered order"
+          },
+          {
+            "line": 130,
+            "text": "An order can only be exchanged if its status is 'delivered', and you should check its status before taking the action. In particular, remember to remind the customer to confirm they have provided all items to be exchanged."
+          },
+          {
+            "line": 132,
+            "text": "For a delivered order, each item can be exchanged to an available new item of the same product but of different product option. There cannot be any change of product types, e.g. modify shirt to shoe."
+          },
+          {
+            "line": 134,
+            "text": "The user must provide a payment method to pay or receive refund of the price difference. If the user provides a gift card, it must have enough balance to cover the price difference."
+          },
+          {
+            "line": 136,
+            "text": "After user confirmation, the order status will be changed to 'exchange requested', and the user will receive an email regarding how to return items. There is no need to place a new order."
+          }
+        ],
+        "scoped_universe_complete": true
+      },
+      "tasks": {
+        "path": "data/tau2/domains/retail/tasks.json",
+        "blob_sha": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+        "count": 114,
+        "cases": [
+          {
+            "case_id": "retail/0",
+            "publisher_task_index": 0,
+            "publisher_task_id": "0",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/1",
+            "publisher_task_index": 1,
+            "publisher_task_id": "1",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/2",
+            "publisher_task_index": 2,
+            "publisher_task_id": "2",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/3",
+            "publisher_task_index": 3,
+            "publisher_task_id": "3",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/4",
+            "publisher_task_index": 4,
+            "publisher_task_id": "4",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/5",
+            "publisher_task_index": 5,
+            "publisher_task_id": "5",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/6",
+            "publisher_task_index": 6,
+            "publisher_task_id": "6",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/7",
+            "publisher_task_index": 7,
+            "publisher_task_id": "7",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/8",
+            "publisher_task_index": 8,
+            "publisher_task_id": "8",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/9",
+            "publisher_task_index": 9,
+            "publisher_task_id": "9",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/10",
+            "publisher_task_index": 10,
+            "publisher_task_id": "10",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/11",
+            "publisher_task_index": 11,
+            "publisher_task_id": "11",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/12",
+            "publisher_task_index": 12,
+            "publisher_task_id": "12",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/13",
+            "publisher_task_index": 13,
+            "publisher_task_id": "13",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/14",
+            "publisher_task_index": 14,
+            "publisher_task_id": "14",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/15",
+            "publisher_task_index": 15,
+            "publisher_task_id": "15",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/16",
+            "publisher_task_index": 16,
+            "publisher_task_id": "16",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/17",
+            "publisher_task_index": 17,
+            "publisher_task_id": "17",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/18",
+            "publisher_task_index": 18,
+            "publisher_task_id": "18",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/19",
+            "publisher_task_index": 19,
+            "publisher_task_id": "19",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/20",
+            "publisher_task_index": 20,
+            "publisher_task_id": "20",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/21",
+            "publisher_task_index": 21,
+            "publisher_task_id": "21",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/22",
+            "publisher_task_index": 22,
+            "publisher_task_id": "22",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/23",
+            "publisher_task_index": 23,
+            "publisher_task_id": "23",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/24",
+            "publisher_task_index": 24,
+            "publisher_task_id": "24",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/25",
+            "publisher_task_index": 25,
+            "publisher_task_id": "25",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/26",
+            "publisher_task_index": 26,
+            "publisher_task_id": "26",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/27",
+            "publisher_task_index": 27,
+            "publisher_task_id": "27",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/28",
+            "publisher_task_index": 28,
+            "publisher_task_id": "28",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/29",
+            "publisher_task_index": 29,
+            "publisher_task_id": "29",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/30",
+            "publisher_task_index": 30,
+            "publisher_task_id": "30",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/31",
+            "publisher_task_index": 31,
+            "publisher_task_id": "31",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/32",
+            "publisher_task_index": 32,
+            "publisher_task_id": "32",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/33",
+            "publisher_task_index": 33,
+            "publisher_task_id": "33",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/34",
+            "publisher_task_index": 34,
+            "publisher_task_id": "34",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/35",
+            "publisher_task_index": 35,
+            "publisher_task_id": "35",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/36",
+            "publisher_task_index": 36,
+            "publisher_task_id": "36",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/37",
+            "publisher_task_index": 37,
+            "publisher_task_id": "37",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/38",
+            "publisher_task_index": 38,
+            "publisher_task_id": "38",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/39",
+            "publisher_task_index": 39,
+            "publisher_task_id": "39",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/40",
+            "publisher_task_index": 40,
+            "publisher_task_id": "40",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/41",
+            "publisher_task_index": 41,
+            "publisher_task_id": "41",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/42",
+            "publisher_task_index": 42,
+            "publisher_task_id": "42",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/43",
+            "publisher_task_index": 43,
+            "publisher_task_id": "43",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/44",
+            "publisher_task_index": 44,
+            "publisher_task_id": "44",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/45",
+            "publisher_task_index": 45,
+            "publisher_task_id": "45",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/46",
+            "publisher_task_index": 46,
+            "publisher_task_id": "46",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/47",
+            "publisher_task_index": 47,
+            "publisher_task_id": "47",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/48",
+            "publisher_task_index": 48,
+            "publisher_task_id": "48",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/49",
+            "publisher_task_index": 49,
+            "publisher_task_id": "49",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/50",
+            "publisher_task_index": 50,
+            "publisher_task_id": "50",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/51",
+            "publisher_task_index": 51,
+            "publisher_task_id": "51",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/52",
+            "publisher_task_index": 52,
+            "publisher_task_id": "52",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/53",
+            "publisher_task_index": 53,
+            "publisher_task_id": "53",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/54",
+            "publisher_task_index": 54,
+            "publisher_task_id": "54",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/55",
+            "publisher_task_index": 55,
+            "publisher_task_id": "55",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/56",
+            "publisher_task_index": 56,
+            "publisher_task_id": "56",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/57",
+            "publisher_task_index": 57,
+            "publisher_task_id": "57",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/58",
+            "publisher_task_index": 58,
+            "publisher_task_id": "58",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/59",
+            "publisher_task_index": 59,
+            "publisher_task_id": "59",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/60",
+            "publisher_task_index": 60,
+            "publisher_task_id": "60",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/61",
+            "publisher_task_index": 61,
+            "publisher_task_id": "61",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/62",
+            "publisher_task_index": 62,
+            "publisher_task_id": "62",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/63",
+            "publisher_task_index": 63,
+            "publisher_task_id": "63",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/64",
+            "publisher_task_index": 64,
+            "publisher_task_id": "64",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/65",
+            "publisher_task_index": 65,
+            "publisher_task_id": "65",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/66",
+            "publisher_task_index": 66,
+            "publisher_task_id": "66",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/67",
+            "publisher_task_index": 67,
+            "publisher_task_id": "67",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/68",
+            "publisher_task_index": 68,
+            "publisher_task_id": "68",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/69",
+            "publisher_task_index": 69,
+            "publisher_task_id": "69",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/70",
+            "publisher_task_index": 70,
+            "publisher_task_id": "70",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/71",
+            "publisher_task_index": 71,
+            "publisher_task_id": "71",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/72",
+            "publisher_task_index": 72,
+            "publisher_task_id": "72",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/73",
+            "publisher_task_index": 73,
+            "publisher_task_id": "73",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/74",
+            "publisher_task_index": 74,
+            "publisher_task_id": "74",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/75",
+            "publisher_task_index": 75,
+            "publisher_task_id": "75",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/76",
+            "publisher_task_index": 76,
+            "publisher_task_id": "76",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/77",
+            "publisher_task_index": 77,
+            "publisher_task_id": "77",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/78",
+            "publisher_task_index": 78,
+            "publisher_task_id": "78",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/79",
+            "publisher_task_index": 79,
+            "publisher_task_id": "79",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/80",
+            "publisher_task_index": 80,
+            "publisher_task_id": "80",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/81",
+            "publisher_task_index": 81,
+            "publisher_task_id": "81",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/82",
+            "publisher_task_index": 82,
+            "publisher_task_id": "82",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/83",
+            "publisher_task_index": 83,
+            "publisher_task_id": "83",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/84",
+            "publisher_task_index": 84,
+            "publisher_task_id": "84",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/85",
+            "publisher_task_index": 85,
+            "publisher_task_id": "85",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/86",
+            "publisher_task_index": 86,
+            "publisher_task_id": "86",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/87",
+            "publisher_task_index": 87,
+            "publisher_task_id": "87",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/88",
+            "publisher_task_index": 88,
+            "publisher_task_id": "88",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/89",
+            "publisher_task_index": 89,
+            "publisher_task_id": "89",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/90",
+            "publisher_task_index": 90,
+            "publisher_task_id": "90",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/91",
+            "publisher_task_index": 91,
+            "publisher_task_id": "91",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/92",
+            "publisher_task_index": 92,
+            "publisher_task_id": "92",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/93",
+            "publisher_task_index": 93,
+            "publisher_task_id": "93",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/94",
+            "publisher_task_index": 94,
+            "publisher_task_id": "94",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/95",
+            "publisher_task_index": 95,
+            "publisher_task_id": "95",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/96",
+            "publisher_task_index": 96,
+            "publisher_task_id": "96",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/97",
+            "publisher_task_index": 97,
+            "publisher_task_id": "97",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/98",
+            "publisher_task_index": 98,
+            "publisher_task_id": "98",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/99",
+            "publisher_task_index": 99,
+            "publisher_task_id": "99",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/100",
+            "publisher_task_index": 100,
+            "publisher_task_id": "100",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/101",
+            "publisher_task_index": 101,
+            "publisher_task_id": "101",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/102",
+            "publisher_task_index": 102,
+            "publisher_task_id": "102",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/103",
+            "publisher_task_index": 103,
+            "publisher_task_id": "103",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/104",
+            "publisher_task_index": 104,
+            "publisher_task_id": "104",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/105",
+            "publisher_task_index": 105,
+            "publisher_task_id": "105",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent should exchange both tea kettles (same style) to the items requested"
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/106",
+            "publisher_task_index": 106,
+            "publisher_task_id": "106",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent should process the exchange."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/107",
+            "publisher_task_index": 107,
+            "publisher_task_id": "107",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent should exchange items in both orders."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/108",
+            "publisher_task_index": 108,
+            "publisher_task_id": "108",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent should make the return",
+              "Agent should communicate the refund to user."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/109",
+            "publisher_task_index": 109,
+            "publisher_task_id": "109",
+            "explicit_nl_count": 2,
+            "explicit_nl_assertions": [
+              "Agent should make changes to address on order and user profile",
+              "Agent should modify the pending order."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/110",
+            "publisher_task_index": 110,
+            "publisher_task_id": "110",
+            "explicit_nl_count": 3,
+            "explicit_nl_assertions": [
+              "Agent should modify address for the order",
+              "Agent should modify user address",
+              "Agent should modify the items in the pending order."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/111",
+            "publisher_task_index": 111,
+            "publisher_task_id": "111",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent should modify the items and address as requested."
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/112",
+            "publisher_task_index": 112,
+            "publisher_task_id": "112",
+            "explicit_nl_count": 0,
+            "explicit_nl_assertions": [],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          },
+          {
+            "case_id": "retail/113",
+            "publisher_task_index": 113,
+            "publisher_task_id": "113",
+            "explicit_nl_count": 1,
+            "explicit_nl_assertions": [
+              "Agent should cancel all pending orders"
+            ],
+            "publisher_reward_basis_explicit": null,
+            "has_initial_state": false,
+            "scenario_fields": [
+              "persona",
+              "instructions"
+            ],
+            "description_fields": [
+              "purpose",
+              "relevant_policies",
+              "notes"
+            ],
+            "all_policy_lines_review_required": 77,
+            "policy_line_relevance_adjudicated": 0,
+            "verified_complete": false
+          }
+        ]
+      },
+      "required_per_case_scope": [
+        "all_nonempty_policy_line_ids",
+        "full_task_description_and_user_scenario",
+        "all_explict_publisher_criteria",
+        "all_original S1/S2/S3 input refs for true execution",
+        "independent authorized adjudicator"
+      ],
+      "issuer_qualified": false
+    }
+  },
+  "overall": {
+    "policy_nonempty_lines": 197,
+    "policy_all_lines": 304,
+    "task_count": 164,
+    "case_policy_line_review_cells": 14778,
+    "reviewed_cells": 0,
+    "scientific_ac_promoted": 0
+  },
+  "scientific_terminal": "BLOCKED_EXTERNAL",
+  "risk": "Zero independently adjudicated per-case policy relevance or closure judgments; public task data may have appeared in model training."
+}

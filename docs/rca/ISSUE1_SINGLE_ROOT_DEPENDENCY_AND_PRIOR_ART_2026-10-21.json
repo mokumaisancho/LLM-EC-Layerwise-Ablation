@@ -1,0 +1,319 @@
+{
+  "schema": "ISSUE1_ONE_ROOT_CROSSCUTTING_CAUSAL_EVAL_DEPENDENCY_V1",
+  "as_of": "2026-10-21",
+  "kind": "source-grounded research analysis and execution queue NOT proof of completed experiment",
+  "single_root": {
+    "id": "RCA-ROOT-01",
+    "name": "MISSING_INDEPENDENT_SAME_FUNCTION_CAUSAL_EVALUATION_CONTRACT",
+    "statement": "Cannot compare actual LLM and deterministic EC on the same meaning-bearing function with independently grounded gold, strictly identical pre-target inputs, and target-only changes; hence cannot localize a nondegrading replacement boundary.",
+    "not_multiple_roots": true,
+    "why_more_tests_no_progress": "Prior formal48 48/48 verifies formal policy conformance with self-authored labels, not independent NL semantics. Prior next-action 17/17 vs 1/17 is a different governed singleton function and an exposed development set. Both are useful diagnostics but cannot satisfy original full S1–S4 A–E."
+  },
+  "source_of_authority": {
+    "original_issue": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/1",
+    "original_AC": "ACCEPTANCE_CRITERIA.md",
+    "dependency": "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json",
+    "issue_graph": "docs/rca/ISSUE1_ALL_61_RCA_CRITICAL_PATH_AND_EVIDENCE_MANIFEST_2026-10-16.json",
+    "handoff": "docs/rca/ISSUE1_CONTINUATION_HANDOFF_2026-10-18.json",
+    "github_only_reconstruction": "docs/rca/ISSUE1_GITHUB_ONLY_RECONSTRUCTION_AND_LEAKAGE_AUDIT_V2_2026-10-17.md"
+  },
+  "frozen": {
+    "original_mvp_AC_passed": [
+      "AC-19",
+      "AC-20"
+    ],
+    "original_mvp_AC_required": 18,
+    "original_status": "EC_NATIVE_SCOPE_INCOMPATIBLE",
+    "threshold_abs": 0.2,
+    "do_not_retroactively_change": true
+  },
+  "task_graph": {
+    "nodes": [
+      {
+        "id": "N00",
+        "priority": "P0",
+        "state": "DONE_FROZEN_INCOMPATIBILITY",
+        "requires": [],
+        "task": "Keep original 18 MVP AC, S1..S4 A-E and 0.20 threshold unchanged; explicitly record EC_NATIVE_SCOPE_INCOMPATIBLE and 2/18",
+        "accept": "The branch and original SHA-pinned contract remain unchanged; successor outcomes never promote original AC retroactively",
+        "github_issues": [
+          1,
+          20,
+          23
+        ]
+      },
+      {
+        "id": "N01",
+        "priority": "P0",
+        "state": "DONE_RECONSTRUCTION_ONLY",
+        "requires": [
+          "N00"
+        ],
+        "task": "Use existing pinned generator+manifest and v2 sidecar to reconstruct formal48 without storing raw data; python -O/collusion negative controls",
+        "accept": "Previously recorded Github-only V2 replay 21/21; 14/14 falsification, legacy unqualified holdout status retained",
+        "github_issues": [
+          1
+        ]
+      },
+      {
+        "id": "N02",
+        "priority": "P0",
+        "state": "UNPROVEN_CRITICAL",
+        "requires": [
+          "N00"
+        ],
+        "task": "Specify exactly ONE shared replaceable subfunction: typed inputs, outputs, semantics, admissible values, abstention, initial/final state and engine responsibilities; refuse general S3/S4 claims where native interface differs",
+        "accept": "A real pinned EC and LLM can both execute the same function on same public inputs, with no gold-adapted mapper; source and interface hashes frozen",
+        "github_issues": [
+          1,
+          9,
+          20,
+          23
+        ]
+      },
+      {
+        "id": "N03",
+        "priority": "P0",
+        "state": "UNPROVEN_CRITICAL",
+        "requires": [
+          "N02"
+        ],
+        "task": "Source genuinely independent NL task clauses, evidence and bounded reference labels; precommit label custody independent of generator, scorer, predictor and EC; no label-conditioned post hoc case selection",
+        "accept": "Each reference is traceable to an independent clause/fact/required effect; model-visible projection cannot derive complete labels by source/prefix/metadata shortcut; ambiguity annotated as UNKNOWN",
+        "github_issues": [
+          1,
+          57,
+          58,
+          59,
+          60
+        ]
+      },
+      {
+        "id": "N04",
+        "priority": "P0",
+        "state": "PARTIAL_CODE_TESTS_NOT_SCIENCE",
+        "requires": [
+          "N02",
+          "N03"
+        ],
+        "task": "Freeze sealed model-visible public-only payload, scorer-only independent label material, code hashes and model-interface parity; exercise leakage attacks including indirect option/operation-name proxies",
+        "accept": "Pre-run source/fixture/output hashes and exact same public model inputs exist; private reference not accessible to inference process; malicious source/key/prompt/proxy substitutions rejected",
+        "github_issues": [
+          1,
+          9,
+          57,
+          58
+        ]
+      },
+      {
+        "id": "N05",
+        "priority": "P0",
+        "state": "UNPROVEN_FOR_FULL_SHARED_FUNCTION",
+        "requires": [
+          "N02"
+        ],
+        "task": "Qualify the exact native EC implementation for the shared function, distinguishing governed single-work action, admissible-set, framing and S4 obligations; output NOT_APPLICABLE rather than substitute mock/tailored rules",
+        "accept": "Same target I/O contracts, actual EC source hashes and machine reasons; no derived gold or author-submitted adjudication used as engine truth",
+        "github_issues": [
+          9,
+          20,
+          23,
+          59,
+          60
+        ]
+      },
+      {
+        "id": "N06",
+        "priority": "P0",
+        "state": "NOT_RUN_ON_INDEPENDENT_SHARED_HOLDOUT",
+        "requires": [
+          "N04",
+          "N05"
+        ],
+        "task": "Execute pinned real lightweight LLM and real native EC on the same precommitted public inputs; preserve raw model response, runtime, output hashes and identical non-target implementation receipts",
+        "accept": "Real model weights/params and EC module pinned; cache real inference; no substitution with mock, historical different-task result, or answer-bearing prompt",
+        "github_issues": [
+          1,
+          9,
+          16,
+          19
+        ]
+      },
+      {
+        "id": "N07",
+        "priority": "P0",
+        "state": "STRUCTURAL_GATE_ONLY_NOT_REAL_AE",
+        "requires": [
+          "N06"
+        ],
+        "task": "Perform target-only A/B/C/D/E Oracle interventions on real execution: frozen upstream, target layer only changes, nontarget engine identity stays pinned even when downstream values legitimately propagate",
+        "accept": "Negative controls E_S1+S2 oracle, E_S2+S3, E_S3+S4, forged/rehashed receipts and missing real runs reject; no Oracle in non-target model context",
+        "github_issues": [
+          1,
+          9,
+          61
+        ]
+      },
+      {
+        "id": "N08",
+        "priority": "P1",
+        "state": "NOT_QUALIFIED",
+        "requires": [
+          "N03",
+          "N07"
+        ],
+        "task": "Score independent before-run sealed reference on raw cases and targeted interventions, not generator self-gold; separate selection/recall/reframe/false-close/abstention with denominators and source-class stratification",
+        "accept": "Original fixed 0.20 materiality respected, per-case failure and exact dependency evidence; report no broad noninferiority from small samples or only aggregate score",
+        "github_issues": [
+          1,
+          9,
+          57,
+          58
+        ]
+      },
+      {
+        "id": "N09",
+        "priority": "P1",
+        "state": "NOT_QUALIFIED",
+        "requires": [
+          "N08"
+        ],
+        "task": "Falsification and unseen-domain semantic retention check for selected replaceable slice: input paraphrase, polarity reversal, missing facts, competing/equivalent classes, tail losses, semantic spurious agreement",
+        "accept": "Counterexamples cannot be dismissed post hoc; independently held out cases and changed meanings show either bounded safe substitution or explicit no-substitution terminal",
+        "github_issues": [
+          1,
+          57,
+          58,
+          59,
+          60
+        ]
+      },
+      {
+        "id": "N10",
+        "priority": "P1",
+        "state": "NOT_QUALIFIED",
+        "requires": [
+          "N08",
+          "N09"
+        ],
+        "task": "Publish one evidence-linked boundary verdict with original frozen AC untouched; compare baseline LLM vs bounded hybrid with positive evidence or bounded rejection",
+        "accept": "Machine-readable verdict REPLACEABLE_BOUNDED or NOT_PROVEN/NOT_APPLICABLE; only actually met AC counted, all fail and unknown statuses persisted",
+        "github_issues": [
+          1
+        ]
+      },
+      {
+        "id": "O11",
+        "priority": "P2_OPTIONAL",
+        "state": "EXTENDED_NOT_ORIGINAL_MVP_GATE",
+        "requires": [
+          "N03",
+          "N05"
+        ],
+        "task": "Extended two-labeler/120 source cases/300 negative+100 positive S4 completeness certification; only after a reproducible bounded replacement boundary is found",
+        "accept": "Separate external validity result not used to block original ten-fixture coarse MVP",
+        "github_issues": [
+          59,
+          60
+        ]
+      },
+      {
+        "id": "O12",
+        "priority": "P2_CONDITIONAL",
+        "state": "NO_NEW_INFRA_UNLESS_REQUIRED",
+        "requires": [
+          "N02"
+        ],
+        "task": "Activate model ingress/Render/GitHub relay only if no existing pinned local or cached real inference route can satisfy N06",
+        "accept": "No paid external compute or GitHub Actions; no new Mac COMMAND or transport infrastructure without demonstrated necessity",
+        "github_issues": [
+          11,
+          16,
+          17,
+          18,
+          19
+        ]
+      }
+    ],
+    "topological_order": [
+      "N00",
+      "N01",
+      "N02",
+      "N03",
+      "N04",
+      "N05",
+      "N06",
+      "N07",
+      "N08",
+      "N09",
+      "N10",
+      "O11",
+      "O12"
+    ],
+    "validated_acyclic": true,
+    "p0_actionable_after_existing_verified_nodes": [
+      "N02",
+      "N03",
+      "N05"
+    ],
+    "p0_downstream": [
+      "N04",
+      "N06",
+      "N07"
+    ],
+    "p1_after_real_experiment": [
+      "N08",
+      "N09",
+      "N10"
+    ],
+    "defer": [
+      "O11",
+      "O12"
+    ]
+  },
+  "prior_art": [
+    {
+      "paper": "Causal Abstraction: A Theoretical Foundation for Mechanistic Interpretability",
+      "venue": "JMLR 2025",
+      "url": "https://www.jmlr.org/papers/v26/23-0058.html",
+      "adopt": "Matched functional boundary and actual mechanism interventions rather than nominally similar I/O or post-hoc labels",
+      "limit": "Does not automatically prove LLM+EC behavioral equivalence"
+    },
+    {
+      "paper": "Can LLMs Reason About Program Semantics? FormalBench",
+      "venue": "ACL 2025",
+      "url": "https://aclanthology.org/2025.acl-long.1068/",
+      "adopt": "Formal syntax validity, execution semantics and semantics-preserving metamorphic perturbations scored separately",
+      "limit": "Code/formal-specification benchmark not direct insurance NL domain authority"
+    },
+    {
+      "paper": "Weakly Supervised Semantic Parsing with Execution-based Spurious Program Filtering",
+      "venue": "EMNLP 2023",
+      "url": "https://aclanthology.org/2023.emnlp-main.425/",
+      "adopt": "Multiple contrastive inputs to detect wrong semantics that accidentally achieve the right output",
+      "limit": "Execution agreement does not itself guarantee source truth"
+    },
+    {
+      "paper": "The Emperor's New Clothes in Benchmarking? A Rigorous Examination of Mitigation Strategies for LLM Benchmark Data Contamination",
+      "venue": "ICML 2025",
+      "url": "https://proceedings.mlr.press/v267/sun25t.html",
+      "adopt": "Assess fidelity and contamination resistance per case; simple paraphrase/rewrite not sufficient",
+      "limit": "Pretraining data leakage differs from in-run evaluator/source answer contamination"
+    },
+    {
+      "paper": "LiveBench: A Challenging, Contamination-Limited LLM Benchmark",
+      "venue": "ICLR 2025",
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2025/hash/e4a46394ba5378b3f9a186a5b4c650d1-Abstract-Conference.html",
+      "adopt": "Unseen source tasks and objective reference scoring, no LLM-as-judge",
+      "limit": "Its task families do not certify this EC's formal task semantics"
+    }
+  ],
+  "priority_logic": "First block any irrelevant test growth; N02 shared-function specification precedes N03 labels and N05 EC adaptor; N04 isolates gold; N06 executes; N07 identifies causal effect; N08/09 score and falsify; N10 determines minimal replacement boundary; expanded #59/#60 certification and transport infra are not hard initial blockers.",
+  "nonclaims": [
+    "No new LLM or native EC inference was executed in this planning artifact.",
+    "The original 48-case source-only reconstruction was already solved; do not duplicate.",
+    "A proof that all natural language intents are correctly captured is not assumed or promised.",
+    "This worklist is not AC advancement; original remains 2/18."
+  ],
+  "next_one_shot_instruction": "Use N02 first to choose exactly one native shared decision function and frozen I/O contract. In parallel prepare independently sourced prospective NL task references N03 and exact native adapter qualification N05; abstain where semantics cannot be grounded; then N04-N10 with actual receipts. Avoid implementing further scaffolding before the first evidence-bearing same-function comparison; no invented results."
+}

@@ -1,0 +1,247 @@
+{
+  "schema": "ISSUE1_S4_EXTERNAL_POLICY_AUTHORITY_REWARD_BASIS_AUDIT_V19",
+  "as_of": "2026-10-13",
+  "source": {
+    "publisher": "amazon-agi/tau2-bench-verified",
+    "source_commit": "864350a8971a8f8ee9e7b8472e2edc380a806b0c",
+    "source_blobs": {
+      "data/tau2/domains/airline/tasks.json": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "data/tau2/domains/retail/tasks.json": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "src/tau2/data_model/tasks.py": "a08aaaff71dbbc0aeb374df44661bd55c66b0d67",
+      "src/tau2/evaluator/evaluator.py": "9e7875d1302f06b5c3206db8d9c398a45579cb9a",
+      "data/tau2/domains/airline/policy.md": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+      "data/tau2/domains/retail/policy.md": "d127e6b074654926f337d0d98b0e669ebe90d19e",
+      "FIXES.md": "940c853928a72ff3095e3937c44194a4cd2fd372"
+    },
+    "source_type": "EXTERNAL_POLICY_PLUS_HUMAN_VERIFIED_TASK_CORRECTIONS",
+    "benchmarks": [
+      "airline",
+      "retail"
+    ],
+    "same_publisher_as_research": false,
+    "source_public_not_blind": true
+  },
+  "real_audit": {
+    "n": 164,
+    "need_nl": 58,
+    "nl_claims": 135,
+    "not_in_default_reward": 58,
+    "unmeasured_only_condition": 7,
+    "domains": {
+      "airline": {
+        "n": 50,
+        "with_nl": 50,
+        "nl_claims": 123,
+        "nl_not_in_default_reward": 50,
+        "only_nl": 7,
+        "reward_basis_explicit": 0,
+        "normal_score_cannot_cover_all_declared": true
+      },
+      "retail": {
+        "n": 114,
+        "with_nl": 8,
+        "nl_claims": 12,
+        "nl_not_in_default_reward": 8,
+        "only_nl": 0,
+        "reward_basis_explicit": 0,
+        "normal_score_cannot_cover_all_declared": true
+      }
+    }
+  },
+  "representative_structural_gap": {
+    "domain": "airline",
+    "task_id": "0",
+    "declared_nl_assertion": "Agent should refuse to proceed with the cancellation.",
+    "reference_actions_count": 0,
+    "communication_requirements_count": 0,
+    "effective_default_reward_basis": [
+      "DB",
+      "COMMUNICATE"
+    ]
+  },
+  "code_fact": {
+    "default_reward_basis": [
+      "DB",
+      "COMMUNICATE"
+    ],
+    "default_task_condition_source": "src/tau2/data_model/tasks.py",
+    "nl_assertions_evaluated_only_in": "EvaluationType.ALL_WITH_NL_ASSERTIONS",
+    "nl_assertion_reward_requires_explicit": "NL_ASSERTION in task.reward_basis",
+    "scope": "STATIC_SOURCE_LEVEL_REWARD_BASIS_DIAGNOSTIC_NOT_RUN_A_REAL_AGENT",
+    "runtime_nl_assertion_judge_executed": false
+  },
+  "fail_closed_gate": {
+    "all_declared_nl_must_be_evaluated": true,
+    "no_reward_based_world_close_while_required_nl_ignored": true,
+    "source_policy_and_task_sha_must_match": true,
+    "real_task_full_obligation_inventory_must_be_independently_attested": true,
+    "no_unresolved_obligations": true,
+    "adversarial_cases": [
+      {
+        "name": "default_basis_ignores_nl",
+        "i": {
+          "uses_nl_assertion": true,
+          "evaluation_type_full_nl": false,
+          "reward_basis": [
+            "DB",
+            "COMMUNICATE"
+          ],
+          "independent_nl_judge_attested": false,
+          "source_attested": true,
+          "policy_sha_valid": true,
+          "is_real_task": false
+        },
+        "want": false,
+        "actual": {
+          "allow": false,
+          "reason": "NL_ASSERTIONS_NOT_PROVEN_EVALUATED"
+        }
+      },
+      {
+        "name": "eval_all_not_nl_judged",
+        "i": {
+          "uses_nl_assertion": true,
+          "evaluation_type_full_nl": false,
+          "reward_basis": [
+            "DB",
+            "COMMUNICATE",
+            "NL_ASSERTION"
+          ],
+          "independent_nl_judge_attested": true,
+          "source_attested": true,
+          "policy_sha_valid": true,
+          "is_real_task": false
+        },
+        "want": false,
+        "actual": {
+          "allow": false,
+          "reason": "NL_ASSERTIONS_NOT_PROVEN_EVALUATED"
+        }
+      },
+      {
+        "name": "added_nl_reward_without_independent_judge",
+        "i": {
+          "uses_nl_assertion": true,
+          "evaluation_type_full_nl": true,
+          "reward_basis": [
+            "DB",
+            "COMMUNICATE",
+            "NL_ASSERTION"
+          ],
+          "independent_nl_judge_attested": false,
+          "source_attested": true,
+          "policy_sha_valid": true,
+          "is_real_task": false
+        },
+        "want": false,
+        "actual": {
+          "allow": false,
+          "reason": "NL_ASSERTIONS_NOT_PROVEN_EVALUATED"
+        }
+      },
+      {
+        "name": "forged_policy_sha",
+        "i": {
+          "uses_nl_assertion": false,
+          "evaluation_type_full_nl": false,
+          "reward_basis": [
+            "DB",
+            "COMMUNICATE"
+          ],
+          "independent_nl_judge_attested": false,
+          "source_attested": true,
+          "policy_sha_valid": false,
+          "is_real_task": false
+        },
+        "want": false,
+        "actual": {
+          "allow": false,
+          "reason": "UNVERIFIED_PUBLISHER_BINDING"
+        }
+      },
+      {
+        "name": "missing_full_real_task_inventory",
+        "i": {
+          "uses_nl_assertion": false,
+          "evaluation_type_full_nl": false,
+          "reward_basis": [
+            "DB",
+            "COMMUNICATE"
+          ],
+          "independent_nl_judge_attested": false,
+          "source_attested": true,
+          "policy_sha_valid": true,
+          "is_real_task": true,
+          "complete_inventory_independent": false,
+          "task_policy_binding": true
+        },
+        "want": false,
+        "actual": {
+          "allow": false,
+          "reason": "INDEPENDENT_FULL_TASK_OBLIGATIONS_NOT_PROVEN"
+        }
+      },
+      {
+        "name": "unresolved_residual",
+        "i": {
+          "uses_nl_assertion": false,
+          "evaluation_type_full_nl": false,
+          "reward_basis": [
+            "DB",
+            "COMMUNICATE"
+          ],
+          "independent_nl_judge_attested": false,
+          "source_attested": true,
+          "policy_sha_valid": true,
+          "is_real_task": true,
+          "complete_inventory_independent": true,
+          "task_policy_binding": true,
+          "unresolved_obligations": true
+        },
+        "want": false,
+        "actual": {
+          "allow": false,
+          "reason": "INDEPENDENT_FULL_TASK_OBLIGATIONS_NOT_PROVEN"
+        }
+      },
+      {
+        "name": "bounded_positive_not_world",
+        "i": {
+          "uses_nl_assertion": true,
+          "evaluation_type_full_nl": true,
+          "reward_basis": [
+            "DB",
+            "COMMUNICATE",
+            "NL_ASSERTION"
+          ],
+          "independent_nl_judge_attested": true,
+          "source_attested": true,
+          "policy_sha_valid": true,
+          "is_real_task": false
+        },
+        "want": true,
+        "actual": {
+          "allow": true,
+          "reason": "BOUNDED_EVALUATOR_PRECONDITIONS_ONLY"
+        }
+      }
+    ],
+    "adversarial_checks_executed": 7
+  },
+  "scientific_qualification": {
+    "independently_authored_real_task_policy_and_task_inventory_found": true,
+    "complete_source_rules_extracted_and_semantically_adjudicated": false,
+    "default_reward_covers_all_explicit_nl_obligations": false,
+    "all_real_task_obligation_completeness_proven": false,
+    "bounded_s4_qualification_status": "BLOCKED_UNSCORED_NATURAL_LANGUAGE_OBLIGATIONS",
+    "true_LLM_EC_Oracle_matched_arms_executed": false,
+    "root_original_scientific_AC_pass": 2
+  },
+  "execution": {
+    "connected_GitHub_source_read_and_JS_static_checks": true,
+    "Mac_and_DC_calls": 0,
+    "model_inference_calls": 0,
+    "new_paid_resources": 0,
+    "raw_sensitive_data_republished": false
+  }
+}

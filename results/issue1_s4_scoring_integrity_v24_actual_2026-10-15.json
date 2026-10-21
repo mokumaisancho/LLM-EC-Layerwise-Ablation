@@ -1,0 +1,208 @@
+{
+  "schema": "ISSUE1_S4_SCORING_INTEGRITY_GATE_V24",
+  "source": {
+    "research_repo": "mokumaisancho/LLM-EC-Layerwise-Ablation",
+    "v20_blob": "a78df93af631f07b284dc3c8c74594f6989fbb6b",
+    "v21_blob": "8235c07ef2cc2655ea6da43e266ff59bea5bf8f9",
+    "publisher_repo": "amazon-agi/tau2-bench-verified",
+    "publisher_commit": "864350a8971a8f8ee9e7b8472e2edc380a806b0c"
+  },
+  "control": "PASS",
+  "scientific_terminal": "BLOCKED_EXTERNAL",
+  "scientific_root_AC": {
+    "passed": 2,
+    "required": 18,
+    "promoted": 0
+  },
+  "independent_all_obligation_s4_qualified": false,
+  "reason": "Publisher-declared NL assertions are outside default scoring; no independent per-case all-policy inventory/judge or authenticated semantic completeness. Structural source checks cannot certify real-world closure.",
+  "observations": {
+    "total_tasks": 164,
+    "nl_explicit_tasks": 58,
+    "nl_assertions": 135,
+    "nl_only_high_risk": 7,
+    "tasks_without_explicit_nl": 106,
+    "policy_candidate_lines": {
+      "airline": 45,
+      "retail": 29
+    },
+    "cases_independently_complete": 0
+  },
+  "critical_cases": [
+    {
+      "case_id": "airline/0",
+      "priority": "P0_NO_ALTERNATE_REWARD",
+      "explicit_assertion_count": 1,
+      "expected_actions": 0,
+      "expected_communications": 0,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9"
+    },
+    {
+      "case_id": "airline/10",
+      "priority": "P0_NO_ALTERNATE_REWARD",
+      "explicit_assertion_count": 1,
+      "expected_actions": 0,
+      "expected_communications": 0,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9"
+    },
+    {
+      "case_id": "airline/26",
+      "priority": "P0_NO_ALTERNATE_REWARD",
+      "explicit_assertion_count": 1,
+      "expected_actions": 0,
+      "expected_communications": 0,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9"
+    },
+    {
+      "case_id": "airline/28",
+      "priority": "P0_NO_ALTERNATE_REWARD",
+      "explicit_assertion_count": 2,
+      "expected_actions": 0,
+      "expected_communications": 0,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9"
+    },
+    {
+      "case_id": "airline/31",
+      "priority": "P0_NO_ALTERNATE_REWARD",
+      "explicit_assertion_count": 1,
+      "expected_actions": 0,
+      "expected_communications": 0,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9"
+    },
+    {
+      "case_id": "airline/34",
+      "priority": "P0_NO_ALTERNATE_REWARD",
+      "explicit_assertion_count": 1,
+      "expected_actions": 0,
+      "expected_communications": 0,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9"
+    },
+    {
+      "case_id": "airline/46",
+      "priority": "P0_NO_ALTERNATE_REWARD",
+      "explicit_assertion_count": 1,
+      "expected_actions": 0,
+      "expected_communications": 0,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9"
+    }
+  ],
+  "remaining_nl_cases": [
+    "airline/1",
+    "airline/2",
+    "airline/3",
+    "airline/4",
+    "airline/5",
+    "airline/6",
+    "airline/7",
+    "airline/8",
+    "airline/9",
+    "airline/11",
+    "airline/12",
+    "airline/13",
+    "airline/14",
+    "airline/15",
+    "airline/16",
+    "airline/17",
+    "airline/18",
+    "airline/19",
+    "airline/20",
+    "airline/21",
+    "airline/22",
+    "airline/23",
+    "airline/24",
+    "airline/25",
+    "airline/27",
+    "airline/29",
+    "airline/30",
+    "airline/32",
+    "airline/33",
+    "airline/35",
+    "airline/36",
+    "airline/37",
+    "airline/38",
+    "airline/39",
+    "airline/40",
+    "airline/41",
+    "airline/42",
+    "airline/43",
+    "airline/44",
+    "airline/45",
+    "airline/47",
+    "airline/48",
+    "airline/49",
+    "retail/105",
+    "retail/106",
+    "retail/107",
+    "retail/108",
+    "retail/109",
+    "retail/110",
+    "retail/111",
+    "retail/113"
+  ],
+  "next_science_dependency": [
+    "D04: blind independent S3 all-admissible gold",
+    "D05: independent task+policy exhaustive obligations, authenticated judge including NL_ASSERTION in scoring, positive proof for empty obligation set",
+    "D06: real source-pinned original LLM/EC/Oracle target-only receipts",
+    "D07: matched 8-arm replay",
+    "D08: scoring and counterfactuals",
+    "D09: frozen 18 AC decision"
+  ],
+  "never_auto_promote": true,
+  "negative_controls": {
+    "passed": 10,
+    "total": 10,
+    "details": [
+      {
+        "name": "actual_pinned_164_source_cases",
+        "pass": true,
+        "observed": "ACCEPTED"
+      },
+      {
+        "name": "wrong_source_git_blob",
+        "pass": true,
+        "observed": "Error: FAIL_CLOSED:V20_SOURCE_PIN"
+      },
+      {
+        "name": "duplicate_case",
+        "pass": true,
+        "observed": "Error: FAIL_CLOSED:DUPLICATE_OR_INVALID_CASE_ID"
+      },
+      {
+        "name": "missing_case",
+        "pass": true,
+        "observed": "Error: FAIL_CLOSED:CASE_COUNT"
+      },
+      {
+        "name": "orphan_policy_link",
+        "pass": true,
+        "observed": "Error: FAIL_CLOSED:ORPHAN_DUPLICATE_POLICY_LINK"
+      },
+      {
+        "name": "forged_close_attestation",
+        "pass": true,
+        "observed": "Error: FAIL_CLOSED:SELF_ATTESTED_CLOSE"
+      },
+      {
+        "name": "hidden_nl_assertion",
+        "pass": true,
+        "observed": "Error: FAIL_CLOSED:PUBLISHER_ASSERTION_INVENTORY_DRIFT"
+      },
+      {
+        "name": "fake_semantic_completion",
+        "pass": true,
+        "observed": "Error: FAIL_CLOSED:UNPROVEN_EXHAUSTIVENESS_ATTESTED"
+      },
+      {
+        "name": "default_basis_claim_falsified",
+        "pass": true,
+        "observed": "Error: FAIL_CLOSED:UNVERIFIED_SCORING_ASSUMPTION"
+      },
+      {
+        "name": "source_link_mismatch",
+        "pass": true,
+        "observed": "Error: FAIL_CLOSED:SOURCE_LINK_MISMATCH"
+      }
+    ]
+  },
+  "executed_at_utc": "2026-10-15"
+}

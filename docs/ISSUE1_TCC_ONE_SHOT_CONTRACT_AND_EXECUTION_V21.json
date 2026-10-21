@@ -1,0 +1,519 @@
+{
+  "schema": "ISSUE1_TCC_ONE_SHOT_V21",
+  "as_of": "2026-10-14",
+  "source": {
+    "repo": "mokumaisancho/LLM-EC-Layerwise-Ablation",
+    "branch": "feat/issue1-independent-s4-authority-audit-v19",
+    "frozen_ac_blob": "40e4d41914fb17ee5c7deb0cfd32276a41c9a1fc",
+    "frozen_mvp_blob": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+    "tracker_blob": "56bd5ac25d47e1dd9e8ea9da6193679656b661f5",
+    "v20_inventory_blob": "a78df93af631f07b284dc3c8c74594f6989fbb6b",
+    "tcc_compiler_repo": "mokumaisancho/tcc-compiler",
+    "tcc_contract": "tcc.spec.v3",
+    "implementation_read_reference": "https://github.com/mokumaisancho/tcc-compiler/blob/main/tcc/generator_v3.py"
+  },
+  "authoring_and_execution_boundary": {
+    "contract_source": "versioned original frozen authoritative dependency map; custom declarative TCC v3-compatible spec",
+    "upstream_generator_invoked": false,
+    "upstream_validator_invoked": false,
+    "upstream_runtime_invoked": false,
+    "reason": "native private repository checkout not available in ChatGPT sandbox; authorized Mac Desktop Commander quota exhausted; no billing cloud job and GitHub Actions disabled",
+    "control_execution": "real connected-GitHub read-and-audit actions interpreted using bounded JS controller; not native TCC runtime",
+    "scientific_reinference_executed": false
+  },
+  "spec": {
+    "schema": "tcc.spec.v3",
+    "tcc_id": "ISSUE1-TCC-ONE-SHOT-V21",
+    "goal": "Execute Issue #1 scientific original AC without fabricated S3/S4 authority; finite science stop",
+    "acceptance": [
+      "original frozen 18 MVP acceptance conditions unmodified",
+      "D04 and D05 independently qualified before D06",
+      "target only authentic intervention before D07",
+      "no oracle or gold leakage",
+      "no scientifically unproven closure",
+      "bounded explicit termination"
+    ],
+    "state_keys": [
+      "precheck_ok",
+      "d04_qualified",
+      "d04_evidence",
+      "d05_qualified",
+      "d05_evidence",
+      "d06_qualified",
+      "d07_qualified",
+      "d08_qualified",
+      "mvp_18_proven"
+    ],
+    "immutable_state_keys": [],
+    "entry_nodes": [
+      "D00_SOURCE_AND_AC_PREFLIGHT"
+    ],
+    "nodes": [
+      {
+        "id": "D00_SOURCE_AND_AC_PREFLIGHT",
+        "kind": "action",
+        "depends_on": [],
+        "reads": [],
+        "writes": [
+          "precheck_ok"
+        ],
+        "branches": {},
+        "failure_target": "FAIL_INTEGRITY",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "D04_INDEPENDENT_S3",
+        "kind": "action",
+        "depends_on": [
+          "D00_SOURCE_AND_AC_PREFLIGHT"
+        ],
+        "reads": [
+          "precheck_ok"
+        ],
+        "writes": [
+          "d04_qualified",
+          "d04_evidence"
+        ],
+        "branches": {},
+        "failure_target": "FAIL_INTEGRITY",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "D05_COMPLETE_S4",
+        "kind": "action",
+        "depends_on": [
+          "D04_INDEPENDENT_S3"
+        ],
+        "reads": [
+          "precheck_ok"
+        ],
+        "writes": [
+          "d05_qualified",
+          "d05_evidence"
+        ],
+        "branches": {},
+        "failure_target": "FAIL_INTEGRITY",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "D04_D05_AUTHORITY_GATE",
+        "kind": "gate",
+        "depends_on": [
+          "D05_COMPLETE_S4"
+        ],
+        "reads": [
+          "d04_qualified",
+          "d05_qualified"
+        ],
+        "writes": [],
+        "branches": {
+          "ready": "D06_GENUINE_TARGET_ONLY",
+          "external_missing": "BLOCK_EXTERNAL",
+          "integrity_fail": "FAIL_INTEGRITY"
+        },
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "D06_GENUINE_TARGET_ONLY",
+        "kind": "action",
+        "depends_on": [
+          "D04_D05_AUTHORITY_GATE"
+        ],
+        "reads": [
+          "d04_qualified",
+          "d05_qualified"
+        ],
+        "writes": [
+          "d06_qualified"
+        ],
+        "branches": {},
+        "failure_target": "FAIL_INTEGRITY",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "D07_MATCHED_ARMS",
+        "kind": "action",
+        "depends_on": [
+          "D06_GENUINE_TARGET_ONLY"
+        ],
+        "reads": [
+          "d06_qualified"
+        ],
+        "writes": [
+          "d07_qualified"
+        ],
+        "branches": {},
+        "failure_target": "FAIL_INTEGRITY",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "D08_INDEPENDENT_SCORE",
+        "kind": "action",
+        "depends_on": [
+          "D07_MATCHED_ARMS"
+        ],
+        "reads": [
+          "d07_qualified"
+        ],
+        "writes": [
+          "d08_qualified"
+        ],
+        "branches": {},
+        "failure_target": "FAIL_INTEGRITY",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "D09_ORIGINAL_AC_EXIT",
+        "kind": "action",
+        "depends_on": [
+          "D08_INDEPENDENT_SCORE"
+        ],
+        "reads": [
+          "d08_qualified"
+        ],
+        "writes": [
+          "mvp_18_proven"
+        ],
+        "branches": {},
+        "failure_target": "FAIL_INTEGRITY",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "SUCCESS_MVP",
+        "kind": "terminal",
+        "depends_on": [
+          "D09_ORIGINAL_AC_EXIT"
+        ],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "SUCCESS",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "BLOCK_EXTERNAL",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "BLOCKED",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "FAIL_INTEGRITY",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      }
+    ]
+  },
+  "dependency_roots": [
+    "D04",
+    "D05"
+  ],
+  "deferred": [
+    "D06",
+    "D07",
+    "D08",
+    "D09"
+  ],
+  "execution": {
+    "result": "BLOCKED_EXTERNAL",
+    "terminal_status": "BLOCKED",
+    "gate_selected": "external_missing",
+    "visited_nodes": [
+      "D00_SOURCE_AND_AC_PREFLIGHT",
+      "D04_INDEPENDENT_S3",
+      "D05_COMPLETE_S4",
+      "D04_D05_AUTHORITY_GATE",
+      "BLOCK_EXTERNAL"
+    ],
+    "real_actions_executed": 3,
+    "proofs": {
+      "D00": "PASS",
+      "D04": {
+        "status": "BLOCKED_EXTERNAL",
+        "issue": "ISSUE-59",
+        "qualified": false,
+        "missing": [
+          "independently_custodied_blind_heldout_semantic_admissibility",
+          "per_candidate_all_admissible_gold",
+          "noncontamination_qualification"
+        ],
+        "evidence": [
+          "results/issue1_real_native_ec_multirc_32_actual_2026-10-12.json"
+        ]
+      },
+      "D05": {
+        "status": "BLOCKED_EXTERNAL",
+        "issue": "ISSUE-60",
+        "qualified": false,
+        "missing": [
+          "independent_domain_policy_exhaustive_task_inventory",
+          "independent_natural_language_judge",
+          "positive_empty_inventory_proof",
+          "blind_custody",
+          "reconciled_all_mandatory_obligations"
+        ],
+        "evidence": [
+          "docs/ISSUE1_S4_SOURCE_BOUND_OBLIGATION_POINTERS_V20.json"
+        ],
+        "publisher_explicit": {
+          "tasks": 164,
+          "action_entries": 692,
+          "communication_entries": 73,
+          "nl_assertions": 135,
+          "nl_tasks": 58,
+          "nl_only": 7
+        }
+      }
+    },
+    "state": {
+      "precheck_ok": true,
+      "d04_qualified": false,
+      "d04_evidence": "BLOCKED_EXTERNAL",
+      "d05_qualified": false,
+      "d05_evidence": "BLOCKED_EXTERNAL"
+    },
+    "mvp_AC_PASSED": 2,
+    "mvp_AC_REQUIRED": 18,
+    "scoped_integrity_checks": {
+      "passed": 20,
+      "failed": 0,
+      "checks": [
+        {
+          "name": "frozen_ac_sha",
+          "status": "PASS",
+          "actual": "40e4d41914fb17ee5c7deb0cfd32276a41c9a1fc"
+        },
+        {
+          "name": "frozen_protocol_sha",
+          "status": "PASS",
+          "actual": "08407bec73278aeda8ddd2d4d6efc810dadf46f9"
+        },
+        {
+          "name": "root_issue_and_scope",
+          "status": "PASS"
+        },
+        {
+          "name": "mvp_18_unchanged",
+          "status": "PASS"
+        },
+        {
+          "name": "current_ac_pass_2_of_18",
+          "status": "PASS"
+        },
+        {
+          "name": "D04_D05_external_blocked",
+          "status": "PASS"
+        },
+        {
+          "name": "D05_publisher_pointer_164_unique",
+          "status": "PASS"
+        },
+        {
+          "name": "D05_publisher_declared_obligations",
+          "status": "PASS"
+        },
+        {
+          "name": "D05_no_attestation_claimed",
+          "status": "PASS"
+        },
+        {
+          "name": "D05_source_pin",
+          "status": "PASS"
+        },
+        {
+          "name": "frozen_intervention_fidelity",
+          "status": "PASS"
+        },
+        {
+          "name": "contract_node_ids_unique",
+          "status": "PASS"
+        },
+        {
+          "name": "contract_no_undefined_edges",
+          "status": "PASS"
+        },
+        {
+          "name": "contract_all_required_fields",
+          "status": "PASS"
+        },
+        {
+          "name": "contract_no_unbounded_loop",
+          "status": "PASS"
+        },
+        {
+          "name": "contract_no_destructive_node",
+          "status": "PASS"
+        },
+        {
+          "name": "contract_fail_closed_reachable",
+          "status": "PASS"
+        },
+        {
+          "name": "contract_no_unjustified_success",
+          "status": "PASS"
+        },
+        {
+          "name": "contract_no_d06_execute_if_external",
+          "status": "PASS"
+        },
+        {
+          "name": "contract_stable_source_evidence",
+          "status": "PASS"
+        }
+      ]
+    },
+    "false_promotion": false
+  },
+  "next_admissible_actions": [
+    "obtain truly blind independent S3 all-admissible gold with custody and assessor",
+    "obtain independent complete domain policy obligation inventory and NL semantic evaluator",
+    "only upon both qualified: run real D06-D09 target-only experiment"
+  ],
+  "non_goal": [
+    "more control-only tests do not count as science",
+    "no native TCC runtime PASS claimed",
+    "no version promotion",
+    "no unrequested local Mac/DC or GitHub Actions use"
+  ]
+}

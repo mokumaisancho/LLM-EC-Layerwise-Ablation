@@ -1,0 +1,93 @@
+{
+  "schema": "ISSUE1_FORMAL_HOLDOUT48_NATIVE_EC_ACTUAL_V1",
+  "date": "2026-10-16",
+  "scientific_question": "Can actual pinned deterministic EC replicate independently computed formal Boolean policy semantics on NEW (non-N/M fixture) state combinations, without claiming NL language competence?",
+  "registration": {
+    "scope": "VERSIONED_SUCCESSOR_FORMAL_POLICY_ONLY_NOT_FROZEN_ORIGINAL_A_E",
+    "source_ec": "mokumaisancho/GPT-EC-Closure-Engine/01_repo/src/v4/ec_layerwise_source_policy_authority_v2.py",
+    "exact_ec_git_blob": "7da0cd8d876505cafdd5a9811132427e2f441a14",
+    "native_python_actual": true,
+    "oracle_algorithm": "SymPy symbolic And/Not/substitution, separate from native EC fact-evaluation implementation",
+    "source_facts": [
+      "authorized",
+      "fraud",
+      "docs",
+      "risk",
+      "reviewed"
+    ],
+    "mode_pool": [
+      "NORMAL",
+      "COMPETING",
+      "EQUIVALENT",
+      "REFRAME"
+    ],
+    "candidate_pool": [
+      "PAY",
+      "ESCALATE",
+      "REVIEW"
+    ],
+    "all_possible_structured_cases": 128,
+    "selection": "deterministically hash-ranked 12/canonical closure class; class labels evaluated from declared formal policy",
+    "selected_cases": 48,
+    "class_balance": {
+      "CLOSE": 12,
+      "CONTINUE": 12,
+      "REFRAME": 12,
+      "BLOCKED": 12
+    },
+    "public_seal_digest": "ab9e382a62f0722b27aa5161adefc8f1c6e3bb7dca68662de7184722c441b276",
+    "private_gold_seal_digest": "0a01e5781dc062ebb43fc055ac3b3550f3eeea3f816e9ec248ef26c64531484c",
+    "policy_seal_digest": "fd1703572172641287906613ad970d6104656128a5000cce76873c4502974b96",
+    "manifest_digest": "4a0f5ffb84dc8370ac890bceddf8f88c405e4b65c8672ddedbd310abbab976be",
+    "local_file_sha256": {
+      "public": "c063264fbbf604d88c99addb67d7d33193dd98cdd35e9dcaa9a6b24dca693054",
+      "private_gold": "671d4e564f772af76df7363532164a0478cd3a9711ab207c7ed2ce9de3013342",
+      "manifest": "309828b17da51cc821782d053cc291d5ff543e4830cfa6fc3940577ceb34cba9"
+    },
+    "note": "Gold source depends on formal policy and its full construction code, not human independent NL interpretation. Test publicly scoreable via policy, not truly hidden task source."
+  },
+  "results": {
+    "ec_exact_48": 48,
+    "ec_fail": 0,
+    "all_classes_12_each": true,
+    "unbound_realworld_close_always_false": true,
+    "unseen_from_original_17_case_ids": true,
+    "actual_native_ec_invocations": 48,
+    "actual_real_llm_inference_new": 0,
+    "real_llm_comparison_available": false,
+    "synthetic_boolean_domain_only": true,
+    "original_science_AC_before": "2/18",
+    "original_science_AC_after": "2/18",
+    "AC_promoted": 0
+  },
+  "adversarial_regression": {
+    "actual_python_unit_tests": 12,
+    "passed": 12,
+    "failed": 0,
+    "checks": [
+      "48 unique public inputs",
+      "12 each status",
+      "hash-seal original public and private gold",
+      "all 48 native EC true execution",
+      "private gold tampering detected",
+      "public facts tampering detected",
+      "policy tampering detected",
+      "evidence obligation resolution",
+      "COMPETING vs EQUIVALENT semantics",
+      "no fake real-world closed claim",
+      "native EC actual Git blob checked",
+      "no M/N development IDs"
+    ]
+  },
+  "files_in_sandbox": {
+    "source": "/mnt/data/issue1_source_e2e/tools/issue1_formal_holdout48_v1.py",
+    "tests": "/mnt/data/issue1_source_e2e/tests/test_issue1_formal_holdout48_v1.py",
+    "public": "/mnt/data/issue1_source_e2e/holdout48_v1/public.json",
+    "private": "/mnt/data/issue1_source_e2e/holdout48_v1/private_gold.json",
+    "manifest": "/mnt/data/issue1_source_e2e/holdout48_v1/manifest.json",
+    "score": "/mnt/data/issue1_source_e2e/holdout48_v1/native_score.json",
+    "test_log": "/mnt/data/issue1_source_e2e/holdout48_v1/unittest_log.txt"
+  },
+  "next_critical": "Run real LLM on ONLY public.json and freeze raw 48 predictions first. Then independently score against held private gold and compare same function; cannot assert non-degradation before this.",
+  "why_not_original_AC": "S1 natural-language interpretation absent, no actual model outputs for these 48, no causal layerwise E intervention; therefore new unit tests and bounded native formal correctness do not qualify as original fixed-10 full A-E."
+}

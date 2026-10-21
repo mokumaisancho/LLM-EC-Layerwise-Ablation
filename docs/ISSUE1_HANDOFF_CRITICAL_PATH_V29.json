@@ -1,0 +1,151 @@
+{
+  "schema": "ISSUE1_CRITICAL_PATH_NATIVE_TCC_V29_HANDOFF",
+  "verified_as_of": "2026-10-15",
+  "authority": {
+    "original_root_issue": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/1",
+    "frozen_science_AC": "ACCEPTANCE_CRITERIA.md",
+    "MVP_required": 18,
+    "MVP_verified": 2,
+    "MVP_promoted_this_round": 0,
+    "root_status": "OPEN",
+    "causal_success_not_yet_proven": true
+  },
+  "critical_path": [
+    {
+      "id": "D04",
+      "linked_issue": 59,
+      "priority": "P0",
+      "depends_on": [
+        "D00",
+        "D01"
+      ],
+      "current": "BLOCKED_EXTERNAL",
+      "materialized_source": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/blob/feat/issue1-independent-s4-authority-audit-v19/results/issue1_v27_mac_d04_independent_gold_request_byteidentical.json",
+      "qualified": false,
+      "exit_requires": [
+        "genuinely unseen independent heldout inputs",
+        "per-candidate independently adjudicated all-admissible gold",
+        "frozen same-case S1/S2 SHA",
+        "blind scorer/engine access split",
+        "competing and equivalent controls"
+      ]
+    },
+    {
+      "id": "D05",
+      "linked_issue": 60,
+      "priority": "P0",
+      "depends_on": [
+        "D00",
+        "D01"
+      ],
+      "current": "BLOCKED_EXTERNAL",
+      "materialized_source": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/blob/feat/issue1-independent-s4-authority-audit-v19/results/issue1_v27_mac_d05_policy_review_request_byteidentical.json",
+      "qualified": false,
+      "progress": {
+        "source_pinned_164_task_scoring_guard": true,
+        "verified_full_publisher_policy_167_lines": true,
+        "prioritized_nl_only_tasks": 7,
+        "linked_policy_clause_hypotheses": 7,
+        "independently_adjudicated_cases": 0
+      },
+      "exit_requires": [
+        "complete per-task policy clause applicability with independently authenticated assessor",
+        "all mandatory S4 obligations including residuals/negative duties",
+        "NL_ASSERTION included and judged in real scoring",
+        "positive empty-inventory proof",
+        "source-bound agent and upstream trace"
+      ]
+    },
+    {
+      "id": "D06",
+      "linked_issue": 61,
+      "priority": "P1",
+      "depends_on": [
+        "D04",
+        "D05"
+      ],
+      "current": "BLOCKED_UPSTREAM",
+      "exit_requires": [
+        "actual target-only source-pinned A/B/C/D and four Oracle E receipts"
+      ]
+    },
+    {
+      "id": "D07",
+      "priority": "P1",
+      "depends_on": [
+        "D06"
+      ],
+      "current": "BLOCKED_UPSTREAM",
+      "exit_requires": [
+        "matched real eight-arm replay same frozen inputs"
+      ]
+    },
+    {
+      "id": "D08",
+      "priority": "P2",
+      "depends_on": [
+        "D07"
+      ],
+      "current": "BLOCKED_UPSTREAM",
+      "exit_requires": [
+        "independent full-metric/counterfactual scoring"
+      ]
+    },
+    {
+      "id": "D09",
+      "priority": "P2",
+      "depends_on": [
+        "D08"
+      ],
+      "current": "BLOCKED_UPSTREAM",
+      "exit_requires": [
+        "verified original 18/18 or evidence-scoped terminal"
+      ]
+    }
+  ],
+  "TCC_native_v27": {
+    "transport": "existing GitHub queue and Mac LaunchAgent (no DC used for execution)",
+    "initiative": "INIT-ISSUE1-D04D05-V27",
+    "run_id": "a474cb88fca2a96e31cdf57f",
+    "queue": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/queue/INIT-ISSUE1-D04D05-V27/a474cb88fca2a96e31cdf57f.json",
+    "signed_receipt": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/receipts/INIT-ISSUE1-D04D05-V27/a474cb88fca2a96e31cdf57f.json",
+    "receipt_git_blob": "2b730dac3e2bf985cab13459f7866b3ff2e302ac",
+    "runner_git_blob": "740e27cdb091e196879e7fc539c4b75eace321e3",
+    "native_generator": "PASS",
+    "native_validator": "PASS",
+    "native_runtime": "PASS",
+    "receiver_status": "DONE",
+    "transport_verification": "PASS",
+    "science": "BLOCKED_EXTERNAL",
+    "terminal": "BLOCK_EXTERNAL",
+    "proof_sha256": "f135faac60a0aefafed99ebbcc79732256eb65fa7606eae07eaaa9eb7cc1971c",
+    "report_sha256": "684a6948f10618a607e6769ab2b36eafd716df23ef958ed0a7d26380739128f7",
+    "result_materializations": [
+      {
+        "id": "D04",
+        "path": "results/issue1_v27_mac_d04_independent_gold_request_byteidentical.json",
+        "publisher_reproduction_not_independently_scored": true,
+        "sha256": "932e3ca90b5935b523e15df9221350889b678466652c6dd128c1144991bea073",
+        "blob": "0a8fe305bcf9b43c4af9b7060a3fd64bb0a666a7"
+      },
+      {
+        "id": "D05",
+        "path": "results/issue1_v27_mac_d05_policy_review_request_byteidentical.json",
+        "publisher_reproduction_not_independently_scored": true,
+        "sha256": "f662ffb9ecd06c8ed5e6b376a640b5947a1f0dd16d5a84670008182b1e021839",
+        "blob": "7b1940fc72b4fe9e15734cb6589abe4993697c4c"
+      }
+    ],
+    "source_packet": "docs/ISSUE1_D05_SEVEN_CASE_FULL_SOURCE_REVIEW_V25.json",
+    "candidate_policy_links": "docs/ISSUE1_D05_SEVEN_CASE_POLICY_LINK_HYPOTHESES_V28.json"
+  },
+  "execution_boundary": {
+    "control_success_never_scientific_success": true,
+    "allow_D06_only_if": "D04 and D05 independently qualified with immutable, verifiable independent evidence",
+    "same_data_rerun_without_new_evidence": "DISALLOWED",
+    "no_Codex_DC_retrigger_for_successful_v27": true,
+    "source_pins_immutable": true,
+    "reported_result": "Native TCC generated both source-bound reviewer requests; no independent assessor/gold from TCC itself"
+  },
+  "next_exact_action": "Obtain actual independent custodian and authoritative gold for D04, independent all-obligation certified scoring for 7 high-risk D05 cases, then complete remaining D05 scope; do not rerun TCC control or promote root AC on self-authored verdicts."
+}

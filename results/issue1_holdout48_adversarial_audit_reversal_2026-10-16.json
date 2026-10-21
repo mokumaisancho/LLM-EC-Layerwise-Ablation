@@ -1,0 +1,126 @@
+{
+  "schema": "ISSUE1_HOLDOUT48_ADVERSARIAL_AUDIT_REVERSAL_V1",
+  "as_of": "2026-10-16",
+  "scope": "Saved native EC 48 formal-policy score, P01 generated 10 and older next-action 17; counterfactual tests for leakage/independence/integrity",
+  "source_pins": {
+    "actual_holdout_source": "tools/issue1_formal_holdout48_v1.py",
+    "actual_holdout_git_blob": "2eb9b49bdfd8d0e42d497218ee4c9d66cd46e4a7",
+    "actual_holdout_public_canonical_sha256": "ab9e382a62f0722b27aa5161adefc8f1c6e3bb7dca68662de7184722c441b276",
+    "actual_holdout_gold_canonical_sha256": "0a01e5781dc062ebb43fc055ac3b3550f3eeea3f816e9ec248ef26c64531484c",
+    "original_holdout_report": "results/issue1_formal_holdout48_real_ec_2026-10-16.json",
+    "original_17_source": "fixtures/function_boundary_next_action_v1.json",
+    "original_17_source_git_blob": "12faa9a4cacf0c91694d25f1ccce45e093d95e44",
+    "original_17_LLM_runner": "experiment/function-boundary-next-action-v1-20261003:tools/run_function_boundary_next_action_v2.py",
+    "original_17_runner_git_blob": "486863d076f49a9378a538e97739464849a044b1",
+    "original_10_generator": "tools/generate_phase1_measurement_v2.py",
+    "original_10_generator_git_blob": "26bf4a57451769f0a1b617687abe216f773faa8f",
+    "original_10_projector": "tools/issue1_s3_gold_contamination_preflight_v42.mjs",
+    "original_10_projector_git_blob": "bf74eb19bf12ffd94a42ccdb9f71c0a0a95d5325"
+  },
+  "runtime": "Local independent Python3 audit executed against exact saved source/public/score/manifest; optimization subshell normal vs python -O",
+  "confirmed": {
+    "classification_engine": "No model or LLM judges the original 48 correctness; gold is selected by hand-coded SymPy/boolean policy semantics, and correctness by exact object equality. Thus CLASSIFICATION_ALGORITHMIC_YES, SEMANTIC_INDEPENDENCE_NO.",
+    "gold_reconstructed_exactly_from_public_and_same_source": {
+      "recovered": 48,
+      "total": 48,
+      "sha256_matches_published_private_gold_digest": true
+    },
+    "literal_public_gold_field_present": false,
+    "score_contains_gold_against_predictions": true,
+    "selection_stratified_using_gold_reference_before_sample": true,
+    "nominal_reported_native_matches": 48,
+    "actual_new_LLM_outputs_for_48": 0,
+    "same_manifest_folder_undermines_trust": {
+      "normal_python_rejects_modified_public": true,
+      "python_optimized_accepts_modified_public": true,
+      "ordinary_python_rejects_unpinned_fake_EC": true,
+      "optimized_python_executes_unpinned_fake_EC": true,
+      "recompute_all_three_public_gold_manifest_accepts_in_normal_python": true,
+      "native_score_sha256_independently_frozen_in_manifest": false
+    },
+    "historical_10": {
+      "raw_generator_positives_id_prefix": "v",
+      "negative_id": "x1",
+      "name_claim_dependencies_evidence_asymmetric": true,
+      "current_projector_removes_direct_oracle_fields_and_v_x_ids": true,
+      "residual_semantic_operation_proxy_leakage_possible_not_proven_absent": true,
+      "actual_new_blind_10_case_semantic_LLM_accuracy_measured": false
+    },
+    "historical_17": {
+      "scoring_exact_status_and_work_id_not_LLM_as_judge": true,
+      "runner_constructs_model_visible_dictionary_without_fx_oracle": true,
+      "real_inference_historical_single_prompt_single_1p5b": true,
+      "all_model_predictions_REFREME_17_of_17": true,
+      "source_gold_authored_to_match_governed_EC_policy_not_independent_domain_custody": true,
+      "true_original_full_S1_S4_AE_evidence": false
+    }
+  },
+  "finding_ids": [
+    {
+      "id": "F01",
+      "severity": "SCIENTIFIC_INVALIDATION",
+      "claim": "48/48 measures independent NL semantic correct classification",
+      "counterexample": "All 48 so-called private gold predictions regenerate entirely from public.json plus author-maintained generator; exact digest match. Not independent NL labels.",
+      "decision": "INVALID"
+    },
+    {
+      "id": "F02",
+      "severity": "SCIENTIFIC_INVALIDATION",
+      "claim": "48-case balanced sample is a new independent unseen task distribution",
+      "counterexample": "make_all line 94 stratifies by its own reference closure label and uses same source policy; original 10 and 17 excluded only by IDs. Distribution not independent.",
+      "decision": "INVALID"
+    },
+    {
+      "id": "F03",
+      "severity": "ENGINE_INTEGRITY_FAILURE",
+      "claim": "SHA-bound source and input cannot be bypassed",
+      "counterexample": "python -O disables assert in load and score; edited public accepted; unpinned fake EC module code actually executed.",
+      "decision": "INVALID"
+    },
+    {
+      "id": "F04",
+      "severity": "INPUT_GOLD_CUSTODY_FAILURE",
+      "claim": "local manifest hashes prove irrevocable freeze",
+      "counterexample": "Modified public + modified gold + recomputed local manifest all accepted in ordinary python, because no out-of-band manifest hash checked.",
+      "decision": "INVALID"
+    },
+    {
+      "id": "F05",
+      "severity": "ANSWER_CONTAMINATION_RISK",
+      "claim": "there is no answer or judge data accessible in artifacts",
+      "counterexample": "native_score.json embeds formal_reference beside each native output; ONLY public.json does not contain explicit gold-key fields. Existing results must never be model-visible.",
+      "decision": "PUBLIC_ONLY_CONDITIONALLY_SAFE"
+    },
+    {
+      "id": "F06",
+      "severity": "INTERPRETATION_LIMIT",
+      "claim": "17/17 EC vs 1/17 Qwen proves general LLM semantic inferiority",
+      "counterexample": "Generated contract-specific fixture and single constrained 1.5B inference; downstream simulated; no withheld independent unseen evaluation, and all LLM outputs collapsed to REFRAME.",
+      "decision": "NOT_PROVEN"
+    },
+    {
+      "id": "F07",
+      "severity": "LEAKAGE_HISTORY",
+      "claim": "original 10-task raw candidate selector assessed semantic competence",
+      "counterexample": "Raw generator names all positive IDs vN, negative x1 and marks correct-only claim/evidence; older trivial 10/10 by prefix. Current projector removes literal fields; possible semantic_operation lexical proxies remain.",
+      "decision": "RAW_INVALID; CURRENT_BLIND_NOT_FULLY_VALIDATED"
+    }
+  ],
+  "critical_scientific_decision": {
+    "numerical_48_48_saved_score_reproduced": true,
+    "accepted_as_bounded_same_formal_policy_conformance": "CONDITIONAL_ONLY_ON_FIXED_NONOPTIMIZED_SOURCE",
+    "accepted_as_independent_semantic_gold": false,
+    "accepted_as_llm_ec_non_degradation": false,
+    "qualified_as_original_18_AC_increment": false,
+    "original_mvp_pass": "2/18",
+    "rerun_requirements": [
+      "New source-independent NL-grounded reference adjudicator kept out of both model prompts and author generator; freeze before inference",
+      "Public model inputs in physically/access-separated store; never publish scorer or gold to predictor",
+      "Convert integrity asserts to explicit unconditional raises; pinned fixed manifest hash must live outside writable corpus",
+      "Before scoring, source-hash native EC module and fail closed even under python -O",
+      "Run real LLM on exact frozen predictor-visible bytes; no post-hoc sample selection on hidden labels",
+      "Target-only intervention A-E with non-target hashes and capability parity"
+    ]
+  },
+  "note": "Adversarial tests were performed on a temporary copy. No original data or source mutated. The 48/48 tally is not alleged arithmetically false; the scientific interpretation and integrity certification fail."
+}

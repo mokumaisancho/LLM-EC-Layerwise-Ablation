@@ -1,0 +1,128 @@
+{
+  "schema": "ISSUE1_INDEPENDENCE_RCA_EXECUTED_V37",
+  "date": "2026-10-15",
+  "source_blob_pins": {
+    "ACCEPTANCE_CRITERIA.md": "40e4d41914fb17ee5c7deb0cfd32276a41c9a1fc",
+    "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+    "docs/ISSUE1_W4B_W4C_INDEPENDENT_PROOF_AC_V1.json": "c3a27b518ba42cc8bf41c91bacaf78baf5efcaef",
+    "results/phase1_v2_qualification_2026-10-03.json": "7eca5217c608efb4982a15bd2969004a9d3f9537"
+  },
+  "result": {
+    "schema": "ISSUE1_INDEPENDENCE_CRITERIA_AUDIT_V37",
+    "original_science_mvp": {
+      "total": 18,
+      "proven": 2,
+      "promoted": 0,
+      "materiality": 0.2,
+      "prequalified_fixture_count": 10,
+      "oracle_replay": "PASS"
+    },
+    "root_dependencies": [
+      "ISSUE-23",
+      "ISSUE-20",
+      "ISSUE-12",
+      "ISSUE-21",
+      "ISSUE-22",
+      "ISSUE-14",
+      "ISSUE-9",
+      "ISSUE-1",
+      "ISSUE-11",
+      "ISSUE-16",
+      "ISSUE-17",
+      "ISSUE-18",
+      "ISSUE-19"
+    ],
+    "extension_11ac_non_normative": true,
+    "incorrect_blockers": [
+      "THIRD_PARTY_CRYPTO_SIGNATURE_MANDATORY",
+      "HUMAN_TWO_RATER_ALPHA_MANDATORY",
+      "120_UNSEEN_ITEMS_MANDATORY",
+      "300_NEGATIVE_100_POSITIVE_S4_MANDATORY",
+      "14778_PAIRWISE_POLICY_REVIEWS_MANDATORY",
+      "EVERY_POSSIBLE_UNKNOWN_OBLIGATION_MUST_BE_PROVEN_ABSENT"
+    ],
+    "required_phase1": [
+      "SOURCE_FROZEN_GOLD_SEPARATE_FROM_PREDICTOR",
+      "NO_ORACLE_LABEL_LEAKAGE",
+      "SAME_UPSTREAM_PER_COMPARISON",
+      "ACTUAL_EC_AND_LLM_ENGINES",
+      "S3_CANDIDATEWISE_SCORING",
+      "BOUNDED_S4_RESIDUAL_AND_FALSE_CLOSE_SCORING",
+      "REAL_TARGET_ONLY_A_B_C_D_E_ORACLE_INTERVENTIONS",
+      "UNCHANGED_THRESHOLD_0_20"
+    ],
+    "three_claims": {
+      "fixed_fixture_diagnostic": "ALLOWED_ON_FROZEN_SOURCE_AND_ACTUAL_ENGINES",
+      "external_generalization": "REQUIRES_SEPARATE_UNSEEN_DATA",
+      "third_party_blind_human_study": "OPTIONAL_ADDITIONAL_STUDY"
+    },
+    "readiness": {
+      "original_10_fixtures": "SOURCE_AND_ORACLE_REPLAY_VERIFIED",
+      "actual_EC_native_qualifications": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+      "four_layer_real_AE": "NOT_ESTABLISHED_BY_THIS_AUDIT",
+      "D04_D05_robust_external_authority": "UNPROVEN"
+    },
+    "finding": "A later 11-AC external blind-research standard was promoted to an additional strict prerequisite although frozen 18-AC original MVP explicitly permits 10 fixed fixtures; scoping error rather than evidence the user must recruit a signed reviewer."
+  },
+  "checks": [
+    {
+      "name": "original_10_fixtures_and_11aux_scopes",
+      "passed": true,
+      "observed": "PASS"
+    },
+    {
+      "name": "original_AC_changed",
+      "passed": true,
+      "observed": "Error: REJECT:ORIGINAL_AC_SET"
+    },
+    {
+      "name": "threshold_changed",
+      "passed": true,
+      "observed": "Error: REJECT:FROZEN_THRESHOLD"
+    },
+    {
+      "name": "fixture_digest_changed",
+      "passed": true,
+      "observed": "Error: REJECT:ORIGINAL_FIXTURE_DIGEST"
+    },
+    {
+      "name": "oracle_replay_nonpass",
+      "passed": true,
+      "observed": "Error: REJECT:FROZEN_FIXTURE_QUALIFICATION"
+    },
+    {
+      "name": "leakage_detected",
+      "passed": true,
+      "observed": "Error: REJECT:FROZEN_FIXTURE_QUALIFICATION"
+    },
+    {
+      "name": "signature_elevated_as_normative",
+      "passed": true,
+      "observed": "Error: REJECT:AUXILIARY_NOT_NORMATIVE"
+    },
+    {
+      "name": "auxiliary_120_requirement_missing",
+      "passed": true,
+      "observed": "Error: REJECT:AUXILIARY_EXTENSIONS"
+    },
+    {
+      "name": "auxiliary_11AC_relabelled",
+      "passed": true,
+      "observed": "Error: REJECT:AUXILIARY_NOT_NORMATIVE"
+    },
+    {
+      "name": "extra_ISSUE_59_falsely_nominated_original",
+      "passed": true,
+      "observed": "Error: REJECT:NEW_DEPENDENCY_MASQUERADING_AS_ORIGINAL"
+    },
+    {
+      "name": "AC15_fixed_fixture_contract_erased",
+      "passed": true,
+      "observed": "Error: REJECT:ORIGINAL_TEXT"
+    }
+  ],
+  "passed": 11,
+  "total": 11,
+  "script_node_cli_independently_run": false,
+  "scientific_original_AC_promoted": 0
+}

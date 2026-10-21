@@ -1,0 +1,15 @@
+{
+  "balance": {
+    "BLOCKED": 12,
+    "CLOSE": 12,
+    "CONTINUE": 12,
+    "REFRAME": 12
+  },
+  "formal_source_policy_sha256": "fd1703572172641287906613ad970d6104656128a5000cce76873c4502974b96",
+  "limits": "No independent NL semantic labels. No real LLM outputs. Public/label generation code exists; only public inputs go to model.",
+  "n": 48,
+  "native_ec_expected_git_blob": "7da0cd8d876505cafdd5a9811132427e2f441a14",
+  "private_gold_sha256": "0a01e5781dc062ebb43fc055ac3b3550f3eeea3f816e9ec248ef26c64531484c",
+  "public_sha256": "ab9e382a62f0722b27aa5161adefc8f1c6e3bb7dca68662de7184722c441b276",
+  "schema": "ISSUE1_HOLDOUT48_FROZEN_MANIFEST_V1"
+}

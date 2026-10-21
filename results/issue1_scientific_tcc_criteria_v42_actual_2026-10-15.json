@@ -1,0 +1,67 @@
+{
+  "schema": "ISSUE1_SCIENTIFIC_TCC_CRITERIA_CHECK_V42",
+  "as_of": "2026-10-15",
+  "result": {
+    "status": "SPEC_CRITERIA_VALIDATED_ONLY",
+    "nodes": 7,
+    "evidence_writers": 7,
+    "actual_engine_work_present": true,
+    "science_promoted": 0
+  },
+  "tests": [
+    {
+      "name": "real_spec",
+      "pass": true
+    },
+    {
+      "name": "writer_missing",
+      "pass": true,
+      "error": "Error: EMPTY_IMPLEMENTATION_GATE"
+    },
+    {
+      "name": "conditional_science_gate_missing",
+      "pass": true,
+      "error": "Error: UNPRODUCED_OR_SELF_CERTIFIED_SCIENCE"
+    },
+    {
+      "name": "real_EC_removed",
+      "pass": true,
+      "error": "Error: MISSING_IMPLEMENTATION_STAGE"
+    },
+    {
+      "name": "real_LLM_removed",
+      "pass": true,
+      "error": "Error: EMPTY_IMPLEMENTATION_GATE"
+    },
+    {
+      "name": "source_gold_leak_not_checked",
+      "pass": true,
+      "error": "Error: EMPTY_IMPLEMENTATION_GATE"
+    },
+    {
+      "name": "non_target_changed",
+      "pass": true,
+      "error": "Error: EMPTY_IMPLEMENTATION_GATE"
+    },
+    {
+      "name": "false_closure_metric_missing",
+      "pass": true,
+      "error": "Error: EMPTY_IMPLEMENTATION_GATE"
+    },
+    {
+      "name": "old_protocol_fake_science_closed",
+      "pass": true,
+      "error": "Error: ORIGINAL_SCIENCE_CHANGED"
+    },
+    {
+      "name": "materiality_forged",
+      "pass": true,
+      "error": "Error: ORIGINAL_SCIENCE_CHANGED"
+    }
+  ],
+  "passed": 10,
+  "total": 10,
+  "native_generator_executed": false,
+  "Mac_receiver_v41": "QUEUED_NO_RECEIPT",
+  "actual_scientific_AC_promoted": 0
+}

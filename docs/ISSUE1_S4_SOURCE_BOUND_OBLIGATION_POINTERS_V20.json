@@ -1,0 +1,2944 @@
+{
+  "schema": "ISSUE1_S4_SOURCE_BOUND_OBLIGATION_POINTERS_V20",
+  "generated_as_of": "2026-10-14",
+  "root_issue": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/1",
+  "blocking_issue": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/60",
+  "source": {
+    "repository": "amazon-agi/tau2-bench-verified",
+    "commit": "864350a8971a8f8ee9e7b8472e2edc380a806b0c",
+    "pins": {
+      "airline": {
+        "git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+        "path": "data/tau2/domains/airline/tasks.json"
+      },
+      "retail": {
+        "git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+        "path": "data/tau2/domains/retail/tasks.json"
+      }
+    },
+    "public_data": true,
+    "not_hidden_holdout": true
+  },
+  "purpose": "Per-task source-bound inventory of publisher-explicit evaluator entries, not exhaustive domain-policy obligations, independent semantic adjudication, or a qualified real task CLOSE.",
+  "summary": {
+    "tasks": 164,
+    "explicit_nl": 135,
+    "tasks_with_nl": 58,
+    "nl_only": 7,
+    "action_entries": 692,
+    "communication_entries": 73,
+    "per_domain": {
+      "airline": {
+        "tasks": 50,
+        "nl": 123,
+        "nl_tasks": 50,
+        "nl_only": 7
+      },
+      "retail": {
+        "tasks": 114,
+        "nl": 12,
+        "nl_tasks": 8,
+        "nl_only": 0
+      }
+    }
+  },
+  "scope_limits": {
+    "task_assertions_only": true,
+    "domain_policy_semantic_exhaustiveness_proven": false,
+    "default_reward_basis_skips_NL": true,
+    "independent_NL_judge_executed": false,
+    "source_training_contamination_not_excluded": true,
+    "actual_AE_causal_intervention_executed": false,
+    "original_qualified_AC_pass": 2,
+    "original_qualified_AC_required": 18
+  },
+  "precondition_gate": {
+    "required_independent_fields": [
+      "source_pin_valid",
+      "policy_inventory_independent",
+      "all_obligations_reconciled",
+      "no_unresolved",
+      "independent_nl_judge",
+      "nl_reward_in_basis",
+      "model_oracle_receipts",
+      "holdout_custody"
+    ],
+    "fail_closed": true,
+    "automatically_authorize_real_world_close": false,
+    "branch_if_unproven": "BLOCKED_EXTERNAL_SOURCE_AUTHORITY"
+  },
+  "in_memory_checks": {
+    "passed": 676,
+    "failed": 0,
+    "source_structure_probes": 659,
+    "engine": "connected GitHub pinned-source JSON + JS independent assertion checks",
+    "real_task_scoring_executed": false
+  },
+  "cases": [
+    {
+      "case_id": "airline/0",
+      "publisher_domain": "airline",
+      "publisher_task_id": "0",
+      "source_index": 0,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 0,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/0/nl/0",
+          "source_index": 0,
+          "text": "Agent should refuse to proceed with the cancellation."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/1",
+      "publisher_domain": "airline",
+      "publisher_task_id": "1",
+      "source_index": 1,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/1/nl/0",
+          "source_index": 0,
+          "text": "Agent should not approve the cancellation."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/2",
+      "publisher_domain": "airline",
+      "publisher_task_id": "2",
+      "source_index": 2,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 3,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/2/nl/0",
+          "source_index": 0,
+          "text": "Agent should not offer compensation unless the user asks for it."
+        },
+        {
+          "assertion_id": "airline/2/nl/1",
+          "source_index": 1,
+          "text": "Agent should check that the flight was indeed delayed."
+        },
+        {
+          "assertion_id": "airline/2/nl/2",
+          "source_index": 2,
+          "text": "Agent should detect that the number of passengers on the delayed flight mentioned by the user is incorrect."
+        },
+        {
+          "assertion_id": "airline/2/nl/3",
+          "source_index": 3,
+          "text": "Agent should not offer a certificate of $50 as the user does not want to change or cancel the reservation."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/3",
+      "publisher_domain": "airline",
+      "publisher_task_id": "3",
+      "source_index": 3,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 2,
+      "expected_communication_count": 1,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/3/nl/0",
+          "source_index": 0,
+          "text": "Agent detects that user is actually a Silver member."
+        },
+        {
+          "assertion_id": "airline/3/nl/1",
+          "source_index": 1,
+          "text": "Agent communicate to user that she can bring 4 suitcases (silver member with economy flights = 2 free suitcases per passengers)."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/4",
+      "publisher_domain": "airline",
+      "publisher_task_id": "4",
+      "source_index": 4,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 6,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/4/nl/0",
+          "source_index": 0,
+          "text": "Agent should realize that flight was not cancel and not in business class."
+        },
+        {
+          "assertion_id": "airline/4/nl/1",
+          "source_index": 1,
+          "text": "Agent should not offer any compensation."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/5",
+      "publisher_domain": "airline",
+      "publisher_task_id": "5",
+      "source_index": 5,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/5/nl/0",
+          "source_index": 0,
+          "text": "Agent identifies that user is not a Gold member but a Regular member."
+        },
+        {
+          "assertion_id": "airline/5/nl/1",
+          "source_index": 1,
+          "text": "Agent does not offer any compensation as the user does not want to change or cancel the flight."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/6",
+      "publisher_domain": "airline",
+      "publisher_task_id": "6",
+      "source_index": 6,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/6/nl/0",
+          "source_index": 0,
+          "text": "Agent should not allow user to add insurance."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/7",
+      "publisher_domain": "airline",
+      "publisher_task_id": "7",
+      "source_index": 7,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 5,
+      "expected_communication_count": 1,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/7/nl/0",
+          "source_index": 0,
+          "text": "Agent upgrades XEHM4B to business."
+        },
+        {
+          "assertion_id": "airline/7/nl/1",
+          "source_index": 1,
+          "text": "Agent cancels XEHM4B (as it is business flight)."
+        },
+        {
+          "assertion_id": "airline/7/nl/2",
+          "source_index": 2,
+          "text": "Agent cancels 59XX6W (as it has insurance and the user is sick)."
+        },
+        {
+          "assertion_id": "airline/7/nl/3",
+          "source_index": 3,
+          "text": "Agent communicates that total cost of upcoming flights is $1,628."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/8",
+      "publisher_domain": "airline",
+      "publisher_task_id": "8",
+      "source_index": 8,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 4,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/8/nl/0",
+          "source_index": 0,
+          "text": "Agent get sophia_silva_7557 user details."
+        },
+        {
+          "assertion_id": "airline/8/nl/1",
+          "source_index": 1,
+          "text": "Agent identifies reservation id as WUNA5K."
+        },
+        {
+          "assertion_id": "airline/8/nl/2",
+          "source_index": 2,
+          "text": "Agent books one-way flight HAT271, May 26, in economy, no travel insurance, no baggage. Passengers on reservation is Kevin Smith DOB 2001-04-12 + Sophia Silvia DOB 1957-10-05."
+        },
+        {
+          "assertion_id": "airline/8/nl/3",
+          "source_index": 3,
+          "text": "Agent uses single certificate for payment."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/9",
+      "publisher_domain": "airline",
+      "publisher_task_id": "9",
+      "source_index": 9,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/9/nl/0",
+          "source_index": 0,
+          "text": "Check that Agent does not cancel IFOYYZ. Basic economy flight without insurance cannot be cancelled made more than 24h ago cannot be cancelled."
+        },
+        {
+          "assertion_id": "airline/9/nl/1",
+          "source_index": 1,
+          "text": "Check that Agent does not cancel NQNU5R. Flights that have already departed cannot be cancelled."
+        },
+        {
+          "assertion_id": "airline/9/nl/2",
+          "source_index": 2,
+          "text": "Check that Agent searched for direct flights between JFK and MCO on May 12 2024."
+        },
+        {
+          "assertion_id": "airline/9/nl/3",
+          "source_index": 3,
+          "text": "Reservation M20IZO is not modified by Agent."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/10",
+      "publisher_domain": "airline",
+      "publisher_task_id": "10",
+      "source_index": 10,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 0,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/10/nl/0",
+          "source_index": 0,
+          "text": "Check that Agent does not offer to change cabin for only some of the flights in a reservation."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/11",
+      "publisher_domain": "airline",
+      "publisher_task_id": "11",
+      "source_index": 11,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 1,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/11/nl/0",
+          "source_index": 0,
+          "text": "Check that agent does not remove passenger since changing the number of passengers is not allowed."
+        },
+        {
+          "assertion_id": "airline/11/nl/1",
+          "source_index": 1,
+          "text": "Check that agent downgrades all passengers to basic economy."
+        },
+        {
+          "assertion_id": "airline/11/nl/2",
+          "source_index": 2,
+          "text": "Check that agent refunds $5244 to original payment method."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/12",
+      "publisher_domain": "airline",
+      "publisher_task_id": "12",
+      "source_index": 12,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 5,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/12/nl/0",
+          "source_index": 0,
+          "text": "Check that Agent clearly identifies that policy only does not allow change of cabin for only some of the passengers. All passengers must fly in the same cabin."
+        },
+        {
+          "assertion_id": "airline/12/nl/1",
+          "source_index": 1,
+          "text": "Check that agent correctly adds 2 checked bags for free."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/13",
+      "publisher_domain": "airline",
+      "publisher_task_id": "13",
+      "source_index": 13,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/13/nl/0",
+          "source_index": 0,
+          "text": "Agent correctly identified that the changes requested by the user cannot be done because the policy stipulates that modification of origin, destination or trip type of a flight is not allowed."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/14",
+      "publisher_domain": "airline",
+      "publisher_task_id": "14",
+      "source_index": 14,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 2,
+      "expected_communication_count": 3,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/14/nl/0",
+          "source_index": 0,
+          "text": "Agent communicates that total gift card balance is $327."
+        },
+        {
+          "assertion_id": "airline/14/nl/1",
+          "source_index": 1,
+          "text": "Agent communicates that total certificate balance if $1000."
+        },
+        {
+          "assertion_id": "airline/14/nl/2",
+          "source_index": 2,
+          "text": "Agent should cancel reservation K1NW8N."
+        },
+        {
+          "assertion_id": "airline/14/nl/3",
+          "source_index": 3,
+          "text": "Agent should book a reservation with the following flights: HAT023 and HAT204, HAT100. No insurance. No baggage. Departure on 2024-05-26, return on 2024-05-28."
+        },
+        {
+          "assertion_id": "airline/14/nl/4",
+          "source_index": 4,
+          "text": "Agent communicated that the $44 will be charged to the mastercard."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/15",
+      "publisher_domain": "airline",
+      "publisher_task_id": "15",
+      "source_index": 15,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/15/nl/0",
+          "source_index": 0,
+          "text": "Agent updates reservation M05KNL to economy with flights HAT110 and HAT172 on 2024-05-24."
+        },
+        {
+          "assertion_id": "airline/15/nl/1",
+          "source_index": 1,
+          "text": "Agent uses the payment id: gift_card_8887175"
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/16",
+      "publisher_domain": "airline",
+      "publisher_task_id": "16",
+      "source_index": 16,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/16/nl/0",
+          "source_index": 0,
+          "text": "Agent updates M05KNL to economy with the following flights: HAT110 and HAT172 on 2024-05-24."
+        },
+        {
+          "assertion_id": "airline/16/nl/1",
+          "source_index": 1,
+          "text": "Agent uses payment id gift_card_8887175."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/17",
+      "publisher_domain": "airline",
+      "publisher_task_id": "17",
+      "source_index": 17,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 3,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/17/nl/0",
+          "source_index": 0,
+          "text": "Reservation FQ8APE is updated to economy."
+        },
+        {
+          "assertion_id": "airline/17/nl/1",
+          "source_index": 1,
+          "text": "Passenger for reservation FQ8APE is updated to Omar Rossi."
+        },
+        {
+          "assertion_id": "airline/17/nl/2",
+          "source_index": 2,
+          "text": "Number of bags for reservation FQ8APE is updated to 3."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/18",
+      "publisher_domain": "airline",
+      "publisher_task_id": "18",
+      "source_index": 18,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 5,
+      "expected_communication_count": 1,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/18/nl/0",
+          "source_index": 0,
+          "text": "Reservation JG7FMM is updated to economy."
+        },
+        {
+          "assertion_id": "airline/18/nl/1",
+          "source_index": 1,
+          "text": "Reservation 2FBBAH is updated to economy."
+        },
+        {
+          "assertion_id": "airline/18/nl/2",
+          "source_index": 2,
+          "text": "Reservation X7BYG1 is updated to economy. "
+        },
+        {
+          "assertion_id": "airline/18/nl/3",
+          "source_index": 3,
+          "text": "Reservation BOH180 is updated to economy. "
+        },
+        {
+          "assertion_id": "airline/18/nl/4",
+          "source_index": 4,
+          "text": "Reservation EQ1G6C is updated to economy."
+        },
+        {
+          "assertion_id": "airline/18/nl/5",
+          "source_index": 5,
+          "text": "Agent communicates that user will save $23553 in total."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/19",
+      "publisher_domain": "airline",
+      "publisher_task_id": "19",
+      "source_index": 19,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/19/nl/0",
+          "source_index": 0,
+          "text": "Agent cancels reservation Z7GOZK"
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/20",
+      "publisher_domain": "airline",
+      "publisher_task_id": "20",
+      "source_index": 20,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/20/nl/0",
+          "source_index": 0,
+          "text": "Agent books one-way one-stop economy trip from JFK to SEA with flights HAT136 and HAT039 on 2024-05-20, 3 baggages, no insurance."
+        },
+        {
+          "assertion_id": "airline/20/nl/1",
+          "source_index": 1,
+          "text": "Agent charges $250 on payment method certificate_7504069 and $5 on credit_card_4421486."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/21",
+      "publisher_domain": "airline",
+      "publisher_task_id": "21",
+      "source_index": 21,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/21/nl/0",
+          "source_index": 0,
+          "text": "Agent updates reservation OBUT9V return flights to HAT290 and HAT175 on May 27."
+        },
+        {
+          "assertion_id": "airline/21/nl/1",
+          "source_index": 1,
+          "text": "Agent assigns payment to gift_card_6276644."
+        },
+        {
+          "assertion_id": "airline/21/nl/2",
+          "source_index": 2,
+          "text": "Agent updates reservation OBUT9V to 2 free baggages and uses the smallest gift card to pay."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/22",
+      "publisher_domain": "airline",
+      "publisher_task_id": "22",
+      "source_index": 22,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 3,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/22/nl/0",
+          "source_index": 0,
+          "text": "Agent updates reservation FQ8APE to economy with payment method gift_card_8190333."
+        },
+        {
+          "assertion_id": "airline/22/nl/1",
+          "source_index": 1,
+          "text": "Agent updates reservation FQ8APE passenger to Omar Rossi."
+        },
+        {
+          "assertion_id": "airline/22/nl/2",
+          "source_index": 2,
+          "text": "Agent updates reservation FQ8APE baggages to 3 free baggages."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/23",
+      "publisher_domain": "airline",
+      "publisher_task_id": "23",
+      "source_index": 23,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 4,
+      "expected_communication_count": 3,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/23/nl/0",
+          "source_index": 0,
+          "text": "Agent mentions that total sum on gift cards is $327."
+        },
+        {
+          "assertion_id": "airline/23/nl/1",
+          "source_index": 1,
+          "text": "Agent mentions that total sum on certificates is $1000."
+        },
+        {
+          "assertion_id": "airline/23/nl/2",
+          "source_index": 2,
+          "text": "Agent cancels reservation K1NW8N."
+        },
+        {
+          "assertion_id": "airline/23/nl/3",
+          "source_index": 3,
+          "text": "Agent books a round-trip reservation from JFK to SFO in business with outbound flights HAT023 and HAT204 on 2024-05-26 and return flight HAT100 on 2024-05-28 for Mohamed Silva."
+        },
+        {
+          "assertion_id": "airline/23/nl/4",
+          "source_index": 4,
+          "text": "For this reservation Agent charges $500 on certificate_3765853, $198 on gift_card_8020792, $129 on gift_card_6136092\", and $44 on credit_card_2198526."
+        },
+        {
+          "assertion_id": "airline/23/nl/5",
+          "source_index": 5,
+          "text": "Agent books a similar reservation for Aarav Sanchez with $250 payment on certificate_9984806 and $621 payment on credit_card_2198526."
+        },
+        {
+          "assertion_id": "airline/23/nl/6",
+          "source_index": 6,
+          "text": "Agent books a similar reservation for Evelyn Wilson with $250 on certificate_2765295 and $621 on credit_card_2198526."
+        },
+        {
+          "assertion_id": "airline/23/nl/7",
+          "source_index": 7,
+          "text": "Agent communicates that Mastercard will be charged $1286."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/24",
+      "publisher_domain": "airline",
+      "publisher_task_id": "24",
+      "source_index": 24,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/24/nl/0",
+          "source_index": 0,
+          "text": "Agent does not cancel reservation H9ZU1C because it doesn't meet criteria set by policy."
+        },
+        {
+          "assertion_id": "airline/24/nl/1",
+          "source_index": 1,
+          "text": "Agent books basic economy round trip from JFK to SEA leaving 2024-05-20 (flight HAT069) and returning 2024-05-25 (flight HAT276), with 1 free bag."
+        },
+        {
+          "assertion_id": "airline/24/nl/2",
+          "source_index": 2,
+          "text": "Agent charges $67 to gift_card_7773485 and $39 to gift_card_7359776."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/25",
+      "publisher_domain": "airline",
+      "publisher_task_id": "25",
+      "source_index": 25,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/25/nl/0",
+          "source_index": 0,
+          "text": "Agent books one way economy flight from DTW to SEA on 2024-05-17 with flights HAT097 and HAT251 for passenger Ivan Smith, no baggage, no insurance."
+        },
+        {
+          "assertion_id": "airline/25/nl/1",
+          "source_index": 1,
+          "text": "Agent charges $128 to gift_card_8516878 and $247 to credit_card_3563913."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/26",
+      "publisher_domain": "airline",
+      "publisher_task_id": "26",
+      "source_index": 26,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 0,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/26/nl/0",
+          "source_index": 0,
+          "text": "Agent does not offer the refund because reservation doesn't meet policy criteria."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/27",
+      "publisher_domain": "airline",
+      "publisher_task_id": "27",
+      "source_index": 27,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/27/nl/0",
+          "source_index": 0,
+          "text": "Agent confirms that flight HAT039 from ATL to SEA on 2024-05-15 has been delayed."
+        },
+        {
+          "assertion_id": "airline/27/nl/1",
+          "source_index": 1,
+          "text": "Agent confirms that user can receive compensation because he has Silver status."
+        },
+        {
+          "assertion_id": "airline/27/nl/2",
+          "source_index": 2,
+          "text": "Agent doesn't issue a certificate as the user doesn't want to change or cancel the reservation."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/28",
+      "publisher_domain": "airline",
+      "publisher_task_id": "28",
+      "source_index": 28,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 0,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/28/nl/0",
+          "source_index": 0,
+          "text": "Agent does not cancel flight."
+        },
+        {
+          "assertion_id": "airline/28/nl/1",
+          "source_index": 1,
+          "text": "Agent does not offer any refund."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/29",
+      "publisher_domain": "airline",
+      "publisher_task_id": "29",
+      "source_index": 29,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 3,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/29/nl/0",
+          "source_index": 0,
+          "text": "Agent informs the user that the reservation can't be changed and it can be cancelled instead."
+        },
+        {
+          "assertion_id": "airline/29/nl/1",
+          "source_index": 1,
+          "text": "Agent cancelled reservation VA5SGQ."
+        },
+        {
+          "assertion_id": "airline/29/nl/2",
+          "source_index": 2,
+          "text": "Agent books new round trip reservation with flights HAT169 and HAT033 with one bag."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/30",
+      "publisher_domain": "airline",
+      "publisher_task_id": "30",
+      "source_index": 30,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 3,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/30/nl/0",
+          "source_index": 0,
+          "text": "Agent updates reservation to flights HAT266 and HAT112."
+        },
+        {
+          "assertion_id": "airline/30/nl/1",
+          "source_index": 1,
+          "text": "Agent does not make modifications to checked bags since policy doesn't allow to remove bags."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/31",
+      "publisher_domain": "airline",
+      "publisher_task_id": "31",
+      "source_index": 31,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 0,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/31/nl/0",
+          "source_index": 0,
+          "text": "Agent doesn't book any flight."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/32",
+      "publisher_domain": "airline",
+      "publisher_task_id": "32",
+      "source_index": 32,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 5,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/32/nl/0",
+          "source_index": 0,
+          "text": "Agent update reservation OWZ4XL to economy."
+        },
+        {
+          "assertion_id": "airline/32/nl/1",
+          "source_index": 1,
+          "text": "Agent updates reservation OWZ4XL to flight HAT041."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/33",
+      "publisher_domain": "airline",
+      "publisher_task_id": "33",
+      "source_index": 33,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 5,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/33/nl/0",
+          "source_index": 0,
+          "text": "Agent updates reservation HXDUBJ to flights HAT072 on 2024-05-19 and HAT278 on 2024-05-23."
+        },
+        {
+          "assertion_id": "airline/33/nl/1",
+          "source_index": 1,
+          "text": "Agent does not allow change to business class for only one leg of the flight."
+        },
+        {
+          "assertion_id": "airline/33/nl/2",
+          "source_index": 2,
+          "text": "Agent add 2 non-free baggages to reservation HXDUBJ."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/34",
+      "publisher_domain": "airline",
+      "publisher_task_id": "34",
+      "source_index": 34,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 0,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/34/nl/0",
+          "source_index": 0,
+          "text": "Agent should not make any changes."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/35",
+      "publisher_domain": "airline",
+      "publisher_task_id": "35",
+      "source_index": 35,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/35/nl/0",
+          "source_index": 0,
+          "text": "Agent does not cancel the reservation since this is not allowed."
+        },
+        {
+          "assertion_id": "airline/35/nl/1",
+          "source_index": 1,
+          "text": "Agent books a one-way one-stop flight from JFK to SFO on 2024-05-24 with flights HAT069 and HAT258."
+        },
+        {
+          "assertion_id": "airline/35/nl/2",
+          "source_index": 2,
+          "text": "Agent charges $290 to credit card credit_card_907483"
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/36",
+      "publisher_domain": "airline",
+      "publisher_task_id": "36",
+      "source_index": 36,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/36/nl/0",
+          "source_index": 0,
+          "text": "Agent does not change the flight."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/37",
+      "publisher_domain": "airline",
+      "publisher_task_id": "37",
+      "source_index": 37,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 4,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/37/nl/0",
+          "source_index": 0,
+          "text": "Agent does not cancel reservation NQNU5R since it is in the past."
+        },
+        {
+          "assertion_id": "airline/37/nl/1",
+          "source_index": 1,
+          "text": "Agent does not cancel reservation IFOYYZ since it doesn't meet criteria."
+        },
+        {
+          "assertion_id": "airline/37/nl/2",
+          "source_index": 2,
+          "text": "Agent upgrades M20IZO to business class."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/38",
+      "publisher_domain": "airline",
+      "publisher_task_id": "38",
+      "source_index": 38,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/38/nl/0",
+          "source_index": 0,
+          "text": "Agent does not offer compensation before the user asks."
+        },
+        {
+          "assertion_id": "airline/38/nl/1",
+          "source_index": 1,
+          "text": "Agent verifies that the flight was delayed."
+        },
+        {
+          "assertion_id": "airline/38/nl/2",
+          "source_index": 2,
+          "text": "Agent verifies the number of passengers in the reservation."
+        },
+        {
+          "assertion_id": "airline/38/nl/3",
+          "source_index": 3,
+          "text": "Agent does not offer a $50 certificate."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/39",
+      "publisher_domain": "airline",
+      "publisher_task_id": "39",
+      "source_index": 39,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 11,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/39/nl/0",
+          "source_index": 0,
+          "text": "Agent cancels reservation 8C8K4E."
+        },
+        {
+          "assertion_id": "airline/39/nl/1",
+          "source_index": 1,
+          "text": "Agent cancels reservation LU15PA."
+        },
+        {
+          "assertion_id": "airline/39/nl/2",
+          "source_index": 2,
+          "text": "Agent cancels reservation MSJ4OA."
+        },
+        {
+          "assertion_id": "airline/39/nl/3",
+          "source_index": 3,
+          "text": "Agent does not cancel  any other reservation."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/40",
+      "publisher_domain": "airline",
+      "publisher_task_id": "40",
+      "source_index": 40,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/40/nl/0",
+          "source_index": 0,
+          "text": "Agent updates reservation 3RK2T9 to passenger Mei Garcia."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/41",
+      "publisher_domain": "airline",
+      "publisher_task_id": "41",
+      "source_index": 41,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 8,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/41/nl/0",
+          "source_index": 0,
+          "text": "Agent checks all reservations."
+        },
+        {
+          "assertion_id": "airline/41/nl/1",
+          "source_index": 1,
+          "text": "Agent does not cancel any reservation."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/42",
+      "publisher_domain": "airline",
+      "publisher_task_id": "42",
+      "source_index": 42,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 10,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/42/nl/0",
+          "source_index": 0,
+          "text": "Agent cancels reservation FDZ0T5"
+        },
+        {
+          "assertion_id": "airline/42/nl/1",
+          "source_index": 1,
+          "text": "Agent cancels reservation HSR97W"
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/43",
+      "publisher_domain": "airline",
+      "publisher_task_id": "43",
+      "source_index": 43,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 6,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/43/nl/0",
+          "source_index": 0,
+          "text": "Agent should not cancel reservation 9HBUV8 since it does not meet requirements."
+        },
+        {
+          "assertion_id": "airline/43/nl/1",
+          "source_index": 1,
+          "text": "Agent should not cancel reservation D1EW9B since it does not meet requirements."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/44",
+      "publisher_domain": "airline",
+      "publisher_task_id": "44",
+      "source_index": 44,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 19,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/44/nl/0",
+          "source_index": 0,
+          "text": "Agent does not cancel reservation S61CZX as the user is healthy."
+        },
+        {
+          "assertion_id": "airline/44/nl/1",
+          "source_index": 1,
+          "text": "The total cost that the agent mentions is between $1380 and $1390."
+        },
+        {
+          "assertion_id": "airline/44/nl/2",
+          "source_index": 2,
+          "text": "Agent upgrades NM1VX1 to business."
+        },
+        {
+          "assertion_id": "airline/44/nl/3",
+          "source_index": 3,
+          "text": "Agent upgrades H8Q05L to business."
+        },
+        {
+          "assertion_id": "airline/44/nl/4",
+          "source_index": 4,
+          "text": "Agent updates KC18K6 to business."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/45",
+      "publisher_domain": "airline",
+      "publisher_task_id": "45",
+      "source_index": 45,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/45/nl/0",
+          "source_index": 0,
+          "text": "Agent should not cancel reservation PEP4E0."
+        },
+        {
+          "assertion_id": "airline/45/nl/1",
+          "source_index": 1,
+          "text": "Agent should not change PEP4E0 flight."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/46",
+      "publisher_domain": "airline",
+      "publisher_task_id": "46",
+      "source_index": 46,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 0,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/46/nl/0",
+          "source_index": 0,
+          "text": "Agent does not cancel insurance or offer a refund."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/47",
+      "publisher_domain": "airline",
+      "publisher_task_id": "47",
+      "source_index": 47,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/47/nl/0",
+          "source_index": 0,
+          "text": "Agent does not cancel H8Q05L."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/48",
+      "publisher_domain": "airline",
+      "publisher_task_id": "48",
+      "source_index": 48,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/48/nl/0",
+          "source_index": 0,
+          "text": "Agent does not cancel 3RK2T9."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "airline/49",
+      "publisher_domain": "airline",
+      "publisher_task_id": "49",
+      "source_index": 49,
+      "source_git_blob": "a18c17a1619ab1b78370ac0bc5f0e4df46cff5b9",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "airline/49/nl/0",
+          "source_index": 0,
+          "text": "Agent does not cancel 3RK2T9."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/0",
+      "publisher_domain": "retail",
+      "publisher_task_id": "0",
+      "source_index": 0,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/1",
+      "publisher_domain": "retail",
+      "publisher_task_id": "1",
+      "source_index": 1,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/2",
+      "publisher_domain": "retail",
+      "publisher_task_id": "2",
+      "source_index": 2,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 11,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/3",
+      "publisher_domain": "retail",
+      "publisher_task_id": "3",
+      "source_index": 3,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 12,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/4",
+      "publisher_domain": "retail",
+      "publisher_task_id": "4",
+      "source_index": 4,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 13,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/5",
+      "publisher_domain": "retail",
+      "publisher_task_id": "5",
+      "source_index": 5,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/6",
+      "publisher_domain": "retail",
+      "publisher_task_id": "6",
+      "source_index": 6,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/7",
+      "publisher_domain": "retail",
+      "publisher_task_id": "7",
+      "source_index": 7,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/8",
+      "publisher_domain": "retail",
+      "publisher_task_id": "8",
+      "source_index": 8,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/9",
+      "publisher_domain": "retail",
+      "publisher_task_id": "9",
+      "source_index": 9,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/10",
+      "publisher_domain": "retail",
+      "publisher_task_id": "10",
+      "source_index": 10,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/11",
+      "publisher_domain": "retail",
+      "publisher_task_id": "11",
+      "source_index": 11,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/12",
+      "publisher_domain": "retail",
+      "publisher_task_id": "12",
+      "source_index": 12,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/13",
+      "publisher_domain": "retail",
+      "publisher_task_id": "13",
+      "source_index": 13,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/14",
+      "publisher_domain": "retail",
+      "publisher_task_id": "14",
+      "source_index": 14,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/15",
+      "publisher_domain": "retail",
+      "publisher_task_id": "15",
+      "source_index": 15,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 7,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/16",
+      "publisher_domain": "retail",
+      "publisher_task_id": "16",
+      "source_index": 16,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 9,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/17",
+      "publisher_domain": "retail",
+      "publisher_task_id": "17",
+      "source_index": 17,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/18",
+      "publisher_domain": "retail",
+      "publisher_task_id": "18",
+      "source_index": 18,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/19",
+      "publisher_domain": "retail",
+      "publisher_task_id": "19",
+      "source_index": 19,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 7,
+      "expected_communication_count": 2,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/20",
+      "publisher_domain": "retail",
+      "publisher_task_id": "20",
+      "source_index": 20,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 10,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/21",
+      "publisher_domain": "retail",
+      "publisher_task_id": "21",
+      "source_index": 21,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 12,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/22",
+      "publisher_domain": "retail",
+      "publisher_task_id": "22",
+      "source_index": 22,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 7,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/23",
+      "publisher_domain": "retail",
+      "publisher_task_id": "23",
+      "source_index": 23,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 12,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/24",
+      "publisher_domain": "retail",
+      "publisher_task_id": "24",
+      "source_index": 24,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 0,
+      "expected_communication_count": 2,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/25",
+      "publisher_domain": "retail",
+      "publisher_task_id": "25",
+      "source_index": 25,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/26",
+      "publisher_domain": "retail",
+      "publisher_task_id": "26",
+      "source_index": 26,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 8,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/27",
+      "publisher_domain": "retail",
+      "publisher_task_id": "27",
+      "source_index": 27,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/28",
+      "publisher_domain": "retail",
+      "publisher_task_id": "28",
+      "source_index": 28,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 11,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/29",
+      "publisher_domain": "retail",
+      "publisher_task_id": "29",
+      "source_index": 29,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 3,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/30",
+      "publisher_domain": "retail",
+      "publisher_task_id": "30",
+      "source_index": 30,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 13,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/31",
+      "publisher_domain": "retail",
+      "publisher_task_id": "31",
+      "source_index": 31,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 12,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/32",
+      "publisher_domain": "retail",
+      "publisher_task_id": "32",
+      "source_index": 32,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 13,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/33",
+      "publisher_domain": "retail",
+      "publisher_task_id": "33",
+      "source_index": 33,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/34",
+      "publisher_domain": "retail",
+      "publisher_task_id": "34",
+      "source_index": 34,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/35",
+      "publisher_domain": "retail",
+      "publisher_task_id": "35",
+      "source_index": 35,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 7,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/36",
+      "publisher_domain": "retail",
+      "publisher_task_id": "36",
+      "source_index": 36,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 2,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/37",
+      "publisher_domain": "retail",
+      "publisher_task_id": "37",
+      "source_index": 37,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 4,
+      "expected_communication_count": 2,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/38",
+      "publisher_domain": "retail",
+      "publisher_task_id": "38",
+      "source_index": 38,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 4,
+      "expected_communication_count": 2,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/39",
+      "publisher_domain": "retail",
+      "publisher_task_id": "39",
+      "source_index": 39,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/40",
+      "publisher_domain": "retail",
+      "publisher_task_id": "40",
+      "source_index": 40,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 4,
+      "expected_communication_count": 2,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/41",
+      "publisher_domain": "retail",
+      "publisher_task_id": "41",
+      "source_index": 41,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 10,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/42",
+      "publisher_domain": "retail",
+      "publisher_task_id": "42",
+      "source_index": 42,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 10,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/43",
+      "publisher_domain": "retail",
+      "publisher_task_id": "43",
+      "source_index": 43,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 7,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/44",
+      "publisher_domain": "retail",
+      "publisher_task_id": "44",
+      "source_index": 44,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/45",
+      "publisher_domain": "retail",
+      "publisher_task_id": "45",
+      "source_index": 45,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/46",
+      "publisher_domain": "retail",
+      "publisher_task_id": "46",
+      "source_index": 46,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 7,
+      "expected_communication_count": 2,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/47",
+      "publisher_domain": "retail",
+      "publisher_task_id": "47",
+      "source_index": 47,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 7,
+      "expected_communication_count": 2,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/48",
+      "publisher_domain": "retail",
+      "publisher_task_id": "48",
+      "source_index": 48,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/49",
+      "publisher_domain": "retail",
+      "publisher_task_id": "49",
+      "source_index": 49,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 10,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/50",
+      "publisher_domain": "retail",
+      "publisher_task_id": "50",
+      "source_index": 50,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/51",
+      "publisher_domain": "retail",
+      "publisher_task_id": "51",
+      "source_index": 51,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/52",
+      "publisher_domain": "retail",
+      "publisher_task_id": "52",
+      "source_index": 52,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/53",
+      "publisher_domain": "retail",
+      "publisher_task_id": "53",
+      "source_index": 53,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/54",
+      "publisher_domain": "retail",
+      "publisher_task_id": "54",
+      "source_index": 54,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 12,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/55",
+      "publisher_domain": "retail",
+      "publisher_task_id": "55",
+      "source_index": 55,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 13,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/56",
+      "publisher_domain": "retail",
+      "publisher_task_id": "56",
+      "source_index": 56,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 7,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/57",
+      "publisher_domain": "retail",
+      "publisher_task_id": "57",
+      "source_index": 57,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 0,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/58",
+      "publisher_domain": "retail",
+      "publisher_task_id": "58",
+      "source_index": 58,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 6,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/59",
+      "publisher_domain": "retail",
+      "publisher_task_id": "59",
+      "source_index": 59,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 2,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/60",
+      "publisher_domain": "retail",
+      "publisher_task_id": "60",
+      "source_index": 60,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 4,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/61",
+      "publisher_domain": "retail",
+      "publisher_task_id": "61",
+      "source_index": 61,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/62",
+      "publisher_domain": "retail",
+      "publisher_task_id": "62",
+      "source_index": 62,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 2,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/63",
+      "publisher_domain": "retail",
+      "publisher_task_id": "63",
+      "source_index": 63,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 7,
+      "expected_communication_count": 3,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/64",
+      "publisher_domain": "retail",
+      "publisher_task_id": "64",
+      "source_index": 64,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 8,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/65",
+      "publisher_domain": "retail",
+      "publisher_task_id": "65",
+      "source_index": 65,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 3,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/66",
+      "publisher_domain": "retail",
+      "publisher_task_id": "66",
+      "source_index": 66,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/67",
+      "publisher_domain": "retail",
+      "publisher_task_id": "67",
+      "source_index": 67,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/68",
+      "publisher_domain": "retail",
+      "publisher_task_id": "68",
+      "source_index": 68,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 4,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/69",
+      "publisher_domain": "retail",
+      "publisher_task_id": "69",
+      "source_index": 69,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 4,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/70",
+      "publisher_domain": "retail",
+      "publisher_task_id": "70",
+      "source_index": 70,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/71",
+      "publisher_domain": "retail",
+      "publisher_task_id": "71",
+      "source_index": 71,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/72",
+      "publisher_domain": "retail",
+      "publisher_task_id": "72",
+      "source_index": 72,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/73",
+      "publisher_domain": "retail",
+      "publisher_task_id": "73",
+      "source_index": 73,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/74",
+      "publisher_domain": "retail",
+      "publisher_task_id": "74",
+      "source_index": 74,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/75",
+      "publisher_domain": "retail",
+      "publisher_task_id": "75",
+      "source_index": 75,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/76",
+      "publisher_domain": "retail",
+      "publisher_task_id": "76",
+      "source_index": 76,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 2,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/77",
+      "publisher_domain": "retail",
+      "publisher_task_id": "77",
+      "source_index": 77,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/78",
+      "publisher_domain": "retail",
+      "publisher_task_id": "78",
+      "source_index": 78,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 3,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/79",
+      "publisher_domain": "retail",
+      "publisher_task_id": "79",
+      "source_index": 79,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/80",
+      "publisher_domain": "retail",
+      "publisher_task_id": "80",
+      "source_index": 80,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/81",
+      "publisher_domain": "retail",
+      "publisher_task_id": "81",
+      "source_index": 81,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/82",
+      "publisher_domain": "retail",
+      "publisher_task_id": "82",
+      "source_index": 82,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/83",
+      "publisher_domain": "retail",
+      "publisher_task_id": "83",
+      "source_index": 83,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/84",
+      "publisher_domain": "retail",
+      "publisher_task_id": "84",
+      "source_index": 84,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/85",
+      "publisher_domain": "retail",
+      "publisher_task_id": "85",
+      "source_index": 85,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/86",
+      "publisher_domain": "retail",
+      "publisher_task_id": "86",
+      "source_index": 86,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/87",
+      "publisher_domain": "retail",
+      "publisher_task_id": "87",
+      "source_index": 87,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 4,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/88",
+      "publisher_domain": "retail",
+      "publisher_task_id": "88",
+      "source_index": 88,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/89",
+      "publisher_domain": "retail",
+      "publisher_task_id": "89",
+      "source_index": 89,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 4,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/90",
+      "publisher_domain": "retail",
+      "publisher_task_id": "90",
+      "source_index": 90,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/91",
+      "publisher_domain": "retail",
+      "publisher_task_id": "91",
+      "source_index": 91,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/92",
+      "publisher_domain": "retail",
+      "publisher_task_id": "92",
+      "source_index": 92,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/93",
+      "publisher_domain": "retail",
+      "publisher_task_id": "93",
+      "source_index": 93,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/94",
+      "publisher_domain": "retail",
+      "publisher_task_id": "94",
+      "source_index": 94,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/95",
+      "publisher_domain": "retail",
+      "publisher_task_id": "95",
+      "source_index": 95,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 2,
+      "expected_communication_count": 3,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/96",
+      "publisher_domain": "retail",
+      "publisher_task_id": "96",
+      "source_index": 96,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/97",
+      "publisher_domain": "retail",
+      "publisher_task_id": "97",
+      "source_index": 97,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/98",
+      "publisher_domain": "retail",
+      "publisher_task_id": "98",
+      "source_index": 98,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 3,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/99",
+      "publisher_domain": "retail",
+      "publisher_task_id": "99",
+      "source_index": 99,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/100",
+      "publisher_domain": "retail",
+      "publisher_task_id": "100",
+      "source_index": 100,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/101",
+      "publisher_domain": "retail",
+      "publisher_task_id": "101",
+      "source_index": 101,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 3,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/102",
+      "publisher_domain": "retail",
+      "publisher_task_id": "102",
+      "source_index": 102,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 3,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/103",
+      "publisher_domain": "retail",
+      "publisher_task_id": "103",
+      "source_index": 103,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 4,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/104",
+      "publisher_domain": "retail",
+      "publisher_task_id": "104",
+      "source_index": 104,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 5,
+      "expected_communication_count": 1,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/105",
+      "publisher_domain": "retail",
+      "publisher_task_id": "105",
+      "source_index": 105,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "retail/105/nl/0",
+          "source_index": 0,
+          "text": "Agent should exchange both tea kettles (same style) to the items requested"
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/106",
+      "publisher_domain": "retail",
+      "publisher_task_id": "106",
+      "source_index": 106,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "retail/106/nl/0",
+          "source_index": 0,
+          "text": "Agent should process the exchange."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/107",
+      "publisher_domain": "retail",
+      "publisher_task_id": "107",
+      "source_index": 107,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "retail/107/nl/0",
+          "source_index": 0,
+          "text": "Agent should exchange items in both orders."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/108",
+      "publisher_domain": "retail",
+      "publisher_task_id": "108",
+      "source_index": 108,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 1,
+      "expected_communication_count": 1,
+      "nl_assertions": [
+        {
+          "assertion_id": "retail/108/nl/0",
+          "source_index": 0,
+          "text": "Agent should make the return"
+        },
+        {
+          "assertion_id": "retail/108/nl/1",
+          "source_index": 1,
+          "text": "Agent should communicate the refund to user."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/109",
+      "publisher_domain": "retail",
+      "publisher_task_id": "109",
+      "source_index": 109,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 3,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "retail/109/nl/0",
+          "source_index": 0,
+          "text": "Agent should make changes to address on order and user profile"
+        },
+        {
+          "assertion_id": "retail/109/nl/1",
+          "source_index": 1,
+          "text": "Agent should modify the pending order."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/110",
+      "publisher_domain": "retail",
+      "publisher_task_id": "110",
+      "source_index": 110,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 3,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "retail/110/nl/0",
+          "source_index": 0,
+          "text": "Agent should modify address for the order"
+        },
+        {
+          "assertion_id": "retail/110/nl/1",
+          "source_index": 1,
+          "text": "Agent should modify user address"
+        },
+        {
+          "assertion_id": "retail/110/nl/2",
+          "source_index": 2,
+          "text": "Agent should modify the items in the pending order."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/111",
+      "publisher_domain": "retail",
+      "publisher_task_id": "111",
+      "source_index": 111,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 3,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "retail/111/nl/0",
+          "source_index": 0,
+          "text": "Agent should modify the items and address as requested."
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/112",
+      "publisher_domain": "retail",
+      "publisher_task_id": "112",
+      "source_index": 112,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 3,
+      "expected_communication_count": 0,
+      "nl_assertions": [],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    },
+    {
+      "case_id": "retail/113",
+      "publisher_domain": "retail",
+      "publisher_task_id": "113",
+      "source_index": 113,
+      "source_git_blob": "2c6373d7ab16cf1b9543043d31d87f0daf292d92",
+      "expected_action_count": 2,
+      "expected_communication_count": 0,
+      "nl_assertions": [
+        {
+          "assertion_id": "retail/113/nl/0",
+          "source_index": 0,
+          "text": "Agent should cancel all pending orders"
+        }
+      ],
+      "policy_obligation_inventory_attested": false,
+      "blind_evaluator_attested": false,
+      "real_task_close_authorized": false
+    }
+  ]
+}

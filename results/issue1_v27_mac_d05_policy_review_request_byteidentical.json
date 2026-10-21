@@ -1,0 +1,113 @@
+{
+  "cases": [
+    {
+      "NL_ASSERTION_in_scoring": false,
+      "all_policy_lines_inspected": false,
+      "applicable_mandatory_clauses": null,
+      "authoritative_close": false,
+      "case_id": "airline/0",
+      "complete_residuals": null,
+      "empty_set_proof": null,
+      "independent_assessor": null,
+      "original_assertions": [
+        "Agent should refuse to proceed with the cancellation."
+      ],
+      "real_agent_scored": false
+    },
+    {
+      "NL_ASSERTION_in_scoring": false,
+      "all_policy_lines_inspected": false,
+      "applicable_mandatory_clauses": null,
+      "authoritative_close": false,
+      "case_id": "airline/10",
+      "complete_residuals": null,
+      "empty_set_proof": null,
+      "independent_assessor": null,
+      "original_assertions": [
+        "Check that Agent does not offer to change cabin for only some of the flights in a reservation."
+      ],
+      "real_agent_scored": false
+    },
+    {
+      "NL_ASSERTION_in_scoring": false,
+      "all_policy_lines_inspected": false,
+      "applicable_mandatory_clauses": null,
+      "authoritative_close": false,
+      "case_id": "airline/26",
+      "complete_residuals": null,
+      "empty_set_proof": null,
+      "independent_assessor": null,
+      "original_assertions": [
+        "Agent does not offer the refund because reservation doesn't meet policy criteria."
+      ],
+      "real_agent_scored": false
+    },
+    {
+      "NL_ASSERTION_in_scoring": false,
+      "all_policy_lines_inspected": false,
+      "applicable_mandatory_clauses": null,
+      "authoritative_close": false,
+      "case_id": "airline/28",
+      "complete_residuals": null,
+      "empty_set_proof": null,
+      "independent_assessor": null,
+      "original_assertions": [
+        "Agent does not cancel flight.",
+        "Agent does not offer any refund."
+      ],
+      "real_agent_scored": false
+    },
+    {
+      "NL_ASSERTION_in_scoring": false,
+      "all_policy_lines_inspected": false,
+      "applicable_mandatory_clauses": null,
+      "authoritative_close": false,
+      "case_id": "airline/31",
+      "complete_residuals": null,
+      "empty_set_proof": null,
+      "independent_assessor": null,
+      "original_assertions": [
+        "Agent doesn't book any flight."
+      ],
+      "real_agent_scored": false
+    },
+    {
+      "NL_ASSERTION_in_scoring": false,
+      "all_policy_lines_inspected": false,
+      "applicable_mandatory_clauses": null,
+      "authoritative_close": false,
+      "case_id": "airline/34",
+      "complete_residuals": null,
+      "empty_set_proof": null,
+      "independent_assessor": null,
+      "original_assertions": [
+        "Agent should not make any changes."
+      ],
+      "real_agent_scored": false
+    },
+    {
+      "NL_ASSERTION_in_scoring": false,
+      "all_policy_lines_inspected": false,
+      "applicable_mandatory_clauses": null,
+      "authoritative_close": false,
+      "case_id": "airline/46",
+      "complete_residuals": null,
+      "empty_set_proof": null,
+      "independent_assessor": null,
+      "original_assertions": [
+        "Agent does not cancel insurance or offer a refund."
+      ],
+      "real_agent_scored": false
+    }
+  ],
+  "followup_after_seven": "remaining 51 NL cases, then 106 with no published NL assertions",
+  "full_policy_lines_in_git_packet": 167,
+  "full_publisher_review_packet_git_blob": "5bbab248b0d5ef74f92a7117898eb4acb1aa4c2a",
+  "parent_issue": 60,
+  "publisher_commit": "864350a8971a8f8ee9e7b8472e2edc380a806b0c",
+  "publisher_policy_blob": "8098be7db3f47de943fad39d1e057ede6cc6cd04",
+  "schema": "ISSUE1_D05_POLICY_ADJUDICATION_REQUEST_V27",
+  "scientific_ac_promotion": 0,
+  "source_policy_read_required": true,
+  "status": "BLOCKED_EXTERNAL"
+}

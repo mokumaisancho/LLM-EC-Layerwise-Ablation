@@ -1,0 +1,37 @@
+{
+  "schema": "ISSUE1_V39_DAG_CHECK",
+  "source_git_blobs": {
+    "docs/PHASE1_MVP_AC_DEPENDENCY_TCC_2026-10-03.json": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+    "docs/ISSUE1_D04_D05_INDEPENDENCE_CRITERIA_REBASE_V38.json": "e7141938a0163cd127816937a48fc5b20cea691c",
+    "docs/ISSUE1_HANDOFF_CRITICAL_PATH_V36.json": "c5202033471c897c4f857f865f2c3dff13c89e89"
+  },
+  "tests": [
+    {
+      "name": "actual_v38_rebased_source_DAG",
+      "pass": true
+    },
+    {
+      "name": "original_mvp_forged",
+      "pass": true,
+      "reason": "Error: FAIL_CLOSED:ORIGINAL_NORMATIVE_DRIFT"
+    },
+    {
+      "name": "root_pass_claim_forged",
+      "pass": true,
+      "reason": "Error: FAIL_CLOSED:REBASE_SCIENCE_EVIDENCE_DRIFT"
+    },
+    {
+      "name": "extended_issue_injected_as_original",
+      "pass": true,
+      "reason": "Error: FAIL_CLOSED:ORIGINAL_DAG_HAS_EXTENDED_ISSUES"
+    },
+    {
+      "name": "historic_D04_erased",
+      "pass": true,
+      "reason": "Error: FAIL_CLOSED:HISTORICAL_HANDOFF_DRIFT"
+    }
+  ],
+  "passed": 5,
+  "total": 5,
+  "science_promoted": 0
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "ISSUE1_S3_SOURCE_GOLD_CONTAMINATION_V42",
+  "as_of": "2026-10-15",
+  "source_blobs": {
+    "generator": "26bf4a57451769f0a1b617687abe216f773faa8f",
+    "canonical": "e354884f20a534a3be429ffdcff5f72135472436"
+  },
+  "actual_source_findings": {
+    "source_cases": 10,
+    "gold_leak_keys": [
+      "positive_id_name",
+      "negative_id_name",
+      "published_gold_in_s2",
+      "gold_in_s3",
+      "correct_claim_tag",
+      "wrong_claim_tag",
+      "correct_only_dependencies",
+      "wrong_only_dependencies",
+      "correct_evidence"
+    ],
+    "trivial_v_prefix_selector_10_10_by_generator_definition": true,
+    "ten_fixture_oracle_replay_is_not_semantic_performance": true
+  },
+  "controls": [
+    {
+      "name": "real_source_leak_audited",
+      "pass": true
+    },
+    {
+      "name": "source_example_projection_whitelist",
+      "pass": true
+    },
+    {
+      "name": "alias_not_complete",
+      "pass": true,
+      "observed": "Error: REJECT:ALIAS_COVERAGE"
+    },
+    {
+      "name": "duplicate_alias",
+      "pass": true,
+      "observed": "Error: REJECT:ALIAS_NOT_OPAQUE"
+    },
+    {
+      "name": "old_candidate_id_not_opaque",
+      "pass": true,
+      "observed": "Error: REJECT:ALIAS_NOT_OPAQUE"
+    },
+    {
+      "name": "wrong_source_schema",
+      "pass": true,
+      "observed": "Error: REJECT:SOURCE_S2_INVALID"
+    },
+    {
+      "name": "duplicate_old_source_id",
+      "pass": true,
+      "observed": "Error: REJECT:SOURCE_IDS_BAD"
+    },
+    {
+      "name": "unqualified_fixture_added",
+      "pass": true,
+      "observed": "Error: REJECT:TEN_FIXTURE_SCOPE"
+    },
+    {
+      "name": "gold_field_renamed",
+      "pass": true,
+      "observed": "Error: REJECT:MISSING_SOURCE_MARKER_published_gold_in_s2"
+    },
+    {
+      "name": "relation_groups_removed",
+      "pass": true,
+      "observed": "Error: REJECT:ORACLE_RELATION_SOURCE"
+    }
+  ],
+  "passed": 10,
+  "total": 10,
+  "projection_demonstration": {
+    "schema": "S3_BLIND_PREDICTOR_INPUT_V42",
+    "candidates": [
+      {
+        "candidate_id": "c_340bb692c93014be7ea29e4eb07f6c1a",
+        "semantic_operation": "INVESTIGATE_ROUTE_A"
+      },
+      {
+        "candidate_id": "c_0a651194bddcd4e12268cfc08b516d76",
+        "semantic_operation": "INVESTIGATE_ROUTE_B"
+      },
+      {
+        "candidate_id": "c_9be39a697951bc6ee673c8b6b4b39f07",
+        "semantic_operation": "BYPASS_CONTROL"
+      }
+    ]
+  },
+  "projection_demonstration_is_synthetic": true,
+  "actual_native_EC_and_LLM_executed": false,
+  "original_MVP_science_promoted": 0
+}

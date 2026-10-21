@@ -1,0 +1,117 @@
+{
+  "schema": "ISSUE1_PHASE1_REBASE_ACTUAL_V38",
+  "as_of": "2026-10-15",
+  "source_blobs": {
+    "normative": "08407bec73278aeda8ddd2d4d6efc810dadf46f9",
+    "auxiliary": "c3a27b518ba42cc8bf41c91bacaf78baf5efcaef",
+    "existing_qualified_fixtures": "7eca5217c608efb4982a15bd2969004a9d3f9537"
+  },
+  "result": {
+    "schema": "ISSUE1_D04_D05_PHASE1_VS_EXTENDED_REBASE_V38",
+    "root": {
+      "original_ac_passed": 2,
+      "original_ac_total": 18,
+      "promoted": 0,
+      "original_data_source_fixed": true,
+      "third_party_signature_gate_for_fixed_fixture": false,
+      "original_threshold": 0.2
+    },
+    "scopes": {
+      "D04": {
+        "fixed_fixture_reference_oracle": "READY_FOR_ACTUAL_ARMS",
+        "external_blind_generalization": "SEPARATE_UNPROVEN_TIER",
+        "gold_separate_from_predictor": "REQUIRES_RUNTIME_VERIFICATION",
+        "competing_equivalent": "M003_M009_SOURCE_FIXTURES_NOT_INDEPENDENT_HELDOUT"
+      },
+      "D05": {
+        "bounded_fixture_obligations": "FROZEN_ORACLE_REPLAY_AVAILABLE",
+        "real_S4_close_accuracy": "REQUIRES_S4_EXECUTION_AND_INDEPENDENT_SCORING",
+        "full_task_policy_exhaustiveness": "UNPROVEN_FOR_TAU2",
+        "scope": "10-original-fixtures",
+        "mandatory_14778_pair_reviews": false
+      },
+      "next": {
+        "must_run": [
+          "ISSUE-23_QUALIFIED_EC_NATIVE_ADAPTER",
+          "ISSUE-20_ACTUAL_EC_BINDING",
+          "ISSUE-22_TRUE_LLM_S1_S2_AND_CACHED_OUTPUTS",
+          "ISSUE-9_ACTUAL_C_D_AND_E_TARGET_ONLY",
+          "ISSUE-61_TARGET_ONLY_ENGINE_PROVENANCE_FIX",
+          "ROOT_ISSUE1_REAL_SCORING"
+        ],
+        "optional_not_phase1": [
+          "ISSUE-59_EXTENDED_BLIND_S3",
+          "ISSUE-60_EXTENDED_FULL_POLICY_S4"
+        ],
+        "status": "ACTUAL_ENGINE_AND_CAUSAL_EVIDENCE_NOT_YET_QUALIFIED"
+      }
+    },
+    "source_criteria_priority": [
+      "2026-10-03_FROZEN_18_AC",
+      "2026-10-15_VERSIONED_REBASE",
+      "AUXILIARY_11AC_EXTENDED_ONLY"
+    ],
+    "exit_policy": "READY_FOR_REFERENCE_DOES_NOT_EQUAL_REAL_EC_LLM_AE_PASS"
+  },
+  "tests": [
+    {
+      "id": "real_original_fixture_and_oracle_ready",
+      "pass": true,
+      "status": "PASS"
+    },
+    {
+      "id": "self_said_original_pass",
+      "pass": true,
+      "status": "Error: REJECT:NO_REAL_AE_PROOF"
+    },
+    {
+      "id": "misclassified_third_party_signature_as_required",
+      "pass": true,
+      "status": "Error: REJECT:EXTRA_SIGNATURE_NOT_NORMATIVE"
+    },
+    {
+      "id": "all_14778_reviews_as_required",
+      "pass": true,
+      "status": "Error: REJECT:EXTENDED_SCOPE_NOT_NORMATIVE"
+    },
+    {
+      "id": "false_claim_s3_s4_science_complete",
+      "pass": true,
+      "status": "Error: REJECT:ACTUAL_ENGINES_AND_TARGET_ONLY_RECEIPTS_NOT_PROVEN"
+    },
+    {
+      "id": "original_fixture_oracle_not_pass",
+      "pass": true,
+      "status": "Error: REJECT:BENCHMARK_REFERENCE_INVALID"
+    },
+    {
+      "id": "original_label_leakage",
+      "pass": true,
+      "status": "Error: REJECT:BENCHMARK_REFERENCE_INVALID"
+    },
+    {
+      "id": "threshold_change",
+      "pass": true,
+      "status": "Error: REJECT:NORMATIVE_DRIFT"
+    },
+    {
+      "id": "aux_11AC_recast_as_original",
+      "pass": true,
+      "status": "Error: REJECT:EXTENDED_AC_PRIORITY_DRIFT"
+    },
+    {
+      "id": "false_issue59_normative_dependency",
+      "pass": true,
+      "status": "Error: REJECT:MISSING_ORIGINAL_AUTHORITY"
+    },
+    {
+      "id": "invalid_claims_shape",
+      "pass": true,
+      "status": "Error: REJECT:CLAIMS_FORMAT"
+    }
+  ],
+  "passed": 11,
+  "total": 11,
+  "native_cli_executed": false,
+  "original_mvp_promotion": 0
+}

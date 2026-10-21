@@ -1,0 +1,483 @@
+{
+  "schema": "ISSUE1_SCIENTIFIC_TCC_V42_READY_FOR_NATIVE_GENERATOR",
+  "source_ac_file": "docs/ISSUE1_SCIENTIFIC_TCC_AC_V42.json",
+  "source_ac_git_blob": "e82365ae3f279195cbc6f24b267524dcc7a8a606",
+  "science_original_AC": {
+    "passed": 2,
+    "required": 18,
+    "promoted": 0
+  },
+  "validation": {
+    "statically_typed_nodes": 17,
+    "real_action_writer_count": 7,
+    "gate_requires_actual_written_evidence": [
+      "pins",
+      "clean_input",
+      "ec_real",
+      "s4_real",
+      "llm_real",
+      "target_oracle",
+      "score_real"
+    ],
+    "semantic_source_proof_unrun": true,
+    "actual_native_generator_executed": false
+  },
+  "tcc_spec": {
+    "schema": "tcc.spec.v3",
+    "tcc_id": "ISSUE1-ACTUAL-SCIENCE-V42",
+    "goal": "Execute source-pinned real S3/S4 shared-function EC+LLM with gold-blind inputs and target-only Oracle; no false original AC promotion",
+    "acceptance": [
+      "Source-pinned original 2/18 and frozen EC_NATIVE_SCOPE_INCOMPATIBLE are preserved",
+      "No v/x IDs, gold oracle fields, correctness claims or relation-label leakage to predictor",
+      "Actual EC-native next-action and compatible real LLM are executed; never relabel native EC as set-selecting",
+      "S4 closure-sufficient task state is derived from source and execution traces not gold",
+      "All non-target layer implementations and upstream hashes remain stable in target-only Oracle substitution",
+      "Scorer receives gold only after prediction freeze; both False Closure Rate and true-close accuracy and missed reframe measured",
+      "No mandatory arbitrary human signatures, 120/300 counts or 14778 irrelevant rule-case pairs"
+    ],
+    "state_keys": [
+      "pins",
+      "clean_input",
+      "ec_real",
+      "s4_real",
+      "llm_real",
+      "target_oracle",
+      "score_real"
+    ],
+    "immutable_state_keys": [],
+    "entry_nodes": [
+      "P00_PIN"
+    ],
+    "nodes": [
+      {
+        "id": "P00_PIN",
+        "kind": "action",
+        "depends_on": [],
+        "reads": [],
+        "writes": [
+          "pins"
+        ],
+        "branches": {},
+        "failure_target": "ERR_P00_PIN",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "P01_REMOVE_GOLD",
+        "kind": "action",
+        "depends_on": [
+          "P00_PIN"
+        ],
+        "reads": [
+          "pins"
+        ],
+        "writes": [
+          "clean_input"
+        ],
+        "branches": {},
+        "failure_target": "ERR_P01_REMOVE_GOLD",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "P02_NATIVE_EC",
+        "kind": "action",
+        "depends_on": [
+          "P01_REMOVE_GOLD"
+        ],
+        "reads": [
+          "clean_input"
+        ],
+        "writes": [
+          "ec_real"
+        ],
+        "branches": {},
+        "failure_target": "ERR_P02_NATIVE_EC",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "P03_S4_SOURCE",
+        "kind": "action",
+        "depends_on": [
+          "P01_REMOVE_GOLD"
+        ],
+        "reads": [
+          "clean_input"
+        ],
+        "writes": [
+          "s4_real"
+        ],
+        "branches": {},
+        "failure_target": "ERR_P03_S4_SOURCE",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "P04_LLM",
+        "kind": "action",
+        "depends_on": [
+          "P01_REMOVE_GOLD"
+        ],
+        "reads": [
+          "clean_input"
+        ],
+        "writes": [
+          "llm_real"
+        ],
+        "branches": {},
+        "failure_target": "ERR_P04_LLM",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "P05_ORACLE",
+        "kind": "action",
+        "depends_on": [
+          "P02_NATIVE_EC",
+          "P03_S4_SOURCE",
+          "P04_LLM"
+        ],
+        "reads": [
+          "ec_real",
+          "s4_real",
+          "llm_real"
+        ],
+        "writes": [
+          "target_oracle"
+        ],
+        "branches": {},
+        "failure_target": "ERR_P05_ORACLE",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "P06_SCORE",
+        "kind": "action",
+        "depends_on": [
+          "P05_ORACLE"
+        ],
+        "reads": [
+          "target_oracle"
+        ],
+        "writes": [
+          "score_real"
+        ],
+        "branches": {},
+        "failure_target": "ERR_P06_SCORE",
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "G07_SCIENCE",
+        "kind": "gate",
+        "depends_on": [
+          "P06_SCORE"
+        ],
+        "reads": [
+          "pins",
+          "clean_input",
+          "ec_real",
+          "s4_real",
+          "llm_real",
+          "target_oracle",
+          "score_real"
+        ],
+        "writes": [],
+        "branches": {
+          "qualified": "SUCCESSOR_CAUSAL_EVIDENCE_VERIFIED",
+          "missing": "BLOCK_MISSING_EVIDENCE"
+        },
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": null,
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "SUCCESSOR_CAUSAL_EVIDENCE_VERIFIED",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "SUCCESS",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "BLOCK_MISSING_EVIDENCE",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "BLOCKED",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "ERR_P00_PIN",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "ERR_P01_REMOVE_GOLD",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "ERR_P02_NATIVE_EC",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "ERR_P03_S4_SOURCE",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "ERR_P04_LLM",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "ERR_P05_ORACLE",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      },
+      {
+        "id": "ERR_P06_SCORE",
+        "kind": "terminal",
+        "depends_on": [],
+        "reads": [],
+        "writes": [],
+        "branches": {},
+        "failure_target": null,
+        "destructive": false,
+        "rollback": null,
+        "idempotent": true,
+        "max_attempts": 1,
+        "retry_guard": null,
+        "terminal_status": "FAILURE",
+        "join_gate": null,
+        "join_inputs": {},
+        "compensation_actions": [],
+        "rollback_order": [],
+        "compensated_target": null,
+        "loop_max_iterations": null,
+        "loop_exhausted_target": null
+      }
+    ]
+  }
+}

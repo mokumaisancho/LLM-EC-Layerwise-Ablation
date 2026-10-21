@@ -1,0 +1,197 @@
+{
+  "schema": "ISSUE1_EXECUTION_RESOLUTION_ROUTE_V22",
+  "as_of": "2026-10-14",
+  "root_issue": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/1",
+  "original_goal": "Localize necessary LLM semantic ability across S1-S4 with real target-only causal ablation and independent source truth; root AC fixed 18 MVP",
+  "science_result_before": {
+    "original_mvp_passed": 2,
+    "original_mvp_required": 18,
+    "scientific_root_complete": false
+  },
+  "resolution": "Reuse existing GitHub initiative-dispatcher queue + Mac LaunchAgent as transport, no Remote Desktop Commander, no GitHub Actions, no ChatGPT Desktop cache modification",
+  "lineage": [
+    {
+      "stage": "R0",
+      "from": "chat",
+      "to": "github research branch",
+      "artifact": "docs/ISSUE1_TCC_NATIVE_CONTRACT_V22.json",
+      "operation": "declare fail-closed issue1 TCC v3 contract",
+      "status": "COMMITTED"
+    },
+    {
+      "stage": "R1",
+      "from": "github research branch",
+      "to": "GitHub initiative-dispatcher queue",
+      "artifact": "initiatives/INIT-ISSUE1-TCC-V22.json;state/INIT-ISSUE1-TCC-V22.json;queue/INIT-ISSUE1-TCC-V22/<run-id>.json",
+      "operation": "register separate integration-control AC; activate via CAS-compatible state last",
+      "status": "ACTIVATED_GITHUB_QUEUE",
+      "receipt": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/queue/INIT-ISSUE1-TCC-V22/2590c053e8798c66f0bbd905.json"
+    },
+    {
+      "stage": "R2",
+      "from": "github command queue",
+      "to": "Mac host",
+      "artifact": "existing com.local.initiative-dispatcher LaunchAgent",
+      "operation": "read one immutable queue receipt, dispatch one Codex CLI workspace-write job",
+      "status": "LIVE_MAC_RECEIVER_PROVED_RUN_2590C",
+      "receipt": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/receipts/INIT-ISSUE1-TCC-V22/2590c053e8798c66f0bbd905.json"
+    },
+    {
+      "stage": "R3",
+      "from": "Mac isolated workspace",
+      "to": "pinned local TCC",
+      "artifact": "scripts/issue1_native_host_receipt_v22.py",
+      "operation": "verify pinned source, invoke native generate_tcc_from_context + validate_spec + compile_spec + execute_graph",
+      "status": "FIRST_RUN_BLOCKED_NO_GH_NETWORK_IN_CODEX_SANDBOX"
+    },
+    {
+      "stage": "R4",
+      "from": "native science authority gates",
+      "to": "D04 and D05",
+      "artifact": "docs/ISSUE1_SINGLE_SOURCE_TRACKER_V5.json; docs/ISSUE1_S4_SOURCE_BOUND_OBLIGATION_POINTERS_V20.json",
+      "operation": "confirm D04/D05 lack independent blind full source gold; issue BLOCKED, disallow D06-D09",
+      "status": "EXPECTED_BLOCK_EXTERNAL_NOT_SCIENCE_PASS"
+    },
+    {
+      "stage": "R5",
+      "from": "Mac local receipt",
+      "to": "GitHub initiative-dispatcher receipts",
+      "artifact": "receipts/INIT-ISSUE1-TCC-V22/<run-id>.json",
+      "operation": "verify fixed proof.txt SHA, exact ownership and result evidence; root science remains open",
+      "status": "FIRST_RUN_SIGNED_VERIFICATION_FAILED_PROOF_ABSENT"
+    },
+    {
+      "stage": "R6",
+      "from": "first real Mac signed VERIFICATION_FAILED receipt",
+      "to": "immutable offline source package",
+      "artifact": "scripts/issue1_native_offline_runner_v22.py",
+      "operation": "Root-cause: Codex workspace cannot reach api.github.com; fix by encoding pinned Python source into GitHub COMMAND, no API/network calls inside child",
+      "status": "COMMITTED_AND_SOURCE_PINNED",
+      "first_run": "2590c053e8798c66f0bbd905",
+      "scientific_AC_promoted": 0
+    },
+    {
+      "stage": "R7",
+      "from": "GitHub encoded immutable COMMAND",
+      "to": "Mac existing launchd receiver and pinned tcc-compiler",
+      "artifact": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/queue/INIT-ISSUE1-TCC-OF22/3b8c518a813fb750a5bc0cdb.json",
+      "operation": "decode source, verify SHA-1, run actual native TCC Generator/Validator/Runtime offline; signed receipt requires fixed proof hash",
+      "status": "REAL_HOST_SOURCE_VERIFIED_NATIVE_GENERATOR_STARTED_BUT_CANONICAL_COMPARE_BUG",
+      "scientific_AC_promoted": 0
+    },
+    {
+      "stage": "R8",
+      "from": "real Mac offline runner v22",
+      "to": "native TCC v3 generated spec canonicalization",
+      "artifact": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/receipts/INIT-ISSUE1-TCC-OF22/3b8c518a813fb750a5bc0cdb.json",
+      "operation": "Real host verified embedded runner source Git blob, executed native generator; local runner falsely compared normalized generated Spec against raw nonnormalized Spec, producing GENERATED_SPEC_DRIFT. Timeout eventually produced signed FAILED receipt; no proof created.",
+      "status": "RCA_CONFIRMED",
+      "scientific_AC_promoted": 0
+    },
+    {
+      "stage": "R9",
+      "from": "pinned prior isolated Mac source and signed evidence",
+      "to": "native normalized source and execution",
+      "artifact": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/blob/feat/issue1-independent-s4-authority-audit-v19/scripts/issue1_native_offline_runner_v23.py",
+      "operation": "Deterministic two-line exact source correction only: import normalize_spec; compare generated spec to normalize_spec(original); verified new Git blob f91505ddbfaa2a47533d1dbf02f02211a6d81a5e before execution, no network",
+      "status": "QUEUED_V23",
+      "run_id": "e3ff583acbadc79386a4b5da",
+      "scientific_AC_promoted": 0
+    }
+  ],
+  "authority": {
+    "transport_repo": "mokumaisancho/initiative-dispatcher",
+    "transport_receiver": "initiative_dispatcher.receiver",
+    "receiver_tcc_repo": "mokumaisancho/tcc-compiler",
+    "receiver_tcc_pin": "786d52c1efbc9271096f9311d768ef49bcd116e2",
+    "transport_historical_receipt": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/receipts/INIT-SMOKE/6579aee9311f79a6ce9465b4.json",
+    "research_repo": "mokumaisancho/LLM-EC-Layerwise-Ablation",
+    "research_branch": "feat/issue1-independent-s4-authority-audit-v19",
+    "tcc_contract_path": "docs/ISSUE1_TCC_NATIVE_CONTRACT_V22.json",
+    "tcc_contract_git_blob": "597871767951bbcce950860546a04a1ecbc8f966",
+    "host_runner_path": "scripts/issue1_native_host_receipt_v22.py",
+    "host_runner_git_blob": "e4918e53a3debd827a7b63eee5ebad9de086f932",
+    "verified_git_source_pins": true
+  },
+  "preconditions": [
+    "Mac user session active, launchd receiver loaded and Github auth working",
+    "Codex isolated home already authenticated by earlier dispatcher",
+    "CLI sandbox can read pinned host TCC and retrieve verified source GitHub repository files",
+    "source pins and original 18 AC unchanged",
+    "avoid parallel duplicate jobs or retroactively labeling synthetic evidence live"
+  ],
+  "stop_conditions": [
+    "RECEIPT_INTEGRITY_FAILURE",
+    "MAC_OFFLINE_OR_NOT_CONSUMED",
+    "PINNED_SOURCE_MISMATCH",
+    "NATIVE_GENERATOR_OR_SPEC_INVALID",
+    "D04_OR_D05_EXTERNAL_GOLD_MISSING",
+    "D06_D09_REAL_EXECUTOR_UNBOUND"
+  ],
+  "science_gate": {
+    "D04": "BLOCKED_EXTERNAL independent blinded S3 all-admissible gold",
+    "D05": "BLOCKED_EXTERNAL independently complete S4 obligations",
+    "D06_D09": "BLOCKED_UPSTREAM without D04+D05 qualification"
+  },
+  "scope_boundary": {
+    "no_workflow_dispatch": true,
+    "no_GitHub_Actions": true,
+    "no_DC": true,
+    "no_arbitrary_shell_in_COMMAND": true,
+    "no_global_hook_changes": true,
+    "no_model_inference": true,
+    "no_authorized_science_closure": true
+  },
+  "audit_policy": "GitHub transport AC may PASS for real control-plane only; never transfer its PASS to the 18 original research AC. Preserve signed per-run receipt and public resolution route to avoid thread drift.",
+  "next_decision": "Check GitHub receipt for concrete new initiative and read native result; if absent report transport evidence pending rather than claim success",
+  "command_activation": {
+    "initiative_id": "INIT-ISSUE1-TCC-V22",
+    "run_id": "2590c053e8798c66f0bbd905",
+    "fingerprint": "d2879861a4c27aa64adf8ca88f409cc833319b0828f4b92b0ecc891ddbf7ebfd",
+    "initiative_git_commit": "9babb857f0b8f3a02d18cbaf41f712e245e46da6",
+    "queue_git_commit": "43256a932dcfc795ffdf0235a3825e8c8ce48094",
+    "activation_git_commit": "c65dcbdbfde14b526985aaa883e54b958c311203",
+    "queue_status_last_verified": "QUEUED",
+    "mac_receipt_verified": false,
+    "actions_intentionally_skipped": true,
+    "expected_sandbox_proof_sha256": "cffaba91bde600659561bec17bd6c934edbe8a68342835d0daf431611bd55e11"
+  },
+  "offline_fallback": {
+    "initiative_id": "INIT-ISSUE1-TCC-OF22",
+    "run_id": "3b8c518a813fb750a5bc0cdb",
+    "queue_git_commit": "eb252db2a39673e26b8d86b92fe41262a227d41c",
+    "state_git_commit": "a7d482dcf0c37dd424221cf0d0cd8fdd58c98d4d",
+    "payload_git_blob": "7678b9cc618744a8415b0583a070b52d8a277769",
+    "proof_sha256": "b02f2c320b270fc98ef40d6742feddc6fc2a463be156fac80f76500140d6dac8",
+    "mac_receipt_verified": false
+  },
+  "first_live_result": {
+    "outcome": "VERIFICATION_FAILED",
+    "error_class": "CODEX_WORKSPACE_NETWORK_TO_GITHUB_BLOCKED",
+    "proof_absent": true,
+    "native_generator_invoked": false,
+    "native_runtime_invoked": false,
+    "original_science_ac_passed": 2,
+    "receipt": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/receipts/INIT-ISSUE1-TCC-V22/2590c053e8798c66f0bbd905.json"
+  },
+  "offline_attempt2": {
+    "run_id": "3b8c518a813fb750a5bc0cdb",
+    "signed_receipt": "https://github.com/mokumaisancho/initiative-dispatcher/blob/main/receipts/INIT-ISSUE1-TCC-OF22/3b8c518a813fb750a5bc0cdb.json",
+    "receipt_outcome": "FAILED",
+    "runner_observation": "GENERATOR_SPEC_RAW_VS_NORMALIZED_COMPARE_MISMATCH",
+    "runner_source_hash_pass": true,
+    "real_native_generator_started": true,
+    "native_runtime_reached": false,
+    "proof_created": false
+  },
+  "normalization_repair": {
+    "repo_source_blob": "f91505ddbfaa2a47533d1dbf02f02211a6d81a5e",
+    "explanation": "tcc.core_v3.normalize_spec sorts nodes by ID, acceptance, reads, writes; generated spec is normalized, so raw canonical JSON is not an equivalent comparison",
+    "source_line_fix_count": 2,
+    "not_a_relaxed_gate": true,
+    "third_initiative": "INIT-ISSUE1-TCC-OF23",
+    "third_run_id": "e3ff583acbadc79386a4b5da",
+    "third_status_last_checked": "QUEUED",
+    "mac_receipt_verified": false
+  }
+}
