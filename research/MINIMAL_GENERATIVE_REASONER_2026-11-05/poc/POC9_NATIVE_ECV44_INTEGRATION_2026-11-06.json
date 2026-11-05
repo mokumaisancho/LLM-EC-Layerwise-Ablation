@@ -1,0 +1,65 @@
+{
+  "id": "GEN001_POC9_ECV44_NATIVE_PREFLIGHT_INTEGRATION_V1",
+  "date": "2026-11-06",
+  "status": "SCOPED_PASS_UNMERGED_DRAFT",
+  "branch": "mokumaisancho/GPT-EC-Closure-Engine:research/gen001-verified-abstraction-20261106",
+  "draft_pr": "https://github.com/mokumaisancho/GPT-EC-Closure-Engine/pull/40",
+  "base_branch": "ECv4.4-candidate",
+  "verified_code_blobs": {
+    "01_repo/src/v4/ec_behavioral_abstraction.py": "07a77b27001628d7dfa7a937e59b376fd9c57098",
+    "01_repo/src/v4/v4_4_control.py": "3f22e038122f1713493ff939c124341cb543af8f",
+    "01_repo/tests/test_ec_v4_4_behavioral_abstraction.py": "c5ce03bf39b1a4e46d45522f368dc38176c45700"
+  },
+  "tests": {
+    "exact_verifier_unit": 17,
+    "native_v44_controller_with_upstream_stubs": 15,
+    "portable_committed_tests_with_upstream_stubs": 16,
+    "passed": 48,
+    "failed": 0,
+    "full_existing_ecv44_suite": "NOT_RUN",
+    "v3_postflight_closure_end_to_end": "NOT_RUN"
+  },
+  "model_scope": {
+    "source_type": "trusted_registered_finite_transition_table",
+    "original_reachable_states": 8,
+    "proposed_minimal_observable_states": 4,
+    "scope": "reset=warm; actions=advance,toggle; output=q-is-zero",
+    "result": "EXACT_REACHABLE, proposed for review only"
+  },
+  "cost_measurement": {
+    "source_snapshot_json_bytes": 736,
+    "candidate_model_json_bytes": 226,
+    "complete_candidate_envelope_json_bytes": 714,
+    "trusted_context_json_bytes": 863,
+    "verification_trials": 300,
+    "verification_median_s": 0.00009133800017480098,
+    "verification_p95_s": 0.0005666219999511668,
+    "runtime_steps_each": 150000,
+    "runtime_trials": 7,
+    "source_runtime_median_s": 0.022975748000135354,
+    "candidate_runtime_median_s": 0.02391635200001474,
+    "runtime_speed_ratio": 0.9606710923188115,
+    "learning_cost": "NOT_MEASURED",
+    "total_end_to_end_cost": "NOT_ESTABLISHED"
+  },
+  "fault_controls": [
+    "wrong output with fake PASS -> rejected with empty-word witness",
+    "wrong transition -> rejected with input witness",
+    "source snapshot digest change -> blocked",
+    "reset change -> blocked",
+    "action scope change -> blocked",
+    "output identity change -> blocked",
+    "budget exhaustion -> HOLD and native BLOCKED",
+    "unreachable redundant states -> rejected",
+    "no candidate -> old preflight unaffected",
+    "old framing revision or residual blockers take precedence"
+  ],
+  "scope_limits": [
+    "Exact only for specified finite deterministic table and reachable state subset",
+    "Source SHA authenticates registered semantics snapshot, not live arbitrary program bytes",
+    "Native S3/S4 production ingress is not yet connected",
+    "Existing ECv4.4 test SUITE not executed due private repository unavailable inside sandbox; integration tested with upstream module stubs",
+    "Candidate and proof are not a general algorithmic law discovery result"
+  ],
+  "next_decision": "Use trusted runtime source catalog to bind actual EC S3/S4 behavior; run unmocked full native regression and compare complete learning/proof/operation cost. Keep PR draft."
+}
