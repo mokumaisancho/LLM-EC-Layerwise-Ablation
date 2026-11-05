@@ -60,3 +60,6 @@
 
 ## 2026-11-05 — P7 active learning result and remaining blocker
 [Executed PoC7 and independent exact reachable verifier](poc/POC7_FINDINGS.md). The learner did not need native transition matrices, pretrained LLMs, or latent-coordinate labels to recover a minimal **reachable** finite input-output machine on scoped synthetic systems. It did not infer a globally valid latent coordinate/law. False-PASS controls confirmed that terminating an active learner is not a proof; the existing ECv4.4 authority gate requires a separately checked scope-specific certificate. Official AALpy library acquisition failed in sandbox; a tested L* standalone implementation and a distinct unexecuted native driver are provided.
+
+## 2026-11-06 — PoC8: scope-bound exact evidence gate
+[PoC8検証結果とMermaid](poc/POC8_FINDINGS_2026-11-06.md) / [実行コード](poc/poc8_scope_gate.mjs) / [実測JSON](poc/POC8_EXECUTION_2026-11-06.json)。11試験すべて想定どおり。学習モデルを元システムと独立照合し、reset・action・output・sourceの違い、誤モデル、予算不足をfail-closedに分類。128bit非線形合成系の4状態モデルも限定的に検証。**ECv4.4 native統合・権限昇格は未実施**。次の単一ブロッカーは実装source SHAと操作契約に結び付いたnative S3/S4 adapterおよび既存回帰試験。
