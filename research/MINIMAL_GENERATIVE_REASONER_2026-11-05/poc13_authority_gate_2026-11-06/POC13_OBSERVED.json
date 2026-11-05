@@ -3,7 +3,7 @@
   "date": "2026-11-06",
   "status": "SCOPED_SYNTHETIC_PASS",
   "runner": "poc13_repro.py",
-  "runner_local_sha256": "682d2ff34e514107ed955d5f08a9f69ba475f2d827b22e8f28355b91dd0018dd",
+  "runner_local_sha256": "12295b8aaf91f09e8c612cf08d0fa912a63bcb792a37bf0b4f8ac3565fed2219",
   "runner_git_blob": "437b5e501729736538a70d4faa09f1e585edd96d",
   "observed": {
     "cases": 64,
@@ -1162,5 +1162,6 @@
       "previous": "CLOSE",
       "actual": "CONTINUE"
     }
-  ]
+  ],
+  "full_local_runner_result_sha256": "6cf22f51c466ecab732be435c5ca9ccacf3a1646d2221b6ff91305571d242efd"
 }
