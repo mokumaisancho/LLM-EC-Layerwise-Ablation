@@ -1,0 +1,1166 @@
+{
+  "protocol": "GEN001_POC13_AUTHORITY_BOUND_CLOSURE_V1",
+  "date": "2026-11-06",
+  "status": "SCOPED_SYNTHETIC_PASS",
+  "runner": "poc13_repro.py",
+  "runner_local_sha256": "682d2ff34e514107ed955d5f08a9f69ba475f2d827b22e8f28355b91dd0018dd",
+  "runner_git_blob": "437b5e501729736538a70d4faa09f1e585edd96d",
+  "observed": {
+    "cases": 64,
+    "correct": 64,
+    "old_false_close": 16,
+    "new_false_close": 0,
+    "true_close_retained": 24
+  },
+  "negative_controls": {
+    "missing_external_authority": "BLOCKED",
+    "forged_empty_inventory": "BLOCKED",
+    "stale_source": "BLOCKED",
+    "changed_source": "BLOCKED",
+    "wrong_evidence_origin": "BLOCKED",
+    "unknown_effect": "CONTINUE",
+    "missing_proof": "CONTINUE",
+    "wrong_scope": "BLOCKED",
+    "self_attestation_without_authority": "BLOCKED"
+  },
+  "paired_public_signature_collisions": 16,
+  "legitimate_close_positive_control": "CLOSE",
+  "independent_evidence_available": false,
+  "prior_art_already_exists": "docs/ISSUE1_W4B_W4C_TYPED_EVIDENCE_CONTRACT_V1.json and docs/ISSUE1_W4B_W4C_INDEPENDENT_PROOF_AC_V1.md; this is only a scoped implementation diagnostic, not a replacement.",
+  "fundamental_blocker": "An obligation universe/completeness certificate cannot be established from a finite list asserted by the candidate itself. Trusted external corpus, independent adjudication, normative trace and evidence/effect verification are missing. No algorithm can infer which unobserved obligations exist without further assumptions/data.",
+  "nonblocking_limitations": [
+    "No universal nonlinear phi discovered; defer until a tested task demands it.",
+    "The run is finite, deterministic and synthetic.",
+    "Native ECv4.4 PR#40 full SUITE is not rerun and remains Draft."
+  ],
+  "rows": [
+    {
+      "case": "IN000",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "IN001",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "IN002",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "IN003",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "IN004",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN005",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN006",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN007",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN008",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "IN009",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "IN010",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "IN011",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "IN012",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN013",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN014",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN015",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN016",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN017",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN018",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN019",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN020",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN021",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN022",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN023",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN024",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          },
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN025",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          },
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN026",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          },
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN027",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          },
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN028",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          },
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN029",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          },
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN030",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          },
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "IN031",
+      "family": "BASE",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          },
+          {
+            "relation_type": "COMPETING",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CONTINUE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "PAIR00A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR00B",
+      "family": "PAIR",
+      "blocker": "EVIDENCE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "BLOCKED",
+      "previous": "CLOSE",
+      "actual": "BLOCKED"
+    },
+    {
+      "case": "PAIR01A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR01B",
+      "family": "PAIR",
+      "blocker": "INVENTORY",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "BLOCKED",
+      "previous": "CLOSE",
+      "actual": "BLOCKED"
+    },
+    {
+      "case": "PAIR02A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR02B",
+      "family": "PAIR",
+      "blocker": "UNTRACKED",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CLOSE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "PAIR03A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR03B",
+      "family": "PAIR",
+      "blocker": "EFFECT",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CLOSE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "PAIR04A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR04B",
+      "family": "PAIR",
+      "blocker": "EVIDENCE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "BLOCKED",
+      "previous": "CLOSE",
+      "actual": "BLOCKED"
+    },
+    {
+      "case": "PAIR05A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR05B",
+      "family": "PAIR",
+      "blocker": "INVENTORY",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "BLOCKED",
+      "previous": "CLOSE",
+      "actual": "BLOCKED"
+    },
+    {
+      "case": "PAIR06A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR06B",
+      "family": "PAIR",
+      "blocker": "UNTRACKED",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CLOSE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "PAIR07A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR07B",
+      "family": "PAIR",
+      "blocker": "EFFECT",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CLOSE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "PAIR08A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR08B",
+      "family": "PAIR",
+      "blocker": "EVIDENCE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "BLOCKED",
+      "previous": "CLOSE",
+      "actual": "BLOCKED"
+    },
+    {
+      "case": "PAIR09A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR09B",
+      "family": "PAIR",
+      "blocker": "INVENTORY",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "BLOCKED",
+      "previous": "CLOSE",
+      "actual": "BLOCKED"
+    },
+    {
+      "case": "PAIR10A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR10B",
+      "family": "PAIR",
+      "blocker": "UNTRACKED",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CLOSE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "PAIR11A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR11B",
+      "family": "PAIR",
+      "blocker": "EFFECT",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CLOSE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "PAIR12A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR12B",
+      "family": "PAIR",
+      "blocker": "EVIDENCE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 0
+      },
+      "expected": "BLOCKED",
+      "previous": "CLOSE",
+      "actual": "BLOCKED"
+    },
+    {
+      "case": "PAIR13A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR13B",
+      "family": "PAIR",
+      "blocker": "INVENTORY",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 0
+      },
+      "expected": "BLOCKED",
+      "previous": "CLOSE",
+      "actual": "BLOCKED"
+    },
+    {
+      "case": "PAIR14A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR14B",
+      "family": "PAIR",
+      "blocker": "UNTRACKED",
+      "public": {
+        "relation_groups": [],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": false,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CLOSE",
+      "actual": "CONTINUE"
+    },
+    {
+      "case": "PAIR15A",
+      "family": "PAIR",
+      "blocker": "NONE",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CLOSE",
+      "previous": "CLOSE",
+      "actual": "CLOSE"
+    },
+    {
+      "case": "PAIR15B",
+      "family": "PAIR",
+      "blocker": "EFFECT",
+      "public": {
+        "relation_groups": [
+          {
+            "relation_type": "EQUIVALENT",
+            "selected_member_count": 2
+          }
+        ],
+        "required_condition_state": "NOT_EXPLICITLY_UNRESOLVED",
+        "reframe_required": true,
+        "rejected_count": 1
+      },
+      "expected": "CONTINUE",
+      "previous": "CLOSE",
+      "actual": "CONTINUE"
+    }
+  ]
+}
