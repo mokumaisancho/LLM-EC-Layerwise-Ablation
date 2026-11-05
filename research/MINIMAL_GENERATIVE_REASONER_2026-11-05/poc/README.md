@@ -48,3 +48,20 @@ P5 executes the existing ECv4.4 modules at their pinned source blobs:
 6. Quality claim: reports stay \`SCOPED_POC\` until genuine tasks and native SUITE tests run.
 
 This is a documented execution outcome, **not** an ECv4.4 code change and not a claim that general intelligence was reproduced.
+
+
+## P6 — Verified mathematical projection proposal + independent checker + ECv4.4 scoring
+
+[Proposal/adapter source](poc6_adapter.py) / [separate exact verifier](poc6_checker.py) / [observed results](POC6_OBSERVED_RESULTS.json)
+
+A typed \`ABSTRACTION_CANDIDATE_V1\` carries original model SHA, allowed actions, source width, linear coordinate map \`phi\`, abstract transition \`delta\`, and readout. The independent checker verifies exact all-state identities and independently rederives minimal dimension; no \`2^128\` state enumeration.
+
+Six scoped experiments passed:
+- Under restricted actions: 6→2 (score gain 0.008, native score gate **PRESERVE**); 8→2 (0.012, adapter **REVISE_VERIFIED_ABSTRACTION**); 128→2 (0.096, adapter **REVISE_VERIFIED_ABSTRACTION**).
+- With an extra hidden-state probe: 6→6, 8→8, 128→128, correctly **PRESERVE**.
+- Four mutations per restricted case (wrong coordinate, wrong transition, forged source digest, scope expansion) were rejected by the independent checker and fail-closed adapter (12/12).
+- The adapter calls the SHA-pinned real ECv4.4 \`score_framing\` function; **the existing EC code was not modified**. The adapter's new return status is PoC-local, **not** a native ECv4.4 return status.
+
+New finding: n=6→2 is mathematically valid but rejected by native 0.01 score-gain threshold (0.008). This threshold measures original semantic framing improvement, **not predictive rank reduction**. An appropriate future revision should keep the existing EC score/gates intact and define a separate validated scientific utility criterion. No nonlinear capability or general intelligence is proven.
+
+**Current blocker after P6:** test the proposal+checker with a genuine ECv4.4 decision/transition contract rather than the handcrafted GF(2) model; run the actual regression and full intended cost measurement before integrating.
