@@ -47,9 +47,11 @@ def run():
     old = framing(128)
     reduced = {'framing_revision_id': 1, 'variables': {
         'z0': {'semantic_key': 'parity_all', 'abstraction': 'GF2_LINEAR_OBSERVABLE',
-               'evidence_refs': ['poc4:certificate'], 'actionable': True},
+               'evidence_refs': ['poc4:certificate'], 'actionable': True,
+               'projection_mask_hex': hex((1 << 128) - 1)},
         'z1': {'semantic_key': 'parity_except_x1', 'abstraction': 'GF2_LINEAR_OBSERVABLE',
-               'evidence_refs': ['poc4:certificate'], 'actionable': True}},
+               'evidence_refs': ['poc4:certificate'], 'actionable': True,
+               'projection_mask_hex': hex(((1 << 128) - 1) ^ 2)}},
         'goal_coverage': {'predict': ['z0', 'z1']}, 'edges': []}
 
     old_res = detect_residuals(intent, old)
@@ -72,8 +74,10 @@ def run():
     # Fault control: score validates goal coverage/evidence presence but does
     # not check the mathematical future-preservation property of a projection.
     bad = json.loads(json.dumps(reduced))
-    bad['variables']['z0']['semantic_key'] = 'invalid_parity_only_first_bit'
+    bad['variables']['z0']['projection_mask_hex'] = hex(1)  # broken even for present output
     bad_score = score_framing(intent, bad)
+    witness_x = 2
+    assert ((int(reduced['variables']['z0']['projection_mask_hex'], 16) & witness_x).bit_count() & 1) != ((int(bad['variables']['z0']['projection_mask_hex'], 16) & witness_x).bit_count() & 1)
     assert bad_score['status'] == 'PASS' and bad_score['score'] == reduced_score['score']
 
     # Existing hard intent invariants still reject explicit distortion.
@@ -101,7 +105,8 @@ def run():
              'ops_tested': [x['operation']['op'] for x in hinted_result['evaluated']], 'pass': True},
             {'id': 'mathematically_invalid_coordinate_not_rejected_by_framing_score',
              'native_score_status': bad_score['status'], 'invalid_score': bad_score['score'],
-             'matches_valid_score': bad_score['score'] == reduced_score['score'], 'pass': True,
+             'matches_valid_score': bad_score['score'] == reduced_score['score'],
+             'explicit_bad_projection_witness': {'state': witness_x, 'correct_observation': 1, 'bad_projection_first_bit': 0}, 'pass': True,
              'note': 'Not a defect against the old ECv4.4 goal; it proves novel quotient-certification is absent.'},
             {'id': 'existing_intent_protection_still_rejects_explicit_violation',
              'native_score_status': reject['status'], 'reason': reject['reason'], 'pass': True},
