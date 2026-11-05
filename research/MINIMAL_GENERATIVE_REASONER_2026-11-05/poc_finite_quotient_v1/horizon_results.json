@@ -1,0 +1,453 @@
+{
+  "protocol": "MGR-P2-OBSERVATION-HORIZON-V1",
+  "method": "All synthetic states covered; horizon truncation is NOT random observation sampling",
+  "results": [
+    {
+      "k": 0,
+      "true_minimal_states": 4,
+      "minimum_horizon_to_exact": 1,
+      "depths": [
+        {
+          "horizon_steps": 0,
+          "apparent_states": 2,
+          "false_future_equivalence_pairs": 8192
+        },
+        {
+          "horizon_steps": 1,
+          "apparent_states": 4,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 2,
+          "apparent_states": 4,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 3,
+          "apparent_states": 4,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 4,
+          "apparent_states": 4,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 5,
+          "apparent_states": 4,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 6,
+          "apparent_states": 4,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 7,
+          "apparent_states": 4,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 8,
+          "apparent_states": 4,
+          "false_future_equivalence_pairs": 0
+        }
+      ],
+      "horizon_1_false_merge_witness": null
+    },
+    {
+      "k": 1,
+      "true_minimal_states": 6,
+      "minimum_horizon_to_exact": 1,
+      "depths": [
+        {
+          "horizon_steps": 0,
+          "apparent_states": 2,
+          "false_future_equivalence_pairs": 10240
+        },
+        {
+          "horizon_steps": 1,
+          "apparent_states": 6,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 2,
+          "apparent_states": 6,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 3,
+          "apparent_states": 6,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 4,
+          "apparent_states": 6,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 5,
+          "apparent_states": 6,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 6,
+          "apparent_states": 6,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 7,
+          "apparent_states": 6,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 8,
+          "apparent_states": 6,
+          "false_future_equivalence_pairs": 0
+        }
+      ],
+      "horizon_1_false_merge_witness": null
+    },
+    {
+      "k": 2,
+      "true_minimal_states": 12,
+      "minimum_horizon_to_exact": 2,
+      "depths": [
+        {
+          "horizon_steps": 0,
+          "apparent_states": 2,
+          "false_future_equivalence_pairs": 13312
+        },
+        {
+          "horizon_steps": 1,
+          "apparent_states": 6,
+          "false_future_equivalence_pairs": 3072
+        },
+        {
+          "horizon_steps": 2,
+          "apparent_states": 12,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 3,
+          "apparent_states": 12,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 4,
+          "apparent_states": 12,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 5,
+          "apparent_states": 12,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 6,
+          "apparent_states": 12,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 7,
+          "apparent_states": 12,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 8,
+          "apparent_states": 12,
+          "false_future_equivalence_pairs": 0
+        }
+      ],
+      "horizon_1_false_merge_witness": {
+        "initial_states": [
+          0,
+          11
+        ],
+        "distinguishing_actions": [
+          0,
+          1
+        ],
+        "output_pair": [
+          1,
+          0
+        ],
+        "steps_to_distinguish": 2
+      }
+    },
+    {
+      "k": 3,
+      "true_minimal_states": 24,
+      "minimum_horizon_to_exact": 3,
+      "depths": [
+        {
+          "horizon_steps": 0,
+          "apparent_states": 2,
+          "false_future_equivalence_pairs": 14848
+        },
+        {
+          "horizon_steps": 1,
+          "apparent_states": 6,
+          "false_future_equivalence_pairs": 4608
+        },
+        {
+          "horizon_steps": 2,
+          "apparent_states": 12,
+          "false_future_equivalence_pairs": 1536
+        },
+        {
+          "horizon_steps": 3,
+          "apparent_states": 24,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 4,
+          "apparent_states": 24,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 5,
+          "apparent_states": 24,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 6,
+          "apparent_states": 24,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 7,
+          "apparent_states": 24,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 8,
+          "apparent_states": 24,
+          "false_future_equivalence_pairs": 0
+        }
+      ],
+      "horizon_1_false_merge_witness": {
+        "initial_states": [
+          0,
+          11
+        ],
+        "distinguishing_actions": [
+          0,
+          1
+        ],
+        "output_pair": [
+          1,
+          0
+        ],
+        "steps_to_distinguish": 2
+      }
+    },
+    {
+      "k": 4,
+      "true_minimal_states": 48,
+      "minimum_horizon_to_exact": 4,
+      "depths": [
+        {
+          "horizon_steps": 0,
+          "apparent_states": 2,
+          "false_future_equivalence_pairs": 15616
+        },
+        {
+          "horizon_steps": 1,
+          "apparent_states": 6,
+          "false_future_equivalence_pairs": 5376
+        },
+        {
+          "horizon_steps": 2,
+          "apparent_states": 12,
+          "false_future_equivalence_pairs": 2304
+        },
+        {
+          "horizon_steps": 3,
+          "apparent_states": 24,
+          "false_future_equivalence_pairs": 768
+        },
+        {
+          "horizon_steps": 4,
+          "apparent_states": 48,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 5,
+          "apparent_states": 48,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 6,
+          "apparent_states": 48,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 7,
+          "apparent_states": 48,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 8,
+          "apparent_states": 48,
+          "false_future_equivalence_pairs": 0
+        }
+      ],
+      "horizon_1_false_merge_witness": {
+        "initial_states": [
+          0,
+          11
+        ],
+        "distinguishing_actions": [
+          0,
+          1
+        ],
+        "output_pair": [
+          1,
+          0
+        ],
+        "steps_to_distinguish": 2
+      }
+    },
+    {
+      "k": 5,
+      "true_minimal_states": 96,
+      "minimum_horizon_to_exact": 5,
+      "depths": [
+        {
+          "horizon_steps": 0,
+          "apparent_states": 2,
+          "false_future_equivalence_pairs": 16000
+        },
+        {
+          "horizon_steps": 1,
+          "apparent_states": 6,
+          "false_future_equivalence_pairs": 5760
+        },
+        {
+          "horizon_steps": 2,
+          "apparent_states": 12,
+          "false_future_equivalence_pairs": 2688
+        },
+        {
+          "horizon_steps": 3,
+          "apparent_states": 24,
+          "false_future_equivalence_pairs": 1152
+        },
+        {
+          "horizon_steps": 4,
+          "apparent_states": 48,
+          "false_future_equivalence_pairs": 384
+        },
+        {
+          "horizon_steps": 5,
+          "apparent_states": 96,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 6,
+          "apparent_states": 96,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 7,
+          "apparent_states": 96,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 8,
+          "apparent_states": 96,
+          "false_future_equivalence_pairs": 0
+        }
+      ],
+      "horizon_1_false_merge_witness": {
+        "initial_states": [
+          0,
+          11
+        ],
+        "distinguishing_actions": [
+          0,
+          1
+        ],
+        "output_pair": [
+          1,
+          0
+        ],
+        "steps_to_distinguish": 2
+      }
+    },
+    {
+      "k": 6,
+      "true_minimal_states": 192,
+      "minimum_horizon_to_exact": 6,
+      "depths": [
+        {
+          "horizon_steps": 0,
+          "apparent_states": 2,
+          "false_future_equivalence_pairs": 16192
+        },
+        {
+          "horizon_steps": 1,
+          "apparent_states": 6,
+          "false_future_equivalence_pairs": 5952
+        },
+        {
+          "horizon_steps": 2,
+          "apparent_states": 12,
+          "false_future_equivalence_pairs": 2880
+        },
+        {
+          "horizon_steps": 3,
+          "apparent_states": 24,
+          "false_future_equivalence_pairs": 1344
+        },
+        {
+          "horizon_steps": 4,
+          "apparent_states": 48,
+          "false_future_equivalence_pairs": 576
+        },
+        {
+          "horizon_steps": 5,
+          "apparent_states": 96,
+          "false_future_equivalence_pairs": 192
+        },
+        {
+          "horizon_steps": 6,
+          "apparent_states": 192,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 7,
+          "apparent_states": 192,
+          "false_future_equivalence_pairs": 0
+        },
+        {
+          "horizon_steps": 8,
+          "apparent_states": 192,
+          "false_future_equivalence_pairs": 0
+        }
+      ],
+      "horizon_1_false_merge_witness": {
+        "initial_states": [
+          0,
+          11
+        ],
+        "distinguishing_actions": [
+          0,
+          1
+        ],
+        "output_pair": [
+          1,
+          0
+        ],
+        "steps_to_distinguish": 2
+      }
+    }
+  ],
+  "not_claimed": [
+    "sample complexity for unknown real systems",
+    "general intelligence",
+    "weights-only inference",
+    "unbounded or physically-real phase transitions"
+  ]
+}
