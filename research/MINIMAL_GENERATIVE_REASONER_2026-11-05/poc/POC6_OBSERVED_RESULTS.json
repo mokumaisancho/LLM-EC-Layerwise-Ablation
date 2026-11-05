@@ -1,0 +1,115 @@
+{
+  "id": "GEN001_POC6_PROOF_BEARING_ECV44_ADAPTER_V1",
+  "date": "2026-11-05",
+  "status": "PASS_SCOPED_ADAPTER_PROTOTYPE",
+  "input_model": "Handcrafted known deterministic GF(2) transitions, non-LLM, n=6/8/128",
+  "ec_source_commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+  "ec_module_blob_shas": {
+    "v4/ec_residual_detector.py": "db2786573417348b243ca9d54f3a21d631427943",
+    "v4/ec_framing_search.py": "dfc4c56e9bfdeffb3bd1f4aa699d9172c78fa7d5"
+  },
+  "tests": [
+    {
+      "bits": 6,
+      "actions": [
+        0,
+        1
+      ],
+      "rank": 2,
+      "exact_algebra": "PASS",
+      "native_original": "CLOSE",
+      "adapter": "PRESERVE",
+      "score_gain": 0.008,
+      "equations": 5,
+      "fault_controls": 4
+    },
+    {
+      "bits": 6,
+      "actions": [
+        0,
+        1,
+        2
+      ],
+      "rank": 6,
+      "exact_algebra": "PASS",
+      "native_original": "CLOSE",
+      "adapter": "PRESERVE",
+      "score_gain": 0,
+      "equations": 19,
+      "fault_controls": 0
+    },
+    {
+      "bits": 8,
+      "actions": [
+        0,
+        1
+      ],
+      "rank": 2,
+      "exact_algebra": "PASS",
+      "native_original": "CLOSE",
+      "adapter": "REVISE_VERIFIED_ABSTRACTION",
+      "score_gain": 0.012,
+      "equations": 5,
+      "fault_controls": 4
+    },
+    {
+      "bits": 8,
+      "actions": [
+        0,
+        1,
+        2
+      ],
+      "rank": 8,
+      "exact_algebra": "PASS",
+      "native_original": "CLOSE",
+      "adapter": "PRESERVE",
+      "score_gain": 0,
+      "equations": 25,
+      "fault_controls": 0
+    },
+    {
+      "bits": 128,
+      "actions": [
+        0,
+        1
+      ],
+      "rank": 2,
+      "exact_algebra": "PASS",
+      "native_original": "CLOSE",
+      "adapter": "REVISE_VERIFIED_ABSTRACTION",
+      "score_gain": 0.096,
+      "equations": 5,
+      "fault_controls": 4
+    },
+    {
+      "bits": 128,
+      "actions": [
+        0,
+        1,
+        2
+      ],
+      "rank": 128,
+      "exact_algebra": "PASS",
+      "native_original": "CLOSE",
+      "adapter": "PRESERVE",
+      "score_gain": 0,
+      "equations": 385,
+      "fault_controls": 0
+    }
+  ],
+  "mutated_candidate_rejections": {
+    "invalid_projection": "OUTPUT_NOT_PRESERVED",
+    "invalid_transition": "FUTURE_NOT_PRESERVED",
+    "invalid_source_digest": "SOURCE_HASH_MISMATCH",
+    "scope_expansion": "ACTION_SET_MISMATCH"
+  },
+  "math_guarantee": "Exact GF2 identities imply future/output preservation on every one of 2^n states; a second rank closure recomputes minimality independently of candidate discovery. Proof is relative to exact model and action contract.",
+  "uncovered_issue": "Metadata score does not recognize n=6->2 because 0.008 < 0.01, despite 66.7% state-bit reduction. The threshold was originally for EC problem framing, not for minimum predictive information.",
+  "hard_limits": [
+    "Offline adapter prototype, not native ECv4.4 S3/S4 or control plane modification",
+    "No full regression suite run",
+    "Known linear dynamics, not learned nonlinear or domain-semantic reasoning",
+    "No runtime memory/time speedup measured",
+    "Not a claim of general LLM-equivalent reasoning"
+  ]
+}
