@@ -65,3 +65,9 @@ Six scoped experiments passed:
 New finding: n=6→2 is mathematically valid but rejected by native 0.01 score-gain threshold (0.008). This threshold measures original semantic framing improvement, **not predictive rank reduction**. An appropriate future revision should keep the existing EC score/gates intact and define a separate validated scientific utility criterion. No nonlinear capability or general intelligence is proven.
 
 **Current blocker after P6:** test the proposal+checker with a genuine ECv4.4 decision/transition contract rather than the handcrafted GF(2) model; run the actual regression and full intended cost measurement before integrating.
+
+## P7 — Black-box active automata learning, without pretrained source
+
+[PoC7 full results and RCA](POC7_FINDINGS.md) / [machine-readable evidence](POC7_OBSERVED_SUMMARY.json) / [executable L* experiment](poc7_lstar_fallback.py) / [extended query-budget experiments](poc7_extended.py) / [official AALpy driver (NOT_RUN)](poc7_aalpy_native.py).
+
+**SCOPED PASS** for independent Angluin L* algorithm, not actual AALpy software execution (sandbox PyPI acquisition blocked). A synthetic 128-bit nonlinear coordinate-scrambled source yielded a 4-state minimal *reachable* observable machine under a fixed reset. With a hidden-state probing action, 12-bit source yielded 40 states; 128-bit source had 504 minimal reachable states by separate exact reference but was not learned at that size. Random equivalence testing with inadequate budget falsely ended at 7 states (true 40), and the independent checker caught this; 10/10 seeded small learning cases passed exact reachable verification. Next blocker is explicit reset/action/evidence-scope certification before ECv4.4 can treat a learned projection as authoritative.
