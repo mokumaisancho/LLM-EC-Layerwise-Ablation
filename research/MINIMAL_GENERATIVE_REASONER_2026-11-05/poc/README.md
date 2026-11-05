@@ -82,3 +82,6 @@ New finding: n=6→2 is mathematically valid but rejected by native 0.01 score-g
 - [PoC10 evidence](POC10_RUNTIME_ATTESTATION_2026-11-06.json)：登録済み有限状態遷移表とホストが供給する実行可能な純粋関数を全状態・全操作・全resetで二重照合。モジュール単体11/11 PASS、8状態・3操作68回／試行、300回反復、中央値0.082 ms。EC候補本体へfail-closedで追加。native統合全SUITEはNOT_RUN。
 - [PoC11 evidence](POC11_S4_SIGNATURE_COLLISION_2026-11-06.json)：既存S4縮約公開署名2組について同一署名内にCLOSE/CONTINUE双方あり、最大8/10。推論の一般的不可能性ではなく**現行縮約入力での識別不能性**を検出。
 - [Draft PR #40](https://github.com/mokumaisancho/GPT-EC-Closure-Engine/pull/40)／[実装とMermaid](https://github.com/mokumaisancho/GPT-EC-Closure-Engine/blob/research/gen001-verified-abstraction-20261106/research/GEN001_POC10_RUNTIME_S3_S4_BOUNDARY_2026-11-06.md)。ECv4.4は候補の検証・統制に使用し、最小生成原理の発見そのものを代替しない。
+
+## PoC12 — 新規64件でのS4情報充足性検証（2026-11-06）
+[実行結果・反例・課題追跡](../holdout_s4_2026-11-06/REPORT.md)。公開7項目の凍結済み決定論的判定器を、正解なしの別プロセスで実行。新規合成64件：契約内32/32正解、契約外16/32正解、誤CLOSE16。**観測変数が不足している状態で終了判定器を強化しても識別不能**であることを同値入力16組により実証。追加すべきは監査可能な証拠・義務目録・実行結果の確定状態、または不明時のHOLD。LLMやECの全体能力の実測ではない。
