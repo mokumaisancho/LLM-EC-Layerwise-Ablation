@@ -1,0 +1,99 @@
+{
+  "id": "GEN001_POC4_MINIMAL_LINEAR_OBSERVABILITY_V1",
+  "status": "PASS_SCOPED_EXACT_MINIMAL_QUOTIENT",
+  "source": "poc4_repro.py",
+  "runtime": "sandbox Python",
+  "tested_on": "2026-11-05",
+  "method": "GF(2) dual observability closure spans C, C*M_a, C*M_a*M_b,...; future observational equivalence is exactly ker W, so minimal quotient has 2^rank(W) states.",
+  "cases": [
+    {
+      "bits": 6,
+      "scope": "restricted",
+      "rank": 2,
+      "minimal_states": "4",
+      "original_variables_relevant_to_immediate_observation": 6,
+      "independent_brute_state_count": 4
+    },
+    {
+      "bits": 6,
+      "scope": "probe_allowed",
+      "rank": 6,
+      "minimal_states": "64",
+      "original_variables_relevant_to_immediate_observation": 6,
+      "independent_brute_state_count": 64
+    },
+    {
+      "bits": 8,
+      "scope": "restricted",
+      "rank": 2,
+      "minimal_states": "4",
+      "original_variables_relevant_to_immediate_observation": 8,
+      "independent_brute_state_count": 4
+    },
+    {
+      "bits": 8,
+      "scope": "probe_allowed",
+      "rank": 8,
+      "minimal_states": "256",
+      "original_variables_relevant_to_immediate_observation": 8,
+      "independent_brute_state_count": 256
+    },
+    {
+      "bits": 16,
+      "scope": "restricted",
+      "rank": 2,
+      "minimal_states": "4",
+      "original_variables_relevant_to_immediate_observation": 16,
+      "independent_brute_state_count": null
+    },
+    {
+      "bits": 16,
+      "scope": "probe_allowed",
+      "rank": 16,
+      "minimal_states": "65536",
+      "original_variables_relevant_to_immediate_observation": 16,
+      "independent_brute_state_count": null
+    },
+    {
+      "bits": 32,
+      "scope": "restricted",
+      "rank": 2,
+      "minimal_states": "4",
+      "original_variables_relevant_to_immediate_observation": 32,
+      "independent_brute_state_count": null
+    },
+    {
+      "bits": 32,
+      "scope": "probe_allowed",
+      "rank": 32,
+      "minimal_states": "4294967296",
+      "original_variables_relevant_to_immediate_observation": 32,
+      "independent_brute_state_count": null
+    },
+    {
+      "bits": 128,
+      "scope": "restricted",
+      "rank": 2,
+      "minimal_states": "4",
+      "original_variables_relevant_to_immediate_observation": 128,
+      "independent_brute_state_count": null
+    },
+    {
+      "bits": 128,
+      "scope": "probe_allowed",
+      "rank": 128,
+      "minimal_states": "340282366920938463463374607431768211456",
+      "original_variables_relevant_to_immediate_observation": 128,
+      "independent_brute_state_count": null
+    }
+  ],
+  "proof_scope": "Exact rank-based minimal quotient for these crafted deterministic linear GF(2) systems with specified actions and output.",
+  "validation": "Independent exhaustive automaton minimization agrees for 6- and 8-bit examples; algebraic transition identity plus sampled states for all cases; rank argument establishes general minimality within this linear setup.",
+  "criticality": "Changing admissible action set introduces a hidden-coordinate probe, raising minimal predictive rank 2 to n. It is not a physical phase transition.",
+  "limitations": [
+    "Synthetic mixed coordinates; original transition matrices given",
+    "Nonlinear/black-box minimality unsolved",
+    "Discovery and encoding cost not equivalent to minimal program description",
+    "No proof of general-purpose reasoning, physics, or NN efficiency"
+  ]
+}
