@@ -1,0 +1,97 @@
+{
+  "experiment": "GEN001_POC8_SCOPE_CERTIFICATE_GATE_V1",
+  "date": "2026-11-06",
+  "status": "SCOPED_PASS",
+  "environment": {
+    "runtime": "Node.js v22.16.0; local sandbox; no external dependencies or pretrained models",
+    "verified_code_git_blob_sha": "77b951f1eacbe27c770b6d1f8d9be60e1cca41e0",
+    "source": "poc8_scope_gate.mjs"
+  },
+  "assertions": 11,
+  "scenario_count": 11,
+  "cases": [
+    {
+      "name": "valid_reachable",
+      "grade": "EXACT_REACHABLE",
+      "states": 4,
+      "minimum": 4,
+      "queries": 27
+    },
+    {
+      "name": "different_reset",
+      "gate": "REJECT",
+      "reason": "SCOPE_MISMATCH"
+    },
+    {
+      "name": "new_probe_action",
+      "gate": "REJECT",
+      "reason": "SCOPE_MISMATCH"
+    },
+    {
+      "name": "different_output",
+      "gate": "REJECT",
+      "reason": "SCOPE_MISMATCH"
+    },
+    {
+      "name": "forged_source",
+      "gate": "REJECT",
+      "reason": "SOURCE_MISMATCH"
+    },
+    {
+      "name": "fabricated_proof_bad_output",
+      "gate": "REJECT",
+      "reason": "NOT_EQUIVALENT",
+      "witness": []
+    },
+    {
+      "name": "incorrect_transition",
+      "gate": "REJECT",
+      "reason": "NOT_EQUIVALENT",
+      "witness": [
+        0
+      ]
+    },
+    {
+      "name": "verification_budget",
+      "gate": "HOLD",
+      "reason": "PROOF_BUDGET"
+    },
+    {
+      "name": "premature_learner_close",
+      "gate": "REJECT",
+      "reason": "NOT_EQUIVALENT",
+      "witness": [
+        0
+      ]
+    },
+    {
+      "name": "extra_unreachable_state",
+      "gate": "REJECT",
+      "reason": "NOT_MINIMAL"
+    },
+    {
+      "name": "nonlinear_128_relearned",
+      "gate": "PROPOSE_VERIFIED_REABSTRACT",
+      "states": 4,
+      "minimum": 4,
+      "queries": 14
+    }
+  ],
+  "proof_statement": "For the finite deterministic synthetic systems and exact reset/action/output scope, separate reference-system x learned-model product exploration checks every reachable pair and transition. Separate exhaustive reachable-source partition refinement validates minimality. This is not a task-independent or full-microstate 2^128 proof.",
+  "attempted_actions": [
+    "Implement external versioned candidate gate",
+    "Implement fail-closed independent check and explicit counterexample",
+    "Port and re-learn a synthetic nonlinear 128-bit fixture in JavaScript",
+    "Run 11 independent scenario assertions",
+    "Push exact tested source and result to GitHub"
+  ],
+  "limitations": [
+    "External proposed framing only; no native ECv4.4 runtime or full SUITE integration",
+    "Trusted provider for source dynamics and actual action/reset/output scope is an assumption",
+    "No cryptographic signature or persistent certificate authenticity; source_id is a logical identifier",
+    "Fixture is a synthetic finite state process and JavaScript port, not native AALpy or existing Python PoC7 direct execution",
+    "Minimal number of reachable observable states is not minimal program description or general reasoning",
+    "Unknown-source symbolic law discovery remains unsolved"
+  ],
+  "next_single_blocker": "Create source-version-bound native ECv4.4 S3/S4 candidate adapter that consumes independent exact evidence and rejects stale, mismatched or budget-unknown certification, with source-pinned regression and separate actual total-cost check"
+}
