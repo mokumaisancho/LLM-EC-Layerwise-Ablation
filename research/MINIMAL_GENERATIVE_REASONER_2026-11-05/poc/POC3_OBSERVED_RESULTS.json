@@ -1,0 +1,61 @@
+{
+  "id": "GEN001_POC3_SYMBOLIC_DEPENDENCY_CLOSURE_V1",
+  "status": "PASS_STRUCTURAL_PROOF_FOR_GENERATED_CIRCUIT_ONLY",
+  "source": "poc3.py",
+  "runtime": "sandbox Python",
+  "tested_on": "2026-11-05",
+  "independent_model_checks": [
+    {
+      "bits": 4,
+      "mode": "exhaustive",
+      "transitions": 48,
+      "status": "PASS"
+    },
+    {
+      "bits": 8,
+      "mode": "exhaustive",
+      "transitions": 768,
+      "status": "PASS"
+    },
+    {
+      "bits": 12,
+      "mode": "exhaustive",
+      "transitions": 12288,
+      "status": "PASS"
+    },
+    {
+      "bits": 128,
+      "mode": "sample",
+      "transitions": 6000,
+      "status": "PASS"
+    }
+  ],
+  "quotient_cases": [
+    {
+      "bits": 12,
+      "restricted_retained": 2,
+      "probe_retained": 12,
+      "expanded_propagation_rounds": 11
+    },
+    {
+      "bits": 32,
+      "restricted_retained": 2,
+      "probe_retained": 32,
+      "expanded_propagation_rounds": 31
+    },
+    {
+      "bits": 128,
+      "restricted_retained": 2,
+      "probe_retained": 128,
+      "expanded_propagation_rounds": 127
+    }
+  ],
+  "proof_scope": "The kept successor bit expressions depend exclusively on kept bits under every allowed action in the handcrafted circuit. This is a sufficient behavioral quotient certificate without enumerating all 2^128 states.",
+  "mininality": "NOT_ESTABLISHED by this PoC; structural dependency closure can overestimate needed state due to cancellations/non-bitwise representations.",
+  "negative_control": "A hidden-bit-reading action makes the 2-bit quotient invalid; counterexample x=4 action=2 was detected.",
+  "limitations": [
+    "Synthetic given circuit and state semantics",
+    "Proof is relative to the circuit representation",
+    "Not evidence of LLM-level reasoning or general algorithmic discovery"
+  ]
+}
