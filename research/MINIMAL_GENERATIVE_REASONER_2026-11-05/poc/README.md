@@ -77,3 +77,8 @@ New finding: n=6→2 is mathematically valid but rejected by native 0.01 score-g
 
 ## PoC9 — ECv4.4 native V2 preflightへ証拠ゲートを接続（2026-11-06）
 [Draft PR #40](https://github.com/mokumaisancho/GPT-EC-Closure-Engine/pull/40)／[実験台帳](POC9_NATIVE_ECV44_INTEGRATION_2026-11-06.json)／[EC側技術記録とMermaid](https://github.com/mokumaisancho/GPT-EC-Closure-Engine/blob/research/gen001-verified-abstraction-20261106/research/GEN001_ECV44_BEHAVIORAL_ADMISSION_2026-11-06.md)。ECv4.4 V2の制御クラスへ数学的に証明した候補を渡す機能を研究ブランチへ実装し、直接結合を限定テスト（48/48 PASS）。先行する意味フレーミング保護を保持し、誤った証拠・古いソース版・操作範囲変更・証明予算不足をBLOCKEDとして扱う。無候補なら旧挙動。既存SUITE全実行とV3最終ゲートへの結合はNOT_RUN。状態8→4でもPython実行時間は0.96倍で速くないため、単なる縮約だけで性能ACを満たしたとは主張しない。
+
+## PoC10・PoC11 — 2026-11-06
+- [PoC10 evidence](POC10_RUNTIME_ATTESTATION_2026-11-06.json)：登録済み有限状態遷移表とホストが供給する実行可能な純粋関数を全状態・全操作・全resetで二重照合。モジュール単体11/11 PASS、8状態・3操作68回／試行、300回反復、中央値0.082 ms。EC候補本体へfail-closedで追加。native統合全SUITEはNOT_RUN。
+- [PoC11 evidence](POC11_S4_SIGNATURE_COLLISION_2026-11-06.json)：既存S4縮約公開署名2組について同一署名内にCLOSE/CONTINUE双方あり、最大8/10。推論の一般的不可能性ではなく**現行縮約入力での識別不能性**を検出。
+- [Draft PR #40](https://github.com/mokumaisancho/GPT-EC-Closure-Engine/pull/40)／[実装とMermaid](https://github.com/mokumaisancho/GPT-EC-Closure-Engine/blob/research/gen001-verified-abstraction-20261106/research/GEN001_POC10_RUNTIME_S3_S4_BOUNDARY_2026-11-06.md)。ECv4.4は候補の検証・統制に使用し、最小生成原理の発見そのものを代替しない。
