@@ -5,7 +5,7 @@
   "preregistration": "PREREG.json (committed before first completed holdout scoring)",
   "tested_code_git_blobs": {
     "predictor_frozen_py": "be4bdfde995ff272756c1140fb9995010f4108d9",
-    "holdout_eval_py": "66d646ace3383a4a06d7a720e7bd265a976a11d8"
+    "holdout_eval_py": "27ca4ae20ae93785e11bf3643e23d0b0dc8c2bdc"
   },
   "original_predictor_git_blob": "d7aa6d74946064ffb6b9896c8c9ae94573f11630",
   "original_frozen_predict_function_byte_identical": "PASS_RETRIEVED_GITHUB_TEXT_COMPARISON",
@@ -706,5 +706,8 @@
       "matched_public_pair": 15
     }
   ],
-  "next": "Use a provenance-bound, externally audited source of obligation-inventory completeness, evidence integrity, and execution-effect confirmation; fail closed on unknown; test holdout authored independently of these scripts. Do not promote this S4 diagnostic to generic EC closure."
+  "next": "Use a provenance-bound, externally audited source of obligation-inventory completeness, evidence integrity, and execution-effect confirmation; fail closed on unknown; test holdout authored independently of these scripts. Do not promote this S4 diagnostic to generic EC closure.",
+  "runtime": "Python 3 standard library; prediction subprocess uses configurable GEN001_PYTHON_EXECUTABLE, local measurement /usr/bin/python3",
+  "scope_measured": "Novel synthetic cases; all 32 in-contract combinations exhaust relation class x explicitly unresolved flag x reframe-applied x rejected count; 16 counterfactual pairs stress fields outside original seven-item interface.",
+  "method_note": "Reference labels sealed before isolated subprocess predictions; predictor code copied exactly from original public S4 diagnostic, GitHub function source text equality checked and local tested file blobs matched."
 }
