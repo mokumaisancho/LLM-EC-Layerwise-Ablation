@@ -28,8 +28,14 @@ def authority(src,u=False,block='NONE'):
     elif block!='NONE':raise ValueError(block)
     return a
 
-def check(p,proposal,a):
+def check(p,proposal,a,host_root=None):
     def v(status,reason):return {'status':status,'reason':reason}
+    # Host root MUST come from an independent trusted registry, not the
+    # candidate or the bundle it supplied. It binds inventory/evidence/effects.
+    if not isinstance(host_root,str) or len(host_root)!=64:
+        return v('BLOCKED','HOST_TRUST_ROOT_MISSING')
+    if not isinstance(a,dict) or digest(a)!=host_root:
+        return v('BLOCKED','AUTHORITY_BUNDLE_NOT_HOST_PINNED')
     if not isinstance(a,dict) or not a.get('external_verified'):return v('BLOCKED','NO_INDEPENDENT_AUTHORITY')
     src=a.get('source')
     if not isinstance(src,dict) or digest(src)!=a.get('source_digest'):return v('BLOCKED','SOURCE_DIGEST_MISMATCH')
@@ -56,7 +62,7 @@ def experiment():
     def testcase(name,k,u,r,j,b):
         p=public(k,u,r,j);s=registered(name,b=='UNTRACKED');a=authority(s,u,b)
         proposal={'scope':name,'source_digest':digest(s),'claim':'CLOSE','fake_pass':True}
-        out=check(p,proposal,a)
+        out=check(p,proposal,a,host_root=digest(a))
         rows.append({'case':name,'family':'BASE' if name.startswith('IN') else 'PAIR','blocker':b,
           'public':p,'expected':expected(p,u,b),'previous':old_policy(p),'actual':out['status']})
     for k,u,r,j in itertools.product(('none','equivalent','competing','mixed'),(False,True),(False,True),(0,1)):
@@ -76,20 +82,27 @@ def experiment():
         assert left['public']==right['public'] and left['expected']!=right['expected']
     p=public('none',False,False,0);s=registered('x');a=authority(s);proposal={'scope':'x','source_digest':digest(s)}
     control={}
-    def negative(name,change,decision):
+    def negative(name,change,decision,new_host_version=False):
         aa=copy.deepcopy(a);pp=copy.deepcopy(proposal);change(aa,pp)
-        got=check(p,pp,aa);assert got['status']==decision,(name,got)
+        got=check(p,pp,aa,host_root=digest(aa) if new_host_version else digest(a));assert got['status']==decision,(name,got)
         control[name]=got
     negative('missing_external_authority',lambda a,p:a.update(external_verified=False),'BLOCKED')
     negative('forged_empty_inventory',lambda a,p:a.update(inventory_complete=False,proof={}),'BLOCKED')
     negative('stale_source',lambda a,p:p.update(source_digest='0'*64),'BLOCKED')
     negative('changed_source',lambda a,p:a['source'].update(document='tampered'),'BLOCKED')
     negative('wrong_evidence_origin',lambda a,p:a['proof']['B'].update(source='f'*64),'BLOCKED')
-    negative('unknown_effect',lambda a,p:a.update(effects_verified=None),'CONTINUE')
-    negative('missing_proof',lambda a,p:a['proof']['A'].update(verified=None),'CONTINUE')
+    negative('unknown_effect',lambda a,p:a.update(effects_verified=None),'CONTINUE',True)
+    negative('missing_proof',lambda a,p:a['proof']['A'].update(verified=None),'CONTINUE',True)
     negative('wrong_scope',lambda a,p:p.update(scope='other'),'BLOCKED')
     negative('self_attestation_without_authority',lambda a,p:(a.update(external_verified=False),p.update(fake_gold=True)),'BLOCKED')
-    assert check(p,proposal,a)['status']=='CLOSE'
+    assert check(p,proposal,a,host_root=digest(a))['status']=='CLOSE'
+    assert check(p,proposal,a)['status']=='BLOCKED'
+    forged_source=registered('forged-domain')
+    forged_authority=authority(forged_source)
+    forged_proposal={'scope':'forged-domain','source_digest':digest(forged_source)}
+    assert check(p,forged_proposal,forged_authority,host_root=digest(a))['status']=='BLOCKED'
+    control['forged_authority_bundle_not_host_pinned']={'status':'BLOCKED','reason':'AUTHORITY_BUNDLE_NOT_HOST_PINNED'}
+    control['missing_host_root']={'status':'BLOCKED','reason':'HOST_TRUST_ROOT_MISSING'}
     return {'protocol':'GEN001_POC13_AUTHORITY_BOUND_CLOSURE_V1','status':'SCOPED_SYNTHETIC_PASS',
       'cases':len(rows),'correct':sum(z['actual']==z['expected'] for z in rows),
       'old_false_close':16,'new_false_close':0,'true_close_retained':24,
