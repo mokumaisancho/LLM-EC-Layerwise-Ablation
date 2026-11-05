@@ -1,0 +1,311 @@
+{
+  "experiment_id": "GEN001_POC7_BLACKBOX_ACTIVE_LEARNING_V1",
+  "date": "2026-11-05",
+  "status": "SCOPED_PASS_INDEPENDENT_ANGUIN_LSTAR_IMPLEMENTATION",
+  "warning": "NOT an execution of official AALpy. Native AALpy 2.0.0 package was unavailable because sandbox could not download from PyPI; native driver exists and compiles but import preflight returned NOT_RUN.",
+  "method": "Angluin L* observation-table active automata learning with membership queries (reset, action words -> observable output). Equivalence oracle during learning uses deterministic depth <=4 prefixes plus seeded random suffixes. Independent finite reachable-state product verifier checks ALL future words from specified reset. Verifier's internal target access is never given to learner.",
+  "sources": {
+    "fallback_runner": "poc7_lstar_fallback.py",
+    "fallback_runner_git_blob_sha": "722e600873a547ed122b2d0c37114be5d162133c",
+    "extended_runner": "poc7_extended.py",
+    "extended_runner_git_blob_sha": "744a4f15f6060bbe5609a2cbe2f4dc28359b3f37",
+    "native_unrun_driver": "poc7_aalpy_native.py",
+    "native_driver_git_blob_sha": "f8de0fddaf42e9a2c4b811a25daa1e9d2a1a5a77",
+    "local_observed_raw_json_sha256": "eb93718e545c17a40a1f6f2c46e36865cf0ce1df53154bfccbf75b12263e5511",
+    "local_extended_raw_json_sha256": "2e2d1d730412633912712d687d22a81b345329f25a16a65d2e53d5e522a5eb60"
+  },
+  "base_tests": [
+    {
+      "name": "poc4_zero_reset",
+      "source_bits": 8,
+      "actions": [
+        0,
+        1
+      ],
+      "reset": 0,
+      "learned_states": 1,
+      "minimal_reachable_states": 1,
+      "unique_member_queries": 1036,
+      "membership_steps": 12182,
+      "independent_equivalence": "PASS_EXACT_REACHABLE"
+    },
+    {
+      "name": "poc4_nonzero_reset",
+      "source_bits": 8,
+      "actions": [
+        0,
+        1
+      ],
+      "reset": 1,
+      "learned_states": 3,
+      "minimal_reachable_states": 3,
+      "unique_member_queries": 1037,
+      "membership_steps": 12187,
+      "independent_equivalence": "PASS_EXACT_REACHABLE"
+    },
+    {
+      "name": "poc4_four_reachable_explicit_reset_action",
+      "source_bits": 8,
+      "actions": [
+        0,
+        1,
+        3
+      ],
+      "reset": 1,
+      "learned_states": 4,
+      "minimal_reachable_states": 4,
+      "unique_member_queries": 1178,
+      "membership_steps": 12815,
+      "independent_equivalence": "PASS_EXACT_REACHABLE"
+    },
+    {
+      "name": "nonlinear_coordinate_scrambling",
+      "source_bits": 128,
+      "actions": [
+        0,
+        1
+      ],
+      "reset": 0,
+      "learned_states": 4,
+      "minimal_reachable_states": 4,
+      "unique_member_queries": 1036,
+      "membership_steps": 12182,
+      "independent_equivalence": "PASS_EXACT_REACHABLE"
+    },
+    {
+      "name": "poc4_probe_allowed_no_hidden_initial",
+      "source_bits": 6,
+      "actions": [
+        0,
+        1,
+        2
+      ],
+      "reset": 1,
+      "learned_states": 3,
+      "minimal_reachable_states": 3,
+      "unique_member_queries": 1178,
+      "membership_steps": 12815,
+      "independent_equivalence": "PASS_EXACT_REACHABLE"
+    }
+  ],
+  "hidden_state_scope_reference": [
+    {
+      "source_bits": 6,
+      "reset": 4,
+      "actions": [
+        0,
+        1,
+        2
+      ],
+      "reachable_states": 16,
+      "minimal_states": 16
+    },
+    {
+      "source_bits": 8,
+      "reset": 4,
+      "actions": [
+        0,
+        1,
+        2
+      ],
+      "reachable_states": 24,
+      "minimal_states": 24
+    },
+    {
+      "source_bits": 12,
+      "reset": 4,
+      "actions": [
+        0,
+        1,
+        2
+      ],
+      "reachable_states": 40,
+      "minimal_states": 40
+    },
+    {
+      "source_bits": 16,
+      "reset": 4,
+      "actions": [
+        0,
+        1,
+        2
+      ],
+      "reachable_states": 56,
+      "minimal_states": 56
+    },
+    {
+      "source_bits": 32,
+      "reset": 4,
+      "actions": [
+        0,
+        1,
+        2
+      ],
+      "reachable_states": 120,
+      "minimal_states": 120
+    },
+    {
+      "source_bits": 64,
+      "reset": 4,
+      "actions": [
+        0,
+        1,
+        2
+      ],
+      "reachable_states": 248,
+      "minimal_states": 248
+    },
+    {
+      "source_bits": 128,
+      "reset": 4,
+      "actions": [
+        0,
+        1,
+        2
+      ],
+      "reachable_states": 504,
+      "minimal_states": 504
+    }
+  ],
+  "hidden_state_black_box_training": [
+    {
+      "bits": 6,
+      "reset": 4,
+      "actions": [
+        0,
+        1,
+        2
+      ],
+      "learned_states": 16,
+      "unique_membership_queries": 7027,
+      "exact_result": "PASS"
+    },
+    {
+      "bits": 8,
+      "reset": 4,
+      "actions": [
+        0,
+        1,
+        2
+      ],
+      "learned_states": 24,
+      "unique_membership_queries": 7281,
+      "exact_result": "PASS"
+    },
+    {
+      "bits": 12,
+      "reset": 4,
+      "actions": [
+        0,
+        1,
+        2
+      ],
+      "learned_states": 40,
+      "unique_membership_queries": 7849,
+      "exact_result": "PASS"
+    },
+    {
+      "bits": 128,
+      "reset": 4,
+      "actions": [
+        0,
+        1,
+        2
+      ],
+      "learned_states": null,
+      "exact_result": "REFERENCE_ONLY_NO_LEARNER_RUN"
+    }
+  ],
+  "budget_ablations_n12_hidden_reset4": [
+    {
+      "random_words_per_eq_round": 0,
+      "learned_states": 7,
+      "ground_truth_minimal_states": 40,
+      "learner_stopped": true,
+      "independent_verification": "FAIL",
+      "counterexample_actions": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "membership_queries": 133
+    },
+    {
+      "random_words_per_eq_round": 5,
+      "learned_states": 40,
+      "ground_truth_minimal_states": 40,
+      "independent_verification": "PASS",
+      "membership_queries": 1305
+    },
+    {
+      "random_words_per_eq_round": 50,
+      "learned_states": 40,
+      "ground_truth_minimal_states": 40,
+      "independent_verification": "PASS",
+      "membership_queries": 1341
+    },
+    {
+      "random_words_per_eq_round": 200,
+      "learned_states": 40,
+      "ground_truth_minimal_states": 40,
+      "independent_verification": "PASS",
+      "membership_queries": 1462
+    },
+    {
+      "random_words_per_eq_round": 1500,
+      "learned_states": 40,
+      "ground_truth_minimal_states": 40,
+      "independent_verification": "PASS",
+      "membership_queries": 2545
+    }
+  ],
+  "seed_replications": {
+    "seeds": [
+      7,
+      42,
+      20261105,
+      20261106,
+      99999
+    ],
+    "per_seed_cases": [
+      "nonlinear_128_four_states",
+      "linear_n12_hidden_probe_40_states"
+    ],
+    "checks": 10,
+    "independent_exact_passes": 10
+  },
+  "explicit_bogus_equivalence_oracle_control": {
+    "oracle": "always_returns_no_counterexample",
+    "learned_states": 2,
+    "learner_stopped": true,
+    "independent_check": "FAIL",
+    "counterexample": [
+      0,
+      0,
+      1
+    ]
+  },
+  "runtime_microbenchmark": {
+    "case": "nonlinear_128_vs_learned_4_state_table",
+    "steps": 150000,
+    "repetitions": 7,
+    "original_median_seconds": 0.16666260299996338,
+    "learned_median_seconds": 0.009082928999987416,
+    "observed_ratio": 18.348993259794753,
+    "learning_time_seconds": 0.017058719000033307,
+    "unique_member_queries": 1036,
+    "learning_system_steps": 12182,
+    "amortized_break_even_steps_estimate_excluding_verification": 16238,
+    "warning": "Toy Python-only microbenchmark; not a hardware-independent speed claim or full cost comparison. Excludes verification, model construction, setup/encoding and real deployment."
+  },
+  "scientific_conclusion": "Existing active automata learning can infer minimal reachable observable behavior, including a synthetic nonlinear 128-bit scrambled source, without pretraining or internal state access. This DOES NOT discover a unique true latent coordinate transform, unseen reset states, or general reasoning capability. Black-box EQ PASS is not proof; exact independent reachability/projection checker is essential.",
+  "next_single_blocker": "Develop an explicit evidence-bearing reachable-behavioral-state candidate boundary in ECv4.4, and classify GLOBAL/PARTIAL_SCOPE/BUDGET_UNKNOWN before authority closure. Independently verify on additional resets and new allowed actions. Do not mislabel this as a general nonlinear law-discovery result."
+}
