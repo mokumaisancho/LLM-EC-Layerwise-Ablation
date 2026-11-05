@@ -1,0 +1,1525 @@
+{
+  "protocol": "MGR-P3-PARTIAL-TRANSITION-PROJECTION-V2",
+  "method": "32,385 two-mask XOR projections; sample-only selection; frozen candidate then exhaustive world check. Ten seeds per condition.",
+  "candidate_count": 32385,
+  "summary": [
+    {
+      "k": 0,
+      "observed_states": 8,
+      "seeds": 10,
+      "sample_pass_count": 10,
+      "full_pass_count": 7,
+      "false_pass_count": 3,
+      "no_candidate_count": 0
+    },
+    {
+      "k": 0,
+      "observed_states": 12,
+      "seeds": 10,
+      "sample_pass_count": 10,
+      "full_pass_count": 10,
+      "false_pass_count": 0,
+      "no_candidate_count": 0
+    },
+    {
+      "k": 0,
+      "observed_states": 16,
+      "seeds": 10,
+      "sample_pass_count": 10,
+      "full_pass_count": 10,
+      "false_pass_count": 0,
+      "no_candidate_count": 0
+    },
+    {
+      "k": 0,
+      "observed_states": 24,
+      "seeds": 10,
+      "sample_pass_count": 10,
+      "full_pass_count": 10,
+      "false_pass_count": 0,
+      "no_candidate_count": 0
+    },
+    {
+      "k": 0,
+      "observed_states": 32,
+      "seeds": 10,
+      "sample_pass_count": 10,
+      "full_pass_count": 10,
+      "false_pass_count": 0,
+      "no_candidate_count": 0
+    },
+    {
+      "k": 0,
+      "observed_states": 64,
+      "seeds": 10,
+      "sample_pass_count": 10,
+      "full_pass_count": 10,
+      "false_pass_count": 0,
+      "no_candidate_count": 0
+    },
+    {
+      "k": 1,
+      "observed_states": 8,
+      "seeds": 10,
+      "sample_pass_count": 4,
+      "full_pass_count": 0,
+      "false_pass_count": 4,
+      "no_candidate_count": 6
+    },
+    {
+      "k": 1,
+      "observed_states": 12,
+      "seeds": 10,
+      "sample_pass_count": 2,
+      "full_pass_count": 0,
+      "false_pass_count": 2,
+      "no_candidate_count": 8
+    },
+    {
+      "k": 1,
+      "observed_states": 16,
+      "seeds": 10,
+      "sample_pass_count": 1,
+      "full_pass_count": 0,
+      "false_pass_count": 1,
+      "no_candidate_count": 9
+    },
+    {
+      "k": 1,
+      "observed_states": 24,
+      "seeds": 10,
+      "sample_pass_count": 0,
+      "full_pass_count": 0,
+      "false_pass_count": 0,
+      "no_candidate_count": 10
+    },
+    {
+      "k": 1,
+      "observed_states": 32,
+      "seeds": 10,
+      "sample_pass_count": 0,
+      "full_pass_count": 0,
+      "false_pass_count": 0,
+      "no_candidate_count": 10
+    },
+    {
+      "k": 1,
+      "observed_states": 64,
+      "seeds": 10,
+      "sample_pass_count": 0,
+      "full_pass_count": 0,
+      "false_pass_count": 0,
+      "no_candidate_count": 10
+    }
+  ],
+  "runs": [
+    {
+      "k": 0,
+      "observed_states": 8,
+      "seed": 20261105,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 8,
+      "seed": 20261106,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 8,
+      "seed": 20261107,
+      "candidate": [
+        "0x04",
+        "0x31"
+      ],
+      "tested_mask_pairs": 557,
+      "sample_pass": true,
+      "independent_full_state_pass": false,
+      "false_pass": true
+    },
+    {
+      "k": 0,
+      "observed_states": 8,
+      "seed": 20261108,
+      "candidate": [
+        "0x04",
+        "0x03"
+      ],
+      "tested_mask_pairs": 513,
+      "sample_pass": true,
+      "independent_full_state_pass": false,
+      "false_pass": true
+    },
+    {
+      "k": 0,
+      "observed_states": 8,
+      "seed": 20261109,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 8,
+      "seed": 20261110,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 8,
+      "seed": 20261111,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 8,
+      "seed": 20261112,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 8,
+      "seed": 20261113,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 8,
+      "seed": 20261114,
+      "candidate": [
+        "0x04",
+        "0x03"
+      ],
+      "tested_mask_pairs": 513,
+      "sample_pass": true,
+      "independent_full_state_pass": false,
+      "false_pass": true
+    },
+    {
+      "k": 0,
+      "observed_states": 12,
+      "seed": 20261105,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 12,
+      "seed": 20261106,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 12,
+      "seed": 20261107,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 12,
+      "seed": 20261108,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 12,
+      "seed": 20261109,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 12,
+      "seed": 20261110,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 12,
+      "seed": 20261111,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 12,
+      "seed": 20261112,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 12,
+      "seed": 20261113,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 12,
+      "seed": 20261114,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 16,
+      "seed": 20261105,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 16,
+      "seed": 20261106,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 16,
+      "seed": 20261107,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 16,
+      "seed": 20261108,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 16,
+      "seed": 20261109,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 16,
+      "seed": 20261110,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 16,
+      "seed": 20261111,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 16,
+      "seed": 20261112,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 16,
+      "seed": 20261113,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 16,
+      "seed": 20261114,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 24,
+      "seed": 20261105,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 24,
+      "seed": 20261106,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 24,
+      "seed": 20261107,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 24,
+      "seed": 20261108,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 24,
+      "seed": 20261109,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 24,
+      "seed": 20261110,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 24,
+      "seed": 20261111,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 24,
+      "seed": 20261112,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 24,
+      "seed": 20261113,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 24,
+      "seed": 20261114,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 32,
+      "seed": 20261105,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 32,
+      "seed": 20261106,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 32,
+      "seed": 20261107,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 32,
+      "seed": 20261108,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 32,
+      "seed": 20261109,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 32,
+      "seed": 20261110,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 32,
+      "seed": 20261111,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 32,
+      "seed": 20261112,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 32,
+      "seed": 20261113,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 32,
+      "seed": 20261114,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 64,
+      "seed": 20261105,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 64,
+      "seed": 20261106,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 64,
+      "seed": 20261107,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 64,
+      "seed": 20261108,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 64,
+      "seed": 20261109,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 64,
+      "seed": 20261110,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 64,
+      "seed": 20261111,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 64,
+      "seed": 20261112,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 64,
+      "seed": 20261113,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 0,
+      "observed_states": 64,
+      "seed": 20261114,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": true,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 8,
+      "seed": 20261105,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 8,
+      "seed": 20261106,
+      "candidate": [
+        "0x07",
+        "0xf9"
+      ],
+      "tested_mask_pairs": 8721,
+      "sample_pass": true,
+      "independent_full_state_pass": false,
+      "false_pass": true
+    },
+    {
+      "k": 1,
+      "observed_states": 8,
+      "seed": 20261107,
+      "candidate": [
+        "0x07",
+        "0xf9"
+      ],
+      "tested_mask_pairs": 8721,
+      "sample_pass": true,
+      "independent_full_state_pass": false,
+      "false_pass": true
+    },
+    {
+      "k": 1,
+      "observed_states": 8,
+      "seed": 20261108,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 8,
+      "seed": 20261109,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 8,
+      "seed": 20261110,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 8,
+      "seed": 20261111,
+      "candidate": [
+        "0x03",
+        "0xfd"
+      ],
+      "tested_mask_pairs": 2248,
+      "sample_pass": true,
+      "independent_full_state_pass": false,
+      "false_pass": true
+    },
+    {
+      "k": 1,
+      "observed_states": 8,
+      "seed": 20261112,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 8,
+      "seed": 20261113,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 8,
+      "seed": 20261114,
+      "candidate": [
+        "0x07",
+        "0xf9"
+      ],
+      "tested_mask_pairs": 8721,
+      "sample_pass": true,
+      "independent_full_state_pass": false,
+      "false_pass": true
+    },
+    {
+      "k": 1,
+      "observed_states": 12,
+      "seed": 20261105,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 12,
+      "seed": 20261106,
+      "candidate": [
+        "0x07",
+        "0xf9"
+      ],
+      "tested_mask_pairs": 8721,
+      "sample_pass": true,
+      "independent_full_state_pass": false,
+      "false_pass": true
+    },
+    {
+      "k": 1,
+      "observed_states": 12,
+      "seed": 20261107,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 12,
+      "seed": 20261108,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 12,
+      "seed": 20261109,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 12,
+      "seed": 20261110,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 12,
+      "seed": 20261111,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 12,
+      "seed": 20261112,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 12,
+      "seed": 20261113,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 12,
+      "seed": 20261114,
+      "candidate": [
+        "0x07",
+        "0xf9"
+      ],
+      "tested_mask_pairs": 8721,
+      "sample_pass": true,
+      "independent_full_state_pass": false,
+      "false_pass": true
+    },
+    {
+      "k": 1,
+      "observed_states": 16,
+      "seed": 20261105,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 16,
+      "seed": 20261106,
+      "candidate": [
+        "0x07",
+        "0xf9"
+      ],
+      "tested_mask_pairs": 8721,
+      "sample_pass": true,
+      "independent_full_state_pass": false,
+      "false_pass": true
+    },
+    {
+      "k": 1,
+      "observed_states": 16,
+      "seed": 20261107,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 16,
+      "seed": 20261108,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 16,
+      "seed": 20261109,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 16,
+      "seed": 20261110,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 16,
+      "seed": 20261111,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 16,
+      "seed": 20261112,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 16,
+      "seed": 20261113,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 16,
+      "seed": 20261114,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 24,
+      "seed": 20261105,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 24,
+      "seed": 20261106,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 24,
+      "seed": 20261107,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 24,
+      "seed": 20261108,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 24,
+      "seed": 20261109,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 24,
+      "seed": 20261110,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 24,
+      "seed": 20261111,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 24,
+      "seed": 20261112,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 24,
+      "seed": 20261113,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 24,
+      "seed": 20261114,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 32,
+      "seed": 20261105,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 32,
+      "seed": 20261106,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 32,
+      "seed": 20261107,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 32,
+      "seed": 20261108,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 32,
+      "seed": 20261109,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 32,
+      "seed": 20261110,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 32,
+      "seed": 20261111,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 32,
+      "seed": 20261112,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 32,
+      "seed": 20261113,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 32,
+      "seed": 20261114,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 64,
+      "seed": 20261105,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 64,
+      "seed": 20261106,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 64,
+      "seed": 20261107,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 64,
+      "seed": 20261108,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 64,
+      "seed": 20261109,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 64,
+      "seed": 20261110,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 64,
+      "seed": 20261111,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 64,
+      "seed": 20261112,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 64,
+      "seed": 20261113,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    },
+    {
+      "k": 1,
+      "observed_states": 64,
+      "seed": 20261114,
+      "candidate": null,
+      "tested_mask_pairs": 32385,
+      "sample_pass": false,
+      "independent_full_state_pass": false,
+      "false_pass": false
+    }
+  ],
+  "limitations": [
+    "Synthetic eight-bit model family, not general intelligence",
+    "Strong interface: both successor states observable for sampled states",
+    "Search restricted to linear two-bit XOR masks",
+    "Exhaustive-world validation is post-selection external oracle",
+    "No actual NN or CPU/memory acceleration measured"
+  ]
+}
