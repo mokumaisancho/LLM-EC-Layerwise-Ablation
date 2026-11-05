@@ -3,8 +3,8 @@
   "date": "2026-11-06",
   "status": "SCOPED_SYNTHETIC_PASS",
   "runner": "poc13_repro.py",
-  "runner_local_sha256": "12295b8aaf91f09e8c612cf08d0fa912a63bcb792a37bf0b4f8ac3565fed2219",
-  "runner_git_blob": "437b5e501729736538a70d4faa09f1e585edd96d",
+  "runner_local_sha256": "7eb95c6d2fddd1c2d7f23def3cb415ee3947594359cc0139255b0becdefb123d",
+  "runner_git_blob": "f439a54bbbbf221a30e33a79ed92954275fbbc26",
   "observed": {
     "cases": 64,
     "correct": 64,
@@ -21,7 +21,9 @@
     "unknown_effect": "CONTINUE",
     "missing_proof": "CONTINUE",
     "wrong_scope": "BLOCKED",
-    "self_attestation_without_authority": "BLOCKED"
+    "self_attestation_without_authority": "BLOCKED",
+    "forged_authority_bundle_not_host_pinned": "BLOCKED",
+    "missing_host_root": "BLOCKED"
   },
   "paired_public_signature_collisions": 16,
   "legitimate_close_positive_control": "CLOSE",
@@ -1163,5 +1165,6 @@
       "actual": "CONTINUE"
     }
   ],
-  "full_local_runner_result_sha256": "6cf22f51c466ecab732be435c5ca9ccacf3a1646d2221b6ff91305571d242efd"
+  "full_local_runner_result_sha256": "a234ee6f2f8f2874159c1f186f542d699a8c3e0778a0d357c224d5a721ef150d",
+  "trust_root_design": "Only a host-pinned digest of the complete authority bundle can authorize a scoped closure decision. The digest must be injected separately from candidate and purported authority. This tests boundary separation but cannot prove who generated the root."
 }
