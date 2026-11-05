@@ -1,0 +1,43 @@
+{
+  "id": "GEN001_POC11_REDUCED_S4_OBSERVABILITY_COLLISION_V1",
+  "date": "2026-11-06",
+  "source_file": "mokumaisancho/LLM-EC-Layerwise-Ablation/tools/phase1_ec_native_adapter.py",
+  "source_blob_sha": "b0252e80c6952753fda14418529507e901c79602",
+  "kind": "DETERMINISTIC_LABEL_COLLISION_EXACT_FOR_DOCUMENTED_COARSE_SIGNATURES",
+  "groups": [
+    {
+      "signature": "selected=1,rejected=1,reframe=false,residuals=[]",
+      "close": [
+        "M001",
+        "M002",
+        "M004",
+        "M006",
+        "M008",
+        "M010"
+      ],
+      "continue": [
+        "M007"
+      ]
+    },
+    {
+      "signature": "selected=2,rejected=1,reframe=false,residuals=[]",
+      "close": [
+        "M009"
+      ],
+      "continue": [
+        "M003"
+      ]
+    }
+  ],
+  "observed_cases": 9,
+  "original_cases_total": 10,
+  "unavoidable_label_errors_on_observed_groups": 2,
+  "upper_bound_all_10_assuming_tenth_case_distinguishable": 0.8,
+  "proof": "For any deterministic function of only the quoted coarse signature, each mixed-label group must misclassify at least its minority count. Here 1+1=2; 10 source cases therefore cannot exceed 8 correct if these are the only public inputs.",
+  "limitations": [
+    "The signatures are projected coarse summaries from the existing Phase1 adapter, not necessarily every public S4 field.",
+    "A richer observable contract may distinguish these cases without leaked gold.",
+    "This recomputes a formal bound from already registered collisions; it is not a new native EC S4 execution."
+  ],
+  "decision": "Do not claim generic S4 closure replacement by ECv4.4 until necessary distinguishing public variables are identified and verified; keep GEN001 focused on minimal generative/reasoning capability."
+}
