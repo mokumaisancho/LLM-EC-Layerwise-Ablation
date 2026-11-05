@@ -34,9 +34,9 @@ Status: literature feasibility analysis; **these cited external methods have NOT
 
 **First and smallest**: take the existing GEN001 POC4 state-transition process as a black-box SUL:
 - Give learning code only reset+action+observed-output. Hide its GF(2) matrices, parity coordinates, quotient rank and generator source.
-- Run AALpy L*/Mealy or Moore variant (match observed behavior); get inferred state count and query count.
+- Run AALpy L*/Mealy or Moore variant (match observed behavior); get inferred **reachable** state count and query count (which can be smaller than the full global predictive quotient if reset/actions cannot reach all states).
 - Use existing POC4 exact known semantics **only in the independent evaluation side** to verify candidate behavior on all admissible actions or generate a counterexample.
-- Both restricted and probe-allowed action contracts must be tested. A minimal model of four observable states for restricted scope is the predicted result, **not yet observed with AALpy**. With the probe input permitted, observed-equivalence may require exponentially many states; impose a budget and fail/stop rather than claim complete discovery.
+- Both restricted and probe-allowed action contracts must be tested. **Reachability warning specific to POC4:** its given restricted GF(2) transitions are homogeneous and preserve the zero state; with one fixed reset state, not all four abstract states are reachable. AALpy can only discover the reachable automaton from that reset. A zero reset may produce a one-state behavior, and a nonzero reset can explore at most the three nonzero states under these invertible linear transformations. Hence **do not** predeclare "must learn 4 states" on the unchanged POC4 SUL. First construct an explicitly reachable four-abstract-state input/output benchmark (for example an additional controlled reset/input action, with a versioned contract), OR report the reachable model and separately certify the global four-state quotient using known reference semantics. With the hidden-state-probe action permitted, complexity may grow sharply; enforce a state/query budget and fail/stop rather than claim general completeness.
 - Use a deliberately **nonlinear discrete fixture**, e.g. nonlinear Boolean gates, as the next holdout. This is simpler than inventing a general symbolic NN-based phi search.
 
 **If/only if** this black-box observable-state task fails or needs continuous rich state:
@@ -48,7 +48,7 @@ Status: literature feasibility analysis; **these cited external methods have NOT
 ## AC and scientific limits
 1. **AC-F1** Under an explicit reset/action/observation contract, an existing algorithm discovers a reduced predictive *behavioral* state without seeing the target internals.
 2. **AC-F2** A withheld independent oracle checks the discovered model; a counterexample must trigger revision.
-3. **AC-F3** The learned model's observable state count is no larger than the exact bound on the finite control, or report "UNKNOWN / budget exceeded" rather than PASS.
+3. **AC-F3** State count agrees with the **reachable** finite control under the exact reset/action contract, or report "UNKNOWN / budget exceeded"; do not use the original global quotient count when some quotient states are inaccessible.
 4. **AC-F4** The alternate nonlinear source and changed action alphabet are holdouts, not retuned on.
 5. **AC-F5** Query cost, all candidate state/data costs, computation time and fail reasons are recorded. Huge model not part of bootstrap.
 6. **AC-F6** ECv4.4 only consumes verified candidates and keeps native intent/closure protections. Phase1/SUITE remain independent.
@@ -57,6 +57,6 @@ Status: literature feasibility analysis; **these cited external methods have NOT
 
 ## Decision gate
 
-The single decision now is: **Can an existing active finite-state learner recover the 4-state restricted predictive quotient from POC4 using input-output queries alone?**
+The single decision now is: **Can an existing active finite-state learner recover the minimal *reachable* observable-state machine from a versioned POC4-derived SUL with explicit reset/action access, using input-output queries alone and without source semantics?**
 
 If yes, use the learned quotient with independent checking as the next ECv4.4 candidate; if no, inspect reset/query or state-bound failure, not invent a new learning algorithm. This reduces risk/cost and avoids solving the hardest nonlinear discovery problem prematurely.
