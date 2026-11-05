@@ -1,0 +1,83 @@
+{
+  "experiment_id": "GEN001_POC1_FINITE_BEHAVIORAL_QUOTIENT_V1",
+  "date": "2026-11-05",
+  "status": "PASS_SCOPED_SYNTHETIC_ONLY",
+  "source_sha256_sandbox": "7ee73eb7c02c77b1840b94f011a045ef8f4d3e5307f6fbd58846415f3b5f8434",
+  "note": "Results are a recorded sandbox execution. Rerun poc1.py to generate full results.json. Timings vary by machine.",
+  "cases": [
+    {
+      "bits": 4,
+      "micro": 16,
+      "restricted": 4,
+      "probe": 16,
+      "restricted_rounds": 2,
+      "probe_rounds": 4
+    },
+    {
+      "bits": 6,
+      "micro": 64,
+      "restricted": 4,
+      "probe": 64,
+      "restricted_rounds": 2,
+      "probe_rounds": 6
+    },
+    {
+      "bits": 8,
+      "micro": 256,
+      "restricted": 4,
+      "probe": 256,
+      "restricted_rounds": 2,
+      "probe_rounds": 8
+    },
+    {
+      "bits": 10,
+      "micro": 1024,
+      "restricted": 4,
+      "probe": 1024,
+      "restricted_rounds": 2,
+      "probe_rounds": 10
+    },
+    {
+      "bits": 12,
+      "micro": 4096,
+      "restricted": 4,
+      "probe": 4096,
+      "restricted_rounds": 2,
+      "probe_rounds": 12
+    }
+  ],
+  "essential_bits_restricted_all_cases": [
+    0,
+    1
+  ],
+  "essential_bits_probe_all_cases": "all original bits",
+  "trace_independent_crosscheck": {
+    "bits": 4,
+    "horizon": 6,
+    "restricted": "PASS (4 classes)",
+    "probe": "PASS (16 classes)"
+  },
+  "fault_injection": {
+    "x": 4,
+    "a": 2,
+    "abstract_predicted_next": 0,
+    "actual_next": 1,
+    "detected": true
+  },
+  "symbolic_phi_one_step": {
+    "restricted": "PASS all states/all actions for n=4,6,8,10,12",
+    "probe": "FAIL counterexample detected all sizes"
+  },
+  "one_step_failure_probability_for_uniform_hidden_state_given_probe": 0.5,
+  "exact_quotient_cliff": "if permitted action set changes from [0,1] to [0,1,2], exact future-preserving quotient jumps from 4 to 2^n; not a thermodynamic critical phenomenon",
+  "benchmark": {
+    "bits": 12,
+    "operations": 200000,
+    "repeats": 5,
+    "original_median_s": 0.061689993000015875,
+    "reduced_median_s": 0.013774231000013515,
+    "ratio": 4.478652419866877,
+    "limitation": "Toy CPython loop; not general speedup; excludes quotient discovery and cannot be extrapolated to LLM"
+  },
+  "blocked_by": "Full state enumeration grows exponentially and task-action contract controls what counts as same state"
+}
