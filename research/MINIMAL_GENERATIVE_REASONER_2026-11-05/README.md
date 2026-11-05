@@ -66,3 +66,6 @@
 
 ## 2026-11-06 — PoC9: ECv4.4 native preflight integration (Draft PR)
 [実行証拠・費用・残余課題JSON](poc/POC9_NATIVE_ECV44_INTEGRATION_2026-11-06.json)。[EC実装側 Draft PR #40](https://github.com/mokumaisancho/GPT-EC-Closure-Engine/pull/40)、[統合設計・Mermaid](https://github.com/mokumaisancho/GPT-EC-Closure-Engine/blob/research/gen001-verified-abstraction-20261106/research/GEN001_ECV44_BEHAVIORAL_ADMISSION_2026-11-06.md)。独立検証17・EC制御クラス15・portable pytest16=48/48限定試験PASS。外部の信頼できる有限状態ソース・reset/action/output境界を証明してECv4.4 V2 preflightに渡し、不一致や予算不足はBLOCKED。既存nativeフレーミングが先行し、候補は自動適用せずreviewのみ。旧EC全SUITE／S3/S4〜V3 end-to-endはNOT_RUN。人工8→4状態のPythonマイクロベンチでは約0.961倍で**速度改善なし**。このため統合はDraft PRで未マージ。次は実ランタイムのsource意味づけの真正性＋unmocked SUITE＋総コスト評価。
+
+## 2026-11-06 — PoC10 / PoC11: live有限関数照合とS3/S4識別可能性の検証
+[PoC10：関数実行とソース表一致の独立照合](poc/POC10_RUNTIME_ATTESTATION_2026-11-06.json) / [PoC11：S4公開情報の同値衝突](poc/POC11_S4_SIGNATURE_COLLISION_2026-11-06.json) / [EC研究ブランチの技術Mermaid](https://github.com/mokumaisancho/GPT-EC-Closure-Engine/blob/research/gen001-verified-abstraction-20261106/research/GEN001_POC10_RUNTIME_S3_S4_BOUNDARY_2026-11-06.md)。PoC10の純粋な有限関数照合11/11 PASS、300回の反復一致。既存ECv4.4 native全SUITEは変更後未実施。PoC11は既存Phase1の縮約されたS4署名において同じ入力でCLOSE/CONTINUEが混在し、10件中少なくとも2件が不識別で上限8/10となることを再計算（フル公開情報の不可能性ではない）。**ECは原理発見器でなく検証と研究進行の管理器**。S3/S4全体のEC置換は既存契約不一致が解消するまで未成立。Draft PR #40は未マージ。
