@@ -11,6 +11,7 @@ from collections import defaultdict
 import hashlib
 import itertools
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -18,6 +19,7 @@ import tempfile
 
 HERE=Path(__file__).resolve().parent
 PRED=HERE/'predictor_frozen.py'
+PYTHON_EXECUTABLE=os.environ.get('GEN001_PYTHON_EXECUTABLE',sys.executable)
 PROTOCOL='ISSUE1_S4_INTERFACE_INFORMATION_SUCCESSOR_DIAGNOSTIC_V1'
 PINNED_UPSTREAM_GIT_BLOB='d7aa6d74946064ffb6b9896c8c9ae94573f11630'
 
@@ -147,7 +149,7 @@ def run():
         for c in cases:
             p=Path(tmp)/'public.json'
             p.write_text(canonical(c['public']),encoding='utf8')
-            env=subprocess.run(['/usr/bin/python3','-I',str(PRED),'--predict-public',str(p)],
+            env=subprocess.run([PYTHON_EXECUTABLE,'-I',str(PRED),'--predict-public',str(p)],
                                capture_output=True,text=True,timeout=8,cwd=tmp)
             if env.returncode:raise RuntimeError(f'PREDICTOR_FAIL:{c["name"]}:{env.stderr}')
             prediction=json.loads(env.stdout)
@@ -201,7 +203,7 @@ def run():
         else:tmp[field]='NOT_EXPLICITLY_UNRESOLVED'
         with tempfile.TemporaryDirectory(prefix='gen001_ablation_') as d:
             f=Path(d)/'public.json';f.write_text(canonical(tmp))
-            q=subprocess.run(['/usr/bin/python3','-I',str(PRED),'--predict-public',str(f)],
+            q=subprocess.run([PYTHON_EXECUTABLE,'-I',str(PRED),'--predict-public',str(f)],
               capture_output=True,text=True,timeout=8)
             if q.returncode:raise RuntimeError(q.stderr)
             mask=json.loads(q.stdout)
