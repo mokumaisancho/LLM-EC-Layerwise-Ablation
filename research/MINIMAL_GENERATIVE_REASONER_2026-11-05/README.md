@@ -63,3 +63,6 @@
 
 ## 2026-11-06 — PoC8: scope-bound exact evidence gate
 [PoC8検証結果とMermaid](poc/POC8_FINDINGS_2026-11-06.md) / [実行コード](poc/poc8_scope_gate.mjs) / [実測JSON](poc/POC8_EXECUTION_2026-11-06.json)。11試験すべて想定どおり。学習モデルを元システムと独立照合し、reset・action・output・sourceの違い、誤モデル、予算不足をfail-closedに分類。128bit非線形合成系の4状態モデルも限定的に検証。**ECv4.4 native統合・権限昇格は未実施**。次の単一ブロッカーは実装source SHAと操作契約に結び付いたnative S3/S4 adapterおよび既存回帰試験。
+
+## 2026-11-06 — PoC9: ECv4.4 native preflight integration (Draft PR)
+[実行証拠・費用・残余課題JSON](poc/POC9_NATIVE_ECV44_INTEGRATION_2026-11-06.json)。[EC実装側 Draft PR #40](https://github.com/mokumaisancho/GPT-EC-Closure-Engine/pull/40)、[統合設計・Mermaid](https://github.com/mokumaisancho/GPT-EC-Closure-Engine/blob/research/gen001-verified-abstraction-20261106/research/GEN001_ECV44_BEHAVIORAL_ADMISSION_2026-11-06.md)。独立検証17・EC制御クラス15・portable pytest16=48/48限定試験PASS。外部の信頼できる有限状態ソース・reset/action/output境界を証明してECv4.4 V2 preflightに渡し、不一致や予算不足はBLOCKED。既存nativeフレーミングが先行し、候補は自動適用せずreviewのみ。旧EC全SUITE／S3/S4〜V3 end-to-endはNOT_RUN。人工8→4状態のPythonマイクロベンチでは約0.961倍で**速度改善なし**。このため統合はDraft PRで未マージ。次は実ランタイムのsource意味づけの真正性＋unmocked SUITE＋総コスト評価。
