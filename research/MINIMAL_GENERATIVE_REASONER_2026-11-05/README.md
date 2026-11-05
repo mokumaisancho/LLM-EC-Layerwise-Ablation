@@ -48,3 +48,9 @@
 - 限定結果: `k=0`では256→4個の未来同値状態、`k=1`では4→6個かつ線形XORによる正確な最小射影は不可能。最長6ステップの隠れ依存がある場合、1ステップだけの観測は192個の必要状態を6個と誤判定する。
 - [P3: 2bit XOR射影を少数の観測から発見](poc_finite_quotient_v1/poc_sparse_discovery.py)、[全120試行・独立判定](poc_finite_quotient_v1/sparse_discovery_results.json)。k=0の12状態観測で10/10正解（限定条件）、k=1では標本上の誤PASSも発見。
 - **次の単一ブロッカー**: 事前に線形XORという表現クラスを指定せず、**非線形な未来保存射影と有効な動的規則を未知の系から発見・反証できるか**。実測のLLM代替性や実行速度向上は未確認。
+
+
+## 2026-11-05: PoC1–PoC6 executed
+[PoC execution ledger, evidence and reproductions](poc/README.md) / [PoC6 independent checker](poc/poc6_checker.py) / [PoC6 adapter](poc/poc6_adapter.py) / [PoC6 results](poc/POC6_OBSERVED_RESULTS.json).
+
+**Evidence-based narrowing**: a linear 128-dimensional source can have a mathematically minimal 2-dimensional future-predictive quotient under a restricted action contract; the existing ECv4.4 framing controller does not discover this purely from its semantic residual metadata. A separate certificate-bearing proposal/verification adapter was tested against the pinned *actual* ECv4.4 scoring functions. Nonlinear/general reasoning and full EC integration remain OPEN. [Single blocker Issue #71](https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/71).
