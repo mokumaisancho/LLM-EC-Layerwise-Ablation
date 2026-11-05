@@ -69,3 +69,7 @@
 
 ## 2026-11-06 — PoC10 / PoC11: live有限関数照合とS3/S4識別可能性の検証
 [PoC10：関数実行とソース表一致の独立照合](poc/POC10_RUNTIME_ATTESTATION_2026-11-06.json) / [PoC11：S4公開情報の同値衝突](poc/POC11_S4_SIGNATURE_COLLISION_2026-11-06.json) / [EC研究ブランチの技術Mermaid](https://github.com/mokumaisancho/GPT-EC-Closure-Engine/blob/research/gen001-verified-abstraction-20261106/research/GEN001_POC10_RUNTIME_S3_S4_BOUNDARY_2026-11-06.md)。PoC10の純粋な有限関数照合11/11 PASS、300回の反復一致。既存ECv4.4 native全SUITEは変更後未実施。PoC11は既存Phase1の縮約されたS4署名において同じ入力でCLOSE/CONTINUEが混在し、10件中少なくとも2件が不識別で上限8/10となることを再計算（フル公開情報の不可能性ではない）。**ECは原理発見器でなく検証と研究進行の管理器**。S3/S4全体のEC置換は既存契約不一致が解消するまで未成立。Draft PR #40は未マージ。
+
+## 2026-11-06 — GEN001 S4 64新規合成holdout（原課題の完了判定と分離）
+[事前登録と再現可能な実行コード・結果](holdout_s4_2026-11-06/REPORT.md) / [64件の行別結果](holdout_s4_2026-11-06/HOLDOUT_EXECUTION_SUMMARY.json)。
+旧S4判定関数の本文をGitHub上の凍結版と文字単位で照合し、予測器に与える公開7項目だけで新規64件を評価。契約内32/32正解、契約外32件では16誤CLOSE（全64件48正解）。16組の入力同値・正解不一致を確認。**2変数の追加は有効だが未確認の証拠・義務の網羅性・実行効果まで保証しない**。この64件は新規合成で外部独立専門家Goldではない。ECv4.4のREABSTRACTは依然、未知の非線形座標変換を自主発見できず、外部PoC由来候補の審査が中心。原理発見を完了とせず、閉鎖証明の入力不足と独立検証を分離して追跡。
