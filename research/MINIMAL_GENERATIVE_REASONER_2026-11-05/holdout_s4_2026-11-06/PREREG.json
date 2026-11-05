@@ -1,0 +1,72 @@
+{
+  "protocol": "GEN001_S4_PROSPECTIVE_SYNTHETIC_HOLDOUT_PREREG_V1",
+  "created_date": "2026-11-06",
+  "status": "FROZEN_BEFORE_FIRST_HOLDOUT_SCORING",
+  "original_10_examples_excluded": "M001..M010",
+  "frozen_predictor_source": {
+    "path": "tools/run_issue1_s4_interface_information_diagnostic_v1.py",
+    "git_blob_sha": "d7aa6d74946064ffb6b9896c8c9ae94573f11630",
+    "callable": "predict",
+    "output": "closure_class CLOSE or CONTINUE",
+    "input_fields": [
+      "protocol",
+      "selected_count",
+      "rejected_count",
+      "reframe_required",
+      "trigger_residual_types",
+      "relation_groups",
+      "required_condition_state"
+    ]
+  },
+  "holdout_design": {
+    "in_contract": {
+      "n": 32,
+      "product": [
+        "relation_kind ∈ {none,equivalent,competing,mixed}",
+        "explicitly_unresolved ∈ {false,true}",
+        "reframe_previously_applied ∈ {false,true}",
+        "rejected_count ∈ {0,1}"
+      ],
+      "assumptions": [
+        "registered source/evidence verified",
+        "required-obligation inventory complete",
+        "all execution effects confirmed",
+        "no implicit missing obligations"
+      ],
+      "target": "full 32/32"
+    },
+    "outside_contract": {
+      "n": 32,
+      "pairs": 16,
+      "match": "each pair has an identical complete seven-field predictor input",
+      "variation": "one member has all evidence/inventory/effects verified, other has one of four independently defined blockers",
+      "blockers": [
+        "evidence not verified",
+        "inventory incomplete",
+        "untracked obligation unproven",
+        "execution result unverified"
+      ],
+      "expected": "16 pairs observationally aliased, at least 16 unavoidable errors in matched set for any function of 7 fields, fixed policy expected 16 false CLOSE"
+    }
+  },
+  "ground_truth_contract": "An independent obligation-ledger reference checks: all mandatory obligations proven; inventory complete; evidence source verified; every execution effect confirmed; no unresolved competing alternatives. Any failure means NOT_CLOSE. Source annotations are not supplied to predictor.",
+  "expected_status_classes": [
+    "CLOSE",
+    "CONTINUE",
+    "BLOCKED"
+  ],
+  "scoring": {
+    "primary": "accuracy and false-CLOSE per domain, plus exact public-input collisions with different true closure",
+    "secondary": "mask relation_groups or required_condition_state on in-contract cases",
+    "independence_limit": "New synthetic cases constructed after prior 10, no external expert labels, not generalization to actual EC/LLM tasks."
+  },
+  "stop_conditions": [
+    "gold/source fields appear in predictor input",
+    "old policy source changed without explicit versioning",
+    "scoring source cannot be independently read",
+    "control cases fail to change decision",
+    "any execution failure incorrectly marked PASS"
+  ],
+  "separation": "Prediction code in subprocess receives seven-feature public JSON only; generator/truth files never supplied to predictor process. Reference labels scored only after output files are recorded.",
+  "candidate_reuse": "No new neural-network training, no oracle labels in predictor, do not modify EC V4.4 authority."
+}
