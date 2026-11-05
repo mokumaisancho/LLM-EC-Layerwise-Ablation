@@ -39,5 +39,26 @@
     "A richer observable contract may distinguish these cases without leaked gold.",
     "This recomputes a formal bound from already registered collisions; it is not a new native EC S4 execution."
   ],
-  "decision": "Do not claim generic S4 closure replacement by ECv4.4 until necessary distinguishing public variables are identified and verified; keep GEN001 focused on minimal generative/reasoning capability."
+  "decision": "Do not claim generic S4 closure replacement by ECv4.4 until necessary distinguishing public variables are identified and verified; keep GEN001 focused on minimal generative/reasoning capability.",
+  "prior_work_already_resolves_observed_feature_collision": {
+    "public_information_diagnostic": "results/issue1_s4_interface_information_diagnostic_actual_2026-10-10.json",
+    "retrospective_typed_policy_correct": 10,
+    "retrospective_cases": 10,
+    "public_discriminators": [
+      "relation_groups",
+      "required_condition_state"
+    ],
+    "diagnostic_controls": [
+      "M003 relation masked -> wrong CLOSE",
+      "M007 required condition masked -> wrong CLOSE"
+    ],
+    "actual_qwen_paired_experiment": "results/issue1_s4_qwen20_paired_info_ablation_actual_2026-10-10.json",
+    "qwen_structural_correct": 7,
+    "qwen_enriched_correct": 7,
+    "actual_model_calls": 20,
+    "model_improvement": 0,
+    "independent_holdout": false,
+    "native_EC_s4_compared": false
+  },
+  "next_single_decision": "Do not rediscover these two features. Test already-known public discriminators on independently constructed unseen S4 contracts with source-bound independent expected values; only then consider EC-native integration."
 }
