@@ -1,0 +1,710 @@
+{
+  "protocol": "GEN001_S4_PROSPECTIVE_SYNTHETIC_HOLDOUT_V1",
+  "date": "2026-11-06",
+  "status": "SCOPED_PASS_WITH_OUT_OF_CONTRACT_FAILURE",
+  "preregistration": "PREREG.json (committed before first completed holdout scoring)",
+  "tested_code_git_blobs": {
+    "predictor_frozen_py": "be4bdfde995ff272756c1140fb9995010f4108d9",
+    "holdout_eval_py": "66d646ace3383a4a06d7a720e7bd265a976a11d8"
+  },
+  "original_predictor_git_blob": "d7aa6d74946064ffb6b9896c8c9ae94573f11630",
+  "original_frozen_predict_function_byte_identical": "PASS_RETRIEVED_GITHUB_TEXT_COMPARISON",
+  "local_ast_check": "NOT_AVAILABLE_IN_ISOLATED_SANDBOX; GitHub exact function text was compared independently",
+  "executed_full_json_sha256": "8b429f7d6d51ffaaf6f64eaffc90426db0bb631250a310c8bbef2c69a8a6d8e7",
+  "oracle_sha256_sealed_before_prediction": "15ec5b32c7341599489bd1bc04895c0be4b4951c4902918eb702862ccaf465f4",
+  "prediction_sha256_sealed_before_scoring": "2640635b9f5bc790eaed11d13192b7d17a9af488a80a60e123880a18e994d9d3",
+  "total": 64,
+  "correct": 48,
+  "false_closes": 16,
+  "in_contract": {
+    "cases": 32,
+    "correct": 32,
+    "false_close": 0
+  },
+  "beyond_contract": {
+    "cases": 32,
+    "correct": 16,
+    "false_close": 16
+  },
+  "matched_public_pairs_with_conflicting_truth": 16,
+  "unique_ambiguous_public_feature_patterns": 4,
+  "theoretical_max_accuracy_on_this_64_case_dataset_given_only_seven_public_fields": "48/64 (75%) as documented mixed-label collisions; not a general impossibility result",
+  "feature_ablation": {
+    "relation_groups": {
+      "case": "H-IN-016",
+      "prior": "CONTINUE",
+      "masked": "CLOSE"
+    },
+    "required_condition_state": {
+      "case": "H-IN-004",
+      "prior": "CONTINUE",
+      "masked": "CLOSE"
+    }
+  },
+  "limitations": [
+    "The 64 cases are newly generated synthetic, not externally authored independently adjudicated cases.",
+    "Ground truth comes from a separate formal obligation ledger, not actual deployed S4 execution.",
+    "The reference ledger contains known completeness/evidence/effect flags absent from predictor's 7-field interface.",
+    "The predictor code is the existing frozen rule, not a newly trained model; no actual EC native S4 or full SUITE run.",
+    "A claim of necessary and sufficient minimal state for arbitrary inference is not established."
+  ],
+  "all_rows": [
+    {
+      "id": "H-IN-000",
+      "family": "IN_CONTRACT",
+      "relation_kind": "none",
+      "unresolved": false,
+      "reframe": false,
+      "rejected": 0,
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-001",
+      "family": "IN_CONTRACT",
+      "relation_kind": "none",
+      "unresolved": false,
+      "reframe": false,
+      "rejected": 1,
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-002",
+      "family": "IN_CONTRACT",
+      "relation_kind": "none",
+      "unresolved": false,
+      "reframe": true,
+      "rejected": 0,
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-003",
+      "family": "IN_CONTRACT",
+      "relation_kind": "none",
+      "unresolved": false,
+      "reframe": true,
+      "rejected": 1,
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-004",
+      "family": "IN_CONTRACT",
+      "relation_kind": "none",
+      "unresolved": true,
+      "reframe": false,
+      "rejected": 0,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-005",
+      "family": "IN_CONTRACT",
+      "relation_kind": "none",
+      "unresolved": true,
+      "reframe": false,
+      "rejected": 1,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-006",
+      "family": "IN_CONTRACT",
+      "relation_kind": "none",
+      "unresolved": true,
+      "reframe": true,
+      "rejected": 0,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-007",
+      "family": "IN_CONTRACT",
+      "relation_kind": "none",
+      "unresolved": true,
+      "reframe": true,
+      "rejected": 1,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-008",
+      "family": "IN_CONTRACT",
+      "relation_kind": "equivalent",
+      "unresolved": false,
+      "reframe": false,
+      "rejected": 0,
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-009",
+      "family": "IN_CONTRACT",
+      "relation_kind": "equivalent",
+      "unresolved": false,
+      "reframe": false,
+      "rejected": 1,
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-010",
+      "family": "IN_CONTRACT",
+      "relation_kind": "equivalent",
+      "unresolved": false,
+      "reframe": true,
+      "rejected": 0,
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-011",
+      "family": "IN_CONTRACT",
+      "relation_kind": "equivalent",
+      "unresolved": false,
+      "reframe": true,
+      "rejected": 1,
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-012",
+      "family": "IN_CONTRACT",
+      "relation_kind": "equivalent",
+      "unresolved": true,
+      "reframe": false,
+      "rejected": 0,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-013",
+      "family": "IN_CONTRACT",
+      "relation_kind": "equivalent",
+      "unresolved": true,
+      "reframe": false,
+      "rejected": 1,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-014",
+      "family": "IN_CONTRACT",
+      "relation_kind": "equivalent",
+      "unresolved": true,
+      "reframe": true,
+      "rejected": 0,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-015",
+      "family": "IN_CONTRACT",
+      "relation_kind": "equivalent",
+      "unresolved": true,
+      "reframe": true,
+      "rejected": 1,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-016",
+      "family": "IN_CONTRACT",
+      "relation_kind": "competing",
+      "unresolved": false,
+      "reframe": false,
+      "rejected": 0,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-017",
+      "family": "IN_CONTRACT",
+      "relation_kind": "competing",
+      "unresolved": false,
+      "reframe": false,
+      "rejected": 1,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-018",
+      "family": "IN_CONTRACT",
+      "relation_kind": "competing",
+      "unresolved": false,
+      "reframe": true,
+      "rejected": 0,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-019",
+      "family": "IN_CONTRACT",
+      "relation_kind": "competing",
+      "unresolved": false,
+      "reframe": true,
+      "rejected": 1,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-020",
+      "family": "IN_CONTRACT",
+      "relation_kind": "competing",
+      "unresolved": true,
+      "reframe": false,
+      "rejected": 0,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-021",
+      "family": "IN_CONTRACT",
+      "relation_kind": "competing",
+      "unresolved": true,
+      "reframe": false,
+      "rejected": 1,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-022",
+      "family": "IN_CONTRACT",
+      "relation_kind": "competing",
+      "unresolved": true,
+      "reframe": true,
+      "rejected": 0,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-023",
+      "family": "IN_CONTRACT",
+      "relation_kind": "competing",
+      "unresolved": true,
+      "reframe": true,
+      "rejected": 1,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-024",
+      "family": "IN_CONTRACT",
+      "relation_kind": "mixed",
+      "unresolved": false,
+      "reframe": false,
+      "rejected": 0,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-025",
+      "family": "IN_CONTRACT",
+      "relation_kind": "mixed",
+      "unresolved": false,
+      "reframe": false,
+      "rejected": 1,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-026",
+      "family": "IN_CONTRACT",
+      "relation_kind": "mixed",
+      "unresolved": false,
+      "reframe": true,
+      "rejected": 0,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-027",
+      "family": "IN_CONTRACT",
+      "relation_kind": "mixed",
+      "unresolved": false,
+      "reframe": true,
+      "rejected": 1,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-028",
+      "family": "IN_CONTRACT",
+      "relation_kind": "mixed",
+      "unresolved": true,
+      "reframe": false,
+      "rejected": 0,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-029",
+      "family": "IN_CONTRACT",
+      "relation_kind": "mixed",
+      "unresolved": true,
+      "reframe": false,
+      "rejected": 1,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-030",
+      "family": "IN_CONTRACT",
+      "relation_kind": "mixed",
+      "unresolved": true,
+      "reframe": true,
+      "rejected": 0,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-IN-031",
+      "family": "IN_CONTRACT",
+      "relation_kind": "mixed",
+      "unresolved": true,
+      "reframe": true,
+      "rejected": 1,
+      "expected": "CONTINUE",
+      "observed": "CONTINUE",
+      "correct": true
+    },
+    {
+      "id": "H-PAIR-00-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 0
+    },
+    {
+      "id": "H-PAIR-00-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "UNVERIFIED_EVIDENCE",
+      "expected": "BLOCKED",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 0
+    },
+    {
+      "id": "H-PAIR-01-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 1
+    },
+    {
+      "id": "H-PAIR-01-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "INCOMPLETE_INVENTORY",
+      "expected": "BLOCKED",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 1
+    },
+    {
+      "id": "H-PAIR-02-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 2
+    },
+    {
+      "id": "H-PAIR-02-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "UNTRACKED_OBLIGATION",
+      "expected": "CONTINUE",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 2
+    },
+    {
+      "id": "H-PAIR-03-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 3
+    },
+    {
+      "id": "H-PAIR-03-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "UNVERIFIED_EFFECT",
+      "expected": "CONTINUE",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 3
+    },
+    {
+      "id": "H-PAIR-04-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 4
+    },
+    {
+      "id": "H-PAIR-04-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "UNVERIFIED_EVIDENCE",
+      "expected": "BLOCKED",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 4
+    },
+    {
+      "id": "H-PAIR-05-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 5
+    },
+    {
+      "id": "H-PAIR-05-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "INCOMPLETE_INVENTORY",
+      "expected": "BLOCKED",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 5
+    },
+    {
+      "id": "H-PAIR-06-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 6
+    },
+    {
+      "id": "H-PAIR-06-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "UNTRACKED_OBLIGATION",
+      "expected": "CONTINUE",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 6
+    },
+    {
+      "id": "H-PAIR-07-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 7
+    },
+    {
+      "id": "H-PAIR-07-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "UNVERIFIED_EFFECT",
+      "expected": "CONTINUE",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 7
+    },
+    {
+      "id": "H-PAIR-08-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 8
+    },
+    {
+      "id": "H-PAIR-08-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "UNVERIFIED_EVIDENCE",
+      "expected": "BLOCKED",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 8
+    },
+    {
+      "id": "H-PAIR-09-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 9
+    },
+    {
+      "id": "H-PAIR-09-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "INCOMPLETE_INVENTORY",
+      "expected": "BLOCKED",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 9
+    },
+    {
+      "id": "H-PAIR-10-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 10
+    },
+    {
+      "id": "H-PAIR-10-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "UNTRACKED_OBLIGATION",
+      "expected": "CONTINUE",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 10
+    },
+    {
+      "id": "H-PAIR-11-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 11
+    },
+    {
+      "id": "H-PAIR-11-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "UNVERIFIED_EFFECT",
+      "expected": "CONTINUE",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 11
+    },
+    {
+      "id": "H-PAIR-12-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 12
+    },
+    {
+      "id": "H-PAIR-12-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "UNVERIFIED_EVIDENCE",
+      "expected": "BLOCKED",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 12
+    },
+    {
+      "id": "H-PAIR-13-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 13
+    },
+    {
+      "id": "H-PAIR-13-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "INCOMPLETE_INVENTORY",
+      "expected": "BLOCKED",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 13
+    },
+    {
+      "id": "H-PAIR-14-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 14
+    },
+    {
+      "id": "H-PAIR-14-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "UNTRACKED_OBLIGATION",
+      "expected": "CONTINUE",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 14
+    },
+    {
+      "id": "H-PAIR-15-A",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "NONE",
+      "expected": "CLOSE",
+      "observed": "CLOSE",
+      "correct": true,
+      "matched_public_pair": 15
+    },
+    {
+      "id": "H-PAIR-15-B",
+      "family": "BEYOND_CONTRACT",
+      "blocker": "UNVERIFIED_EFFECT",
+      "expected": "CONTINUE",
+      "observed": "CLOSE",
+      "correct": false,
+      "false_close": true,
+      "matched_public_pair": 15
+    }
+  ],
+  "next": "Use a provenance-bound, externally audited source of obligation-inventory completeness, evidence integrity, and execution-effect confirmation; fail closed on unknown; test holdout authored independently of these scripts. Do not promote this S4 diagnostic to generic EC closure."
+}
