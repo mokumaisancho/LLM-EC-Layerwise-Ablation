@@ -7,7 +7,7 @@ import time
 from pathlib import Path
 from poc7_lstar_fallback import (
     LinearSUL, NonlinearScrambledSUL, MembershipOracle, LStar,
-    blackbox_eq, independent_equivalence, reachable_minimal_reference, eval_case
+    blackbox_eq, independent_equivalence, reachable_minimal_reference, eval_case, run_all
 )
 
 
@@ -37,7 +37,10 @@ def runtime_benchmark(system, hypothesis, loops=150000, repetitions=7):
 
 
 def run():
-    base=json.loads(Path(__file__).with_name('POC7_LOCAL_RESULTS.json').read_text())
+    source_results=Path(__file__).with_name('POC7_LOCAL_RESULTS.json')
+    if not source_results.is_file():
+        run_all()
+    base=json.loads(source_results.read_text())
     output={'id':'GEN001_POC7_BLACKBOX_LEARNER_EXTENDED_V1',
             'scope':'Independent Angluin L* fallback using black-box queries. Native AALpy package NOT_RUN because installation blocked by network.',
             'budget_experiments':[], 'hidden_state_scaling':[],
