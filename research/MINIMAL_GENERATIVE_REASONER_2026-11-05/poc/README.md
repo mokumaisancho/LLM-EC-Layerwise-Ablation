@@ -74,3 +74,6 @@ New finding: n=6→2 is mathematically valid but rejected by native 0.01 score-g
 
 ## PoC8 — 到達可能性の独立証明と適用条件のfail-closed（2026-11-06）
 [PoC8の実装・実測・技術依存Mermaid](POC8_FINDINGS_2026-11-06.md) / [実測JSON](POC8_EXECUTION_2026-11-06.json)。合成対象の8bit系・128bit非線形座標変換系で、モデルの未来観測同値性と到達可能状態数の最小性を独立検証。11個の異常／正常系を実行。変更された初期状態・操作・観測・source、間違ったモデルを拒否し、証明予算切れはHOLD。これは**外部アダプターPoC**であり、native ECv4.4への組込み・SUITE試験はまだ行っていない。
+
+## PoC9 — ECv4.4 native V2 preflightへ証拠ゲートを接続（2026-11-06）
+[Draft PR #40](https://github.com/mokumaisancho/GPT-EC-Closure-Engine/pull/40)／[実験台帳](POC9_NATIVE_ECV44_INTEGRATION_2026-11-06.json)／[EC側技術記録とMermaid](https://github.com/mokumaisancho/GPT-EC-Closure-Engine/blob/research/gen001-verified-abstraction-20261106/research/GEN001_ECV44_BEHAVIORAL_ADMISSION_2026-11-06.md)。ECv4.4 V2の制御クラスへ数学的に証明した候補を渡す機能を研究ブランチへ実装し、直接結合を限定テスト（48/48 PASS）。先行する意味フレーミング保護を保持し、誤った証拠・古いソース版・操作範囲変更・証明予算不足をBLOCKEDとして扱う。無候補なら旧挙動。既存SUITE全実行とV3最終ゲートへの結合はNOT_RUN。状態8→4でもPython実行時間は0.96倍で速くないため、単なる縮約だけで性能ACを満たしたとは主張しない。
