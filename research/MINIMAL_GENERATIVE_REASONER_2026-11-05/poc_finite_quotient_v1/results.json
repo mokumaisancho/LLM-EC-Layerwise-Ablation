@@ -1,0 +1,182 @@
+{
+  "protocol": "MGR-P1-FINITE-QUOTIENT-V1",
+  "environment": "Python standard library, no pretraining/LLM",
+  "hypotheses_tested": [
+    "H1 coordinate change reveals exact 2-bit future-sufficient state",
+    "H2 hidden future influence invalidates a superficially compact projection",
+    "H3 exact predictive quotient need not be representable by linear XOR features"
+  ],
+  "records": [
+    {
+      "k": 0,
+      "raw_states": 256,
+      "minimal_future_equivalent_states": 4,
+      "minimal_state_encoding_bits": 2,
+      "min_axis_aligned_bits": 8,
+      "axis_mask": "0xff",
+      "xor_invariant_masks": [
+        "0x03",
+        "0xfd"
+      ],
+      "xor_projection_is_exact": true,
+      "xor_projection_distinguishable_states": 4,
+      "xor_projection_gates": 7,
+      "quotient_refinement_rounds": 2,
+      "explicit_micro_table_bits": 4352,
+      "explicit_quotient_table_bits": 20,
+      "table_ratio_only": 217.6,
+      "future_congruence_256x2_pass": true,
+      "tampered_merge_rejected": true
+    },
+    {
+      "k": 1,
+      "raw_states": 256,
+      "minimal_future_equivalent_states": 6,
+      "minimal_state_encoding_bits": 3,
+      "min_axis_aligned_bits": 8,
+      "axis_mask": "0xff",
+      "xor_invariant_masks": [
+        "0x07",
+        "0xf9"
+      ],
+      "xor_projection_is_exact": false,
+      "xor_projection_distinguishable_states": 4,
+      "xor_projection_gates": 7,
+      "quotient_refinement_rounds": 2,
+      "explicit_micro_table_bits": 4352,
+      "explicit_quotient_table_bits": 30,
+      "table_ratio_only": 145.067,
+      "future_congruence_256x2_pass": true,
+      "tampered_merge_rejected": true
+    },
+    {
+      "k": 2,
+      "raw_states": 256,
+      "minimal_future_equivalent_states": 12,
+      "minimal_state_encoding_bits": 4,
+      "min_axis_aligned_bits": 8,
+      "axis_mask": "0xff",
+      "xor_invariant_masks": [
+        "0x08",
+        "0x07",
+        "0xf1"
+      ],
+      "xor_projection_is_exact": false,
+      "xor_projection_distinguishable_states": 8,
+      "xor_projection_gates": 6,
+      "quotient_refinement_rounds": 3,
+      "explicit_micro_table_bits": 4352,
+      "explicit_quotient_table_bits": 84,
+      "table_ratio_only": 51.81,
+      "future_congruence_256x2_pass": true,
+      "tampered_merge_rejected": true
+    },
+    {
+      "k": 3,
+      "raw_states": 256,
+      "minimal_future_equivalent_states": 24,
+      "minimal_state_encoding_bits": 5,
+      "min_axis_aligned_bits": 8,
+      "axis_mask": "0xff",
+      "xor_invariant_masks": [
+        "0x08",
+        "0x10",
+        "0x07",
+        "0xe1"
+      ],
+      "xor_projection_is_exact": false,
+      "xor_projection_distinguishable_states": 16,
+      "xor_projection_gates": 5,
+      "quotient_refinement_rounds": 4,
+      "explicit_micro_table_bits": 4352,
+      "explicit_quotient_table_bits": 216,
+      "table_ratio_only": 20.148,
+      "future_congruence_256x2_pass": true,
+      "tampered_merge_rejected": true
+    },
+    {
+      "k": 4,
+      "raw_states": 256,
+      "minimal_future_equivalent_states": 48,
+      "minimal_state_encoding_bits": 6,
+      "min_axis_aligned_bits": 8,
+      "axis_mask": "0xff",
+      "xor_invariant_masks": [
+        "0x08",
+        "0x10",
+        "0x20",
+        "0x07",
+        "0xc1"
+      ],
+      "xor_projection_is_exact": false,
+      "xor_projection_distinguishable_states": 32,
+      "xor_projection_gates": 4,
+      "quotient_refinement_rounds": 5,
+      "explicit_micro_table_bits": 4352,
+      "explicit_quotient_table_bits": 528,
+      "table_ratio_only": 8.242,
+      "future_congruence_256x2_pass": true,
+      "tampered_merge_rejected": true
+    },
+    {
+      "k": 5,
+      "raw_states": 256,
+      "minimal_future_equivalent_states": 96,
+      "minimal_state_encoding_bits": 7,
+      "min_axis_aligned_bits": 8,
+      "axis_mask": "0xff",
+      "xor_invariant_masks": [
+        "0x08",
+        "0x10",
+        "0x20",
+        "0x40",
+        "0x81",
+        "0x07"
+      ],
+      "xor_projection_is_exact": false,
+      "xor_projection_distinguishable_states": 64,
+      "xor_projection_gates": 3,
+      "quotient_refinement_rounds": 6,
+      "explicit_micro_table_bits": 4352,
+      "explicit_quotient_table_bits": 1248,
+      "table_ratio_only": 3.487,
+      "future_congruence_256x2_pass": true,
+      "tampered_merge_rejected": true
+    },
+    {
+      "k": 6,
+      "raw_states": 256,
+      "minimal_future_equivalent_states": 192,
+      "minimal_state_encoding_bits": 8,
+      "min_axis_aligned_bits": 8,
+      "axis_mask": "0xff",
+      "xor_invariant_masks": [
+        "0x01",
+        "0x08",
+        "0x10",
+        "0x20",
+        "0x40",
+        "0x80",
+        "0x06"
+      ],
+      "xor_projection_is_exact": false,
+      "xor_projection_distinguishable_states": 128,
+      "xor_projection_gates": 1,
+      "quotient_refinement_rounds": 7,
+      "explicit_micro_table_bits": 4352,
+      "explicit_quotient_table_bits": 2880,
+      "table_ratio_only": 1.511,
+      "future_congruence_256x2_pass": true,
+      "tampered_merge_rejected": true
+    }
+  ],
+  "not_measured": [
+    "run-time speedup",
+    "actual NN reasoning ability",
+    "general-purpose LLM parity",
+    "minimum program/source length",
+    "finding coordinates without enumeration",
+    "physical phase transition"
+  ],
+  "decision": "Next blocker: learn a future-preserving projection and useful dynamics without enumerating all microstates or hiding costs in transforms, verifiers or physical priors."
+}
