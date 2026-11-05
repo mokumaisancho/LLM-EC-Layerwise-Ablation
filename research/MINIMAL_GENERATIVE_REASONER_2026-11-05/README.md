@@ -39,11 +39,12 @@
 
 この記録は新たな独立研究テーマの追跡資料であり、既存S1〜S4のacceptance criteria・判定・状態の変更を伴わない。
 
-## 2026-11-05: 実行済みPoC（MGR-P1/P2）
+## 2026-11-05: 実行済みPoC（MGR-P1/P2/P3）
 
 - [実験報告・7条件の実測・偽PASS制御・次の単一ブロッカー](poc_finite_quotient_v1/REPORT.md)
 - [P1: 最小の未来保存状態の抽出と線形投影の反例](poc_finite_quotient_v1/run_poc.py)、[P1実行結果](poc_finite_quotient_v1/results.json)
 - [P2: 観測深度が不足すると起きる誤同値と反例](poc_finite_quotient_v1/poc_horizon.py)、[P2実行結果](poc_finite_quotient_v1/horizon_results.json)
 - スコープ: **合成8bit状態256個、各2入力、7条件、未来保存の全状態検証**。大規模LLM・蒸留・NN重みは使用していない。
 - 限定結果: `k=0`では256→4個の未来同値状態、`k=1`では4→6個かつ線形XORによる正確な最小射影は不可能。最長6ステップの隠れ依存がある場合、1ステップだけの観測は192個の必要状態を6個と誤判定する。
-- 次ブロッカー: **状態全列挙や外部からの正解構造の埋め込みなしに、未来保存の射影を発見できるか**。実測のLLM代替性や実行速度向上は未確認。
+- [P3: 2bit XOR射影を少数の観測から発見](poc_finite_quotient_v1/poc_sparse_discovery.py)、[全120試行・独立判定](poc_finite_quotient_v1/sparse_discovery_results.json)。k=0の12状態観測で10/10正解（限定条件）、k=1では標本上の誤PASSも発見。
+- **次の単一ブロッカー**: 事前に線形XORという表現クラスを指定せず、**非線形な未来保存射影と有効な動的規則を未知の系から発見・反証できるか**。実測のLLM代替性や実行速度向上は未確認。
