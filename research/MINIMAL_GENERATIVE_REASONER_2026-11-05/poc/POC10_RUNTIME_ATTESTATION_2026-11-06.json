@@ -1,0 +1,52 @@
+{
+  "id": "GEN001_POC10_REGISTERED_RUNTIME_SEMANTICS_BINDING_V1",
+  "date": "2026-11-06",
+  "status": "SCOPED_PASS_MODULE_ONLY_NATIVE_FULL_SUITE_NOT_RUN",
+  "source_branch": "mokumaisancho/GPT-EC-Closure-Engine:research/gen001-verified-abstraction-20261106",
+  "pull_request": "https://github.com/mokumaisancho/GPT-EC-Closure-Engine/pull/40",
+  "source_git_blobs": {
+    "ec_behavioral_runtime_binding.py": "05e6457cb4b32b20ce0c3c9069b2e478d2d61a20",
+    "ec_behavioral_abstraction.py": "a67b3ebe4cdcfea017fb210ce168a556ea0a0eb3",
+    "native_control": "3f22e038122f1713493ff939c124341cb543af8f"
+  },
+  "tests": {
+    "runtime_attestation_unit_tests_run": 11,
+    "passed": 11,
+    "failed": 0,
+    "previous_poc9_48_tests_retested_after_changes": false,
+    "existing_ecv44_full_suite": "NOT_RUN",
+    "real_s3_s4_runtime": "NOT_RUN"
+  },
+  "cost": {
+    "toy_registered_states": 8,
+    "registered_actions": 3,
+    "registered_resets": 2,
+    "runtime_calls_per_attestation": 68,
+    "trials": 300,
+    "pass_trials": 300,
+    "median_seconds": 0.00008239400000320529,
+    "p95_seconds": 0.00012985500006834627,
+    "source_fixture_sha256": "14216e7d5b3b1cca06c8a107f83573b40be7df543150de0a18f10d9106f63ea8"
+  },
+  "failure_behaviors": {
+    "reset_mismatch": "REJECT",
+    "transition_mismatch": "REJECT",
+    "output_mismatch": "REJECT",
+    "source_file_sha_mismatch": "BLOCKED",
+    "file_changed_after_pin": "BLOCKED",
+    "wrong_function_source_file": "BLOCKED",
+    "budget_exhausted": "HOLD",
+    "missing_runtime_binding": "BLOCKED",
+    "unknown_action_contract": "BLOCKED by existing scope gate"
+  },
+  "limitations": [
+    "Proof is exact only over a trusted, complete finite, pure deterministic registered source and callbacks at check time.",
+    "A source-file SHA and code-location check do not attest arbitrary deployed runtime, external tools, interpreter state, or time-of-use semantics.",
+    "The native ECv4.4 V2 preflight test suite was updated on branch but not run unmocked or in full after this update.",
+    "Original PoC9 48/48 should not be summed with PoC10 11/11 to claim 59 native passes.",
+    "S3 candidate-set multiplicity and S4 closure-state identifiability remain separately unresolved.",
+    "No proof of general reasoning/NN inference improvement or end-to-end speedup."
+  ],
+  "additional_finding": "The original S3/S4 native contract is not isomorphic to Phase1: S3 singleton next-action vs admissible set; coarse S4 signature has 2 unavoidable conflicting labels in 10 fixtures, max accuracy 0.8 under that projection (PoC11).",
+  "next_single_decision": "Before further EC integration, choose precisely which ECv4.4 subfunction is necessary to validate novel generative mechanisms. Do not claim full S3/S4 replacement. For runtime use, pin an actual host executable and execute unmocked native suite after binding."
+}
