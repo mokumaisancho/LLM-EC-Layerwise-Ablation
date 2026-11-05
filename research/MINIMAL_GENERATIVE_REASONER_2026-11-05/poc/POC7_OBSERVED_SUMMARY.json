@@ -1,14 +1,14 @@
 {
   "experiment_id": "GEN001_POC7_BLACKBOX_ACTIVE_LEARNING_V1",
   "date": "2026-11-05",
-  "status": "SCOPED_PASS_INDEPENDENT_ANGUIN_LSTAR_IMPLEMENTATION",
+  "status": "SCOPED_PASS_INDEPENDENT_ANGLUIN_LSTAR_IMPLEMENTATION",
   "warning": "NOT an execution of official AALpy. Native AALpy 2.0.0 package was unavailable because sandbox could not download from PyPI; native driver exists and compiles but import preflight returned NOT_RUN.",
   "method": "Angluin L* observation-table active automata learning with membership queries (reset, action words -> observable output). Equivalence oracle during learning uses deterministic depth <=4 prefixes plus seeded random suffixes. Independent finite reachable-state product verifier checks ALL future words from specified reset. Verifier's internal target access is never given to learner.",
   "sources": {
     "fallback_runner": "poc7_lstar_fallback.py",
     "fallback_runner_git_blob_sha": "722e600873a547ed122b2d0c37114be5d162133c",
     "extended_runner": "poc7_extended.py",
-    "extended_runner_git_blob_sha": "744a4f15f6060bbe5609a2cbe2f4dc28359b3f37",
+    "extended_runner_git_blob_sha": "f9ae04a770b547f2b55ba2c214ec44d5467a7ef5",
     "native_unrun_driver": "poc7_aalpy_native.py",
     "native_driver_git_blob_sha": "f8de0fddaf42e9a2c4b811a25daa1e9d2a1a5a77",
     "local_observed_raw_json_sha256": "eb93718e545c17a40a1f6f2c46e36865cf0ce1df53154bfccbf75b12263e5511",
