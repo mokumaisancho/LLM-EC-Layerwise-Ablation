@@ -1,0 +1,62 @@
+{
+  "id": "GEN001_POC5_ECV44_NATIVE_FUTURE_PROJECTION_GAP_V1",
+  "status": "PASS_GAP_REPRODUCED_PINNED_NATIVE_SOURCE",
+  "tested_on": "2026-11-05",
+  "runtime": "sandbox Python, direct invocation of pinned unmodified ECv4.4 modules",
+  "source_commit": "d5ec423968f1c9242c590e5e77ccfd92d1f59eb2",
+  "verified_files": {
+    "01_repo/src/v4/ec_residual_detector.py": "db2786573417348b243ca9d54f3a21d631427943",
+    "01_repo/src/v4/ec_framing_search.py": "dfc4c56e9bfdeffb3bd1f4aa699d9172c78fa7d5"
+  },
+  "test_cases": [
+    {
+      "name": "128 distinct variables but no residual",
+      "native_residual": "CLEAN",
+      "native_search": "CLOSE",
+      "native_mutation": null,
+      "result": "PASS"
+    },
+    {
+      "name": "Externally proposed future-preserving rank-2 quotient",
+      "score_original": 0.75,
+      "score_projected": 0.846,
+      "gain": 0.096,
+      "result": "PASS",
+      "note": "External quotient validity independently established in PoC4, not by EC"
+    },
+    {
+      "name": "Provide REABSTRACT metadata hint",
+      "native_search": "PRESERVE",
+      "reason": "NO_MEANINGFUL_IMPROVEMENT",
+      "generated_ops": [
+        "REABSTRACT"
+      ],
+      "result": "PASS"
+    },
+    {
+      "name": "Introduce incorrect projection expression",
+      "native_scoring": "PASS",
+      "score": 0.846,
+      "mathematical_counterexample": {
+        "x": 2,
+        "correct_output": 1,
+        "wrong_first_projection_bit": 0
+      },
+      "result": "PASS",
+      "note": "Native EC scorer is not a mathematical proof checker; this is a new-scope gap, not an assertion of failure of the original acceptance contract"
+    },
+    {
+      "name": "Explicitly violate protected invariant",
+      "native_scoring": "REJECT",
+      "reason": "INTENT_DISTORTION",
+      "result": "PASS"
+    }
+  ],
+  "root_cause": "Native ECv4.4 framings are semantic metadata. REABSTRACT changes a label, not a functional projection. Residual detector cannot discover useful projections without pre-labelled mismatches, score does not test mathematical correctness of coordinates.",
+  "next_blocker": "A separate proof-bearing phi/delta discovery and validation capability needs to generate useful alternative state representations; ECv4.4 should consume verified evidence, not own scientific truth.",
+  "limitations": [
+    "Only two pinned ECv4.4 modules executed; no full control plane, SUITE regression, or integration",
+    "Fixtures are synthetic; no model NN/LLM performance result",
+    "Model/score improvement does not imply a real runtime speedup"
+  ]
+}
