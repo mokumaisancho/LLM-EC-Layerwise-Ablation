@@ -60,6 +60,47 @@ Categorize options as:
 
 Keep capability (what can logically be done), implementation (what actually exists), and verification (what has been observed to work) distinct.
 
+### 2b. **Atomic-granularity gate: mandatory before suggesting a task**
+
+The previous procedure can still hide a giant leap inside terms like "validate usefulness", "measure end-to-end", "integrate", or "solve the next issue". **A one-sentence action is not necessarily a small action.** Decompose any proposal until each step has one unambiguous transformation and one independently checkable output.
+
+**Three simultaneous resolutions:**
+
+- **System layers** (what object is being discussed): raw source/real-world process; representation or model; learner/constructor; execution interface; consumer/use case; evaluator; deployment/authority. Different layers may share terminology but are not interchangeable.
+- **Claims** (what relationship is asserted): existence, discovery, identification, equivalence, usefulness, improvement, generalization, acceptance. Proof of a claim at one layer **does not** establish the next claim.
+- **Operations** (what is being done now): inspect an existing artifact; read one interface; compute one quantity; test one relationship; compare one baseline; decide whether to proceed. An operation requiring two new unknown components is too large unless they can be checked independently.
+
+For every critical proposed transition A → B, make a tiny **edge record**:
+
+| Field | Exact question |
+|---|---|
+| Input | Which specific data/artifact and whose version? |
+| Operation | What *single* transformation, observation, or decision occurs? |
+| Output | Which object or single measured fact is produced? |
+| Prerequisite | Which assumptions/capabilities must *already* hold? |
+| Evidence | Is this edge observed, mathematically derived, only proposed, or untested? |
+| Check | What minimal independent check could falsify this edge? |
+| Cost | Which acquisition / transformation / verification / repeated-use costs belong to this edge? |
+| Decision | What exact choice becomes possible after this edge is checked? |
+
+**Stop if an edge has missing prerequisite or unverifiable output**; subdivide it rather than bypassing it with a larger task. Do not demand implementation when a static inspection, algebraic check, or two-case contrast already resolves the decision.
+
+**Counterfactual and denominator check:** For any claimed gain, ask "*relative to exactly which no-change baseline?*" Separate logical state-space size, **reachable** states under the actual input/initialization contract, encoded memory footprint, per-step operations, initial transformation cost, model acquisition cost, independent verification cost, and number of uses. These measures cannot substitute for one another. Ask "*what would still be possible without the new artifact?*" If a capability existed already, the new artifact's contribution is unproven until compared with that baseline.
+
+**Working granularity tests:** A next action fails this gate when it contains:
+- multiple independent success criteria connected by "and" without intermediate checks;
+- a change of layer (e.g. discovered model → raw-input projection → runtime speedup) without a proven mapping;
+- a model-sized result interpreted as a workload-sized improvement without measuring the workload;
+- a proposed experiment that requires first inventing new data, new evaluation goals, and new verification tools;
+- a claimed blocker for an optional later phase promoted to an immediate dependency;
+- a next step whose first concrete act cannot be named *with existing artifacts*.
+
+**Reconstruct the smallest useful causal chain:** first establish the input/output meaning of a result; then whether the next intended operation can use that result *as is*; then test the single missing link; only then compare larger utility or cost. If the current model already answers the question, report the answer, not another PoC.
+
+**Mandatory terminal checkpoint:** Before committing to execution, output internally:
+`Given [existing artifact], applying [one existing operation] produces [one checkable result], which answers [one decision] under [explicit scope].`
+If it cannot be filled without inventing more components or assumptions, the step is still too coarse.
+
 ### 3. Build a dependency and gap picture (not merely a task list)
 
 For each nearest outcome M, list its **necessary inputs and capabilities**. Mark each as PRESENT, PARTIAL, MISSING, or UNKNOWN and attach evidence.
@@ -115,6 +156,10 @@ Default priority: **necessary + feasible + low-dependency + verifiable + decisio
 
 Do not invent probabilities or arbitrary scores. State conditional feasibility where warranted.
 
+### 5b. Reassess task size at the interface boundary
+
+Do a reverse check **before** announcing the next action: list every input and output interface crossed. More than one unresolved interface means there must be intermediate checkpoints. Select the *earliest unverified edge necessary to decide anything useful*, not the final downstream experiment. Reject the "do it all end-to-end" default when inputs, representation semantics, or the no-change baseline are not yet established.
+
 ### 6. Choose the shortest decision-changing next action
 
 Select **one** action only, unless the user explicitly asks for parallel independent tracks. Specify:
@@ -152,6 +197,10 @@ Do not keep stacking new plans without closing the present decision.
 7. Did I reuse existing work and preserve previous constraints and original acceptance criteria?
 8. Did I avoid conflating a milestone PASS with final-goal completion or a production release?
 9. Is the next action the shortest that **changes the decision**, not just the most impressive?
+10. Have I separated source, representation, acquisition, execution and evaluation so one claim cannot masquerade as another?
+11. Does every proposed action have **one** defined input, one operation, one output, one independent check and one decision?
+12. Is the claimed improvement normalized to the *actual relevant denominator and baseline* (e.g. reachable cases, repeated calls, whole cost), not an attractive but irrelevant big number?
+13. Have I identified the first missing interface instead of prescribing the whole downstream workflow?
 
 If any answer fails, revise the recommendation **before** proposing execution.
 
