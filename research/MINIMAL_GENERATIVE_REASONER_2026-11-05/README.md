@@ -76,3 +76,6 @@
 
 ## 2026-11-06 — PoC13: 限定解決の許容条件と決定的ブロッカー
 [PoC13実行・RCA・Mermaid](poc13_authority_gate_2026-11-06/REPORT.md) / [再現スクリプト](poc13_authority_gate_2026-11-06/poc13_repro.py) / [64ケース・11異常系](poc13_authority_gate_2026-11-06/POC13_OBSERVED.json)。合成64件で誤CLOSEを16→0、正常CLOSE24を維持。独立ホスト側の固定ハッシュがない／偽造の権威一式ならBLOCKED。ただしホスト権威の実在証明は今回の模擬環境にない。**決定的なブロッカーは外部規範に基づいた義務目録全量と独立証拠の真正性**。非線形座標を万能に自動発見できない点は有限系MVPの現ブロッカーではなく、反例が出た条件でのみ既存L*/CEGIS/SINDy等にエスカレーションする。既存ECv4.4 Draft PR#40の全SUITEはNOT_RUN。
+
+## 2026-11-07 — 現在の本線：PoC7の入力・投影境界を監査
+[4状態モデルの入力契約と投影限界、反例の記録](POC7_INPUT_PROJECTION_BOUNDARY_AUDIT_2026-11-07.md)。固定reset・操作0/1で元状態4→学習状態4であり、到達可能状態数の縮約は実証していない。一方、参照合成系には任意のraw状態からの真の2bit投影関数が存在するが、L*学習器はその写像を生成していない。従来の18倍マイクロベンチは任意raw状態の投影費用と公平な直接実装対照を含まず、「投影による総計算削減」PASSではない。入力形態（操作履歴か任意raw状態か）を先に固定し、最小の未検証接続点のみ調べる。汎用次工程スキルの正本は [Skills/evidence-to-next-action](https://github.com/mokumaisancho/Skills/blob/main/skills/evidence-to-next-action/SKILL.md)。
