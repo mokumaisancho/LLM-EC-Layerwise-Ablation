@@ -88,3 +88,6 @@ New finding: n=6→2 is mathematically valid but rejected by native 0.01 score-g
 
 ## 2026-11-06 — PoC13: 限定解決の許容条件と決定的ブロッカー
 [PoC13実行・RCA・Mermaid](../poc13_authority_gate_2026-11-06/REPORT.md) / [再現スクリプト](../poc13_authority_gate_2026-11-06/poc13_repro.py) / [64ケース・11異常系](../poc13_authority_gate_2026-11-06/POC13_OBSERVED.json)。合成64件で誤CLOSEを16→0、正常CLOSE24を維持。独立ホスト側の固定ハッシュがない／偽造の権威一式ならBLOCKED。ただしホスト権威の実在証明は今回の模擬環境にない。**決定的なブロッカーは外部規範に基づいた義務目録全量と独立証拠の真正性**。非線形座標を万能に自動発見できない点は有限系MVPの現ブロッカーではなく、反例が出た条件でのみ既存L*/CEGIS/SINDy等にエスカレーションする。既存ECv4.4 Draft PR#40の全SUITEはNOT_RUN。
+
+## PoC15 — directly-derived 2bit baseline vs actually learned 4-state model
+[詳細・受入範囲](POC15_DIRECT_BASELINE_FINDINGS_2026-11-07.md) / [数値結果](POC15_DIRECT_COMPARISON_OBSERVED_2026-11-07.json) / [モデル遷移の独立検算](poc15_direct_rule_reachable_verifier.mjs)。元128-bit構造が到達するrawは固定reset/action条件では4個だけ。学習4状態は直接2bit遷移と全8辺一致、状態削減4→4。高速化が元Pythonラッパー対テーブルの方式差であり、raw4状態テーブル対学習表はほぼ同速度と確認。モデルから任意の128-bit`x`をIDへ投影する関数は未学習。
