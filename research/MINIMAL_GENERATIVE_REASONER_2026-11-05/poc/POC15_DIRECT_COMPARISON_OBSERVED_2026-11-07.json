@@ -1,0 +1,122 @@
+{
+  "experiment": "GEN001_POC15_DIRECT_VS_LEARNED_BASELINE_2026_11_07",
+  "date": "2026-11-07",
+  "status": "SCOPED_PASS_EQUIVALENCE_WITH_NO_REACHABLE_STATE_COUNT_REDUCTION",
+  "source_reference": {
+    "path": "poc7_lstar_fallback.py",
+    "git_blob": "722e600873a547ed122b2d0c37114be5d162133c",
+    "model": "NonlinearScrambledSUL(128, initial=0, actions=(0,1))"
+  },
+  "method": {
+    "learner": "faithful standalone port of original Angluin L* observation-table algorithm, not official AALpy",
+    "eq_during_learning": "membership plus fixed short-prefix/seeded random tests, no privileged exact oracle",
+    "post_learning": "independent exact reachable product BFS and partition-refinement min-state check",
+    "direct_baseline": "2-bit q transitions read from source-private to_latent representation; unavailable to original black-box learner",
+    "reference_benchmark": "Python 3.13.5 on Linux; 100000 actions per run, 11 repeated alternating method timings"
+  },
+  "learned": {
+    "states": 4,
+    "initial": 0,
+    "outputs": {
+      "0": 0,
+      "1": 0,
+      "2": 1,
+      "3": 1
+    },
+    "transitions": {
+      "0": {
+        "0": 3,
+        "1": 0
+      },
+      "1": {
+        "0": 2,
+        "1": 2
+      },
+      "2": {
+        "0": 0,
+        "1": 1
+      },
+      "3": {
+        "0": 1,
+        "1": 3
+      }
+    },
+    "q_to_learned_state_id": {
+      "0": 0,
+      "1": 3,
+      "2": 1,
+      "3": 2
+    }
+  },
+  "verification": {
+    "source_reachable_raw_states": [
+      "0x0",
+      "0x1",
+      "0x2",
+      "0x3"
+    ],
+    "source_reachable_count": 4,
+    "direct_reachable_q_count": 4,
+    "learned_reachable_count": 4,
+    "distinct_reachable_state_reduction": 0,
+    "exhaustive_direct_to_learned_edges": 8,
+    "exact_product_BFS": "PASS_EXACT_REACHABLE",
+    "exact_product_pairs": 4,
+    "independent_minimality": "PASS_EXACT_REACHABLE",
+    "hidden_coordinates_sampled": 48,
+    "mutation_test": {
+      "corrupt_first_transition": "FAIL",
+      "counterexample_actions": [
+        0
+      ]
+    }
+  },
+  "learning_cost": {
+    "elapsed_seconds": 0.0156072,
+    "unique_membership_queries": 1036,
+    "simulated_source_steps": 12182,
+    "equivalence_rounds": 2,
+    "independent_post_check_seconds": 0.000188628
+  },
+  "timing_microbenchmark": {
+    "actions": 100000,
+    "repetitions": 11,
+    "checksum": 49993,
+    "median_seconds": {
+      "raw_source_wrapper": 0.10103575,
+      "direct_q_rule_from_private_source": 0.010838854,
+      "actually_learned_four_state_table": 0.005049211,
+      "raw_reachable_microstate_table_built_each_run": 0.005352708
+    },
+    "raw_source_wrapper_over_learned_ratio": 20.0102,
+    "privileged_direct_rule_over_learned_ratio": 2.14664
+  },
+  "fair_cached_table_control": {
+    "actions": 100000,
+    "repetitions": 15,
+    "checksum": 49993,
+    "source_precomputed_four_microstate_table_median_s": 0.005660221,
+    "learned_precomputed_four_state_table_median_s": 0.005728852,
+    "ratio_source_over_learned": 0.9880201129301297
+  },
+  "provenance": {
+    "executed_python_runner_sha256": "1785006b91292b37427d6d97a09c92cba4d80940fbf763c4b2aee48f60cf1928",
+    "executed_python_runner_git_blob_sha": "d15b281da027ef1ab41f0ed8a7f7c1fc4632fac6",
+    "executed_python_raw_result_sha256": "729dc225cce288f76b40f3604dd0a492f4d076e90dd0c982ad55f4a162d95c9d",
+    "independent_github_executable": "poc15_direct_rule_reachable_verifier.mjs"
+  },
+  "interpretation": {
+    "model_inference": "yes, an input-output four-state model can be learned from reset-action-output queries in this synthetic scope",
+    "discovered_global_projection_phi": "no, to_latent is source-private and not learned for arbitrary fresh raw states",
+    "observed_reachable_state_compression": "no, 4 raw reachable -> 4 learned states",
+    "source_representation_width": "128-bit capability of Python integer, but reached raw values are 0,1,2,3",
+    "speed_conclusion": "Large gains over expensive source wrapper are implementation-specific; direct/cached controls reduce or remove the advantage",
+    "scope_limitations": [
+      "Deterministic synthetic system, reset=0, actions 0/1 and single output",
+      "No proof of generic inference, arbitrary raw snapshot projection, or total learn+deploy cost benefit",
+      "Privileged direct baseline not an option to black-box learner without source knowledge",
+      "Timing results are local Python microbenchmarks, not hardware independent"
+    ]
+  },
+  "next_single_decision": "Is there a fixed input contract with multiple reachable raw microstates sharing the same future observable behavior, so the learned quotient actually merges states, rather than merely renaming four reachable states?"
+}
