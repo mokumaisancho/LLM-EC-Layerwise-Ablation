@@ -79,3 +79,6 @@
 
 ## 2026-11-07 — 現在の本線：PoC7の入力・投影境界を監査
 [4状態モデルの入力契約と投影限界、反例の記録](POC7_INPUT_PROJECTION_BOUNDARY_AUDIT_2026-11-07.md)。固定reset・操作0/1で元状態4→学習状態4であり、到達可能状態数の縮約は実証していない。一方、参照合成系には任意のraw状態からの真の2bit投影関数が存在するが、L*学習器はその写像を生成していない。従来の18倍マイクロベンチは任意raw状態の投影費用と公平な直接実装対照を含まず、「投影による総計算削減」PASSではない。入力形態（操作履歴か任意raw状態か）を先に固定し、最小の未検証接続点のみ調べる。汎用次工程スキルの正本は [Skills/evidence-to-next-action](https://github.com/mokumaisancho/Skills/blob/main/skills/evidence-to-next-action/SKILL.md)。
+
+## 2026-11-07 — PoC15: 学習4状態モデルと直接2bit規則を同じ入力契約で比較
+[検証結果と次の単一判断](poc/POC15_DIRECT_BASELINE_FINDINGS_2026-11-07.md) / [実測JSON](poc/POC15_DIRECT_COMPARISON_OBSERVED_2026-11-07.json) / [独立JS再検証](poc/poc15_direct_rule_reachable_verifier.mjs)。固定reset・操作0/1で元raw到達4→学習4、4×2遷移一致。L*再学習後の4状態表は元ソースの直接2bit規則と同値。100,000操作では元の非線形Pythonラッパーより約20倍速いが、元raw4状態を事前に表化した公正対照とほぼ同速（15反復で5.66ms対5.73ms）。**「128bit→4状態で計算削減」とする主張はこの入力範囲では支持されない**。学習器は任意raw→ID写像`phi`を生成していない。次の最小判断は元rawで複数の異なるhidden状態が到達するreset条件を1つ追加して初めて、真の状態集約が発生するか確認すること。ECv4.4接続・汎用推論能力の完了は主張しない。
