@@ -81,3 +81,48 @@ A valid answer for each case must:
 7. Not introduce unverified numerical benefit estimates, fabricated completeness or unnecessary new development.
 
 Fail if the recommended action is merely "research more", "develop full AI", "perform all tests", or "collect complete evidence" without linking its exact information gap to the present decision.
+
+## Granularity regression tests — reject hidden leaps
+
+These tests specifically catch "one sentence, many assumptions" recommendations.
+
+### G1: Large representation but tiny reachable workload
+- **Evidence:** underlying system declares (2^{128}) possible bit patterns, but a fixed reset and permitted actions visit only four source states.
+- **Bad conclusion:** "we compressed (2^{128}) reachable states to four and therefore accelerated projection".
+- **Required decomposition:** (a) state encoding width; (b) global potential state count; (c) states reachable from actual reset; (d) learned observational equivalence classes; (e) whether a raw-input-to-model mapping exists; (f) whether the workload is repeated state transitions or new raw-state queries; (g) actual comparison with the simplest direct baseline.
+- **Smallest first action:** inspect the source transition under its actual reset/actions and calculate reachable source states. **Do not start** an end-to-end cost benchmark while the denominator and input contract are unclear.
+- **Pass:** says reachable 4→learned 4 for that fixed-run workload, while noting a 128-bit *representation width* and any wider quotient claim separately.
+- **Fail:** treats logical state-space cardinality as real observed compression.
+
+### G2: Correct model but no raw-input mapping
+- **Evidence:** a learner produced a small input/output automaton starting at a known reset; no `phi(raw_state)` mapper was learned.
+- **Bad conclusion:** "any newly supplied raw input can now be projected and processed".
+- **Required decomposition:** separate history-tracked model state from a model state inferred from arbitrary fresh input.
+- **Smallest first action:** examine whether the user’s intended use supplies a reset+action history or raw state snapshots. If snapshots are required, **the mapping is a new missing interface**; if histories suffice, direct model-state tracking needs no additional mapper.
+- **Pass:** identifies the first missing interface conditionally instead of automatically building projection code.
+
+### G3: Apparent runtime speedup from an expensive baseline
+- **Evidence:** two implementations give identical output, but the source version uses a high-overhead wrapper or repeated recomputation.
+- **Bad conclusion:** "the learned model has proven a causal computational advantage".
+- **Required decomposition:** identify the direct optimized baseline, acquisition/proof costs, repeated call count, feature extraction and cache effects.
+- **Smallest first action:** compare *one* direct lower-overhead source path to the learned path before building full amortized infrastructure.
+- **Pass:** labels any raw-speed result as implementation-specific until the counterfactual is tested.
+
+### G4: Distinct project milestone and final release
+- **Evidence:** functional component passes a sandbox test; production compliance review is outstanding.
+- **Bad conclusion:** "the entire project is blocked, so do not continue feature inspection".
+- **Smallest first action:** classify whether the present decision concerns exploratory component work or production release. Only the latter requires complete compliance as a current blocker.
+
+### G5: Unknown input and a speculative grand solution
+- **Evidence:** a useful partial artifact exists, but the system's next input contract is unclear.
+- **Bad conclusion:** "train a more powerful general model" or "run an unfamiliar-task benchmark".
+- **Smallest first action:** name the single missing input→operation edge, inspect current interface, and choose one bounded check.
+- **Pass:** refuses to formulate a multi-stage experiment until its first interface is established.
+
+## Granularity signoff
+
+For any suggested next step, the reviewer must be able to complete a one-line check:
+
+`EXISTING_INPUT -> ONE_OPERATION -> ONE_OBSERVABLE_OUTPUT -> ONE_PASS_FAIL_UNKNOWN_DECISION`.
+
+If this requires implicit extra data, new authority, new benchmark, new compiler, another algorithm, or a second acceptance condition, split the action and choose the earliest decision-critical edge. The downstream steps stay pending.
