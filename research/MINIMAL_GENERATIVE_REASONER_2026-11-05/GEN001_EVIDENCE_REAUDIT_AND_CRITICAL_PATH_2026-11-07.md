@@ -115,3 +115,7 @@ flowchart TD
 - EC本番に必要だが現PoCの独立ブロッカー：独立W4B/W4C資料・証拠、実際のS3/S4/V3通し試験、Draft PR #40の新コードに対する既存SUITE全実行。**未完了は未完了のまま保持**。
 
 参照原課題：[README](README.md) / [議論変遷と依存](ISSUE_FLOW.md) / [技術依存](TECHNICAL_DEPENDENCIES.md) / [PoC7](poc/POC7_FINDINGS.md) / [PoC9総費用](poc/POC9_NATIVE_ECV44_INTEGRATION_2026-11-06.json) / [PoC12/13](holdout_s4_2026-11-06/REPORT.md) / [Phase1の別完了条件](https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/blob/main/docs/ISSUE1_W4B_W4C_INDEPENDENT_PROOF_AC_V1.md)。
+
+## 2026-11-07: next-step correction after capability-first review
+
+The earlier §5 proposal to test unfamiliar objectives immediately is **DEFERRED, not the present P0**: it skipped direct use of the already learned model and several feasibility prerequisites. See [current decision and 24-case derived observation check](MODEL_AFFORDANCE_NEXT_DECISION_2026-11-07.md). The immediate next measurement is **existing repeated future-output prediction**, comparing source execution with the 4-state learned model while accounting for learning, independent verification and repeated operation costs. The current model has a one-action state-discrimination property in an *unknown-state* setting, but the existing fixed reset/known action history makes performing such diagnostic probes unnecessary. Return to novel goals/planning only after the smaller capability's actual usefulness is established and a concrete need emerges.
