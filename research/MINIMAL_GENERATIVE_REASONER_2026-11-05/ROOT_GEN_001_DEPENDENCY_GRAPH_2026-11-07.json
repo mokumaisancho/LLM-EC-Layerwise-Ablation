@@ -461,7 +461,19 @@
     "O_RULE",
     "O_BOUND"
   ],
-  "ranked_current_open_technical": [
+  "selected_frontier": null,
+  "selection_reason": "Only currently executable OPEN scientific node with five distinct unmet downstream goal outcomes (action choice, goal-specific resource efficiency, transfer, representation-class generalization, lower bound); successors lack its measurable task/independent Gold contract.",
+  "validation": {
+    "acyclic_required_edge_graph": true,
+    "no_original_AC_closed": true,
+    "no_new_model_claim": true
+  },
+  "lifecycle_status": "INVALIDATED_SUPERSEDED_BY_SOURCE_AUDIT",
+  "superseding_docs": [
+    "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/ROOT_OBJECTIVE_PROVENANCE_REAUDIT_2026-11-07.md",
+    "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/ROOT_OBJECTIVE_CORRECTED_GRAPH_2026-11-07.md"
+  ],
+  "ranked_current_open_technical_historical_only": [
     {
       "id": "T_TASK",
       "ready": true,
@@ -529,11 +541,5 @@
       "shared_outcome_count": 1
     }
   ],
-  "selected_frontier": "T_TASK",
-  "selection_reason": "Only currently executable OPEN scientific node with five distinct unmet downstream goal outcomes (action choice, goal-specific resource efficiency, transfer, representation-class generalization, lower bound); successors lack its measurable task/independent Gold contract.",
-  "validation": {
-    "acyclic_required_edge_graph": true,
-    "no_original_AC_closed": true,
-    "no_new_model_claim": true
-  }
+  "invalid_reason": "Assistant-fabricated T_TASK makes all five user-goal outcomes depend on arbitrary 28 binary output-suffix tasks. It conflates prediction-state modeling with user-origin potential capacity, knowledge/reasoning separation, new-law generation and minimal-resource reasoning. The graph must not drive the active skill/scorer."
 }
