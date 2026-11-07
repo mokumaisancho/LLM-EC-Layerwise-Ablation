@@ -4,6 +4,42 @@
 
 **色**：赤＝未解決、橙＝部分的実装/仮説、緑＝実証済みだが限定、灰＝別研究/補助、青＝現在の最小接点（正しさを主張しない）。
 
+## 2026-11-08 現行の最初の未解決接点（既存の課題図・技術図は下部に保持）
+
+この更新は[情報起源と先行手法の実装監査](INFORMATION_ORIGIN_AND_GENERATIVE_REUSE_DECISION_2026-11-08.md)に対応する。**青は次に調べる接点であり、科学的PASSを意味しない。** 原課題のQ1〜Q6は引き続き未達。
+
+```mermaid
+flowchart TD
+  ROOT["原課題: 最小の初期構造から<br/>多様で高度な推論能力が生じ得るか"]
+  H["証明済み必要条件 [限定]<br/>無仮定・有限観測では未知法則を一意同定不能"]
+  I["初期情報の台帳 [部分]<br/>DSL・探索・外部課題・検証器・資源を区別"]
+  D["先行手法: DreamCoder [外部実装あり]<br/>課題から新しいライブラリ部品を学習"]
+  V["実装監査で発見した問題 [確認済み]<br/>challenge定数の先渡し / test時間既定0"]
+  NEXT["最初の未解決接点 [次の一手]<br/>課題の知識流入を隔離し、独立Goldを確保"]
+  A["同じDSLのライブラリ更新あり/なしを比較<br/>性能・総費用・新部品の寄与"]
+  TARGET["未確認: 新しい再利用規則で<br/>本当に未知の課題を改善するか"]
+  POWER["PowerPlay: 自己課題発明の別の軸<br/>現段階で新規実装しない"]
+  OLD["既存P4/L*/BFSの限定的な成果<br/>法則生成全般の実証ではない"]
+  ROOT --> I
+  H -. 最低限必要な条件 .-> I
+  I --> D
+  D --> V --> NEXT --> A --> TARGET
+  POWER -. 比較候補 .-> TARGET
+  OLD -. 再利用可能な部分技術 .-> I
+  classDef open fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+  classDef partial fill:#fef3c7,stroke:#d97706,color:#78350f
+  classDef bounded fill:#dcfce7,stroke:#16a34a,color:#14532d
+  classDef deferred fill:#e5e7eb,stroke:#6b7280,color:#374151
+  classDef focus fill:#dbeafe,stroke:#1d4ed8,stroke-width:3px,color:#1e3a8a
+  class ROOT,TARGET open
+  class I,D,A partial
+  class H,V bounded
+  class NEXT focus
+  class OLD,POWER deferred
+```
+
+**なぜこの接点か**：現状の「大きい知識を与えずに新しい規則を作った」という判定を妨げる直接の原因は、既知の規則と外部のGold・定数が学習器へ流入する境界が曖昧なこと。実際にDreamCoder公式`text/main.py`ではチャレンジの定数が学習前の共有語彙へ組み込まれ得る。**ただし、このゲートを解けば高度な一般推論が成立するという意味ではない。** 試験可能な最初の接点に限る。
+
 ## 1. 課題図：ユーザーの問いと研究・手段を分ける
 
 ```mermaid
