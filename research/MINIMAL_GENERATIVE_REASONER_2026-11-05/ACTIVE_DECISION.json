@@ -158,5 +158,62 @@
       "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/poc/c6_fair_cost.py@7e697d698f2c9acc271358cb8699cbd304a6cdf3",
       "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/C6_FAIR_COST_PRE_2026-11-07.json@a455aa81a2afc4cabc76fb77822c8c86141f45f8"
     ]
+  },
+  "interface_bridge_2026_11_07": {
+    "phase": "PRE",
+    "original_goal_id": "ROOT-GEN-001",
+    "original_goal": "Discover minimal initial structures, generative rules, representation transformations and their bounded reasoning capacities without requiring pretrained LLM knowledge.",
+    "existing_Ac": "Issue #71 C1-C3 are distinct original symbolic GF2 target; this is limited evidence about raw→learned-model state initialization on k0, not their complete satisfaction.",
+    "prior_evidence": {
+      "k0": "MGR-P1 k=0, reset0, actions0/1, raw256 states, learned four-state automaton by 322 output membership queries. Source-aware exact checker 256 product pairs/512 edges PASS.",
+      "p4": "GF2 128bit source-known transition matrix + linear observation => two-coordinate phi extracted; requires raw-state algebraic structure; C6 scoped cost benefit shown."
+    },
+    "immediate_decision": "Does adding a raw-state snapshot to each existing reset+action-history observation suffice to construct a table phi(raw) over the actually reachable 256-state scope, without revealing source transition equations or true phase/noise?",
+    "hypothesis": "Using the exact prior source-blind learned four-state model, a learner with reset+word→(raw snapshot, output) oracle can assign consistent model-state IDs to every reachable raw snapshot through bounded BFS exploration; no private latent or source transition matrices are supplied to the learner.",
+    "closest_alternative": "Same raw snapshot is reached via two histories with different learned-state IDs, or some raw states remain inaccessible; assignment then FAIL or UNKNOWN. Output-only oracle cannot specify raw-label mapping because observationally equivalent label permutations exist.",
+    "frozen_scope": {
+      "family": "MGR-P1 k=0 pre-existing deterministic 8-bit synthetic source",
+      "reset_raw": 0,
+      "actions": [
+        0,
+        1
+      ],
+      "output": "decoded phase high bit",
+      "learned_model_source": "poc/K0_FIXED_RESET_BLACKBOX_OBSERVED_2026-11-07.json@277ba261ffd5e37970b6cf40dcb5d104953505b0",
+      "learner_inputs": [
+        "prior learned four-state state table",
+        "reset to raw0",
+        "query action word returning final 8-bit raw state label and final one-bit output"
+      ],
+      "privileged_checker_only": [
+        "true raw transition equations",
+        "decoded phase and noise",
+        "full raw-state product check"
+      ],
+      "no_hidden_source_state_access_in_output_only_control": true,
+      "learning_method": "BFS over observed raw-state labels using history replay and known learned model transition; not a new NN or L* retraining"
+    },
+    "predicted_pass": "All 256 reachable raw labels assigned once to one of exactly 4 learned states; all 512 observed action edges agree with learned delta and output; repeated raw labels have consistent learned-state IDs; source-aware post-check agrees on entire 256x2 product.",
+    "predicted_fail": "At least one raw label needs two distinct learned-state IDs, mismatched output/transition, or negative snapshot corruption control is undetected; report shortest witness.",
+    "ambiguous": "If not all 256 raw reachable states observed under budget of 1024 snapshot calls / 16000 source replay actions, mark UNKNOWN; do not infer global projection from partial snapshot coverage.",
+    "controls": [
+      "Output-only oracle cannot identify raw-label projection under any permutation fixing reset because output traces invariant",
+      "One deliberately mislabeled raw snapshot with different current output must be rejected",
+      "Post-learning source-aware independent raw-to-learned BFS verifies full observed scope"
+    ],
+    "budget": {
+      "max_snapshot_queries": 1024,
+      "max_replayed_source_actions": 16000,
+      "max_observed_states": 256
+    },
+    "comparator": "Original k0 output-only source-blind L* model has behavioral predictor but not raw→state mapper. Additional oracle access is raw snapshot of the state reached by the same action word.",
+    "metric": "distinct raw labels assigned / consistent edges / number of oracle calls and replayed source actions / independent checked 256x2 / negative controls",
+    "inference_limits": [
+      "The extra observable has stronger privileges than output-only",
+      "Global 2^128 arbitrary-state phi is not inferred",
+      "For 8-bit k0 reaching all 256 raw states, the table covers its complete 8-bit domain, but does not provide a compact symbolic phi or generalization beyond 8-bit",
+      "Snapshot labels need independent source authenticity; untrusted labels cannot prove raw mapping",
+      "No computation savings or new general reasoning"
+    ]
   }
 }
