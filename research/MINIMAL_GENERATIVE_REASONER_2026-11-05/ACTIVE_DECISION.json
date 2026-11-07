@@ -65,8 +65,8 @@
     "next_action": null
   },
   "current_frontier": {
-    "next_decision": "For an unknown underlying transition source, what exactly is observable to a discovery method and what independent evidence could identify a usable phi? Existing known-source P4 and source-blind k0 L* support different inputs/outputs.",
-    "status": "GOAL_PROVENANCE_CORRECTION_REQUIRED",
+    "next_decision": "Can the existing DreamCoder library-learning implementation be evaluated with train/test information isolation and independent novel-case Gold, against same DSL without library updates?",
+    "status": "INFORMATION_BOUNDARY_SCIENTIFIC_NECESSITY_ESTABLISHED_BUT_ORIGINAL_GOAL_OPEN",
     "true_blocker": "Workload/consumer and realistic no-learn counterfactual must be fixed before measuring total cost; abstract state reduction alone is insufficient.",
     "nonblocking": [
       "Arbitrary new raw-state phi is not required for fixed reset+known history",
@@ -76,17 +76,17 @@
     "no_auto_next_poc": true,
     "reviewed_date": "2026-11-07",
     "graph_reference": "TECHNICAL_DEPENDENCIES.md#current_execution_graph_2026_11_07",
-    "decision_status": "INVALIDATE_T_TASK_PRIORITIZATION_NO_NEW_POC",
+    "decision_status": "EXISTING_METHOD_AND_FORMAL_LIMIT_AUDITED_NO_NEW_POC",
     "dependency_verdict": "MULTIPLE_DISTINCT_PURPOSES_NOT_ONE_ROOT_CAUSE",
     "primary_current_path": "Issue #71 C6 in the known-linear GF(2) P4 source-available branch because the original C6 explicitly requires phi,delta,checker,discovery cost. Reusing the k0 black-box model can inform query-saving utility separately but cannot itself prove cost of phi(raw).",
     "issue71_C6_done": false,
     "prior_C6_candidate_note": "The previously documented black-box oracle query threshold is a partial source-query proxy, not full C6. The original AC covers source-state projection and its acquisition and proof cost.",
     "single_next_atomic_action": {
-      "input": "original user-origin questions dated 2026-11-02/04, Issue #71 statements and verified experiment evidence",
-      "operation": "identify the highest-impact missing mechanism for generating non-preloaded knowledge/rules, compare existing prior-art approaches before any new test",
-      "observable_output": "one evidence-backed, explicitly-scoped next root-scientific decision that cannot be satisfied by existing finite-state simulations",
-      "falsifier": "new task adds no novel inferred rule or depends on teacher/answer information that was not included in the declared starting conditions",
-      "decision_unlocked": "whether a new generative-principle experiment is justified"
+      "input": "Pinned official DreamCoder dataset/method and code paths already inspected",
+      "operation": "Define and check train-only information boundary and an independent Gold holdout, retaining same initial DSL and exact testing budget for library-learning-on/off",
+      "output": "One falsifiable source-compatible comparison contract, including training/test provenance and observed evaluation eligibility; if no independent Gold is available HOLD rather than claiming generalization",
+      "falsifier": "Any test-only target information used for library updating, absent nonzero heldout test execution, or no independent unseen examples invalidates a 'novel general law' claim",
+      "decision_unlocked": "Whether the published method can supply a valid first scientific benchmark on emerging reusable rules without custom NN implementation"
     },
     "different_branch": {
       "kind": "k0 fixed-reset reset+word black-box consumer; exact learned phi(raw) is absent",
@@ -128,9 +128,9 @@
       "measured_generation_time": "NOT_RUN",
       "next_decision": "Fix a workload distribution and whether preprocessing/memory are admissible, then preregister amortized C6 runtime test including source and projected construction+proof"
     },
-    "original_goal_progress": "P4 known-source exact algebraic phi and scoped cost benefit; k0 L* unknown-source history→4-state prediction; with raw snapshot, exact raw256→4 model ID table; prior P3 two XOR masks cross-match all 256 mappings up to state rename. Generic nonlinear law induction and reasoning reachability remain unverified.",
+    "original_goal_progress": "Only synthetic finite-state structure and source-known cost benefit have been achieved before; new formal information-theory boundary shows unrestricted exact law identification is impossible from finite data without prior constraints; no new reasoning mechanism was implemented or verified.",
     "latest_result": "256 mapped raw IDs, 4 behavioral states, 513 raw snapshot queries, 4160 replay operations, full 512 transition independent check, injected corrupted snapshot conflict detected.",
-    "evidence": "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/RAW_STATE_ACCESS_BRIDGE_FINDINGS_2026-11-07.md",
+    "evidence": "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/INFORMATION_ORIGIN_AND_GENERATIVE_REUSE_DECISION_2026-11-08.md",
     "input_access_matrix": {
       "history_only": "L* predictive behavior for observed action history; raw label mapping unavailable and unnecessary for that consumer.",
       "history_plus_raw_snapshot": "Reachable raw IDs→model IDs table recoverable; not automatic compact symbolic rule.",
@@ -297,5 +297,45 @@
     "current_next_step": "Stop new PoC. First connect original user-origin questions to existing studies and distinguish preloaded transition/knowledge from actual novel rule/ability generation.",
     "complete_transcript_available": false,
     "source_limit": "Multiple related conversation summaries/user utterance recalls and files reviewed; full verbatim historical thread unavailable."
+  },
+  "information_origin_decision_2026_11_08": {
+    "phase": "NO_RUN",
+    "original_goal_id": "ROOT-GEN-001",
+    "root_provenance_ref": "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/ROOT_OBJECTIVE_PROVENANCE_REAUDIT_2026-11-07.md",
+    "evidence_report": "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/INFORMATION_ORIGIN_AND_GENERATIVE_REUSE_DECISION_2026-11-08.md",
+    "question": "How can a minimal initial principle and knowledge/validation interface generate a reusable new rule rather than merely simulate preloaded source transitions?",
+    "method": "Existing-method and formal identifiability audit; no fresh synthetic experiment or trained model",
+    "result": {
+      "information_bound": "Finite observations over unrestricted binary functions cannot uniquely identify values on unseen inputs; for a finite hypothesis class H, binary answers require at least ceil(log2|H|) bits in worst case, not a sufficiency guarantee",
+      "best_existing_method": "DreamCoder research implementation (Ellis et al. 2021): library learning over a fixed DSL and task examples, not general intelligence",
+      "alternatives": "PowerPlay for solver+task invention; CEGIS for restricted symbolic program synthesis; SINDy for sparse governing equations from measurements",
+      "source_implementation_checks": [
+        "ellisk42/ec dreamcoder/domains/list/main.py@5a721fb988f2c895148c3522d30824e0ef31db34",
+        "ellisk42/ec dreamcoder/domains/text/main.py@45cb4b7879fbc41bb65280e2210961e52bf44f20",
+        "ellisk42/ec dreamcoder/dreamcoder.py@ff19f8989ff0d1d6e673b26cf578fc498b2f89d4",
+        "ellisk42/ec dreamcoder/utilities.py@11d6116f99da4c58d68b9cc8943690207d2fdb3d"
+      ],
+      "blocker": "Training/test knowledge-flow: official text loader collects challenge string constants globally before training; testingTimeout defaults 0, so heldout test is not automatically executed. Official list train/test split can preserve task families on both sides.",
+      "observed_runnable_status": "NOT_RUN",
+      "scientific_impact": "Constrains assumptions and selects existing library-learning method. Does NOT produce new reasoning capability or satisfy original AC."
+    },
+    "verdict": "REUSE",
+    "newly_verified_original_ACs": [],
+    "next_experiment_phase": "NOT_PREREGISTERED_NOT_RUN",
+    "no_auto_new_solver": true,
+    "next_atomic_action": {
+      "input": "Pinned official DreamCoder dataset/method and code paths already inspected",
+      "operation": "Define and check train-only information boundary and an independent Gold holdout, retaining same initial DSL and exact testing budget for library-learning-on/off",
+      "output": "One falsifiable source-compatible comparison contract, including training/test provenance and observed evaluation eligibility; if no independent Gold is available HOLD rather than claiming generalization",
+      "falsifier": "Any test-only target information used for library updating, absent nonzero heldout test execution, or no independent unseen examples invalidates a 'novel general law' claim",
+      "decision_unlocked": "Whether the published method can supply a valid first scientific benchmark on emerging reusable rules without custom NN implementation"
+    },
+    "not_started": [
+      "DreamCoder build",
+      "new NN training",
+      "novel rule discovery runtime",
+      "external heldout generalization proof",
+      "new root AC closure"
+    ]
   }
 }
