@@ -1,0 +1,47 @@
+{
+  "protocol": "EXPERIMENT_CYCLE_V1",
+  "phase": "PRE",
+  "date": "2026-11-07",
+  "root_goal": "ROOT-GEN-001",
+  "graph_ref": "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/ROOT_GEN_001_DEPENDENCY_GRAPH_2026-11-07.json",
+  "selected_node": "T_TASK",
+  "impacted_original_goal_outcomes": [
+    "O_ACT",
+    "O_COST",
+    "O_TRANSFER",
+    "O_RULE",
+    "O_BOUND"
+  ],
+  "task_id": "GEN001_MINIMAL_GOAL_CONDITIONED_ACTION_SELECTION_V1",
+  "goal_contract": {
+    "domain": "Existing MGR-P1 synthetic k0 deterministic source; reused four-state L* behavioral model",
+    "user_task_input": "A binary desired OBSERVATION suffix of length 2, 3 or 4; action alphabet {0,1}; reset raw0; maximum 6 actions",
+    "expected_output": "Lexicographically earliest minimum-length action sequence of length <=6 whose final observation trace ends with the desired suffix; otherwise UNSAT_WITHIN_HORIZON",
+    "goal_definition": "For chosen actions a[0..t-1], source emits 1bit after each action; success when t<=6 and output_trace.endsWith(goal)",
+    "fixed_benchmark": "ALL binary goal suffixes of length 2..4 (4+8+16=28 tasks), no posthoc target selection",
+    "semantic_scope": "Bounded goal-conditioned control/plan search, NOT general inference, raw-state initialization or novel rule discovery",
+    "solver_input": "Previously learned four-state model transitions+output+initial ID plus goal suffix+max actions; no source-private phase/noise/step or raw states",
+    "independent_gold": "Separate raw-source oracle enumerates action strings breadth-first by length and lexical order, returns exact shortest witness or UNSAT_WITHIN_HORIZON",
+    "controls": "Corrupt learned model transition initial0/action0 and require at least one target with prediction/execution or plan mismatch",
+    "nearest_fair_comparator": "Independent raw-state exhaustive planning on identical tasks, equality/optimality rather than speed; no cost or inference efficiency claim",
+    "refusal_cases": "If all nontrivial goals are impossible or all have 0/1-step trivial answers, report inadequate benchmark for original reasoning; if private source is required by solver, mark FAIL",
+    "resource_bound": "28 targets × <=127 action words ×6 raw steps; no external model/API",
+    "stop_condition": "First complete 28-case plus mutation check, no automatic new model or benchmark family"
+  },
+  "hypothesis": "Previously learned future-predictive automaton can be reused to choose actions satisfying unseen user-specified *goal observations* rather than only predict an externally supplied action sequence.",
+  "closest_alternative": "Model supports prediction only, and cannot pick a correct shortest bounded action sequence; or task is too trivial to say anything about solving a goal.",
+  "predicted_pass": "All 28 goals independently agree on REACHABLE/UNREACHABLE and exact minimum action length plus lex-first witness; for any chosen plan raw source trace meets goal; corrupted model fails at least one target.",
+  "predicted_fail": "Any goal output or witness differs from raw source, wrong minimality/UNSAT, solver receives source-private state or mutation passes all targets.",
+  "predicted_ambiguous": "All positive goals need <=1 action or all goals are UNSAT: benchmark too trivial to support even bounded planning capability; no broad claim.",
+  "provenance": {
+    "four_state_model": "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/poc/K0_FIXED_RESET_BLACKBOX_OBSERVED_2026-11-07.json@277ba261ffd5e37970b6cf40dcb5d104953505b0",
+    "original_source": "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/poc_finite_quotient_v1/run_poc.py@9167e7e1d1326d11ecd636220b5f3a80c655bb33"
+  },
+  "post_rules": {
+    "pass_verdict": "REUSE_BOUNDED",
+    "fail_verdict": "REPAIR_OR_PIVOT",
+    "unknown_verdict": "HOLD",
+    "new_original_ACs_verified": 0,
+    "do_not_promote": "A finite known model plus BFS solving output suffix tasks is not evidence for open-ended general reasoning; no claim of novel policy learning or cross-task generalization."
+  }
+}
