@@ -1,0 +1,394 @@
+{
+  "protocol": "GEN001_C6_COST_BENCHMARK_V1",
+  "date": "2026-11-07",
+  "status": "SCOPED_PASS_NOT_FINAL_C6",
+  "pre_registration_commit": "a455aa81a2afc4cabc76fb77822c8c86141f45f8",
+  "source_poc4_git_blob": "706da2229bbe7a244e899729221170149bc6d014",
+  "executable_git_blob": "4b43967fe062c1d43ad5e46f1dfbbe068ca85233",
+  "exact_full_first_run_json_local_sha256": "30e5110d8ca460def5a4c6a95924e190423f5e9547341d89627bba0d56108c71",
+  "exact_runner_local_sha256": "09f2cbd1ea15df843c7923ec8f9cf8d5fe242799b5f649fb6f44761ece11e7fd",
+  "environment": "CPython 3.13.5 Linux x86_64, perf_counter_ns, same process",
+  "fixed_scope": {
+    "states_width_bits": 128,
+    "action_alphabet": [
+      0,
+      1
+    ],
+    "output_after_every_action": "1bit",
+    "starting_states": 8,
+    "starting_state_distribution": "random.Random(20261107).getrandbits(128)",
+    "action_distribution": "same 2048 seeded uniform bits per stream",
+    "horizons": [
+      1,
+      16,
+      256,
+      2048
+    ],
+    "repetitions": 7,
+    "warmup": 1,
+    "table_memory_cap_bytes": 2097152,
+    "output_word_cache": false,
+    "shared_source_matrix_setup": "excluded from both methods; first-run build 255930ns"
+  },
+  "correctness": {
+    "stepwise_checked_per_method": 16384,
+    "raw_and_quotient_outputs_match": true,
+    "independent_gf2_rank": 2,
+    "independent_basis_states": 128,
+    "independent_transition_edges": 256,
+    "mutation": "REJECT with witness basis bit0 action0",
+    "checksum_1": 3,
+    "checksum_16": 53,
+    "checksum_256": 840,
+    "checksum_2048": 6824
+  },
+  "method_specific_memory_estimate_bytes": {
+    "raw_row_parity": 11096,
+    "raw_column_xor": 11220,
+    "raw_byte_lut": 345760,
+    "projected_2bit": 708
+  },
+  "first_run_samples_nanoseconds": {
+    "method_build": {
+      "raw_row_parity": [
+        514,
+        416,
+        439,
+        393,
+        333,
+        260,
+        282
+      ],
+      "raw_column_xor": [
+        3243616,
+        3078033,
+        4318791,
+        2847681,
+        4213892,
+        2937350,
+        2909481
+      ],
+      "raw_byte_lut": [
+        4073897,
+        4174891,
+        4455355,
+        3596550,
+        3817088,
+        5063083,
+        3592050
+      ],
+      "projected_2bit": [
+        182538,
+        170124,
+        151880,
+        145773,
+        199498,
+        160227,
+        171146
+      ]
+    },
+    "independent_certificate": [
+      4570955,
+      3364356,
+      3279975,
+      4104104,
+      7167042,
+      3414093,
+      3328176
+    ],
+    "runtime": {
+      "1": {
+        "raw_row_parity": [
+          117069,
+          116350,
+          115968,
+          114883,
+          114080,
+          117152,
+          198351
+        ],
+        "raw_column_xor": [
+          69229,
+          187092,
+          102057,
+          67696,
+          67310,
+          67766,
+          69280
+        ],
+        "raw_byte_lut": [
+          14372,
+          13300,
+          13535,
+          11866,
+          11981,
+          13458,
+          13646
+        ],
+        "projected_2bit": [
+          10130,
+          9749,
+          11513,
+          9585,
+          9940,
+          9302,
+          9796
+        ]
+      },
+      "16": {
+        "raw_row_parity": [
+          1826502,
+          1818960,
+          1918035,
+          1852990,
+          1830410,
+          1995578,
+          2562287
+        ],
+        "raw_column_xor": [
+          1082110,
+          1066649,
+          1095804,
+          1089898,
+          1071546,
+          1160911,
+          1157065
+        ],
+        "raw_byte_lut": [
+          160438,
+          165274,
+          161800,
+          164256,
+          188832,
+          164445,
+          186357
+        ],
+        "projected_2bit": [
+          68156,
+          67565,
+          69109,
+          68997,
+          69134,
+          68372,
+          70037
+        ]
+      },
+      "256": {
+        "raw_row_parity": [
+          30607835,
+          31052185,
+          32864817,
+          30589822,
+          31520296,
+          30588127,
+          31449822
+        ],
+        "raw_column_xor": [
+          19704378,
+          18711195,
+          19907170,
+          18264897,
+          19331901,
+          18244087,
+          22068440
+        ],
+        "raw_byte_lut": [
+          2699112,
+          2886630,
+          2718180,
+          2685116,
+          3426331,
+          2826301,
+          2721256
+        ],
+        "projected_2bit": [
+          1019094,
+          1027746,
+          1020419,
+          1912302,
+          1081278,
+          1098282,
+          1221290
+        ]
+      },
+      "2048": {
+        "raw_row_parity": [
+          246414214,
+          244554700,
+          248452986,
+          250544637,
+          245527119,
+          250136146,
+          252263895
+        ],
+        "raw_column_xor": [
+          149643100,
+          145100175,
+          181974173,
+          144991782,
+          143113996,
+          146333198,
+          150188177
+        ],
+        "raw_byte_lut": [
+          22183538,
+          24850983,
+          22891609,
+          21306916,
+          22985920,
+          21685255,
+          22757762
+        ],
+        "projected_2bit": [
+          8677477,
+          8148846,
+          8430634,
+          8409232,
+          8770303,
+          8852300,
+          8656069
+        ]
+      }
+    }
+  },
+  "first_run_median_inclusive_nanoseconds": {
+    "1": {
+      "raw_row_parity": {
+        "setup_median_ns": 393,
+        "execution_median_ns": 116350,
+        "certification_median_ns": 0,
+        "total_ns": 116743
+      },
+      "raw_column_xor": {
+        "setup_median_ns": 3078033,
+        "execution_median_ns": 69229,
+        "certification_median_ns": 0,
+        "total_ns": 3147262
+      },
+      "raw_byte_lut": {
+        "setup_median_ns": 4073897,
+        "execution_median_ns": 13458,
+        "certification_median_ns": 0,
+        "total_ns": 4087355
+      },
+      "projected_2bit": {
+        "setup_median_ns": 170124,
+        "execution_median_ns": 9796,
+        "certification_median_ns": 3414093,
+        "total_ns": 3594013
+      }
+    },
+    "16": {
+      "raw_row_parity": {
+        "setup_median_ns": 393,
+        "execution_median_ns": 1852990,
+        "certification_median_ns": 0,
+        "total_ns": 1853383
+      },
+      "raw_column_xor": {
+        "setup_median_ns": 3078033,
+        "execution_median_ns": 1089898,
+        "certification_median_ns": 0,
+        "total_ns": 4167931
+      },
+      "raw_byte_lut": {
+        "setup_median_ns": 4073897,
+        "execution_median_ns": 164445,
+        "certification_median_ns": 0,
+        "total_ns": 4238342
+      },
+      "projected_2bit": {
+        "setup_median_ns": 170124,
+        "execution_median_ns": 68997,
+        "certification_median_ns": 3414093,
+        "total_ns": 3653214
+      }
+    },
+    "256": {
+      "raw_row_parity": {
+        "setup_median_ns": 393,
+        "execution_median_ns": 31052185,
+        "certification_median_ns": 0,
+        "total_ns": 31052578
+      },
+      "raw_column_xor": {
+        "setup_median_ns": 3078033,
+        "execution_median_ns": 19331901,
+        "certification_median_ns": 0,
+        "total_ns": 22409934
+      },
+      "raw_byte_lut": {
+        "setup_median_ns": 4073897,
+        "execution_median_ns": 2721256,
+        "certification_median_ns": 0,
+        "total_ns": 6795153
+      },
+      "projected_2bit": {
+        "setup_median_ns": 170124,
+        "execution_median_ns": 1081278,
+        "certification_median_ns": 3414093,
+        "total_ns": 4665495
+      }
+    },
+    "2048": {
+      "raw_row_parity": {
+        "setup_median_ns": 393,
+        "execution_median_ns": 248452986,
+        "certification_median_ns": 0,
+        "total_ns": 248453379
+      },
+      "raw_column_xor": {
+        "setup_median_ns": 3078033,
+        "execution_median_ns": 146333198,
+        "certification_median_ns": 0,
+        "total_ns": 149411231
+      },
+      "raw_byte_lut": {
+        "setup_median_ns": 4073897,
+        "execution_median_ns": 22757762,
+        "certification_median_ns": 0,
+        "total_ns": 26831659
+      },
+      "projected_2bit": {
+        "setup_median_ns": 170124,
+        "execution_median_ns": 8656069,
+        "certification_median_ns": 3414093,
+        "total_ns": 12240286
+      }
+    }
+  },
+  "first_run_conclusion": {
+    "best_optimized_raw_method_at_horizon_2048": "raw_byte_lut",
+    "raw_inclusive_ns": 26831659,
+    "quotient_inclusive_ns": 12240286,
+    "ratio_projected_over_raw": 0.4561881917178509,
+    "speedup_raw_over_quotient": 2.192077783149838,
+    "margin_10_percent_met": true
+  },
+  "independent_protocol_replication": {
+    "result": "PASS_SCOPED_COST_MARGIN",
+    "best_optimized_raw_method": "raw_byte_lut",
+    "raw_inclusive_ns": 26791492,
+    "quotient_inclusive_ns": 12544357,
+    "speedup_raw_over_quotient": 2.135740556490859,
+    "full_replication_json": "local sandbox artifact; not in this condensed GitHub ledger"
+  },
+  "post_hoc_sensitivity_not_original_preregistered_baseline": {
+    "name": "short-horizon unoptimized direct row-parity source is fastest for N=1 and N=16",
+    "horizon_1_row_ns": 116743,
+    "horizon_16_row_ns": 1853383,
+    "horizon_1_quotient_ns": 3594013,
+    "horizon_16_quotient_ns": 3653214,
+    "interpretation": "The preregistered 'best optimized' comparator pool excluded raw_row_parity as diagnostic; a truly fastest available direct source reference changes the short-horizon results, not N=2048."
+  },
+  "limitations": [
+    "known source and output specification; no unknown-domain discovery expense",
+    "Python-only controlled synthetic system; cross-language and real workload absent",
+    "output-word caching forbidden by preregistration; do not generalize to repeated queries with cache",
+    "memory via Python sys.getsizeof, not RSS peak",
+    "certificate cost charged only to quotient; direct source is trusted already",
+    "per-method medians added, not wall-clock execution of one fully integrated deploy",
+    "common source construction excluded equally",
+    "no universal neural-network or full real task validation"
+  ]
+}
