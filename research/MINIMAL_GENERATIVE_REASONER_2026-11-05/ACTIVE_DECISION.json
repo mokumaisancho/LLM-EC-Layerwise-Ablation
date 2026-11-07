@@ -82,11 +82,11 @@
     "issue71_C6_done": false,
     "prior_C6_candidate_note": "The previously documented black-box oracle query threshold is a partial source-query proxy, not full C6. The original AC covers source-state projection and its acquisition and proof cost.",
     "single_next_atomic_action": {
-      "input": "poc/poc4_repro.py and available direct baseline variants of its n=128 GF(2) restricted-action transition",
-      "operation": "Identify a runnable optimized no-projection source comparator and fix the same input/output contract and cost units",
-      "observable_output": "frozen fair source baseline + projected baseline, with prerequisites for cost PRE defined",
-      "falsifier": "baseline requires privileged phi or does not produce the identical one-bit output under the same allowed actions",
-      "decision_unlocked": "whether a meaningful C6 total-cost experiment can be preregistered without using an intentionally slow strawman"
+      "input": "poc/poc4_repro.py, existing phi/delta and two mathematically checked no-projection raw baselines (column XOR and 8bit-block LUT)",
+      "operation": "Fix one repeat-use workload/initialization distribution, preprocessing amortization horizon and allowed memory budget",
+      "observable_output": "one fair frozen C6 workload/cost ledger with same output and action scope",
+      "falsifier": "cannot compare raw and projected paths with identical inputs, allowed actions, output contract and upfront costs",
+      "decision_unlocked": "which source optimization is the strongest admissible no-projection comparator before executing total-cost benchmark"
     },
     "different_branch": {
       "kind": "k0 fixed-reset reset+word black-box consumer; exact learned phi(raw) is absent",
@@ -113,6 +113,20 @@
       "construction_cost": "NOT_MEASURED",
       "checker_total_cost": "NOT_MEASURED",
       "optimized_direct_baseline": "NOT_FROZEN"
+    },
+    "direct_raw_baseline_precheck": {
+      "evidence": "poc/C6_DIRECT_BASELINE_PRECHECK_2026-11-07.json",
+      "reproducible": "poc/c6_direct_no_projection_baselines.mjs",
+      "status": "EQUALITY_PASS_ONLY_NOT_BENCHMARKED",
+      "verification": "Zero and all 128 basis inputs x2 actions (258 cases), plus 512 pseudorandom raw states x2 (1024), row-vector, column-XOR and byte-block-LUT transitions agree",
+      "comparators": [
+        "GF(2) raw matrix row parity",
+        "precomputed column XOR (still raw 128bit)",
+        "precomputed 8bit-block LUT (still raw 128bit)"
+      ],
+      "measured_wall_time": "NOT_RUN",
+      "measured_generation_time": "NOT_RUN",
+      "next_decision": "Fix a workload distribution and whether preprocessing/memory are admissible, then preregister amortized C6 runtime test including source and projected construction+proof"
     }
   },
   "provenance": {
