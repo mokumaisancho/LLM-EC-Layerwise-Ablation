@@ -1,6 +1,6 @@
 # GEN001 — PoC1〜13の証拠監査、単一クリティカルパス、次のPoC仕様
 
-> **2026-11-07の更新**: 本書「最短の次の一実験」は当時の提案であり、今の優先順位では**撤回／延期**。元研究の受入条件を変えず、[最新版の技術依存図](TECHNICAL_DEPENDENCIES.md#2026-11-07-最新の依存関係本線判断現行以下aeは歴史的概念的な図)と[ACTIVE_DECISION](ACTIVE_DECISION.json)を最新の意思決定正本とする。直近k0-L*は256→4の振る舞い学習PASSだが、元raw投影の`phi`は未学習。Issue#71 C6はP4線形経路で既存`phi`から評価する。全費用比較は未実施。
+> **2026-11-07の更新**: 本書「最短の次の一実験」は当時の提案であり、今の優先順位では**撤回／延期**。元研究の受入条件を変えず、[最新版の技術依存図](TECHNICAL_DEPENDENCIES.md#current_execution_graph_2026_11_07)と[ACTIVE_DECISION](ACTIVE_DECISION.json)を最新の意思決定正本とする。直近k0-L*は256→4の振る舞い学習PASSだが、元raw投影の`phi`は未学習。Issue#71 C6はP4線形経路で既存`phi`から評価する。全費用比較は未実施。
 
 日付: 2026-11-07 (JST) / 原課題: [ROOT-GEN-001](README.md) / [Issue #71](https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/71) / 別研究 [Phase1 #1](https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/issues/1)
 
