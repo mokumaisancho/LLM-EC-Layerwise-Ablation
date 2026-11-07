@@ -82,11 +82,11 @@
     "issue71_C6_done": false,
     "prior_C6_candidate_note": "The previously documented black-box oracle query threshold is a partial source-query proxy, not full C6. The original AC covers source-state projection and its acquisition and proof cost.",
     "single_next_atomic_action": {
-      "input": "existing P1/P3 k0/k1 results and actual consumer needs (history-only or new arbitrary raw state) together with the original ROOT-GEN-001 statement",
-      "operation": "Select the smallest next capability gap that is not already resolved by L* prediction, P3 candidate projection or P4 source-known algebraic quotient",
-      "observable_output": "one explicit unmet input/output contract, a viable reused algorithm and an evidence-backed necessity decision, or NO_NEW_EXPERIMENT",
-      "falsifier": "if existing P3/L*/P4 already satisfies the selected contract, stop new algorithm development and reuse it",
-      "decision_unlocked": "whether a next specific nonlinear state abstraction is useful rather than merely larger/more impressive"
+      "input": "Original ROOT-GEN-001 goal and finite k0/P3/P4 evidence; existing k1 negative result (6 classes, 2bit linear XOR insufficient) and intended next consumer access contract",
+      "operation": "Isolate one capability that the already verified linear+history+snapshot methods cannot deliver, with a concrete output contract before another experiment",
+      "observable_output": "one falsifiable candidate capability and exact first missing input/method, or REUSE existing method when no new capability needed",
+      "falsifier": "if k1/other candidate is indistinguishable in the selected access scope or requires a new invented goal/privileged oracle not authorized, do not run a new PoC",
+      "decision_unlocked": "whether the next stage should test finite nonlinear observable representation in an honest scope rather than add more k0 confirmation"
     },
     "different_branch": {
       "kind": "k0 fixed-reset reset+word black-box consumer; exact learned phi(raw) is absent",
@@ -128,7 +128,7 @@
       "measured_generation_time": "NOT_RUN",
       "next_decision": "Fix a workload distribution and whether preprocessing/memory are admissible, then preregister amortized C6 runtime test including source and projected construction+proof"
     },
-    "original_goal_progress": "Known-source GF2 algebraic phi/proof+scoped cost PASS; source-hidden reset-output L* 256 reachable→4 machine PASS; when raw snapshots are additionally observable, all 256 raw IDs→four-state IDs assigned; output-only raw IDs provably unidentifiable. None establishes a general generative reasoner.",
+    "original_goal_progress": "P4 known-source exact algebraic phi and scoped cost benefit; k0 L* unknown-source history→4-state prediction; with raw snapshot, exact raw256→4 model ID table; prior P3 two XOR masks cross-match all 256 mappings up to state rename. Generic nonlinear law induction and reasoning reachability remain unverified.",
     "latest_result": "256 mapped raw IDs, 4 behavioral states, 513 raw snapshot queries, 4160 replay operations, full 512 transition independent check, injected corrupted snapshot conflict detected.",
     "evidence": "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/RAW_STATE_ACCESS_BRIDGE_FINDINGS_2026-11-07.md",
     "input_access_matrix": {
@@ -256,6 +256,25 @@
       "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/RAW_STATE_ACCESS_BRIDGE_FINDINGS_2026-11-07.md",
       "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/poc_finite_quotient_v1/sparse_discovery_results.json"
     ],
-    "next_action": null
+    "next_action": null,
+    "posthoc_existing_evidence_join": {
+      "kind": "DERIVED_CROSSCHECK_NOT_A_NEW_PREREGISTERED_EXPERIMENT",
+      "data": "256 raw→L* ID values in poc/K0_RAW_SNAPSHOT_BRIDGE_OBSERVED_2026-11-07.json",
+      "prior_algorithm": "P3 sparse XOR projection already tested and independently checked on k0 in poc_finite_quotient_v1/sparse_discovery_results.json",
+      "masks": [
+        "0x03",
+        "0xfd"
+      ],
+      "projected_code_to_Lstar_ID": {
+        "0": 0,
+        "1": 3,
+        "2": 2,
+        "3": 1
+      },
+      "exact_entries_checked": 256,
+      "result": "PASS_EXACT_FINITE_SCOPE",
+      "interpretation": "Existing 256-entry map can be represented with prior 2bit two-XOR candidate plus 4-entry model-state rename, not newly discovered from this snapshot dataset.",
+      "no_new_original_AC_closed": true
+    }
   }
 }
