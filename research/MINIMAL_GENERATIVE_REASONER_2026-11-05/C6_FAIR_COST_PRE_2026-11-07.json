@@ -1,0 +1,81 @@
+{
+  "protocol": "EXPERIMENT_CYCLE_V1",
+  "phase": "PRE",
+  "date": "2026-11-07",
+  "decision_id": "ROOT-GEN-001-C6-128GF2-FAIR-COST",
+  "original_goal": "Small future-preserving generative/transition representation under limited resources; assess total projection/discovery/proof/use cost in existing P4 synthetic GF(2) domain without claiming general reasoning.",
+  "original_AC_ref": "Issue #71 C6 (size/cost of phi delta checker discovery and real total end-to-end effect)",
+  "current_decision": "For one fixed 128bit, 2-action output-stream workload, does auto-derived 2bit quotient reduce inclusive cost compared with the fastest admissible optimized no-projection raw execution?",
+  "previous_evidence": {
+    "P4": "128→2 algebraic future-preserving quotient for known GF(2) transition, no total cost measured",
+    "direct_baseline": "column XOR and byte-block-LUT exact for all 128bit raw states by basis identity (2026-11-07 precheck)",
+    "status": "C6 OPEN"
+  },
+  "fixed_scope": {
+    "n": 128,
+    "actions": [
+      0,
+      1
+    ],
+    "initial_state": "8 independent uniformly seeded 128bit raw states (Python random.Random seed 20261107)",
+    "operation_stream": "Each initial state takes N uniform action0/1; common generated streams for all methods",
+    "observable": "1bit output after every action, identical stream for all methods; correctness tested at every step",
+    "workload_horizons_steps_per_stream": [
+      1,
+      16,
+      256,
+      2048
+    ],
+    "streams": 8,
+    "number_of_runs_per_horizon": 7,
+    "warmup_runs": 1,
+    "preprocessing": "each method constructs method-specific lookup or quotient once per deployment; source matrix construction common to all and separately recorded",
+    "representation": "Python integers with 128 bit raw state; Python 2bit quotient from source-aware algebraic closure",
+    "memory_budget_bytes_for_method_tables": 2097152,
+    "cache_policy": "no output-word cache; no repeated identical-prefix memoization; method-owned precomputed matrices/LUT allowed inside memory cap",
+    "language": "same CPython process and same source functions; monotonic perf_counter_ns",
+    "resource_limit": "time budget ~60s or fail/UNKNOWN; no off-machine/hardware tests",
+    "measurement_time": "after PRE commit only"
+  },
+  "methods": [
+    {
+      "name": "raw_row_parity",
+      "desc": "source 128 x 128 row parity update; baseline diagnostic not used as fastest fair benchmark"
+    },
+    {
+      "name": "raw_column_xor",
+      "desc": "no-projection, 128bit raw state; cached per-action 128 source columns; column XOR dynamic update"
+    },
+    {
+      "name": "raw_byte_lut",
+      "desc": "no-projection, 128bit raw state; 16 byte-block per-action 256-entry tables; 16 lookup/XOR each update"
+    },
+    {
+      "name": "projected_2bit",
+      "desc": "source-aware quotient() derived phi/delta/readout from observed row and source transition; one phi per initial raw state then only 2bit delta"
+    }
+  ],
+  "provenance": {
+    "source": "poc/poc4_repro.py@706da2229bbe7a244e899729221170149bc6d014",
+    "independent_math": "check phi*M_a == delta_a*phi and O==h*phi on all source basis via row identities, closure rank and injected mutation rejection",
+    "reference": "poc/C6_DIRECT_BASELINE_PRECHECK_2026-11-07.json"
+  },
+  "predicted_pass": "8 streams*2048 observations correct for all methods; quotient TOTAL (build phi+delta + independent checker + eight init phi + 8*2048 execution, excluding common source creation) <= 0.90 x fastest admissible direct raw TOTAL with method build included and <=2 MiB tables, 7-run median; source-inspected known-linear domain only",
+  "predicted_fail": "incorrect stream outputs OR quotient total >= 0.90 x best admissible optimized no-projection total (>=0.9 means no >=10% margin)",
+  "ambiguous_rule": "If repeated per-method cost distributions overlap substantially or extrapolation/scope/independent proof breaks, record UNKNOWN; do not claim either unique practical speed benefit or generality. Less than 10% margin means not useful in this predeclared task despite exact correctness.",
+  "causality_control": "Compare method-specific precomputation + actual runtime; account for source matrices common to all; the baseline is fastest of column-xor and byte-block-LUT that fits memory cap; report row parity separately. State compression does not imply speed or minimum program length.",
+  "outputs": [
+    "per-method 7-run medians for build, time+total at N=1/16/256/2048",
+    "independent correctness and one mutation rejection",
+    "actual 128bit source/method table memory footprint estimated by recursive sys.getsizeof and fixed theoretical payload",
+    "observed resource use including quotient discovery and independent checker",
+    "decision vs original C6 and uncertainties"
+  ],
+  "stop_rule": "One bounded workload, no automatic follow-on PoC; if baseline has hidden phi/coordinate leakage, fail and repair comparator instead of success claim.",
+  "absent": [
+    "new universal nonlinear phi discovery",
+    "unknown task planning",
+    "ECv4.4 adapter edits",
+    "unmocked native EC suite"
+  ]
+}
