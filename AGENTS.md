@@ -1,3 +1,9 @@
+## Root objective user-provenance gate (2026-11-07 mandatory correction)
+
+Before iterative work under ROOT-GEN-001, read [original-goal provenance audit](research/MINIMAL_GENERATIVE_REASONER_2026-11-05/ROOT_OBJECTIVE_PROVENANCE_REAUDIT_2026-11-07.md) and the [corrected original issue/technology diagrams](research/MINIMAL_GENERATIVE_REASONER_2026-11-05/ROOT_OBJECTIVE_CORRECTED_GRAPH_2026-11-07.md). Do **not** use the invalidated `ROOT_GEN_001_DEPENDENCY_GRAPH_2026-11-07.json` for critical-path scoring or PoC selection.
+
+A compact behavioral model, output-suffix BFS, count of synthetic PASS tests, or graph fanout based on agent-written edges **does not** redefine the user's goal. Preserve separate goals: October EC S1–S4 causal substitution (Issue #1), November minimal generative reasoning/knowledge separation (ROOT-GEN-001/Issue #71), and independent ECv4.4 implementation branch. The latter two are related but not interchangeable. Before choosing a graph frontier, trace it to user's actual request, identify which starting rules or knowledge were supplied versus discovered, and flag missing original transcript rather than claiming complete historical review. More benchmark PoCs do not substitute for this work.
+
 # Repository agent guidance
 
 This repository contains multiple research and engineering workstreams. The assistant must preserve each issue's original objective and not confuse partial PoC progress with final acceptance.
