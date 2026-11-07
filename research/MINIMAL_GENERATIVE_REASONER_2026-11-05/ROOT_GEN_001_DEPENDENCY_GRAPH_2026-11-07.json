@@ -1,0 +1,539 @@
+{
+  "protocol": "GEN001_DEPENDENCY_DAG_V1",
+  "date": "2026-11-07",
+  "root": "ROOT",
+  "goal": "Existing Issue#71 ROOT-GEN-001; do not repurpose it as model compression",
+  "status_legend": {
+    "bounded": "GREEN: verified only in stated synthetic/finite/source-known scope",
+    "partial": "AMBER: some implementation/evidence, not full AC",
+    "open": "RED: no proven end-to-end capability",
+    "deferred": "GRAY: separate path, not ROOT scientific P0",
+    "verified": "GREEN: exact user AC entirely verified (none claimed)"
+  },
+  "graph_contract": "requires edge A→B means A prerequisite to measuring B's claimed capability; evidence and separate edges never count as prerequisite",
+  "scope": "Scientific root and Issue#71, EC native draft isolated; original issue status checkboxes untouched",
+  "nodes": [
+    {
+      "id": "ROOT",
+      "kind": "goal",
+      "status": "open",
+      "label": "ROOT-GEN-001 最小生成原理から有用・多様な推論",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "T_TASK",
+      "kind": "technical",
+      "status": "open",
+      "label": "共有ゲート: 推論タスク・目標・独立Gold・利用入力を固定",
+      "evidence": [],
+      "notes": "本研究で未固定。状態予測だけを『推論できた』と呼ばない。"
+    },
+    {
+      "id": "T_ORACLE",
+      "kind": "technical",
+      "status": "bounded",
+      "label": "入力権限: reset/操作/出力の限定契約",
+      "evidence": [
+        "poc/K0_FIXED_RESET_BLACKBOX_OBSERVED_2026-11-07.json"
+      ],
+      "notes": "出力のみではrawの名前は識別不能"
+    },
+    {
+      "id": "T_DISC",
+      "kind": "technical",
+      "status": "bounded",
+      "label": "構造発見: P4既知GF2 / L* k0",
+      "evidence": [
+        "poc/poc4_repro.py",
+        "poc/K0_FIXED_RESET_BLACKBOX_OBSERVED_2026-11-07.json"
+      ],
+      "notes": "既知線形または有限ブラックボックスのみ"
+    },
+    {
+      "id": "T_PRED",
+      "kind": "technical",
+      "status": "bounded",
+      "label": "学習済み未来予測: raw256→4状態",
+      "evidence": [
+        "poc/K0_FIXED_RESET_BLACKBOX_OBSERVED_2026-11-07.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "T_PROOF",
+      "kind": "technical",
+      "status": "bounded",
+      "label": "未来保存・異常反例の検証",
+      "evidence": [
+        "poc/poc6_checker.py",
+        "poc/K0_FIXED_RESET_BLACKBOX_OBSERVED_2026-11-07.json"
+      ],
+      "notes": "既知GF2または有限到達状態に限定"
+    },
+    {
+      "id": "T_PHI",
+      "kind": "technical",
+      "status": "bounded",
+      "label": "raw対応: 256件表 / P3の2マスク",
+      "evidence": [
+        "RAW_STATE_ACCESS_BRIDGE_FINDINGS_2026-11-07.md"
+      ],
+      "notes": "raw snapshot・表現クラスを追加仮定"
+    },
+    {
+      "id": "T_PLAN",
+      "kind": "technical",
+      "status": "open",
+      "label": "予測器から目的を満たす操作列を選択",
+      "evidence": [],
+      "notes": "既存成果に目標入力と探索器を接続した実測はない"
+    },
+    {
+      "id": "T_EVAL",
+      "kind": "technical",
+      "status": "open",
+      "label": "別系統の実環境/元系で目標達成を判定",
+      "evidence": [],
+      "notes": "出力予測一致は目標達成の代用でない"
+    },
+    {
+      "id": "T_COST",
+      "kind": "technical",
+      "status": "open",
+      "label": "目標解決に必要な発見〜実行の総費用",
+      "evidence": [],
+      "notes": "C6のGF2合成費用を目標解決の費用と同一視しない"
+    },
+    {
+      "id": "T_TRANSFER",
+      "kind": "technical",
+      "status": "open",
+      "label": "異なる目標/入力分布で同じ小型能力が使えるか",
+      "evidence": [],
+      "notes": "同一合成系の条件変更を別課題汎化と呼ばない"
+    },
+    {
+      "id": "T_NONLINEAR",
+      "kind": "technical",
+      "status": "open",
+      "label": "線形/XOR表現で不足する規則を候補探索",
+      "evidence": [
+        "poc_finite_quotient_v1/REPORT.md"
+      ],
+      "notes": "k1=6状態、2bit XOR不足の反例あり。一般法則は未発見"
+    },
+    {
+      "id": "T_BOUND",
+      "kind": "technical",
+      "status": "open",
+      "label": "有用な行動能力あたりの最小規則/探索資源の下限",
+      "evidence": [],
+      "notes": "必要状態数と推論能力下限は異なる"
+    },
+    {
+      "id": "T_COST_GF2",
+      "kind": "technical",
+      "status": "bounded",
+      "label": "既知GF2限定の総費用評価: 2.14〜2.21倍",
+      "evidence": [
+        "poc/C6_FAIR_COST_FINDINGS_2026-11-07.md"
+      ],
+      "notes": "短系列では不利"
+    },
+    {
+      "id": "T_EC",
+      "kind": "technical",
+      "status": "deferred",
+      "label": "ECv4.4 Draft PR#40・native回帰",
+      "evidence": [
+        "ECV44_REABSTRACT_IMPLEMENTATION_FINAL_PROMPT_2026-11-07.md"
+      ],
+      "notes": "別枝。原理研究のP0先行条件ではない"
+    },
+    {
+      "id": "O_ACT",
+      "kind": "outcome",
+      "status": "open",
+      "label": "原課題A: 目標を達成する操作/解法を選べる",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "O_COST",
+      "kind": "outcome",
+      "status": "open",
+      "label": "原課題B: 同じ目的達成の資源効率を改善",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "O_TRANSFER",
+      "kind": "outcome",
+      "status": "open",
+      "label": "原課題C: 別タスクに能力を転用",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "O_RULE",
+      "kind": "outcome",
+      "status": "open",
+      "label": "原課題D: 既知表現クラス外の規則を発見",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "O_BOUND",
+      "kind": "outcome",
+      "status": "open",
+      "label": "原課題E: 能力と初期構造の下限を評価",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "C1",
+      "kind": "issue",
+      "status": "bounded",
+      "label": "Issue71 C1 P4: 既知GF2の2座標自動発見",
+      "evidence": [
+        "poc/poc4_repro.py"
+      ],
+      "notes": "issueチェックは未完了"
+    },
+    {
+      "id": "C2",
+      "kind": "issue",
+      "status": "bounded",
+      "label": "Issue71 C2: 数学的未来保存性の検証",
+      "evidence": [
+        "poc/poc6_checker.py"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "C3",
+      "kind": "issue",
+      "status": "bounded",
+      "label": "Issue71 C3: 誤投影/作用域の拒否",
+      "evidence": [
+        "poc/POC6_OBSERVED_RESULTS.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "C4",
+      "kind": "issue",
+      "status": "partial",
+      "label": "Issue71 C4: EC候補の型付き接続",
+      "evidence": [
+        "ECV44_REABSTRACT_IMPLEMENTATION_FINAL_PROMPT_2026-11-07.md"
+      ],
+      "notes": "Draft PR#40"
+    },
+    {
+      "id": "C5",
+      "kind": "issue",
+      "status": "partial",
+      "label": "Issue71 C5: 有効候補を審査、無候補不変",
+      "evidence": [
+        "ECV44_REABSTRACT_IMPLEMENTATION_FINAL_PROMPT_2026-11-07.md"
+      ],
+      "notes": "Native全系統は未証明"
+    },
+    {
+      "id": "C6",
+      "kind": "issue",
+      "status": "bounded",
+      "label": "Issue71 C6: 既知GF2の費用比較限定PASS",
+      "evidence": [
+        "poc/C6_FAIR_COST_FINDINGS_2026-11-07.md"
+      ],
+      "notes": "一般条件はOPEN"
+    },
+    {
+      "id": "C7",
+      "kind": "issue",
+      "status": "deferred",
+      "label": "Issue71 C7: EC native全回帰未完",
+      "evidence": [],
+      "notes": "別枝・未実行"
+    }
+  ],
+  "edges": [
+    {
+      "from": "T_TASK",
+      "to": "T_PLAN",
+      "type": "requires",
+      "reason": "同じ目標・判定対象が必要"
+    },
+    {
+      "from": "T_TASK",
+      "to": "T_EVAL",
+      "type": "requires",
+      "reason": "同じ目標・判定対象が必要"
+    },
+    {
+      "from": "T_TASK",
+      "to": "T_COST",
+      "type": "requires",
+      "reason": "同じ目標・判定対象が必要"
+    },
+    {
+      "from": "T_TASK",
+      "to": "T_TRANSFER",
+      "type": "requires",
+      "reason": "同じ目標・判定対象が必要"
+    },
+    {
+      "from": "T_TASK",
+      "to": "T_NONLINEAR",
+      "type": "requires",
+      "reason": "同じ目標・判定対象が必要"
+    },
+    {
+      "from": "T_TASK",
+      "to": "T_BOUND",
+      "type": "requires",
+      "reason": "同じ目標・判定対象が必要"
+    },
+    {
+      "from": "T_ORACLE",
+      "to": "T_DISC",
+      "type": "requires",
+      "reason": ""
+    },
+    {
+      "from": "T_DISC",
+      "to": "T_PRED",
+      "type": "requires",
+      "reason": ""
+    },
+    {
+      "from": "T_DISC",
+      "to": "T_PROOF",
+      "type": "requires",
+      "reason": ""
+    },
+    {
+      "from": "T_PRED",
+      "to": "T_PLAN",
+      "type": "requires",
+      "reason": ""
+    },
+    {
+      "from": "T_PROOF",
+      "to": "T_PLAN",
+      "type": "requires",
+      "reason": ""
+    },
+    {
+      "from": "T_PLAN",
+      "to": "T_EVAL",
+      "type": "requires",
+      "reason": ""
+    },
+    {
+      "from": "T_EVAL",
+      "to": "O_ACT",
+      "type": "requires",
+      "reason": ""
+    },
+    {
+      "from": "T_EVAL",
+      "to": "T_COST",
+      "type": "requires",
+      "reason": ""
+    },
+    {
+      "from": "T_EVAL",
+      "to": "T_TRANSFER",
+      "type": "requires",
+      "reason": ""
+    },
+    {
+      "from": "T_EVAL",
+      "to": "T_BOUND",
+      "type": "requires",
+      "reason": ""
+    },
+    {
+      "from": "T_COST",
+      "to": "O_COST",
+      "type": "requires",
+      "reason": ""
+    },
+    {
+      "from": "T_TRANSFER",
+      "to": "O_TRANSFER",
+      "type": "requires",
+      "reason": ""
+    },
+    {
+      "from": "T_NONLINEAR",
+      "to": "O_RULE",
+      "type": "requires",
+      "reason": ""
+    },
+    {
+      "from": "T_BOUND",
+      "to": "O_BOUND",
+      "type": "requires",
+      "reason": ""
+    },
+    {
+      "from": "T_DISC",
+      "to": "C1",
+      "type": "evidence",
+      "reason": ""
+    },
+    {
+      "from": "T_PROOF",
+      "to": "C2",
+      "type": "evidence",
+      "reason": ""
+    },
+    {
+      "from": "T_PROOF",
+      "to": "C3",
+      "type": "evidence",
+      "reason": ""
+    },
+    {
+      "from": "T_COST_GF2",
+      "to": "C6",
+      "type": "evidence",
+      "reason": ""
+    },
+    {
+      "from": "T_EC",
+      "to": "C4",
+      "type": "separate",
+      "reason": ""
+    },
+    {
+      "from": "T_EC",
+      "to": "C5",
+      "type": "separate",
+      "reason": ""
+    },
+    {
+      "from": "T_EC",
+      "to": "C7",
+      "type": "separate",
+      "reason": ""
+    },
+    {
+      "from": "O_ACT",
+      "to": "ROOT",
+      "type": "goal_contributes",
+      "reason": ""
+    },
+    {
+      "from": "O_COST",
+      "to": "ROOT",
+      "type": "goal_contributes",
+      "reason": ""
+    },
+    {
+      "from": "O_TRANSFER",
+      "to": "ROOT",
+      "type": "goal_contributes",
+      "reason": ""
+    },
+    {
+      "from": "O_RULE",
+      "to": "ROOT",
+      "type": "goal_contributes",
+      "reason": ""
+    },
+    {
+      "from": "O_BOUND",
+      "to": "ROOT",
+      "type": "goal_contributes",
+      "reason": ""
+    }
+  ],
+  "terminal_outcomes": [
+    "O_ACT",
+    "O_COST",
+    "O_TRANSFER",
+    "O_RULE",
+    "O_BOUND"
+  ],
+  "ranked_current_open_technical": [
+    {
+      "id": "T_TASK",
+      "ready": true,
+      "downstream_outcomes": [
+        "O_ACT",
+        "O_COST",
+        "O_TRANSFER",
+        "O_RULE",
+        "O_BOUND"
+      ],
+      "shared_outcome_count": 5
+    },
+    {
+      "id": "T_EVAL",
+      "ready": false,
+      "downstream_outcomes": [
+        "O_ACT",
+        "O_COST",
+        "O_TRANSFER",
+        "O_BOUND"
+      ],
+      "shared_outcome_count": 4
+    },
+    {
+      "id": "T_PLAN",
+      "ready": false,
+      "downstream_outcomes": [
+        "O_ACT",
+        "O_COST",
+        "O_TRANSFER",
+        "O_BOUND"
+      ],
+      "shared_outcome_count": 4
+    },
+    {
+      "id": "T_BOUND",
+      "ready": false,
+      "downstream_outcomes": [
+        "O_BOUND"
+      ],
+      "shared_outcome_count": 1
+    },
+    {
+      "id": "T_COST",
+      "ready": false,
+      "downstream_outcomes": [
+        "O_COST"
+      ],
+      "shared_outcome_count": 1
+    },
+    {
+      "id": "T_NONLINEAR",
+      "ready": false,
+      "downstream_outcomes": [
+        "O_RULE"
+      ],
+      "shared_outcome_count": 1
+    },
+    {
+      "id": "T_TRANSFER",
+      "ready": false,
+      "downstream_outcomes": [
+        "O_TRANSFER"
+      ],
+      "shared_outcome_count": 1
+    }
+  ],
+  "selected_frontier": "T_TASK",
+  "selection_reason": "Only currently executable OPEN scientific node with five distinct unmet downstream goal outcomes (action choice, goal-specific resource efficiency, transfer, representation-class generalization, lower bound); successors lack its measurable task/independent Gold contract.",
+  "validation": {
+    "acyclic_required_edge_graph": true,
+    "no_original_AC_closed": true,
+    "no_new_model_claim": true
+  }
+}
