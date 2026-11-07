@@ -1,0 +1,42 @@
+{
+  "protocol": "GEN001_C6_DIRECT_NO_PROJECTION_BASELINE_CHECK_V1",
+  "status": "SCOPED_EQUALITY_PASS",
+  "date": "2026-11-07",
+  "original_source": "poc/poc4_repro.py@706da2229bbe7a244e899729221170149bc6d014",
+  "scope": {
+    "n": 128,
+    "actions": [
+      0,
+      1
+    ],
+    "output": "one-bit observed GF(2) parity row",
+    "initial_raw_state": "arbitrary 128bit x",
+    "update": "same raw M_a*x, no phi or latent quotient"
+  },
+  "source": "128 row parity operations/transition",
+  "alternatives": [
+    {
+      "name": "bitset-column XOR",
+      "columns_per_action": 128,
+      "worst_xor_terms": 128,
+      "reference_storage_bytes": 4096,
+      "notes": "Storage assumes fixed 128-bit dense masks, excludes programming-language overhead"
+    },
+    {
+      "name": "16-byte block LUT",
+      "blocks_per_action": 16,
+      "table_entries_per_action": 4096,
+      "reference_storage_bytes": 131072,
+      "notes": "Per action 16 byte lookups/xors; includes precomputation, fixed mask bytes only"
+    }
+  ],
+  "checks": {
+    "basis_zero_and_unit_states": 258,
+    "randomized_states": 1024,
+    "algebraic_proof": "Both mappings are linear combinations of exact row-matrix basis columns, so all GF(2)^128 inputs follow from basis equality"
+  },
+  "timing": "NOT_RUN",
+  "cost_of_build": "NOT_MEASURED",
+  "total_cost": "NOT_MEASURED",
+  "next_atomic_decision": "Choose optimal direct no-phi baseline including preprocessing and memory before time benchmarking phi+delta"
+}
