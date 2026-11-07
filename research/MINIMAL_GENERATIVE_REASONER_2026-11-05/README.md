@@ -96,3 +96,9 @@
 > 2026-11-07 ECv4.4別枝：[実装用決定プロンプト（既存Draft PR #40の重複禁止・fail-closed修正版）](ECV44_REABSTRACT_IMPLEMENTATION_FINAL_PROMPT_2026-11-07.md)。プロンプト確定は実装完了を意味しない。
 >
 > 同日本線 C6：[元rawの最適化済み非投影2案と同値検算](poc/C6_DIRECT_BASELINE_PRECHECK_2026-11-07.json)を保存。列XORと8bitブロックLUTの双方が元128bit演算と同値だが、性能は未計測。次は入力・反復・RAM・償却条件を固定する。
+
+## 2026-11-07 C6: 既知GF(2)系の投影は、費用込みでも条件付きで有効
+
+[実験前の事前登録](C6_FAIR_COST_PRE_2026-11-07.json) (commit `a455aa81a2afc4cabc76fb77822c8c86141f45f8`) / [実測と限界](poc/C6_FAIR_COST_FINDINGS_2026-11-07.md) / [全7回の測定値と2回の再実行](poc/C6_FAIR_COST_OBSERVED_2026-11-07.json) / [実行可能なベンチマーク](poc/c6_fair_cost.py) / [最新版Mermaid](TECHNICAL_DEPENDENCIES.md#current_execution_graph_2026_11_07)。
+
+元の128変数GF(2)と同じ入力8系列、許可操作0/1、各2048ステップの観測出力を照合。直接最適化した128bit raw状態8bitブロックLUT方式は生成+実行 **26.832ms**、2座標商は`phi/delta`導出+独立GF2証明+初期化+実行 **12.240ms**。繰返しで約**2.14～2.21倍**（3独立計測サイクル）。16,384個の出力を各方式で照合、128基底×2操作の独立検算と故意の誤遷移拒否PASS。2MiB表メモリ上限、CPython合成環境のみ。ごく短い8×1、8×16操作では元行parityが安く、常に勝つわけではない。**原ソースが既知のGF2系での限定的C6成果**であり、未知規則を取得する費用、汎用推論、ECv4.4のマージ完了とは区別。実験反復スキルに従いこの系での追加類似PoCを自動開始せず、次の決定は既存のsource-known P4とsource-hidden k0 L*の入力権限の差から未発見`phi(raw)`の前提条件を整理すること。
