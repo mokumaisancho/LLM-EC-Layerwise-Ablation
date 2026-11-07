@@ -1,5 +1,8 @@
 # Minimal Generative Reasoner / 推論可能態と最小生成原理 — 研究記録
 
+> **原課題再監査（2026-11-07、最優先）**：[ユーザー発言に基づく原課題の出所と誤昇格の監査](ROOT_OBJECTIVE_PROVENANCE_REAUDIT_2026-11-07.md)／[訂正した課題・技術Mermaid図](ROOT_OBJECTIVE_CORRECTED_GRAPH_2026-11-07.md)。11/7の`T_TASK`・「28種2進出力suffix」を研究の全成果をブロックする共通最優先事項とした選定は**撤回**。以前の`ROOT_GEN_001_DEPENDENCY_GRAPH_2026-11-07.json`は歴史的で現在の推進根拠として使用禁止。元の研究は**知識と推論の分離、最小初期原理の潜在能力、法則・解法の生成、意味ある経路選択、容量/RAM/計算量下限**であり、合成状態機械と28件BFSは補助証拠に限定。
+
+
 > **最新の実行・依存関係（2026-11-07）**: [現行MermaidとIssue#71 C6の分岐](TECHNICAL_DEPENDENCIES.md#current_execution_graph_2026_11_07) / [単一の判断台帳](ACTIVE_DECISION.json)。以下の古い「次の決定点」と当時のPoC提案は研究履歴であり、最新P0の実行指示ではない。2026-11-07の監査で、**直近k0-L*は予測用4状態モデルの発見であり任意raw→学習IDの`phi`を生成していない**ため、Issue#71 C6（`phi,delta,checker,discovery`の総費用）に対しては既知GF(2) P4のソース利用経路を優先すると決めた。P4の**1操作の元系対`phi+delta`の同一契約・最適化済み基準**を定義する前に全費用実験を開始しない。L*での問い合わせ回数削減は別の限定的な効用評価。
 
 記録日: 2026-11-05 (JST) / 文書バージョン: 1.0
