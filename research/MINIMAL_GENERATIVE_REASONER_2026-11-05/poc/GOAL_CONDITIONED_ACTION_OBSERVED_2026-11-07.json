@@ -1,0 +1,641 @@
+{
+  "protocol": "GEN001_GOAL_CONDITIONED_ACTION_SELECTION_V1",
+  "status": "SCOPED_PASS_SYNTHETIC_PLANNING",
+  "date": "2026-11-07",
+  "pre_registration_commit": "c58bb158422d510c2bf55c758ff464a399b77192",
+  "source": "Original MGR-P1 k0 source and frozen prior four-state L* model",
+  "input_contract": {
+    "reset": "fixed raw0",
+    "actions": [
+      0,
+      1
+    ],
+    "observation": "one-bit output after each action",
+    "target": "any binary output suffix length 2..4",
+    "horizon_max": 6,
+    "targets": "complete enumerated set; 28 goals",
+    "solver_sees": "only learned model, goal and horizon",
+    "checker_sees": "source-private 8bit raw system"
+  },
+  "summary": {
+    "tasks": 28,
+    "counts": {
+      "REACHABLE": 20,
+      "UNSAT_WITHIN_HORIZON": 8
+    },
+    "plan_lengths": {
+      "2": 3,
+      "3": 6,
+      "4": 9,
+      "5": 2
+    },
+    "all_exact_match": true,
+    "maximum_witness_length": 5,
+    "model_nodes_expanded": 1437,
+    "independent_gold_words_checked": 1437,
+    "independent_gold_source_steps": 1810,
+    "mutant_detected_goal_count": 15,
+    "mutant_example": [
+      {
+        "goal": "00",
+        "plan_status": "REACHABLE",
+        "witness": "00",
+        "correct_status": "REACHABLE",
+        "correct_witness": "110"
+      },
+      {
+        "goal": "01",
+        "plan_status": "REACHABLE",
+        "witness": "01",
+        "correct_status": "REACHABLE",
+        "correct_witness": "00"
+      },
+      {
+        "goal": "000",
+        "plan_status": "REACHABLE",
+        "witness": "000",
+        "correct_status": "UNSAT_WITHIN_HORIZON",
+        "correct_witness": null
+      },
+      {
+        "goal": "001",
+        "plan_status": "REACHABLE",
+        "witness": "001",
+        "correct_status": "REACHABLE",
+        "correct_witness": "1100"
+      },
+      {
+        "goal": "010",
+        "plan_status": "REACHABLE",
+        "witness": "011",
+        "correct_status": "REACHABLE",
+        "correct_witness": "001"
+      }
+    ]
+  },
+  "results": [
+    {
+      "goal": "00",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "110",
+        "observed_trace": "100",
+        "expanded": 14
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "110",
+        "observed_trace": "100",
+        "checked_words": 14,
+        "source_actions": 26
+      }
+    },
+    {
+      "goal": "01",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "00",
+        "observed_trace": "01",
+        "expanded": 4
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "00",
+        "observed_trace": "01",
+        "checked_words": 4,
+        "source_actions": 6
+      }
+    },
+    {
+      "goal": "10",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "11",
+        "observed_trace": "10",
+        "expanded": 7
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "11",
+        "observed_trace": "10",
+        "checked_words": 7,
+        "source_actions": 12
+      }
+    },
+    {
+      "goal": "11",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "10",
+        "observed_trace": "11",
+        "expanded": 6
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "10",
+        "observed_trace": "11",
+        "checked_words": 6,
+        "source_actions": 10
+      }
+    },
+    {
+      "goal": "000",
+      "predicted": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "expanded": 127
+      },
+      "independent": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "checked_words": 127,
+        "source_actions": 126
+      }
+    },
+    {
+      "goal": "001",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "1100",
+        "observed_trace": "1001",
+        "expanded": 28
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "1100",
+        "observed_trace": "1001",
+        "checked_words": 28,
+        "source_actions": 54
+      }
+    },
+    {
+      "goal": "010",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "001",
+        "observed_trace": "010",
+        "expanded": 9
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "001",
+        "observed_trace": "010",
+        "checked_words": 9,
+        "source_actions": 16
+      }
+    },
+    {
+      "goal": "011",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "000",
+        "observed_trace": "011",
+        "expanded": 8
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "000",
+        "observed_trace": "011",
+        "checked_words": 8,
+        "source_actions": 14
+      }
+    },
+    {
+      "goal": "100",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "110",
+        "observed_trace": "100",
+        "expanded": 14
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "110",
+        "observed_trace": "100",
+        "checked_words": 14,
+        "source_actions": 26
+      }
+    },
+    {
+      "goal": "101",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "111",
+        "observed_trace": "101",
+        "expanded": 15
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "111",
+        "observed_trace": "101",
+        "checked_words": 15,
+        "source_actions": 28
+      }
+    },
+    {
+      "goal": "110",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "100",
+        "observed_trace": "110",
+        "expanded": 12
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "100",
+        "observed_trace": "110",
+        "checked_words": 12,
+        "source_actions": 22
+      }
+    },
+    {
+      "goal": "111",
+      "predicted": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "expanded": 127
+      },
+      "independent": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "checked_words": 127,
+        "source_actions": 126
+      }
+    },
+    {
+      "goal": "0000",
+      "predicted": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "expanded": 127
+      },
+      "independent": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "checked_words": 127,
+        "source_actions": 126
+      }
+    },
+    {
+      "goal": "0001",
+      "predicted": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "expanded": 127
+      },
+      "independent": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "checked_words": 127,
+        "source_actions": 126
+      }
+    },
+    {
+      "goal": "0010",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "11001",
+        "observed_trace": "10010",
+        "expanded": 57
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "11001",
+        "observed_trace": "10010",
+        "checked_words": 57,
+        "source_actions": 112
+      }
+    },
+    {
+      "goal": "0011",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "11000",
+        "observed_trace": "10011",
+        "expanded": 56
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "11000",
+        "observed_trace": "10011",
+        "checked_words": 56,
+        "source_actions": 110
+      }
+    },
+    {
+      "goal": "0100",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "0010",
+        "observed_trace": "0100",
+        "expanded": 18
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "0010",
+        "observed_trace": "0100",
+        "checked_words": 18,
+        "source_actions": 34
+      }
+    },
+    {
+      "goal": "0101",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "0011",
+        "observed_trace": "0101",
+        "expanded": 19
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "0011",
+        "observed_trace": "0101",
+        "checked_words": 19,
+        "source_actions": 36
+      }
+    },
+    {
+      "goal": "0110",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "0000",
+        "observed_trace": "0110",
+        "expanded": 16
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "0000",
+        "observed_trace": "0110",
+        "checked_words": 16,
+        "source_actions": 30
+      }
+    },
+    {
+      "goal": "0111",
+      "predicted": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "expanded": 127
+      },
+      "independent": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "checked_words": 127,
+        "source_actions": 126
+      }
+    },
+    {
+      "goal": "1000",
+      "predicted": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "expanded": 127
+      },
+      "independent": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "checked_words": 127,
+        "source_actions": 126
+      }
+    },
+    {
+      "goal": "1001",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "1100",
+        "observed_trace": "1001",
+        "expanded": 28
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "1100",
+        "observed_trace": "1001",
+        "checked_words": 28,
+        "source_actions": 54
+      }
+    },
+    {
+      "goal": "1010",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "1111",
+        "observed_trace": "1010",
+        "expanded": 31
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "1111",
+        "observed_trace": "1010",
+        "checked_words": 31,
+        "source_actions": 60
+      }
+    },
+    {
+      "goal": "1011",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "1110",
+        "observed_trace": "1011",
+        "expanded": 30
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "1110",
+        "observed_trace": "1011",
+        "checked_words": 30,
+        "source_actions": 58
+      }
+    },
+    {
+      "goal": "1100",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "1000",
+        "observed_trace": "1100",
+        "expanded": 24
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "1000",
+        "observed_trace": "1100",
+        "checked_words": 24,
+        "source_actions": 46
+      }
+    },
+    {
+      "goal": "1101",
+      "predicted": {
+        "status": "REACHABLE",
+        "witness": "1001",
+        "observed_trace": "1101",
+        "expanded": 25
+      },
+      "independent": {
+        "status": "REACHABLE",
+        "witness": "1001",
+        "observed_trace": "1101",
+        "checked_words": 25,
+        "source_actions": 48
+      }
+    },
+    {
+      "goal": "1110",
+      "predicted": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "expanded": 127
+      },
+      "independent": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "checked_words": 127,
+        "source_actions": 126
+      }
+    },
+    {
+      "goal": "1111",
+      "predicted": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "expanded": 127
+      },
+      "independent": {
+        "status": "UNSAT_WITHIN_HORIZON",
+        "witness": null,
+        "observed_trace": null,
+        "checked_words": 127,
+        "source_actions": 126
+      }
+    }
+  ],
+  "negative_mutant_failures": [
+    {
+      "goal": "00",
+      "plan_status": "REACHABLE",
+      "witness": "00",
+      "correct_status": "REACHABLE",
+      "correct_witness": "110"
+    },
+    {
+      "goal": "01",
+      "plan_status": "REACHABLE",
+      "witness": "01",
+      "correct_status": "REACHABLE",
+      "correct_witness": "00"
+    },
+    {
+      "goal": "000",
+      "plan_status": "REACHABLE",
+      "witness": "000",
+      "correct_status": "UNSAT_WITHIN_HORIZON",
+      "correct_witness": null
+    },
+    {
+      "goal": "001",
+      "plan_status": "REACHABLE",
+      "witness": "001",
+      "correct_status": "REACHABLE",
+      "correct_witness": "1100"
+    },
+    {
+      "goal": "010",
+      "plan_status": "REACHABLE",
+      "witness": "011",
+      "correct_status": "REACHABLE",
+      "correct_witness": "001"
+    },
+    {
+      "goal": "011",
+      "plan_status": "REACHABLE",
+      "witness": "010",
+      "correct_status": "REACHABLE",
+      "correct_witness": "000"
+    },
+    {
+      "goal": "0000",
+      "plan_status": "REACHABLE",
+      "witness": "0000",
+      "correct_status": "UNSAT_WITHIN_HORIZON",
+      "correct_witness": null
+    },
+    {
+      "goal": "0001",
+      "plan_status": "REACHABLE",
+      "witness": "0001",
+      "correct_status": "UNSAT_WITHIN_HORIZON",
+      "correct_witness": null
+    },
+    {
+      "goal": "0010",
+      "plan_status": "REACHABLE",
+      "witness": "0011",
+      "correct_status": "REACHABLE",
+      "correct_witness": "11001"
+    },
+    {
+      "goal": "0011",
+      "plan_status": "REACHABLE",
+      "witness": "0010",
+      "correct_status": "REACHABLE",
+      "correct_witness": "11000"
+    },
+    {
+      "goal": "0100",
+      "plan_status": "REACHABLE",
+      "witness": "0110",
+      "correct_status": "REACHABLE",
+      "correct_witness": "0010"
+    },
+    {
+      "goal": "0101",
+      "plan_status": "REACHABLE",
+      "witness": "0111",
+      "correct_status": "REACHABLE",
+      "correct_witness": "0011"
+    },
+    {
+      "goal": "0110",
+      "plan_status": "REACHABLE",
+      "witness": "0100",
+      "correct_status": "REACHABLE",
+      "correct_witness": "0000"
+    },
+    {
+      "goal": "1000",
+      "plan_status": "REACHABLE",
+      "witness": "1100",
+      "correct_status": "UNSAT_WITHIN_HORIZON",
+      "correct_witness": null
+    },
+    {
+      "goal": "1001",
+      "plan_status": "REACHABLE",
+      "witness": "1101",
+      "correct_status": "REACHABLE",
+      "correct_witness": "1100"
+    }
+  ],
+  "limits": [
+    "Only a bounded fully-known four-state learned model; BFS is generic classical search, not newly discovered reasoning algorithm.",
+    "Outputs are simple one-bit traces in a synthetic system; no evidence of nontrivial open-ended, multi-domain or natural-language problem solving.",
+    "Independent gold uses same documented deterministic source but does not receive learned states or model.",
+    "No measured time/RAM advantage, not a total-cost conclusion.",
+    "Verifier source-aware; the model does not certify itself.",
+    "The same 28 targets are distinct desired output words, not different source domains."
+  ]
+}
