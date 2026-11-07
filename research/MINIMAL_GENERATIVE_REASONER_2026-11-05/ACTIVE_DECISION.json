@@ -66,7 +66,7 @@
   },
   "current_frontier": {
     "next_decision": "For an unknown underlying transition source, what exactly is observable to a discovery method and what independent evidence could identify a usable phi? Existing known-source P4 and source-blind k0 L* support different inputs/outputs.",
-    "status": "C6_SCOPED_COST_MARGIN_PASS_GENERAL_C6_OPEN",
+    "status": "RAW_ACCESS_BOUNDARY_CONDITIONALLY_RESOLVED_ORIGINAL_GOAL_OPEN",
     "true_blocker": "Workload/consumer and realistic no-learn counterfactual must be fixed before measuring total cost; abstract state reduction alone is insufficient.",
     "nonblocking": [
       "Arbitrary new raw-state phi is not required for fixed reset+known history",
@@ -76,17 +76,17 @@
     "no_auto_next_poc": true,
     "reviewed_date": "2026-11-07",
     "graph_reference": "TECHNICAL_DEPENDENCIES.md#current_execution_graph_2026_11_07",
-    "decision_status": "C6_PRE_AND_POST_COMPLETED_NO_AUTO_NEXT_POC",
+    "decision_status": "SOURCE_HIDDEN_INTERFACE_DECISION_CLOSED_WITH_SNAPSHOT_REUSE",
     "dependency_verdict": "MULTIPLE_DISTINCT_PURPOSES_NOT_ONE_ROOT_CAUSE",
     "primary_current_path": "Issue #71 C6 in the known-linear GF(2) P4 source-available branch because the original C6 explicitly requires phi,delta,checker,discovery cost. Reusing the k0 black-box model can inform query-saving utility separately but cannot itself prove cost of phi(raw).",
     "issue71_C6_done": false,
     "prior_C6_candidate_note": "The previously documented black-box oracle query threshold is a partial source-query proxy, not full C6. The original AC covers source-state projection and its acquisition and proof cost.",
     "single_next_atomic_action": {
-      "input": "existing source-aware GF2 P4 algebraic discovery evidence plus k0 source-blind L* reachable history-predictive evidence and original Issue #71 C1-C3",
-      "operation": "Compare their input permissions and output types to identify the first missing interface for discovering phi(raw) without known underlying transitions",
-      "observable_output": "one mapping of available source/oracle inputs to possible phi/delta or behavioral-model outputs, and an evidence-graded feasibility decision",
-      "falsifier": "if either existing method already supplies general raw-to-abstract initialization under identical input access, refrain from new research code and reuse it",
-      "decision_unlocked": "whether a genuinely new automatic projection discovery experiment is necessary; not an automatic PoC17"
+      "input": "existing P1/P3 k0/k1 results and actual consumer needs (history-only or new arbitrary raw state) together with the original ROOT-GEN-001 statement",
+      "operation": "Select the smallest next capability gap that is not already resolved by L* prediction, P3 candidate projection or P4 source-known algebraic quotient",
+      "observable_output": "one explicit unmet input/output contract, a viable reused algorithm and an evidence-backed necessity decision, or NO_NEW_EXPERIMENT",
+      "falsifier": "if existing P3/L*/P4 already satisfies the selected contract, stop new algorithm development and reuse it",
+      "decision_unlocked": "whether a next specific nonlinear state abstraction is useful rather than merely larger/more impressive"
     },
     "different_branch": {
       "kind": "k0 fixed-reset reset+word black-box consumer; exact learned phi(raw) is absent",
@@ -127,6 +127,15 @@
       "measured_wall_time": "NOT_RUN",
       "measured_generation_time": "NOT_RUN",
       "next_decision": "Fix a workload distribution and whether preprocessing/memory are admissible, then preregister amortized C6 runtime test including source and projected construction+proof"
+    },
+    "original_goal_progress": "Known-source GF2 algebraic phi/proof+scoped cost PASS; source-hidden reset-output L* 256 reachable→4 machine PASS; when raw snapshots are additionally observable, all 256 raw IDs→four-state IDs assigned; output-only raw IDs provably unidentifiable. None establishes a general generative reasoner.",
+    "latest_result": "256 mapped raw IDs, 4 behavioral states, 513 raw snapshot queries, 4160 replay operations, full 512 transition independent check, injected corrupted snapshot conflict detected.",
+    "evidence": "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/RAW_STATE_ACCESS_BRIDGE_FINDINGS_2026-11-07.md",
+    "input_access_matrix": {
+      "history_only": "L* predictive behavior for observed action history; raw label mapping unavailable and unnecessary for that consumer.",
+      "history_plus_raw_snapshot": "Reachable raw IDs→model IDs table recoverable; not automatic compact symbolic rule.",
+      "raw_snapshots_plus_GF2_projection_class": "existing P3 XOR search is reusable if its assumptions hold; k0 12 sample trials 10/10 full passed, 8 sample 3 false passes.",
+      "known_transition_matrix_and_observation": "existing P4 algebraic source-aware phi and delta with measured C6 scoped cost advantage."
     }
   },
   "provenance": {
@@ -160,7 +169,7 @@
     ]
   },
   "interface_bridge_2026_11_07": {
-    "phase": "PRE",
+    "phase": "POST",
     "original_goal_id": "ROOT-GEN-001",
     "original_goal": "Discover minimal initial structures, generative rules, representation transformations and their bounded reasoning capacities without requiring pretrained LLM knowledge.",
     "existing_Ac": "Issue #71 C1-C3 are distinct original symbolic GF2 target; this is limited evidence about raw→learned-model state initialization on k0, not their complete satisfaction.",
@@ -214,6 +223,39 @@
       "For 8-bit k0 reaching all 256 raw states, the table covers its complete 8-bit domain, but does not provide a compact symbolic phi or generalization beyond 8-bit",
       "Snapshot labels need independent source authenticity; untrusted labels cannot prove raw mapping",
       "No computation savings or new general reasoning"
-    ]
+    ],
+    "pre_ref": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/blob/0a1142944afa48fe02950d76f3f453821655b84e/research/MINIMAL_GENERATIVE_REASONER_2026-11-05/ACTIVE_DECISION.json",
+    "evidence_grade": "SYNTHETIC_BOUNDED_ORACLE_SIMULATION",
+    "prediction_match": "MATCH_PASS",
+    "results": {
+      "states_mapped": 256,
+      "learned_model_states": 4,
+      "counts_each": [
+        64,
+        64,
+        64,
+        64
+      ],
+      "snapshot_calls": 513,
+      "replayed_source_actions": 4160,
+      "history_depth_max": 11,
+      "observed_edges": 512,
+      "independent_source_check": "256 output+512 transitions PASS",
+      "injected_snapshot_conflict": "FAIL detected word [1]",
+      "output_only_relabeling": "swap raw 1/2 fixes reset and all output-only word traces; verified 511 finite words plus mathematical induction",
+      "p3_reuse": "existing sparse two-mask XOR search works in same k0 family when raw successors accessible; previous P3 12-sample 10/10 full holdout; not newly rerun on snapshot mapping"
+    },
+    "incremental_contribution": "Identified exactly one additional raw-state snapshot interface that enables existing L* learned state labels to be associated with all reachable raw microstates; conversely established information-theoretic output-only raw-label nonidentifiability.",
+    "original_AC_newly_verified": [],
+    "uncertainty_change": "REDUCED",
+    "verdict": "REUSE",
+    "rationale": "The missing information boundary is known, and previous P3 already supplies a compact-XOR candidate search under the stronger raw successor observation interface. No new algorithm or same-fixture learning PoC is justified yet. The original goal may not need raw projection for a history-based consumer.",
+    "evidence_refs": [
+      "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/poc/k0_raw_snapshot_projection_bridge.mjs",
+      "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/poc/K0_RAW_SNAPSHOT_BRIDGE_OBSERVED_2026-11-07.json",
+      "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/RAW_STATE_ACCESS_BRIDGE_FINDINGS_2026-11-07.md",
+      "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/poc_finite_quotient_v1/sparse_discovery_results.json"
+    ],
+    "next_action": null
   }
 }
