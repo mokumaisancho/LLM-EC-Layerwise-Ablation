@@ -221,7 +221,7 @@ def run():
 
 if __name__=='__main__':
     res=run()
-    path=Path('/mnt/data/gen001_c6/C6_FAIR_COST_OBSERVED_2026-11-07.json')
+    path=Path(__file__).with_name('C6_FAIR_COST_OBSERVED_LOCAL.json')
     path.write_text(json.dumps(res,ensure_ascii=False,indent=2)+'\n')
     summary={'status':res['status'],'main_comparison':res['main_comparison'],'table_bytes':res['method_specific_python_object_memory_bytes'],'verification':res['correctness']['independent_gf2_certificate'],'mutation':res['correctness']['mutation_control'],'source_build_ns':res['fixed_scope']['common_source_build_ns_one_observation'],'by_horizon':{k:{v:round(d['total_ns']/1e6,4) for v,d in x.items()} for k,x in res['inclusive_median_estimates_by_horizon'].items()}}
     print(json.dumps(summary,ensure_ascii=False,indent=2))
