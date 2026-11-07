@@ -91,3 +91,6 @@ New finding: n=6→2 is mathematically valid but rejected by native 0.01 score-g
 
 ## PoC15 — directly-derived 2bit baseline vs actually learned 4-state model
 [詳細・受入範囲](POC15_DIRECT_BASELINE_FINDINGS_2026-11-07.md) / [数値結果](POC15_DIRECT_COMPARISON_OBSERVED_2026-11-07.json) / [モデル遷移の独立検算](poc15_direct_rule_reachable_verifier.mjs)。元128-bit構造が到達するrawは固定reset/action条件では4個だけ。学習4状態は直接2bit遷移と全8辺一致、状態削減4→4。高速化が元Pythonラッパー対テーブルの方式差であり、raw4状態テーブル対学習表はほぼ同速度と確認。モデルから任意の128-bit`x`をIDへ投影する関数は未学習。
+
+## PoC16 — two-reset reachable quotient
+[Detailed scope/fault RCA](POC16_TWO_RESET_FINDINGS_2026-11-07.md) / [8-state evidence](POC16_TWO_RESET_OBSERVED_2026-11-07.json) / [reproducible exact verifier](poc16_two_reset_quotient.mjs). Same PoC7 128-bit nonlinear source and action alphabet {0,1}; two externally selected initial states differ in hidden coordinate (including top source bit) while sharing q=0. Raw reachability 4+4=8, minimal future-observable classes=4, independent product check of existing learned 4-state model 8 pairs/16 transitions PASS. Fault controls action2 and ambiguous reset fail. A learner-created global raw projection, combined-reset learning, inference performance and cost are NOT established.
