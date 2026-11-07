@@ -1,5 +1,8 @@
 # Minimal Generative Reasoner / 推論可能態と最小生成原理 — 研究記録
 
+> **本線の最新科学的判断（2026-11-08）**：[情報起源の必要条件とDreamCoder公式コードの再利用監査](INFORMATION_ORIGIN_AND_GENERATIVE_REUSE_DECISION_2026-11-08.md)／[現行の色分けMermaid図](ROOT_OBJECTIVE_CORRECTED_GRAPH_2026-11-07.md)。無仮定・有限観測から未知法則全体を確定することは情報上不可能。次の最初の接点は、初期DSLと外部Goldの情報境界を保ち、既存のプログラム合成で**新しいライブラリ部品が未使用課題に与える増分効果**を、同じ初期条件の無学習対照と比べること。独自NN、状態縮約PoC、28個BFSの反復は行わない。公式DreamCoderはコード監査のみ、実行は **NOT_RUN**、原課題は OPEN。
+
+
 > **原課題再監査（2026-11-07、最優先）**：[ユーザー発言に基づく原課題の出所と誤昇格の監査](ROOT_OBJECTIVE_PROVENANCE_REAUDIT_2026-11-07.md)／[訂正した課題・技術Mermaid図](ROOT_OBJECTIVE_CORRECTED_GRAPH_2026-11-07.md)。11/7の`T_TASK`・「28種2進出力suffix」を研究の全成果をブロックする共通最優先事項とした選定は**撤回**。以前の`ROOT_GEN_001_DEPENDENCY_GRAPH_2026-11-07.json`は歴史的で現在の推進根拠として使用禁止。元の研究は**知識と推論の分離、最小初期原理の潜在能力、法則・解法の生成、意味ある経路選択、容量/RAM/計算量下限**であり、合成状態機械と28件BFSは補助証拠に限定。
 
 
