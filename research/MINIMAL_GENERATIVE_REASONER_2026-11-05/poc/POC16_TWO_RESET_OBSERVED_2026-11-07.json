@@ -1,0 +1,139 @@
+{
+  "experiment": "GEN001_POC16_TWO_RESET_REACHABLE_QUOTIENT_V1",
+  "status": "SCOPED_PASS_SYNTHETIC",
+  "source_ref": "PoC7 NonlinearScrambledSUL at git blob 722e600873a547ed122b2d0c37114be5d162133c",
+  "contract": {
+    "reset_states": {
+      "original_q0_h0": "0x0",
+      "additional_q0_high_hidden": "0x80000000000000000000000000000004"
+    },
+    "actions": [
+      0,
+      1
+    ],
+    "output": "latent q low bit",
+    "reset_event": "separate external episode initialization, not action 2"
+  },
+  "reachable_raw": 8,
+  "reachable_from_first": 4,
+  "reachable_from_second": 4,
+  "raw_values": [
+    "0x0",
+    "0x1",
+    "0x2",
+    "0x3",
+    "0x80000000000000000000000000000004",
+    "0x80000000000000000000000000000005",
+    "0x80000000000000000000000000000006",
+    "0x80000000000000000000000000000007"
+  ],
+  "min_future_observable_classes": 4,
+  "equivalence_classes": {
+    "0": [
+      "0x0",
+      "0x80000000000000000000000000000004"
+    ],
+    "1": [
+      "0x3",
+      "0x80000000000000000000000000000007"
+    ],
+    "2": [
+      "0x1",
+      "0x80000000000000000000000000000006"
+    ],
+    "3": [
+      "0x2",
+      "0x80000000000000000000000000000005"
+    ]
+  },
+  "refinement_history": [
+    2,
+    4,
+    4
+  ],
+  "raw_to_class": [
+    {
+      "raw": "0x0",
+      "class": 0,
+      "latent_q": 0
+    },
+    {
+      "raw": "0x1",
+      "class": 2,
+      "latent_q": 3
+    },
+    {
+      "raw": "0x2",
+      "class": 3,
+      "latent_q": 1
+    },
+    {
+      "raw": "0x3",
+      "class": 1,
+      "latent_q": 2
+    },
+    {
+      "raw": "0x80000000000000000000000000000004",
+      "class": 0,
+      "latent_q": 0
+    },
+    {
+      "raw": "0x80000000000000000000000000000005",
+      "class": 3,
+      "latent_q": 1
+    },
+    {
+      "raw": "0x80000000000000000000000000000006",
+      "class": 2,
+      "latent_q": 3
+    },
+    {
+      "raw": "0x80000000000000000000000000000007",
+      "class": 1,
+      "latent_q": 2
+    }
+  ],
+  "learned_poc15_model_reused_without_retraining": true,
+  "learned_check": {
+    "status": "PASS_EXACT_REACHABLE_TWO_RESETS",
+    "pairs": 8,
+    "transitions": 16
+  },
+  "negatives": {
+    "action2_breaks_quotient": {
+      "same_current_output": true,
+      "witness_actions": [
+        2
+      ],
+      "subsequent_outputs": [
+        0,
+        1
+      ]
+    },
+    "wrong_initial_learned_id": {
+      "same_current_output": true,
+      "witness_actions": [
+        1
+      ],
+      "subsequent_outputs": [
+        0,
+        1
+      ]
+    },
+    "mutated_transition": {
+      "status": "FAIL",
+      "reset": "original_q0_h0",
+      "witness": [
+        0
+      ],
+      "visited": 3
+    }
+  },
+  "limits": [
+    "Two resets chosen with known same q=0; learner did not discover initial mapping.",
+    "Not a learned raw state projection or multi-reset learning result.",
+    "No measured time/RAM/inference improvement.",
+    "Synthetically constructed deterministic source; no all 2^128 reachable claim."
+  ],
+  "next_decision": "Check whether reset identity and output/history interface can initialize the existing learned model without privileged q; no new general learner needed at this stage."
+}
