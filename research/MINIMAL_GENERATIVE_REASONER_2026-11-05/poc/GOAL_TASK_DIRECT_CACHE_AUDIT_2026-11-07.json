@@ -1,0 +1,22 @@
+{
+  "protocol": "GEN001_BOUNDED_GOAL_TASK_DIRECT_ORACLE_TRIE_AUDIT_V1",
+  "status": "SCOPED_EQUALITY_PASS_DIRECT_CHEAPER_IN_MEMBERSHIP_CALLS",
+  "date": "2026-11-07",
+  "classification": "DERIVED_POSTHOC_COMPARISON_NOT_A_NEW_PRE_REGISTERED_RUNTIME_EXPERIMENT",
+  "preexisting_goal_suite": "poc/GOAL_CONDITIONED_ACTION_OBSERVED_2026-11-07.json",
+  "same_input_scope": "reset 0, binary action words length<=6, final one-bit output oracle, all 28 binary goal suffixes length2..4",
+  "direct_cached_queries_upper_bound": 126,
+  "prior_lstar_unique_membership_queries": 322,
+  "ratio_lstar_over_direct_query_upper_bound": 2.5555555555555554,
+  "goal_suite_cases_covered": 28,
+  "cache_policy": "one query for each distinct nonempty action prefix, reused across all tasks; no source private transition/phase used by direct trie",
+  "proof": "2+4+8+16+32+64 = 126 finite action prefixes; every requested <=6 output trace reconstructed from prefix outputs; direct solver can check any suffix without a learned automaton; lexicographic BFS matches Gold on all 28 goals",
+  "scope_limitations": [
+    "Only number of unique output-oracle queries, not latency/CPU/RAM; direct trie memory is nonzero",
+    "The previous L* 322 queries were for an unbounded-length predictor, so cannot compare general capabilities",
+    "A short bounded task suite does not justify acquiring a predictive automaton solely for this purpose",
+    "No claim of lower cost under long horizons or many target queries beyond 6",
+    "No claim of independent Gold outside the synthetic source"
+  ],
+  "decision": "REUSE direct trie for short finite goal suite if same oracle is available; do not claim model discovery improved cost. Separate long-horizon/transfer behavior remains OPEN."
+}
