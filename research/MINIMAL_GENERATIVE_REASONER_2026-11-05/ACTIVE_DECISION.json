@@ -66,7 +66,7 @@
   },
   "current_frontier": {
     "next_decision": "For an unknown underlying transition source, what exactly is observable to a discovery method and what independent evidence could identify a usable phi? Existing known-source P4 and source-blind k0 L* support different inputs/outputs.",
-    "status": "RAW_ACCESS_BOUNDARY_CONDITIONALLY_RESOLVED_ORIGINAL_GOAL_OPEN",
+    "status": "GOAL_PROVENANCE_CORRECTION_REQUIRED",
     "true_blocker": "Workload/consumer and realistic no-learn counterfactual must be fixed before measuring total cost; abstract state reduction alone is insufficient.",
     "nonblocking": [
       "Arbitrary new raw-state phi is not required for fixed reset+known history",
@@ -76,17 +76,17 @@
     "no_auto_next_poc": true,
     "reviewed_date": "2026-11-07",
     "graph_reference": "TECHNICAL_DEPENDENCIES.md#current_execution_graph_2026_11_07",
-    "decision_status": "SOURCE_HIDDEN_INTERFACE_DECISION_CLOSED_WITH_SNAPSHOT_REUSE",
+    "decision_status": "INVALIDATE_T_TASK_PRIORITIZATION_NO_NEW_POC",
     "dependency_verdict": "MULTIPLE_DISTINCT_PURPOSES_NOT_ONE_ROOT_CAUSE",
     "primary_current_path": "Issue #71 C6 in the known-linear GF(2) P4 source-available branch because the original C6 explicitly requires phi,delta,checker,discovery cost. Reusing the k0 black-box model can inform query-saving utility separately but cannot itself prove cost of phi(raw).",
     "issue71_C6_done": false,
     "prior_C6_candidate_note": "The previously documented black-box oracle query threshold is a partial source-query proxy, not full C6. The original AC covers source-state projection and its acquisition and proof cost.",
     "single_next_atomic_action": {
-      "input": "Original ROOT-GEN-001 goal and finite k0/P3/P4 evidence; existing k1 negative result (6 classes, 2bit linear XOR insufficient) and intended next consumer access contract",
-      "operation": "Isolate one capability that the already verified linear+history+snapshot methods cannot deliver, with a concrete output contract before another experiment",
-      "observable_output": "one falsifiable candidate capability and exact first missing input/method, or REUSE existing method when no new capability needed",
-      "falsifier": "if k1/other candidate is indistinguishable in the selected access scope or requires a new invented goal/privileged oracle not authorized, do not run a new PoC",
-      "decision_unlocked": "whether the next stage should test finite nonlinear observable representation in an honest scope rather than add more k0 confirmation"
+      "input": "original user-origin questions dated 2026-11-02/04, Issue #71 statements and verified experiment evidence",
+      "operation": "identify the highest-impact missing mechanism for generating non-preloaded knowledge/rules, compare existing prior-art approaches before any new test",
+      "observable_output": "one evidence-backed, explicitly-scoped next root-scientific decision that cannot be satisfied by existing finite-state simulations",
+      "falsifier": "new task adds no novel inferred rule or depends on teacher/answer information that was not included in the declared starting conditions",
+      "decision_unlocked": "whether a new generative-principle experiment is justified"
     },
     "different_branch": {
       "kind": "k0 fixed-reset reset+word black-box consumer; exact learned phi(raw) is absent",
@@ -276,5 +276,26 @@
       "interpretation": "Existing 256-entry map can be represented with prior 2bit two-XOR candidate plus 4-entry model-state rename, not newly discovered from this snapshot dataset.",
       "no_new_original_AC_closed": true
     }
+  },
+  "original_objective_reaudit_2026_11_07": {
+    "status": "ROOT_SOURCE_REAUDIT_SUPERSEDES_PREVIOUS_FRONTIER",
+    "sources": [
+      "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/ROOT_OBJECTIVE_PROVENANCE_REAUDIT_2026-11-07.md",
+      "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/ROOT_OBJECTIVE_CORRECTED_GRAPH_2026-11-07.md"
+    ],
+    "original_goal_reconstruction": "Without assuming a large pretrained knowledge base, investigate whether minimal initial structures/generative rules can produce latent and manifest advanced varied reasoning, how useful paths/filters emerge, what external information is truly necessary and what lower weight/memory/compute bound is required.",
+    "root_distinctions": [
+      "separate pretrained knowledge from reasoning mechanism",
+      "latent ability before executing tasks versus benchmark observations",
+      "generating novel rules versus simulating a preloaded transition table",
+      "meaningful search/filter emergence without preloading the answer",
+      "full cost and independent proof"
+    ],
+    "cancelled_priority": "T_TASK as five-outcome global blocker; 28 output suffix BFS benchmark as a substitute for generative reasoning.",
+    "branch_separation": "Issue #1 S1-S4 deterministic EC substitution is an older separate scientific question. Issue #71 is a 2026-11-04 generative-principle research branch, not a replacement for Issue #1.",
+    "status_of_prior_experiments": "Keep synthetic observations as narrow evidence; do not retroactively mark them invalid experiments, but they do not certify the user-origin main question.",
+    "current_next_step": "Stop new PoC. First connect original user-origin questions to existing studies and distinguish preloaded transition/knowledge from actual novel rule/ability generation.",
+    "complete_transcript_available": false,
+    "source_limit": "Multiple related conversation summaries/user utterance recalls and files reviewed; full verbatim historical thread unavailable."
   }
 }
