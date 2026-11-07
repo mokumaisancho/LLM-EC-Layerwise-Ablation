@@ -63,6 +63,9 @@
 
 **重要な偽PASS防止**：`--split`は単純なタスク分割であり、**異なる未知の解法構造を完全にホールドアウトしたことにはならない**。タスクの系統・テンプレートが学習/テストでどれだけ重複するかを別監査する。また「テストデータを一切学習器が見ない」のではなく、テスト時に個々のプログラムを推論するための**問題例は入力として許容**し、各問題の未知の追加例に対する正解とテスト集団全体をライブラリ更新器に渡さない。名称だけの「未学習」では不十分。
 
+
+- **参照先の細分化**：同じ`text/main.py`の45–55行で`LearnedFeatureExtractor`のlexiconは`tasks + testingTasks`の例に現れる文字を集計、59–62行の`taskOfProgram`で上記`ConstantInstantiateVisitor.SINGLE`を使用する。これは**認識モデル側での情報流入可能性**を直接示すが、`--no-recognition`時にも試験解答がDSLの学習に流れたと実測・証明したわけではない。厳密な比較はまず認識モデルを両側無効にし、特徴抽出器の生成経路が実際に不使用であることを確認する。
+
 ## 5. 以後の一実験として認めるための契約（今回の実験ではない）
 
 - **一つの能力**：事前に与えなかった新しい**再利用可能なプログラム部品**が、未知の組合せ課題を解く際に必要な探索量/解決件数を改善するか。
@@ -84,7 +87,7 @@
 [DreamCoder公式 text domain](https://github.com/ellisk42/ec/blob/master/dreamcoder/domains/text/main.py) のソース（Git blob `45cb4b7879fbc41bb65280e2210961e52bf44f20`）を再読：
 
 - `makeTasks()`で作ったタスクを`testTrainSplit(tasks, 1.)`として全件学習用に置く。外部チャレンジはデフォルトで`PBE_Strings_Track`から別に読み、`--trainChallenge`（既定false）または`--onlyChallenge`を指定しない限り、`ecIterator(..., testingTasks=test+challenge)`へ渡す。従って**分ける入口は既にある**。
-- **ただし** `ConstantInstantiateVisitor.SINGLE` の語彙は`train + test + challenge`全体の`stringConstants`から構築される（ソース212–215行）。これは課題の出力正解をライブラリへ直接教えた証拠ではないが、**チャレンジ専用のリテラル情報が実行前の探索空間に流入し得る**。厳密な「未知タスク情報は学習前に知らない」の条件と混同してはいけない。挑戦タスクの実行時に例題から得る定数と、学習前に全テスト課題から語彙を収集することは別。
+- **ただし** `ConstantInstantiateVisitor.SINGLE` の語彙は`train + test + challenge`全体の`stringConstants`から構築される（ソース212–215行）。これは課題の出力正解をライブラリへ直接教えた証拠ではないが、**チャレンジ専用のリテラル情報が、特に認識モデルの特徴抽出・合成疑似課題作成の経路へ流入し得る**。厳密な「未知タスク情報は学習前に知らない」の条件と混同してはいけない。挑戦タスクの実行時に例題から得る定数と、学習前に全テスト課題から語彙を収集することは別。
 - 公式`dreamcoder/dreamcoder.py`の`--testingTimeout`既定値は0。**未使用タスクの評価が実行されるように、明示的な正値と実測ログが必須**。`--no-consolidation`はDSL更新を止める正規の対照。`--no-recognition`でNNガイドの影響を両条件から外すことは可能。
 - 公式`list`領域の`--split`も、`mustTrain`で各課題系列の少なくとも一部を学習側へ残す（`list/main.py` + `utilities.py`）。**ランダム分割を未知系列への一般化と同一視してはいけない**。
 
