@@ -96,5 +96,18 @@
       "all future domains / generalized intelligence"
     ],
     "baseline_difference": "PoC7 reset0 had only 4 raw states; PoC16's 8 raw states were achieved by intentionally paired reset states; existing MGR-P1 k0 source-aware Moore minimization had known 256->4 but did not prove black-box learner discovery"
+  },
+  "independent_python_recalculation": {
+    "status": "PASS_EXACT_REACHABLE",
+    "transcription_source": "poc_finite_quotient_v1/run_poc.py@9167e7e1d1326d11ecd636220b5f3a80c655bb33",
+    "implementation": "separate Python source transcription, independent of JavaScript learner and JavaScript exact checker",
+    "pairs": 256,
+    "checked_transitions": 512,
+    "mutated_transition_witness": [
+      0,
+      0
+    ],
+    "mutated_result": "FAIL",
+    "limitations": "Reconstructed source formulas from pinned source text, not the private repository's native Python file directly imported; no separate on-disk Python verifier artifact was produced."
   }
 }
