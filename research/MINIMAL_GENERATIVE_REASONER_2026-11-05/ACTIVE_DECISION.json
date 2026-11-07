@@ -65,8 +65,8 @@
     "next_action": null
   },
   "current_frontier": {
-    "next_decision": "For a concretely specified repeated-output workload, do 322 distinct queries (3874 source steps) plus independent certification and runtime make this source-blind learned model cheaper than the best available baseline?",
-    "status": "NOT_PREREGISTERED_NOT_RUN",
+    "next_decision": "For an unknown underlying transition source, what exactly is observable to a discovery method and what independent evidence could identify a usable phi? Existing known-source P4 and source-blind k0 L* support different inputs/outputs.",
+    "status": "C6_SCOPED_COST_MARGIN_PASS_GENERAL_C6_OPEN",
     "true_blocker": "Workload/consumer and realistic no-learn counterfactual must be fixed before measuring total cost; abstract state reduction alone is insufficient.",
     "nonblocking": [
       "Arbitrary new raw-state phi is not required for fixed reset+known history",
@@ -76,17 +76,17 @@
     "no_auto_next_poc": true,
     "reviewed_date": "2026-11-07",
     "graph_reference": "TECHNICAL_DEPENDENCIES.md#current_execution_graph_2026_11_07",
-    "decision_status": "PRECHECK_COMPLETED_NO_NEW_POC_EXECUTED",
+    "decision_status": "C6_PRE_AND_POST_COMPLETED_NO_AUTO_NEXT_POC",
     "dependency_verdict": "MULTIPLE_DISTINCT_PURPOSES_NOT_ONE_ROOT_CAUSE",
     "primary_current_path": "Issue #71 C6 in the known-linear GF(2) P4 source-available branch because the original C6 explicitly requires phi,delta,checker,discovery cost. Reusing the k0 black-box model can inform query-saving utility separately but cannot itself prove cost of phi(raw).",
     "issue71_C6_done": false,
     "prior_C6_candidate_note": "The previously documented black-box oracle query threshold is a partial source-query proxy, not full C6. The original AC covers source-state projection and its acquisition and proof cost.",
     "single_next_atomic_action": {
-      "input": "poc/poc4_repro.py, existing phi/delta and two mathematically checked no-projection raw baselines (column XOR and 8bit-block LUT)",
-      "operation": "Fix one repeat-use workload/initialization distribution, preprocessing amortization horizon and allowed memory budget",
-      "observable_output": "one fair frozen C6 workload/cost ledger with same output and action scope",
-      "falsifier": "cannot compare raw and projected paths with identical inputs, allowed actions, output contract and upfront costs",
-      "decision_unlocked": "which source optimization is the strongest admissible no-projection comparator before executing total-cost benchmark"
+      "input": "existing source-aware GF2 P4 algebraic discovery evidence plus k0 source-blind L* reachable history-predictive evidence and original Issue #71 C1-C3",
+      "operation": "Compare their input permissions and output types to identify the first missing interface for discovering phi(raw) without known underlying transitions",
+      "observable_output": "one mapping of available source/oracle inputs to possible phi/delta or behavioral-model outputs, and an evidence-graded feasibility decision",
+      "falsifier": "if either existing method already supplies general raw-to-abstract initialization under identical input access, refrain from new research code and reuse it",
+      "decision_unlocked": "whether a genuinely new automatic projection discovery experiment is necessary; not an automatic PoC17"
     },
     "different_branch": {
       "kind": "k0 fixed-reset reset+word black-box consumer; exact learned phi(raw) is absent",
@@ -109,7 +109,7 @@
       "source_output_parity_calls": 1,
       "quotient_output_parity_calls": 1,
       "operation_count_ratio_only": 64,
-      "walltime_speedup": "NOT_RUN",
+      "walltime_speedup": "MEASURED_SCOPED_GF2_CP_PYTHON_2.14_TO_2.21_VS_RAW_LUT_AT_8x2048",
       "construction_cost": "NOT_MEASURED",
       "checker_total_cost": "NOT_MEASURED",
       "optimized_direct_baseline": "NOT_FROZEN"
@@ -134,5 +134,29 @@
     "pre_modified_after_run": false,
     "post_uses_same_active_decision_record": true,
     "scientific_limit": "Blackbox learner source-blind, exact full verifier source-aware; synthetic source known to experimenter; no external deployment or verified cost advantage"
+  },
+  "c6_cost_trial_2026_11_07": {
+    "pre_ref": "C6_FAIR_COST_PRE_2026-11-07.json@a455aa81a2afc4cabc76fb77822c8c86141f45f8",
+    "frozen_hypothesis": "2-coordinate future-preserving quotient has lower inclusive source-aware cost by >=10% than fastest tested optimized raw-source method on 8 independent raw streams *2048 actions with 2MiB method memory cap",
+    "after_result": "MATCH_PASS_SCOPED",
+    "observed": "First run 12.240286ms projected including quotient construction+independent proof vs optimized raw byte LUT 26.831659ms incl LUT setup. Two independent full reproductions 12.544357ms vs 26.791492ms, and 12.136543ms vs 26.844200ms. Observed ratio raw/projected 2.14–2.21.",
+    "independent_check": "16384 emitted one-bit observations checked per method for long horizon; complete GF2 basis check 128bit*2 actions; rank=2 derived separately; corrupt transition rejected with basis bit0, action0",
+    "counterfactual": "For 1 or 16 operations per stream the raw source row-parity (no table build) was faster than projection; cost benefit depends on horizon, overhead and compiler implementation; no source discovery cost for unknown source model",
+    "evidence_grade": "SYNTHETIC_RUNTIME_MEASUREMENT_CP_PYTHON",
+    "newly_testable_original_ac": [
+      "#71 C6 can be evaluated meaningfully under a fixed fully known GF(2) source contract with cost terms separated"
+    ],
+    "newly_verified_original_ac": [],
+    "incremental_contribution": "First preregistered inclusive observed source-known GF2 quotient acquisition+certificate+runtime advantage over optimized direct raw code, not merely structural 128/2 parity call inference",
+    "uncertainty_change": "REDUCED",
+    "verdict": "REUSE",
+    "rationale": "Bounded C6 decision answered for this source and workload. Do not automatically execute another same-fixture benchmark. Treat general unknown-source phi discovery and semantic reasoning as independent unsolved axes.",
+    "preregistered_scope_unchanged": true,
+    "evidence_links": [
+      "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/poc/C6_FAIR_COST_OBSERVED_2026-11-07.json@72cac38628c71f9658dde5aaa5e0705374a0948f",
+      "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/poc/C6_FAIR_COST_FINDINGS_2026-11-07.md@ec6abb6412cd825a8ed30777fa5c90861a4bc5a5",
+      "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/poc/c6_fair_cost.py@7e697d698f2c9acc271358cb8699cbd304a6cdf3",
+      "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/C6_FAIR_COST_PRE_2026-11-07.json@a455aa81a2afc4cabc76fb77822c8c86141f45f8"
+    ]
   }
 }
