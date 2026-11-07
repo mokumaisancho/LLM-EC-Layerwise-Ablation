@@ -4,7 +4,7 @@
   "status": "SCOPED_PASS_NOT_FINAL_C6",
   "pre_registration_commit": "a455aa81a2afc4cabc76fb77822c8c86141f45f8",
   "source_poc4_git_blob": "706da2229bbe7a244e899729221170149bc6d014",
-  "executable_git_blob": "4b43967fe062c1d43ad5e46f1dfbbe068ca85233",
+  "executable_git_blob": "7e697d698f2c9acc271358cb8699cbd304a6cdf3",
   "exact_full_first_run_json_local_sha256": "30e5110d8ca460def5a4c6a95924e190423f5e9547341d89627bba0d56108c71",
   "exact_runner_local_sha256": "09f2cbd1ea15df843c7923ec8f9cf8d5fe242799b5f649fb6f44761ece11e7fd",
   "environment": "CPython 3.13.5 Linux x86_64, perf_counter_ns, same process",
@@ -390,5 +390,20 @@
     "per-method medians added, not wall-clock execution of one fully integrated deploy",
     "common source construction excluded equally",
     "no universal neural-network or full real task validation"
-  ]
+  ],
+  "executable_sha256": "04539eecdd1cbf42458ae2f08a1a13588aeadd3cef7f0f4580e8853052f6b17a",
+  "original_exactly_executed_runner_git_blob": "4b43967fe062c1d43ad5e46f1dfbbe068ca85233",
+  "portability_only_fix": "Benchmark runner originally wrote to /mnt/data; updated only its output destination to same script folder; executed a fresh third verification run with unchanged methods and frozen benchmark settings.",
+  "replication_after_portability_fix": {
+    "result": "PASS_SCOPED_COST_MARGIN",
+    "best_optimized_raw_method": "raw_byte_lut",
+    "raw_inclusive_ns": 26844200,
+    "quotient_inclusive_ns": 12136543,
+    "speedup_raw_over_quotient": 2.2118489589663217
+  },
+  "repeatability_range": {
+    "all_three_runs_successful": true,
+    "full_cost_speedup_min": 2.135740556490859,
+    "full_cost_speedup_max": 2.2118489589663217
+  }
 }
