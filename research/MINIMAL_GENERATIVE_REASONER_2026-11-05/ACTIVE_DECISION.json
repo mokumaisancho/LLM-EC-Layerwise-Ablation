@@ -1,0 +1,46 @@
+{
+  "protocol": "EXPERIMENT_CYCLE_V1",
+  "phase": "PRE",
+  "date": "2026-11-07",
+  "decision_id": "ROOT-GEN-001/DISCOVERY_VS_EXISTENCE",
+  "goal": {
+    "id": "ROOT-GEN-001",
+    "original_goal": "大型LLMを出発点にせず最小初期構造・生成規則・表現変換から有限資源で有用な推論を生む成立条件と下限を把握する",
+    "nearest_outcome": "設計者が事前選択した有利な複数resetなしに、実到達raw256状態から未来観測4状態への縮約を入出力だけで学習器が発見できるか確定する",
+    "immediate_decision": "既存のL*を用いて一つのresetから非自明な観測商を再発見できるか、独立全到達検算で確認する",
+    "original_acceptance_ref": "GitHub Issue #71 C1-C3 and ROOT-GEN-001 README; this is a different bounded black-box benchmark, not C1 completion by itself"
+  },
+  "baseline": {
+    "supported_claim": "PoC16では実験者が等価な初期状態を構成してraw8→4を証明。PoC7では固定resetのraw4→learned4。MGR-P1 k=0の256全状態には4つの未来等価クラスが存在するが従来は元の全状態を見た最小化による。再解析ではk=0 reset=0/actions 0,1でraw256到達、k=1ではraw128/到達商4だが全域商6。",
+    "critical_unknown": "k=0に対しsource-private state/transition/latent情報に触れないL*が一つのreset・出力問い合わせから4状態を学習し、後から独立チェックに合格するか",
+    "evidence_scope": "8bit synthetic model; fixed reset raw0; actions 0,1; one-bit output; not arbitrary raw reset or real-world learning",
+    "evidence_refs": [
+      "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/poc_finite_quotient_v1/run_poc.py@9167e7e1d1326d11ecd636220b5f3a80c655bb33",
+      "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/poc/poc7_lstar_fallback.py@722e600873a547ed122b2d0c37114be5d162133c",
+      "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/poc/POC16_TWO_RESET_OBSERVED_2026-11-07.json@8c7e677b13b8232e521565a089ab9dc243c9d40a"
+    ]
+  },
+  "pre": {
+    "hypothesis": "既存L*観測表学習器はP1 k=0をsource状態なしで4状態の予測器として構成できる。元rawの到達256状態はこのモデルの4未来同値クラスに写像される。",
+    "closest_alternative": "有限のブラックボックス反例検査では不完全学習（誤PASS）または学習器の予算超過/過分割が発生し、全到達状態を使う検算に失敗する",
+    "decision_changed_by_result": "PASSなら固定reset下で本物の非自明な到達状態縮約をブラックボックスから発見した限定成果として既存器をREUSE。FAILなら具体的反例と観測・学習器の不足をREPAIR。UNKNOWNならモデルの優越主張を保留。",
+    "predicted_pass": "L*仮説4状態; reset0から元raw256状態; 256元×2操作の独立同値検査PASS; 最小商4; source内部コードの学習側開示なし",
+    "predicted_fail": "学習モデルの状態数が4以外、独立同値検査が反例を返す、または標本照合だけで誤PASSする",
+    "ambiguous_rule": "400ランダム照合×EQ回と深さ20、最大6EQ回または会員問い合わせ5000件を越える場合、真のモデル発見はUNKNOWNとする",
+    "comparison_baseline": "prior MGR-P1 full-source 256-state Moore minimization + PoC7 fixed-reset raw4→model4 + PoC16 author-designed two-reset raw8→model4",
+    "metric_and_unit": "reachable raw states, learned future-distinct states, exact checker pairs/edges, unique membership queries, simulated source operations; no speedup claim",
+    "scope": "MGR-P1 run_poc.py k=0, raw reset=0, action alphabet {0,1}, output=decode(raw).phase high bit; fixed deterministic seed 20261105",
+    "independent_check": "after learning is frozen, exact product BFS over actual source states and independent Moore refinement; source code/phase/noise hidden from learner and black-box EQ",
+    "resource_ceiling": "up to 5000 unique membership queries, 100000 source simulated actions, 6 EQ rounds, 400 random words/round max length 20, 256 raw-state independent checker",
+    "stop_condition": "budget reached, all permitted EQ returns no new counterexample, or independent proof finds a witness; do not promote scope",
+    "data_access_boundary": "learner and EQ only obtain reset+action sequence→one-bit output membership; raw state, true phase/noise/phi, explicit transition source and exact verifier are checker-only"
+  },
+  "decision_before_execution": "RUN_BOUNDED_REUSE; do not initiate a novel solver, native EC integration or general reasoning benchmark.",
+  "not_in_scope": [
+    "original Issue #71 exact GF(2) symbolic C1 automatic mask discovery",
+    "arbitrary raw input projection phi",
+    "full end-to-end total costs and utility",
+    "ECv4.4 full regressions",
+    "LLM general reasoning"
+  ]
+}
