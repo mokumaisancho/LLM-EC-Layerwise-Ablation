@@ -75,18 +75,18 @@
     ],
     "no_auto_next_poc": true,
     "reviewed_date": "2026-11-07",
-    "graph_reference": "TECHNICAL_DEPENDENCIES.md#2026-11-07-最新の依存関係本線判断現行以下aeは歴史的概念的な図",
+    "graph_reference": "TECHNICAL_DEPENDENCIES.md#current_execution_graph_2026_11_07",
     "decision_status": "PRECHECK_COMPLETED_NO_NEW_POC_EXECUTED",
     "dependency_verdict": "MULTIPLE_DISTINCT_PURPOSES_NOT_ONE_ROOT_CAUSE",
     "primary_current_path": "Issue #71 C6 in the known-linear GF(2) P4 source-available branch because the original C6 explicitly requires phi,delta,checker,discovery cost. Reusing the k0 black-box model can inform query-saving utility separately but cannot itself prove cost of phi(raw).",
     "issue71_C6_done": false,
     "prior_C6_candidate_note": "The previously documented black-box oracle query threshold is a partial source-query proxy, not full C6. The original AC covers source-state projection and its acquisition and proof cost.",
     "single_next_atomic_action": {
-      "input": "poc/poc4_repro.py source formulas for n=128 actions=(0,1), restricted output, and current derived symbolic phi/delta; existing exact checker",
-      "operation": "Define the one-step cost/initial projection ledger and pin the optimized no-projection source baseline under exactly the same input/output contract, before any benchmark",
-      "output": "one controlled n=128 GF(2) P4 source-vs-phi+delta cost comparison contract, separating phi init, source update, quotient update, construction, verifier and repeated-use count",
-      "falsifier": "if direct optimized baseline already computes exactly the same output using the same or fewer operations or if source and quotient input contracts differ, refuse a projection-specific speedup claim",
-      "decision_unlocked": "whether C6 is measurable at all on the original eligible P4 case without cherry-picked reference implementation"
+      "input": "poc/poc4_repro.py and available direct baseline variants of its n=128 GF(2) restricted-action transition",
+      "operation": "Identify a runnable optimized no-projection source comparator and fix the same input/output contract and cost units",
+      "observable_output": "frozen fair source baseline + projected baseline, with prerequisites for cost PRE defined",
+      "falsifier": "baseline requires privileged phi or does not produce the identical one-bit output under the same allowed actions",
+      "decision_unlocked": "whether a meaningful C6 total-cost experiment can be preregistered without using an intentionally slow strawman"
     },
     "different_branch": {
       "kind": "k0 fixed-reset reset+word black-box consumer; exact learned phi(raw) is absent",
@@ -99,7 +99,21 @@
       "Do not run general unknown-goal planner, continuous nonlinear research or new NN just to justify small model",
       "Do not merge ECv4.4 Draft PR #40 based on synthetic or stubs-only tests"
     ],
-    "next_experiment_phase": "NOT_PREREGISTERED_NOT_RUN"
+    "next_experiment_phase": "NOT_PREREGISTERED_NOT_RUN",
+    "current_action_completed": "STATIC_BASELINE_COST_PRECHECK: source n=128 rows vs quotient rank2 rows and one-time phi init, code-derived only",
+    "static_cost_evidence": {
+      "source": "poc/poc4_repro.py@706da2229bbe7a244e899729221170149bc6d014",
+      "source_row_parity_calls_per_transition": 128,
+      "quotient_row_parity_calls_per_transition": 2,
+      "quotient_projection_init_parity_calls": 2,
+      "source_output_parity_calls": 1,
+      "quotient_output_parity_calls": 1,
+      "operation_count_ratio_only": 64,
+      "walltime_speedup": "NOT_RUN",
+      "construction_cost": "NOT_MEASURED",
+      "checker_total_cost": "NOT_MEASURED",
+      "optimized_direct_baseline": "NOT_FROZEN"
+    }
   },
   "provenance": {
     "pre_commit": "7982540978ff7cdd5139525a5535186e2fd7703f",
