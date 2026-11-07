@@ -1,6 +1,6 @@
 {
   "protocol": "EXPERIMENT_CYCLE_V1",
-  "phase": "PRE",
+  "phase": "POST",
   "date": "2026-11-07",
   "decision_id": "ROOT-GEN-001/DISCOVERY_VS_EXISTENCE",
   "goal": {
@@ -42,5 +42,43 @@
     "full end-to-end total costs and utility",
     "ECv4.4 full regressions",
     "LLM general reasoning"
-  ]
+  ],
+  "completed_date": "2026-11-07",
+  "post": {
+    "pre_registration_ref": "https://github.com/mokumaisancho/LLM-EC-Layerwise-Ablation/blob/7982540978ff7cdd5139525a5535186e2fd7703f/research/MINIMAL_GENERATIVE_REASONER_2026-11-05/ACTIVE_DECISION.json",
+    "observed": "MGR-P1 k=0, reset=0/actions0,1: black-box L* learned 4 states; original raw reachable states=256, exact post-learning product 256 pairs/512 transitions PASS. Deliberately corrupted learned transition returns witness [0,0].",
+    "comparison_observed": "Existing P1 full-source Moore refinement reported 256-to-4 (same algebraic condition, but full raw data used). Existing PoC7 single reset used 4 reachable raw states; PoC16 constructed two matching hidden reset states to obtain 8-to-4. This is the first recorded source-blind L* 256 reachable to four-state check for this preexisting k=0 target.",
+    "evidence_grade": "SYNTHETIC",
+    "prediction_match": "MATCH_PASS",
+    "incremental_contribution": "Confirmed source-blind predictive state discovery over a naturally full-reachable (256 microstate) single-reset workload, not just mathematical existence of the quotient; 322 unique membership queries, 3874 source action evaluations and 2 black-box EQ rounds. Internal phi(raw) and global fresh-raw state initialization remain unknown to learner.",
+    "uncertainty_change": "REDUCED",
+    "newly_testable_ac": [
+      "#71:C6 — now possible to bound query-acquisition cost and fair usage cost for an actual 256-raw/4-model learner, but total C6 not verified"
+    ],
+    "newly_verified_ac": [],
+    "evidence_refs": [
+      "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/poc/k0_fixed_reset_blackbox_discovery.mjs@958501aa9e65f01bb7b98881cfbfdecdc52d28d7",
+      "research/MINIMAL_GENERATIVE_REASONER_2026-11-05/poc/K0_FIXED_RESET_BLACKBOX_OBSERVED_2026-11-07.json@0c9a01a022101102aca748cd0507467f13647c83"
+    ],
+    "verdict": "REUSE",
+    "rationale": "The bounded scientific decision was answered: existing L* can discover a nontrivial future-predictive quotient without special reset selection or private raw states. Another nearby four-state PoC would duplicate this result. Reuse this as the learning baseline; do not infer CPU savings, raw phi, or open-domain generality from it.",
+    "next_action": null
+  },
+  "current_frontier": {
+    "next_decision": "For a concretely specified repeated-output workload, do 322 distinct queries (3874 source steps) plus independent certification and runtime make this source-blind learned model cheaper than the best available baseline?",
+    "status": "NOT_PREREGISTERED_NOT_RUN",
+    "true_blocker": "Workload/consumer and realistic no-learn counterfactual must be fixed before measuring total cost; abstract state reduction alone is insufficient.",
+    "nonblocking": [
+      "Arbitrary new raw-state phi is not required for fixed reset+known history",
+      "ECv4.4 native integration and Phase1 external obligation authority are downstream governance paths",
+      "General nonlinear model discovery is not required to use this scoped k=0 outcome"
+    ],
+    "no_auto_next_poc": true
+  },
+  "provenance": {
+    "pre_commit": "7982540978ff7cdd5139525a5535186e2fd7703f",
+    "pre_modified_after_run": false,
+    "post_uses_same_active_decision_record": true,
+    "scientific_limit": "Blackbox learner source-blind, exact full verifier source-aware; synthetic source known to experimenter; no external deployment or verified cost advantage"
+  }
 }
